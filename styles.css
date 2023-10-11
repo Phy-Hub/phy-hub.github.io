@@ -57,3 +57,40 @@ a:hover {
   margin-top: -65px; /* negative value of navbar height */
   visibility: hidden;
 }
+
+
+/* styles.css */
+body { margin: 0;}
+        
+.grid-container {
+  display: grid;
+  grid-template-columns:  24% 1% 50% 1% 24%; /* Creates 5 columns */
+}
+
+        
+.grid-item {
+  padding: 20px;
+}
+
+#toc {
+  position: sticky;
+  top: 56px;
+  height: 100vh;
+}
+
+.sticky{
+  position: sticky;
+  top: 56px;
+  height: 100vh;
+}
+
+#toc a {
+  padding: 0;
+  font-size: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.collapsible {
+  overflow: hidden;
+  transition: max-width 0.2s ease-out;
+}

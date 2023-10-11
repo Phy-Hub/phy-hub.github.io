@@ -1,118 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
-    
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script> 
-        $(function(){
-          $("#navbar").load("Navbar.html"); 
-        });
-      </script> 
-    <script type="text/javascript" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-    </script>
-    <style>
       
-        body { margin: 0;}
-        
-        .grid-container {
-          display: grid;
-          grid-template-columns:  24% 1% 50% 1% 24%; /* Creates three columns */
-        }
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+  <script> $(function (){ $("#navbar").load("Navbar.html"); }); </script> 
+  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-        
-        .grid-item {
-          padding: 20px;
-          
-        }
-
-        #toc {
-         position: sticky;
-         top: 56px;
-         height: 100vh;
-        }
-
-        .sticky{
-         position: sticky;
-         top: 56px;
-         height: 100vh;
-        }
-
-        #toc a {
-          padding: 0;
-          font-size: 10px;
-          font-family: Arial, sans-serif;
-        }
-
-        .collapsible {
-         overflow: hidden;
-         transition: max-width 0.2s ease-out;
-        }
-
-        </style>
 </head>
 
 
 <body style="background-color: grey;">
-    <div id="navbar" style="position: sticky; top: 0; z-index: 1000;" ></div>
+
+  <div id="navbar" style="position: sticky; top: 0; z-index: 1000;" ></div>
 
     <div class="grid-container" style="background-color:#ffe4c8;"> 
-        <div id="toc" class="grid-item collapsible" >
-          
-         <script>
-            $('#toc').load('toc.html');
-         </script>
-        </div>
 
-        <div onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;">
-          
-          ❰
-          <! -- ‹ ❮ ❰ ❱ ❯ › -->
+      <div id="toc" class="grid-item collapsible" > <script> $('#toc').load('toc.html'); </script> </div>
 
-        </div>
-        <div id="content" class="grid-item" >
-          
-            <script>
-                $('#content').load('Latex_SR.html');
-            </script>
-        </div>
-        <div class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); position: sticky; top: 56px;"> 
-          <! -- ‹ ❮ ❰ ❱ ❯ › -->
-        </div>
-        <div class="grid-item sticky">
-          Right Sidebar
-        </div>  
-    </div>
+      <div onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;"> ❰ </div>  <! -- ‹ ❮ ❰ ❱ ❯ › --> 
+
+      <div id="content" class="grid-item" > <script> $('#content').load('Latex_SR.html'); </script> </div>
+
+      <div class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); position: sticky; top: 56px;"> </div>
+      
+      <div class="grid-item sticky"> Right Sidebar </div>  
+
+  </div>
 
   
-    <script>
-      var isCollapsed = false;
+  <script>
+    var isCollapsed = false;
 
-function collapse() {
-    var column1 = document.getElementById("toc");
-    if (!isCollapsed) {
+    function collapse() {
+      var column1 = document.getElementById("toc");
+      if (!isCollapsed) {
         column1.style.display = "none";
         document.querySelector('.grid-container').style.gridTemplateColumns = "1% 74% 1% 24%";
-    } else {
+      } else {
         column1.style.display = "block";
         document.querySelector('.grid-container').style.gridTemplateColumns = "24% 1% 50% 1% 24%";
-    }
-    isCollapsed = !isCollapsed;
-}
-      </script>
-
-<script>
-  function showContent(id) {
-      var sections = document.getElementsByClassName('chapter');
-      for (var i = 0; i < sections.length; i++) {
-          sections[i].style.display = 'none';
       }
-      document.getElementById(id).style.display = 'block';
-  }
-</script>
+        isCollapsed = !isCollapsed;
+    }
+  </script>
 
+  <script>
+    function showContent(id) {
+
+      var sections = document.getElementsByClassName('chapter');
+      for (var i = 0; i < sections.length; i++) { sections[i].style.display = 'none'; }
+      document.getElementById(id).style.display = 'block';
+
+    }
+  </script>
 
 
 </body>

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-      
+  
   <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
   <script> $(function (){ $("#navbar").load("Navbar.html"); }); </script> 
   <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
+  <script> window.MathJax = {  tex: { tags: 'ams' }  }; </script>
+ 
+  
 </head>
 
 
@@ -15,13 +17,13 @@
   <div id="navbar" style="position: sticky; top: 0; z-index: 1000;" ></div>
 
   <div class="grid-container" style="background-color:#ffe4c8;"> 
-
+    
     <div id="toc" class="grid-item collapsible" > <script> $('#toc').load('toc.html'); </script> </div>
 
     <div onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;"> ❰ </div>  <! -- ‹ ❮ ❰ ❱ ❯ › --> 
 
-    <div id="content" class="grid-item" > <script> $('#content').load('Latex_SR.html'); </script> </div>
-
+    <div id="content" class="grid-item" ><script> $(function(){  $("#content").load("Latex_SR.html #ConceptualOverview_div", function() { MathJax.typesetPromise(); });})  </script></div>
+  
     <div class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); position: sticky; top: 56px;"> </div>
       
     <div class="grid-item sticky"> Right Sidebar </div>  
@@ -36,27 +38,41 @@
       var column1 = document.getElementById("toc");
       if (!isCollapsed) {
         column1.style.display = "none";
-        document.querySelector('.grid-container').style.gridTemplateColumns = "1% 74% 1% 24%";
+        document.querySelector('.grid-container').style.gridTemplateColumns = "1% 65% 1% 33%";
       } else {
         column1.style.display = "block";
         document.querySelector('.grid-container').style.gridTemplateColumns = "24% 1% 50% 1% 24%";
       }
         isCollapsed = !isCollapsed;
     }
-  </script>
+  </script> 
 
-  <script>
-    function showContent(id) {
 
-      var sections = document.getElementsByClassName('chapter');
-      for (var i = 0; i < sections.length; i++) { sections[i].style.display = 'none'; }
-      document.getElementById(id).style.display = 'block';
+<script>
+  function showContent(divId) {
 
-    }
-  </script>
+    $("#content").empty();
+    $("#content").load("Latex_SR.html #" + divId, function() { MathJax.typesetPromise(); });
+    $("details").removeAttr("open");
+    window.location.href = '#top';
+    console.log("showcontent click")
+  }
+</script>
+
+
+<script>
+  $(document).on('click', 'summary', function() {
+
+    $(this).closest('summary').attr('open', '');
+    console.log("summary click")
+    
+  });
+</script>
+
 
 
 </body>
 
 </html>
 
+when toc is clicked i want it to go to top of page aswell

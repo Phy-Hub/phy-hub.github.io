@@ -59,7 +59,7 @@ a:hover {
 }
 
 
-/* styles.css */
+/* navbar */
 body { margin: 0;}
         
 .grid-container {
@@ -93,4 +93,12 @@ body { margin: 0;}
 .collapsible {
   overflow: hidden;
   transition: max-width 0.2s ease-out;
+}
+
+figure {
+  counter-increment: figure-counter;
+}
+
+figcaption::before {
+  content: "Figure " counter(figure-counter) ": ";
 }

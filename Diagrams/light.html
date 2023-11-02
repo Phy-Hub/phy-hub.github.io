@@ -11,18 +11,22 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var particles = [];
 
-function Particle(x, y, dx, dy) {
+function Particle(x, y, dx, dy, angle) {
     this.x = x;
     this.y = y;
     this.dx = dx;
     this.dy = dy;
+    this.angle = angle;
     this.path = [];
+
+    // Add a factor for aberration
+    this.aberrationFactor = 1 + Math.abs(Math.sin(this.angle));
 
     this.draw = function() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, 2, 0, Math.PI*2);
         ctx.fillStyle = "#0095DD";
-        ctx.fill();
+        ctx.fill()
         ctx.closePath();
 
         ctx.beginPath();
@@ -36,9 +40,13 @@ function Particle(x, y, dx, dy) {
     }
 
     this.update = function() {
-        if (Math.sqrt((this.x-250)**2 + (this.y-250)**2) >= 200) {
-            this.dx = -this.dx;
-            this.dy = -this.dy;
+        if (Math.sqrt((this.x-250)**2 + (this.y-250)**2) >= 200 * this.aberrationFactor) {
+            // Set a new target point
+            var targetX = 1000; // Change this to your desired x-coordinate
+            var targetY = 250; // Change this to your desired y-coordinate
+            var angle = Math.atan2(targetY - this.y, targetX - this.x);
+            this.dx = Math.cos(angle);
+            this.dy = Math.sin(angle);
         }
         this.path.push({x: this.x, y: this.y});
         this.draw();
@@ -57,10 +65,10 @@ function animate() {
 }
 
 for (var i = 0; i < 360; i += 10) {
-    var angle = i * Math.PI / 180;
+    var angle = (i * Math.PI / 180) * (1 + Math.abs(Math.sin(i * Math.PI / 180)));
     var dx = Math.cos(angle);
     var dy = Math.sin(angle);
-    particles.push(new Particle(250, 250, dx, dy));
+    particles.push(new Particle(250, 250, dx, dy, angle));
 }
 
 animate();

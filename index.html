@@ -18,9 +18,9 @@
 
   <div class="grid-container" style="background-color:#ffe4c8;"> 
     
-    <div id="SR_toc" class="grid-item collapsible toc" > <script> $('#SR_toc').load('Latex/TOC_Special_Relativity.html'); </script> </div>
+    <div id="SR_toc" class="grid-item collapsible toc" > <script> $("#SR_toc").load("Latex/TOC_Special_Relativity.html"); </script> </div>
 
-    <div onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;"> ❰ </div>  <!-- ‹ ❮ ❰ ❱ ❯ › --> 
+    <div id="collapse_Button" onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;"> ❰ </div>  <!-- ‹ ❮ ❰ ❱ ❯ › --> 
 
     <div id="content" class="grid-item" style="padding: 10px;" > <script> $(function(){  $("#content").load("Latex/Special_Relativity.html #ConceptualOverview_div", function() { MathJax.typesetPromise(); });})  </script> </div>
   
@@ -40,17 +40,22 @@
 
     function collapse() {
       var column1 = document.getElementById("SR_toc");
+      var collapseButton = document.getElementById("collapse_Button");
+
       if (!isCollapsed) {
         column1.style.display = "none";
         document.querySelector('.grid-container').style.gridTemplateColumns = "1% 65% 1% 33%";
+        collapseButton.innerHTML = " ❱"; // Change the content
       } else {
         column1.style.display = "block";
         document.querySelector('.grid-container').style.gridTemplateColumns = "24% 1% 50% 1% 24%";
+        collapseButton.innerHTML = "❰"; // Change the content back to original
       }
-        isCollapsed = !isCollapsed;
-
-        windowResized() // this is so diagrams resize on the collapse
+      isCollapsed = !isCollapsed;
+      windowResized(); // this is so diagrams resize on the collapse
     }
+
+
   </script> 
 
 

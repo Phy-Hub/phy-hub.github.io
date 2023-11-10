@@ -1,8 +1,8 @@
-<div class="navbar" style="display: grid; grid-template-columns:  24%  50% 24%;">
+<div class="navbar" style="display: grid; grid-template-columns:  24%  50% 24%; padding-top: 3px;">
 
   <div class="nav-item"> <a href="Home.html"> <img src="Visuals/Images/Logo_2.png" alt="Logo" class="logo" > </a> </div>
 
-  <div id="mySVG" class="nav-item" > </div>
+  <div id="mySVG" class="nav-item" style="width: 100%;"> </div>
 
   <div class="nav-item" style="justify-self: end;"> <div class="hamburger-menu">   <div></div><div></div><div></div>   </div></div>
 
@@ -16,7 +16,7 @@
       .then(data => {
         document.getElementById('mySVG').innerHTML = data;
         var svgDoc = document.getElementById('mySVG').getElementsByTagName('svg')[0];
-        svgDoc.style.width = "100%"; // Set the width to 100% of the screen width
+        svgDoc.style.height = "55px"
         var myUses = svgDoc.getElementsByTagName('use');
         var totalItems = myUses.length; // total number of items
         var totalTime = 4; // total time for all animations in seconds

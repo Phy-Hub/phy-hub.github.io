@@ -1,0 +1,103 @@
+<html>
+<head>
+  <title>Arrow Plotting</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+  <script>
+    let Vp = 0.8;
+    let V = [0, -Vp];
+    let Gamma = 1 / Math.sqrt(1 - Math.pow(Vp, 2));
+    let t = 0;
+    let Tr = 400;
+    let N_ang = 2;
+    let ang = [Math.PI / 2, 3 * Math.PI / 2];
+
+
+    function setup() {
+        createCanvas( Gamma*Vp*2*Tr + ( (2* Tr)  / Gamma) + Tr -Tr/Gamma , 2*Tr + 10);
+        let sliderDiv = createDiv();
+        sliderDiv.style('display', 'flex');
+        let p = createP('Time:');
+        p.style('margin-right', '10px');
+        slider = createSlider(0, 800, 0);
+        slider.style('width', '400px');
+        p.parent(sliderDiv);
+        slider.parent(sliderDiv);
+
+        let checkboxDiv = createDiv('Frame:');
+        checkboxDiv.style('display', 'flex');
+        let checkboxVp0 = createCheckbox('Rest', false); 
+        let checkboxVp08 = createCheckbox('Moving', true); 
+        checkboxVp0.parent(checkboxDiv);
+        checkboxVp08.parent(checkboxDiv);
+        checkboxVp0.changed(() => { if(checkboxVp0.checked()) { Vp = 0; checkboxVp08.checked(false); } });
+        checkboxVp08.changed(() => { if(checkboxVp08.checked()) { Vp = 0.8; checkboxVp0.checked(false); } });
+    }
+
+    function draw() {
+        t = slider.value();
+        V = [0, -Vp];
+        Gamma = 1 / Math.sqrt(1 - Math.pow(Vp, 2));
+        let t_PRM = Gamma * t;
+        let Rc_PRM = [];
+        let C = [];
+
+        for (let I_a = 0 ; I_a < N_ang; I_a++) {
+            let C_PRM  = [Gamma * (Math.cos(ang[I_a]) - V[1]), Math.sin(ang[I_a])].map(x => x / (Gamma * (1 - V[1] * Math.cos(ang[I_a]))));
+            let Cr_PRM = [Gamma * (-Math.cos(ang[I_a]) - V[1]), -Math.sin(ang[I_a])].map(x => x / (Gamma * (1 - V[1] * -Math.cos(ang[I_a]))));
+            let Tr_PRM = Gamma * (1 - (V[1] * Math.cos(ang[I_a]))) * Tr;
+
+            if (t_PRM < Tr_PRM) {
+                Rc_PRM.push(C_PRM.map(x => x * t_PRM));
+                C.push(C_PRM);
+            } else {
+                Rc_PRM.push(C_PRM.map((x, i) => x * Tr_PRM + (t_PRM - Tr_PRM) * Cr_PRM[i]));
+                C.push(Cr_PRM);
+            }
+        }
+
+        background(220);
+        
+        // Draw mirror
+        push();
+        strokeWeight(9);
+        stroke(105); // Dark gray
+        let moved = Vp * Gamma * t
+        line(Tr-30 + moved , 0, Tr+30+ moved, 0); // top mirror
+        line(Tr-30+ moved, 2*Tr+10, Tr+30+ moved, 2*Tr+10); // bottom mirror
+        pop();
+        
+        translate(Tr, height / 2); 
+        
+        for(let i = 0; i < Rc_PRM.length; i++) {
+            let pos = Rc_PRM[i];
+            let dir = C[i];
+            let mag = Math.sqrt(dir[0]*dir[0] + dir[1]*dir[1]);
+            dir[0] /= mag;
+            dir[1] /= mag;
+            dir[0] *= 20;
+            dir[1] *= 20;
+
+            push(); 
+            fill(255, 0, 0);
+            noStroke();
+            translate(pos[0], pos[1]);
+            rotate(Math.atan2(dir[1], dir[0]));
+            let arrowSize = 7;
+            translate(mag - arrowSize, 0);
+            triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+            pop();        
+        }
+        
+         // Draw red central dot
+         push();
+         stroke('red'); 
+         strokeWeight(10);
+         point(Vp * Gamma * t, 0); 
+         pop();
+    }
+    
+</script>
+</body>
+</html>

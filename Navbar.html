@@ -1,7 +1,7 @@
 <div class="navbar" style="display: grid; grid-template-columns:  24%  50% 24%;">
 
   <div class="nav-item">
-    <a href="Home.html"> <img src="Images/Logo_2.png" alt="Logo" class="logo" > </a>
+    <a href="Home.html"> <img src="Visuals/Images/Logo_2.png" alt="Logo" class="logo" > </a>
   </div>
 
   <div id="mySVG" class="nav-item" >
@@ -18,7 +18,7 @@
 
 <script>
   window.onload = function() {
-    fetch('svg/DS_Pattern.svg')
+    fetch('Visuals/svg/DS_Pattern.svg')
       .then(response => response.text())
       .then(data => {
         document.getElementById('mySVG').innerHTML = data;

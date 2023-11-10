@@ -18,7 +18,7 @@
 
   <div class="grid-container" style="background-color:#ffe4c8;"> 
     
-    <div id="SR_toc" class="grid-item collapsible toc" > <script> $("#SR_toc").load("Latex/TOC_Special_Relativity.html"); </script> </div>
+    <div id="SR_toc" class="grid-item collapsible toc" > <script> $("#SR_toc").load("Latex/toc_Special_Relativity.html"); </script> </div>
 
     <div id="collapse_Button" onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;"> ❰ </div>  <!-- ‹ ❮ ❰ ❱ ❯ › --> 
 
@@ -52,7 +52,7 @@
         collapseButton.innerHTML = "❰"; // Change the content back to original
       }
       isCollapsed = !isCollapsed;
-      windowResized(); // this is so diagrams resize on the collapse
+      // this is so diagrams resize on the collapse:  windowResized();
     }
 
 

@@ -79,7 +79,7 @@ def create_toc(html_file):
         
     toc += "</details>\n"
             
-    with open(f'../toc_{os.path.basename(html_file)}', 'w') as file:
+    with open(f'../TOC_{os.path.basename(html_file)}', 'w') as file:
         file.write(toc)
 
 

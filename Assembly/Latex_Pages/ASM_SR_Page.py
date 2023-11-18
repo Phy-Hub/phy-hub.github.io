@@ -376,5 +376,5 @@ def replace_inserts(input_file, output_file, toc_file, content_file):
             else:
                 file.write(line)
 
-replace_inserts("Page_Structure.html", "../../SR_Page.html", toc, Latex_File)
+replace_inserts("Structure_LatexPage.html", "../../SR_Page.html", toc, Latex_File)
 os.remove(Latex_File)

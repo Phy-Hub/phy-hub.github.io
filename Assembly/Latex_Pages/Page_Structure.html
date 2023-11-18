@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+  <script defer type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer> window.MathJax = {  tex: { tags: 'ams' }  }; </script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+  
+</head>
+
+
+<body style="background-color: grey;">
+
+  [Insert navbar] 
+
+  <div class="grid-container" style="background-color:#ffe4c8;"> 
+    
+    <div id="SR_toc" class="grid-item collapsible toc">  [Insert TOC]  <div>
+     
+    <div id="collapse_Button" onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;"> ❰ </div>  <!-- ‹ ❮ ❰ ❱ ❯ › --> 
+
+    <div id="content" class="grid-item" style="padding: 10px;" > [Insert Content] </div>
+  
+    <div class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); position: sticky; top: 56px;"> </div>
+      
+    <div class="grid-item sticky">  
+      Right Sidebar  <br>
+      have seperate files for each chapter of latex so i can load it in using object html instead.
+    </div>
+
+  </div>
+  
+  <script>
+    var isCollapsed = false;
+
+    function collapse() {
+      var column1 = document.getElementById("SR_toc");
+      var collapseButton = document.getElementById("collapse_Button");
+
+      if (!isCollapsed) {
+        column1.style.display = "none";
+        document.querySelector('.grid-container').style.gridTemplateColumns = "1% 65% 1% 33%";
+        collapseButton.innerHTML = " ❱"; // Change the content
+      } else {
+        column1.style.display = "block";
+        document.querySelector('.grid-container').style.gridTemplateColumns = "24% 1% 50% 1% 24%";
+        collapseButton.innerHTML = "❰"; // Change the content back to original
+      }
+      isCollapsed = !isCollapsed;
+      // this is so diagrams resize on the collapse:  
+      windowResized();
+    }
+  </script> 
+
+  <script>
+    function showContent(divId) {
+
+      $(document).ready(function() {
+        // Hide all divs with class 'chapter'
+        $("div.chapter").attr("style", "display: none");
+
+        // Show the div with id 'divId'
+        $("#" + divId).attr("style", "display: block");
+    });
+      $("details").removeAttr("open");
+      window.scrollTo(0,0);
+    }
+  </script>
+
+  <script>
+    $(document).on('click', 'summary', function() {
+
+      $(this).closest('summary').attr('open', '');
+      
+    });
+  </script>
+</body>
+</html>
+
+
+
+

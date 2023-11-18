@@ -18,17 +18,16 @@
 
   <div class="grid-container" style="background-color:#ffe4c8;"> 
     
-    <div id="SR_toc" class="grid-item collapsible toc" > <script> $("#SR_toc").load("Latex/toc_Special_Relativity.html"); </script> </div>
+    <div id="SR_toc" class="grid-item collapsible toc" > <script> $("#SR_toc").load("Page_Assembly/Latex/toc_Special_Relativity.html"); </script> </div>
 
     <div id="collapse_Button" onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;"> ❰ </div>  <!-- ‹ ❮ ❰ ❱ ❯ › --> 
 
-    <div id="content" class="grid-item" style="padding: 10px;" > <script> $(function(){  $("#content").load("Latex/Special_Relativity.html #ConceptualOverview_div", function() { MathJax.typesetPromise(); });})  </script> </div>
+    <div id="content" class="grid-item" style="padding: 10px;" > <script> $(function(){  $("#content").load("Page_Assembly/Latex/Special_Relativity.html #ConceptualOverview_div", function() { MathJax.typesetPromise(); });})  </script> </div>
   
     <div class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); position: sticky; top: 56px;"> </div>
       
-    <div class="grid-item sticky">    
-      <!-- <div id="DiaAberr"><script> $(function (){ $("#DiaAberr").load("Diagrams/Aberr.html"); }); </script> </div> -->     
-      <!-- <div id="aberr"><script src="Diagrams/Aberr.js"></script></div><br> -->
+    <div class="grid-item sticky">  
+        
       Right Sidebar  <br>
       have seperate files for each chapter of latex so i can load it in using object html instead.
     </div>
@@ -52,7 +51,8 @@
         collapseButton.innerHTML = "❰"; // Change the content back to original
       }
       isCollapsed = !isCollapsed;
-      // this is so diagrams resize on the collapse:  windowResized();
+      // this is so diagrams resize on the collapse:  
+      windowResized();
     }
 
 
@@ -63,7 +63,7 @@
   function showContent(divId) {
 
     $("#content").empty();
-    $("#content").load("Latex/Special_Relativity.html #" + divId, function() { MathJax.typesetPromise(); });
+    $("#content").load("Page_Assembly/Latex/Special_Relativity.html #" + divId, function() { MathJax.typesetPromise(); });
     $("details").removeAttr("open");
     window.location.href = '#top';
     console.log("showcontent click")
@@ -81,9 +81,7 @@
 </script>
 
 
-
 </body>
-
 </html>
 
 

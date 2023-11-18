@@ -1,26 +1,17 @@
-<div id="aberr">
-  <script>
+<script>
     let Vp = 0.8;
-    let Vpc = 0.8;
     let V = [0, -Vp];
     let Gamma = 1 / Math.sqrt(1 - Math.pow(Vp, 2));
-    let Gammac = 1 / Math.sqrt(1 - Math.pow(Vpc, 2));
     let t = 0;
     let Tr;
     let N_ang = 33;
     let ang = Array.from({length: N_ang}, (_, i) => (2 * Math.PI) * i / N_ang);
 
     function setup() {
-        
-        let myDiv = select('#aberr'); // Select the div with id 'myDivId'
-        let divWidth = myDiv.width; // Get the width of the div
-        Tr = divWidth / (2*Gammac*Vpc + 1/Gammac + 1);
-        let myCanvas = createCanvas(divWidth, Tr*2 +10);
-        myCanvas.parent('aberr');
-
+        Tr = windowWidth / (2*Gamma*Vp + 1/Gamma + 1);
+        createCanvas( windowWidth, Tr*2 +10);
         let sliderDiv = createDiv();
         sliderDiv.style('display', 'flex');
-        sliderDiv.parent('aberr'); // Parent the sliderDiv to 'aberr'
         let p = createP('Time:');
         p.style('margin-right', '10px');
         slider = createSlider(0, 2*Tr, 0);
@@ -28,11 +19,9 @@
         p.parent(sliderDiv);
         slider.parent(sliderDiv);
 
-        
         let checkboxDiv = createDiv('Frame:');
         checkboxDiv.style('display', 'flex');
         checkboxDiv.style('flex-direction', 'column'); // This will stack the checkboxes vertically
-        checkboxDiv.parent('aberr'); // Parent the checkboxDiv to 'aberr'
         let checkboxVp0 = createCheckbox('Rest', false); 
         let checkboxVp08 = createCheckbox('Moving', true); 
         checkboxVp0.parent(checkboxDiv);
@@ -98,14 +87,10 @@
     }
 
     function windowResized() {
-        let myDiv = select('#aberr'); // Select the div with id 'myDivId'
-        let divWidth = myDiv.width; // Get the width of the div
-        Tr = divWidth / (2*Gammac*Vpc + 1/Gammac + 1);
-        resizeCanvas(divWidth, Tr*2 +10);
+        Tr = windowWidth / (2*Gamma*Vp + 1/Gamma + 1);
+        resizeCanvas(windowWidth, Tr*2 +10);
         // Update the slider range
         slider.elt.max = 2*Tr;        
     }
-
-  </script>
-</div>
-
+  
+</script>

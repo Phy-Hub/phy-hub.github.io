@@ -1,0 +1,26 @@
+<svg width="3028" height="369" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden">
+  <defs>
+    <filter id="fx0" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
+      <feComponentTransfer color-interpolation-filters="sRGB">
+        <feFuncR type="discrete" tableValues="0 0"/>
+        <feFuncG type="discrete" tableValues="0 0"/>
+        <feFuncB type="discrete" tableValues="0 0"/>
+        <feFuncA type="linear" slope="0.690196" intercept="0"/>
+      </feComponentTransfer>
+      <feGaussianBlur stdDeviation="5.34722 5.34722"/>
+    </filter>
+    <clipPath id="clip1">
+      <rect x="1200" y="1484" width="2028" height="169"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip1)" transform="translate(-1200 -1484)">
+    <g transform="matrix(2 0 0 2 1199 1482)">
+      <g>
+        <path d="M17 17.1667 998 17.1667 998 69.1666 17 69.1666Z" fill-rule="evenodd"/>
+      </g>
+    </g>
+    <g filter="url(#fx0)">
+      <path d="M1233 1498 3195 1498 3195 1602 1233 1602Z" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>

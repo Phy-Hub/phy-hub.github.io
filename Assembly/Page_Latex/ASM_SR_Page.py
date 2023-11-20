@@ -372,7 +372,6 @@ def replace_inserts(input_file, output_file, toc_file, content_file):
                 file.write('</div>\n')  # Line after the match
             elif '[Insert navbar]' in line:
                 file.writelines(navbar)
-                file.write('</div>\n')  # Line after the match
             else:
                 file.write(line)
 

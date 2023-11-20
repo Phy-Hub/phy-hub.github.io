@@ -7,19 +7,50 @@
   <script defer type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script defer> window.MathJax = {  tex: { tags: 'ams' }  }; </script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+
+  <style>
+    .parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.wrapper div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  </style>
   
 </head>
 
 
 <body style="background-color: grey;">
 
-<div class="navbar" style="display: grid; grid-template-columns:  24%  50% 24%; padding-top: 3px;">
+<div class="navbar">
 
-  <div class="nav-item"> <a href="Home.html"> <img src="Visuals/Images/Logo_2.png" alt="Logo" class="logo" > </a> </div>
+  <div class="nav-item"> <a href="index.html"> <img src="Visuals/Images/Logo_2.png" alt="Logo" class="logo" > </a> </div>
 
   <div id="mySVG" class="nav-item" style="width: 100%;"> </div>
 
-  <div class="nav-item" style="justify-self: end;"> <div class="hamburger-menu">   <div></div><div></div><div></div>   </div></div>
+  <div id="drop-menu" class="nav-item" style="justify-self: end;">
+
+    <div class="hamburger-menu">
+      <div></div><div></div><div></div>
+    </div>
+
+    <div class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="Topics.html">Topics</a>
+      <a href="About.html">About</a>
+    </div>
+
+  </div>
 
 </div>
 
@@ -54,9 +85,9 @@
         }, 0);
       });
   }
-  </script></div>
+  </script>
 
-  <div class="grid-container" style="background-color:#ffe4c8;"> 
+<div class="grid-container" style="background-color:#ffe4c8;"> 
     
 <div id="SR_toc" class="grid-item collapsible toc"> 
 <h4>Contents</h4>
@@ -144,6 +175,14 @@
     <div id="collapse_Button" onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;"> ❰ </div>  <!-- ‹ ❮ ❰ ❱ ❯ › --> 
 
 <div id="content" class="grid-item" style="padding: 10px;" >
+
+    <div class="wrapper">
+        <div> 
+          <img class="resizable-svg-img" src="Visuals/svg/Logo_Roof_wide.svg"  onload="resizeSVGImages()" style="margin: 0; padding: 0; border: 0;">
+          <img class="resizable-svg-img" src="Visuals/svg/Logo_Step1_wide.svg" onload="resizeSVGImages()" style="margin: 0; padding: 0; border: 0;">
+          <img class="resizable-svg-img" src="Visuals/svg/Logo_Step2_wide.svg" onload="resizeSVGImages()" style="margin: 0; padding: 0;">
+        </div>
+      </div>
 
          <div id="ConceptualOverview_div" class="chapter"> 
  <h1 id="ConceptualOverview">Conceptual Overview</h1>
@@ -1055,8 +1094,18 @@ e=mc2 and kinematics of relativistic classical particles and that....<br>
     <div class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); position: sticky; top: 56px;"> </div>
       
     <div class="grid-item sticky">  
-      Right Sidebar  <br>
-      have seperate files for each chapter of latex so i can load it in using object html instead.
+      Right Sidebar  
+      <a href="donate.html">
+        <div class="donate">
+            Donate
+        </div>
+      </a>
+      <a href="About.html">
+        <div class="about">
+            About
+        </div>
+      </a>
+   
     </div>
 
   </div>
@@ -1105,6 +1154,31 @@ e=mc2 and kinematics of relativistic classical particles and that....<br>
       
     });
   </script>
+
+
+<script>
+    function resizeSVGImages() {
+      var images = document.getElementsByClassName('resizable-svg-img');
+      var resizeFactor = 0.3; // 10% of the original size
+  
+      for (var i = 0; i < images.length; i++) {
+          var img = images[i];
+          var tempImg = new Image();
+          tempImg.src = img.src;
+  
+          tempImg.onload = (function(img) {
+              return function() {
+                  var originalWidth = this.naturalWidth; // Get the original width
+                  var newWidth = originalWidth * resizeFactor;
+  
+                  img.style.width = newWidth + 'px';
+              };
+          })(img);
+      }
+  }
+  </script>
+
+
 </body>
 </html>
 

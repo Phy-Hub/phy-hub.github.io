@@ -1,87 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
   <link rel="stylesheet" type="text/css" href="styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
-  <script> $(function (){ $("#navbar").load("Navbar.html"); }); </script> 
-  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script> window.MathJax = {  tex: { tags: 'ams' }  }; </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+  </style>
+
+  <style>
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .wrapper div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
   
 </head>
 
 
-<body style="background-color: grey;">
+<body  style="background-color:#ffe4c8; overflow-x: hidden;">
+  <div class="wrapper">
+    <div> 
 
-  <div id="navbar" style="position: sticky; top: 0; z-index: 1000;" ></div>
+      <svg width="200px" viewBox="0 0 1918 568" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden">
+        <defs>
+            <clipPath id="clip0">
+                <rect x="1255" y="133" width="1918" height="568"/>
+            </clipPath>
+        </defs>
+        <g clip-path="url(#clip0)" transform="translate(-1255 -130)">
+            <path d="M1310.6 701 3117.4 701 3117.4 597.727 3173 597.727 3173 529.206 2214 133 1255 529.206 1255 597.727 1310.6 597.727 1310.6 701Z" fill-rule="evenodd"/>
+        </g>
+    </svg>
 
-  <div class="grid-container" style="background-color:#ffe4c8;"> 
-    
-    <div id="SR_toc" class="grid-item collapsible toc" > <script> $("#SR_toc").load("Page_Assembly/Latex/toc_Special_Relativity.html"); </script> </div>
-
-    <div id="collapse_Button" onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;"> ❰ </div>  <!-- ‹ ❮ ❰ ❱ ❯ › --> 
-
-    <div id="content" class="grid-item" style="padding: 10px;" > <script> $(function(){  $("#content").load("Page_Assembly/Latex/Special_Relativity.html #ConceptualOverview_div", function() { MathJax.typesetPromise(); });})  </script> </div>
-  
-    <div class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); position: sticky; top: 56px;"> </div>
+    <div style="width: 100%; overflow: hidden; padding: 0;  margin: 0;">
       
-    <div class="grid-item sticky">  
-        
-      Right Sidebar  <br>
-      have seperate files for each chapter of latex so i can load it in using object html instead.
+      <div id="mySVG" class="nav-item" style="width: 1200px; height: 90px; padding: 0;  margin: 0;"> </div>
     </div>
 
+    <div>
+      <svg style="padding: 0;  margin: 0;" width="200" viewBox="0 0 2028 169" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><filter id="fx0" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.690196" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="5.34722 5.34722"/></filter><clipPath id="clip1"><rect x="1200" y="1484" width="2028" height="169"/></clipPath></defs><g clip-path="url(#clip1)" transform="translate(-1200 -1499)"><g filter="url(#fx0)" transform="matrix(2 0 0 2 1199 1482)"><g><path d="M17 17.1667 998 17.1667 998 69.1666 17 69.1666Z" fill-rule="evenodd"/></g></g><path d="M1233 1498 3195 1498 3195 1602 1233 1602Z" fill-rule="evenodd"/></g></svg>
+    </div>
+
+      <svg width="220" viewBox="0 0 2028 169" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><filter id="fx0" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.690196" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="5.34722 5.34722"/></filter><clipPath id="clip1"><rect x="1200" y="1484" width="2028" height="169"/></clipPath></defs><g clip-path="url(#clip1)" transform="translate(-1200 -1484)"><g filter="url(#fx0)" transform="matrix(2 0 0 2 1199 1482)"><g><path d="M17 17.1667 998 17.1667 998 69.1666 17 69.1666Z" fill-rule="evenodd"/></g></g><path d="M1233 1498 3195 1498 3195 1602 1233 1602Z" fill-rule="evenodd"/></g></svg>
+
+      <div style="font-family: 'Roboto Slab', serif; font-size: 45px;"> Phy-Hub</div>
+      <div style="font-family: 'Roboto Slab', serif; font-size: 20px; padding-top: 50px;"> The Physics Learning Hub </div>
+    </div>
   </div>
-  
-  <script>
-    var isCollapsed = false;
 
-    function collapse() {
-      var column1 = document.getElementById("SR_toc");
-      var collapseButton = document.getElementById("collapse_Button");
-
-      if (!isCollapsed) {
-        column1.style.display = "none";
-        document.querySelector('.grid-container').style.gridTemplateColumns = "1% 65% 1% 33%";
-        collapseButton.innerHTML = " ❱"; // Change the content
-      } else {
-        column1.style.display = "block";
-        document.querySelector('.grid-container').style.gridTemplateColumns = "24% 1% 50% 1% 24%";
-        collapseButton.innerHTML = "❰"; // Change the content back to original
-      }
-      isCollapsed = !isCollapsed;
-      // this is so diagrams resize on the collapse:  
-      windowResized();
-    }
-
-
-  </script> 
-
-
-<script>
-  function showContent(divId) {
-
-    $("#content").empty();
-    $("#content").load("Page_Assembly/Latex/Special_Relativity.html #" + divId, function() { MathJax.typesetPromise(); });
-    $("details").removeAttr("open");
-    window.location.href = '#top';
-    console.log("showcontent click")
-  }
-</script>
-
-
-<script>
-  $(document).on('click', 'summary', function() {
-
-    $(this).closest('summary').attr('open', '');
-    console.log("summary click")
-    
-  });
-</script>
-
-
+ 
 </body>
+
+<script>
+  window.onload = function() {
+    fetch('Visuals/svg/Interference_Pattern.svg')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('mySVG').innerHTML = data;
+        var svgDoc = document.getElementById('mySVG').getElementsByTagName('svg')[0];
+        svgDoc.style.height = "90px"
+        var myUses = svgDoc.getElementsByTagName('use');
+        var totalItems = myUses.length; // total number of items
+        var totalTime = 4; // total time for all animations in seconds
+        var timePerItemSlow = totalTime / 1000; // time per item for first 300 items
+        var timePerItemFast = (totalTime - (timePerItemSlow * 100)) / (totalItems - 100); // time per item for remaining items
+        for (var i = 0; i < myUses.length; i++) {
+          myUses[i].style.opacity = 0;
+          if (i < 300) {
+            myUses[i].style.transition = `opacity 0s`;
+            myUses[i].style.transitionDelay = `${i * timePerItemSlow}s`; // Set a different delay for each use
+          } else {
+            myUses[i].style.transition = `opacity 0s`;
+            myUses[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`; // Set a different delay for each use
+          }
+        }
+        setTimeout(function() {
+          for (var i = 0; i < myUses.length; i++) {
+            myUses[i].style.opacity = 1;
+          }
+        }, 0);
+      });
+  }
+  </script>
+
 </html>
 
 

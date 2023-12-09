@@ -31,8 +31,6 @@
 
     .sticky{position: sticky; top: 63px; height: 100vh;}
 
- 
-
     figure {counter-increment: figure-counter;}
     figcaption {line-height: 1;}
     figcaption::before {content: "Figure " counter(figure-counter) ": ";}
@@ -54,7 +52,6 @@
     .dropdown-menu a:hover {background-color: rgb(90, 90, 90)}
     #drop-menu:hover .dropdown-menu {display: block;}
 
-
   </style>
 </head>
 
@@ -68,19 +65,15 @@
     <div id="mySVG" class="nav-item" style="width: 100%;"> </div>
   
     <div id="drop-menu" class="nav-item menu" style="justify-self: end; width: 75px;">
-  
       <div id="arrow-menu" style="font-size: 45px; justify-content: center; text-align: center; cursor: pointer;"> &#x2630; </div>
-    
       <div class="dropdown-menu">
         <a href="index.html">Home</a>
         <a href="Topics.html">Topics</a>
         <a href="About.html">About</a>
       </div>
-    
     </div>
-  
+
   </div>
-  
   
   <script>
     window.onload = function() {
@@ -112,11 +105,11 @@
           }, 0);
         });
     }
-    </script>
+  </script>
  
-    <div class="grid-container" style="background-color:#ffe4c8;" > 
-      
-      <div id="left-sidebar" class="grid-item sticky">  
+  <div class="grid-container" style="background-color:#ffe4c8;" > 
+    
+    <div id="left-sidebar" class="grid-item sticky">  
 <h4>Contents</h4>
 <details id='ConceptualOverview_details' open>
 <summary onclick="showContent('ConceptualOverview_div')"><a href='#ConceptualOverview' onclick="event.stopPropagation(); showContent('ConceptualOverview_div'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>Conceptual Overview</a></summary>
@@ -182,21 +175,17 @@
 <details id='StepsforFrameSwapping_details' >
 <summary onclick="showContent('StepsforFrameSwapping_div')"><a href='#StepsforFrameSwapping' onclick="event.stopPropagation(); showContent('StepsforFrameSwapping_div'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>Steps for Frame Swapping</a></summary>
 </details>
-      </div>
+    </div>
       
-      
-      <div id="content" class="grid-item" style=" padding: 10px; line-height: 1.5; font-size: 20px; border-left: 10px solid rgba(128, 128, 128, 0.1); border-right: 10px solid rgba(128, 128, 128, 0.1);">
-        <div class="wrapper" style="display: flex; justify-content: center; text-align: center; font-family: 'Computer Modern Serif'      ">
-          <div >
-            <img src="Visuals/svg/Logo_Roof.svg" style="margin: 0; padding: 0; border: 0; width: 450px;">
-          
-            <div style=" display: flex; flex-direction: column; justify-content: center; align-items: center; height: 180px; "><div style=" font-family: 'Computer Modern', serif; font-style: italic; font-size: 50px;" > Handbook of  </div>  <div style="font-family: 'Computer Modern', serif; font-size: 55px;" > Special Relativity</div> </div>
-            
-            <img  src="Visuals/svg/Logo_Step1_wide.svg" style="margin: 0; padding: 0; border: 0; width: 450px;">
-            <img  src="Visuals/svg/Logo_Step2.svg"      style="margin: 0; padding: 0; border: 0; width: 500px ;">
-            
-          </div>
-        </div> 
+    <div id="content" class="grid-item" style=" padding: 10px; line-height: 1.5; font-size: 20px; border-left: 10px solid rgba(128, 128, 128, 0.1); border-right: 10px solid rgba(128, 128, 128, 0.1);">
+      <div class="wrapper" style="display: flex; justify-content: center; text-align: center; font-family: 'Computer Modern Serif'      ">
+        <div >
+          <img src="Visuals/svg/Logo_Roof.svg"       style="margin: 0; padding: 0; border: 0; width: 450px;">
+          <div style=" display: flex; flex-direction: column; justify-content: center; align-items: center; height: 180px; "><div style=" font-family: 'Computer Modern', serif; font-style: italic; font-size: 50px;" > Handbook of  </div>  <div style="font-family: 'Computer Modern', serif; font-size: 55px;" > Special Relativity</div> </div>
+          <img src="Visuals/svg/Logo_Step1_wide.svg" style="margin: 0; padding: 0; border: 0; width: 450px;">
+          <img src="Visuals/svg/Logo_Step2.svg"      style="margin: 0; padding: 0; border: 0; width: 500px ;">
+        </div>
+      </div> 
 
          <div id="ConceptualOverview_div" class="chapter"> 
  <h1 id="ConceptualOverview">Conceptual Overview</h1>
@@ -1288,23 +1277,15 @@ e=mc2 and kinematics of relativistic classical particles and that....<br>
 <section id="Steps for Frame Swapping"+"_div">
 steps to take when going between frames
 </section></div>
-    
-      </div>
-    
-        
-      <div id="right-sidebar" class="grid-item sticky">
-
-         
-          <a href="About.html">
-            <div style="display: flex; justify-content: center;">
-                About
-            </div>
-          </a>
-         
-        
-        [Insert Variables]
-
-        <div id="def-list" ></div>
+        </div>
+  
+    <div id="right-sidebar" class="grid-item sticky">
+        <a href="About.html">
+          <div style="display: flex; justify-content: center;">
+              About
+          </div>
+        </a>
+      [Insert Variables]<br>
 <definition id="Reference-frame" style="display: none;"> <b>Reference frame:</b>   (oxford dictionary: A set of axes, taken as being for practical purposes at rest, that enables the position of a point (or body) in space to be defined at any instant of time. In a four dimensional continuum (see SPACEâ€“TIME) a reference frame consists of a set of four coordinate axes, three spatial and one of time.)  </definition>
 <definition id="Inertial-reference-frame" style="display: none;"> <b>Inertial reference frame:</b>     </definition>
 <definition id="proper-frame" style="display: none;"> <b>Proper/Rest frame:</b>     </definition>
@@ -1326,13 +1307,8 @@ steps to take when going between frames
 <definition id="relativistic-beaming" style="display: none;"> <b>Relativistic beaming:</b>     </definition>
 <definition id="retarded-field" style="display: none;"> <b>Retarded/Delayed field:</b>     </definition>
 <definition id="lorentz-invariant" style="display: none;"> <b>Invariance:</b>     </definition>
-        </div>
-
-  
-
-      </div>
-
     </div>
+  </div>
 
 
   <script>
@@ -1341,20 +1317,18 @@ steps to take when going between frames
       $(document).ready(function() {
         // Hide all divs with class 'chapter'
         $("div.chapter").attr("style", "display: none");
-
         // Show the div with id 'divId'
         $("#" + divId).attr("style", "display: block");
-    });
+      });
+
       $("details").removeAttr("open");
       window.scrollTo(0,0);
     }
   </script>
 
   <script>
-    $(document).on('click', 'summary', function() {
-
-      $(this).closest('summary').attr('open', '');
-      
+    $(document).on('click', 'summary', function() { 
+        $(this).closest('summary').attr('open', ''); 
     });
   </script>
 

@@ -43,7 +43,7 @@ def create_toc(html_file):
     with open(html_file, 'r') as file:
         data = file.read()
 
-    headers = re.findall(r'<(h[1-3])\s*([^>]*)>(.*?)</\1>', data)
+    headers = re.findall(r'<(h[1-2])\s*([^>]*)>(.*?)</\1>', data)
 
     toc = "<h4>Contents</h4>\n"
     i=0
@@ -67,9 +67,6 @@ def create_toc(html_file):
             
         elif tag == 'h2':
             style = "style='display: block; margin-left: 20px;'"
-            toc += f"<a href='#{header_id.group(1)}' {style}>{text}</a>\n"
-        elif tag == 'h3':
-            style = "style='display: block; margin-left: 40px;'"
             toc += f"<a href='#{header_id.group(1)}' {style}>{text}</a>\n"
         else:
             toc += "error\n"
@@ -191,7 +188,15 @@ def convert_latex_to_mathjax(file_path):
     with open(file_path, 'w') as file:
         file.write(new_content)
 
+def replace_pattern_string_in_file(file_path, pattern, replacement):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        filedata = file.read()
 
+    filedata = re.sub(pattern, replacement, filedata)
+
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(filedata)
+        
 ###
 def replace_string_in_file(file_path, old_string, new_string):
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -232,7 +237,6 @@ def replace_figure_with_text(filename, text):
 ###
 def latex_to_html_headings(latex_content):
     # Replace chapters with h1 tags
-
     counter = [0]  # Use a list so that the variable is mutable inside the function
     def replace_func(m):
         counter[0] += 1
@@ -254,11 +258,11 @@ def latex_to_html_headings(latex_content):
     # Replace subsubsections with h4 tags
     latex_content = re.sub(r'\\subsubsection\{(.+?)\}', lambda m:'<h4 id="' + m.group(1).replace(' ', '') + '">' + m.group(1) + '</h4>', latex_content)
     
-    
     latex_content += '</div>'
     
-
     return latex_content
+
+
 
 
 def create_html_with_mathjax(text_file_path, output_html_path):
@@ -299,15 +303,66 @@ def JS_input(file_path):
             else:
                 file.write(line)
 
+def replace_inserts(input_file, output_file, toc_file, content_file):
+    with open(input_file, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
 
+    toc_lines = toc_file
+
+    with open(content_file, 'r') as file:
+        content_lines = file.readlines()
+
+    with open("../Navbar.html", 'r') as file:
+        navbar = file.readlines()
+
+    with open("Defs.html", 'r') as file:
+        Defs_file = file.readlines()
+
+    with open(output_file, 'w', encoding='utf-8') as file:
+        for line in lines:
+            if '[Insert TOC]' in line:
+                file.writelines(toc_lines)
+            elif '[Insert Content]' in line:
+                file.writelines(content_lines)
+            elif '[Insert navbar]' in line:
+                file.writelines(navbar)
+            elif '[Insert Definitions]' in line:
+                file.writelines(Defs_file)
+            else:
+                file.write(line)
+
+def definitions(input_file, output_file):
+    with open(input_file, 'r') as f_in, open(output_file, 'w') as f_out:
+        state = None
+        label, term, description = None, None, None
+        for line in f_in:
+            if state == 'description':
+                description = line.strip()
+                new_line = f'<definition id="{label}" style="display: none;"> <b>{term}:</b>   {description}  </definition>\n'
+                f_out.write(new_line)
+                state = None
+            else:
+                match = re.search(r'\\noindent \\hypertarget{(.+?)}{\\textbf{(.+?):}}', line)
+                if match:
+                    label, term = match.groups()
+                    state = 'description'
+
+
+###################################################################################
+###################################################################################
+###################################################################################
 Zip_folder = 'Handbook of Special Relativity.zip'
 
 Latex_File = 'Special_Relativity.html'
+Defs_File = 'definitions.html'
 with zipfile.ZipFile(Zip_folder, 'r') as myzip:
     with open(Latex_File, 'wb') as myfile:
         myfile.write(myzip.read('Tex/Main_Matter.tex'))
+    with open(Defs_File, 'wb') as mydeffile:
+        mydeffile.write(myzip.read('Tex/Definitions.tex'))
         
-        
+definitions(Defs_File, "Defs.html")
+
 copy_folder_from_zip(Zip_folder,'images/svg', '../../Visuals/svg')
 
 # to do first to avoid conflicts:
@@ -320,6 +375,13 @@ replace_blank_lines(Latex_File)
 convert_latex_to_mathjax(Latex_File)
 replace_string_in_file(Latex_File, 'mhl', 'bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]')
 replace_string_in_file(Latex_File, '\\Vec', '\\mathbf')
+replace_string_in_file(Latex_File, '\\noindent', '')
+replace_string_in_file(Latex_File, '\\protect', '')
+replace_pattern_string_in_file(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
+
+replace_pattern_string_in_file(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<term onmouseover=\"document.getElementById('\g<1>').style.display='block'\" onmouseout=\"document.getElementById('\g<1>').style.display='none'\">\g<2></term>")
+
+
 replace_string_in_file(Latex_File, '\\scalebox{0.5}{R}', 'R')
 replace_string_in_file(Latex_File, '\\AA', "Å") #'Å')
 replace_string_in_file(Latex_File, '\\newline', '<br>')
@@ -329,6 +391,32 @@ remove_labels(Latex_File)
 colorbox_for_html(Latex_File)
 Diagrams_to_replace(Latex_File)
 JS_input(Latex_File)
+
+def wrap_divs(latex_file):
+    with open(latex_file, 'r') as file:
+        lines = file.readlines()
+
+    output = []
+    current_div = None
+
+    for line in lines:
+        if line.startswith('\\chapter') or line.startswith('\\section') or line.startswith('\\subsection'):
+            if current_div is not None:
+                output.append('</section>')
+            current_div = line.strip().split('{')[1].split('}')[0]
+            output.append(line.strip())
+            output.append(f'<section id="{current_div}"+"_div">')
+        else:
+            output.append(line.strip())
+
+    if current_div is not None:
+        output.append('</section>')
+
+    with open(latex_file, 'w') as file:
+        file.write('\n'.join(output))
+
+
+wrap_divs(Latex_File)
 
 
 # Read the LaTeX file
@@ -348,32 +436,7 @@ create_html_with_mathjax(Latex_File, Latex_File)
 # Call the function with your HTML file
 toc = create_toc(Latex_File)
 
-def replace_inserts(input_file, output_file, toc_file, content_file):
-    with open(input_file, 'r', encoding='utf-8') as file:
-        lines = file.readlines()
-
-    toc_lines = toc
-
-    with open(content_file, 'r') as file:
-        content_lines = file.readlines()
-
-    with open("../Navbar.html", 'r') as file:
-        navbar = file.readlines()
-
-    with open(output_file, 'w', encoding='utf-8') as file:
-        for line in lines:
-            if '[Insert TOC]' in line:
-                file.write('<div id="SR_toc" class="grid-item collapsible toc"> \n')  # Line before the match
-                file.writelines(toc_lines)
-                file.write('</div>\n')  # Line after the match
-            elif '[Insert Content]' in line:
-                file.write('<div id="content" class="grid-item" style="padding: 10px;" >\n')  # Line before the match
-                file.writelines(content_lines)
-                file.write('</div>\n')  # Line after the match
-            elif '[Insert navbar]' in line:
-                file.writelines(navbar)
-            else:
-                file.write(line)
-
 replace_inserts("Structure_LatexPage.html", "../../SR_Page.html", toc, Latex_File)
+
 os.remove(Latex_File)
+os.remove(Defs_File)

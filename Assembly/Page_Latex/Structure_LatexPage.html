@@ -2,67 +2,164 @@
 <html>
 <head>
   
-  <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
   <script defer type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script defer> window.MathJax = {  tex: { tags: 'ams' }  }; </script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
   
+  <style>
+
+    term:hover {
+        background-color: #ffd00094;
+    }
+
+    .navbar {
+      display: grid; grid-template-columns: auto 680px auto;
+      position: sticky; top: 0; z-index: 1000;
+      height: 60px; width: 100%; padding-top: 3px;
+      background-color: grey;
+    }
+
+    a {text-decoration: none; color: black; padding-left: 10px; padding-right: 10px;}
+    a:hover { text-decoration: underline;}
+    .left-sidebar a {padding: 0; font-size: 10px; font-family: Arial, sans-serif; line-height: 1.5;}
+
+    :target:before {content: ""; display: block; height: 65px; margin-top: -65px; visibility: hidden;}
+
+    .grid-container {display: grid; grid-template-columns: 1fr 700px 1fr; width: 100%;}   
+    .grid-item {padding: 20px;}
+
+    .sticky{position: sticky; top: 63px; height: 100vh;}
+
+ 
+
+    figure {counter-increment: figure-counter;}
+    figcaption {line-height: 1;}
+    figcaption::before {content: "Figure " counter(figure-counter) ": ";}
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background-color: grey;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;}
+    .dropdown-menu a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;}
+    .dropdown-menu a:hover {background-color: rgb(90, 90, 90)}
+    #drop-menu:hover .dropdown-menu {display: block;}
+
+
+  </style>
 </head>
 
 
-<body style="background-color: grey;">
+<body style="margin: 0; ">
 
-  [Insert navbar] 
+  <div class="navbar">
 
-  <div class="grid-container" style="background-color:#ffe4c8;"> 
-    
-    <div id="SR_toc" class="grid-item collapsible toc">  [Insert TOC]  <div>
-     
-    <div id="collapse_Button" onclick="collapse(); return false;" class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); cursor: pointer;"> ❰ </div>  <!-- ‹ ❮ ❰ ❱ ❯ › --> 
-
-    <div id="content" class="grid-item" style="padding: 10px;" > [Insert Content] </div>
+    <div class="nav-item" style="width: 75px;"> <a href="index.html"> <img src="/Visuals/Images/Logo_2.png" alt="Logo" style="height: 50px; padding: 2px; padding-bottom: 0;" > </a> </div>
   
-    <div class="sticky" style="color: grey; background-color: rgba(128, 128, 128, 0.1); position: sticky; top: 56px;"> </div>
-      
-    <div class="grid-item sticky">  
-      Right Sidebar  
-      <a href="donate.html">
-        <div class="donate">
-            Donate
-        </div>
-      </a>
-      
-      <a href="About.html">
-        <div class="donate">
-            About
-        </div>
-      </a>
+    <div id="mySVG" class="nav-item" style="width: 100%;"> </div>
+  
+    <div id="drop-menu" class="nav-item menu" style="justify-self: end; width: 75px;">
+  
+      <div id="arrow-menu" style="font-size: 45px; justify-content: center; text-align: center; cursor: pointer;"> &#x2630; </div>
+    
+      <div class="dropdown-menu">
+        <a href="index.html">Home</a>
+        <a href="Topics.html">Topics</a>
+        <a href="About.html">About</a>
+      </div>
+    
     </div>
-
+  
   </div>
   
+  
   <script>
-    var isCollapsed = false;
-
-    function collapse() {
-      var column1 = document.getElementById("SR_toc");
-      var collapseButton = document.getElementById("collapse_Button");
-
-      if (!isCollapsed) {
-        column1.style.display = "none";
-        document.querySelector('.grid-container').style.gridTemplateColumns = "1% 65% 1% 33%";
-        collapseButton.innerHTML = " ❱"; // Change the content
-      } else {
-        column1.style.display = "block";
-        document.querySelector('.grid-container').style.gridTemplateColumns = "24% 1% 50% 1% 24%";
-        collapseButton.innerHTML = "❰"; // Change the content back to original
-      }
-      isCollapsed = !isCollapsed;
-      // this is so diagrams resize on the collapse:  
-      windowResized();
+    window.onload = function() {
+      fetch('/Visuals/svg/DS_Pattern.svg')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('mySVG').innerHTML = data;
+          var svgDoc = document.getElementById('mySVG').getElementsByTagName('svg')[0];
+          svgDoc.style.height = "55px"
+          var myUses = svgDoc.getElementsByTagName('use');
+          var totalItems = myUses.length; // total number of items
+          var totalTime = 4; // total time for all animations in seconds
+          var timePerItemSlow = totalTime / 1000; // time per item for first 300 items
+          var timePerItemFast = (totalTime - (timePerItemSlow * 100)) / (totalItems - 100); // time per item for remaining items
+          for (var i = 0; i < myUses.length; i++) {
+            myUses[i].style.opacity = 0;
+            if (i < 300) {
+              myUses[i].style.transition = `opacity 0s`;
+              myUses[i].style.transitionDelay = `${i * timePerItemSlow}s`; // Set a different delay for each use
+            } else {
+              myUses[i].style.transition = `opacity 0s`;
+              myUses[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`; // Set a different delay for each use
+            }
+          }
+          setTimeout(function() {
+            for (var i = 0; i < myUses.length; i++) {
+              myUses[i].style.opacity = 1;
+            }
+          }, 0);
+        });
     }
-  </script> 
+    </script>
+ 
+    <div class="grid-container" style="background-color:#ffe4c8;" > 
+      
+      <div id="left-sidebar" class="grid-item sticky">  
+        [Insert TOC] <!-- needs to be in seperate line for ASM.py -->
+      </div>
+      
+      
+      <div id="content" class="grid-item" style=" padding: 10px; line-height: 1.5; font-size: 20px; border-left: 10px solid rgba(128, 128, 128, 0.1); border-right: 10px solid rgba(128, 128, 128, 0.1);">
+        <div class="wrapper" style="display: flex; justify-content: center; text-align: center; font-family: 'Computer Modern Serif'      ">
+          <div >
+            <img src="Visuals/svg/Logo_Roof.svg" style="margin: 0; padding: 0; border: 0; width: 450px;">
+          
+            <div style=" display: flex; flex-direction: column; justify-content: center; align-items: center; height: 180px; "><div style=" font-family: 'Computer Modern', serif; font-style: italic; font-size: 50px;" > Handbook of  </div>  <div style="font-family: 'Computer Modern', serif; font-size: 55px;" > Special Relativity</div> </div>
+            
+            <img  src="Visuals/svg/Logo_Step1_wide.svg" style="margin: 0; padding: 0; border: 0; width: 450px;">
+            <img  src="Visuals/svg/Logo_Step2.svg"      style="margin: 0; padding: 0; border: 0; width: 500px ;">
+            
+          </div>
+        </div> 
+        [Insert Content] <!-- needs to be in seperate line for ASM.py -->
+
+      </div>
+    
+        
+      <div id="right-sidebar" class="grid-item sticky">
+
+         
+          <a href="About.html">
+            <div style="display: flex; justify-content: center;">
+                About
+            </div>
+          </a>
+         
+        
+        [Insert Variables]
+
+        <div id="def-list" ></div>
+          [Insert Definitions]
+        </div>
+
+  
+
+      </div>
+
+    </div>
+
 
   <script>
     function showContent(divId) {
@@ -86,6 +183,31 @@
       
     });
   </script>
+
+  <script>
+    function resizeSVGImages() {
+      var images = document.getElementsByClassName('resizable-svg-img');
+      var resizeFactor = 0.3; // 10% of the original size
+
+      for (var i = 0; i < images.length; i++) {
+          var img = images[i];
+          var tempImg = new Image();
+          tempImg.src = img.src;
+
+          tempImg.onload = (function(img) {
+              return function() {
+                  var originalWidth = this.naturalWidth; // Get the original width
+                  var newWidth = originalWidth * resizeFactor;
+
+                  img.style.width = '650px';
+              };
+          })(img);
+      }
+  }
+  </script>
+
+
+
 </body>
 </html>
 

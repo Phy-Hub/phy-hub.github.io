@@ -2,7 +2,7 @@
 <html>
 <head>
   
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
   <script defer type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script defer> window.MathJax = {  tex: { tags: 'ams' }  }; </script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
@@ -175,6 +175,8 @@
 <details id='StepsforFrameSwapping_details' >
 <summary onclick="showContent('StepsforFrameSwapping_div')"><a href='#StepsforFrameSwapping' onclick="event.stopPropagation(); showContent('StepsforFrameSwapping_div'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>Steps for Frame Swapping</a></summary>
 </details>
+      <a href="Resources_SR.html"> <div> Resources </div> </a>
+      <a href="About.html" style="position: fixed; left: 10px; bottom: 10px;"> <div> About </div> </a>
     </div>
       
     <div id="content" class="grid-item" style=" padding: 10px; line-height: 1.5; font-size: 20px; border-left: 10px solid rgba(128, 128, 128, 0.1); border-right: 10px solid rgba(128, 128, 128, 0.1);">
@@ -1279,13 +1281,11 @@ steps to take when going between frames
 </section></div>
         </div>
   
-    <div id="right-sidebar" class="grid-item sticky">
-        <a href="About.html">
-          <div style="display: flex; justify-content: center;">
-              About
-          </div>
-        </a>
-      [Insert Variables]<br>
+    <div id="right-sidebar" class="grid-item sticky" style="position: relative;">
+      <div style="position: fixed; top: 83px; left: calc(50% + 350px + 10px); background-color: rgba(128, 128, 128, 0.2); margin-right: 10px; padding: 10px;">
+        [Insert Variables]
+      </div>
+      <div style="position: fixed; bottom: 10px; left: calc(50% + 350px + 10px); background-color: rgba(128, 128, 128, 0.2); margin-right: 10px; padding: 10px;">
 <definition id="Reference-frame" style="display: none;"> <b>Reference frame:</b>   (oxford dictionary: A set of axes, taken as being for practical purposes at rest, that enables the position of a point (or body) in space to be defined at any instant of time. In a four dimensional continuum (see SPACEâ€“TIME) a reference frame consists of a set of four coordinate axes, three spatial and one of time.)  </definition>
 <definition id="Inertial-reference-frame" style="display: none;"> <b>Inertial reference frame:</b>     </definition>
 <definition id="proper-frame" style="display: none;"> <b>Proper/Rest frame:</b>     </definition>
@@ -1307,6 +1307,7 @@ steps to take when going between frames
 <definition id="relativistic-beaming" style="display: none;"> <b>Relativistic beaming:</b>     </definition>
 <definition id="retarded-field" style="display: none;"> <b>Retarded/Delayed field:</b>     </definition>
 <definition id="lorentz-invariant" style="display: none;"> <b>Invariance:</b>     </definition>
+      </div>
     </div>
   </div>
 

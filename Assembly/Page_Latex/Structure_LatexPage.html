@@ -2,7 +2,7 @@
 <html>
 <head>
   
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
   <script defer type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script defer> window.MathJax = {  tex: { tags: 'ams' }  }; </script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
@@ -111,6 +111,8 @@
     
     <div id="left-sidebar" class="grid-item sticky">  
       [Insert TOC] <!-- needs to be in seperate line for ASM.py -->
+      <a href="Resources_SR.html"> <div> Resources </div> </a>
+      <a href="About.html" style="position: fixed; left: 10px; bottom: 10px;"> <div> About </div> </a>
     </div>
       
     <div id="content" class="grid-item" style=" padding: 10px; line-height: 1.5; font-size: 20px; border-left: 10px solid rgba(128, 128, 128, 0.1); border-right: 10px solid rgba(128, 128, 128, 0.1);">
@@ -125,14 +127,13 @@
       [Insert Content] <!-- needs to be in seperate line for ASM.py -->
     </div>
   
-    <div id="right-sidebar" class="grid-item sticky">
-        <a href="About.html">
-          <div style="display: flex; justify-content: center;">
-              About
-          </div>
-        </a>
-      [Insert Variables]<br>
-      [Insert Definitions]
+    <div id="right-sidebar" class="grid-item sticky" style="position: relative;">
+      <div style="position: fixed; top: 83px; left: calc(50% + 350px + 10px); background-color: rgba(128, 128, 128, 0.2); margin-right: 10px; padding: 10px;">
+        [Insert Variables]
+      </div>
+      <div style="position: fixed; bottom: 10px; left: calc(50% + 350px + 10px); background-color: rgba(128, 128, 128, 0.2); margin-right: 10px; padding: 10px;">
+        [Insert Definitions]
+      </div>
     </div>
   </div>
 

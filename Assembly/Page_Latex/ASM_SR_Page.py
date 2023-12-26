@@ -4,7 +4,6 @@ import zipfile
 import os
 import shutil
 
-
 def Diagrams_to_replace(filename):
     with open(filename, 'r') as file:
         data = file.read()
@@ -47,36 +46,32 @@ def create_toc(html_file):
 
     toc = "<h4>Contents</h4>\n"
     i=0
+    ch_num = 0
     for tag, attrs, text in headers:
         header_id = re.search(r'id="(.*?)"', attrs)
         text = text.strip()
         
         # Add indentation based on header tag
         if tag == 'h1':
-            
+            ch_num = ch_num + 1
             if i==0: 
-                toc += f"<details id='{header_id.group(1)}_details' open>\n"       
+                toc += f"<details id='ch{ch_num}_{header_id.group(1)}_details' open>\n"       
             else:
                 toc += "</details>\n"
-                toc += f"<details id='{header_id.group(1)}_details' >\n"
+                toc += f"<details id='ch{ch_num}_{header_id.group(1)}_details' >\n"
             
             style = "style='font-weight: bold;'"
-            toc += f"<summary onclick=\"showContent('{header_id.group(1)}_div')\"><a href='#{header_id.group(1)}' onclick=\"event.stopPropagation(); showContent('{header_id.group(1)}_div'); $(this).parent().parent().attr('open', '');\" {style}>{text}</a></summary>\n"
+            toc += f"<summary onclick=\"showContent('{header_id.group(1)}_div')\"><a href='#ch{ch_num}_{header_id.group(1)}' onclick=\"event.stopPropagation(); showContent('{header_id.group(1)}_div'); $(this).parent().parent().attr('open', '');\" {style}>{text}</a></summary>\n"
             i=1
-            
             
         elif tag == 'h2':
             style = "style='display: block; margin-left: 20px;'"
             toc += f"<a href='#{header_id.group(1)}' {style}>{text}</a>\n"
         else:
             toc += "error\n"
-            
-  #      toc += f"<a href='#{header_id.group(1)}' {style}>{text}</a>\n"
         
     toc += "</details>\n"
-
     return toc
-
 
 def copy_folder_from_zip(zip_file, folder, dest_folder):
 
@@ -247,16 +242,16 @@ def latex_to_html_headings(latex_content):
 
     latex_content = re.sub(r'\\chapter\{(.+?)\}', replace_func, latex_content)
 
-    latex_content = re.sub('</div> \n', '', latex_content, count=1)#removes first /div
+    latex_content = re.sub('</div> \n', '', latex_content, count=1) #removes first /div
     
     # Replace sections with h2 tags
-    latex_content = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '') + '">' + m.group(1) + '</h2>', latex_content)
+    latex_content = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h2>', latex_content)
 
     # Replace subsections with h3 tags
-    latex_content = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '') + '">' + m.group(1) + '</h3>', latex_content)
+    latex_content = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h3>', latex_content)
 
     # Replace subsubsections with h4 tags
-    latex_content = re.sub(r'\\subsubsection\{(.+?)\}', lambda m:'<h4 id="' + m.group(1).replace(' ', '') + '">' + m.group(1) + '</h4>', latex_content)
+    latex_content = re.sub(r'\\subsubsection\{(.+?)\}', lambda m:'<h4 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h4>', latex_content)
     
     latex_content += '</div>'
     
@@ -303,7 +298,7 @@ def JS_input(file_path):
             else:
                 file.write(line)
 
-def replace_inserts(input_file, output_file, toc_file, content_file):
+def replace_inserts(input_file, output_file, toc_file, content_file, Defs_file, Math_Terms_file):
     with open(input_file, 'r', encoding='utf-8') as file:
         lines = file.readlines()
 
@@ -312,11 +307,11 @@ def replace_inserts(input_file, output_file, toc_file, content_file):
     with open(content_file, 'r') as file:
         content_lines = file.readlines()
 
-    with open("../Navbar.html", 'r') as file:
-        navbar = file.readlines()
+    with open(Defs_file, 'r') as file:
+        Defs_lines = file.readlines()
 
-    with open("Defs.html", 'r') as file:
-        Defs_file = file.readlines()
+    with open(Math_Terms_file, 'r') as file:
+        Math_Terms_lines = file.readlines()
 
     with open(output_file, 'w', encoding='utf-8') as file:
         for line in lines:
@@ -324,18 +319,21 @@ def replace_inserts(input_file, output_file, toc_file, content_file):
                 file.writelines(toc_lines)
             elif '[Insert Content]' in line:
                 file.writelines(content_lines)
-            elif '[Insert navbar]' in line:
-                file.writelines(navbar)
             elif '[Insert Definitions]' in line:
-                file.writelines(Defs_file)
+                file.writelines(Defs_lines)
+            elif '[Insert Math Terms]' in line:
+                file.writelines(Math_Terms_lines)
             else:
                 file.write(line)
 
-def definitions(input_file, output_file):
-    with open(input_file, 'r') as f_in, open(output_file, 'w') as f_out:
+def definitions(input_file):
+    with open(input_file, 'r') as f_in:
+        lines = f_in.readlines()
+
+    with open(input_file, 'w') as f_out:
         state = None
         label, term, description = None, None, None
-        for line in f_in:
+        for line in lines:
             if state == 'description':
                 description = line.strip()
                 new_line = f'<definition id="{label}" style="display: none;"> <b>{term}:</b>   {description}  </definition>\n'
@@ -347,7 +345,72 @@ def definitions(input_file, output_file):
                     label, term = match.groups()
                     state = 'description'
 
+def wrap_divs(latex_file):
+    with open(latex_file, 'r') as file:
+        lines = file.readlines()
 
+    output = []
+    current_div = None
+    chapter_num = 0
+
+    for line in lines:
+        if line.startswith('\\chapter'):
+            chapter_num += 1
+            if current_div is not None:
+                output.append('</chapter>')
+            current_div = line.strip().split('{')[1].split('}')[0]
+            output.append(line.strip())
+            output.append(f'<chapter id="ch{chapter_num}_{current_div.replace(" ", "")}'+'_content">')
+        elif line.startswith('\\section') or line.startswith('\\subsection'):
+            if current_div is not None:
+                output.append('</section>')
+            current_div = line.strip().split('{')[1].split('}')[0]
+            output.append(line.strip())
+            output.append(f'<section id="ch{chapter_num}_{current_div.replace(" ", "")}'+'_content">')
+        else:
+            output.append(line.strip())
+
+    if current_div is not None:
+        output.append('</chapter>')
+
+    with open(latex_file, 'w') as file:
+        file.write('\n'.join(output))
+
+def create_math_terms_html(output_file):
+    # Extract files
+    with zipfile.ZipFile(Zip_folder, 'r') as myzip:
+        for file in myzip.namelist():
+            if file.startswith('Tex/Terms/'):
+                with myzip.open(file) as source, open(os.path.basename(file), 'wb') as target:
+                    target.write(source.read())
+
+    input_files = [file for file in os.listdir() if file.startswith('Terms_ch')]
+
+    with open(output_file, 'w') as outfile:
+        for input_file in input_files:
+            outfile.write(f'<terms id="{os.path.splitext(os.path.basename(input_file))[0]}" style="display: none;">\n')
+            with open(input_file, 'r') as infile:
+                lines = infile.readlines()
+                for i in range(len(lines)):
+                    match = re.match(r'\\noindent \\hypertarget\{(.+)\}\{\$(.+)\$ \\textbf\{:\}\}', lines[i])
+                    if match:
+                        name, variable = match.groups()
+                        if i+1 < len(lines):
+                            definition = lines[i+1].strip()
+                            variable = variable.replace('<', '\\lt ').replace('>', '\\gt ')
+                            definition = definition.replace('<', '\\lt ').replace('>', '\\gt ')
+                            definition = re.sub(r'\\hyperlink\{(.*?)\}\{(.*?)\}', r'<term onmouseover="document.getElementById(\'\g<1>\').style.display=\'block\'" onmouseout="document.getElementById(\'\g<1>\').style.display=\'none\'">\g<2></term>', definition)
+                            definition = re.sub(r'\$(.*?)\$', r'\\(\g<1>\\)', definition)
+                            new_line = f'<term style="cursor: pointer;" onclick="document.getElementById(\'{name}\').style.display = document.getElementById(\'{name}\').style.display == \'none\' ? \'inline\' : \'none\';"> \\({variable}\\)<b>:</b> </term>\n<definition id="{name}" style="display: none;">{definition}</definition>\n'
+                            outfile.write(new_line)
+                        outfile.write('<br>')
+            outfile.write('\n </terms>\n')
+    
+    for file in input_files:
+        os.remove(file)
+
+
+    
 ###################################################################################
 ###################################################################################
 ###################################################################################
@@ -355,13 +418,16 @@ Zip_folder = 'Handbook of Special Relativity.zip'
 
 Latex_File = 'Special_Relativity.html'
 Defs_File = 'definitions.html'
+Math_Terms = 'Math_Terms.txt'
+
 with zipfile.ZipFile(Zip_folder, 'r') as myzip:
     with open(Latex_File, 'wb') as myfile:
         myfile.write(myzip.read('Tex/Main_Matter.tex'))
     with open(Defs_File, 'wb') as mydeffile:
         mydeffile.write(myzip.read('Tex/Definitions.tex'))
-        
-definitions(Defs_File, "Defs.html")
+
+create_math_terms_html(Math_Terms)
+definitions(Defs_File)
 
 copy_folder_from_zip(Zip_folder,'images/svg', '../../Visuals/svg')
 
@@ -381,7 +447,6 @@ replace_pattern_string_in_file(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
 
 replace_pattern_string_in_file(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<term onmouseover=\"document.getElementById('\g<1>').style.display='block'\" onmouseout=\"document.getElementById('\g<1>').style.display='none'\">\g<2></term>")
 
-
 replace_string_in_file(Latex_File, '\\scalebox{0.5}{R}', 'R')
 replace_string_in_file(Latex_File, '\\AA', "Å") #'Å')
 replace_string_in_file(Latex_File, '\\newline', '<br>')
@@ -391,29 +456,6 @@ remove_labels(Latex_File)
 colorbox_for_html(Latex_File)
 Diagrams_to_replace(Latex_File)
 JS_input(Latex_File)
-
-def wrap_divs(latex_file):
-    with open(latex_file, 'r') as file:
-        lines = file.readlines()
-
-    output = []
-    current_div = None
-
-    for line in lines:
-        if line.startswith('\\chapter') or line.startswith('\\section') or line.startswith('\\subsection'):
-            if current_div is not None:
-                output.append('</section>')
-            current_div = line.strip().split('{')[1].split('}')[0]
-            output.append(line.strip())
-            output.append(f'<section id="{current_div}"+"_div">')
-        else:
-            output.append(line.strip())
-
-    if current_div is not None:
-        output.append('</section>')
-
-    with open(latex_file, 'w') as file:
-        file.write('\n'.join(output))
 
 
 wrap_divs(Latex_File)
@@ -436,7 +478,8 @@ create_html_with_mathjax(Latex_File, Latex_File)
 # Call the function with your HTML file
 toc = create_toc(Latex_File)
 
-replace_inserts("Structure_LatexPage.html", "../../SR_Page.html", toc, Latex_File)
+replace_inserts("Structure_LatexPage.html", "../../SR_Page.html", toc, Latex_File, Defs_File, Math_Terms)
 
 os.remove(Latex_File)
 os.remove(Defs_File)
+os.remove(Math_Terms)

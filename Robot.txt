@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /feedback
+
+# Allow search engines to crawl all other pages
+Allow: /

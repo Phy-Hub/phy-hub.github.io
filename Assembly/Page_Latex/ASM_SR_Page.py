@@ -336,7 +336,7 @@ def definitions(input_file):
         for line in lines:
             if state == 'description':
                 description = line.strip()
-                new_line = f'<definition id="{label}" style="display: none;"> <b>{term}:</b>   {description}  </definition>\n'
+                new_line = f'<dd id="{label}" style="display: none;"> <b>{term}:</b>   {description}  </dd>\n'
                 f_out.write(new_line)
                 state = None
             else:
@@ -357,10 +357,10 @@ def wrap_divs(latex_file):
         if line.startswith('\\chapter'):
             chapter_num += 1
             if current_div is not None:
-                output.append('</chapter>')
+                output.append('</section>')
             current_div = line.strip().split('{')[1].split('}')[0]
             output.append(line.strip())
-            output.append(f'<chapter id="ch{chapter_num}_{current_div.replace(" ", "")}'+'_content">')
+            output.append(f'<section id="ch{chapter_num}_{current_div.replace(" ", "")}'+'_content">')
         elif line.startswith('\\section') or line.startswith('\\subsection'):
             if current_div is not None:
                 output.append('</section>')
@@ -371,7 +371,7 @@ def wrap_divs(latex_file):
             output.append(line.strip())
 
     if current_div is not None:
-        output.append('</chapter>')
+        output.append('</section>')
 
     with open(latex_file, 'w') as file:
         file.write('\n'.join(output))
@@ -388,7 +388,7 @@ def create_math_terms_html(output_file):
 
     with open(output_file, 'w') as outfile:
         for input_file in input_files:
-            outfile.write(f'<terms id="{os.path.splitext(os.path.basename(input_file))[0]}" style="display: none;">\n')
+            outfile.write(f'<dl id="{os.path.splitext(os.path.basename(input_file))[0]}" style="display: none;">\n')
             with open(input_file, 'r') as infile:
                 lines = infile.readlines()
                 for i in range(len(lines)):
@@ -399,12 +399,12 @@ def create_math_terms_html(output_file):
                             definition = lines[i+1].strip()
                             variable = variable.replace('<', '\\lt ').replace('>', '\\gt ')
                             definition = definition.replace('<', '\\lt ').replace('>', '\\gt ')
-                            definition = re.sub(r'\\hyperlink\{(.*?)\}\{(.*?)\}', r'<term onmouseover="document.getElementById(\'\g<1>\').style.display=\'block\'" onmouseout="document.getElementById(\'\g<1>\').style.display=\'none\'">\g<2></term>', definition)
-                            definition = re.sub(r'\$(.*?)\$', r'\\(\g<1>\\)', definition)
-                            new_line = f'<term style="cursor: pointer;" onclick="document.getElementById(\'{name}\').style.display = document.getElementById(\'{name}\').style.display == \'none\' ? \'inline\' : \'none\';"> \\({variable}\\)<b>:</b> </term>\n<definition id="{name}" style="display: none;">{definition}</definition>\n'
+                            definition = re.sub(r'\\hyperlink\{(.*?)\}\{(.*?)\}', lambda m: f'<span onmouseover="document.getElementById(\'{m.group(1)}\').style.display=\'block\'" onmouseout="document.getElementById(\'{m.group(1)}\').style.display=\'none\'">{m.group(2)}</span>', definition)
+                            definition = re.sub(r'\$(.*?)\$', r'\(\g<1>\)', definition)
+                            new_line = f'<dt style="cursor: pointer;" onclick="document.getElementById(\'{name}\').style.display = document.getElementById(\'{name}\').style.display == \'none\' ? \'inline\' : \'none\';"> \({variable}\)<b>:</b> </dt>\n<dd id="{name}" style="display: none;">{definition}</dd>\n'
                             outfile.write(new_line)
                         outfile.write('<br>')
-            outfile.write('\n </terms>\n')
+            outfile.write('\n </dl>\n')
     
     for file in input_files:
         os.remove(file)
@@ -445,7 +445,7 @@ replace_string_in_file(Latex_File, '\\noindent', '')
 replace_string_in_file(Latex_File, '\\protect', '')
 replace_pattern_string_in_file(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
 
-replace_pattern_string_in_file(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<term onmouseover=\"document.getElementById('\g<1>').style.display='block'\" onmouseout=\"document.getElementById('\g<1>').style.display='none'\">\g<2></term>")
+replace_pattern_string_in_file(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<span onmouseover=\"document.getElementById('\g<1>').style.display='block'\" onmouseout=\"document.getElementById('\g<1>').style.display='none'\">\g<2></span>")
 
 replace_string_in_file(Latex_File, '\\scalebox{0.5}{R}', 'R')
 replace_string_in_file(Latex_File, '\\AA', "Å") #'Å')

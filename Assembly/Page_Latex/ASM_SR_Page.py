@@ -478,7 +478,7 @@ create_html_with_mathjax(Latex_File, Latex_File)
 # Call the function with your HTML file
 toc = create_toc(Latex_File)
 
-replace_inserts("Structure_LatexPage.html", "../../SR_Page.html", toc, Latex_File, Defs_File, Math_Terms)
+replace_inserts("Structure_LatexPage.html", "../../special_relativity.html", toc, Latex_File, Defs_File, Math_Terms)
 
 os.remove(Latex_File)
 os.remove(Defs_File)

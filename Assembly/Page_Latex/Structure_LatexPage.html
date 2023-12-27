@@ -68,7 +68,7 @@
 
   <!--Navigation bar-->
   <div class="navbar">   
-    <a href="index.html"> <img src="/Visuals/Images/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 3px;" > </a> 
+    <a href="index.html"> <img src="Visuals/Images/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 3px;" > </a> 
     <div id="banner" style="width: 100%;"> </div>
     <div class="menu" style="justify-self: end; width: 70px; cursor: pointer;">
       <div style="font-size: 40px; justify-content: center; text-align: center; "> &#x2630; </div>
@@ -116,7 +116,7 @@
   <!--scripts-->
   <script>
     window.onload = function() {
-      fetch('/Visuals/svg/DS_Pattern.svg')
+      fetch('Visuals/svg/DS_Pattern.svg')
         .then(response => response.text())
         .then(data => {
           document.getElementById('banner').innerHTML = data;

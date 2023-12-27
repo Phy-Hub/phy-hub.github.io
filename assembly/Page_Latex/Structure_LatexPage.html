@@ -68,14 +68,14 @@
 
   <!--Navigation bar-->
   <div class="navbar">   
-    <a href="index.html"> <img src="Visuals/Images/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 3px;" > </a> 
+    <a href="/index.html"> <img src="/visuals/Images/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 3px;" > </a> 
     <div id="banner" style="width: 100%;"> </div>
     <div class="menu" style="justify-self: end; width: 70px; cursor: pointer;">
       <div style="font-size: 40px; justify-content: center; text-align: center; "> &#x2630; </div>
       <nav class="dropdown-menu">
-        <a href="index.html">Home</a>
-        <a href="Topics.html">Topics</a>
-        <a href="About.html">About</a>
+        <a href="/index.html">Home</a>
+        <a href="/pages/topics.html">Topics</a>
+        <a href="/pages/about.html">About</a>
       </nav>
     </div>
   </div>
@@ -85,8 +85,8 @@
     
     <nav id="toc" class="sidebar"> 
         [Insert TOC] <!-- needs to be in seperate line for ASM.py --> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p>
-      <a href="Resources_SR.html"> <div> Resources </div> </a>
-      <a href="About.html" style="position: fixed; left: 10px; bottom: 10px;"> <div> About Phy-Hub</div> </a>
+      <a href="..."> <div> Resources </div> </a>
+      <a href="/pages/about.html" style="position: fixed; left: 10px; bottom: 10px;"> <div> About Phy-Hub</div> </a>
     </nav>
       
     <article style=" line-height: 1.5; font-size: 20px; border-left: 10px solid rgba(128, 128, 128, 0.1); border-right: 10px solid rgba(128, 128, 128, 0.1);">
@@ -116,7 +116,7 @@
   <!--scripts-->
   <script>
     window.onload = function() {
-      fetch('Visuals/svg/DS_Pattern.svg')
+      fetch('/visuals/svg/DS_Pattern.svg')
         .then(response => response.text())
         .then(data => {
           document.getElementById('banner').innerHTML = data;

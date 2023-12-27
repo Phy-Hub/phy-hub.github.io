@@ -54,16 +54,16 @@
  
 
     <div style="display: flex; justify-content: space-around; position: fixed; top: 75vh; width: 100%; padding-bottom: 30px;">
-      <div style="text-align: center; font-size: 4vw;"><a href="topics.html">Topics</a></div>
-      <div style="text-align: center; font-size: 4vw;"><a href="resources.html">Resources</a></div>
-      <div style="text-align: center; font-size: 4vw;"><a href="about.html">About</a></div>
+      <div style="text-align: center; font-size: 4vw;"><a href="pages/topics.html">Topics</a></div>
+      <div style="text-align: center; font-size: 4vw;"><a href="pages/resources.html">Resources</a></div>
+      <div style="text-align: center; font-size: 4vw;"><a href="pages/about.html">About</a></div>
     </div>
  
 </body>
 
 <script>
   window.onload = function() {
-    fetch('Visuals/svg/Interference_Pattern.svg')
+    fetch('/visuals/svg/Interference_Pattern.svg')
       .then(response => response.text())
       .then(data => {
         document.getElementById('mySVG').innerHTML = data;

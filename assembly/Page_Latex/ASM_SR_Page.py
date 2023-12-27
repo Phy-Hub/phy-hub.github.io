@@ -114,7 +114,7 @@ def Figures_to_HTML(file):
             filename = include_graphics_match.group('filename')
             filename = Path(filename).with_suffix('.svg')
 
-            replacement = f'<br><figure><img src="Visuals/svg/{filename}" style="width:100%; height:auto;" loading="lazy"><figcaption>{caption_match.group("caption")}</figcaption> </figure>'
+            replacement = f'<br><figure><img src="/visuals/svg/{filename}" style="width:100%; height:auto;" loading="lazy"><figcaption>{caption_match.group("caption")}</figcaption> </figure>'
         elif tikzpicture_env_match:
             replacement =  '<br>*** MISSING TIKZ IMAGE ***<br>'          #tikzpicture_env_match.group(1)
 
@@ -287,7 +287,7 @@ def JS_input(file_path):
             match = re.search(r'javascript\{(.*)\}', line)
             if match:
                 # The name of the replacement file is dependent on the content within the brackets
-                replace_file = '../../Visuals/Diagrams/' + match.group(1) + '.html'
+                replace_file = '../../visuals/Diagrams/' + match.group(1) + '.html'
                 try:
                     with open(replace_file, 'r') as rfile:
                         replace_lines = rfile.readlines()
@@ -429,7 +429,7 @@ with zipfile.ZipFile(Zip_folder, 'r') as myzip:
 create_math_terms_html(Math_Terms)
 definitions(Defs_File)
 
-copy_folder_from_zip(Zip_folder,'images/svg', '../../Visuals/svg')
+copy_folder_from_zip(Zip_folder,'images/svg', '../../visuals/svg')
 
 # to do first to avoid conflicts:
 remove_comments(Latex_File)
@@ -478,7 +478,7 @@ create_html_with_mathjax(Latex_File, Latex_File)
 # Call the function with your HTML file
 toc = create_toc(Latex_File)
 
-replace_inserts("Structure_LatexPage.html", "../../special_relativity.html", toc, Latex_File, Defs_File, Math_Terms)
+replace_inserts("Structure_LatexPage.html", "../../pages/special-relativity.html", toc, Latex_File, Defs_File, Math_Terms)
 
 os.remove(Latex_File)
 os.remove(Defs_File)

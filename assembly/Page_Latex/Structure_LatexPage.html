@@ -38,12 +38,12 @@
       .navbar {grid-template-columns: 70px auto 70px;}
       @media (max-width: 700px) {article {min-width: 0px; width: 100vw; margin: 0;}}
     }
-    
+    body {counter-reset: figure-counter;}
+    figure { counter-increment: figure-counter;}
+    figcaption::before {content: "Figure " counter(figure-counter) ": ";}
 
     .sidebar{position: sticky; top: 63px; overflow: hidden; align-self: start;} #sidebars only
-    figure {counter-increment: figure-counter;}
     figcaption {line-height: 1;}
-    figcaption::before {content: "Figure " counter(figure-counter) ": ";}
 
     .dropdown-menu {
       display: none;
@@ -86,7 +86,7 @@
     
     <nav id="toc" class="sidebar"> 
         [Insert TOC] <!-- needs to be in seperate line for ASM.py --> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p>
-      <a href="..."> <div> Resources </div> </a>
+      <a href="..." style="padding-top: 5px;"> <b> Resources </b> </a>
       <a href="/pages/about.html" style="position: fixed; left: 10px; bottom: 10px;"> <div> About Phy-Hub</div> </a>
     </nav>
       

@@ -4,6 +4,7 @@ import zipfile
 import os
 import shutil
 
+###
 def Diagrams_to_replace(filename):
     with open(filename, 'r') as file:
         data = file.read()
@@ -17,7 +18,7 @@ def Diagrams_to_replace(filename):
     with open(filename, 'w') as file:
         file.write(new_data)
 
-
+###
 def colorbox_for_html(file_path):
     # Read the LaTeX file
     with open(file_path, 'r') as file:
@@ -37,7 +38,7 @@ def colorbox_for_html(file_path):
     with open(file_path, 'w') as file:
         file.write(html_content)
 
-
+###
 def create_toc(html_file):
     with open(html_file, 'r') as file:
         data = file.read()
@@ -73,6 +74,7 @@ def create_toc(html_file):
     toc += "</details>\n"
     return toc
 
+###
 def copy_folder_from_zip(zip_file, folder, dest_folder):
 
     # Open the zip file
@@ -91,8 +93,7 @@ def copy_folder_from_zip(zip_file, folder, dest_folder):
                 with source, target:
                     shutil.copyfileobj(source, target)
 
-
-
+###
 def Figures_to_HTML(file):
     with open(file, 'r') as f:
         content = f.read()
@@ -100,7 +101,7 @@ def Figures_to_HTML(file):
     figure_env_pattern = r'\\begin{figure}.*?\\end{figure}'
     include_graphics_pattern = r'\\includegraphics(\[.*?\])?\{(?P<filename>.*?)\}'
     tikzpicture_env_pattern = r'(\\begin{tikzpicture}.*?\\end{tikzpicture})'
-    caption_pattern = r'\\caption\{(?P<caption>.*?)\}'
+    caption_pattern = r'\\caption\{(?P<caption>.*\})'
 
     figure_envs = re.findall(figure_env_pattern, content, re.DOTALL)
 
@@ -110,23 +111,24 @@ def Figures_to_HTML(file):
         tikzpicture_env_match = re.search(tikzpicture_env_pattern, figure_env, re.DOTALL)
         caption_match = re.search(caption_pattern, figure_env)
 
+
         if include_graphics_match:
             filename = include_graphics_match.group('filename')
             filename = Path(filename).with_suffix('.svg')
 
-            replacement = f'<br><figure><img src="/visuals/svg/{filename}" style="width:100%; height:auto;" loading="lazy"><figcaption>{caption_match.group("caption")}</figcaption> </figure>'
+            replacement = f'<br><figure><img src="/visuals/svg/{filename}" style="width:100%; height:auto;" loading="lazy"><figcaption>{caption_match.group("caption")[:-1]}</figcaption> </figure>'
         elif tikzpicture_env_match:
             replacement =  '<br>*** MISSING TIKZ IMAGE ***<br>'          #tikzpicture_env_match.group(1)
 
             if caption_match:
-                replacement += '\n' + caption_match.group('caption')
+                replacement += '\n' + caption_match.group('caption')[:-1]
 
         content = content.replace(figure_env, replacement)
 
     with open(file, 'w') as f:
         f.write(content)
 
-
+###
 def replace_blank_lines(filename):
     with open(filename, 'r') as file:
         lines = file.readlines()
@@ -137,7 +139,8 @@ def replace_blank_lines(filename):
                 file.write('<br>')
             else:
                 file.write(line)
-                
+
+###                
 def remove_comments(filename):
     with open(filename, 'r') as file:
         lines = file.readlines()
@@ -149,7 +152,8 @@ def remove_comments(filename):
             # Only write the line if it's not empty after removing the comment
             if line.strip():
                 file.write(line)
-                
+
+###                
 def remove_labels(filename):
     with open(filename, 'r') as file:
         data = file.read()
@@ -159,7 +163,8 @@ def remove_labels(filename):
 
     with open(filename, 'w') as file:
         file.write(data)
-                
+
+###                
 def remove_mainmatter_lines(filename):
     with open(filename, 'r') as file:
         lines = file.readlines()
@@ -170,19 +175,7 @@ def remove_mainmatter_lines(filename):
                 file.write(line)
 
 
-def convert_latex_to_mathjax(file_path):
-    with open(file_path, 'r') as file:
-        content = file.read()
-
-    # Regular expression pattern for inline math in LaTeX
-    pattern = r'\$(.*?)\$'
-    
-    # Replace with MathJax friendly format
-    new_content = re.sub(pattern, r'\(\1\)', content)
-
-    with open(file_path, 'w') as file:
-        file.write(new_content)
-
+###
 def replace_pattern_string_in_file(file_path, pattern, replacement):
     with open(file_path, 'r', encoding='utf-8') as file:
         filedata = file.read()
@@ -257,25 +250,34 @@ def latex_to_html_headings(latex_content):
     
     return latex_content
 
+###
+def convert_latex_to_mathjax(file_path):
+    with open(file_path, 'r') as file:
+        content = file.read()
 
+    # Regular expression pattern for inline math in LaTeX
+    pattern = r'\$(.*?)\$'
+    
+    # Replace with MathJax friendly format
+    new_content = re.sub(pattern, r'\(\1\)', content)
 
+    with open(file_path, 'w') as file:
+        file.write(new_content)
 
+###
 def create_html_with_mathjax(text_file_path, output_html_path):
     # Read the content of the text file
     with open(text_file_path, 'r') as file:
         text_content = file.read()
 
     # HTML template with MathJax
-    html_template = f"""
-        {text_content}
-    """
+    html_template = f""" {text_content} """
 
     # Write the HTML content to the output file
     with open(output_html_path, 'w') as file:
         file.write(html_template)
         
-
-
+###
 def JS_input(file_path):
     # Read all lines into memory
     with open(file_path, 'r') as file:
@@ -298,6 +300,7 @@ def JS_input(file_path):
             else:
                 file.write(line)
 
+###
 def replace_inserts(input_file, output_file, toc_file, content_file, Defs_file, Math_Terms_file):
     with open(input_file, 'r', encoding='utf-8') as file:
         lines = file.readlines()
@@ -326,6 +329,7 @@ def replace_inserts(input_file, output_file, toc_file, content_file, Defs_file, 
             else:
                 file.write(line)
 
+###
 def definitions(input_file):
     with open(input_file, 'r') as f_in:
         lines = f_in.readlines()
@@ -345,6 +349,7 @@ def definitions(input_file):
                     label, term = match.groups()
                     state = 'description'
 
+###
 def wrap_divs(latex_file):
     with open(latex_file, 'r') as file:
         lines = file.readlines()
@@ -376,6 +381,7 @@ def wrap_divs(latex_file):
     with open(latex_file, 'w') as file:
         file.write('\n'.join(output))
 
+###
 def create_math_terms_html(output_file):
     # Extract files
     with zipfile.ZipFile(Zip_folder, 'r') as myzip:

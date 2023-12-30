@@ -4,16 +4,89 @@ import zipfile
 import os
 import shutil
 
+Zip_folder = 'Handbook of Special Relativity.zip'
+Latex_File = 'Special_Relativity.html'
+Defs_File = 'definitions.html'
+Math_Terms = 'Math_Terms.txt'
+images_zip_folder = 'images/svg'
+svg_web_folder = '../../visuals/svg'
+
+with zipfile.ZipFile(Zip_folder, 'r') as myzip:
+    with open(Latex_File, 'wb') as myfile:
+        myfile.write(myzip.read('Tex/Main_Matter.tex'))
+    with open(Defs_File, 'wb') as mydeffile:
+        mydeffile.write(myzip.read('Tex/Definitions.tex'))
+
 ###
+def copy_svgs_from_zip(zip_file, folder, dest_folder):
+    # Open the zip file
+    with zipfile.ZipFile(zip_file, 'r') as zip_ref:
+        # Extract each file in the specified folder to the destination folder
+        for member in zip_ref.namelist():
+            if member.startswith(folder):
+                filename = os.path.basename(member)
+                # Skip directories
+                if not filename:
+                    continue
+
+                # Copy file (taken from zipfile's extract)
+                source = zip_ref.open(member)
+                target = open(os.path.join(dest_folder, filename), "wb")
+                with source, target:
+                    shutil.copyfileobj(source, target)
+
+
+########################################################
+###
+def replace_blank_lines(filename):
+    with open(filename, 'r') as file:
+        lines = file.readlines()
+
+    with open(filename, 'w') as file:
+        for line in lines:
+            if line.strip() == '':
+                file.write('<br>')
+            else:
+                file.write(line)
+###                
+def remove_comments(filename):
+    with open(filename, 'r') as file:
+        lines = file.readlines()
+
+    with open(filename, 'w') as file:
+        for line in lines:
+            # Remove everything after the '%' character
+            line = re.sub('%.*', '', line)
+            # Only write the line if it's not empty after removing the comment
+            if line.strip():
+                file.write(line)
+###                
+def remove_labels(filename):
+    with open(filename, 'r') as file:
+        data = file.read()
+
+    # Remove all \label{...} occurrences
+    data = re.sub(r'\\label\{.*?\}', '', data)
+
+    with open(filename, 'w') as file:
+        file.write(data)
+###                
+def remove_mainmatter_lines(filename):
+    with open(filename, 'r') as file:
+        lines = file.readlines()
+
+    with open(filename, 'w') as file:
+        for line in lines:
+            if '\\mainmatter' not in line:
+                file.write(line)
+
+###        
 def Diagrams_to_replace(filename):
     with open(filename, 'r') as file:
         data = file.read()
 
-    # Regular expression pattern for tikzpicture or asy environment
-    pattern = r'\\begin\{(tikzpicture|asy)\}.*?\\end\{(tikzpicture|asy)\}'
-
     # Replace the matched patterns with the error message
-    new_data = re.sub(pattern, '*** MISSING DIAGRAM ***', data, flags=re.DOTALL)
+    new_data = re.sub(r'\\begin\{(tikzpicture|asy)\}.*?\\end\{(tikzpicture|asy)\}', '*** MISSING DIAGRAM ***', data, flags=re.DOTALL)
 
     with open(filename, 'w') as file:
         file.write(new_data)
@@ -38,6 +111,175 @@ def colorbox_for_html(file_path):
     with open(file_path, 'w') as file:
         file.write(html_content)
 
+###
+def Figures_to_HTML(file):
+    with open(file, 'r') as f:
+        content = f.read()
+
+    figure_env_pattern = r'\\begin{figure}.*?\\end{figure}'
+    include_graphics_pattern = r'\\includegraphics(\[.*?\])?\{(?P<filename>.*?)\}'
+    tikzpicture_env_pattern = r'(\\begin{tikzpicture}.*?\\end{tikzpicture})'
+    caption_pattern = r'\\caption\{(?P<caption>.*\})'
+
+    figure_envs = re.findall(figure_env_pattern, content, re.DOTALL)
+
+    for figure_env in figure_envs:
+        replacement = ''
+        include_graphics_match = re.search(include_graphics_pattern, figure_env)
+        tikzpicture_env_match = re.search(tikzpicture_env_pattern, figure_env, re.DOTALL)
+        caption_match = re.search(caption_pattern, figure_env)
+
+        if include_graphics_match:
+            filename = include_graphics_match.group('filename')
+            filename = Path(filename).with_suffix('.svg')
+
+            replacement = f'<br><figure><img src="/visuals/svg/{filename}" style="width:100%; height:auto;" loading="lazy"><figcaption>{caption_match.group("caption")[:-1]}</figcaption> </figure>'
+        elif tikzpicture_env_match:
+            replacement =  '<br>*** MISSING TIKZ IMAGE ***<br>'          #tikzpicture_env_match.group(1)
+
+            if caption_match:
+                replacement += '\n' + caption_match.group('caption')[:-1]
+
+        content = content.replace(figure_env, replacement)
+
+    with open(file, 'w') as f:
+        f.write(content)
+
+###
+def replace_figure_with_text(filename):
+    with open(filename, 'r') as file:
+        data = file.read()
+
+    # Regex pattern to find the figure environment that contains a tikzpicture
+    pattern = r'\\begin\{figure\}.*?\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}.*?\\end\{figure\}'
+
+    # Replace the figure environment with the provided text
+    data = re.sub(pattern, '<br> *** There is a missing figure here *** <br>', data, flags=re.DOTALL)
+
+    with open(filename, 'w') as file:
+        file.write(data)
+############################################
+############################################
+
+def replace_pattern_string_in_file(file_path, pattern, replacement):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        filedata = file.read()
+
+    filedata = re.sub(pattern, replacement, filedata)
+
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(filedata)       
+###
+def replace_string_in_file(file_path, old_string, new_string):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        filedata = file.read()
+
+    filedata = filedata.replace(old_string, new_string)
+
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(filedata)
+############################################
+############################################
+
+
+###
+def latex_to_html_headings(latex_content):
+    # Replace chapters with h1 tags
+    counter = [0]  # Use a list so that the variable is mutable inside the function
+    def replace_func(m):
+        counter[0] += 1
+        if counter[0] > 1:
+            return '</section> \n <section id="' + m.group(1).replace(' ', '').replace(':', '') + '_div" class="chapter" style="display: none !important;"> \n <h1 id="' + m.group(1).replace(' ', '').replace(':', '') + '">' + m.group(1) + '</h1>'
+        else:
+            return '</section> \n <section id="' + m.group(1).replace(' ', '').replace(':', '') + '_div" class="chapter"> \n <h1 id="' + m.group(1).replace(' ', '').replace(':', '') + '">' + m.group(1) + '</h1>'
+
+    latex_content = re.sub(r'\\chapter\{(.+?)\}', replace_func, latex_content)
+
+    latex_content = re.sub('</section> \n', '', latex_content, count=1) #removes first /div
+    
+    # Replace sections with h2 tags
+    latex_content = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h2>', latex_content)
+
+    # Replace subsections with h3 tags
+    latex_content = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h3>', latex_content)
+
+    # Replace subsubsections with h4 tags
+    latex_content = re.sub(r'\\subsubsection\{(.+?)\}', lambda m:'<h4 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h4>', latex_content)
+    
+    latex_content += '</section>'
+    
+    return latex_content
+
+###
+def wrap_divs(latex_file):
+    with open(latex_file, 'r') as file:
+        lines = file.readlines()
+
+    output = []
+    current_div = None
+    chapter_num = 0
+
+    for line in lines:
+        if line.startswith('\\chapter'):
+            chapter_num += 1
+            if current_div is not None:
+                output.append('</div>')
+            current_div = line.strip().split('{')[1].split('}')[0]
+            output.append(line.strip())
+            output.append(f'<div id="ch{chapter_num}_{current_div.replace(" ", "")}'+'_content">')
+        elif line.startswith('\\section') or line.startswith('\\subsection'):
+            if current_div is not None:
+                output.append('</div>')
+            current_div = line.strip().split('{')[1].split('}')[0]
+            output.append(line.strip())
+            output.append(f'<div id="ch{chapter_num}_{current_div.replace(" ", "")}'+'_content">')
+        else:
+            output.append(line.strip())
+
+    if current_div is not None:
+        output.append('</div>')
+
+    with open(latex_file, 'w') as file:
+        file.write('\n'.join(output))
+
+###
+def convert_latex_to_mathjax(file_path):
+    with open(file_path, 'r') as file:
+        content = file.read()
+
+    # Regular expression pattern for inline math in LaTeX
+    pattern = r'\$(.*?)\$'
+    
+    # Replace with MathJax friendly format
+    new_content = re.sub(pattern, r'\(\1\)', content)
+
+    with open(file_path, 'w') as file:
+        file.write(new_content)
+   
+###
+def JS_input(file_path):
+    # Read all lines into memory
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+
+    # Perform the replacements and write all lines back to the same file
+    with open(file_path, 'w') as file:
+        for line in lines:
+            match = re.search(r'javascript\{(.*)\}', line)
+            if match:
+                # The name of the replacement file is dependent on the content within the brackets
+                replace_file = '../../visuals/Diagrams/' + match.group(1) + '.html'
+                try:
+                    with open(replace_file, 'r') as rfile:
+                        replace_lines = rfile.readlines()
+                    # Replace the line with the lines from the replacement file
+                    file.writelines(replace_lines)
+                except FileNotFoundError:
+                    print(f"File {replace_file} not found. Skipping replacement.")
+            else:
+                file.write(line)
+
+########################################################
 ###
 def create_toc(html_file):
     with open(html_file, 'r') as file:
@@ -73,232 +315,6 @@ def create_toc(html_file):
         
     toc += "</details>\n"
     return toc
-
-###
-def copy_folder_from_zip(zip_file, folder, dest_folder):
-
-    # Open the zip file
-    with zipfile.ZipFile(zip_file, 'r') as zip_ref:
-        # Extract each file in the specified folder to the destination folder
-        for member in zip_ref.namelist():
-            if member.startswith(folder):
-                filename = os.path.basename(member)
-                # Skip directories
-                if not filename:
-                    continue
-
-                # Copy file (taken from zipfile's extract)
-                source = zip_ref.open(member)
-                target = open(os.path.join(dest_folder, filename), "wb")
-                with source, target:
-                    shutil.copyfileobj(source, target)
-
-###
-def Figures_to_HTML(file):
-    with open(file, 'r') as f:
-        content = f.read()
-
-    figure_env_pattern = r'\\begin{figure}.*?\\end{figure}'
-    include_graphics_pattern = r'\\includegraphics(\[.*?\])?\{(?P<filename>.*?)\}'
-    tikzpicture_env_pattern = r'(\\begin{tikzpicture}.*?\\end{tikzpicture})'
-    caption_pattern = r'\\caption\{(?P<caption>.*\})'
-
-    figure_envs = re.findall(figure_env_pattern, content, re.DOTALL)
-
-    for figure_env in figure_envs:
-        replacement = ''
-        include_graphics_match = re.search(include_graphics_pattern, figure_env)
-        tikzpicture_env_match = re.search(tikzpicture_env_pattern, figure_env, re.DOTALL)
-        caption_match = re.search(caption_pattern, figure_env)
-
-
-        if include_graphics_match:
-            filename = include_graphics_match.group('filename')
-            filename = Path(filename).with_suffix('.svg')
-
-            replacement = f'<br><figure><img src="/visuals/svg/{filename}" style="width:100%; height:auto;" loading="lazy"><figcaption>{caption_match.group("caption")[:-1]}</figcaption> </figure>'
-        elif tikzpicture_env_match:
-            replacement =  '<br>*** MISSING TIKZ IMAGE ***<br>'          #tikzpicture_env_match.group(1)
-
-            if caption_match:
-                replacement += '\n' + caption_match.group('caption')[:-1]
-
-        content = content.replace(figure_env, replacement)
-
-    with open(file, 'w') as f:
-        f.write(content)
-
-###
-def replace_blank_lines(filename):
-    with open(filename, 'r') as file:
-        lines = file.readlines()
-
-    with open(filename, 'w') as file:
-        for line in lines:
-            if line.strip() == '':
-                file.write('<br>')
-            else:
-                file.write(line)
-
-###                
-def remove_comments(filename):
-    with open(filename, 'r') as file:
-        lines = file.readlines()
-
-    with open(filename, 'w') as file:
-        for line in lines:
-            # Remove everything after the '%' character
-            line = re.sub('%.*', '', line)
-            # Only write the line if it's not empty after removing the comment
-            if line.strip():
-                file.write(line)
-
-###                
-def remove_labels(filename):
-    with open(filename, 'r') as file:
-        data = file.read()
-
-    # Remove all \label{...} occurrences
-    data = re.sub(r'\\label\{.*?\}', '', data)
-
-    with open(filename, 'w') as file:
-        file.write(data)
-
-###                
-def remove_mainmatter_lines(filename):
-    with open(filename, 'r') as file:
-        lines = file.readlines()
-
-    with open(filename, 'w') as file:
-        for line in lines:
-            if '\\mainmatter' not in line:
-                file.write(line)
-
-
-###
-def replace_pattern_string_in_file(file_path, pattern, replacement):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        filedata = file.read()
-
-    filedata = re.sub(pattern, replacement, filedata)
-
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(filedata)
-        
-###
-def replace_string_in_file(file_path, old_string, new_string):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        filedata = file.read()
-
-    filedata = filedata.replace(old_string, new_string)
-
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(filedata)
-
-
-###
-def replace_symbols(filename):
-    with open(filename, 'r') as file:
-        data = file.read()
-
-    data = data.replace('$<', '$\\lt ')
-    data = data.replace('>$', '\\gt $')
-
-    with open(filename, 'w') as file:
-        file.write(data)
-
-###
-def replace_figure_with_text(filename, text):
-    with open(filename, 'r') as file:
-        data = file.read()
-
-    # Regex pattern to find the figure environment that contains a tikzpicture
-    pattern = r'\\begin\{figure\}.*?\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}.*?\\end\{figure\}'
-
-    # Replace the figure environment with the provided text
-    data = re.sub(pattern, text, data, flags=re.DOTALL)
-
-    with open(filename, 'w') as file:
-        file.write(data)
-
-
-###
-def latex_to_html_headings(latex_content):
-    # Replace chapters with h1 tags
-    counter = [0]  # Use a list so that the variable is mutable inside the function
-    def replace_func(m):
-        counter[0] += 1
-        if counter[0] > 1:
-            return '</div> \n <div id="' + m.group(1).replace(' ', '').replace(':', '') + '_div" class="chapter" style="display: none !important;"> \n <h1 id="' + m.group(1).replace(' ', '').replace(':', '') + '">' + m.group(1) + '</h1>'
-        else:
-            return '</div> \n <div id="' + m.group(1).replace(' ', '').replace(':', '') + '_div" class="chapter"> \n <h1 id="' + m.group(1).replace(' ', '').replace(':', '') + '">' + m.group(1) + '</h1>'
-
-    latex_content = re.sub(r'\\chapter\{(.+?)\}', replace_func, latex_content)
-
-    latex_content = re.sub('</div> \n', '', latex_content, count=1) #removes first /div
-    
-    # Replace sections with h2 tags
-    latex_content = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h2>', latex_content)
-
-    # Replace subsections with h3 tags
-    latex_content = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h3>', latex_content)
-
-    # Replace subsubsections with h4 tags
-    latex_content = re.sub(r'\\subsubsection\{(.+?)\}', lambda m:'<h4 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h4>', latex_content)
-    
-    latex_content += '</div>'
-    
-    return latex_content
-
-###
-def convert_latex_to_mathjax(file_path):
-    with open(file_path, 'r') as file:
-        content = file.read()
-
-    # Regular expression pattern for inline math in LaTeX
-    pattern = r'\$(.*?)\$'
-    
-    # Replace with MathJax friendly format
-    new_content = re.sub(pattern, r'\(\1\)', content)
-
-    with open(file_path, 'w') as file:
-        file.write(new_content)
-
-###
-def create_html_with_mathjax(text_file_path, output_html_path):
-    # Read the content of the text file
-    with open(text_file_path, 'r') as file:
-        text_content = file.read()
-
-    # HTML template with MathJax
-    html_template = f""" {text_content} """
-
-    # Write the HTML content to the output file
-    with open(output_html_path, 'w') as file:
-        file.write(html_template)
-        
-###
-def JS_input(file_path):
-    # Read all lines into memory
-    with open(file_path, 'r') as file:
-        lines = file.readlines()
-
-    # Perform the replacements and write all lines back to the same file
-    with open(file_path, 'w') as file:
-        for line in lines:
-            match = re.search(r'javascript\{(.*)\}', line)
-            if match:
-                # The name of the replacement file is dependent on the content within the brackets
-                replace_file = '../../visuals/Diagrams/' + match.group(1) + '.html'
-                try:
-                    with open(replace_file, 'r') as rfile:
-                        replace_lines = rfile.readlines()
-                    # Replace the line with the lines from the replacement file
-                    file.writelines(replace_lines)
-                except FileNotFoundError:
-                    print(f"File {replace_file} not found. Skipping replacement.")
-            else:
-                file.write(line)
 
 ###
 def replace_inserts(input_file, output_file, toc_file, content_file, Defs_file, Math_Terms_file):
@@ -350,38 +366,6 @@ def definitions(input_file):
                     state = 'description'
 
 ###
-def wrap_divs(latex_file):
-    with open(latex_file, 'r') as file:
-        lines = file.readlines()
-
-    output = []
-    current_div = None
-    chapter_num = 0
-
-    for line in lines:
-        if line.startswith('\\chapter'):
-            chapter_num += 1
-            if current_div is not None:
-                output.append('</section>')
-            current_div = line.strip().split('{')[1].split('}')[0]
-            output.append(line.strip())
-            output.append(f'<section id="ch{chapter_num}_{current_div.replace(" ", "")}'+'_content">')
-        elif line.startswith('\\section') or line.startswith('\\subsection'):
-            if current_div is not None:
-                output.append('</section>')
-            current_div = line.strip().split('{')[1].split('}')[0]
-            output.append(line.strip())
-            output.append(f'<section id="ch{chapter_num}_{current_div.replace(" ", "")}'+'_content">')
-        else:
-            output.append(line.strip())
-
-    if current_div is not None:
-        output.append('</section>')
-
-    with open(latex_file, 'w') as file:
-        file.write('\n'.join(output))
-
-###
 def create_math_terms_html(output_file):
     # Extract files
     with zipfile.ZipFile(Zip_folder, 'r') as myzip:
@@ -420,26 +404,14 @@ def create_math_terms_html(output_file):
 ###################################################################################
 ###################################################################################
 ###################################################################################
-Zip_folder = 'Handbook of Special Relativity.zip'
 
-Latex_File = 'Special_Relativity.html'
-Defs_File = 'definitions.html'
-Math_Terms = 'Math_Terms.txt'
 
-with zipfile.ZipFile(Zip_folder, 'r') as myzip:
-    with open(Latex_File, 'wb') as myfile:
-        myfile.write(myzip.read('Tex/Main_Matter.tex'))
-    with open(Defs_File, 'wb') as mydeffile:
-        mydeffile.write(myzip.read('Tex/Definitions.tex'))
 
-create_math_terms_html(Math_Terms)
-definitions(Defs_File)
 
-copy_folder_from_zip(Zip_folder,'images/svg', '../../visuals/svg')
-
-# to do first to avoid conflicts:
+# to do first to avoid conflicts: 
 remove_comments(Latex_File)
-replace_symbols(Latex_File)
+replace_string_in_file(Latex_File,'$<', '$\\lt ')
+replace_string_in_file(Latex_File,'>$', '\\gt $')
 
 # Call the function with your input and output file paths
 Figures_to_HTML(Latex_File)
@@ -450,13 +422,11 @@ replace_string_in_file(Latex_File, '\\Vec', '\\mathbf')
 replace_string_in_file(Latex_File, '\\noindent', '')
 replace_string_in_file(Latex_File, '\\protect', '')
 replace_pattern_string_in_file(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
-
 replace_pattern_string_in_file(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<span onmouseover=\"document.getElementById('\g<1>').style.display='block'\" onmouseout=\"document.getElementById('\g<1>').style.display='none'\">\g<2></span>")
-
 replace_string_in_file(Latex_File, '\\scalebox{0.5}{R}', 'R')
 replace_string_in_file(Latex_File, '\\AA', "Å") #'Å')
 replace_string_in_file(Latex_File, '\\newline', '<br>')
-replace_figure_with_text(Latex_File, '<br> *** There is a missing figure here *** <br>')
+replace_figure_with_text(Latex_File)
 remove_mainmatter_lines(Latex_File)
 remove_labels(Latex_File)
 colorbox_for_html(Latex_File)
@@ -478,11 +448,11 @@ html_content = latex_to_html_headings(latex_content)
 with open(Latex_File, 'w') as file:
     file.write(html_content)
 
-
-create_html_with_mathjax(Latex_File, Latex_File)
-
 # Call the function with your HTML file
 toc = create_toc(Latex_File)
+create_math_terms_html(Math_Terms)
+definitions(Defs_File)
+copy_svgs_from_zip(Zip_folder,images_zip_folder, svg_web_folder)
 
 replace_inserts("Structure_LatexPage.html", "../../pages/special-relativity.html", toc, Latex_File, Defs_File, Math_Terms)
 

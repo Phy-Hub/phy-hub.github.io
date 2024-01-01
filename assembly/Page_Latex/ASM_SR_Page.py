@@ -3,40 +3,17 @@ from pathlib import Path
 import zipfile
 import os
 import shutil
-
-Zip_folder = 'Handbook of Special Relativity.zip'
-Latex_File = 'Special_Relativity.html'
-Defs_File = 'definitions.html'
-Math_Terms = 'Math_Terms.txt'
-images_zip_folder = 'images/svg'
-svg_web_folder = '../../visuals/svg'
-
-with zipfile.ZipFile(Zip_folder, 'r') as myzip:
-    with open(Latex_File, 'wb') as myfile:
-        myfile.write(myzip.read('Tex/Main_Matter.tex'))
-    with open(Defs_File, 'wb') as mydeffile:
-        mydeffile.write(myzip.read('Tex/Definitions.tex'))
-
-###
-def copy_svgs_from_zip(zip_file, folder, dest_folder):
-    # Open the zip file
-    with zipfile.ZipFile(zip_file, 'r') as zip_ref:
-        # Extract each file in the specified folder to the destination folder
-        for member in zip_ref.namelist():
-            if member.startswith(folder):
-                filename = os.path.basename(member)
-                # Skip directories
-                if not filename:
-                    continue
-
-                # Copy file (taken from zipfile's extract)
-                source = zip_ref.open(member)
-                target = open(os.path.join(dest_folder, filename), "wb")
-                with source, target:
-                    shutil.copyfileobj(source, target)
-
-
 ########################################################
+###
+def replace(filename, pattern, replacement):
+    with open(filename, 'r', encoding='utf-8') as file:
+        filedata = file.read()
+
+    filedata = re.sub(pattern, replacement, filedata)
+
+    with open(filename, 'w', encoding='utf-8') as file:
+        file.write(filedata)       
+        
 ###
 def replace_blank_lines(filename):
     with open(filename, 'r') as file:
@@ -48,7 +25,8 @@ def replace_blank_lines(filename):
                 file.write('<br>')
             else:
                 file.write(line)
-###                
+
+###
 def remove_comments(filename):
     with open(filename, 'r') as file:
         lines = file.readlines()
@@ -60,41 +38,11 @@ def remove_comments(filename):
             # Only write the line if it's not empty after removing the comment
             if line.strip():
                 file.write(line)
-###                
-def remove_labels(filename):
-    with open(filename, 'r') as file:
-        data = file.read()
-
-    # Remove all \label{...} occurrences
-    data = re.sub(r'\\label\{.*?\}', '', data)
-
-    with open(filename, 'w') as file:
-        file.write(data)
-###                
-def remove_mainmatter_lines(filename):
-    with open(filename, 'r') as file:
-        lines = file.readlines()
-
-    with open(filename, 'w') as file:
-        for line in lines:
-            if '\\mainmatter' not in line:
-                file.write(line)
-
-###        
-def Diagrams_to_replace(filename):
-    with open(filename, 'r') as file:
-        data = file.read()
-
-    # Replace the matched patterns with the error message
-    new_data = re.sub(r'\\begin\{(tikzpicture|asy)\}.*?\\end\{(tikzpicture|asy)\}', '*** MISSING DIAGRAM ***', data, flags=re.DOTALL)
-
-    with open(filename, 'w') as file:
-        file.write(new_data)
 
 ###
-def colorbox_for_html(file_path):
+def colorbox_replace(filename):
     # Read the LaTeX file
-    with open(file_path, 'r') as file:
+    with open(filename, 'r') as file:
         latex_content = file.read()
 
     # Regular expression pattern
@@ -108,7 +56,7 @@ def colorbox_for_html(file_path):
     html_content = re.sub(pattern, replacement, latex_content, flags=re.DOTALL)
 
     # Overwrite the original file with the HTML content
-    with open(file_path, 'w') as file:
+    with open(filename, 'w') as file:
         file.write(html_content)
 
 ###
@@ -116,18 +64,13 @@ def Figures_to_HTML(file):
     with open(file, 'r') as f:
         content = f.read()
 
-    figure_env_pattern = r'\\begin{figure}.*?\\end{figure}'
-    include_graphics_pattern = r'\\includegraphics(\[.*?\])?\{(?P<filename>.*?)\}'
-    tikzpicture_env_pattern = r'(\\begin{tikzpicture}.*?\\end{tikzpicture})'
-    caption_pattern = r'\\caption\{(?P<caption>.*\})'
-
-    figure_envs = re.findall(figure_env_pattern, content, re.DOTALL)
+    figure_envs = re.findall(r'\\begin{figure}.*?\\end{figure}', content, re.DOTALL)
 
     for figure_env in figure_envs:
         replacement = ''
-        include_graphics_match = re.search(include_graphics_pattern, figure_env)
-        tikzpicture_env_match = re.search(tikzpicture_env_pattern, figure_env, re.DOTALL)
-        caption_match = re.search(caption_pattern, figure_env)
+        include_graphics_match = re.search(r'\\includegraphics(\[.*?\])?\{(?P<filename>.*?)\}', figure_env)
+        tikzpicture_env_match = re.search(r'(\\begin{tikzpicture}.*?\\end{tikzpicture})', figure_env, re.DOTALL)
+        caption_match = re.search(r'\\caption\{(?P<caption>.*\})', figure_env)
 
         if include_graphics_match:
             filename = include_graphics_match.group('filename')
@@ -146,46 +89,23 @@ def Figures_to_HTML(file):
         f.write(content)
 
 ###
-def replace_figure_with_text(filename):
+def missing_tikz(filename):
     with open(filename, 'r') as file:
         data = file.read()
 
-    # Regex pattern to find the figure environment that contains a tikzpicture
-    pattern = r'\\begin\{figure\}.*?\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}.*?\\end\{figure\}'
-
     # Replace the figure environment with the provided text
-    data = re.sub(pattern, '<br> *** There is a missing figure here *** <br>', data, flags=re.DOTALL)
+    data = re.sub(r'\\begin\{figure\}.*?\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}.*?\\end\{figure\}', '<br> *** There is a missing figure here *** <br>', data, flags=re.DOTALL)
+
+    # Replace the matched patterns with the error message
+    data = re.sub(r'\\begin\{(tikzpicture|asy)\}.*?\\end\{(tikzpicture|asy)\}', '*** MISSING DIAGRAM ***', data, flags=re.DOTALL)
 
     with open(filename, 'w') as file:
         file.write(data)
-############################################
-############################################
-
-def replace_pattern_string_in_file(file_path, pattern, replacement):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        filedata = file.read()
-
-    filedata = re.sub(pattern, replacement, filedata)
-
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(filedata)       
-###
-def replace_string_in_file(file_path, old_string, new_string):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        filedata = file.read()
-
-    filedata = filedata.replace(old_string, new_string)
-
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(filedata)
-############################################
-############################################
-
 
 ###
-def latex_to_html_headings(latex_content):
+def replace_headings(latex_content):
     # Replace chapters with h1 tags
-    counter = [0]  # Use a list so that the variable is mutable inside the function
+    counter = [0] 
     def replace_func(m):
         counter[0] += 1
         if counter[0] > 1:
@@ -194,24 +114,21 @@ def latex_to_html_headings(latex_content):
             return '</section> \n <section id="' + m.group(1).replace(' ', '').replace(':', '') + '_div" class="chapter"> \n <h1 id="' + m.group(1).replace(' ', '').replace(':', '') + '">' + m.group(1) + '</h1>'
 
     latex_content = re.sub(r'\\chapter\{(.+?)\}', replace_func, latex_content)
-
     latex_content = re.sub('</section> \n', '', latex_content, count=1) #removes first /div
     
     # Replace sections with h2 tags
     latex_content = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h2>', latex_content)
-
     # Replace subsections with h3 tags
     latex_content = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h3>', latex_content)
-
     # Replace subsubsections with h4 tags
     latex_content = re.sub(r'\\subsubsection\{(.+?)\}', lambda m:'<h4 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h4>', latex_content)
-    
+   
     latex_content += '</section>'
     
     return latex_content
 
 ###
-def wrap_divs(latex_file):
+def wrap_sections(latex_file):
     with open(latex_file, 'r') as file:
         lines = file.readlines()
 
@@ -241,29 +158,15 @@ def wrap_divs(latex_file):
 
     with open(latex_file, 'w') as file:
         file.write('\n'.join(output))
-
-###
-def convert_latex_to_mathjax(file_path):
-    with open(file_path, 'r') as file:
-        content = file.read()
-
-    # Regular expression pattern for inline math in LaTeX
-    pattern = r'\$(.*?)\$'
-    
-    # Replace with MathJax friendly format
-    new_content = re.sub(pattern, r'\(\1\)', content)
-
-    with open(file_path, 'w') as file:
-        file.write(new_content)
    
 ###
-def JS_input(file_path):
+def insert_JS(filename):
     # Read all lines into memory
-    with open(file_path, 'r') as file:
+    with open(filename, 'r') as file:
         lines = file.readlines()
 
     # Perform the replacements and write all lines back to the same file
-    with open(file_path, 'w') as file:
+    with open(filename, 'w') as file:
         for line in lines:
             match = re.search(r'javascript\{(.*)\}', line)
             if match:
@@ -280,12 +183,12 @@ def JS_input(file_path):
                 file.write(line)
 
 ########################################################
+########################################################
+########################################################
 ###
 def create_toc(html_file):
-    with open(html_file, 'r') as file:
-        data = file.read()
 
-    headers = re.findall(r'<(h[1-2])\s*([^>]*)>(.*?)</\1>', data)
+    headers = re.findall(r'<(h[1-2])\s*([^>]*)>(.*?)</\1>', html_file)
 
     toc = "<h4>Contents</h4>\n"
     i=0
@@ -317,56 +220,25 @@ def create_toc(html_file):
     return toc
 
 ###
-def replace_inserts(input_file, output_file, toc_file, content_file, Defs_file, Math_Terms_file):
-    with open(input_file, 'r', encoding='utf-8') as file:
-        lines = file.readlines()
-
-    toc_lines = toc_file
-
-    with open(content_file, 'r') as file:
-        content_lines = file.readlines()
-
-    with open(Defs_file, 'r') as file:
-        Defs_lines = file.readlines()
-
-    with open(Math_Terms_file, 'r') as file:
-        Math_Terms_lines = file.readlines()
-
-    with open(output_file, 'w', encoding='utf-8') as file:
-        for line in lines:
-            if '[Insert TOC]' in line:
-                file.writelines(toc_lines)
-            elif '[Insert Content]' in line:
-                file.writelines(content_lines)
-            elif '[Insert Definitions]' in line:
-                file.writelines(Defs_lines)
-            elif '[Insert Math Terms]' in line:
-                file.writelines(Math_Terms_lines)
-            else:
-                file.write(line)
+def create_defs(Defs_latex):
+    output_lines = []
+    state = None
+    label, term, description = None, None, None
+    for line in Defs_latex:
+        if state == 'description':
+            description = line.strip()
+            new_line = f'<dd id="{label}" style="display: none;"> <b>{term}:</b>   {description}  </dd>\n'
+            output_lines.append(new_line)
+            state = None
+        else:
+            match = re.search(r'\\noindent \\hypertarget{(.+?)}{\\textbf{(.+?):}}', line)
+            if match:
+                label, term = match.groups()
+                state = 'description'
+    return output_lines
 
 ###
-def definitions(input_file):
-    with open(input_file, 'r') as f_in:
-        lines = f_in.readlines()
-
-    with open(input_file, 'w') as f_out:
-        state = None
-        label, term, description = None, None, None
-        for line in lines:
-            if state == 'description':
-                description = line.strip()
-                new_line = f'<dd id="{label}" style="display: none;"> <b>{term}:</b>   {description}  </dd>\n'
-                f_out.write(new_line)
-                state = None
-            else:
-                match = re.search(r'\\noindent \\hypertarget{(.+?)}{\\textbf{(.+?):}}', line)
-                if match:
-                    label, term = match.groups()
-                    state = 'description'
-
-###
-def create_math_terms_html(output_file):
+def create_math_terms():
     # Extract files
     with zipfile.ZipFile(Zip_folder, 'r') as myzip:
         for file in myzip.namelist():
@@ -376,86 +248,113 @@ def create_math_terms_html(output_file):
 
     input_files = [file for file in os.listdir() if file.startswith('Terms_ch')]
 
-    with open(output_file, 'w') as outfile:
-        for input_file in input_files:
-            outfile.write(f'<dl id="{os.path.splitext(os.path.basename(input_file))[0]}" style="display: none;">\n')
-            with open(input_file, 'r') as infile:
-                lines = infile.readlines()
-                for i in range(len(lines)):
-                    match = re.match(r'\\noindent \\hypertarget\{(.+)\}\{\$(.+)\$ \\textbf\{:\}\}', lines[i])
-                    if match:
-                        name, variable = match.groups()
-                        if i+1 < len(lines):
-                            definition = lines[i+1].strip()
-                            variable = variable.replace('<', '\\lt ').replace('>', '\\gt ')
-                            definition = definition.replace('<', '\\lt ').replace('>', '\\gt ')
-                            definition = re.sub(r'\\hyperlink\{(.*?)\}\{(.*?)\}', lambda m: f'<span onmouseover="document.getElementById(\'{m.group(1)}\').style.display=\'block\'" onmouseout="document.getElementById(\'{m.group(1)}\').style.display=\'none\'">{m.group(2)}</span>', definition)
-                            definition = re.sub(r'\$(.*?)\$', r'\(\g<1>\)', definition)
-                            new_line = f'<dt style="cursor: pointer;" onclick="document.getElementById(\'{name}\').style.display = document.getElementById(\'{name}\').style.display == \'none\' ? \'inline\' : \'none\';"> \({variable}\)<b>:</b> </dt>\n<dd id="{name}" style="display: none;">{definition}</dd>\n'
-                            outfile.write(new_line)
-                        outfile.write('<br>')
-            outfile.write('\n </dl>\n')
+    html_string = ''
+    for input_file in input_files:
+        html_string += f'<dl id="{os.path.splitext(os.path.basename(input_file))[0]}" style="display: none;">\n'
+        with open(input_file, 'r') as infile:
+            lines = infile.readlines()
+            for i in range(len(lines)):
+                match = re.match(r'\\noindent \\hypertarget\{(.+)\}\{\$(.+)\$ \\textbf\{:\}\}', lines[i])
+                if match:
+                    name, variable = match.groups()
+                    if i+1 < len(lines):
+                        definition = lines[i+1].strip()
+                        variable = variable.replace('<', '\\lt ').replace('>', '\\gt ')
+                        definition = definition.replace('<', '\\lt ').replace('>', '\\gt ')
+                        definition = re.sub(r'\\hyperlink\{(.*?)\}\{(.*?)\}', lambda m: f'<span onmouseover="document.getElementById(\'{m.group(1)}\').style.display=\'block\'" onmouseout="document.getElementById(\'{m.group(1)}\').style.display=\'none\'">{m.group(2)}</span>', definition)
+                        definition = re.sub(r'\$(.*?)\$', r'\(\g<1>\)', definition)
+                        new_line = f'<dt style="cursor: pointer;" onclick="document.getElementById(\'{name}\').style.display = document.getElementById(\'{name}\').style.display == \'none\' ? \'inline\' : \'none\';"> \({variable}\)<b>:</b> </dt>\n<dd id="{name}" style="display: none;">{definition}</dd>\n'
+                        html_string += new_line
+                    html_string += '<br>'
+        html_string += '\n </dl>\n'
     
     for file in input_files:
         os.remove(file)
+        
+    return html_string
 
+###
+def create_html(input_file, output_file, toc_file, content_file, Defs_file, Math_Terms_lines):
+    with open(input_file, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
 
-    
+    with open(output_file, 'w', encoding='utf-8') as file:
+        for line in lines:
+            if '[Insert TOC]' in line:
+                file.writelines(toc_file)
+            elif '[Insert Content]' in line:
+                file.writelines(content_file)
+            elif '[Insert Definitions]' in line:
+                file.writelines(Defs_file)
+            elif '[Insert Math Terms]' in line:
+                file.writelines(Math_Terms_lines)
+            else:
+                file.write(line)
+
 ###################################################################################
 ###################################################################################
 ###################################################################################
+Zip_folder = 'Handbook of Special Relativity.zip'
+Latex_File = 'Special_Relativity.html'
+images_zip_folder = 'images/svg'
+svg_web_folder = '../../visuals/svg'
 
+with zipfile.ZipFile(Zip_folder, 'r') as myzip:
+    with open(Latex_File, 'wb') as myfile:
+        myfile.write(myzip.read('Tex/Main_Matter.tex'))
+        Defs_File = myzip.read('Tex/Definitions.tex').decode().splitlines()
 
+    for member in myzip.namelist():
+        if member.startswith(images_zip_folder):
+            filename = os.path.basename(member)
+            # Skip directories
+            if not filename:
+                continue
 
+            # Copy file (taken from zipfile's extract)
+            source = myzip.open(member)
+            target = open(os.path.join(svg_web_folder, filename), "wb")
+            with source, target:
+                shutil.copyfileobj(source, target)
 
 # to do first to avoid conflicts: 
 remove_comments(Latex_File)
-replace_string_in_file(Latex_File,'$<', '$\\lt ')
-replace_string_in_file(Latex_File,'>$', '\\gt $')
+replace(Latex_File,'<', r'\\lt ')
+replace(Latex_File,'>', r'\\gt ')
 
 # Call the function with your input and output file paths
 Figures_to_HTML(Latex_File)
 replace_blank_lines(Latex_File)
-convert_latex_to_mathjax(Latex_File)
-replace_string_in_file(Latex_File, 'mhl', 'bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]')
-replace_string_in_file(Latex_File, '\\Vec', '\\mathbf')
-replace_string_in_file(Latex_File, '\\noindent', '')
-replace_string_in_file(Latex_File, '\\protect', '')
-replace_pattern_string_in_file(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
-replace_pattern_string_in_file(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<span onmouseover=\"document.getElementById('\g<1>').style.display='block'\" onmouseout=\"document.getElementById('\g<1>').style.display='none'\">\g<2></span>")
-replace_string_in_file(Latex_File, '\\scalebox{0.5}{R}', 'R')
-replace_string_in_file(Latex_File, '\\AA', "Å") #'Å')
-replace_string_in_file(Latex_File, '\\newline', '<br>')
-replace_figure_with_text(Latex_File)
-remove_mainmatter_lines(Latex_File)
-remove_labels(Latex_File)
-colorbox_for_html(Latex_File)
-Diagrams_to_replace(Latex_File)
-JS_input(Latex_File)
+replace(Latex_File, r'\$(.*?)\$', r'\(\1\)')
+replace(Latex_File, 'mhl', 'bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]')
+replace(Latex_File, r'\\Vec', r'\\mathbf')
+replace(Latex_File, r'\\noindent', '')
+replace(Latex_File, r'\\protect', '')
+replace(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
+replace(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<span onmouseover=\"document.getElementById('\g<1>').style.display='block'\" onmouseout=\"document.getElementById('\g<1>').style.display='none'\">\g<2></span>")
+replace(Latex_File, r'\\scalebox{0.5}{R}', 'R')
+replace(Latex_File, r'\\AA', "Å") #'Å')
+replace(Latex_File, r'\\newline', '<br>')
+missing_tikz(Latex_File)
+replace(Latex_File, r'\\mainmatter', '')
+replace(Latex_File,r'\\label\{.*?\}', '')
+colorbox_replace(Latex_File)
+insert_JS(Latex_File)
 
-
-wrap_divs(Latex_File)
-
+wrap_sections(Latex_File)
 
 # Read the LaTeX file
 with open(Latex_File, 'r') as file:
     latex_content = file.read()
 
 # Convert to HTML headings
-html_content = latex_to_html_headings(latex_content)
-
-# Write the output to a new HTML file
-with open(Latex_File, 'w') as file:
-    file.write(html_content)
+main_content = replace_headings(latex_content)
 
 # Call the function with your HTML file
-toc = create_toc(Latex_File)
-create_math_terms_html(Math_Terms)
-definitions(Defs_File)
-copy_svgs_from_zip(Zip_folder,images_zip_folder, svg_web_folder)
+toc = create_toc(main_content) # needs to take final html
+vars = create_math_terms()
+defs = create_defs(Defs_File)
 
-replace_inserts("Structure_LatexPage.html", "../../pages/special-relativity.html", toc, Latex_File, Defs_File, Math_Terms)
+create_html("Structure_LatexPage.html", "../../pages/special-relativity.html", toc, main_content, defs, vars)
 
 os.remove(Latex_File)
-os.remove(Defs_File)
-os.remove(Math_Terms)

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #parchment {
+            position: absolute;
+            display: flex;
+            width: 75%;
+            min-height: calc((1vw + 1vh) * 75);
+            top: 0%; left: 50%; transform: translate(-50%, 0);
+            padding: 4em;
+            box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+            background: #fffef0;
+            filter: url(#wavy2);
+        }
+    </style>
+</head>
+<body>
+    <div id="parchment">
+        <p>Your content goes here...</p>
+    </div>
+    <svg>
+        <filter id="wavy2">
+            <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1"></feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="20" />
+        </filter>
+    </svg>
+</body>
+</html>

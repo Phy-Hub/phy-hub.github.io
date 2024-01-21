@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Handbook of Special Relativity</title>  
+  <meta name="keywords" content="...">
+  <meta name="description" content="...">
+  <meta name="author" content="Phy-Hub">
+  
+  <script> var url = window.location.href; url = url.split('.html')[0]; window.history.replaceState(null, null, url); </script>
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+  <script defer type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer> window.MathJax = {  tex: { tags: 'ams' }  }; </script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+  
+  <style>
+
+    .strongyellow{background-color: #f6da66;}
+    .yellow{background-color: #fff8bb;}
+    .brown{background-color: #b7a484;}
+    .stronger-colour{background-color: #fccb93;}
+
+    dt:hover {background-color: #ffd00094;}
+    dd {margin-left: 0;}
+    #dictionary > dd {padding: 10px;}
+
+    span:hover {background-color: #ddb400; cursor: pointer;}
+
+    .navbar {
+      display: grid; grid-template-columns: auto 680px auto;
+      position: sticky; top: 0; z-index: 1000;
+      height: 60px; width: 100%; padding-top: 3px;
+      background-color: grey;
+    }
+
+    a {text-decoration: none; color: black; padding-left: 10px; padding-right: 10px;}
+    a:hover { text-decoration: underline;}
+    #toc a {padding: 0; font-size: 10px; font-family: Arial, sans-serif; line-height: 1.5;}
+
+    :target:before {content: ""; display: block; height: 65px; margin-top: -65px; visibility: hidden;}
+
+    main {display: grid; grid-template-columns: 1fr 700px 1fr;} 
+    main > * {padding: 20px;}
+    @media (max-width: 900px) {
+      .sidebar {display: none;}
+      main { grid-template-columns: 100%;}
+      .navbar {grid-template-columns: 70px auto 70px;}
+      @media (max-width: 700px) {article {min-width: 0px; width: 100vw; margin: 0;}}
+    }
+    body {counter-reset: figure-counter;}
+    figure { counter-increment: figure-counter;}
+    figcaption::before {content: "Figure " counter(figure-counter) ": ";}
+
+    .sidebar{position: sticky; top: 63px; overflow: hidden; align-self: start; height: 100%;} 
+    figcaption {line-height: 1;}
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background-color: grey;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;}
+    .dropdown-menu a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;}
+    .dropdown-menu a:hover {background-color: rgb(90, 90, 90)}
+    .menu:hover .dropdown-menu {display: block;}
+
+  </style>
+</head>
+
+<body style="margin: 0; background-color:#ffe4c8; ">
+
+  <!--Navbar-->
+  <div class="navbar">   
+    <a href="/index.html"> <img src="/visuals/Images/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 3px;" > </a> 
+    <div id="banner" style="width: 100%;"> </div>
+    <div class="menu" style="justify-self: end; width: 70px; cursor: pointer;">
+      <div style="font-size: 40px; justify-content: center; text-align: center; "> &#x2630; </div>
+      <nav class="dropdown-menu">
+        <a href="/index.html">Home</a>
+        <a href="/pages/topics.html">Topics</a>
+        <a href="/pages/about.html">About</a>
+      </nav>
+    </div>
+  </div>
+ 
+  <!--Page-->
+  <main> 
+    <!--Page Navbar-->
+    <nav id="toc" class="sidebar"> 
+      [Insert TOC] <!-- needs to be in seperate line for ASM.py --> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p>      
+      <a href="/pages/about.html" style="position: fixed; left: 10px; bottom: 10px;"> <div> About Phy-Hub</div> </a>
+    </nav>
+      
+    <!--Main Content-->
+    <article style=" line-height: 1.5; font-size: 20px; border-left: 10px solid rgba(128, 128, 128, 0.1); border-right: 10px solid rgba(128, 128, 128, 0.1);">
+      <header style="display: flex; justify-content: center; text-align: center; font-family: 'Computer Modern Serif'; padding-bottom: 50px; padding-top: 30px;">
+        <div>
+          <svg width="450px" viewBox="0 0 1918 568" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><clipPath id="clip0"><rect x="1255" y="133" width="1918" height="568"/></clipPath></defs><g clip-path="url(#clip0)" transform="translate(-1255 -133)"><path d="M1310.6 701 3117.4 701 3117.4 597.727 3173 597.727 3173 529.206 2214 133 1255 529.206 1255 597.727 1310.6 597.727 1310.6 701Z" fill-rule="evenodd"/></g></svg>
+          <div style=" display: flex; flex-direction: column; justify-content: center; align-items: center; height: 180px; "><div style=" font-family: 'Computer Modern', serif; font-style: italic; font-size: 50px;" > Handbook of  </div>  <div style="font-family: 'Computer Modern', serif; font-size: 55px;" > Special Relativity</div> </div>
+          <svg style="vertical-align: middle;" width="460px" viewBox="0 0 2326 150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><filter id="fx0" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.439216" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="7.63889 7.63889"/></filter><clipPath id="clip1"><rect x="1051" y="1638" width="2326" height="200"/></clipPath></defs><g clip-path="url(#clip1)" transform="translate(-1051 -1638)"><g filter="url(#fx0)" transform="matrix(2 0 0 2 1050 1638)"><g><path d="M23.7399 23.6633 1140.26 23.6633 1140.26 76.7084 23.7399 76.7084Z" fill-rule="evenodd"/></g></g><path d="M1130 1638 3298 1638 3298 1741 1130 1741Z" fill-rule="evenodd"/></g></svg>
+          <svg style="vertical-align: middle;" width="510px" viewBox="0 0 2326 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><filter id="fx0" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.439216" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="7.63889 7.63889"/></filter><clipPath id="clip1"><rect x="1051" y="1638" width="2326" height="200"/></clipPath></defs><g clip-path="url(#clip1)" transform="translate(-1051 -1638)"><g filter="url(#fx0)" transform="matrix(2 0 0 2 1050 1638)"><g><path d="M23.7399 23.6633 1140.26 23.6633 1140.26 76.7084 23.7399 76.7084Z" fill-rule="evenodd"/></g></g><path d="M1130 1638 3298 1638 3298 1741 1130 1741Z" fill-rule="evenodd"/></g></svg>
+
+        </div>
+      </header> 
+      [Insert Content] <!-- needs to be in seperate line for ASM.py --> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p>
+    </article>
+    
+    <!--Sidebar-->
+    <aside class="sidebar">
+      <dl id="vars">
+        <a href="..." style="padding-top: 5px;"> <b> Relativity Playground </b> </a> <br>
+        <a href="..." style="padding-top: 5px;"> <b> Resources </b> </a> <br>      
+        <a href="\assembly\Latex_SR\SR_Handbook\output\Layout.pdf" style="padding-top: 5px;"> <b> ↓ PDF </b> </a> <br>  
+        <h3 style="cursor: pointer;" onclick="var content = this.nextElementSibling; content.style.display = content.style.display === 'none' ? 'block' : 'none';">Terms ⯆</h3>
+        [Insert Math Terms] <dl id="dts_ch2" style="display: none;"><dt style="cursor: pointer;" onclick="document.getElementById('math-E').style.display = document.getElementById('math-E').style.display == 'none' ? 'inline' : 'none';"> \(E\)<b>:</b> </dt><definition id="math-E" style="display: none;">an <dt onmouseover="document.getElementById('event').style.display='block'" onmouseout="document.getElementById('event').style.display='none'">event</dt> *** might be confused with energy later ***</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-v')style.display = document.getElementById('math-v').style.display == 'none' ? 'inline' : 'none';"> \(v\)<b>:</b> </dt><definition id="math-v" style="display: none;">is the velocity of second <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt> relative to the first <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt></definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-c').style.display = document.getElementById('math-c').style.display == 'none' ? 'inline' : 'none';"> \(c\)<b>:</b> </dt><definition id="math-c" style="display: none;">the speed that light travels in empty space when it is not impeded by matter and fields.</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-gamma').style.display = document.getElementById('math-gamma').style.display == 'none' ? 'inline' : 'none';"> \(\gamma\)<b>:</b> </dt><definition id="math-gamma" style="display: none;">a relativistic factor given by \(1/\sqrt{1-v^2/c^2}\) which determines how much of an effect the <dt onmouseover="document.getElementById('transform').style.display='block'" onmouseout="document.getElementById('transform').style.display='none'">transform</dt> of the coordinates deviates from the classical transform. It is only significant at relative frame speeds close to that of light.</definition></dl>
+      </dl> 
+      <dl id="dictionary" style="position: fixed; bottom: 0; left: calc(50% + 350px + 10px); background-color: rgb(242, 218, 193); margin-right: 10px; margin-bottom: 10px;">
+        [Insert Definitions]
+      </dl>
+    </aside>
+  </main>
+
+  <!--scripts-->
+  <script>
+    window.onload = function() {
+      fetch('/visuals/svg/DS_Pattern.svg')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('banner').innerHTML = data;
+          var svgDoc = document.getElementById('banner').getElementsByTagName('svg')[0];
+          svgDoc.style.height = "55px"
+          var myUses = svgDoc.getElementsByTagName('use');
+          var totalItems = myUses.length; // total number of items
+          var totalTime = 4; // total time for all animations in seconds
+          var timePerItemSlow = totalTime / 1000; // time per item for first 300 items
+          var timePerItemFast = (totalTime - (timePerItemSlow * 100)) / (totalItems - 100); // time per item for remaining items
+          for (var i = 0; i < myUses.length; i++) {
+            myUses[i].style.opacity = 0;
+            if (i < 300) {
+              myUses[i].style.transition = `opacity 0s`;
+              myUses[i].style.transitionDelay = `${i * timePerItemSlow}s`; // Set a different delay for each use
+            } else {
+              myUses[i].style.transition = `opacity 0s`;
+              myUses[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`; // Set a different delay for each use
+            }
+          }
+          setTimeout(function() {
+            for (var i = 0; i < myUses.length; i++) {
+              myUses[i].style.opacity = 1;
+            }
+          }, 0);
+        });
+    }
+  </script>
+
+  <script>
+    function showContent(divId) {
+
+      $(document).ready(function() {
+        // Hide all divs with class 'chapter'
+        $(".chapter").attr("style", "display: none");
+        // Show the div with id 'divId'
+        $("#" + divId).attr("style", "display: block");
+      });
+
+      $("details").removeAttr("open");
+      window.scrollTo(0,0);
+    }
+  </script>
+
+  <script>
+    $(document).on('click', 'summary', function() { 
+        $(this).closest('summary').attr('open', ''); 
+    });
+  </script>
+
+  <script>
+    function resizeSVGImages() {
+      var images = document.getElementsByClassName('resizable-svg-img');
+      var resizeFactor = 0.3;
+
+      for (var i = 0; i < images.length; i++) {
+          var img = images[i];
+          var tempImg = new Image();
+          tempImg.src = img.src;
+
+          tempImg.onload = (function(img) {
+              return function() {
+                  var originalWidth = this.naturalWidth; 
+                  var newWidth = originalWidth * resizeFactor;
+
+                  img.style.width = '650px';
+              };
+          })(img);
+      }
+  }
+  </script>
+
+
+
+</body>
+</html>
+
+
+
+

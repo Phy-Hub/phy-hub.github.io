@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.10)  17 FEB 2024 13:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.10)  17 FEB 2024 14:19
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1290,43 +1290,47 @@ Chapter 3.
 ===== Image './tikz/Tikz_Particles_position_in_rest_frame' is up-to-date. ======
 ===== Image './tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position' is up-to-date. ======
 [44 <./tikz/Tikz_Particles_position_in_rest_frame.pdf> <./tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position.pdf>]
-<images/pdf/coordinate_transforms_2.pdf, id=1378, 762.95648pt x 260.90886pt>
+Overfull \hbox (16.85461pt too wide) in paragraph at lines 953--953
+[]\OT1/cmr/bx/n/14.4 Delayed View and Dis-tri-bu-tion of Trans-formed
+ []
+
+<images/pdf/coordinate_transforms_2.pdf, id=1378, 755.64792pt x 260.90886pt>
 File: images/pdf/coordinate_transforms_2.pdf Graphic file (type pdf)
 <use images/pdf/coordinate_transforms_2.pdf>
 Package pdftex.def Info: images/pdf/coordinate_transforms_2.pdf  used on input line 957.
-(pdftex.def)             Requested size: 284.52756pt x 97.29913pt.
- [45] [46 <./images/pdf/coordinate_transforms_2.pdf>] [47]
+(pdftex.def)             Requested size: 284.52756pt x 98.24268pt.
+[45] [46 <./images/pdf/coordinate_transforms_2.pdf>] [47]
 Chapter 4.
 ===== Image './tikz/Tikz_Spherical_Polar_Coordinates' is up-to-date. ======
 [48
 
  <./tikz/Tikz_Spherical_Polar_Coordinates.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1103--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1102--1104
 
  []
 
 [49]
-<images/pdf/Rest_Pulse.pdf, id=1482, 263.83679pt x 240.33162pt>
+<images/pdf/Rest_Pulse.pdf, id=1491, 263.83679pt x 240.33162pt>
 File: images/pdf/Rest_Pulse.pdf Graphic file (type pdf)
 <use images/pdf/Rest_Pulse.pdf>
-Package pdftex.def Info: images/pdf/Rest_Pulse.pdf  used on input line 1127.
+Package pdftex.def Info: images/pdf/Rest_Pulse.pdf  used on input line 1126.
 (pdftex.def)             Requested size: 170.71652pt x 155.5096pt.
  [50 <./images/pdf/Rest_Pulse.pdf>]
-<images/pdf/Prime_Pulse.pdf, id=1500, 213.80318pt x 232.7094pt>
+<images/pdf/Prime_Pulse.pdf, id=1509, 213.80318pt x 232.7094pt>
 File: images/pdf/Prime_Pulse.pdf Graphic file (type pdf)
 <use images/pdf/Prime_Pulse.pdf>
-Package pdftex.def Info: images/pdf/Prime_Pulse.pdf  used on input line 1153.
+Package pdftex.def Info: images/pdf/Prime_Pulse.pdf  used on input line 1152.
 (pdftex.def)             Requested size: 227.62204pt x 247.75378pt.
  [51]
 File: images/pdf/Aberrated_velocities.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 1164.
+Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 1163.
 (pdftex.def)             Requested size: 227.62204pt x 143.71729pt.
  [52 <./images/pdf/Prime_Pulse.pdf>]
 ===== Image './tikz/Tikz_Light_Pulse_Proper_Frame' is up-to-date. ======
 ===== Image './tikz/Tikz_Light_Pulse_Primed_Frame' is up-to-date. ======
 
-Overfull \hbox (1.25739pt too wide) in paragraph at lines 1209--1232
+Overfull \hbox (1.25739pt too wide) in paragraph at lines 1208--1231
 [][] 
  []
 
@@ -1334,7 +1338,7 @@ Overfull \hbox (1.25739pt too wide) in paragraph at lines 1209--1232
 ===== Image './tikz/Tikz_Lights_angle_with_particle_With_particle_moving' is up-to-date. ======
 ===== Image './tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame' is up-to-date. ======
 [55 <./tikz/Tikz_Lights_angle_with_particle_With_particle_moving.pdf> <./tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.pdf>]
-Overfull \hbox (18.89792pt too wide) in paragraph at lines 1346--1346
+Overfull \hbox (18.89792pt too wide) in paragraph at lines 1345--1345
 []\OT1/cmr/bx/n/14.4 Relativistic beam-ing or Flux from Point Source 
  []
 
@@ -1344,111 +1348,111 @@ Overfull \hbox (18.89792pt too wide) in paragraph at lines 1346--1346
 \pgf@layerboxsaved@foreground=\box138
 ===== Image './tikz/Tikz_Surface_Element' is up-to-date. ======
 [56] [57 <./tikz/Tikz_Surface_Element.pdf>] [58]
-Overfull \hbox (8.57126pt too wide) in paragraph at lines 1531--1531
+Overfull \hbox (8.57126pt too wide) in paragraph at lines 1530--1530
 []\OT1/cmr/bx/n/14.4 Relativistic Beam-ing of Mul-ti-ple Wave Fronts
  []
 
 File: images/pdf/Still_Retarded_Field_Both_Frames.pdf Graphic file (type pdf)
 <use images/pdf/Still_Retarded_Field_Both_Frames.pdf>
-Package pdftex.def Info: images/pdf/Still_Retarded_Field_Both_Frames.pdf  used on input line 1536.
+Package pdftex.def Info: images/pdf/Still_Retarded_Field_Both_Frames.pdf  used on input line 1535.
 (pdftex.def)             Requested size: 284.52756pt x 135.73247pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1547--1548
+Underfull \hbox (badness 10000) in paragraph at lines 1546--1547
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1549--1550
+Underfull \hbox (badness 10000) in paragraph at lines 1548--1549
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1551--1552
+Underfull \hbox (badness 10000) in paragraph at lines 1550--1551
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1553--1554
+Underfull \hbox (badness 10000) in paragraph at lines 1552--1553
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1555--1556
+Underfull \hbox (badness 10000) in paragraph at lines 1554--1555
 
  []
 
 [59]
-Underfull \hbox (badness 10000) in paragraph at lines 1557--1558
+Underfull \hbox (badness 10000) in paragraph at lines 1556--1557
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1559--1560
+Underfull \hbox (badness 10000) in paragraph at lines 1558--1559
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1561--1562
+Underfull \hbox (badness 10000) in paragraph at lines 1560--1561
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1563--1564
+Underfull \hbox (badness 10000) in paragraph at lines 1562--1563
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1565--1566
+Underfull \hbox (badness 10000) in paragraph at lines 1564--1565
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1567--1568
+Underfull \hbox (badness 10000) in paragraph at lines 1566--1567
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1569--1570
+Underfull \hbox (badness 10000) in paragraph at lines 1568--1569
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1571--1572
+Underfull \hbox (badness 10000) in paragraph at lines 1570--1571
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1573--1574
+Underfull \hbox (badness 10000) in paragraph at lines 1572--1573
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1575--1576
+Underfull \hbox (badness 10000) in paragraph at lines 1574--1575
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1577--1578
+Underfull \hbox (badness 10000) in paragraph at lines 1576--1577
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1579--1580
+Underfull \hbox (badness 10000) in paragraph at lines 1578--1579
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1581--1582
+Underfull \hbox (badness 10000) in paragraph at lines 1580--1581
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1583--1584
+Underfull \hbox (badness 10000) in paragraph at lines 1582--1583
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1585--1586
+Underfull \hbox (badness 10000) in paragraph at lines 1584--1585
 
  []
 
@@ -1461,92 +1465,92 @@ Chapter 6.
 [64
 
 ] [65] [66] [67]
-Overfull \hbox (136.80379pt too wide) detected at line 1783
+Overfull \hbox (136.80379pt too wide) detected at line 1782
 [][][]\OML/cmm/m/it/10 A \OT1/cmr/m/n/10 = [] = [] \OMS/cmsy/m/n/10 ^^A []   $   [] ^^A [] [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^M[] [] \OT1/cmr/m/n/10 = [] = \OML/cmm/m/it/10 ^^M[] a []
  []
 
 [68]
-Overfull \hbox (15.69284pt too wide) in paragraph at lines 1812--1814
+Overfull \hbox (15.69284pt too wide) in paragraph at lines 1811--1813
 \OT1/cmr/m/n/10 where $\OML/cmm/m/it/10 u[]$ \OT1/cmr/m/n/10 is the ve-loc-ity of the par-ti-cle in this []primed frame[] and $\OML/cmm/m/it/10 ^^M[] \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 =[]$\OT1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1821--1822
+Underfull \hbox (badness 10000) in paragraph at lines 1820--1821
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1823--1825
+Underfull \hbox (badness 10000) in paragraph at lines 1822--1824
 
  []
 
 [69]
-Underfull \hbox (badness 10000) in paragraph at lines 1863--1864
+Underfull \hbox (badness 10000) in paragraph at lines 1862--1863
 
  []
 
 [70]
-Underfull \hbox (badness 10000) in paragraph at lines 1865--1866
+Underfull \hbox (badness 10000) in paragraph at lines 1864--1865
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1867--1868
+Underfull \hbox (badness 10000) in paragraph at lines 1866--1867
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1869--1870
+Underfull \hbox (badness 10000) in paragraph at lines 1868--1869
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1871--1872
+Underfull \hbox (badness 10000) in paragraph at lines 1870--1871
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1873--1874
+Underfull \hbox (badness 10000) in paragraph at lines 1872--1873
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1875--1876
+Underfull \hbox (badness 10000) in paragraph at lines 1874--1875
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1877--1878
+Underfull \hbox (badness 10000) in paragraph at lines 1876--1877
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1879--1880
+Underfull \hbox (badness 10000) in paragraph at lines 1878--1879
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1881--1882
+Underfull \hbox (badness 10000) in paragraph at lines 1880--1881
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1883--1884
+Underfull \hbox (badness 10000) in paragraph at lines 1882--1883
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1885--1886
+Underfull \hbox (badness 10000) in paragraph at lines 1884--1885
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1887--1888
+Underfull \hbox (badness 10000) in paragraph at lines 1886--1887
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1889--1890
+Underfull \hbox (badness 10000) in paragraph at lines 1888--1889
 
  []
 
@@ -1624,7 +1628,7 @@ Appendix F.
 ] [103] (Tex/Back_Cover.tex [104
 
 ]
-<images/png/PhyHub_Logo_2.png, id=2100, 519.687pt x 486.837pt>
+<images/png/PhyHub_Logo_2.png, id=2109, 519.687pt x 486.837pt>
 File: images/png/PhyHub_Logo_2.png Graphic file (type png)
 <use images/png/PhyHub_Logo_2.png>
 Package pdftex.def Info: images/png/PhyHub_Logo_2.png  used on input line 5.
@@ -1635,7 +1639,7 @@ LaTeX2e <2023-11-01>
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `Layout.out' has not changed.
-(rerunfilecheck)             Checksum: 3AAD2EBB4B82BC5B5CBDCDACED1E48EA;14707.
+(rerunfilecheck)             Checksum: 8DAB5AA3CE5A3FA209B5820C069DBF43;14788.
 Package logreq Info: Writing requests to 'Layout.run.xml'.
 \openout1 = `Layout.run.xml'.
 
@@ -1649,9 +1653,9 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  116i,25n,121p,1806b,1209s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\one_p\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Layout.pdf (111 pages, 12732784 bytes).
+Output written on Layout.pdf (111 pages, 12736945 bytes).
 PDF statistics:
- 2275 PDF objects out of 2487 (max. 8388607)
+ 2284 PDF objects out of 2487 (max. 8388607)
  452 named destinations out of 1000 (max. 500000)
  968 words of extra memory for PDF output out of 10000 (max. 10000000)
 

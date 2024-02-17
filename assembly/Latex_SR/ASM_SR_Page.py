@@ -155,7 +155,7 @@ def process_figure(figure_env):
 
     if include_graphics_match or tikzpicture_env_match:
         filename = include_graphics_match.group('filename') if include_graphics_match else tikzfilename_match.group('filename') if tikzfilename_match else 'missing'
-        filename = Path(filename).with_suffix('.svg')
+        filename = os.path.splitext(os.path.basename(filename))[0] + '.svg'
         return f'<figure style="margin-right: 10px;">\n<img src="/visuals/svg/{filename}" style="width:100%; height:auto;" loading="lazy">\n<figcaption>{caption_match.group("caption")[:-1]}</figcaption>\n</figure>'
     else:
         return '*** figure missing ***'

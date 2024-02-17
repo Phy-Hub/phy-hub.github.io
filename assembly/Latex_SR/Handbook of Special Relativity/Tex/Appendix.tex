@@ -6,7 +6,7 @@
 
 \section{Aberration Equations}
 \section{Vectors}
-\begin{equation}%%%%%%%%%%%%%%% 
+\begin{equation}%%%%%%%%%%%%%%%
 \label{retarded displacement 2}
     \Vec{R}'_{ret}= \begin{pmatrix}
     x\\ y \\ \gamma \left(z + \dfrac{u_p \cdot \|\vec{R}\|}{c}\right)
@@ -15,7 +15,7 @@
     \end{pmatrix}.
 \end{equation}%%%%
 
-\begin{equation}%%%%%%%%%%%%%%% 
+\begin{equation}%%%%%%%%%%%%%%%
 \label{eq: unit retarded velocity 2}
     \hat{\mathbf{\vec{U}'}} = \hat{\mathbf{\vec{R}'}}_{ret} = \dfrac{1}{\text{\AA}} \begin{pmatrix}
     \frac{x}{\|\vec{R}\|}\\ \frac{y}{\|\vec{R}\|} \\ \gamma \left( \frac{z}{\|\vec{R}\|} + \dfrac{u_p}{c} \right)
@@ -65,7 +65,7 @@
 The general transformation of the coordinates from the initial( (proper?) frame, $\vec{X}_0 = (ct_0,x_0,y_0,z_0)$, to coordinates, $\vec{X}_{\langle ' \rangle} $ in frame moving at $\vec{v}=(v_x,v_y,v_z)$ is given by; $\vec{X}_{\langle ' \rangle} = \vec{B}(\vec{v})\vec{X}_0$, where $\vec{B}(\vec{v})$ is:
 \begin{equation}%%%%%%%%%%%%%%%
     \vec{B}(\vec{v}) = \begin{pmatrix}
-    \gamma & -\dfrac{\gamma v_x}{c^2}& -\dfrac{\gamma v_y}{c^2}&- \dfrac{\gamma v_z}{c^2} \\ 
+    \gamma & -\dfrac{\gamma v_x}{c^2}& -\dfrac{\gamma v_y}{c^2}&- \dfrac{\gamma v_z}{c^2} \\
     -\dfrac{\gamma v_x}{c^2} & 1+(\gamma-1)v^{2}_{x} & (\gamma-1)v_yv_x& (\gamma-1)v_xv_z \\
     -\dfrac{\gamma v_y}{c^2} & (\gamma-1)v_xv_y & 1+ (\gamma-1)v^{2}_{y}& (\gamma-1)v_yv_z \\
     -\dfrac{\gamma v_z}{c^2} & (\gamma-1)v_xv_z & (\gamma-1)v_yv_z & 1+(\gamma-1)v^{2}_{z}
@@ -84,7 +84,7 @@ and
 \begin{equation}%%%%%%%%%%%%%%%
     \vec{r}_{\perp \langle ' \rangle}  = \vec{r}_{\perp}
 \end{equation}%%%%
-where 
+where
 \begin{equation}%%%%%%%%%%%%%%%
     \vec{r}_{\parallel}= \left( \vec{\hat{v}}\cdot\vec{r}\right)\vec{\hat{v}} =  \bigg(\dfrac{\vec{v}\cdot\vec{r}}{|\vec{v}|}\bigg)\dfrac{\vec{v}}{|\vec{v}|}
 \end{equation}%%%%
@@ -99,7 +99,7 @@ now using these and $\vec{r}_{\langle ' \rangle}  = \vec{r}_{\perp \langle ' \ra
     &= \vec{r} + \vec{r}_{\parallel}(\gamma-1) - \gamma t \vec{v} \\
     &= \vec{r} + \Big[ \dfrac{\gamma-1}{|\vec{v}|^2}(\vec{v}\cdot\vec{r})- \gamma t\Big]\vec{v}\\
     &= \begin{pmatrix}
-    x + \Big[ \dfrac{\gamma-1}{|\vec{v}|^2}(\vec{v}\cdot\vec{r})- \gamma t\Big] v_x\\ 
+    x + \Big[ \dfrac{\gamma-1}{|\vec{v}|^2}(\vec{v}\cdot\vec{r})- \gamma t\Big] v_x\\
     y + \Big[ \dfrac{\gamma-1}{|\vec{v}|^2}(\vec{v}\cdot\vec{r})- \gamma t\Big] v_y\\
     z + \Big[ \dfrac{\gamma-1}{|\vec{v}|^2}(\vec{v}\cdot\vec{r})- \gamma t\Big] v_z
     \end{pmatrix}
@@ -152,24 +152,24 @@ which is the same as flipping the effect through the X,Y - Plane
 using the velocity transforms from before we transform a velocity to a primed frame
 \begin{equation}%%%%%%%%%%%%%%%
     \begin{split}
-    \vec{U}_{\langle ' \rangle} 
+    \vec{U}_{\langle ' \rangle}
     &= \dfrac{c}{\gamma_1} \dfrac{1}{A_1} \begin{pmatrix}
     \sin\theta\cos\phi\\ \sin\theta\sin\phi\\ \gamma_1\Big(\cos\theta - \dfrac{v_{1\langle . \rangle}}{c}\Big)
     \end{pmatrix} \\
     &= \dfrac{1}{\gamma_1} \dfrac{1}{A_1} \begin{pmatrix}
     U_1\\ U_2\\ \gamma_1\Big(U_3 - v_{1\langle . \rangle}\Big)
-    \end{pmatrix} 
+    \end{pmatrix}
     \end{split}
 \end{equation}%%%%
 
 now we wish to transform this to a second primed frame
 \begin{equation}%%%%%%%%%%%%%%%
     \begin{split}
-    \vec{U}_{\langle '' \rangle} 
+    \vec{U}_{\langle '' \rangle}
     &= ... \\
     &= \dfrac{1}{\gamma_2} \dfrac{1}{1-\dfrac{v_{2\langle 1 \rangle}}{c^2}U_{3\langle'\rangle}} \begin{pmatrix}
     U_{1\langle'\rangle}\\ U_{2\langle'\rangle}\\ \gamma_2\Big(U_{3\langle'\rangle} - v_{2\langle 1 \rangle} \Big)
-    \end{pmatrix} 
+    \end{pmatrix}
     \end{split}
 \end{equation}%%%%
 
@@ -216,8 +216,8 @@ or in terms of primed velocities
 
 \begin{equation}%%%%%%%%%%%%%%%
     \Vec{a'}_p = \dfrac{d\Vec{U'}_p}{dt'} = \dfrac{1}{\text{\AA}}\dfrac{d\Vec{U'}_p}{dt} = \dfrac{1}{\text{\AA}^3} \begin{pmatrix}
-    \text{\AA} a_x + \gamma\dfrac{v}{c^2} u_x a_z \\ 
-    \text{\AA} a_y + \gamma\dfrac{v}{c^2} u_y a_z  \\ 
+    \text{\AA} a_x + \gamma\dfrac{v}{c^2} u_x a_z \\
+    \text{\AA} a_y + \gamma\dfrac{v}{c^2} u_y a_z  \\
     a_z \\
     \end{pmatrix}
 \end{equation}%%%%
@@ -225,8 +225,8 @@ or in primed velocity terms
 
 \begin{equation}%%%%%%%%%%%%%%%
     \Vec{a'}_p = \dfrac{1}{\text{\AA}^2} \begin{pmatrix}
-    a_x + \gamma\dfrac{v}{c^2} u'_x a_z \\ 
-    a_y + \gamma\dfrac{v}{c^2} u'_y a_z  \\ 
+    a_x + \gamma\dfrac{v}{c^2} u'_x a_z \\
+    a_y + \gamma\dfrac{v}{c^2} u'_y a_z  \\
     \gamma a_z + \gamma\dfrac{v}{c^2} u'_z a_z\\
     \end{pmatrix}
 \end{equation}%%%%
@@ -237,7 +237,7 @@ or in primed velocity terms
 
 for a particle $p$ moving at constant velocity $\Vec{U}$ we have that its position $\Vec{R'}$ above transforms the time component to a different time depending on the proper $z$ coordinate, if we were to find the transform for time that is the same at all coordinates we would need to add the position that will be propagated through in the time $\gamma \frac{vz}{c^2}$ which in the primed frame is moving at velocity $\Vec{U'}$ ((correction this is the 3 position and velocity
 
-\begin{equation}%%%%%%%%%%%%%%% 
+\begin{equation}%%%%%%%%%%%%%%%
 \label{Generalised spacial transform}
     \Vec{R'}_{Tconst} = \Vec{R'} - \gamma \frac{vz}{c^2} \Vec{U'}.
 \end{equation}%%%%
@@ -249,11 +249,11 @@ the generic equation for the position of a particle is
 where $\Vec{R}_0$ is the initial position at time $t=0$.
 Then the transform for the particle with consistent primed time is
 
-\begin{equation}%%%%%%%%%%%%%%% 
+\begin{equation}%%%%%%%%%%%%%%%
 \label{Particle transformation}
     \Vec{R}'_p = \begin{pmatrix}
     x_0 + u_{x} t\\ y_0 + u_{y} t \\ \gamma \left( (z_0 + u_{z} t) - vt \right) \\
-    \end{pmatrix} + \gamma\dfrac{v}{c^2} \left(z_0 + u_{z} t\right) 
+    \end{pmatrix} + \gamma\dfrac{v}{c^2} \left(z_0 + u_{z} t\right)
     \begin{pmatrix}
     U'_{x} \\ U'_{y} \\ U'_{z} \\
     \end{pmatrix}.
@@ -270,7 +270,7 @@ There are certain quantities that remain the same when you move to a different r
 
 %███████████████████████████████████████████████████████████████████
 \subsubsection{Do we need this, since next section is on retarded position}
-The particles position in primed frame from the lorentz transformation is $\Vec{P'} = (0,0,-\gamma v T_{prop}) = (0,0,-v T^{'}_{prop})$ at time 
+The particles position in primed frame from the lorentz transformation is $\Vec{P'} = (0,0,-\gamma v T_{prop}) = (0,0,-v T^{'}_{prop})$ at time
 \begin{equation}%%%%%%%%%%%%%%%
 \label{primed propagation time}
     T^{'}_{prop} = \gamma t,
@@ -292,7 +292,7 @@ noting (might be helpful in acceleration transform but also may be nothing) here
 
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}[scale=5] 
+\begin{tikzpicture}[scale=5]
 \draw[blue, thick,->>] (-0,0.36,0) -- (-0,0.43,0) node[midway, right]{$\Vec{u}_p$};
 \draw[blue, thick,->>] (0,0.7,0) -- (0,0.8,0) node[left]{$\Vec{u}_p$};
 \fill (0.7,0.9,0) circle (0.4pt);
@@ -363,7 +363,7 @@ Now in the final step, we finally introduced special relativity, with the lorent
     z' - u_p T_{ret}' \Rightarrow \gamma\left(z + \frac{u_p\cdot \|\vec{R}\|}{c}\right),
 \end{equation}%%%%
 giving the propagation displacement vector to be
-\begin{equation}%%%%%%%%%%%%%%% 
+\begin{equation}%%%%%%%%%%%%%%%
 \label{retarded displacement}
     \Vec{R}'_{prop}= \begin{pmatrix}
     x\\ y \\ \gamma \left(z + \dfrac{u_p \cdot \|\vec{R}\|}{c}\right)
@@ -371,8 +371,8 @@ giving the propagation displacement vector to be
     \frac{x}{\|\vec{R}\|}\\ \frac{y}{\|\vec{R}\|} \\ \gamma \left( \frac{z}{\|\vec{R}\|} + \dfrac{u_p}{c} \right)\\
     \end{pmatrix}.
 \end{equation}%%%%
-Since the light propagates along this in the primed frame, the unit vector of the primed propagation velocity at any general primed coordinate can be worked out to be (show working out in appendix) 
-\begin{equation}%%%%%%%%%%%%%%% 
+Since the light propagates along this in the primed frame, the unit vector of the primed propagation velocity at any general primed coordinate can be worked out to be (show working out in appendix)
+\begin{equation}%%%%%%%%%%%%%%%
 \label{eq: unit retarded velocity}
     \hat{\mathbf{\vec{U}'}} = \hat{\mathbf{\vec{R}'}}_{prop} = \dfrac{1}{\text{\AA}} \begin{pmatrix}
     \frac{x}{\|\vec{R}\|}\\ \frac{y}{\|\vec{R}\|} \\ \gamma \left( \frac{z}{\|\vec{R}\|} + \dfrac{u_p}{c} \right)
@@ -380,7 +380,7 @@ Since the light propagates along this in the primed frame, the unit vector of th
 \end{equation}%%%%
 where the factor
 \begin{equation}%%%%%%%%%%%%%%%
-    \text{\AA} = \gamma\left( 1 + \frac{u_p}{c}\frac{z}{\|\vec{R}\|} \right). 
+    \text{\AA} = \gamma\left( 1 + \frac{u_p}{c}\frac{z}{\|\vec{R}\|} \right).
 \end{equation}%%%%
 Now taking the magnitude of the light propagation displacement from equation (\eqref{retarded displacement}) and using equation (\eqref{eq: gamma identity}), we have
 \begin{equation}%%%%%%%%%%%%%%%
@@ -404,14 +404,14 @@ Since the luminal speed of the propagation will be same in both frames we have
 \end{split}
 \end{equation}%%%%
 
-where $T_{prop}$ is the proper (particles rest frame) time the light takes to propagate to $\vec{R}$ from the particle. 
+where $T_{prop}$ is the proper (particles rest frame) time the light takes to propagate to $\vec{R}$ from the particle.
 
 
 ... is this correct to say?... Time and length are stretched in the primed frame along $\vec{R}'_{ret}$ relative to the proper frame along $\vec{R}$ by a factor $\text{\AA}$, leading to the relative radial density of the light in the primed frame to that of the proper frame, which we will refer to as the radial light strength weighting, given as
 \begin{equation}%%%%%%%%%%%%%%%
 \label{eq: radial weighting}
     W_\rho = \frac{1}{\text{\AA}}.
-\end{equation}%%%% 
+\end{equation}%%%%
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -427,18 +427,18 @@ where $T_{prop}$ is the proper (particles rest frame) time the light takes to pr
 
 \begin{equation}%%%%%%%%%%%%%%%
     \vec{v} =  \begin{pmatrix}
-    o\\ 
+    o\\
     v
     \end{pmatrix} =
     \begin{pmatrix}
-    o\\ 
+    o\\
     -u_p
     \end{pmatrix}
 \end{equation}%%%%
 
 \begin{equation}%%%%%%%%%%%%%%%
     \vec{a_0} = \dfrac{k}{R^2} \begin{pmatrix}
-    \sin\theta\\ 
+    \sin\theta\\
     \cos{\theta}
     \end{pmatrix}
 \end{equation}%%%%
@@ -446,7 +446,7 @@ Substituting into general equation
 
 \begin{equation}%%%%%%%%%%%%%%%
     \vec{a'} = \dfrac{1}{\gamma^3}\dfrac{k}{R^2}\left[ \begin{pmatrix}
-    \gamma\sin\theta\\ 
+    \gamma\sin\theta\\
      \cos{\theta}
     \end{pmatrix} \right]
 \end{equation}%%%%
@@ -478,15 +478,15 @@ using trigonometry and retarded distance transform from above
 \begin{equation}%%%%%%%%%%%%%%%
 \begin{split}
 \vec{a'} &= \dfrac{1}{\gamma^3( 1+\beta\cos\theta')} \dfrac{k}{R^2} \begin{pmatrix}
-    \sin\theta' \\ 
+    \sin\theta' \\
      \cos\theta' + \beta
     \end{pmatrix}\\
     &= \dfrac{1}{\gamma^3( 1+\beta\cos\theta')} \dfrac{k\left(\gamma\left(1+\beta\cos\theta^{'}\right)\right)^{-2}}{{R'_{ret}}^2} \begin{pmatrix}
-    \sin\theta' \\ 
+    \sin\theta' \\
      \cos\theta' + \beta
     \end{pmatrix}\\
     &= \dfrac{1}{\gamma^5( 1+\beta\cos\theta')^3} \dfrac{k}{{R'_{ret}}^2} \begin{pmatrix}
-    \sin\theta' \\ 
+    \sin\theta' \\
      \cos\theta' + \beta
     \end{pmatrix}
 \end{split}
@@ -494,8 +494,8 @@ using trigonometry and retarded distance transform from above
 
 \begin{equation}%%%%%%%%%%%%%%%
     \begin{split}
-   \|\vec{a'}\| &=  \dfrac{1}{\gamma^3( 1+\beta\cos\theta')} \dfrac{k}{R^2} 
-    \sqrt{\sin^2\theta' + (\cos\theta' + \beta)^2} \\   &= \dfrac{1}{\gamma^3( 1+\beta\cos\theta')} \dfrac{k}{R^2} 
+   \|\vec{a'}\| &=  \dfrac{1}{\gamma^3( 1+\beta\cos\theta')} \dfrac{k}{R^2}
+    \sqrt{\sin^2\theta' + (\cos\theta' + \beta)^2} \\   &= \dfrac{1}{\gamma^3( 1+\beta\cos\theta')} \dfrac{k}{R^2}
     \sqrt{ 1 + \beta^2 +  2\cos\theta'\beta}
     \end{split}
 \end{equation}%%%%
@@ -518,7 +518,7 @@ maybe derive from spherical pulse on lorry, having it return and have its walls 
 *** derivation in words first:
 - 2 inertial frames coinciding at $t=t'=0$ with primed frame moving relativity in z-direction
 - Describe spherical wave pulse in proper frame and primed frame $|\vec{R}|=ct$ and $|\vec{R'}|=ct'$
-- 
+-
 
 
 
@@ -529,7 +529,7 @@ maybe derive from spherical pulse on lorry, having it return and have its walls 
 
 
 
-An observer is at the origin of an inertial frame of reference/coordinate system $<S>$. An object moving at a constant velocity $v$ relative to $<S>$ can be described to be stationary in an inertial frame of reference $<S'>$ moving the at the same velocity $v$ shown in Fig. \ref{ltrans}. 
+An observer is at the origin of an inertial frame of reference/coordinate system $<S>$. An object moving at a constant velocity $v$ relative to $<S>$ can be described to be stationary in an inertial frame of reference $<S'>$ moving the at the same velocity $v$ shown in Fig. \ref{ltrans}.
 
 \begin{figure}[ht]
 \begin{tikzpicture}[scale=3]%,tdplot_main_coords]
@@ -539,25 +539,25 @@ An observer is at the origin of an inertial frame of reference/coordinate system
 \draw (-0.8,2,0) node{ {\large $<S>$}};
 \draw[black, thick,->] (-0.2,0,0) -- (0.8,0,0) node[anchor=north east]{$x$};
 \draw[black, thick,->] (0,-0.2,0) -- (0,0.8,0) node[anchor=north west]{$z$};
-\draw[black, thick,->] (0,0,0.3) -- (0,0,-1) node[anchor=south]{$y$}; 
+\draw[black, thick,->] (0,0,0.3) -- (0,0,-1) node[anchor=south]{$y$};
 \draw[gray,dashed, thick,->] (-0.2,0,0) -- (0.4,0,0) node[anchor=north east]{$x'$};
 \draw[gray,dashed, thick,->] (0,-0.2,0) -- (0,0.4,0) node[anchor=south west]{$z'$};
-\draw[gray,dashed, thick,->] (0,0,0.3) -- (0,0,-0.5) node[anchor=south]{$y'$}; 
-\draw[gray, thick, ->>] (-0.15,0,0) -- (-0.15,0.22,0) node[anchor=east]{$v$}; 
+\draw[gray,dashed, thick,->] (0,0,0.3) -- (0,0,-0.5) node[anchor=south]{$y'$};
+\draw[gray, thick, ->>] (-0.15,0,0) -- (-0.15,0.22,0) node[anchor=east]{$v$};
 \fill[red] (0.65,0.2,0) circle (0.6pt);
-\draw[gray, thick, ->>] (0.65,0.2,0) -- (0.65,0.42,0) node[anchor=west]{$v$}; 
+\draw[gray, thick, ->>] (0.65,0.2,0) -- (0.65,0.42,0) node[anchor=west]{$v$};
 %
 \draw (1.7,2,0) node{$t>0$};
 \draw[black, thick,->] (1.5,0,0) -- (2.5,0,0) node[anchor=north east]{$x$};
 \draw[black, thick,->] (1.7,-0.2,0) -- (1.7,0.8,0) node[anchor=north west]{$z$};
-\draw[black, thick,->] (1.7,0,0.3) -- (1.7,0,-1) node[anchor=south]{$y$}; 
+\draw[black, thick,->] (1.7,0,0.3) -- (1.7,0,-1) node[anchor=south]{$y$};
 %
 \draw[gray, dashed, thick,->] (1.5,1.2,0) -- (2.2,1.2,0) node[anchor=north east]{$x'$};
 \draw[gray, dashed, thick,->] (1.7,1,0) -- (1.7,1.7,0) node[anchor= west]{$z'$};
-\draw[gray, dashed, thick,->] (1.7,1.2,0.3) -- (1.7,1.2,-0.8) node[anchor=south]{$y'$}; 
+\draw[gray, dashed, thick,->] (1.7,1.2,0.3) -- (1.7,1.2,-0.8) node[anchor=south]{$y'$};
 \draw[gray, thick, ->>] (1.55,1.2,0) -- (1.55,1.42,0) node[anchor=east]{$v$};
 \fill[red] (2.35,1.4,0) circle (0.6pt);
-\draw[gray, thick, ->>] (2.35,1.4,0) -- (2.35,1.62,0) node[anchor=west]{$v$}; 
+\draw[gray, thick, ->>] (2.35,1.4,0) -- (2.35,1.62,0) node[anchor=west]{$v$};
 %
 \end{tikzpicture}
 \caption{Proper frame of reference in standard configuration.}
@@ -572,23 +572,23 @@ An observer is at the origin of an inertial frame of reference/coordinate system
 \draw (-0.8,1,0) node{ {\large $<S'>$}};
 \draw[black, thick,->] (-0.2,0,0) -- (0.8,0,0) node[anchor=north east]{$x'$};
 \draw[black, thick,->] (0,-0.2,0) -- (0,0.8,0) node[anchor=north west]{$z'$};
-\draw[black, thick,->] (0,0,0.3) -- (0,0,-1) node[anchor=south]{$y'$}; 
+\draw[black, thick,->] (0,0,0.3) -- (0,0,-1) node[anchor=south]{$y'$};
 \draw[gray,dashed, thick,->] (-0.2,0,0) -- (0.4,0,0) node[anchor=north east]{$x$};
 \draw[gray,dashed, thick,->] (0,-0.2,0) -- (0,0.4,0) node[anchor=south west]{$z$};
-\draw[gray,dashed, thick,->] (0,0,0.3) -- (0,0,-0.5) node[anchor=south]{$y$}; 
-\draw[gray, thick, ->>] (-0.15,0,0) -- (-0.15,-0.22,0) node[anchor=east]{$-v$}; 
+\draw[gray,dashed, thick,->] (0,0,0.3) -- (0,0,-0.5) node[anchor=south]{$y$};
+\draw[gray, thick, ->>] (-0.15,0,0) -- (-0.15,-0.22,0) node[anchor=east]{$-v$};
 \fill[red] (0.65,0.4,0) circle (0.6pt);
 \fill[red] (2.35,0.4,0) circle (0.6pt);
 %
 \draw (1.7,1,0) node{$t'>0$};
 \draw[black, thick,->] (1.5,0,0) -- (2.5,0,0) node[anchor=north east]{$x'$};
 \draw[black, thick,->] (1.7,-0.2,0) -- (1.7,0.8,0) node[anchor=north west]{$z'$};
-\draw[black, thick,->] (1.7,0,0.3) -- (1.7,0,-1) node[anchor=south]{$y'$}; 
+\draw[black, thick,->] (1.7,0,0.3) -- (1.7,0,-1) node[anchor=south]{$y'$};
 %
 \draw[gray, dashed, thick,->] (1.5,-0.9,0) -- (2.2,-0.9,0) node[anchor=north east]{$x$};
 \draw[gray, dashed, thick,->] (1.7,-1.1,0) -- (1.7,-0.4,0) node[anchor= west]{$z$};
-\draw[gray, dashed, thick,->] (1.7,-0.9,0.3) -- (1.7,-0.9,-0.8) node[anchor=south]{$y$}; 
-\draw[gray, thick, ->>] (1.55,-0.9,0) -- (1.55,-1.12,0) node[anchor=east]{$-v$}; 
+\draw[gray, dashed, thick,->] (1.7,-0.9,0.3) -- (1.7,-0.9,-0.8) node[anchor=south]{$y$};
+\draw[gray, thick, ->>] (1.55,-0.9,0) -- (1.55,-1.12,0) node[anchor=east]{$-v$};
 %
 \end{tikzpicture}
 \caption{Primed frame of reference in standard configuration.}
@@ -608,7 +608,7 @@ An observer is at the origin of an inertial frame of reference/coordinate system
 \vspace{-1cm}
 \begin{equation}%%%%%%%%%%%%%%%
 \begin{split}
- s^2 &= -c^2t^2 + x^2 + y^2 + z^2 \\  s'^2 &= -c^2t'^{2} + x'^2 + y'^2 + z'^2 
+ s^2 &= -c^2t^2 + x^2 + y^2 + z^2 \\  s'^2 &= -c^2t'^{2} + x'^2 + y'^2 + z'^2
 \end{split}
 \label{s}
 \end{equation}%%%%
@@ -617,7 +617,7 @@ An observer is at the origin of an inertial frame of reference/coordinate system
 
 \item At an expanding wave front moving at the speed of light $c$, in the two frames we have $s= s'=0$
 
-\item We are therefore looking for a transformation s.t. $s=0 \Leftrightarrow s'=0$ 
+\item We are therefore looking for a transformation s.t. $s=0 \Leftrightarrow s'=0$
 
 \item for a linear transform it is implied $s'^2= k s^2$ (where k is a constant) ** why does it have to be linear? (to allow for smooth inverse transformation)
 
@@ -636,7 +636,7 @@ An observer is at the origin of an inertial frame of reference/coordinate system
 \vspace{0cm}
 \begin{equation}%%%%%%%%%%%%%%%
 \label{xbar}
-z' = \gamma (z-vt) 
+z' = \gamma (z-vt)
 \end{equation}%%%%
 \item where $\gamma$ is yet to be determined, we have chosen the linear equation and not one that depends on factors greater than first order, i.e. squared or greater terms of $(z-vt)$, this is because the linear... (to allow for smooth inverse transformation)
 
@@ -655,7 +655,7 @@ z' = \gamma (z-vt)
     -c^2t^2+ z^2 = -c^2\gamma^2\bigg[ t -\frac{z}{v}\bigg(1-\frac{1}{\gamma^2}\bigg)\bigg]^2 + \gamma^2(z-vt)^2
 \end{equation}%%%%
 
-\item This holds true for all $z$ and $t$ 
+\item This holds true for all $z$ and $t$
 \item Equating terms ( this is a mathematical technique, were it is known that for an equation like this to be true for all values of $t$ it is required that all terms in front $t^2$ on each side of the equation must be equal) in front of $t^2$ leads to
 
 \begin{equation}%%%%%%%%%%%%%%%
@@ -672,7 +672,7 @@ z' = \gamma (z-vt)
 \label{lorentz transformation 2}
 \mhl{
     \begin{aligned}
-      &  x'=x \\ & y'=y \\ &z' = \gamma (z-vt)  \\ 
+      &  x'=x \\ & y'=y \\ &z' = \gamma (z-vt)  \\
        \text{From eq. \eqref{ttrans} \ \ \ } & t'=\gamma \bigg(t-\frac{vz}{c^2}\bigg)
     \end{aligned}
     }
@@ -682,7 +682,7 @@ z' = \gamma (z-vt)
 \item Galilean coordinates obtained by letting $v\rightarrow 0$
 \end{itemize}
 we can write this in vector form, multiplying $t'$ by $c$ to give unit of length, this is known as the positional 4 vector and is given as
-\begin{equation}%%%%%%%%%%%%%%% 
+\begin{equation}%%%%%%%%%%%%%%%
 \label{spacial transform}
     \bf{R}'= \begin{pmatrix}
     ct' \\ x'\\ y' \\ z'
@@ -716,7 +716,7 @@ when we take the change of time at the same location in a rest frame, we always 
 %██████████
 \begin{figure}[ht]
 \begin{subfigure}{.49\textwidth}
-  \begin{tikzpicture}[scale=5] 
+  \begin{tikzpicture}[scale=5]
 \draw[white] (0,0.6,0) -- (0,-0.5,0);
 \draw[white] (0.7,0) -- (-0.5,0);
 \fill[red] (0,0,0) circle (0.8pt);
@@ -754,6 +754,51 @@ when we take the change of time at the same location in a rest frame, we always 
 Figure \ref{fig: Doppler effect appendix}, shows a particle emitting a spherical wave of light, in the proper frame it begins emitting at time $t=0$ and after an infinitesimal amount of time the front of the wave has spread out spherically, such that the front is at a distance $dr$ from the origin at all positions,while the wave continues to be emitted from the origin. In the primed frame the wavefront is emitted at $t'=0$ and reaches a point that is $\gamma dr$ from the origin at all points, with the gamma due to $dr=cdt$ and the the time $dt=\gamma dt'$, but we also now have to take into account that the source particle that is still emitting this wave has moved along the z'-axis to a point $u_p dt'= \gamma u_p dt$ and each part of the wave being emitted from the source is taken as being emitted at an angle $\theta'$, such that any point on the wavefront that is at and angle of $\theta'$ from the particle, will have the distance $dr'$ between it and the source, and the wave that is currently being emitted from the source particle will go to that position on the wavefront (offal description).
 
 We can get the Doppler effect by taking the ratio of the distances the way will have to travel to get to the current point the wavefront is at, which in the rest frame is $dr=cdt$ and in the primed frame is $|d\vec{dr}'| = u_p/c \gamma dr$
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\chapter{Alternative Derivation}
+*** diagram *** \newline
+The change in position of particle $\Delta \mathbf{R}_p$, with initial position $\mathbf{R}_0$, and a constant velocity
+\begin{equation}%%%%%%%%%%%%%%%
+    \mathbf{U}_p = \begin{pmatrix}
+        u_x \\ u_y \\ u_z \\
+    \end{pmatrix}
+\end{equation}%%%%
+between time $t_1$ and $t_2$ is
+\begin{equation}%%%%%%%%%%%%%%%
+    \Delta \mathbf{R}_p = (\mathbf{R}_0 +\mathbf{U}_p t_2) - (\mathbf{R}_0 +\mathbf{U}_p t_1) =  (t_2 - t_1) \mathbf{U}_p =  \mathbf{U}_p \Delta t
+\end{equation}%%%%
+(acceleration as well, but these will become negligible when we take an infinitesimal time interval later)
+The \hyperlink{def-lorentz-transform}{Lorentz transformation} for this with $t=0$ is
+\begin{equation}%%%%%%%%%%%%%%%
+    \Delta \mathbf{R}'_p = \begin{pmatrix}
+        u_x \Delta t \\ u_y \Delta t \\ \gamma \left( u_z \Delta t - v \Delta t \right) \\
+    \end{pmatrix}
+\end{equation}%%%%
+but this gives primed times to be $\Delta t'=-\gamma\dfrac{v}{c^2} u_z \Delta t$, and we want to find the positions that have the same time, therefore we need to take away the displacement moved in the the primed time $\Delta t' \mathbf{U'}_p $ which is
+\begin{equation}%%%%%%%%%%%%%%%
+    \Delta \mathbf{R}'_p = \begin{pmatrix}
+        u_x \Delta t \\ u_y \Delta t \\ \gamma \left( u_z \Delta t - v \Delta t \right) \\
+    \end{pmatrix} + \gamma\dfrac{v}{c^2} u_z \Delta t  \mathbf{U'}_p.
+\end{equation}%%%%
+If we divide across by the change in time $\Delta t$ and take this time change to go to an infinitesimal $dt$ and substituting the time in terms of \hyperlink{def-time-dilation}{dilated primed time} $dt = \frac{1}{\gamma}dt'$ we then have the primed velocity given as *** the dt' = gamma dt is suspicious ***
+\begin{equation}%%%%%%%%%%%%%%%
+    \dfrac{d \mathbf{R}'_p}{dt} =\gamma \dfrac{d \mathbf{R}'_p}{dt'} = \gamma\mathbf{U'}_p   = \begin{pmatrix}
+        u_x \\ u_y  \\ \gamma \left( u_z  - v  \right) \\
+    \end{pmatrix} + \gamma\dfrac{v}{c^2} u_z  \mathbf{U'}_p
+\end{equation}%%%%
+rearranging for primed velocity we have
+\begin{equation}%%%%%%%%%%%%%%%
+    \mhl{
+        \begin{aligned}
+            & \mathbf{U'}_p = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }\begin{pmatrix}
+               u_x \\ u_y  \\ \gamma \left( u_z  - v  \right) \\
+            \end{pmatrix} \\
+            & \text{at position $\mathbf{R'}$ and time $t'$ }
+        \end{aligned}
+    }
+\end{equation}%%%%
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \chapter{Todo for these notes}
@@ -772,3 +817,8 @@ decide whether to include minkowski diagram as it is an abstract view rather tha
 * my notation for frames
 
 3 postulates/ starting points.
+
+%███████████████████████████████████████████████████████████████████
+\section{Astronomy from Earth}
+
+... explain how observation from earth works, as you would think the positions of stars at $t'=0$ would be all over the place as it rotates around the sun

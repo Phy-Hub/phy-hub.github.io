@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.10)  17 JAN 2024 22:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.10)  17 FEB 2024 13:09
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -988,20 +988,19 @@ Package biblatex Info: Automatic encoding selection.
 \openout6 = `Layout.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'Layout.bbl' not found.
-
-No file Layout.bbl.
+Package biblatex Info: ... file 'Layout.bbl' found.
+ (Layout.bbl)
 Package biblatex Info: Reference section=0 on input line 3.
 Package biblatex Info: Reference segment=0 on input line 3.
-(Tex/Front_Cover.tex
+ (Tex/Front_Cover.tex
 Overfull \hbox (15.0pt too wide) in paragraph at lines 1--3
  [][] 
  []
 
-<./images/png/PhyHub_Logo.png, id=326, 519.687pt x 492.75pt>
-File: ./images/png/PhyHub_Logo.png Graphic file (type png)
-<use ./images/png/PhyHub_Logo.png>
-Package pdftex.def Info: ./images/png/PhyHub_Logo.png  used on input line 18.
+<images/png/PhyHub_Logo.png, id=330, 519.687pt x 492.75pt>
+File: images/png/PhyHub_Logo.png Graphic file (type png)
+<use images/png/PhyHub_Logo.png>
+Package pdftex.def Info: images/png/PhyHub_Logo.png  used on input line 18.
 (pdftex.def)             Requested size: 113.81102pt x 107.90909pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--20
@@ -1035,549 +1034,553 @@ l.10
 
 
 ]
-<./images/lorry_cannonball.pdf, id=454, 3313.46918pt x 1859.63753pt>
-File: ./images/lorry_cannonball.pdf Graphic file (type pdf)
-<use ./images/lorry_cannonball.pdf>
-Package pdftex.def Info: ./images/lorry_cannonball.pdf  used on input line 45.
+<images/pdf/lorry_cannonball.pdf, id=458, 3313.46918pt x 1859.63753pt>
+File: images/pdf/lorry_cannonball.pdf Graphic file (type pdf)
+<use images/pdf/lorry_cannonball.pdf>
+Package pdftex.def Info: images/pdf/lorry_cannonball.pdf  used on input line 45.
 (pdftex.def)             Requested size: 227.62204pt x 127.7476pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.52 
-      [2 <./images/lorry_cannonball.pdf>]
-<./images/Reference Frames.pdf, id=465, 1853.61504pt x 1855.87346pt>
-File: ./images/Reference Frames.pdf Graphic file (type pdf)
-<use ./images/Reference Frames.pdf>
-Package pdftex.def Info: ./images/Reference Frames.pdf  used on input line 61.
+      [2 <./images/pdf/lorry_cannonball.pdf>]
+<images/pdf/Reference Frames.pdf, id=469, 1853.61504pt x 1855.87346pt>
+File: images/pdf/Reference Frames.pdf Graphic file (type pdf)
+<use images/pdf/Reference Frames.pdf>
+Package pdftex.def Info: images/pdf/Reference Frames.pdf  used on input line 61.
 (pdftex.def)             Requested size: 120.7521pt x 120.89087pt.
-<./images/Spring_boxes.pdf, id=470, 3139.55945pt x 1776.06541pt>
-File: ./images/Spring_boxes.pdf Graphic file (type pdf)
-<use ./images/Spring_boxes.pdf>
-Package pdftex.def Info: ./images/Spring_boxes.pdf  used on input line 74.
+<images/pdf/Spring_boxes.pdf, id=474, 3139.55945pt x 1776.06541pt>
+File: images/pdf/Spring_boxes.pdf Graphic file (type pdf)
+<use images/pdf/Spring_boxes.pdf>
+Package pdftex.def Info: images/pdf/Spring_boxes.pdf  used on input line 74.
 (pdftex.def)             Requested size: 345.0pt x 195.15099pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.78 
-      [3 <./images/Reference Frames.pdf>]
-<./images/Conveyor_belt_3d.pdf, id=485, 3265.28917pt x 1843.82846pt>
-File: ./images/Conveyor_belt_3d.pdf Graphic file (type pdf)
-<use ./images/Conveyor_belt_3d.pdf>
-Package pdftex.def Info: ./images/Conveyor_belt_3d.pdf  used on input line 88.
+      [3 <./images/pdf/Reference Frames.pdf>]
+<images/pdf/Conveyor_belt_3d.pdf, id=489, 3265.28917pt x 1843.82846pt>
+File: images/pdf/Conveyor_belt_3d.pdf Graphic file (type pdf)
+<use images/pdf/Conveyor_belt_3d.pdf>
+Package pdftex.def Info: images/pdf/Conveyor_belt_3d.pdf  used on input line 88.
 (pdftex.def)             Requested size: 345.0pt x 194.80342pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.92 
-      [4 <./images/Spring_boxes.pdf>]
-<./images/rats_moving.pdf, id=500, 3362.41203pt x 1251.30487pt>
-File: ./images/rats_moving.pdf Graphic file (type pdf)
-<use ./images/rats_moving.pdf>
-Package pdftex.def Info: ./images/rats_moving.pdf  used on input line 100.
+      [4 <./images/pdf/Spring_boxes.pdf>]
+<images/pdf/rats_moving.pdf, id=504, 3362.41203pt x 1251.30487pt>
+File: images/pdf/rats_moving.pdf Graphic file (type pdf)
+<use images/pdf/rats_moving.pdf>
+Package pdftex.def Info: images/pdf/rats_moving.pdf  used on input line 100.
 (pdftex.def)             Requested size: 155.24895pt x 57.75739pt.
-<./images/rats_platform_frame.pdf, id=503, 3329.28828pt x 1239.25987pt>
-File: ./images/rats_platform_frame.pdf Graphic file (type pdf)
-<use ./images/rats_platform_frame.pdf>
-Package pdftex.def Info: ./images/rats_platform_frame.pdf  used on input line 107.
+<images/pdf/rats_platform_frame.pdf, id=507, 3329.28828pt x 1239.25987pt>
+File: images/pdf/rats_platform_frame.pdf Graphic file (type pdf)
+<use images/pdf/rats_platform_frame.pdf>
+Package pdftex.def Info: images/pdf/rats_platform_frame.pdf  used on input line 107.
 (pdftex.def)             Requested size: 155.24895pt x 57.7876pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.111 \end{paracol}
-                    [5 <./images/Conveyor_belt_3d.pdf>]
-<./images/earth_and_aether.pdf, id=524, 3122.23471pt x 738.58638pt>
-File: ./images/earth_and_aether.pdf Graphic file (type pdf)
-<use ./images/earth_and_aether.pdf>
-Package pdftex.def Info: ./images/earth_and_aether.pdf  used on input line 124.
+                    [5 <./images/pdf/Conveyor_belt_3d.pdf>]
+<images/pdf/earth_and_aether.pdf, id=528, 3122.23471pt x 738.58638pt>
+File: images/pdf/earth_and_aether.pdf Graphic file (type pdf)
+<use images/pdf/earth_and_aether.pdf>
+Package pdftex.def Info: images/pdf/earth_and_aether.pdf  used on input line 124.
 (pdftex.def)             Requested size: 345.0pt x 81.60538pt.
- [6 <./images/rats_moving.pdf> <./images/rats_platform_frame.pdf> <./images/earth_and_aether.pdf>]
-
-LaTeX Warning: Citation 'EtherExperiment' on page 7 undefined on input line 131.
-
-<./images/Michelson_morley.pdf, id=559, 2958.11153pt x 1803.17659pt>
-File: ./images/Michelson_morley.pdf Graphic file (type pdf)
-<use ./images/Michelson_morley.pdf>
-Package pdftex.def Info: ./images/Michelson_morley.pdf  used on input line 135.
+ [6 <./images/pdf/rats_moving.pdf> <./images/pdf/rats_platform_frame.pdf> <./images/pdf/earth_and_aether.pdf>]
+<images/pdf/Michelson_morley.pdf, id=565, 2958.11153pt x 1803.17659pt>
+File: images/pdf/Michelson_morley.pdf Graphic file (type pdf)
+<use images/pdf/Michelson_morley.pdf>
+Package pdftex.def Info: images/pdf/Michelson_morley.pdf  used on input line 135.
 (pdftex.def)             Requested size: 227.62204pt x 138.72672pt.
-[7 <./images/Michelson_morley.pdf>]
-<./images/lorry_torch.pdf, id=585, 3313.46918pt x 1859.63753pt>
-File: ./images/lorry_torch.pdf Graphic file (type pdf)
-<use ./images/lorry_torch.pdf>
-Package pdftex.def Info: ./images/lorry_torch.pdf  used on input line 156.
+ [7 <./images/pdf/Michelson_morley.pdf>]
+<images/pdf/lorry_torch.pdf, id=592, 3313.46918pt x 1859.63753pt>
+File: images/pdf/lorry_torch.pdf Graphic file (type pdf)
+<use images/pdf/lorry_torch.pdf>
+Package pdftex.def Info: images/pdf/lorry_torch.pdf  used on input line 156.
 (pdftex.def)             Requested size: 227.62204pt x 127.7476pt.
  [8]
-<./images/lorry_clock.pdf, id=602, 3314.22198pt x 1858.88472pt>
-File: ./images/lorry_clock.pdf Graphic file (type pdf)
-<use ./images/lorry_clock.pdf>
-Package pdftex.def Info: ./images/lorry_clock.pdf  used on input line 176.
+<images/pdf/lorry_clock.pdf, id=609, 3314.22198pt x 1858.88472pt>
+File: images/pdf/lorry_clock.pdf Graphic file (type pdf)
+<use images/pdf/lorry_clock.pdf>
+Package pdftex.def Info: images/pdf/lorry_clock.pdf  used on input line 176.
 (pdftex.def)             Requested size: 227.62204pt x 127.66753pt.
- [9 <./images/lorry_torch.pdf>] [10 <./images/lorry_clock.pdf>]
-<./images/lorry_simul.png, id=634, 964.038pt x 563.268pt>
-File: ./images/lorry_simul.png Graphic file (type png)
-<use ./images/lorry_simul.png>
-Package pdftex.def Info: ./images/lorry_simul.png  used on input line 195.
-(pdftex.def)             Requested size: 227.62204pt x 132.9954pt.
- [11 <./images/lorry_simul.png>]
-<./images/Full_Lorry_Transform.pdf, id=666, 3312.71637pt x 1936.43445pt>
-File: ./images/Full_Lorry_Transform.pdf Graphic file (type pdf)
-<use ./images/Full_Lorry_Transform.pdf>
-Package pdftex.def Info: ./images/Full_Lorry_Transform.pdf  used on input line 213.
+ [9 <./images/pdf/lorry_torch.pdf>] [10 <./images/pdf/lorry_clock.pdf>]
+<images/pdf/lorry_simul.pdf, id=641, 3312.71637pt x 1959.01883pt>
+File: images/pdf/lorry_simul.pdf Graphic file (type pdf)
+<use images/pdf/lorry_simul.pdf>
+Package pdftex.def Info: images/pdf/lorry_simul.pdf  used on input line 195.
+(pdftex.def)             Requested size: 227.62204pt x 134.60449pt.
+ [11 <./images/pdf/lorry_simul.pdf>]
+<images/pdf/Full_Lorry_Transform.pdf, id=678, 3312.71637pt x 1936.43445pt>
+File: images/pdf/Full_Lorry_Transform.pdf Graphic file (type pdf)
+<use images/pdf/Full_Lorry_Transform.pdf>
+Package pdftex.def Info: images/pdf/Full_Lorry_Transform.pdf  used on input line 213.
 (pdftex.def)             Requested size: 227.62204pt x 133.05272pt.
- [12 <./images/Full_Lorry_Transform.pdf>]
-<./images/cars.pdf, id=694, 3312.71637pt x 1921.3782pt>
-File: ./images/cars.pdf Graphic file (type pdf)
-<use ./images/cars.pdf>
-Package pdftex.def Info: ./images/cars.pdf  used on input line 237.
+ [12 <./images/pdf/Full_Lorry_Transform.pdf>]
+<images/pdf/cars.pdf, id=706, 3312.71637pt x 1921.3782pt>
+File: images/pdf/cars.pdf Graphic file (type pdf)
+<use images/pdf/cars.pdf>
+Package pdftex.def Info: images/pdf/cars.pdf  used on input line 237.
 (pdftex.def)             Requested size: 227.62204pt x 132.0182pt.
  [13]
-<./images/Cannon_Balls.pdf, id=720, 2973.16779pt x 1602.9085pt>
-File: ./images/Cannon_Balls.pdf Graphic file (type pdf)
-<use ./images/Cannon_Balls.pdf>
-Package pdftex.def Info: ./images/Cannon_Balls.pdf  used on input line 253.
+<images/pdf/Cannon_Balls.pdf, id=732, 2973.16779pt x 1602.9085pt>
+File: images/pdf/Cannon_Balls.pdf Graphic file (type pdf)
+<use images/pdf/Cannon_Balls.pdf>
+Package pdftex.def Info: images/pdf/Cannon_Balls.pdf  used on input line 253.
 (pdftex.def)             Requested size: 227.62204pt x 122.7077pt.
- [14 <./images/cars.pdf>]
-<./images/Doppler.pdf, id=732, 3126.75159pt x 1413.93246pt>
-File: ./images/Doppler.pdf Graphic file (type pdf)
-<use ./images/Doppler.pdf>
-Package pdftex.def Info: ./images/Doppler.pdf  used on input line 267.
+ [14 <./images/pdf/cars.pdf>]
+<images/pdf/Doppler.pdf, id=744, 3126.75159pt x 1413.93246pt>
+File: images/pdf/Doppler.pdf Graphic file (type pdf)
+<use images/pdf/Doppler.pdf>
+Package pdftex.def Info: images/pdf/Doppler.pdf  used on input line 267.
 (pdftex.def)             Requested size: 284.52756pt x 128.65079pt.
- [15 <./images/Cannon_Balls.pdf> <./images/Doppler.pdf>]
-<./images/Aberrated_lorrys_1.pdf, id=759, 3312.71637pt x 1936.43445pt>
-File: ./images/Aberrated_lorrys_1.pdf Graphic file (type pdf)
-<use ./images/Aberrated_lorrys_1.pdf>
-Package pdftex.def Info: ./images/Aberrated_lorrys_1.pdf  used on input line 286.
+ [15 <./images/pdf/Cannon_Balls.pdf> <./images/pdf/Doppler.pdf>]
+<images/pdf/Aberrated_lorrys_1.pdf, id=771, 3312.71637pt x 1936.43445pt>
+File: images/pdf/Aberrated_lorrys_1.pdf Graphic file (type pdf)
+<use images/pdf/Aberrated_lorrys_1.pdf>
+Package pdftex.def Info: images/pdf/Aberrated_lorrys_1.pdf  used on input line 286.
 (pdftex.def)             Requested size: 142.26378pt x 83.14687pt.
-<./images/Aberrated_lorrys_2.pdf, id=760, 3312.71637pt x 1936.43445pt>
-File: ./images/Aberrated_lorrys_2.pdf Graphic file (type pdf)
-<use ./images/Aberrated_lorrys_2.pdf>
-Package pdftex.def Info: ./images/Aberrated_lorrys_2.pdf  used on input line 292.
+<images/pdf/Aberrated_lorrys_2.pdf, id=772, 3312.71637pt x 1936.43445pt>
+File: images/pdf/Aberrated_lorrys_2.pdf Graphic file (type pdf)
+<use images/pdf/Aberrated_lorrys_2.pdf>
+Package pdftex.def Info: images/pdf/Aberrated_lorrys_2.pdf  used on input line 292.
 (pdftex.def)             Requested size: 142.26378pt x 83.14687pt.
- [16] [17 <./images/Aberrated_lorrys_1.pdf> <./images/Aberrated_lorrys_2.pdf>]
-<./images/Rest_velocities.pdf, id=798, 350.5095pt x 232.7094pt>
-File: ./images/Rest_velocities.pdf Graphic file (type pdf)
-<use ./images/Rest_velocities.pdf>
-Package pdftex.def Info: ./images/Rest_velocities.pdf  used on input line 323.
+ [16] [17 <./images/pdf/Aberrated_lorrys_1.pdf> <./images/pdf/Aberrated_lorrys_2.pdf>]
+<images/pdf/Rest_velocities.pdf, id=810, 350.5095pt x 232.7094pt>
+File: images/pdf/Rest_velocities.pdf Graphic file (type pdf)
+<use images/pdf/Rest_velocities.pdf>
+Package pdftex.def Info: images/pdf/Rest_velocities.pdf  used on input line 323.
 (pdftex.def)             Requested size: 142.26378pt x 94.45273pt.
-<./images/Aberrated_velocities.pdf, id=801, 368.56387pt x 232.7094pt>
-File: ./images/Aberrated_velocities.pdf Graphic file (type pdf)
-<use ./images/Aberrated_velocities.pdf>
-Package pdftex.def Info: ./images/Aberrated_velocities.pdf  used on input line 328.
+<images/pdf/Aberrated_velocities.pdf, id=813, 368.56387pt x 232.7094pt>
+File: images/pdf/Aberrated_velocities.pdf Graphic file (type pdf)
+<use images/pdf/Aberrated_velocities.pdf>
+Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 328.
 (pdftex.def)             Requested size: 142.26378pt x 89.82242pt.
-<./images/Rest_velocities_inwards.pdf, id=802, 350.5095pt x 232.7094pt>
-File: ./images/Rest_velocities_inwards.pdf Graphic file (type pdf)
-<use ./images/Rest_velocities_inwards.pdf>
-Package pdftex.def Info: ./images/Rest_velocities_inwards.pdf  used on input line 338.
+<images/pdf/Rest_velocities_inwards.pdf, id=814, 350.5095pt x 232.7094pt>
+File: images/pdf/Rest_velocities_inwards.pdf Graphic file (type pdf)
+<use images/pdf/Rest_velocities_inwards.pdf>
+Package pdftex.def Info: images/pdf/Rest_velocities_inwards.pdf  used on input line 338.
 (pdftex.def)             Requested size: 142.26378pt x 94.45273pt.
-<./images/Aberrated_velocities_inwards.pdf, id=805, 368.56387pt x 232.7094pt>
-File: ./images/Aberrated_velocities_inwards.pdf Graphic file (type pdf)
-<use ./images/Aberrated_velocities_inwards.pdf>
-Package pdftex.def Info: ./images/Aberrated_velocities_inwards.pdf  used on input line 343.
+<images/pdf/Aberrated_velocities_inwards.pdf, id=817, 368.56387pt x 232.7094pt>
+File: images/pdf/Aberrated_velocities_inwards.pdf Graphic file (type pdf)
+<use images/pdf/Aberrated_velocities_inwards.pdf>
+Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on input line 343.
 (pdftex.def)             Requested size: 142.26378pt x 89.82242pt.
- [18 <./images/Rest_velocities.pdf> <./images/Aberrated_velocities.pdf>]
-<./images/Still_Retarded_Field_Both_Frames.pdf, id=837, 350.5095pt x 167.2065pt>
-File: ./images/Still_Retarded_Field_Both_Frames.pdf Graphic file (type pdf)
-<use ./images/Still_Retarded_Field_Both_Frames.pdf>
-Package pdftex.def Info: ./images/Still_Retarded_Field_Both_Frames.pdf  used on input line 357.
+ [18 <./images/pdf/Rest_velocities.pdf> <./images/pdf/Aberrated_velocities.pdf>]
+<images/pdf/Still_Retarded_Field_Both_Frames.pdf, id=849, 350.5095pt x 167.2065pt>
+File: images/pdf/Still_Retarded_Field_Both_Frames.pdf Graphic file (type pdf)
+<use images/pdf/Still_Retarded_Field_Both_Frames.pdf>
+Package pdftex.def Info: images/pdf/Still_Retarded_Field_Both_Frames.pdf  used on input line 357.
 (pdftex.def)             Requested size: 284.52756pt x 135.73247pt.
- [19 <./images/Rest_velocities_inwards.pdf> <./images/Aberrated_velocities_inwards.pdf> <./images/Still_Retarded_Field_Both_Frames.pdf>]
-<./images/Perceived_speed.pdf, id=872, 3213.33507pt x 1699.27853pt>
-File: ./images/Perceived_speed.pdf Graphic file (type pdf)
-<use ./images/Perceived_speed.pdf>
-Package pdftex.def Info: ./images/Perceived_speed.pdf  used on input line 372.
+ [19 <./images/pdf/Rest_velocities_inwards.pdf> <./images/pdf/Aberrated_velocities_inwards.pdf> <./images/pdf/Still_Retarded_Field_Both_Frames.pdf>]
+<images/pdf/Perceived_speed.pdf, id=884, 3213.33507pt x 1699.27853pt>
+File: images/pdf/Perceived_speed.pdf Graphic file (type pdf)
+<use images/pdf/Perceived_speed.pdf>
+Package pdftex.def Info: images/pdf/Perceived_speed.pdf  used on input line 372.
 (pdftex.def)             Requested size: 284.52756pt x 150.4393pt.
- [20 <./images/Perceived_speed.pdf>] [21]
+ [20 <./images/pdf/Perceived_speed.pdf>] [21]
 Overfull \hbox (1.41722pt too wide) in paragraph at lines 430--431
 []\OT1/cmr/m/n/10 When it comes to ve-loc-i-ties, they com-bine dif-fer-ently than in clas-si-cal physics.
  []
 
-(Tex/Terms/Definitions.tex [22] [23]) [24] [25]
+[22] (Tex/Terms/Definitions.tex [23] [24]) [25]
 Chapter 2.
 [26
 
 ]
 ===== Image './tikz/Tikz_simple_Galilean_transform_derivation' is up-to-date. ======
 [27] [28 <./tikz/Tikz_simple_Galilean_transform_derivation.pdf>] [29]
-<./images/Light_clock.pdf, id=1011, 2730.73201pt x 1694.76167pt>
-File: ./images/Light_clock.pdf Graphic file (type pdf)
-<use ./images/Light_clock.pdf>
-Package pdftex.def Info: ./images/Light_clock.pdf  used on input line 558.
+<images/pdf/Light_clock.pdf, id=1022, 2730.73201pt x 1694.76167pt>
+File: images/pdf/Light_clock.pdf Graphic file (type pdf)
+<use images/pdf/Light_clock.pdf>
+Package pdftex.def Info: images/pdf/Light_clock.pdf  used on input line 554.
 (pdftex.def)             Requested size: 284.52756pt x 176.57172pt.
- [30] [31 <./images/Light_clock.pdf>]
-<./images/Length_Contraction.pdf, id=1043, 2683.30482pt x 1689.49197pt>
-File: ./images/Length_Contraction.pdf Graphic file (type pdf)
-<use ./images/Length_Contraction.pdf>
-Package pdftex.def Info: ./images/Length_Contraction.pdf  used on input line 595.
-(pdftex.def)             Requested size: 284.52756pt x 179.14201pt.
- [32 <./images/Length_Contraction.pdf>] [33]
+ [30] [31 <./images/pdf/Light_clock.pdf>]
+<images/pdf/Length_Contraction.pdf, id=1054, 2683.30482pt x 1552.46pt>
+File: images/pdf/Length_Contraction.pdf Graphic file (type pdf)
+<use images/pdf/Length_Contraction.pdf>
+Package pdftex.def Info: images/pdf/Length_Contraction.pdf  used on input line 596.
+(pdftex.def)             Requested size: 284.52756pt x 164.61209pt.
+ [32 <./images/pdf/Length_Contraction.pdf>] [33]
 ===== Image './tikz/Tikz_simple_lorentz_transform_derivation' is up-to-date. ======
-[34 <./tikz/Tikz_simple_lorentz_transform_derivation.pdf>] [35] (Tex/Terms/Terms_ch2.tex [36]) [37]
-Chapter 3.
-[38
-
-] [39]
-<./images/coordinate_transforms.pdf, id=1172, 718.95303pt x 245.98183pt>
-File: ./images/coordinate_transforms.pdf Graphic file (type pdf)
-<use ./images/coordinate_transforms.pdf>
-Package pdftex.def Info: ./images/coordinate_transforms.pdf  used on input line 812.
-(pdftex.def)             Requested size: 284.52756pt x 97.34753pt.
- [40] [41 <./images/coordinate_transforms.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 874--875
+[34] [35 <./tikz/Tikz_simple_lorentz_transform_derivation.pdf>] [36]
+<images/pdf/coordinate_transforms.pdf, id=1138, 715.43942pt x 291.97081pt>
+File: images/pdf/coordinate_transforms.pdf Graphic file (type pdf)
+<use images/pdf/coordinate_transforms.pdf>
+Package pdftex.def Info: images/pdf/coordinate_transforms.pdf  used on input line 731.
+(pdftex.def)             Requested size: 284.52756pt x 116.11353pt.
+ [37]
+<images/pdf/Gamma_Factor.pdf, id=1154, 433.62pt x 289.08pt>
+File: images/pdf/Gamma_Factor.pdf Graphic file (type pdf)
+<use images/pdf/Gamma_Factor.pdf>
+Package pdftex.def Info: images/pdf/Gamma_Factor.pdf  used on input line 750.
+(pdftex.def)             Requested size: 284.52756pt x 189.69504pt.
+ [38 <./images/pdf/coordinate_transforms.pdf>] [39 <./images/pdf/Gamma_Factor.pdf>] (Tex/Terms/Terms_ch2.tex [40])
+Underfull \hbox (badness 10000) in paragraph at lines 801--802
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 876--877
+Underfull \hbox (badness 10000) in paragraph at lines 803--804
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 805--806
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 807--808
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 809--810
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 811--812
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 813--814
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 815--816
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 817--818
+
+ []
+
+[41]
+Underfull \hbox (badness 10000) in paragraph at lines 819--820
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 821--822
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 823--824
 
  []
 
 [42]
-Underfull \hbox (badness 10000) in paragraph at lines 878--879
+Chapter 3.
+[43
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 880--881
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 882--883
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 884--885
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 886--887
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 888--889
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 890--891
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 892--893
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 894--895
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 896--897
-
- []
-
-[43]
+]
+===== Image './tikz/Tikz_Particles_position_in_rest_frame' is up-to-date. ======
+===== Image './tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position' is up-to-date. ======
+[44 <./tikz/Tikz_Particles_position_in_rest_frame.pdf> <./tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position.pdf>]
+<images/pdf/coordinate_transforms_2.pdf, id=1378, 762.95648pt x 260.90886pt>
+File: images/pdf/coordinate_transforms_2.pdf Graphic file (type pdf)
+<use images/pdf/coordinate_transforms_2.pdf>
+Package pdftex.def Info: images/pdf/coordinate_transforms_2.pdf  used on input line 957.
+(pdftex.def)             Requested size: 284.52756pt x 97.29913pt.
+ [45] [46 <./images/pdf/coordinate_transforms_2.pdf>] [47]
 Chapter 4.
 ===== Image './tikz/Tikz_Spherical_Polar_Coordinates' is up-to-date. ======
-[44
+[48
 
  <./tikz/Tikz_Spherical_Polar_Coordinates.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1105
+
+ []
+
+[49]
+<images/pdf/Rest_Pulse.pdf, id=1482, 263.83679pt x 240.33162pt>
+File: images/pdf/Rest_Pulse.pdf Graphic file (type pdf)
+<use images/pdf/Rest_Pulse.pdf>
+Package pdftex.def Info: images/pdf/Rest_Pulse.pdf  used on input line 1127.
+(pdftex.def)             Requested size: 170.71652pt x 155.5096pt.
+ [50 <./images/pdf/Rest_Pulse.pdf>]
+<images/pdf/Prime_Pulse.pdf, id=1500, 213.80318pt x 232.7094pt>
+File: images/pdf/Prime_Pulse.pdf Graphic file (type pdf)
+<use images/pdf/Prime_Pulse.pdf>
+Package pdftex.def Info: images/pdf/Prime_Pulse.pdf  used on input line 1153.
+(pdftex.def)             Requested size: 227.62204pt x 247.75378pt.
+ [51]
+File: images/pdf/Aberrated_velocities.pdf Graphic file (type pdf)
+<use images/pdf/Aberrated_velocities.pdf>
+Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 1164.
+(pdftex.def)             Requested size: 227.62204pt x 143.71729pt.
+ [52 <./images/pdf/Prime_Pulse.pdf>]
+===== Image './tikz/Tikz_Light_Pulse_Proper_Frame' is up-to-date. ======
+===== Image './tikz/Tikz_Light_Pulse_Primed_Frame' is up-to-date. ======
+
+Overfull \hbox (1.25739pt too wide) in paragraph at lines 1209--1232
+[][] 
+ []
+
+[53] [54 <./tikz/Tikz_Light_Pulse_Proper_Frame.pdf> <./tikz/Tikz_Light_Pulse_Primed_Frame.pdf>]
+===== Image './tikz/Tikz_Lights_angle_with_particle_With_particle_moving' is up-to-date. ======
+===== Image './tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame' is up-to-date. ======
+[55 <./tikz/Tikz_Lights_angle_with_particle_With_particle_moving.pdf> <./tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.pdf>]
+Overfull \hbox (18.89792pt too wide) in paragraph at lines 1346--1346
+[]\OT1/cmr/bx/n/14.4 Relativistic beam-ing or Flux from Point Source 
+ []
+
 \pgf@layerbox@background=\box135
 \pgf@layerboxsaved@background=\box136
 \pgf@layerbox@foreground=\box137
 \pgf@layerboxsaved@foreground=\box138
-
 ===== Image './tikz/Tikz_Surface_Element' is up-to-date. ======
-[45] [46 <./tikz/Tikz_Surface_Element.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1178
-
+[56] [57 <./tikz/Tikz_Surface_Element.pdf>] [58]
+Overfull \hbox (8.57126pt too wide) in paragraph at lines 1531--1531
+[]\OT1/cmr/bx/n/14.4 Relativistic Beam-ing of Mul-ti-ple Wave Fronts
  []
 
-[47]
-<./images/Rest_Pulse.pdf, id=1303, 263.83679pt x 240.33162pt>
-File: ./images/Rest_Pulse.pdf Graphic file (type pdf)
-<use ./images/Rest_Pulse.pdf>
-Package pdftex.def Info: ./images/Rest_Pulse.pdf  used on input line 1199.
-(pdftex.def)             Requested size: 170.71652pt x 155.5096pt.
-<./images/Prime_Pulse.pdf, id=1307, 213.80318pt x 232.7094pt>
-File: ./images/Prime_Pulse.pdf Graphic file (type pdf)
-<use ./images/Prime_Pulse.pdf>
-Package pdftex.def Info: ./images/Prime_Pulse.pdf  used on input line 1224.
-(pdftex.def)             Requested size: 227.62204pt x 247.75378pt.
- [48 <./images/Rest_Pulse.pdf>]
-File: ./images/Aberrated_velocities.pdf Graphic file (type pdf)
-<use ./images/Aberrated_velocities.pdf>
-Package pdftex.def Info: ./images/Aberrated_velocities.pdf  used on input line 1235.
-(pdftex.def)             Requested size: 227.62204pt x 143.71729pt.
- [49 <./images/Prime_Pulse.pdf>]
-
-LaTeX Warning: Citation 'einstein1905electrodynamics' on page 50 undefined on input line 1254.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1260--1261
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1262--1263
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1264--1265
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1266--1267
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1268--1269
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1270--1271
-
- []
-
-[50]
-Underfull \hbox (badness 10000) in paragraph at lines 1272--1273
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1274--1275
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1276--1277
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1278--1279
-
- []
-
-[51]
-Chapter 5.
-[52
-
-]
-===== Image './tikz/Tikz_Light_Pulse_Proper_Frame' is up-to-date. ======
-===== Image './tikz/Tikz_Light_Pulse_Primed_Frame' is up-to-date. ======
-
-Overfull \hbox (1.25739pt too wide) in paragraph at lines 1317--1340
-[][] 
- []
-
-[53 <./tikz/Tikz_Light_Pulse_Proper_Frame.pdf> <./tikz/Tikz_Light_Pulse_Primed_Frame.pdf>]
-===== Image './tikz/Tikz_Lights_angle_with_particle_With_particle_moving' is up-to-date. ======
-===== Image './tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame' is up-to-date. ======
-[54] [55 <./tikz/Tikz_Lights_angle_with_particle_With_particle_moving.pdf> <./tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.pdf>]
-
-LaTeX Warning: Citation 'hogg1997special' on page 56 undefined on input line 1459.
-
-[56]
-File: ./images/Still_Retarded_Field_Both_Frames.pdf Graphic file (type pdf)
-<use ./images/Still_Retarded_Field_Both_Frames.pdf>
-Package pdftex.def Info: ./images/Still_Retarded_Field_Both_Frames.pdf  used on input line 1484.
+File: images/pdf/Still_Retarded_Field_Both_Frames.pdf Graphic file (type pdf)
+<use images/pdf/Still_Retarded_Field_Both_Frames.pdf>
+Package pdftex.def Info: images/pdf/Still_Retarded_Field_Both_Frames.pdf  used on input line 1536.
 (pdftex.def)             Requested size: 284.52756pt x 135.73247pt.
 
-===== Image './tikz/Tikz_Particles_position_in_rest_frame' is up-to-date. ======
-===== Image './tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position' is up-to-date. ======
-
-Overfull \hbox (36.4057pt too wide) in paragraph at lines 1515--1542
-[][] 
- []
-
-[57] [58 <./tikz/Tikz_Particles_position_in_rest_frame.pdf> <./tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1594--1595
+Underfull \hbox (badness 10000) in paragraph at lines 1547--1548
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1596--1597
+Underfull \hbox (badness 10000) in paragraph at lines 1549--1550
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1598--1599
+Underfull \hbox (badness 10000) in paragraph at lines 1551--1552
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1600--1601
+Underfull \hbox (badness 10000) in paragraph at lines 1553--1554
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1602--1603
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1604--1605
+Underfull \hbox (badness 10000) in paragraph at lines 1555--1556
 
  []
 
 [59]
-Underfull \hbox (badness 10000) in paragraph at lines 1606--1607
+Underfull \hbox (badness 10000) in paragraph at lines 1557--1558
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1608--1609
+Underfull \hbox (badness 10000) in paragraph at lines 1559--1560
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1610--1611
+Underfull \hbox (badness 10000) in paragraph at lines 1561--1562
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1612--1613
+Underfull \hbox (badness 10000) in paragraph at lines 1563--1564
 
  []
 
-[60]
+
+Underfull \hbox (badness 10000) in paragraph at lines 1565--1566
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1567--1568
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1569--1570
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1571--1572
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1573--1574
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1575--1576
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1577--1578
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1579--1580
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1581--1582
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1583--1584
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1585--1586
+
+ []
+
+[60] [61]
+Chapter 5.
+[62
+
+] [63]
 Chapter 6.
-[61
+[64
 
-] [62] [63] [64]
-Overfull \hbox (136.80379pt too wide) detected at line 1750
+] [65] [66] [67]
+Overfull \hbox (136.80379pt too wide) detected at line 1783
 [][][]\OML/cmm/m/it/10 A \OT1/cmr/m/n/10 = [] = [] \OMS/cmsy/m/n/10 ^^A []   $   [] ^^A [] [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^M[] [] \OT1/cmr/m/n/10 = [] = \OML/cmm/m/it/10 ^^M[] a []
  []
 
-[65]
-Overfull \hbox (15.69284pt too wide) in paragraph at lines 1779--1781
+[68]
+Overfull \hbox (15.69284pt too wide) in paragraph at lines 1812--1814
 \OT1/cmr/m/n/10 where $\OML/cmm/m/it/10 u[]$ \OT1/cmr/m/n/10 is the ve-loc-ity of the par-ti-cle in this []primed frame[] and $\OML/cmm/m/it/10 ^^M[] \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 =[]$\OT1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1788--1789
+Underfull \hbox (badness 10000) in paragraph at lines 1821--1822
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1790--1792
+Underfull \hbox (badness 10000) in paragraph at lines 1823--1825
 
  []
 
-[66]
-Underfull \hbox (badness 10000) in paragraph at lines 1830--1831
+[69]
+Underfull \hbox (badness 10000) in paragraph at lines 1863--1864
 
  []
 
-[67]
-Underfull \hbox (badness 10000) in paragraph at lines 1832--1833
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1834--1835
+[70]
+Underfull \hbox (badness 10000) in paragraph at lines 1865--1866
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1836--1837
+Underfull \hbox (badness 10000) in paragraph at lines 1867--1868
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1838--1839
+Underfull \hbox (badness 10000) in paragraph at lines 1869--1870
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1840--1841
+Underfull \hbox (badness 10000) in paragraph at lines 1871--1872
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1842--1843
+Underfull \hbox (badness 10000) in paragraph at lines 1873--1874
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1844--1845
+Underfull \hbox (badness 10000) in paragraph at lines 1875--1876
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1846--1847
+Underfull \hbox (badness 10000) in paragraph at lines 1877--1878
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1848--1849
+Underfull \hbox (badness 10000) in paragraph at lines 1879--1880
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1850--1851
+Underfull \hbox (badness 10000) in paragraph at lines 1881--1882
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1852--1853
+Underfull \hbox (badness 10000) in paragraph at lines 1883--1884
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1854--1855
+Underfull \hbox (badness 10000) in paragraph at lines 1885--1886
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1856--1857
+Underfull \hbox (badness 10000) in paragraph at lines 1887--1888
 
  []
 
-[68]
+
+Underfull \hbox (badness 10000) in paragraph at lines 1889--1890
+
+ []
+
+[71]
 Chapter 7.
-[69
-
-]
-Chapter 8.
-[70
-
-]
-Chapter 9.
-[71
-
-]
-Chapter 10.
 [72
 
 ]
+Chapter 8.
+[73
+
+]
+Chapter 9.
+[74
+
+]
+Chapter 10.
+[75
+
+]
 Chapter 11.
-) (Tex/Appendix.tex [73
+) (Tex/Appendix.tex [76
 
 ]
 Appendix A.
-[74
+[77
 
-] [75]
+] [78]
 Appendix B.
-[76
+[79
 
-] [77] [78] [79]
+] [80] [81] [82]
 Appendix C.
-[80
+[83
 
 ]
 Appendix D.
@@ -1586,18 +1589,18 @@ Overfull \hbox (5.20299pt too wide) in paragraph at lines 178--178
 []\OT1/cmr/bx/n/14.4 Acceleration Trans-form with con-sis-tent time
  []
 
-[81
+[84
 
-] [82] [83] [84]
+] [85] [86] [87]
 Overfull \hbox (3.83795pt too wide) in paragraph at lines 291--291
 []\OT1/cmr/bx/n/14.4 ...remove ... Re-tarded Sys-tem of Light Pulse
  []
 
 ===== Image './tikz/Layout-figure0' is up-to-date. ======
-[85 <./tikz/Layout-figure0.pdf>] [86] [87] [88] [89] [90]
+[88 <./tikz/Layout-figure0.pdf>] [89] [90] [91] [92] [93]
 ===== Image './tikz/Layout-figure1' is up-to-date. ======
 ===== Image './tikz/Layout-figure2' is up-to-date. ======
-[91 <./tikz/Layout-figure1.pdf>] [92 <./tikz/Layout-figure2.pdf>] [93] [94]
+[94 <./tikz/Layout-figure1.pdf>] [95 <./tikz/Layout-figure2.pdf>] [96] [97]
 ===== Image './tikz/Layout-figure3' is up-to-date. ======
 
 Overfull \hbox (2.26413pt too wide) in paragraph at lines 719--730
@@ -1610,52 +1613,45 @@ Overfull \hbox (2.06439pt too wide) in paragraph at lines 734--745
 [][] 
  []
 
-[95] [96 <./tikz/Layout-figure3.pdf> <./tikz/Layout-figure4.pdf>]
+[98] [99 <./tikz/Layout-figure3.pdf> <./tikz/Layout-figure4.pdf>]
 Appendix E.
-)
+[100
 
-LaTeX Warning: Empty bibliography on input line 23.
+] [101]
+Appendix F.
+) [102
 
-(Tex/Back_Cover.tex [97
+] [103] (Tex/Back_Cover.tex [104
 
 ]
-<./images/png/PhyHub_Logo_2.png, id=1958, 519.687pt x 486.837pt>
-File: ./images/png/PhyHub_Logo_2.png Graphic file (type png)
-<use ./images/png/PhyHub_Logo_2.png>
-Package pdftex.def Info: ./images/png/PhyHub_Logo_2.png  used on input line 5.
+<images/png/PhyHub_Logo_2.png, id=2100, 519.687pt x 486.837pt>
+File: images/png/PhyHub_Logo_2.png Graphic file (type png)
+<use images/png/PhyHub_Logo_2.png>
+Package pdftex.def Info: images/png/PhyHub_Logo_2.png  used on input line 5.
 (pdftex.def)             Requested size: 284.52756pt x 266.55032pt.
-) [98 <./images/png/PhyHub_Logo_2.png>] (Layout.aux)
+) [105 <./images/png/PhyHub_Logo_2.png>] (Layout.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2024-01-04>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `Layout.out' has not changed.
-(rerunfilecheck)             Checksum: 91EC1587CCD6629DF91CC7957E2AAAEB;14452.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                Layout
-(biblatex)                and rerun LaTeX afterwards.
-
+(rerunfilecheck)             Checksum: 3AAD2EBB4B82BC5B5CBDCDACED1E48EA;14707.
 Package logreq Info: Writing requests to 'Layout.run.xml'.
 \openout1 = `Layout.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38766 strings out of 474486
- 800034 string characters out of 5743755
+ 38780 strings out of 474486
+ 800990 string characters out of 5743755
  1946528 words of memory out of 5000000
- 60037 multiletter control sequences out of 15000+600000
+ 60030 multiletter control sequences out of 15000+600000
  566669 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,25n,121p,1806b,1136s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\one_p\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Layout.pdf (104 pages, 12563002 bytes).
+ 116i,25n,121p,1806b,1209s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\one_p\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Layout.pdf (111 pages, 12732784 bytes).
 PDF statistics:
- 2125 PDF objects out of 2487 (max. 8388607)
- 433 named destinations out of 1000 (max. 500000)
- 950 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2275 PDF objects out of 2487 (max. 8388607)
+ 452 named destinations out of 1000 (max. 500000)
+ 968 words of extra memory for PDF output out of 10000 (max. 10000000)
 

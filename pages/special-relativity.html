@@ -525,7 +525,6 @@ These effects will all be explained more fully with maths in the coming chapters
  <section id="PositionsandTime_div" class="chapter" style="display: none !important;"> 
  <h1 id="PositionsandTime">Positions and Time</h1>
 <div id="ch2_PositionsandTime_content">
-**** could include graphs of classical vs relativistic quantities in swapping frames, either both quantities or graph of ratios, throughout sections
 Now that we have learned about the basic concepts of special relativity, we can let the mathematics begin, starting with classical relativity as a starting point, it will give us an understanding of how to <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> between <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>s, we can then compare special relativity to this to help with our intuition.
 </div>
 <h2 id="ClassicalRelativity_header">Classical Relativity</h2>
@@ -558,7 +557,7 @@ for frame \(\lt S\gt \) we have
 so we have \(x=x'\), \(y=y'\), \(t=t'\) (time is assumed to be the same across reference frames in classical relativity) and for the z-components
 \begin{equation}
 \begin{aligned}
-&  z' = z - vt \\
+& z' = z - vt \\
 & z = z'+vt'
 \end{aligned}
 \end{equation}
@@ -567,7 +566,7 @@ So the inverse of going from <span onmouseover="document.getElementById('def-Pri
 The full description of the position and time <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> for an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> is given as
 \begin{equation}
 \begin{aligned}
-&  x'=x \\ & y'=y \\ &z' = z-vt  \\
+& x'=x               \\ & y'=y \\ &z' = z-vt  \\
 \text{at time \ \ \ } \\
 & t'= t
 \end{aligned}
@@ -576,10 +575,12 @@ The full description of the position and time <span onmouseover="document.getEle
 </div>
 <h2 id="PostulatesofSpecialRelativity_header">Postulates of Special Relativity</h2>
 <div id="ch2_PostulatesofSpecialRelativity_content">
-<div style="border: 3px solid black; background-color: #fff9cf; padding: 10px; border-radius: 10px;">
+\begin{tcolorbox}[breakable]
+\begin{enumerate}
 <li>The laws of physics are the same in all <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial frames of reference</span> (i.e. if an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> carries out an experiment in an <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span>, there would be no difference if the experiment was instead carried out within a different <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span>)</li>
 <li>The speed of light in a <span onmouseover="document.getElementById('def-vacuum').style.display='block'" onmouseout="document.getElementById('def-vacuum').style.display='none'">vacuum</span> is the same in all inertial/non-accelerating frames of reference.</li>
-</div>
+\end{enumerate}
+\end{tcolorbox}
 They are not the only assumptions, you may notice some small jumps in the logic when it comes to the derivation. But be aware small miss understandings have thrown people down the special relativity rabbit hole when trying to find inconsistencies or prove it wrong, through out this I will try to leave as few logical gaps as possible, and explain as simply and as in depth as possible so that you do not do this yourself.
 </div>
 <h2 id="Derivations_header">Derivations</h2>
@@ -616,66 +617,94 @@ with
 \begin{equation}
 \gamma =  \dfrac{1}{\sqrt{1-\dfrac{v^2}{c^2}}}.
 \end{equation}
-The Time taken between two <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s in the same position in the moving frame takes longer than in the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> of the clock, due to the longer distance it has to travel at the same speed.
+which means
+\begin{equation}
+\Delta t' \geq \Delta \tau
+\end{equation}
+So we take this outcome as the time taken between two <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s in the same position in the moving frame taking longer than in the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> of the clock, due to the longer distance it has to travel at the same speed.
 </div>
 <h3 id="LengthContractionTODO_header">Length Contraction TODO</h3>
 <div id="ch2_LengthContractionTODO_content">
 <figure style="margin-right: 10px;">
 <img src="/visuals/svg/Length_Contraction.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram, showing a central bulb emitting light in the four directions, with all light being reflected by the mirrors back to the centre, this is shown at rest on the left and moving in another inertial frame with the system now moving, with its length slightly contracted in the direction of movement.</figcaption>
+<figcaption>A diagram, showing a central bulb emitting light in the three directions, with all light being reflected by the mirrors back to the centre, this is shown at rest on the left and moving in another inertial frame with the system now moving, with its length slightly contracted in the direction of movement.</figcaption>
 </figure>
-If we have a system in its rest frame with light emitted in all four directions from the centre, so that it will bounce off the mirrors return to the centre simultaneously. we require that in the moving frame they also all return to the centre simultaneously, as multiple events that happen at a single point simultaneously in one frame, must happen simultaneously in all other frames. This time between light being emitted and absorbed will be the dilated time from previous section. To achieve this simultaneity in the return of the light to the bulb, the length of the full path of light from there centre to the mirrors and back in each direction has to be the same (as its speed of light is same in all directions and the return time has to be the same), we can work out the length of the sideways paths from the time dilation section, and this is the length the path needs to be in the vertical directions as well, the paths can only have this length if the system length is contracted when moving in the direction of movement. Noting that there is no contraction in the perpendicular diction to the movement due to the paradox explained in chapter \ref{width contraction}.
-*the pulse sent backwards has distance
+If we have a system in its rest frame with light emitted in three directions from the centre, one directly infront and the other two to the sides, so that it will bounce off the mirrors return to the centre simultaneously. we require that in the moving frame they also all return to the centre simultaneously, as multiple events that happen at a single point simultaneously in one frame, must happen simultaneously in all other frames. This time between light being emitted and absorbed will be the dilated time from previous section. To achieve this simultaneity in the return of the light to the bulb, the length of the full path of light from there centre to the mirrors and back in each direction has to be the same (as its speed of light is same in all directions and the return time has to be the same), we can work out the length of the sideways paths from the time dilation section, and this is the length the path needs to be in the vertical directions as well, the paths can only have this length if the system length is contracted when moving in the direction of movement. Noting that there is no contraction in the perpendicular direction to the movement due to the paradox explained in chapter \ref{width contraction}.
+The pulse sent forward has a distance
 \begin{equation}
-L_1= ct'_1= D' - ut'_1
+L_1= ct'_1= D' + ut'_1
 \end{equation}
-to travel to back mirror that is moving towards the point it was emitted, and then has to travel back to the bulb a distance
+to travel to get to the mirror that is moving away from the point it was emitted, where \(t'_1\) is the time taken to get there and \(D'\) is the distance between the mirror in front and the bulb and \(u\) being the speed the bulb and mirrors are moving in the primed frame. After this the light then has to travel back to the bulb a distance
 \begin{equation}
-L_2 = ct'_2= D' + ut'_2
+L_2 = ct'_2= D' - ut'_2
 \end{equation}
-giving
+where \(t'_2\) is the time taken to return to the bulb from the mirror, both of these give the two times as
 \begin{equation}
-t'_1=\frac{D'}{c+u}
+t'_1=\frac{D'}{c-u}
 \end{equation}
 and
 \begin{equation}
-t'_2=\frac{D'}{c-u}
+t'_2=\frac{D'}{c+u}
 \end{equation}
-adding both times together gives total primed time
+adding both times together gives the total primed time
 \begin{equation}
-t' = D'(\frac{1}{c-u} + \frac{1}{c+u})=...=\frac{D'}{c}\frac{1}{1-u^2/c^2} =\frac{D'}{c}\frac{1}{1-v^2/c^2}=\gamma^2 \frac{D'}{c}
+t' = D'(\frac{1}{c+u} + \frac{1}{c-u})=\frac{D'}{c}\frac{1}{1-u^2/c^2} =\frac{D'}{c}\frac{1}{1-v^2/c^2}=\gamma^2 \frac{D'}{c}
 \end{equation}
-giving
+from the time dilation equation we have
 \begin{equation}
 ct'=c\gamma t = \gamma D = \gamma^2 D'
 \end{equation}
-and finally leading to
+and finally leading to the contracted distance to the front mirror in the primed frame being
 \begin{equation}
 D' = \frac{1}{\gamma}D
 \end{equation}
+so we have
+\begin{equation}
+D' \leq D
+\end{equation}
+we take from this that distance in the direction of movement of an object are contracted in its direction of movement compared to the rest frame of the object.
 </div>
 <h3 id="PositionandTimeTransformation_header">Position and Time Transformation</h3>
 <div id="ch2_PositionandTimeTransformation_content">
 <figure style="margin-right: 10px;">
 <img src="/visuals/svg/Tikz_simple_lorentz_transform_derivation.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>one frame of <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>...</figcaption>
+<figcaption>A diagram showing an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> in a frame with another primed frame's axis shown moving in the z-direction.</figcaption>
 </figure>
-For frame \(\lt S\gt \) we have it's origin \(O\) and an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> \(E\) located at \(\overrightarrow{OE}=(x,y,z)\) and a prime frame's \(\lt S'\gt \) origin \(O'\) moving at relative velocity \(v\), so that in the original frame we have after a time \(t\), \(\overrightarrow{OO'}=(0,0,vt)\). now from the last section, we have \(z'\) for the z-component of \(\overrightarrow{O'E}\) in the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span>, length contracted in this frame as \(z'/\gamma\) so that \(\overrightarrow{O'E} = (x,y,z'/\gamma)\) with the x and the y-components unaffected due to the cannon and ball thought experiment.
-so that we have in frame \(\lt S\gt \)
+If we are in a frame \(\lt S\gt \) with origin \(O\) at position \((0,0,0)\) and a primed frame \(\lt S'\gt \) moving in the z-direction at velocity \(v\) such that the position of the primed origin in this frame is
+\begin{equation}
+\overrightarrow{OO'}=(0,0,vt)
+\end{equation}
+at time \(t\) from when the origins overlapped, if there is an {def-event}{event} (lets say a light or another object reaching a mirror that is moving with the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span>s axis) described in this frames coordinates as
+\begin{equation}
+E = (x,y,z,t)
+\end{equation}
+with the spatial coordinates shown in the diagram as
+\begin{equation}
+\overrightarrow{OE}=(x,y,z)
+\end{equation}
+in the primed frame we have the event described as
+\begin{equation}
+E' = (x',y',z',t')
+\end{equation}
+now in the current frame we have the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span>'s axis moving with the mirror, from previous chapter we should have this primed distance in the z-direction to the event contracted, as the primed z-coordinates are contracted in this frame i.e. the events z-coordinate is \(z=z'/\gamma\), so that distance between the primes origin and the event in this frame (not the primed frame) is
+\begin{equation}
+\overrightarrow{O'E} = (x,y,z'/\gamma)
+\end{equation}
+noting that we have the x and the y-components unaffected due to the cannon and ball thought experiment from the first chapter. from the diagram we can see
 \begin{equation}
 \overrightarrow{OE}= \overrightarrow{OO'} + \overrightarrow{O'E}
 
 \end{equation}
-subbing in each part into this equation and rearranging the z-component we have
+subbing in each component into this equation for the z-direction and rearranging, we have
 \begin{equation}
 z' = \gamma (z-vt)
 \end{equation}
-now in frame \(\lt S'\gt \) we have \(\overrightarrow{OE}=(x,y,z/\gamma)\), \(\overrightarrow{OO'}=(0,0,vt')\), \(\overrightarrow{O'E} = (x,y,z')\), doing the same for these we have
+If we were instead in frame \(\lt S'\gt \) we would have \(\overrightarrow{OE}=(x,y,z/\gamma)\), \(\overrightarrow{OO'}=(0,0,vt')\), and \(\overrightarrow{O'E} = (x,y,z')\), doing the same for these we have
 \begin{equation}
 z = \gamma (z'+vt')
 \end{equation}
-Which should be expected as this shows the expected symmetry between the frames, as if we where originally in the \(\lt S'\gt \) frame we would have the \(\lt S\gt \) frame moving at -\(v\) relative to the \(\lt S'\gt \) frame, so we would expect that the inverse <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transformation</span> would replace one frames coordinates with the other and have the the negative of the velocity instead.
-Now substituting these into eachother we have
+Which should be expected as this shows the expected symmetry between the frames, as if we where originally in the \(\lt S'\gt \) frame we would have the \(\lt S\gt \) frame moving instead at -\(v\) in the z-direction relative to the \(\lt S'\gt \) frame, so we would expect that the inverse <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transformation</span> would replace one frames coordinates with the other and have the the negative of the velocity instead.
+Now substituting the z transforms into eachother we have
 \begin{equation}
 z = \gamma ( \gamma (z-vt)+vt')
 \end{equation}
@@ -691,11 +720,11 @@ leaving full description of the location and time of an <span onmouseover="docum
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \begin{aligned}
-&  x'=x \\ & y'=y \\ &z' = \gamma (z-vt)  \\
-\text{at time \ \ \ } \\
-& t'=\gamma \bigg(t-\frac{vz}{c^2}\bigg)  \\
-\text{with \ \ \ } \\
-&  \gamma = \dfrac{1}{\sqrt{1-\frac{v^2}{c^2}}}
+& x'=x                                         \\ & y'=y \\ &z' = \gamma (z-vt)  \\
+\text{at time \ \ \ }                           \\
+& t'=\gamma \bigg(t-\frac{vz}{c^2}\bigg)       \\
+\text{with \ \ \ }                              \\
+& \gamma = \dfrac{1}{\sqrt{1-\frac{v^2}{c^2}}}
 \end{aligned}
 }
 
@@ -712,6 +741,7 @@ t' \approx t
 z' \approx z - vt
 \end{equation}
 which is the expected result for the <span onmouseover="document.getElementById('def-galilean-transform').style.display='block'" onmouseout="document.getElementById('def-galilean-transform').style.display='none'">Galilean coordinates transform</span> , and what way we expect things to work in everyday life.
+**** could include graphs of classical vs relativistic quantities in swapping frames, either both quantities or graph of ratios, throughout sections
 </div>
 <h2 id="Variables_header">Variables</h2>
 <div id="ch2_Variables_content">
@@ -736,13 +766,13 @@ between time \(t_1\) and \(t_2\) is
 The <span onmouseover="document.getElementById('def-lorentz-transform').style.display='block'" onmouseout="document.getElementById('def-lorentz-transform').style.display='none'">Lorentz transformation</span> for this with \(t=0\) is
 \begin{equation}
 \Delta \mathbf{R}'_p = \begin{pmatrix}
-u_x \Delta t\\ u_y \Delta t \\ \gamma \left( u_z \Delta t - v \Delta t \right) \\
+u_x \Delta t \\ u_y \Delta t \\ \gamma \left( u_z \Delta t - v \Delta t \right) \\
 \end{pmatrix}
 \end{equation}
 but this gives primed times to be \(\Delta t'=-\gamma\dfrac{v}{c^2} u_z \Delta t\), and we want to find the positions that have the same time, therefore we need to take away the displacement moved in the the primed time \(\Delta t' \mathbf{U'}_p \) which is
 \begin{equation}
 \Delta \mathbf{R}'_p = \begin{pmatrix}
-u_x \Delta t\\ u_y \Delta t \\ \gamma \left( u_z \Delta t - v \Delta t \right) \\
+u_x \Delta t \\ u_y \Delta t \\ \gamma \left( u_z \Delta t - v \Delta t \right) \\
 \end{pmatrix} + \gamma\dfrac{v}{c^2} u_z \Delta t  \mathbf{U'}_p.
 \end{equation}
 If we divide across by the change in time \(\Delta t\) and take this time change to go to an infinitesimal \(dt\) and substituting the time in terms of <span onmouseover="document.getElementById('def-time-dilation').style.display='block'" onmouseout="document.getElementById('def-time-dilation').style.display='none'">dilated primed time</span> \(dt = \frac{1}{\gamma}dt'\) we then have the primed velocity given as
@@ -756,10 +786,10 @@ rearranging for primed velocity we have
 
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \begin{aligned}
-&\mathbf{U'}_p = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }\begin{pmatrix}
+& \mathbf{U'}_p = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }\begin{pmatrix}
 u_x \\ u_y  \\ \gamma \left( u_z  - v  \right) \\
-\end{pmatrix}  \\
-&\text{at position \(\mathbf{R'}\) and time \(t'\) }
+\end{pmatrix} \\
+& \text{at position \(\mathbf{R'}\) and time \(t'\) }
 \end{aligned}
 }
 \end{equation}
@@ -769,7 +799,7 @@ u_x \\ u_y  \\ \gamma \left( u_z  - v  \right) \\
 from eq. \eqref{eq: Lorentz transformation}, we have
 \begin{equation}
 \begin{aligned}
-&  dx'=dx \\ & dy'=dy \\ &dz' = \gamma (dz-vdt)  \\
+& dx'=dx                                    \\ & dy'=dy \\ &dz' = \gamma (dz-vdt)  \\
 & dt'=\gamma \bigg(dt-\frac{vdz}{c^2}\bigg)
 \end{aligned}
 \end{equation}
@@ -783,10 +813,10 @@ now dividing the top and bottom of fraction by \(dt\) for last step.
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \begin{aligned}
-&\mathbf{U'}_p = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }\begin{pmatrix}
+& \mathbf{U'}_p = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }\begin{pmatrix}
 u_x \\ u_y  \\ \gamma \left( u_z  - v  \right) \\
-\end{pmatrix}  \\
-&\text{at position \(\mathbf{R'}\) and time \(t'\) }
+\end{pmatrix} \\
+& \text{at position \(\mathbf{R'}\) and time \(t'\) }
 \end{aligned}
 }
 \end{equation}
@@ -819,13 +849,13 @@ Same <span onmouseover="document.getElementById('def-Primed-Frame').style.displa
 To find how the acceleration of a particle transforms for an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> in two different frames we take the differential of the velocity <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> eq. \eqref{vector velocity transform} and use the differentiation rules for two generic functions \(f\) and \(g\): \(d(gf)=f dg+g df\), and \(d[f(g(x))]= dg(x) * df(g(x))\)
 \begin{equation}
 \begin{aligned}
-d\mathbf{U'} &= \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }\begin{pmatrix}
+d\mathbf{U'} & = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }\begin{pmatrix}
 du_x \\ du_y  \\ \gamma du_z  \\
 \end{pmatrix} + \dfrac{\gamma \dfrac{v}{c^2} du_z}{\gamma^2\left(1- \dfrac{v}{c^2} u_z\right)^2 }\begin{pmatrix}
 u_x \\ u_y  \\ \gamma \left( u_z  - v  \right) \\
-\end{pmatrix}  \\
-&= ... \\
-&=  \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right)^2 }\begin{pmatrix}
+\end{pmatrix} \\
+& = ...                                                                                                                                                                                                 \\
+& =  \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right)^2 }\begin{pmatrix}
 du_x + \frac{v}{c^2}( u_x du_z - u_z du_x) \\ du_y + \frac{v}{c^2}( u_y du_z - u_z du_y) \\ \frac{1}{\gamma} du_z \\
 \end{pmatrix}
 \end{aligned}
@@ -901,9 +931,9 @@ For a given coordinate \(\mathbf{R}\) we have it shown how to get spherical pola
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \mathbf{R} = \begin{pmatrix}
-x\\ y \\ z
+x \\ y \\ z
 \end{pmatrix} =  r \begin{pmatrix}
-\cos{\phi}\sin{\theta}\\ \sin{\phi}\sin{\theta} \\ \cos{\theta}
+\cos{\phi}\sin{\theta} \\ \sin{\phi}\sin{\theta} \\ \cos{\theta}
 \end{pmatrix}
 }
 \end{equation}
@@ -922,22 +952,22 @@ with the unit vectors for the spherical polar coordinates
 - \sin\theta
 \end{pmatrix},
 \mathbf{\hat{\text{\(\phi\)}}} = \begin{pmatrix}
-- \, \sin\phi \\
+- \, \sin\phi            \\
 \hphantom{-} \, \cos\phi \\
 0
 \end{pmatrix}
 \end{equation}
 \begin{equation}
 \begin{aligned}
-\frac{\partial\mathbf{R}}{\partial r} &= \mathbf{\hat{\text{\(r\)}}}\\
-\frac{\partial\mathbf{R}}{\partial \theta} &= \begin{pmatrix}
+\frac{\partial\mathbf{R}}{\partial r}      & = \mathbf{\hat{\text{\(r\)}}}                                 \\
+\frac{\partial\mathbf{R}}{\partial \theta} & = \begin{pmatrix}
 r \cos\theta  \cos\phi \\
 r \cos\theta  \sin\phi \\
 -r \sin\theta
-\end{pmatrix} =r\mathbf{\hat{\text{\(\theta\)}}} \\
-\frac{\partial\mathbf{R}}{\partial \phi} &= \begin{pmatrix}
+\end{pmatrix} =r\mathbf{\hat{\text{\(\theta\)}}}            \\
+\frac{\partial\mathbf{R}}{\partial \phi}   & = \begin{pmatrix}
 -r \sin\theta  \sin\phi \\
-r \sin\theta  \cos\phi \\
+r \sin\theta  \cos\phi  \\
 0
 \end{pmatrix} = r \sin\theta \mathbf{\hat{\text{\(\phi\)}}}
 \end{aligned}
@@ -1053,7 +1083,7 @@ The fraction of the field of view covered from a point is given by \(\Omega/ 4\p
 for the case where the speed is that of light, \(|u|=c\), with the direction in first frame is at an angle \(\alpha\) from the z-axis and \(\varphi\), so that in spherical polar coordinates
 \begin{equation}
 \mathbf{c} = c \begin{pmatrix}
-\cos{\varphi}\sin{\alpha}\\ \sin{\varphi}\sin{\alpha} \\ \cos{\alpha}
+\cos{\varphi}\sin{\alpha} \\ \sin{\varphi}\sin{\alpha} \\ \cos{\alpha}
 \end{pmatrix},
 \end{equation}
 we then have from the velocity <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> in Eq. \eqref{vector velocity transform}
@@ -1061,10 +1091,10 @@ we then have from the velocity <span onmouseover="document.getElementById('def-t
 
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \begin{aligned}
-&\mathbf{c'} = \dfrac{c}{\gamma\left(1- \dfrac{v}{c} \cos\alpha\right) }\begin{pmatrix}
-\sin\alpha\cos\varphi  \\ \sin\alpha\sin\varphi  \\ \gamma \left( \cos\alpha  - \dfrac{v}{c}  \right) \\
-\end{pmatrix}  \\
-&\text{at position \(\mathbf{R'}\) and time \(t'\) }
+& \mathbf{c'} = \dfrac{c}{\gamma\left(1- \dfrac{v}{c} \cos\alpha\right) }\begin{pmatrix}
+\sin\alpha\cos\varphi \\ \sin\alpha\sin\varphi  \\ \gamma \left( \cos\alpha  - \dfrac{v}{c}  \right) \\
+\end{pmatrix} \\
+& \text{at position \(\mathbf{R'}\) and time \(t'\) }
 \end{aligned}
 }
 \end{equation}
@@ -1081,7 +1111,7 @@ for a time \(t=T_{prop} \geq 0\), so that the position of any part of the light 
 \begin{equation}
 
 \mathbf{R} =  c t \begin{pmatrix}
-\cos{\varphi}\sin{\alpha}\\ \sin{\varphi}\sin{\alpha} \\ \cos{\alpha}
+\cos{\varphi}\sin{\alpha} \\ \sin{\varphi}\sin{\alpha} \\ \cos{\alpha}
 \end{pmatrix}.
 \end{equation}
 <figure style="margin-right: 10px;">
@@ -1096,7 +1126,7 @@ The <span onmouseover="document.getElementById('def-lorentz-transform').style.di
 \begin{equation}
 
 \mathbf{R'} = c t \begin{pmatrix}
-\cos{\varphi}\sin{\alpha}\\ \sin{\varphi}\sin{\alpha} \\ \gamma\left(\cos{\alpha} - \dfrac{v}{c}\right)
+\cos{\varphi}\sin{\alpha} \\ \sin{\varphi}\sin{\alpha} \\ \gamma\left(\cos{\alpha} - \dfrac{v}{c}\right)
 \end{pmatrix},
 \end{equation}
 at primed time
@@ -1169,14 +1199,14 @@ This system is then transformed as follows; the coordinate \(\mathbf{R}\) is tra
 \begin{equation}
 
 \mathbf{R'} =   \begin{pmatrix}
-x\\ y \\ \gamma z
+x \\ y \\ \gamma z
 \end{pmatrix},
 \end{equation}
 the light pulse's velocity using eq. (REF) in Cartesian coordinates and particles speed in the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> \(u_p=-v\)
 \begin{equation}
 
 \mathbf{c'} =  \dfrac{c}{\text{Ã…}} \begin{pmatrix}
-\frac{x}{\|\mathbf{R}\|}\\ \frac{y}{\|\mathbf{R}\|} \\ \gamma \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_p}{c} \right)
+\frac{x}{\|\mathbf{R}\|} \\ \frac{y}{\|\mathbf{R}\|} \\ \gamma \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_p}{c} \right)
 \end{pmatrix}
 \end{equation}
 The time that the particle emits the light in the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">proper frame</span> is \(t_{ret}= - \frac{||\mathbf{R}_{prop}||}{||\mathbf{c}||}\) which corresponds to the time
@@ -1190,15 +1220,15 @@ then in the <span onmouseover="document.getElementById('def-Primed-Frame').style
 to find the position the light pulse is currently at, at time \(t'=0\), we have to rewind its time from the position \(\mathbf{R}'\) that its at when using the <span onmouseover="document.getElementById('def-lorentz-transform').style.display='block'" onmouseout="document.getElementById('def-lorentz-transform').style.display='none'">Lorentz transform</span> at time \(t'= -\gamma\frac{vz}{c^2}= \gamma\frac{u_p z}{c^2}\) taking away the displacement it propagated in this time to get the current position of light to be ((\(t'_{prop} = - t'_{ret}\)))
 \begin{equation}
 \begin{split}
-\mathbf{R'}_l &= \mathbf{R'}_{ret} + \mathbf{c'}t'_{prop} = \left( \mathbf{u}_p - \mathbf{c}' \right)t'_{ret} \\
-&= \gamma \frac{||\mathbf{R}||}{\text{Ã…}}
+\mathbf{R'}_l & = \mathbf{R'}_{ret} + \mathbf{c'}t'_{prop} = \left( \mathbf{u}_p - \mathbf{c}' \right)t'_{ret} \\
+& = \gamma \frac{||\mathbf{R}||}{\text{Ã…}}
 \begin{pmatrix}
-\frac{x}{||\mathbf{R}||}\\  \frac{y}{||\mathbf{R}||} \\ \gamma \left( \frac{z}{||\mathbf{R}||} +\frac{u_p}{c}\right) - \text{Ã…}\frac{u_p}{c}
+\frac{x}{||\mathbf{R}||} \\  \frac{y}{||\mathbf{R}||} \\ \gamma \left( \frac{z}{||\mathbf{R}||} +\frac{u_p}{c}\right) - \text{Ã…}\frac{u_p}{c}
 \end{pmatrix}
-= ...\\
-&= \frac{1}{\text{Ã…}}
+= ...                                                                                                          \\
+& = \frac{1}{\text{Ã…}}
 \begin{pmatrix}
-\gamma x\\  \gamma y \\ z
+\gamma x \\  \gamma y \\ z
 \end{pmatrix}
 \end{split}
 \end{equation}
@@ -1300,29 +1330,29 @@ system:
 If we take the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> of an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> and source particle that emits a pulse of light from its position at \(\mathbf{R}\) so that it is received by the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> at the origin, at time \(t=0\). This would give the Propagation time as \(T_{prop}= \frac{|\mathbf{R}|}{c}\) (and hence the time the pulse was emitted as \(t_{ret}=-T_{prop}\)) and the velocity of the lights propagation \(\mathbf{c} = -c \frac{\mathbf{R}}{|\mathbf{R}|}\). and the angle \(\theta_{R} = \theta_c - \pi\)
 \begin{equation}
 \mathbf{R} =  c T_{prop} \begin{pmatrix}
-0\\ \sin{\theta_{R}} \\ \cos{\theta_{R}}
+0 \\ \sin{\theta_{R}} \\ \cos{\theta_{R}}
 \end{pmatrix}
 =  - c T_{prop} \begin{pmatrix}
-0\\ \sin{\theta_c} \\ \cos{\theta_c}
+0 \\ \sin{\theta_c} \\ \cos{\theta_c}
 \end{pmatrix}
 \end{equation}
 and velocity of light given as
 \begin{equation}
 \mathbf{c} = c \begin{pmatrix}
-0\\ \sin{\theta_c} \\ \cos{\theta_c}
+0 \\ \sin{\theta_c} \\ \cos{\theta_c}
 \end{pmatrix}
 \end{equation}
 The particle emits the pulse at time \(t=t_{ret}\) from \(\mathbf{R}\), so this corresponds to the primed position
 \begin{equation}
 \begin{aligned}
-\mathbf{R}'_{ret} &=  \begin{pmatrix}
-0\\ c t_{prop}\sin{\theta_{R}} \\ \gamma \left( c t_{prop}\cos{\theta_{R}} - vt_{ret} \right)\\
+\mathbf{R}'_{ret} & =  \begin{pmatrix}
+0 \\ c t_{prop}\sin{\theta_{R}} \\ \gamma \left( c t_{prop}\cos{\theta_{R}} - vt_{ret} \right)\\
 \end{pmatrix} = ct_{ret}
 \begin{pmatrix}
-0\\ \sin{\theta_c} \\ \gamma \left( \cos{\theta_c} - \frac{v}{c} \right)\\
-\end{pmatrix} \\
-\text{at time }& \\
-t' &=
+0 \\ \sin{\theta_c} \\ \gamma \left( \cos{\theta_c} - \frac{v}{c} \right)\\
+\end{pmatrix}                                                                                         \\
+\text{at time }   &                                                                                                                                              \\
+t'                & =
 \gamma (t_{ret} - \frac{v}{c^2} (c t_{prop}\cos{\theta_{R}}) =
 \gamma t_{ret}(1-\frac{v}{c}  \cos{\theta_c} )
 \end{aligned}
@@ -1370,13 +1400,13 @@ and will also therefore agree on derivatives with respect to \(\tau\) (where it 
 we have the position of an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> in space-time given as a 4-position vector (what is a 4-vector)
 \begin{equation}
 \mathbf{S} = \begin{pmatrix}
-ct\\x\\y\\z
+ct \\x\\y\\z
 \end{pmatrix}
 \end{equation}
 taking a derivative with respect to \(\tau\) gives us the 4-velocity 4-vector with \(\frac{d}{d\tau} = \frac{dt}{d\tau}\frac{d}{dt} = \gamma_u \frac{d}{dt} \)
 \begin{equation}
 \mathbf{U} = \frac{d\mathbf{S}}{d\tau} = \gamma_u \frac{d}{dt} \begin{pmatrix}
-ct\\x\\y\\z
+ct \\x\\y\\z
 \end{pmatrix} = \gamma_u \begin{pmatrix}
 c \\ u_x \\ u_y \\ u_z
 \end{pmatrix}
@@ -1509,8 +1539,8 @@ and substituting this into formula for total force:
 since \(\mathbf{F}_{\langle ' \rangle} =\mathbf{F}_{\parallel \langle ' \rangle} +\mathbf{F}_{\perp\langle ' \rangle}\) we can use equations above to get:
 \begin{equation}
 \begin{split}
-\mathbf{F}_{\langle ' \rangle}  &= \dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v} + \gamma\bigg(\mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}\bigg)\\
-&= \gamma\mathbf{F} + (1-\gamma)\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
+\mathbf{F}_{\langle ' \rangle} & = \dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v} + \gamma\bigg(\mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}\bigg) \\
+& = \gamma\mathbf{F} + (1-\gamma)\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
 \end{split}
 \end{equation}
 this is the same for electric field as it only differs by a magnitude to the force.<br>

@@ -1,17 +1,17 @@
 \documentclass[oneside]{book}
 \usepackage{Preamble}
 \begin{document}
-    \def\comp{1} % 0 = main only, 1 = all 
+    \def\comp{0} % 0 = main only, 1 = all
 
     \if\comp0 % Compile Main only
-    
+
         \pagecolor{Beige}
         \input{Tex/Contents}
         \input{Tex/Main_Matter}
         \printbibliography
-    
+
     \else % Compile All
-    
+
         \input{Tex/Front_Cover}
         \pagecolor{Beige}
         \input{Tex/Epigraph}
@@ -20,9 +20,9 @@
         \input{Tex/Main_Matter}
         \input{Tex/Appendix}
         \printbibliography
-        \input{Tex/Back_Cover}  
-        
+        \input{Tex/Back_Cover}
+
     \fi
-    
-    
+
+
 \end{document}

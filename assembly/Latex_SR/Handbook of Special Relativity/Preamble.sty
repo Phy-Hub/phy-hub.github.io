@@ -8,8 +8,8 @@
 \definecolor{Beige}{HTML}{ffe4c8}
 
 % Page Headers and Footers
-\usepackage{fancyhdr} 
-\pagestyle{fancy}  
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 \fancyhf{}
 \cfoot{\thepage}
 
@@ -19,13 +19,13 @@
 %
 \renewcommand{\baselinestretch}{1.5} % line spacing
 \renewcommand{\headrulewidth}{0.8pt} % header line
-\usepackage{paracol}
+\setlength{\parindent}{0pt}
 
-% 
+%
 \usepackage{multicol}
 
-%█████████████████████████████████████████████████████ 
-% MATH 
+%█████████████████████████████████████████████████████
+% MATH
 
 %\usepackage{mathtools}
 %\usepackage{amsmath}
@@ -34,8 +34,8 @@
 \newcommand\mhl[1]{\tcbhighmath{#1}}
 \tcbset{highlight math style={ colframe=black, colback=yellow!25!white }}
 
-%█████████████████████████████████████████████████████ 
-% PLOTS 
+%█████████████████████████████████████████████████████
+% PLOTS
 
 % Figures
 \usepackage{caption}
@@ -53,7 +53,7 @@
 \usepackage{tikz-3dplot}
 \usetikzlibrary{external}
 \tikzexternalize[prefix=./tikz/]% define output directory
-%██████████████████████████████████████████████████████ 
+%██████████████████████████████████████████████████████
 % Links
 
 %\usepackage{url}
@@ -61,7 +61,7 @@
 \hypersetup{hidelinks}
 
 
-%█████████████████████████████████████████████████████ 
+%█████████████████████████████████████████████████████
 % Bib
 
 \usepackage{biblatex}

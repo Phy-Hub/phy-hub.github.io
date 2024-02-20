@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.10)  11 FEB 2024 13:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.10)  18 FEB 2024 11:59
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -753,6 +753,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 )
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/asymptote\asymptote.sty
 Package: asymptote 2021/12/29 v1.37 Asymptote style file for LaTeX
+(tikz/Tikz_Spherical_Polar_Coordinates.pre)
 \ASYbox=\box132
 \ASYdimen=\dimen287
 \c@asy=\count338
@@ -1381,8 +1382,9 @@ isable this.
 LaTeX Warning: Reference `fig: coordinate transform' on page 31 undefined on in
 put line 727.
 
-The command '\includegraphics [width=10cm]{images/pdf/coord_transforms.pdf}' ha
-s been optimized away. Use '/tikz/external/optimize=false' to disable this.
+The command '\includegraphics [width=10cm]{images/pdf/coordinate_transforms.pdf
+}' has been optimized away. Use '/tikz/external/optimize=false' to disable this
+.
 
 LaTeX Warning: Reference `fig: Gamma Factor' on page 32 undefined on input line
  746.
@@ -1454,22 +1456,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 823--824
  []
 
 Chapter 3.
-
-Overfull \hbox (3.4063pt too wide) in paragraph at lines 835--835
-[]\OT1/cmr/bx/n/14.4 Delayed View of Co-or-di-nates in their Primed
- []
-
-
-LaTeX Warning: Reference `fig: full coordinate transform' on page 36 undefined 
-on input line 837.
-
-The command '\includegraphics [width=10cm]{images/pdf/coordinate_transforms.pdf
-}' has been optimized away. Use '/tikz/external/optimize=false' to disable this
-.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
+The command '\includegraphics [width=10cm]{images/pdf/coordinate_transforms_2.p
+df}' has been optimized away. Use '/tikz/external/optimize=false' to disable th
+is.
 Chapter 4.
 \openout6 = `./tikz/Tikz_Spherical_Polar_Coordinates.dpth'.
 
@@ -1478,10 +1471,10 @@ Chapter 4.
 {C:/Users/one_p/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
 LaTeX Warning: Reference `vector velocity transform' on page 41 undefined on in
-put line 1054.
+put line 1093.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1075--1077
+Underfull \hbox (badness 10000) in paragraph at lines 1114--1116
 
  []
 
@@ -1493,7 +1486,7 @@ The command '\includegraphics [width=8cm]{images/pdf/Aberrated_velocities.pdf}'
  has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Citation 'einstein1905electrodynamics' on page 43 undefined on i
-nput line 1153.
+nput line 1194.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
@@ -1501,14 +1494,14 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: Retarded field outward field transform' on page 
-43 undefined on input line 1212.
+43 undefined on input line 1253.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-Overfull \hbox (18.89792pt too wide) in paragraph at lines 1314--1314
+Overfull \hbox (18.89792pt too wide) in paragraph at lines 1357--1357
 []\OT1/cmr/bx/n/14.4 Relativistic beam-ing or Flux from Point Source 
  []
 
@@ -1520,14 +1513,14 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `Cosine transform' on page 47 undefined on input line 
-1478.
+1521.
 
 
-LaTeX Warning: Citation 'hogg1997special' on page 47 undefined on input line 14
-78.
+LaTeX Warning: Citation 'hogg1997special' on page 47 undefined on input line 15
+21.
 
 
-Overfull \hbox (8.57126pt too wide) in paragraph at lines 1499--1499
+Overfull \hbox (8.57126pt too wide) in paragraph at lines 1542--1542
 []\OT1/cmr/bx/n/14.4 Relativistic Beam-ing of Mul-ti-ple Wave Fronts
  []
 
@@ -1535,178 +1528,123 @@ The command '\includegraphics [width=10cm]{images/pdf/Still_Retarded_Field_Both
 _Frames.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1515--1516
+Underfull \hbox (badness 10000) in paragraph at lines 1558--1559
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1517--1518
+Underfull \hbox (badness 10000) in paragraph at lines 1560--1561
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1519--1520
+Underfull \hbox (badness 10000) in paragraph at lines 1562--1563
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1521--1522
+Underfull \hbox (badness 10000) in paragraph at lines 1564--1565
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1523--1524
+Underfull \hbox (badness 10000) in paragraph at lines 1566--1567
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1525--1526
+Underfull \hbox (badness 10000) in paragraph at lines 1568--1569
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1527--1528
+Underfull \hbox (badness 10000) in paragraph at lines 1570--1571
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1529--1530
+Underfull \hbox (badness 10000) in paragraph at lines 1572--1573
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1531--1532
+Underfull \hbox (badness 10000) in paragraph at lines 1574--1575
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1533--1534
+Underfull \hbox (badness 10000) in paragraph at lines 1576--1577
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1535--1536
+Underfull \hbox (badness 10000) in paragraph at lines 1578--1579
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1537--1538
+Underfull \hbox (badness 10000) in paragraph at lines 1580--1581
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1539--1540
+Underfull \hbox (badness 10000) in paragraph at lines 1582--1583
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1541--1542
+Underfull \hbox (badness 10000) in paragraph at lines 1584--1585
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1543--1544
+Underfull \hbox (badness 10000) in paragraph at lines 1586--1587
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1545--1546
+Underfull \hbox (badness 10000) in paragraph at lines 1588--1589
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1547--1548
+Underfull \hbox (badness 10000) in paragraph at lines 1590--1591
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1549--1550
+Underfull \hbox (badness 10000) in paragraph at lines 1592--1593
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1551--1552
+Underfull \hbox (badness 10000) in paragraph at lines 1594--1595
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1553--1554
+Underfull \hbox (badness 10000) in paragraph at lines 1596--1597
 
  []
 
 Chapter 5.
 
 LaTeX Warning: Reference `vector velocity transform' on page 51 undefined on in
-put line 1560.
+put line 1603.
 
 Chapter 6.
 
-Overfull \hbox (136.80379pt too wide) detected at line 1734
+Overfull \hbox (136.80379pt too wide) detected at line 1794
 [][][]\OML/cmm/m/it/10 A \OT1/cmr/m/n/10 = [] = [] \OMS/cmsy/m/n/10 ^^A []   $ 
   [] ^^A [] [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^M[] [] \OT1/cmr/m/n/10 = []
  = \OML/cmm/m/it/10 ^^M[] a []
  []
 
 
-Overfull \hbox (15.69284pt too wide) in paragraph at lines 1763--1765
+Overfull \hbox (15.69284pt too wide) in paragraph at lines 1823--1825
 \OT1/cmr/m/n/10 where $\OML/cmm/m/it/10 u[]$ \OT1/cmr/m/n/10 is the ve-loc-ity 
 of the par-ti-cle in this []primed frame[] and $\OML/cmm/m/it/10 ^^M[] \OT1/cmr
 /m/n/10 = 1\OML/cmm/m/it/10 =[]$\OT1/cmr/m/n/10 .
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1772--1773
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1774--1776
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1814--1815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1816--1817
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1818--1819
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1820--1821
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1822--1823
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1824--1825
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1826--1827
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1828--1829
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1830--1831
-
  []
 
 
@@ -1715,22 +1653,77 @@ Underfull \hbox (badness 10000) in paragraph at lines 1832--1833
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1834--1835
+Underfull \hbox (badness 10000) in paragraph at lines 1834--1836
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1836--1837
+Underfull \hbox (badness 10000) in paragraph at lines 1874--1875
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1838--1839
+Underfull \hbox (badness 10000) in paragraph at lines 1876--1877
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1840--1841
+Underfull \hbox (badness 10000) in paragraph at lines 1878--1879
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1880--1881
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1882--1883
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1884--1885
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1886--1887
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1888--1889
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1890--1891
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1892--1893
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1894--1895
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1896--1897
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1898--1899
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1900--1901
 
  []
 
@@ -1836,8 +1829,8 @@ es.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38159 strings out of 474486
- 787053 string characters out of 5743755
+ 38162 strings out of 474486
+ 787376 string characters out of 5743755
  1947528 words of memory out of 5000000
  59893 multiletter control sequences out of 15000+600000
  566970 words of font info for 66 fonts, out of 8000000 for 9000
@@ -1846,10 +1839,10 @@ Here is how much of TeX's memory you used:
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb>
-Output written on ./tikz/Tikz_Spherical_Polar_Coordinates.pdf (1 page, 37430 by
+Output written on ./tikz/Tikz_Spherical_Polar_Coordinates.pdf (1 page, 37450 by
 tes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
+ 363 PDF objects out of 1000 (max. 8388607)
  1 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

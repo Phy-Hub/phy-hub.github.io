@@ -1,5 +1,4 @@
 \thispagestyle {empty}
-\contentsline {chapter}{Preface}{i}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Conceptual Overview}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Classical Addition of Velocities}{2}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Inertial Reference Frame}{3}{section.1.2}%
@@ -10,20 +9,20 @@
 \contentsline {subsection}{\numberline {1.6.1}Time Dilation}{10}{subsection.1.6.1}%
 \contentsline {subsection}{\numberline {1.6.2}Simultaneity}{11}{subsection.1.6.2}%
 \contentsline {subsection}{\numberline {1.6.3}Length Contraction}{12}{subsection.1.6.3}%
-\contentsline {subsubsection}{3 car system way of explaining length contraction (may delete)}{13}{section*.16}%
+\contentsline {subsubsection}{3 car system way of explaining length contraction (may delete)}{13}{section*.13}%
 \contentsline {subsection}{\numberline {1.6.4}No Width Contraction}{15}{subsection.1.6.4}%
 \contentsline {section}{\numberline {1.7}Doppler Effect}{15}{section.1.7}%
 \contentsline {section}{\numberline {1.8}Aberration}{16}{section.1.8}%
 \contentsline {section}{\numberline {1.9}Relativistic Beaming}{18}{section.1.9}%
-\contentsline {subsection}{\numberline {1.9.1}Retarded Field}{19}{subsection.1.9.1}%
-\contentsline {subsection}{\numberline {1.9.2}Perceived vs Actual Speed}{20}{subsection.1.9.2}%
-\contentsline {section}{\numberline {1.10}Velocity Transformation}{21}{section.1.10}%
+\contentsline {subsection}{\numberline {1.9.1}Retarded Field}{18}{subsection.1.9.1}%
+\contentsline {subsection}{\numberline {1.9.2}Perceived vs Actual Speed}{19}{subsection.1.9.2}%
+\contentsline {section}{\numberline {1.10}Velocity Transformation}{20}{section.1.10}%
 \contentsline {section}{\numberline {1.11}The More Abstract Properties...}{21}{section.1.11}%
 \contentsline {section}{\numberline {1.12}Summary}{21}{section.1.12}%
 \contentsline {section}{\numberline {1.13}Definitions}{23}{section.1.13}%
-\contentsline {subsubsection}{[Mathematical Framework]}{23}{section*.25}%
-\contentsline {subsubsection}{[The Mechanics]}{24}{section*.26}%
-\contentsline {subsubsection}{[Defs for later]}{25}{section*.27}%
+\contentsline {subsubsection}{[Mathematical Framework]}{23}{section*.22}%
+\contentsline {subsubsection}{[The Mechanics]}{24}{section*.23}%
+\contentsline {subsubsection}{[Defs for later]}{25}{section*.24}%
 \contentsline {chapter}{\numberline {2}Positions, Time and Velocity}{26}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Classical Relativity}{26}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Postulates of Special Relativity}{30}{section.2.2}%
@@ -36,64 +35,34 @@
 \contentsline {section}{\numberline {2.5}Variables}{40}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Observers Delayed World View}{43}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Relativistic Observers Delayed view}{43}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Delayed View and Distribution of Transformed Coordinates}{46}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Delayed Coordinate Distribution}{47}{subsection.3.2.1}%
-\contentsline {chapter}{\numberline {4}Spherical light pulses}{48}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Spherical Polar Coordinates}{48}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Light Speed Velocity Transform}{49}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Aberration in Special Relativity}{50}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Setup of Spherical light Pulse}{50}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Aberration}{51}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Transform of Light Pulse from Origin}{53}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Doppler Effect (to come back to)}{55}{section.4.5}%
+\contentsline {section}{\numberline {3.2}Delayed View of Transformed Coordinates}{45}{section.3.2}%
+\contentsline {subsubsection}{Delayed Coordinate Distribution and Density}{46}{section*.33}%
+\contentsline {chapter}{\numberline {4}Spherical light pulses}{47}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Spherical Polar Coordinates}{47}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Light Speed Velocity Transform}{48}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Aberration in Special Relativity}{49}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Transform of Light Pulse from Origin}{50}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Setup of Spherical light Pulse}{52}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Aberration}{53}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Doppler Effect (to come back to)}{54}{section.4.5}%
 \contentsline {section}{\numberline {4.6}Relativistic beaming or Flux from Point Source}{57}{section.4.6}%
 \contentsline {subsection}{\numberline {4.6.1}Surface element}{57}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Field Flux}{58}{subsection.4.6.2}%
-\contentsline {section}{\numberline {4.7}Relativistic Beaming of Multiple Wave Fronts of Light}{59}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Variables}{59}{section.4.8}%
-\contentsline {chapter}{\numberline {5}Acceleration TODO}{62}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Generalised Acceleration Transform}{63}{section.5.1}%
-\contentsline {chapter}{\numberline {6}Invariant Quantities TODO}{64}{chapter.6}%
-\contentsline {section}{\numberline {6.1}recap the conserved quantity from space and time coordinates}{65}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}4-Acceleration}{68}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}4-force}{68}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {4.6.2}Field Flux}{57}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}Relativistic Beaming of Multiple Wave Fronts of Light}{58}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Variables}{58}{section.4.8}%
+\contentsline {chapter}{\numberline {5}Acceleration TODO}{61}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Generalised Acceleration Transform}{62}{section.5.1}%
+\contentsline {chapter}{\numberline {6}Invariant Quantities TODO}{63}{chapter.6}%
+\contentsline {section}{\numberline {6.1}recap the conserved quantity from space and time coordinates}{64}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}4-Acceleration}{67}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}4-force}{67}{subsection.6.1.2}%
 \contentsline {section}{\numberline {6.2}Energy-Mass Equivalence}{68}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Energy-Momentum (Equivalence)}{69}{section.6.3}%
+\contentsline {section}{\numberline {6.3}Energy-Momentum (Equivalence)}{68}{section.6.3}%
 \contentsline {section}{\numberline {6.4}Force Transform TODO}{69}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}not sure what this is}{70}{subsection.6.4.1}%
-\contentsline {section}{\numberline {6.5}Variables}{71}{section.6.5}%
+\contentsline {subsection}{\numberline {6.4.1}not sure what this is}{69}{subsection.6.4.1}%
+\contentsline {section}{\numberline {6.5}Variables}{70}{section.6.5}%
 \contentsline {chapter}{\numberline {7}equation for motion in primed frame for arbitrary proper frame motion}{72}{chapter.7}%
 \contentsline {chapter}{\numberline {8}None Point Like Sources}{73}{chapter.8}%
 \contentsline {chapter}{\numberline {9}Thought Experiments}{74}{chapter.9}%
 \contentsline {chapter}{\numberline {10}Applications}{75}{chapter.10}%
 \contentsline {chapter}{\numberline {11}Steps for Frame Swapping}{76}{chapter.11}%
-\contentsline {chapter}{\numberline {A}Overview of Aberration equations}{77}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Aberration Equations}{77}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Vectors}{77}{section.A.2}%
-\contentsline {section}{\numberline {A.3}Trig}{78}{section.A.3}%
-\contentsline {section}{\numberline {A.4}Differential}{78}{section.A.4}%
-\contentsline {chapter}{\numberline {B}Generalised Lorentz Vector Transformations}{79}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Lorentz boost}{79}{section.B.1}%
-\contentsline {section}{\numberline {B.2}Coordinate Transform}{80}{section.B.2}%
-\contentsline {section}{\numberline {B.3}Velocity Transform}{81}{section.B.3}%
-\contentsline {section}{\numberline {B.4}Paradoxes and confusions: (possibly for another video)}{81}{section.B.4}%
-\contentsline {chapter}{\numberline {C}Velocity Transform for propagation at $-c$}{83}{appendix.C}%
-\contentsline {chapter}{\numberline {D}Two Consecutive Velocity Transforms}{84}{appendix.D}%
-\contentsline {section}{\numberline {D.1}Acceleration Transform with consistent time (checked) (( when transformed to another frame and then back, it does not give original acceleration)) (((assumed wrong as velocity due to the time difference due to position not removed)))}{85}{section.D.1}%
-\contentsline {section}{\numberline {D.2}Previous acceleration transform}{86}{section.D.2}%
-\contentsline {section}{\numberline {D.3}Positional transform with time the same at all coordinates}{86}{section.D.3}%
-\contentsline {section}{\numberline {D.4}Lorentz Invariant Quantities}{87}{section.D.4}%
-\contentsline {subsubsection}{Do we need this, since next section is on retarded position}{87}{section*.42}%
-\contentsline {section}{\numberline {D.5}...remove ... Retarded System of Light Pulse From Source at Origin}{88}{section.D.5}%
-\contentsline {section}{\numberline {D.6}Acceleration}{92}{section.D.6}%
-\contentsline {subsection}{\numberline {D.6.1}General Equation}{92}{subsection.D.6.1}%
-\contentsline {subsection}{\numberline {D.6.2}Co-moving Charges}{92}{subsection.D.6.2}%
-\contentsline {section}{\numberline {D.7}Derivation from Spherical Light Pulse}{93}{section.D.7}%
-\contentsline {section}{\numberline {D.8}Length Contraction}{98}{section.D.8}%
-\contentsline {section}{\numberline {D.9}Time Dilation}{98}{section.D.9}%
-\contentsline {section}{\numberline {D.10}Generalised velocity vector transform}{98}{section.D.10}%
-\contentsline {subsection}{\numberline {D.10.1}god knows what this is: Doppler Effect}{98}{subsection.D.10.1}%
-\contentsline {chapter}{\numberline {E}Alternative Derivation}{100}{appendix.E}%
-\contentsline {chapter}{\numberline {F}Todo for these notes}{102}{appendix.F}%
-\contentsline {section}{\numberline {F.1}A note on different notations}{102}{section.F.1}%
-\contentsline {section}{\numberline {F.2}Astronomy from Earth}{103}{section.F.2}%

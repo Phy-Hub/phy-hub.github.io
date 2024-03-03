@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.10)  19 FEB 2024 23:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.10)  1 MAR 2024 15:17
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1213,11 +1213,12 @@ The command '\includegraphics [width=8cm]{images/pdf/lorry_cannonball.pdf}' has
 The command '\includegraphics [width=0.35 \textwidth ]{images/pdf/Reference Fra
 mes.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disab
 le this.
-The command '\includegraphics [width=\textwidth ]{images/pdf/Spring_boxes.pdf}'
- has been optimized away. Use '/tikz/external/optimize=false' to disable this.
-The command '\includegraphics [width=\textwidth ]{images/pdf/Conveyor_belt_3d.p
-df}' has been optimized away. Use '/tikz/external/optimize=false' to disable th
-is.
+The command '\includegraphics [width=0.9\textwidth ]{images/pdf/Spring_boxes.pd
+f}' has been optimized away. Use '/tikz/external/optimize=false' to disable thi
+s.
+The command '\includegraphics [width=0.9\textwidth ]{images/pdf/Conveyor_belt_3
+d.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable
+ this.
 
 LaTeX Warning: Reference `fig: 3d conveyor belt' on page 4 undefined on input l
 ine 82.
@@ -1237,21 +1238,21 @@ e.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable
  this.
 
 LaTeX Warning: Reference `fig: rat with moving platform' on page 4 undefined on
- input line 105.
+ input line 107.
 
 
 LaTeX Warning: Reference `fig: rat platform reference frame' on page 4 undefine
-d on input line 105.
+d on input line 107.
 
-The command '\includegraphics [width=\textwidth ]{images/pdf/earth_and_aether.p
-df}' has been optimized away. Use '/tikz/external/optimize=false' to disable th
-is.
+The command '\includegraphics [width=0.9\textwidth ]{images/pdf/earth_and_aethe
+r.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable
+ this.
 
 LaTeX Warning: Reference `fig: Michelson_morley' on page 5 undefined on input l
-ine 120.
+ine 122.
 
 
-LaTeX Warning: Citation 'EtherExperiment' on page 5 undefined on input line 120
+LaTeX Warning: Citation 'EtherExperiment' on page 5 undefined on input line 122
 .
 
 The command '\includegraphics [width=8cm]{images/pdf/Michelson_morley.pdf}' has
@@ -1262,7 +1263,7 @@ The command '\includegraphics [width=8cm]{images/pdf/lorry_clock.pdf}' has been
  optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck clock' on page 8 undefined on input line 1
-67.
+69.
 
 The command '\includegraphics [width=8cm]{images/pdf/lorry_simul.pdf}' has been
  optimized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1272,16 +1273,16 @@ The command '\includegraphics [width=8cm]{images/pdf/cars.pdf}' has been optimi
 zed away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=8cm]{images/pdf/Cannon_Balls.pdf}' has bee
 n optimized away. Use '/tikz/external/optimize=false' to disable this.
-The command '\includegraphics [width=10cm]{images/pdf/Doppler.pdf}' has been op
-timized away. Use '/tikz/external/optimize=false' to disable this.
+The command '\includegraphics [width=8cm]{images/pdf/Doppler.pdf}' has been opt
+imized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck aberrated' on page 13 undefined on input l
-ine 256.
+ine 258.
 
-The command '\includegraphics [width=5cm]{images/pdf/Aberrated_lorrys_1.pdf}' h
-as been optimized away. Use '/tikz/external/optimize=false' to disable this.
-The command '\includegraphics [width=5cm]{images/pdf/Aberrated_lorrys_2.pdf}' h
-as been optimized away. Use '/tikz/external/optimize=false' to disable this.
+The command '\includegraphics [width=5.5cm]{images/pdf/Aberrated_lorrys_1.pdf}'
+ has been optimized away. Use '/tikz/external/optimize=false' to disable this.
+The command '\includegraphics [width=5.5cm]{images/pdf/Aberrated_lorrys_2.pdf}'
+ has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=5cm]{images/pdf/Rest_velocities.pdf}' has 
 been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=5cm]{images/pdf/Aberrated_velocities.pdf}'
@@ -1294,7 +1295,7 @@ ds.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disabl
 e this.
 
 LaTeX Warning: Reference `fig: full field transformation 1' on page 15 undefine
-d on input line 325.
+d on input line 328.
 
 The command '\includegraphics [width=10cm]{images/pdf/Still_Retarded_Field_Both
 _Frames.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to d
@@ -1303,15 +1304,15 @@ The command '\includegraphics [width=10cm]{images/pdf/Perceived_speed.pdf}' has
  been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck clock' on page 17 undefined on input line 
-392.
+395.
 
 
 LaTeX Warning: Reference `fig: full truck transform' on page 17 undefined on in
-put line 392.
+put line 395.
 
 
 LaTeX Warning: Reference `fig: truck simultaneity' on page 18 undefined on inpu
-t line 394.
+t line 397.
 
 (Tex/Terms/Definitions.tex)
 Chapter 2.
@@ -1319,7 +1320,7 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `spherical light pulse derivation' on page 25 undefine
-d on input line 522.
+d on input line 525.
 
 The command '\includegraphics [width=10cm]{images/pdf/Light_clock.pdf}' has bee
 n optimized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1327,84 +1328,88 @@ The command '\includegraphics [width=10cm]{images/pdf/Length_Contraction.pdf}'
 has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `width contraction' on page 27 undefined on input line
- 589.
+ 592.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: coordinate transform' on page 31 undefined on in
-put line 755.
+put line 758.
 
 The command '\includegraphics [width=10cm]{images/pdf/coordinate_transforms.pdf
 }' has been optimized away. Use '/tikz/external/optimize=false' to disable this
 .
 
 LaTeX Warning: Reference `fig: Gamma Factor' on page 32 undefined on input line
- 777.
+ 780.
 
 The command '\includegraphics [width=10cm]{images/pdf/Gamma_Factor.pdf}' has be
 en optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `eq: Lorentz transformation' on page 32 undefined on i
-nput line 790.
+LaTeX Warning: Reference `eq: Lorentz transformation' on page 33 undefined on i
+nput line 793.
+
+
+LaTeX Warning: Reference `eq: velocity transform' on page 34 undefined on input
+ line 844.
 
 (Tex/Terms/Terms_ch2.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 843--844
+Underfull \hbox (badness 10000) in paragraph at lines 904--905
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 845--846
+Underfull \hbox (badness 10000) in paragraph at lines 906--907
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 847--848
+Underfull \hbox (badness 10000) in paragraph at lines 908--909
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 849--850
+Underfull \hbox (badness 10000) in paragraph at lines 910--911
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--852
+Underfull \hbox (badness 10000) in paragraph at lines 912--913
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 853--854
+Underfull \hbox (badness 10000) in paragraph at lines 914--915
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--856
+Underfull \hbox (badness 10000) in paragraph at lines 916--917
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 857--858
+Underfull \hbox (badness 10000) in paragraph at lines 918--919
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 859--860
+Underfull \hbox (badness 10000) in paragraph at lines 920--921
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 861--862
+Underfull \hbox (badness 10000) in paragraph at lines 922--923
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 863--864
+Underfull \hbox (badness 10000) in paragraph at lines 924--925
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 865--866
+Underfull \hbox (badness 10000) in paragraph at lines 926--927
 
  []
 
@@ -1414,7 +1419,7 @@ isable this.
 \openout6 = `./tikz/Tikz_Particles_position_in_primed_frame_with_delayed_positi
 on.dpth'.
 
-[37
+[38
 
 {C:/Users/one_p/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 The command '\includegraphics [width=10cm]{images/pdf/coordinate_transforms_2.p
@@ -1424,14 +1429,27 @@ Chapter 4.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `vector velocity transform' on page 41 undefined on in
-put line 1149.
+LaTeX Warning: Reference `eq: velocity transform' on page 43 undefined on input
+ line 1219.
 
-The command '\includegraphics [width=8cm]{images/pdf/Aberrated_velocities.pdf}'
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+The command '\includegraphics [width=5cm]{images/pdf/Aberrated_velocities_restf
+rame.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disa
+ble this.
+The command '\includegraphics [width=5cm]{images/pdf/Aberrated_velocities.pdf}'
  has been optimized away. Use '/tikz/external/optimize=false' to disable this.
+The command '\includegraphics [width=5cm]{images/pdf/Aberrated_velocities_inwar
+ds_restframe.pdf}' has been optimized away. Use '/tikz/external/optimize=false'
+ to disable this.
+The command '\includegraphics [width=5cm]{images/pdf/Aberrated_velocities_inwar
+ds.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disabl
+e this.
 
-LaTeX Warning: Citation 'einstein1905electrodynamics' on page 42 undefined on i
-nput line 1200.
+LaTeX Warning: Citation 'einstein1905electrodynamics' on page 46 undefined on i
+nput line 1356.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
@@ -1439,27 +1457,28 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: Retarded field outward field transform' on page 
-43 undefined on input line 1256.
+47 undefined on input line 1416.
 
-The command '\includegraphics [width=6cm]{images/pdf/Rest_Pulse.pdf}' has been 
-optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-Overfull \hbox (0.55618pt too wide) in paragraph at lines 1350--1351
-[]\OT1/cmr/m/n/10 The []Lorentz trans-for-ma-tions[] of the spa-tial and time c
-o-or-di-nates gives the primed
- []
+LaTeX Warning: Reference `eq: Lorentz transformation' on page 47 undefined on i
+nput line 1417.
 
-The command '\includegraphics [width=8cm]{images/pdf/Prime_Pulse.pdf}' has been
- optimized away. Use '/tikz/external/optimize=false' to disable this.
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
 
-Overfull \hbox (18.89792pt too wide) in paragraph at lines 1437--1437
-[]\OT1/cmr/bx/n/14.4 Relativistic beam-ing or Flux from Point Source 
- []
+LaTeX Warning: Reference `eq: velocity transform for light' on page 47 undefine
+d on input line 1433.
 
+The command '\includegraphics [width=3.8cm]{images/pdf/Rest_Pulse.pdf}' has bee
+n optimized away. Use '/tikz/external/optimize=false' to disable this.
+The command '\includegraphics [width=3.8cm]{images/pdf/Prime_Pulse.pdf}' has be
+en optimized away. Use '/tikz/external/optimize=false' to disable this.
+The command '\includegraphics [width=3.8cm]{images/pdf/Prime_Pulse_Simultaneous
+.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable 
+this.
+The command '\includegraphics [width=5cm]{images/pdf/Field_Rest_Frame.pdf}' has
+ been optimized away. Use '/tikz/external/optimize=false' to disable this.
+The command '\includegraphics [width=5cm]{images/pdf/Field_Moving_Frame_Doppler
+.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable 
+this.
 \pgf@layerbox@background=\box129
 \pgf@layerboxsaved@background=\box130
 \pgf@layerbox@foreground=\box131
@@ -1467,226 +1486,203 @@ Overfull \hbox (18.89792pt too wide) in paragraph at lines 1437--1437
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `Cosine transform' on page 48 undefined on input line 
-1607.
+LaTeX Warning: Reference `Cosine transform' on page 51 undefined on input line 
+1712.
 
 
-LaTeX Warning: Citation 'hogg1997special' on page 48 undefined on input line 16
-07.
+LaTeX Warning: Citation 'hogg1997special' on page 51 undefined on input line 17
+12.
 
 
-Overfull \hbox (8.57126pt too wide) in paragraph at lines 1634--1634
-[]\OT1/cmr/bx/n/14.4 Relativistic Beam-ing of Mul-ti-ple Wave Fronts
- []
-
-The command '\includegraphics [width=10cm]{images/pdf/Still_Retarded_Field_Both
-_Frames.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1648--1649
+Underfull \hbox (badness 10000) in paragraph at lines 1745--1746
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1650--1651
+Underfull \hbox (badness 10000) in paragraph at lines 1747--1748
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1652--1653
+Underfull \hbox (badness 10000) in paragraph at lines 1749--1750
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1654--1655
+Underfull \hbox (badness 10000) in paragraph at lines 1751--1752
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1656--1657
+Underfull \hbox (badness 10000) in paragraph at lines 1753--1754
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1658--1659
+Underfull \hbox (badness 10000) in paragraph at lines 1755--1756
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1660--1661
+Underfull \hbox (badness 10000) in paragraph at lines 1757--1758
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1662--1663
+Underfull \hbox (badness 10000) in paragraph at lines 1759--1760
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1664--1665
+Underfull \hbox (badness 10000) in paragraph at lines 1761--1762
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1666--1667
+Underfull \hbox (badness 10000) in paragraph at lines 1763--1764
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1668--1669
+Underfull \hbox (badness 10000) in paragraph at lines 1765--1766
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1670--1671
+Underfull \hbox (badness 10000) in paragraph at lines 1767--1768
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1672--1673
+Underfull \hbox (badness 10000) in paragraph at lines 1769--1770
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1674--1675
+Underfull \hbox (badness 10000) in paragraph at lines 1771--1772
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1676--1677
+Underfull \hbox (badness 10000) in paragraph at lines 1773--1774
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1678--1679
+Underfull \hbox (badness 10000) in paragraph at lines 1775--1776
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1680--1681
+Underfull \hbox (badness 10000) in paragraph at lines 1777--1778
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1682--1683
+Underfull \hbox (badness 10000) in paragraph at lines 1779--1780
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1684--1685
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1686--1687
+Underfull \hbox (badness 10000) in paragraph at lines 1781--1782
 
  []
 
 Chapter 5.
 
-LaTeX Warning: Reference `vector velocity transform' on page 51 undefined on in
-put line 1693.
-
-Chapter 6.
-
-Overfull \hbox (136.80379pt too wide) detected at line 1940
+Overfull \hbox (136.80379pt too wide) detected at line 1976
 [][][]\OML/cmm/m/it/10 A \OT1/cmr/m/n/10 = [] = [] \OMS/cmsy/m/n/10 ^^A []   $ 
   [] ^^A [] [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^M[] [] \OT1/cmr/m/n/10 = []
  = \OML/cmm/m/it/10 ^^M[] a []
  []
 
 
-Overfull \hbox (15.69284pt too wide) in paragraph at lines 1972--1973
+Overfull \hbox (15.69284pt too wide) in paragraph at lines 2008--2009
 []\OT1/cmr/m/n/10 where $\OML/cmm/m/it/10 u[]$ \OT1/cmr/m/n/10 is the ve-loc-it
 y of the par-ti-cle in this []primed frame[] and $\OML/cmm/m/it/10 ^^M[] \OT1/c
 mr/m/n/10 = 1\OML/cmm/m/it/10 =[]$\OT1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1980--1981
+Underfull \hbox (badness 10000) in paragraph at lines 2016--2017
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1982--1984
+Underfull \hbox (badness 10000) in paragraph at lines 2018--2020
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2030--2031
+Underfull \hbox (badness 10000) in paragraph at lines 2066--2067
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2032--2033
+Underfull \hbox (badness 10000) in paragraph at lines 2068--2069
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2034--2035
+Underfull \hbox (badness 10000) in paragraph at lines 2070--2071
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2036--2037
+Underfull \hbox (badness 10000) in paragraph at lines 2072--2073
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2038--2039
+Underfull \hbox (badness 10000) in paragraph at lines 2074--2075
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2040--2041
+Underfull \hbox (badness 10000) in paragraph at lines 2076--2077
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2042--2043
+Underfull \hbox (badness 10000) in paragraph at lines 2078--2079
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2044--2045
+Underfull \hbox (badness 10000) in paragraph at lines 2080--2081
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2046--2047
+Underfull \hbox (badness 10000) in paragraph at lines 2082--2083
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2048--2049
+Underfull \hbox (badness 10000) in paragraph at lines 2084--2085
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2050--2051
+Underfull \hbox (badness 10000) in paragraph at lines 2086--2087
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2052--2053
+Underfull \hbox (badness 10000) in paragraph at lines 2088--2089
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2054--2055
+Underfull \hbox (badness 10000) in paragraph at lines 2090--2091
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2056--2057
+Underfull \hbox (badness 10000) in paragraph at lines 2092--2093
 
  []
 
-Chapter 7.
-Chapter 8.
-Chapter 9.
-Chapter 10.
-Chapter 11.
 )
 
 LaTeX Warning: Empty bibliography on input line 11.
@@ -1711,13 +1707,13 @@ on.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36730 strings out of 474486
- 759767 string characters out of 5743755
- 1940528 words of memory out of 5000000
- 58484 multiletter control sequences out of 15000+600000
+ 36731 strings out of 474486
+ 759798 string characters out of 5743755
+ 1942528 words of memory out of 5000000
+ 58485 multiletter control sequences out of 15000+600000
  562472 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 120i,25n,124p,1735b,1136s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 120i,23n,124p,1735b,1136s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -1728,9 +1724,9 @@ ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/one_p/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/one_p/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
 Output written on ./tikz/Tikz_Particles_position_in_primed_frame_with_delayed_p
-osition.pdf (1 page, 89558 bytes).
+osition.pdf (1 page, 89413 bytes).
 PDF statistics:
- 393 PDF objects out of 1000 (max. 8388607)
+ 386 PDF objects out of 1000 (max. 8388607)
  1 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

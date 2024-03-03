@@ -1,3 +1,4 @@
+import Paths as path
 import SR_Functions as SR
 import matplotlib.pyplot as plt
 import numpy as np
@@ -88,8 +89,8 @@ plt.quiver(yv, zv_prime, 0, -0.7, angles="xy" , zorder=1, pivot="mid", alpha=1,w
 plt.annotate("t' = 0" , xy=(0, 0), xytext=(15,0-0.4))
 
 ###############################################################################
-plt.savefig("coordinate_transforms.svg",bbox_inches='tight', format='svg',transparent=True) # changed from svg
-plt.savefig("coordinate_transforms.pdf",bbox_inches='tight', format='pdf',transparent=True) # changed from svg
+plt.savefig(path.svg + "coordinate_transforms.svg",bbox_inches='tight', format='svg',transparent=True) # changed from svg
+plt.savefig(path.pdf + "coordinate_transforms.pdf",bbox_inches='tight', format='pdf',transparent=True) # changed from svg
 
 ### SubPlot 1 #################################################################
 plt.figure(2)
@@ -148,8 +149,8 @@ plt.quiver(yv, zv, 0, -0.7, angles="xy" , zorder=1, pivot="mid", alpha=1,width=0
 plt.annotate("$t' = t'_{ret}$" , xy=(0, 0), xytext=(15,5))
 
 ###############################################################################
-plt.savefig("coordinate_transforms_2.svg",bbox_inches='tight', format='svg',transparent=True)
-plt.savefig("coordinate_transforms_2.pdf",bbox_inches='tight', format='pdf',transparent=True)
+plt.savefig(path.svg + "coordinate_transforms_2.svg",bbox_inches='tight', format='svg',transparent=True)
+plt.savefig(path.pdf + "coordinate_transforms_2.pdf",bbox_inches='tight', format='pdf',transparent=True)
 
 ###############################################################################
 plt.figure(3)

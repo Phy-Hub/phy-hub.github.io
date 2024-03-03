@@ -1,3 +1,4 @@
+import Paths as path
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -22,8 +23,8 @@ plt.xlim(0, 1)
 plt.gca().set_facecolor('none')
 
 # Save the plot
-plt.savefig('Gamma_Factor.pdf', transparent=True)
-plt.savefig('Gamma_Factor.svg', transparent=True)
+plt.savefig(path.svg + 'Gamma_Factor.svg', transparent=True)
+plt.savefig(path.pdf + 'Gamma_Factor.pdf', transparent=True)
 
 # Show the plot
 plt.show()

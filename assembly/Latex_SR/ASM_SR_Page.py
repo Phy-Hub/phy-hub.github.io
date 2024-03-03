@@ -1,3 +1,11 @@
+###
+#
+#
+# need to be able to handle sections and that with *'s i.e. \section*{}
+#
+#
+#
+#
 from pathlib import Path
 import subprocess
 import re
@@ -14,8 +22,8 @@ def replace(filename, pattern, replacement):
     filedata = re.sub(pattern, replacement, filedata)
 
     with open(filename, 'w', encoding='utf-8') as file:
-        file.write(filedata)       
-        
+        file.write(filedata)
+
 ###
 def replace_blank_lines(filename):
     with open(filename, 'r') as file:
@@ -64,7 +72,7 @@ def colorbox_replace(filename):
 ###
 def replace_headings(latex_content):
     # Replace chapters with h1 tags
-    counter = [0] 
+    counter = [0]
     def replace_func(m):
         counter[0] += 1
         if counter[0] > 1:
@@ -74,16 +82,16 @@ def replace_headings(latex_content):
 
     latex_content = re.sub(r'\\chapter\{(.+?)\}', replace_func, latex_content)
     latex_content = re.sub('</section> \n', '', latex_content, count=1) #removes first /div
-    
+
     # Replace sections with h2 tags
     latex_content = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h2>', latex_content)
     # Replace subsections with h3 tags
     latex_content = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h3>', latex_content)
     # Replace subsubsections with h4 tags
     latex_content = re.sub(r'\\subsubsection\{(.+?)\}', lambda m:'<h4 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h4>', latex_content)
-   
+
     latex_content += '</section>'
-    
+
     return latex_content
 
 ###
@@ -211,26 +219,26 @@ def create_toc(html_file):
     for tag, attrs, text in headers:
         header_id = re.search(r'id="(.*?)"', attrs)
         text = text.strip()
-        
+
         # Add indentation based on header tag
         if tag == 'h1':
             ch_num = ch_num + 1
-            if i==0: 
-                toc += f"<details id='ch{ch_num}_{header_id.group(1)}_details' open>\n"       
+            if i==0:
+                toc += f"<details id='ch{ch_num}_{header_id.group(1)}_details' open>\n"
             else:
                 toc += "</details>\n"
                 toc += f"<details id='ch{ch_num}_{header_id.group(1)}_details' >\n"
-            
+
             style = "style='font-weight: bold;'"
             toc += f"<summary onclick=\"showContent('{header_id.group(1)}_div')\"><a href='#ch{ch_num}_{header_id.group(1)}' onclick=\"event.stopPropagation(); showContent('{header_id.group(1)}_div'); $(this).parent().parent().attr('open', '');\" {style}>{text}</a></summary>\n"
             i=1
-            
+
         elif tag == 'h2':
             style = "style='display: block; margin-left: 20px;'"
             toc += f"<a href='#{header_id.group(1)}' {style}>{text}</a>\n"
         else:
             toc += "error\n"
-        
+
     toc += "</details>\n"
     return toc
 
@@ -283,7 +291,7 @@ def create_math_terms():
                         html_string += new_line
                     html_string += '<br>'
         html_string += '\n </dl>\n'
-    
+
     return html_string
 
 ###
@@ -316,7 +324,7 @@ with open(os.path.join(folder, 'Tex/Main_Matter.tex'), 'rb') as src, open(Latex_
 Defs_File = open('Handbook of Special Relativity\Tex\Terms\Definitions.tex').read().splitlines()
 
 
-# to do first to avoid conflicts: 
+# to do first to avoid conflicts:
 remove_comments(Latex_File)
 replace(Latex_File,'<', r'\\lt ')
 replace(Latex_File,'>', r'\\gt ')

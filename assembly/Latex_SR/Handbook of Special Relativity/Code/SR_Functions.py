@@ -3,11 +3,8 @@ import numpy as np
 
 ################################# CONSTANTS ##################################
 
-Eps = 8.854 * 10**(-12)
-CC = 1 / ( 4 * np.pi * Eps )
-
 def CC_dE(Q_or_Lamda):
-    CC_dE = Q_or_Lamda * CC
+    CC_dE = Q_or_Lamda / ( 4 * np.pi * 8.854 * 10**(-12) )
     return CC_dE
 
 def Beta(V):
@@ -23,7 +20,7 @@ def DOT(X,V):
     return dot
 
 def Doppler(V_MAG, cos_theta):
-    doppler = 1 / ( Gamma(V_MAG) * ( 1 - V_MAG * cos_theta  )  )   
+    doppler = 1 / ( Gamma(V_MAG) * ( 1 - V_MAG * cos_theta  )  )
     return doppler
 
 
@@ -55,11 +52,11 @@ def TRANS_Z(R, V_FRM, T):
     R_prime = R + ( ((gamma-1)/V_FRM**2) * (R*V_FRM) - gamma * T ) * V_FRM
     return R_prime
 
-def TRANS_Z_simul(R, V_FRM, Vp_prime, T): # simultaneous 
+def TRANS_Z_simul(R, V_FRM, Vp_prime, T): # simultaneous
     gamma = Gamma(V_FRM)
     R_prime_simul = np.zeros( ( len(R) ) )
     R_prime_simul = R + ( ((gamma-1)/V_FRM**2) * (R*V_FRM) - gamma * T ) * V_FRM + gamma * (R*V_FRM)  * Vp_prime
-    return R_prime_simul  
+    return R_prime_simul
 
 def TRANS_1Velocity(U, V_FRM):
     gamma = Gamma(V_FRM)
@@ -83,13 +80,13 @@ def TRANS_3Position(R3, V_FRM, T):
     R3_prime = R3 + ( ((gamma-1)/V_FRM_MAG**2) * np.dot(R3,V_FRM) - gamma * T ) * V_FRM
     return R3_prime
 
-def TRANS_3Position_simul(R3, V_FRM, Vp_prime, T): # simultaneous 
+def TRANS_3Position_simul(R3, V_FRM, Vp_prime, T): # simultaneous
     V_FRM_MAG = np.linalg.norm(V_FRM)
     gamma = Gamma(V_FRM_MAG)
     R3_prime_simul = np.zeros( ( len(R3) ) )
     VdotR = np.dot(R3,V_FRM)
     R3_prime_simul = R3 + ( ((gamma-1)/V_FRM_MAG**2) * VdotR - gamma * T ) * V_FRM + gamma * VdotR  * Vp_prime
-    return R3_prime_simul  
+    return R3_prime_simul
 
 def TRANS_3Velocity(U3, V_FRM):
     V_FRM_MAG = np.linalg.norm(V_FRM)
@@ -103,7 +100,7 @@ def TRANS_2Acceleration(a2, U2, V_FRM):
     V_FRM_MAG = np.linalg.norm(V_FRM)
     gamma = Gamma(V_FRM_MAG)
     Aber = gamma * ( 1 - np.dot(U2,V_FRM) )
-    
+
     a2_prime_y = a2[0] / Aber**2 + ( gamma * np.dot(U2,V_FRM) * a2[1] ) / Aber**3
     a2_prime_z = a2[1] / Aber**3
     a2_prime = np.array([a2_prime_y,a2_prime_z])
@@ -139,9 +136,9 @@ def TRANS_Multi_R4(R4, V_FRM):
 def TRANS_Multi_V4(U4,R4, V):
     V_MAG = np.linalg.norm(V)
     gamma = Gamma(V_MAG)
-    
+
     U_prime = np.zeros( ( len(U4) , 3 ) )
-    for i in range(len(U4)):       
+    for i in range(len(U4)):
         CC1 = 1 / (  gamma * ( 1 - np.dot(U4[i,1:],V) )  )
         CC2 = ( ( gamma-1 ) / V_MAG**2 ) * np.dot(U4[i,1:],V) - gamma
         U_prime[i,0] = gamma * ( R4[i,0] - np.dot(R4[i,1:] , V ) )
@@ -165,6 +162,7 @@ def Relative_FLUX(COS_THETA_prime, V_MAG ): ### in non proper frame
 ### for lAB:::
 def E_FIELD_LAB(LAM, V, GAM_V, d,Vp_minus, GAM_Vp): # transforms E_field from proper frame for infinite wire
     ### works for proper frame V=0 ### LAM is from non proper frame
+    CC = 1 / ( 4 * np.pi * 8.854 * 10**(-12) )
     Ey = (2/15)*( 3*V**2*Vp_minus**2 + 5*(V**2 + Vp_minus**2) + 20*V*Vp_minus + 15)
     Ez = np.pi * (Vp_minus + V) * ( 3*Vp_minus*V + 4 ) / 4
     E_prime = LAM * CC * GAM_V**2 * GAM_Vp**2 * np.array([0, Ey / d, Ez / d],
@@ -175,6 +173,7 @@ def E_FIELD_LAB(LAM, V, GAM_V, d,Vp_minus, GAM_Vp): # transforms E_field from pr
 ### particle frame:::
 def E_FIELD_PROPER(LAM_proper, d, V_MAG, GAM_V): # transforms E_field from proper frame for infinite wire
     ### works for proper frame V=0 ### LAM is from non proper frame
+    CC = 1 / ( 4 * np.pi * 8.854 * 10**(-12) )
     Ey = 2 * (V_MAG**2 + 1)
     Ez = 0 ### still need to change ####
     E_particle = LAM_proper * CC * GAM_V**3 * np.array([0, Ey / d, Ez / d], dtype=object)
@@ -184,6 +183,7 @@ def E_FIELD_PROPER(LAM_proper, d, V_MAG, GAM_V): # transforms E_field from prope
 ### particle frame:::
 def E_FIELD_PRIME(LAM_prime, d, V_MAG, GAM_V): # transforms E_field from proper frame for infinite wire
     ### works for proper frame V=0 ### LAM is from non proper frame
+    CC = 1 / ( 4 * np.pi * 8.854 * 10**(-12) )
     Ey = 2 * (V_MAG**2 + 1)
     Ez = 0 ### still need to change ####
     E_particle = LAM_prime * CC * GAM_V**3 * np.array([0, Ey / d, Ez / d], dtype=object)

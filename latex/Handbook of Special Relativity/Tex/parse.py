@@ -1,5 +1,9 @@
 import re
 
+###
+# be careful this may break the latex
+###
+
 text = 'Main_matter.tex'
 
 def replace_strings(text, strings):
@@ -30,6 +34,6 @@ with open(text, 'w') as file:
 
 # also need for $ $ environment
 
-# at end of parcing replace instances of {{ and }} with { and }
+# at end of parcing replace instances of {{ and }} with { and } but only if surround the variable though, as other times this is true
 
 # to be careful with u and u_p and primes, i.e. t and t'

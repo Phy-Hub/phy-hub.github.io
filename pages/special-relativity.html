@@ -9,7 +9,31 @@
   <!--<script> var url = window.location.href; url = url.split('.html')[0]; window.history.replaceState(null, null, url); </script> -->
   <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
   <script defer type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer> window.MathJax = {  tex: { tags: 'ams' } }; </script>
+  <!--<script defer> window.MathJax = {  tex: { tags: 'ams' }, svg: {fontCache: 'global'} }; </script>-->
+  <script> MathJax = {
+    loader:  {load:  ['[tex]/tagformat']},
+    section:  0,
+    tex:  {
+      tags:  'ams',
+      packages:  {'[+]':  ['tagformat', 'sections']},
+      tagformat:  { number:  (n) => MathJax.config.section + '.' + n }
+    },
+    startup:  {
+      ready() {
+        const Configuration = MathJax._.input.tex.Configuration.Configuration;
+        const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+        new CommandMap('sections', { nextSection:  'NextSection' }, {
+          NextSection(parser, name) {
+            MathJax.config.section++;
+            parser.tags.counter = parser.tags.allCounter = 0;
+          }
+        });
+        Configuration.create( 'sections', {handler:  {macro:  ['sections']}});
+        MathJax.startup.defaultReady();
+      }
+    }
+  };
+  </script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
 
   <style>
@@ -28,12 +52,23 @@
     .navbar {
       display: grid; grid-template-columns: auto 680px auto;
       position: sticky; top: 0; z-index: 1000;
-      height: 60px; width: 100%; padding-top: 3px;
+      height: 60px; width: 100%;
       background-color: grey;
     }
 
+    .math { font-size: smaller; }
+    mjx-container:not([display]) {
+      font-size: smaller !important;
+  }
+
+    .arrow-nav {
+      display: grid; grid-template-columns: 50% 50%;
+      width: 100%;
+      padding-top: 50px;
+    }
+
     h1 {font-size: 2em;}
-    a {text-decoration: none; color: black; padding-left: 10px; padding-right: 10px;}
+    details a {text-decoration: none; color: black; padding-left: 10px; padding-right: 10px;}
     a:hover { text-decoration: underline;}
     #toc a {padding: 0; font-size: 10px; font-family: Arial, sans-serif; line-height: 1.5;}
 
@@ -47,11 +82,12 @@
       .navbar {grid-template-columns: 70px auto 70px;}
       @media (max-width: 700px) {article {min-width: 0px; width: 100vw; margin: 0;}}
     }
-    body {counter-reset: figure-counter;}
+    .navbar {counter-reset: figure-counter chapter-counter;}
+    section { counter-increment: chapter-counter; }
     figure { counter-increment: figure-counter;}
-    figcaption::before {content: "Figure " counter(figure-counter) ": ";}
+    figcaption::before {content: "Figure " counter(chapter-counter) "." counter(figure-counter) ": ";}
 
-    .sidebar{position: sticky; top: 63px; overflow: hidden; align-self: start; height: 100%;}
+    .sidebar{position: sticky; top: 60px; overflow: hidden; align-self: start; height: auto;}
     figcaption {line-height: 1;}
 
     .dropdown-menu {
@@ -78,10 +114,10 @@
 
   <!--Navbar-->
   <div class="navbar">
-    <a href="/index.html"> <img src="/visuals/Images/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 3px;" > </a>
-    <div id="banner" style="width: 100%;"> </div>
-    <div class="menu" style="justify-self: end; width: 70px; cursor: pointer;">
-      <div style="font-size: 40px; justify-content: center; text-align: center; "> &#x2630; </div>
+    <div style="justify-self: start; width: 70px;"><a href="/index.html"> <img src="/visuals/Images/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px" > </a></div>
+    <div id="banner" style="width: 100%; padding-top: 3px; padding-bottom:3px;"> </div>
+    <div class="menu" style="justify-self: end; cursor: pointer; width: 70px;">
+      <div style="font-size: 40px; text-align: right; padding-right: 10px; "> &#x2630; </div>
       <nav class="dropdown-menu">
         <a href="/index.html">Home</a>
         <a href="/pages/topics.html">Topics</a>
@@ -90,13 +126,15 @@
     </div>
   </div>
 
+  <div id="equation_hover" style="position: fixed; top: 50vh;"></div>
+
   <!--Page-->
   <main>
     <!--Page Navbar-->
     <nav id="toc" class="sidebar">
 <h4>Contents</h4>
 <details id='ch1_details' open>
-<summary onclick="showContent('ch1_div')"><a href='#ch1_header' onclick="event.stopPropagation(); showContent('ch1_div'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>1. Conceptual Overview</a></summary>
+<summary onclick="showContent('ch1_wrap')"><a href='#ch1_header' onclick="event.stopPropagation(); showContent('ch1_wrap'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>1. Conceptual Overview</a></summary>
 <a href='#ClassicalAdditionofVelocities_header' style='display: block; margin-left: 20px;'>Classical Addition of Velocities</a>
 <a href='#InertialReferenceFrame_header' style='display: block; margin-left: 20px;'>Inertial Reference Frame</a>
 <a href='#ClassicalReferenceFrames_header' style='display: block; margin-left: 20px;'>Classical Reference Frames</a>
@@ -111,7 +149,7 @@
 <a href='#Summary_header' style='display: block; margin-left: 20px;'>Summary</a>
 </details>
 <details id='ch2_details' >
-<summary onclick="showContent('ch2_div')"><a href='#ch2_header' onclick="event.stopPropagation(); showContent('ch2_div'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>2. Positions, Time and Velocity</a></summary>
+<summary onclick="showContent('ch2_wrap')"><a href='#ch2_header' onclick="event.stopPropagation(); showContent('ch2_wrap'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>2. Positions, Time and Velocity</a></summary>
 <a href='#ClassicalRelativity_header' style='display: block; margin-left: 20px;'>Classical Relativity</a>
 <a href='#PostulatesofSpecialRelativity_header' style='display: block; margin-left: 20px;'>Postulates of Special Relativity</a>
 <a href='#Derivations_header' style='display: block; margin-left: 20px;'>Derivations</a>
@@ -119,13 +157,13 @@
 <a href='#Acceleration_header' style='display: block; margin-left: 20px;'>Acceleration</a>
 </details>
 <details id='ch3_details' >
-<summary onclick="showContent('ch3_div')"><a href='#ch3_header' onclick="event.stopPropagation(); showContent('ch3_div'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>3. Observers Delayed World View</a></summary>
+<summary onclick="showContent('ch3_wrap')"><a href='#ch3_header' onclick="event.stopPropagation(); showContent('ch3_wrap'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>3. Observers Delayed World View</a></summary>
 <a href='#RelativisticObserversDelayedview_header' style='display: block; margin-left: 20px;'>Relativistic Observers Delayed view</a>
 <a href='#DelayedViewofTransformedCoordinates_header' style='display: block; margin-left: 20px;'>Delayed View of Transformed Coordinates</a>
 <a href='#StepsforChangingFrames_header' style='display: block; margin-left: 20px;'>Steps for Changing Frames</a>
 </details>
 <details id='ch4_details' >
-<summary onclick="showContent('ch4_div')"><a href='#ch4_header' onclick="event.stopPropagation(); showContent('ch4_div'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>4. Spherical light pulses</a></summary>
+<summary onclick="showContent('ch4_wrap')"><a href='#ch4_header' onclick="event.stopPropagation(); showContent('ch4_wrap'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>4. Spherical light pulses</a></summary>
 <a href='#SphericalPolarCoordinates_header' style='display: block; margin-left: 20px;'>Spherical Polar Coordinates</a>
 <a href='#LightSpeedVelocityTransform_header' style='display: block; margin-left: 20px;'>Light Speed Velocity Transform</a>
 <a href='#DopplerEffect_header' style='display: block; margin-left: 20px;'>Doppler Effect</a>
@@ -135,12 +173,14 @@
 <a href='#Variables..._header' style='display: block; margin-left: 20px;'>Variables...</a>
 </details>
 <details id='ch5_details' >
-<summary onclick="showContent('ch5_div')"><a href='#ch5_header' onclick="event.stopPropagation(); showContent('ch5_div'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>5. The Field of a Moving Source</a></summary>
+<summary onclick="showContent('ch5_wrap')"><a href='#ch5_header' onclick="event.stopPropagation(); showContent('ch5_wrap'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>5. The Field of a Moving Source</a></summary>
 <a href='#FluxfromPointSource_header' style='display: block; margin-left: 20px;'>Flux from Point Source</a>
 </details>
 <details id='ch6_details' >
-<summary onclick="showContent('ch6_div')"><a href='#ch6_header' onclick="event.stopPropagation(); showContent('ch6_div'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>6. Invariant/Conserved Quantities</a></summary>
+<summary onclick="showContent('ch6_wrap')"><a href='#ch6_header' onclick="event.stopPropagation(); showContent('ch6_wrap'); $(this).parent().parent().attr('open', '');" style='font-weight: bold;'>6. Invariant Quantities</a></summary>
 <a href='#Space-TimeInterval_header' style='display: block; margin-left: 20px;'>Space-Time Interval</a>
+<a href='#Energy-MomentumRelation_header' style='display: block; margin-left: 20px;'>Energy-Momentum Relation</a>
+<a href='#Energy-MomentumRelationForPhotons_header' style='display: block; margin-left: 20px;'>Energy-Momentum Relation For Photons</a>
 <a href='#Energy-MomentumRelation_header' style='display: block; margin-left: 20px;'>Energy-Momentum Relation</a>
 <a href='#Acceleration_header' style='display: block; margin-left: 20px;'>Acceleration</a>
 <a href='#Force_header' style='display: block; margin-left: 20px;'>Force</a>
@@ -161,9 +201,10 @@
         </div>
       </header>
 
-<section id="ch1_div" class="chapter">
+<section id="ch1_wrap" class="chapter">
  <h1 id="ch1_header">1. Conceptual Overview</h1>
 <div id="ch1_content">
+<span style="display: hidden">\(\nextSection\)</span>
 Newtonian physics serves as an excellent approximation at low speeds, accurately predicting the behavior of objects in our everyday world, but it gives way to different effects as we approach the speed of light. It turns out that an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> moving at high speed relative to another <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> would notice lengths contract, time run slower, and <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s that were <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneous</span> to the other <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>, no longer <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneous</span> to them. There is however one thing that remains constant, the speed that light travels relative to each <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> is the same. To understand how all this works, we have to redefine our understanding of time and space, with special relativity.
 Special relativity is vital for particle, nuclear, and astrophysics. It is needed for calculating the power output when it comes to nuclear fusion and fission or measuring the speed of galaxies and stars from the relativistic effects on the frequency of their emitted light. It is also needed for precision timekeeping for the likes of the fast-moving GPS satellites which need it for accurately calculating positions.
 To understand how special relativity works we will need to first look at our classical understanding of the world, and using the fact that light somehow always moves at constant speed relative to everything, we will see how we must change our laws of physics for this to be true. Which in turn will lead to many interesting consequences. We will start with an overview of all the main concepts, leaving the mathematical details and deeper insights for later chapters.
@@ -171,7 +212,7 @@ To understand how special relativity works we will need to first look at our cla
 <div id="ch1_1_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/lorry_cannonball.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Diagram, showing the speed of cannonball from two different perspectives, (top) is from someone's perspective who is on the truck who sees the cannon at rest with the road moving backward, the cannonball is shot and is moving forward. (bottom) is from someone's perspective who is at rest on the road and sees the truck and cannon moving relative to them, when the cannonball is shot it looks like it is moving forward faster for them, as it seems to have the cannonball's velocity plus that of the truck it was shot from.</figcaption>
+<figcaption>&nbsp;Diagram, showing the speed of cannonball from two different perspectives, (top) is from someone's perspective who is on the truck who sees the cannon at rest with the road moving backward, the cannonball is shot and is moving forward. (bottom) is from someone's perspective who is at rest on the road and sees the truck and cannon moving relative to them, when the cannonball is shot it looks like it is moving forward faster for them, as it seems to have the cannonball's velocity plus that of the truck it was shot from.</figcaption>
 </figure>
 Let's imagine that a truck is moving forward on a road at a constant speed of 20 m/s (meters per second), on the top of that truck, is a cannon that fires a cannonball in the same direction the truck is moving. The ball travels at a speed of 300 m/s relative to the truck. Classically to find out how fast the ball is moving relative to the road, we add the speed of the truck and the speed of the ball together: 20 + 300 = 320 m/s. So we find the ball is moving at a speed of 320 m/s relative to the road, and this is what we observe. So in classical physics, velocities directly add, the ball relative to the road would move at the speed of the ball relative to the truck plus the truck's speed relative to the road.
 But this turns out to just be a very good approximation for objects in our normal day life which we are used to seeing, which are moving much slower than the speed of light (which is roughly 300 000 000 m/s), but we will get to this later. For now, we will explain more about the classical view, so that you will be able to see more clearly the differences when it comes to special relativity.
@@ -180,13 +221,13 @@ But this turns out to just be a very good approximation for objects in our norma
 <div id="ch1_2_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Reference Frames.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Diagram of a <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span> moving relative to another.</figcaption>
+<figcaption>&nbsp;Diagram of a <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span> moving relative to another.</figcaption>
 </figure>
 A <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span> can be thought of as an abstract coordinate system. The origin of its axis, its orientation, and its scale are specified by a set of points in space. The purpose of it is to provide a standardized means of measuring and describing the coordinates of objects within that frame at any instant of time.
 An <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span>, is a reference frame that is not undergoing any acceleration. You can tell if you are being accelerated, as you will feel a force, for example, in an accelerating car you will feel the chair being accelerated into you, with your body slightly lagging behind in the acceleration, and it is this basic principle for how accelerometers measure acceleration as shown in the diagram.
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Spring_boxes.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Diagram of a ball, attached to the walls of a box by springs, with the ball centered in the box in the inertial frame, i.e. with no acceleration (left), and in a non-inertial frame (right) where the box is now accelerating to the right, The ball lags behind as the box accelerates.</figcaption>
+<figcaption>&nbsp;Diagram of a ball, attached to the walls of a box by springs, with the ball centered in the box in the inertial frame, i.e. with no acceleration (left), and in a non-inertial frame (right) where the box is now accelerating to the right, The ball lags behind as the box accelerates.</figcaption>
 </figure>
 </div> <!-- close section-->
 <h2 id="ClassicalReferenceFrames_header">Classical Reference Frames</h2>
@@ -194,7 +235,7 @@ An <span onmouseover="document.getElementById('def-Inertial-reference-frame').st
 To see how to swap between <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>s in special relativity we will first have to introduce what the classical swapping between two <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>s looks like. To help us understand this, we will use a system of a moving platform, like we find on a treadmill. The two frames of reference will be that of the treadmill's platform and the room in which it is in.
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Conveyor_belt_3d.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Diagram of 3d view of treadmill platform, with two rats and three hanging rocks.</figcaption>
+<figcaption>&nbsp;Diagram of 3d view of treadmill platform, with two rats and three hanging rocks.</figcaption>
 </figure>
 To illustrate swapping between frames classically, We will look at a setup of two rats on a treadmill as shown in Figure \ref{fig: 3d conveyor belt}, with three rocks hanging above the platform, at rest relative to the room. Both rats start under the same rock, one runs to a rock positioned in the forward direction of the treadmill, and the other runs to an equally distanced rock to the side, they then return to the starting rock. Here the platform can be seen as the medium in which the rats move. Both rats travel at the same constant speed relative to the platform, with the platform at a lower speed than the rats to allow them to get to the rocks.
 If the platform is at rest, they will return to the starting rock at the same time. But if the treadmill is turned on and the platform is now moving, the rats will now have to also work against the movement of the platform to get to the rocks, this will lead to different distances the rats have to travel, and as a result, the rats get back to the starting rock at different times. The figures \ref{fig: rat with moving platform} and \ref{fig: rat platform reference frame} show what the direction of movement of the rats and rocks look like in each <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>.
@@ -203,11 +244,11 @@ If the platform is at rest, they will return to the starting rock at the same ti
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/rats_moving.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Room's <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>.</figcaption>
+<figcaption>&nbsp;Room's <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>.</figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/rats_platform_frame.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Platform's <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>.</figcaption>
+<figcaption>&nbsp;Platform's <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>.</figcaption>
 </figure>
 </div>
 <figcaption>Room's <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>.</figcaption>
@@ -218,13 +259,13 @@ In the room's <span onmouseover="document.getElementById('def-Reference-frame').
 <div id="ch1_4_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/earth_and_aether.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram showing the <span onmouseover="document.getElementById('def-aether').style.display='block'" onmouseout="document.getElementById('def-aether').style.display='none'">aether</span>'s and earth's movement relative to each other.</figcaption>
+<figcaption>&nbsp;A diagram showing the <span onmouseover="document.getElementById('def-aether').style.display='block'" onmouseout="document.getElementById('def-aether').style.display='none'">aether</span>'s and earth's movement relative to each other.</figcaption>
 </figure>
 In the 1800s, the theory was that light was a wave and therefore would need a medium for it to travel through that filled the <span onmouseover="document.getElementById('def-vacuum').style.display='block'" onmouseout="document.getElementById('def-vacuum').style.display='none'">vacuum</span> of space, called "the luminiferous <span onmouseover="document.getElementById('def-aether').style.display='block'" onmouseout="document.getElementById('def-aether').style.display='none'">aether</span>", and that light would travel at a constant speed relative to this <span onmouseover="document.getElementById('def-aether').style.display='block'" onmouseout="document.getElementById('def-aether').style.display='none'">aether</span>, like how the rats in the previous section moved at a constant speed relative to the medium of the treadmill's platform.
 An experimental setup by Michelson and Morley, shown in Fig. \ref{fig: Michelson_morley}, was devised to measure earth's movement through the <span onmouseover="document.getElementById('def-aether').style.display='block'" onmouseout="document.getElementById('def-aether').style.display='none'">aether</span> \cite{EtherExperiment}, by measuring how it affected the speed of light in different directions when observed in earth's <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>.
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Michelson_morley.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram showing the Michelson-Morley experiment, (we can take the part of the paths between the the beam splitter and two mirrors to be analogous to the case of the paths in the previous rat and treadmill diagrams) </figcaption>
+<figcaption>&nbsp;A diagram showing the Michelson-Morley experiment, (we can take the part of the paths between the the beam splitter and two mirrors to be analogous to the case of the paths in the previous rat and treadmill diagrams) </figcaption>
 </figure>
 It did this by splitting a single light beam into two perpendicular paths, that are then reflected back to be recombined and sent towards a light detector. By rotating the whole interferometer setup, the two light paths could be aligned either parallel or perpendicular to the Earthâ€™s motion through the presumed <span onmouseover="document.getElementById('def-aether').style.display='block'" onmouseout="document.getElementById('def-aether').style.display='none'">aether</span>.
 They reasoned that if the speed of light was constant with respect to the proposed <span onmouseover="document.getElementById('def-aether').style.display='block'" onmouseout="document.getElementById('def-aether').style.display='none'">aether</span>, just like in the rat experiment from the previous section, the split light beams would recombine at different times. From the previous section's system of rats on a treadmill, we have the treadmill's platform as being analogous to the <span onmouseover="document.getElementById('def-aether').style.display='block'" onmouseout="document.getElementById('def-aether').style.display='none'">aether</span>, and the rats as being analogous to the light, with both having the room that these experiments are done in as being the other inertial reference frames.
@@ -236,7 +277,7 @@ The experiments showed light does not have a medium that it travels at a constan
 Light itself moves extremely fast compared to any other everyday speeds we are used to (roughly 300 000 000 m/s, it can travel the diameter of the world in the blink of an eye). This is why we do not notice any delay in things we see around us in everyday life, though we should keep in mind that there is this delay, e.g. the light we see from the sun was emitted by it eight minutes ago for it to reach us now, and the further an object is located from us, the further back in time we are seeing it because of this delay.
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/lorry_torch.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram, showing light emitted from a truck in two different <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>s, with the emitted light having the same speed in each frame, though with different frequencies/energies due to the <span onmouseover="document.getElementById('def-doppler-effect').style.display='block'" onmouseout="document.getElementById('def-doppler-effect').style.display='none'">Doppler effect</span>, which will be explained later.</figcaption>
+<figcaption>&nbsp;A diagram, showing light emitted from a truck in two different <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>s, with the emitted light having the same speed in each frame, though with different frequencies/energies due to the <span onmouseover="document.getElementById('def-doppler-effect').style.display='block'" onmouseout="document.getElementById('def-doppler-effect').style.display='none'">Doppler effect</span>, which will be explained later.</figcaption>
 </figure>
 When we look at the same truck setup as the previous sections, but in a <span onmouseover="document.getElementById('def-vacuum').style.display='block'" onmouseout="document.getElementById('def-vacuum').style.display='none'">vacuum</span> this time, where the cannon firing a cannonball is swapped for the headlights emitting light, it gives the same speed of light when measured relative to the truck or the road, but how can this be true?
 For this to be true, we need a new way of thinking about velocity addition, since the velocities of objects have to be added in a way that is consistent with the requirement that the speed of light is constant, but also gives the approximate classical addition at speeds of objects at much less than the speed of light, like how we observe with the cannon and truck. Since the speed of the light depends only on the units of time and positions, the only way to correct for this is to have the measured positions and times of objects <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> differently when swapping between <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>s than the classical way. This is what we will talk about next.
@@ -248,7 +289,7 @@ For the curious, it was the \href{https://scienceready.com.au/pages/determinatio
 <div id="ch1_6_1_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/lorry_clock.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Diagram showing the extra distance light travels in the road's frame with the truck moving.</figcaption>
+<figcaption>&nbsp;Diagram showing the extra distance light travels in the road's frame with the truck moving.</figcaption>
 </figure>
 Let's imagine a simple clock, as shown in Figure \ref{fig: truck clock}, made of a light pulse moving back and forth between two mirrors on a moving truck, with a mirror on the truck's floor and on the roof directly above it, we will keep time by taking a tick of this clock to be when the light travels from one mirror to the other mirror and back again. For an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> in the truck, they will see the light go straight up and down between the mirrors, but an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> stationary relative to the road will see not just the light traveling up and down but also with the direction of the truck as well, hence it will travel a longer distance. But since the distance traveled by the light in the moving frame is longer and the speed of light is constant, we are only left with the possibility that the perceived travel time of the light has to be longer in this <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>, i.e. the clock ticks slower to the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> on the road watching the moving truck. How much it is moving slower, can be solved using the ratio of the lengths of paths in each frame as they are shown in the diagram. This difference in the flow of time will later lead to more odd consequences. The slowing of the ticking is also the same for any type of clock, and if you were to play a movie on the truck, it would take a longer amount of time for it to play through from the roads <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>, it is the actual time itself being slowed down.
 Also the closer the truck goes to the speed of light, the bigger the difference in how fast time flows relative to the truck's time (this can be seen as a longer horizontal stretch in the path taken for the light from the perspective of someone standing still on the road).
@@ -257,7 +298,7 @@ Also the closer the truck goes to the speed of light, the bigger the difference 
 <div id="ch1_6_2_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/lorry_simul.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram showing how the two <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s of light reaching the two walls of the truck are <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneous</span> in one frame but happen at different times in another, due to truck's movement in the second frame and the speed of light remaining the same.</figcaption>
+<figcaption>&nbsp;A diagram showing how the two <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s of light reaching the two walls of the truck are <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneous</span> in one frame but happen at different times in another, due to truck's movement in the second frame and the speed of light remaining the same.</figcaption>
 </figure>
 Let's imagine a truck in its <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span>, with a light bulb in the middle and mirrors on the front and back walls, now if the light bulb gives off a pulse of light, the light will travel from the center of the truck to reach the mirrors <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneously</span> and back to the light bulb also <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneously</span>.
 But the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> on the road watching the truck drive past will see the light bulb <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneously</span> emit light in both directions and also <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneously</span> return to the bulb again. However, to do this the light reflects off each wall's mirrors at different times in this frame as shown in the diagram. This is because the speed of light is the same for both directions but the truck is moving, meaning the back of the truck is moving towards where the bulb was when the pulse was emitted making the distances traveled shorter, and due to the front wall moving away from it, the light travels a longer distance to get to the front wall. Due to this and the speed of light being the same in both <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>s, the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> on the road will see the light hit the mirrors at different times.
@@ -269,7 +310,7 @@ I have left out any mention of <span onmouseover="document.getElementById('def-l
 <div id="ch1_6_3_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Full_Lorry_Transform.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram, showing a truck with a square container in its <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> (top), emitting light from a central bulb in the four directions, with all light being reflected by the mirrored sides back to the center. In the second frame with the truck now moving (bottom) we see the truck's length contracted and what the light paths would be in this frame</figcaption>
+<figcaption>&nbsp;A diagram, showing a truck with a square container in its <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> (top), emitting light from a central bulb in the four directions, with all light being reflected by the mirrored sides back to the center. In the second frame with the truck now moving (bottom) we see the truck's length contracted and what the light paths would be in this frame</figcaption>
 </figure>
 If we have a truck in its <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> with a square container with light emitted in all four directions from the center so that it will bounce off the mirrored sides of the truck and return to the center <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneously</span>. we require that in the moving frame they also all return to the center <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneously</span>, as multiple <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s that happen at a single point <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneously</span> in one frame, must happen <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneously</span> in all other frames. This time between the light being emitted and absorbed will be the <span onmouseover="document.getElementById('def-time-dilation').style.display='block'" onmouseout="document.getElementById('def-time-dilation').style.display='none'">dilated time</span>, that was described in the <span onmouseover="document.getElementById('def-time-dilation').style.display='block'" onmouseout="document.getElementById('def-time-dilation').style.display='none'">time dilation</span> section.
 To achieve this <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneity</span> in the return of the light to the bulb, the length of the path of light in each direction has to be the same (as its speed is the same in all directions), we can work out the length of the upward path from the <span onmouseover="document.getElementById('def-time-dilation').style.display='block'" onmouseout="document.getElementById('def-time-dilation').style.display='none'">time dilation</span> section, and this is the length the path needs to be in the horizontal directions as well, the paths can only have this length if the truck length is contracted when moving, the exact amount of contraction can be worked geometrically, and it turns out that the ratio of the increase in the amount of time that passes before the light is reabsorbed is inversely proportional to the amount the truck is contracted in the direction of its movement.
@@ -278,7 +319,7 @@ The reason that we do not worry about contraction in the distance between the fl
 <h4 id="3carsystemwayofexplaininglengthcontraction(maydelete)_header">3 car system way of explaining length contraction (may delete)</h4>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/cars.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Diagram that illustrates an experiment with three cars initially at rest and equally spaced on a road. The middle car emits light that reaches the front and back cars <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneously</span>, triggering all cars to accelerate for a predetermined amount of time. Now another light is emitted from the middle car after the acceleration has finished, the road <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> sees the light reach the back car first, as it is moving towards where the light had been emitted, this causes it to begin accelerating before the front car. This results in the cars being closer together after acceleration, demonstrating Lorentz <span onmouseover="document.getElementById('def-length-contraction').style.display='block'" onmouseout="document.getElementById('def-length-contraction').style.display='none'">length contraction</span>, However, to the car <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>, the distance between the cars remains unchanged from the initial distances.</figcaption>
+<figcaption>&nbsp;Diagram that illustrates an experiment with three cars initially at rest and equally spaced on a road. The middle car emits light that reaches the front and back cars <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneously</span>, triggering all cars to accelerate for a predetermined amount of time. Now another light is emitted from the middle car after the acceleration has finished, the road <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> sees the light reach the back car first, as it is moving towards where the light had been emitted, this causes it to begin accelerating before the front car. This results in the cars being closer together after acceleration, demonstrating Lorentz <span onmouseover="document.getElementById('def-length-contraction').style.display='block'" onmouseout="document.getElementById('def-length-contraction').style.display='none'">length contraction</span>, However, to the car <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>, the distance between the cars remains unchanged from the initial distances.</figcaption>
 </figure>
 Say we have 3 cars that are equally distanced and at rest on the road, the middle car sends out a pulse of light that reaches the front and back car at the same time to the road <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> and the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s in the car when it reaches them both, all the cars accelerate for a predetermined fixed amount of time, so that after this acceleration period the cars are now moving but still equally spaced relative to the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s in the cars and the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> on the road. As for all <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s the light reaches the front and back cars at the same time.
 Now if we do this a second time, with the middle car releasing another pulse, we have in the frame of the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s in the cars: again the front and back drivers receiving the pulses at the same time meaning that they again will start accelerating simultaneously, and again after the acceleration there will be the same equal distance between the cars. But for the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> on the road, they see the back car receive the signal first as that car is moving towards the point where the light pulse was emitted and the front car is moving away from it. This would mean the back car would start accelerating first to get to the final constant velocity and get closer to the front car before the front car begins to accelerate, hence the cars end up closer together after all of this. The <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s in the car and the road <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>, do not agree with what the distances between the cars are. This contraction of length between cars, in the frame in which the cars are moving, is called Lorentz <span onmouseover="document.getElementById('def-length-contraction').style.display='block'" onmouseout="document.getElementById('def-length-contraction').style.display='none'">length contraction</span>, which means that objects that are moving faster become shorter, and the distances between the objects also become shorter.
@@ -287,7 +328,7 @@ Now if we do this a second time, with the middle car releasing another pulse, we
 <div id="ch1_6_4_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Cannon_Balls.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram showing why there must not be a contraction in the perpendicular direction to the frame's relative motion. The top figure shows a ball and cannon at rest, the bottom figures show the cannon ball being fired in the frame of the cannon (left) where the moving ball has a contracted width, and the frame of the ball (right) where now the canon is now moving and has a contract width, with the ball at rest being the same size, both frames would contradict each other, if there was a change in width of moving objects, as the walls of the cannon and the surface of the ball would overlap in one frame and have a gap between them in the other. So we require that there is no change in size perpendicular to the movement of the object.</figcaption>
+<figcaption>&nbsp;A diagram showing why there must not be a contraction in the perpendicular direction to the frame's relative motion. The top figure shows a ball and cannon at rest, the bottom figures show the cannon ball being fired in the frame of the cannon (left) where the moving ball has a contracted width, and the frame of the ball (right) where now the canon is now moving and has a contract width, with the ball at rest being the same size, both frames would contradict each other, if there was a change in width of moving objects, as the walls of the cannon and the surface of the ball would overlap in one frame and have a gap between them in the other. So we require that there is no change in size perpendicular to the movement of the object.</figcaption>
 </figure>
 </div>  <!-- close subsection-->
 </div> <!-- close section-->
@@ -295,7 +336,7 @@ Now if we do this a second time, with the middle car releasing another pulse, we
 <div id="ch1_7_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Doppler.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram showing (left) a central source at rest emitting several circular pulses of light with equal time between each pulse, (right) the same source in a frame where it is now moving and emitting circular pulses of light, but each subsequential pulse is emitted from a different position as the source is moving, marked by a faded dot</figcaption>
+<figcaption>&nbsp;A diagram showing (left) a central source at rest emitting several circular pulses of light with equal time between each pulse, (right) the same source in a frame where it is now moving and emitting circular pulses of light, but each subsequential pulse is emitted from a different position as the source is moving, marked by a faded dot</figcaption>
 </figure>
 If we have a source at rest, emitting circular pulses of light with equal times between each pulse, we will have concentric circular pulses in this frame, but if we move to a frame where the source is now moving to the right, each circular pulse is now being emitted from a different position as the source is moving. Due to the source moving, each pulse will be emitted closer to the right-hand side of the previous pulses, creating a bunching up of the pulses (increase in frequency) in the direction of movement and a spreading out (decrease in frequency) of the pulses in the opposite direction, that is what happens in the classical version of the <span onmouseover="document.getElementById('def-doppler-effect').style.display='block'" onmouseout="document.getElementById('def-doppler-effect').style.display='none'">Doppler effect</span>, that you will notice that an ambulance or police car sounds different driving towards you and when driving away, this is due to the bunching up of the sounds waves in the direction of the moving vehicle. In special relativity, we also have to take the <span onmouseover="document.getElementById('def-time-dilation').style.display='block'" onmouseout="document.getElementById('def-time-dilation').style.display='none'">time dilation</span> of the pulses into account, as there will be a longer time between each subsequential circular pulse, Due to perceived time moving more slowly for objects moving relative to the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>, this has a decreasing effect on the frequency in all directions, but directly in the direction of movement of the source this is outweighed by the frequency increase from the previous bunching up effect. Since the energy of the light is proportional to the frequency it is increased in the direction of motion of the source due to the <span onmouseover="document.getElementById('def-doppler-effect').style.display='block'" onmouseout="document.getElementById('def-doppler-effect').style.display='none'">Doppler effect</span>s and decreased in the opposite direction.
 One thing not mentioned yet in this picture so far is how the light is also affected by what is called the <span onmouseover="document.getElementById('def-aberration').style.display='block'" onmouseout="document.getElementById('def-aberration').style.display='none'">aberration</span>, which is the change in the direction of each part of the emitted light pulse, which leads to light not being circularly symmetric in each of the spherical pulses, which will be explained in the next section.
@@ -308,11 +349,11 @@ The picture painted of the <span onmouseover="document.getElementById('def-doppl
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Aberrated_lorrys_1.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Pulse emitted</figcaption>
+<figcaption>&nbsp;Pulse emitted</figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Aberrated_lorrys_2.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Pulse absorbed</figcaption>
+<figcaption>&nbsp;Pulse absorbed</figcaption>
 </figure>
 </div>
 <figcaption>Pulse emitted</figcaption>
@@ -441,11 +482,11 @@ If we now take both the Doppler picture and the <span onmouseover="document.getE
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Rest_velocities.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption><span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span></figcaption>
+<figcaption>&nbsp;<span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span></figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Aberrated_velocities.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Moving frame</figcaption>
+<figcaption>&nbsp;Moving frame</figcaption>
 </figure>
 </div>
 <figcaption><span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span></figcaption>
@@ -455,11 +496,11 @@ If we now take both the Doppler picture and the <span onmouseover="document.getE
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Rest_velocities_inwards.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption><span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span></figcaption>
+<figcaption>&nbsp;<span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span></figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Aberrated_velocities_inwards.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Moving frame</figcaption>
+<figcaption>&nbsp;Moving frame</figcaption>
 </figure>
 </div>
 <figcaption><span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span></figcaption>
@@ -471,11 +512,11 @@ If we were to have multiple pulses with a constant time between each pulse, and 
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Field_Rest_Frame.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Source's Rest Frame</figcaption>
+<figcaption>&nbsp;Source's Rest Frame</figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Field_Moving_Frame_Doppler.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Source's Moving frame</figcaption>
+<figcaption>&nbsp;Source's Moving frame</figcaption>
 </figure>
 </div>
 <figcaption>Source's Rest Frame</figcaption>
@@ -485,7 +526,7 @@ Imagine that a ball one light year (the distance it takes light to travel in a y
 This shows how important it is to take the delay in the light from objects into account when observing relativistic systems, this view is called the delayed/retarded view, i.e what we see now are objects in their past positions, and the further things are from you the further into the past we are currently seeing them.
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Perceived_speed.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram demonstrating the perceived speed of a ball vs its actual speed</figcaption>
+<figcaption>&nbsp;A diagram demonstrating the perceived speed of a ball vs its actual speed</figcaption>
 </figure>
 </div> <!-- close section-->
 <h2 id="VelocityTransformation_header">Velocity Transformation</h2>
@@ -510,52 +551,68 @@ These effects will all be explained more fully with math in the coming chapters,
 </div> <!-- close section-->
 </div> <!-- close chapter-->
 
-<div>
- <a onclick="showContent('ch0_div')" style="font-weight: bold;"> Previous </a>
- <a onclick="showContent('ch2_div')" style="font-weight: bold;"> Next </a>
+<div class='arrow-nav'>
+ <a onclick="showContent('ch0_wrap')" style="font-weight: bold; padding-left: 10px;"> < Previous </a>
+<a onclick="showContent('ch2_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a>
 </div>
  </section>
- <section id="ch2_div" class="chapter" style="display: none !important;">
+ <section id="ch2_wrap" class="chapter" style="display: none !important;">
  <h1 id="ch2_header">2. Positions, Time and Velocity</h1>
 <div id="ch2_content">
+<span style="display: hidden">\(\nextSection\)</span>
 Now that we have learned about the basic concepts of special relativity, we can let the mathematics begin, starting with classical relativity as a starting point, it will give us an understanding of how to <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> between <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span>s, we can then compare special relativity to this to help with our intuition.
 <h2 id="ClassicalRelativity_header">Classical Relativity</h2>
 <div id="ch2_1_content">
 For classical (Galilean) relativity, if we have two <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s moving relative to each other at constant velocity and want to find how each <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> would describe the positions and motion of a particle relative to them, we need to know the positions and times in one observer's frame and how to <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> them into the other <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s frame. i.e. if we have how one <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> would describe the coordinates of a particle over time relative to them and we want to now know the coordinates of the particle with respect to the other <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>, we need to know how the transformation of coordinates works.
 Before special relativity, it was assumed that distances between two positions were the same for all <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s, i.e. the first <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> would see a stick and measure it to be the same length as another <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> moving relative to them would measure it to be. long story short, lengths are the same for all <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s in <span onmouseover="document.getElementById('def-galilean-transform').style.display='block'" onmouseout="document.getElementById('def-galilean-transform').style.display='none'">Galilean transform</span>. Another assumption is that time is constant for everyone, i.e. clocks move at the same rate for each <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> and if a particle was to emit light at a particular time. This light would be emitted at the same time for the other <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s too.
-So let's see how the mathematics works for the classical coordinate system transform between two <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s. If we have the coordinate system in one <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span> \(\lt S\gt \) to describe an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> \(E\), which is given by the set of spatial and time coordinates \((x,y,z)\) and \(t\), and we want to find the coordinates of the event in another "primed" <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span>/coordinate system that is moving at a relative speed \(v\) to the first frame in the z-axis, that was initially overlapping with the first frame at time \(t=0\), with the events coordinates now described by \(x', y', z'\) at time \(t'\). The direction of the second frame is in the upwards z-direction instead of being to the right in the case of the truck diagrams from the previous chapter, this is to help us when we use spherical polar coordinates later and to help see the symmetries.
+So let's see how the mathematics works for the classical coordinate system transform between two <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s. If we have the coordinate system in one <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span> \(\lt \!\!S\!\gt \) to describe an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> \(E\), which is given by the set of spatial and time coordinates \((x,y,z)\) and \(t\), and we want to find the coordinates of the event in another "primed" <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span>/coordinate system that is moving at a relative speed \(v\) to the first frame in the z-axis, that was initially overlapping with the first frame at time \(t=0\), with the events coordinates now described by \(x', y', z'\) at time \(t'\). The direction of the second frame is in the upwards z-direction instead of being to the right in the case of the truck diagrams from the previous chapter, this is to help us when we use spherical polar coordinates later and to help see the symmetries.
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Tikz_simple_Galilean_transform_derivation.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Diagram, of a <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span> \(\lt S\gt \) with its associated \((x,y,z)\) coordinate system at rest in this frame, it also shows a primed coordinate axis \((x', y', z')\) at time \(t=t'\) from when the axis where overlapping, associated with another <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span>s moving at velocity \(v\) in the z-axis, it shows an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> with position vector \(\overrightarrow{OE}\) in this frame and the vector \(\overrightarrow{OO'}\) to this primed axis origin and the vector \(\overrightarrow{O'E}\) which is the vector from this primed origin to the <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> in the shown frame.</figcaption>
+<figcaption>&nbsp;Diagram, of a <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span> \(\lt \!\!S\!\gt \) with its associated \((x,y,z)\) coordinate system at rest in this frame, it also shows a primed coordinate axis \((x', y', z')\) at time \(t=t'\) from when the axis where overlapping, associated with another <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span>s moving at velocity \(v\) in the z-axis, it shows an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> with position vector \(\vec{OE}\) in this frame and the vector \(\vec{OO'}\) to this primed axis origin and the vector \(\vec{O'E}\) which is the vector from this primed origin to the <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> in the shown frame.</figcaption>
 </figure>
-For frame \(\lt S\gt \) we have its origin \(O\) and an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> \(E\) located at
+For frame \(\lt \!\!S\!\gt \) we have its origin \(O\) and an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> \(E\) located at
+<div class="math">
+<div class="math">
 \begin{equation}
-\overrightarrow{OE}=(x,y,z)
+\vec{OE}=(x,y,z)
 \end{equation}
-at time \(t\) from axis overlap, and a prime frame \(\lt S'\gt \)'s origin \(O'\) moving at relative velocity \(v\) so that in the original frame we have after a time
+</div>
+</div>
+at time \(t\) from axis overlap, and a prime frame \(\lt \!\!S'\!\!\gt \)'s origin \(O'\) moving at relative velocity \(v\) so that in the original frame we have after a time
+<div class="math">
+<div class="math">
 \begin{equation}
-\overrightarrow{OO'}=(0,0,vt)
+\vec{OO'}=(0,0,vt)
 \end{equation}
-in \(\lt S'\gt \) we have the <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>'s coordinates as
+</div>
+</div>
+in \(\lt \!\!S'\!\!\gt \) we have the <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>'s coordinates as
+<div class="math" id="eq: classical event">
 \begin{equation}
-\overrightarrow{O'E} = ( x{'}, y{'}, z{'} ) = \overrightarrow{OE} - \overrightarrow{OO'} = (x,y,z-vt)
+\vec{O'E} = ( x{'}, y{'}, z{'} ) = \vec{OE} - \vec{OO'} = (x,y,z-vt)
 \label{eq: classical event}
 \end{equation}
-for frame \(\lt S\gt \) we have
+</div>
+for frame \(\lt \!\!S\!\gt \) we have
+<div class="math" id="eq: classical event 2">
 \begin{equation}
-\overrightarrow{OE} = (x,y,z) = \overrightarrow{OO'} + \overrightarrow{O'E} = (x{'},y',z'+vt')
+\vec{OE} = (x,y,z) = \vec{OO'} + \vec{O'E} = (x{'},y',z'+vt')
 \label{eq: classical event 2}
 \end{equation}
+</div>
 so we have \(x=x'\), \(y=y'\), \(t=t'\) (time is assumed to be the same across reference frames in classical relativity), and for the z-components
+<div class="math">
 \begin{equation}
 \begin{aligned}
 & z' = z - vt \\
 & z = z'+vt'
 \end{aligned}
 \end{equation}
-This shows the symmetry between the frames, as if we were originally in the \(\lt S'\gt \) frame we would have the \(\lt S\gt \) frame moving at -\(v\) relative to it, so we would expect that the inverse <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transformation</span> would replace one frame's coordinates with the other and have the opposite <span onmouseover="document.getElementById('def-frame-velocity').style.display='block'" onmouseout="document.getElementById('def-frame-velocity').style.display='none'">frame velocity</span> instead.
+</div>
+This shows the symmetry between the frames, as if we were originally in the \(\lt \!\!S'\!\!\gt \) frame we would have the \(\lt \!\!S\!\gt \) frame moving at -\(v\) relative to it, so we would expect that the inverse <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transformation</span> would replace one frame's coordinates with the other and have the opposite <span onmouseover="document.getElementById('def-frame-velocity').style.display='block'" onmouseout="document.getElementById('def-frame-velocity').style.display='none'">frame velocity</span> instead.
 So the inverse of going from <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> to original is just a matter of swapping all primed coordinates with original coordinates and changing the sign on the <span onmouseover="document.getElementById('def-frame-velocity').style.display='block'" onmouseout="document.getElementById('def-frame-velocity').style.display='none'">frame velocity</span>, this can be seen from starting at time \(t=0\) we have the frame's origins overlapping and that there is a symmetry from here, we have the freedom to choose either frame to be the original, as no frame is particularly special and depending which one you pick the relative velocity is either \(v\) or -\(v\).
 The full description of the position and time <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> for an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> is given as
+<div class="math" id="eq: Galilean transformation">
 \begin{equation}
 \begin{aligned}
 & x'=x               \\
@@ -566,6 +623,7 @@ The full description of the position and time <span onmouseover="document.getEle
 \end{aligned}
 \label{eq: Galilean transformation}
 \end{equation}
+</div>
 </div> <!-- close section-->
 <h2 id="PostulatesofSpecialRelativity_header">Postulates of Special Relativity</h2>
 <div id="ch2_2_content">
@@ -584,306 +642,388 @@ For the derivation of the coordinate transformation between two inertial frames,
 <div id="ch2_3_1_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Light_clock.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram showing a clock keeping time using light, light is emitted from the origin and reflected off a mirror back to the origin, shown here in two different frames (describe what things are in the diagram)(need axis labels)</figcaption>
+<figcaption>&nbsp;A diagram showing a clock keeping time using light, light is emitted from the origin and reflected off a mirror back to the origin, shown here in two different frames (describe what things are in the diagram)(need axis labels)</figcaption>
 </figure>
 We can have a clock that keeps time using a light pulse being emitted from a bulb towards a mirror and back again, recording a tick on its clock each time it returns to where it was emitted, taking a time \(\Delta \tau\) in the rest frame to return. The distance the light travels to the mirror and back in this time is
+<div class="math">
 \begin{equation}
 2W=c\Delta \tau,
 \end{equation}
+</div>
 the distance the bulb travels during this in the moving frame is
+<div class="math">
 \begin{equation}
 L=u\Delta t' = -v \Delta t',
 \end{equation}
+</div>
 where \(\Delta t'\) is the time it took light to return in moving frame and \(u\) is the speed of the bulb which is in the opposite direction of the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> relative to the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">proper frame</span>, i.e. \(u=-v\), the distance light travels in this time is
+<div class="math">
 \begin{equation}
 2D = c \Delta t{'},
 \end{equation}
+</div>
 this forms a triangle, so we have the square of the hypotenuse \(2D\) equal to the square of the lengths \(W\) and \(L\):
+<div class="math">
 \begin{equation}
 c^2 \Delta t'^2 = v^2 \Delta t'^2 + c^2\Delta \tau^2
 \end{equation}
+</div>
 rearranging to find the time it took in the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> relative to the time in the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">proper frame</span>, we find
+<div class="math">
 \begin{equation}
-\Delta t' = \dfrac{1}{\sqrt{1-\dfrac{v^2}{c^2}}} \Delta \tau = \gamma \Delta \tau
+\Delta t' = \dfrac{1}{\sqrt{1-\dfrac{v^2}{c^2}}} \Delta \tau = {\gamma} \Delta \tau
 \end{equation}
+</div>
 with
+<div class="math">
 \begin{equation}
-\gamma = \dfrac{1}{\sqrt{1-\dfrac{v^2}{c^2}}}.
+{\gamma} = \dfrac{1}{\sqrt{1-\dfrac{v^2}{c^2}}}.
 \end{equation}
+</div>
 which means
+<div class="math">
 \begin{equation}
 \Delta t' \geq \Delta \tau
 \end{equation}
+</div>
 So we take this outcome as the time taken between two <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s in the same position in the moving frame taking longer than in the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> of the clock, due to the longer distance it has to travel at the same speed.
 </div> <!-- close subsection-->
 <h3 id="LengthContractionTODO_header">Length Contraction TODO</h3>
 <div id="ch2_3_2_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Length_Contraction.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram, showing a central bulb emitting light in the three directions, with all light being reflected by the mirrors back to the center, this is shown at rest on the left and moving in another inertial frame with the system now moving, with its length slightly contracted in the direction of movement.</figcaption>
+<figcaption>&nbsp;A diagram, showing a central bulb emitting light in the three directions, with all light being reflected by the mirrors back to the center, this is shown at rest on the left and moving in another inertial frame with the system now moving, with its length slightly contracted in the direction of movement.</figcaption>
 </figure>
 If we have a system in its rest frame with light emitted in three directions from the center, one directly in front and the other two to the sides, with equally distanced mirrors in the three directions so that they will be reflected back and return to the center simultaneously. we require that in the moving frame they also all return to the center simultaneously, as multiple events that happen at a single point simultaneously in one frame, must happen simultaneously in all other frames. This time between the light being emitted and absorbed will be the dilated time from the previous section. To achieve this simultaneity in the return of the light to the bulb, the length of the full path of light from there center to the mirrors and back in each direction has to be the same (as its speed of light is the same in all directions and the return time has to be the same), we can work out the length of the sideways paths from the time dilation section, and this is the length the path needs to be in the vertical directions as well, the paths can only have this length if the system length is contracted when moving in the direction of movement. Note that there is no contraction in the perpendicular direction to the movement due to the paradox explained in chapter \ref{width contraction}.
 The pulse sent forward has a distance
+<div class="math">
 \begin{equation}
 L_1= ct'_1= D' + ut'_1
 \end{equation}
+</div>
 to travel to get to the mirror that is moving away from the point it was emitted, where \(t'_1\) is the time taken to get there and \(D'\) is the distance between the mirror in front and the bulb and \(u\) being the speed the bulb and mirrors are moving in the primed frame. After this, the light then has to travel back to the bulb a distance
+<div class="math">
 \begin{equation}
 L_2 = ct'_2= D' - ut'_2
 \end{equation}
+</div>
 where \(t'_2\) is the time taken to return to the bulb from the mirror, both of these give the two times as
+<div class="math">
 \begin{equation}
 t'_1=\frac{D'}{c-u}
 \end{equation}
+</div>
 and
+<div class="math">
 \begin{equation}
 t'_2=\frac{D'}{c+u}
 \end{equation}
+</div>
 adding both times together gives the total primed time
+<div class="math">
 \begin{equation}
-t' = D'(\frac{1}{c+u} + \frac{1}{c-u})=\frac{D'}{c}\frac{1}{1-u^2/c^2} =\frac{D'}{c}\frac{1}{1-v^2/c^2}=\gamma^2 \frac{D'}{c}
+t' = D'(\frac{1}{c+u} + \frac{1}{c-u})=\frac{D'}{c}\frac{1}{1-u^2/c^2} =\frac{D'}{c}\frac{1}{1-v^2/c^2}={\gamma}^2 \frac{D'}{c}
 \end{equation}
+</div>
 from the time dilation equation, we have
+<div class="math">
 \begin{equation}
-ct'=c\gamma t = \gamma D = \gamma^2 D'
+ct'=c{\gamma} t = {\gamma} D = {\gamma}^2 D'
 \end{equation}
+</div>
 and finally leading to the contracted distance to the front mirror in the primed frame being
+<div class="math">
 \begin{equation}
-D' = \frac{1}{\gamma}D
+D' = \frac{1}{{\gamma}}D
 \end{equation}
+</div>
 so we have
+<div class="math">
 \begin{equation}
 D' \leq D
 \end{equation}
+</div>
 we take from this that distances in the direction of movement of an object are contracted in its direction of movement compared to the rest frame of the object.
 </div> <!-- close subsection-->
 <h3 id="PositionandTimeTransformation_header">Position and Time Transformation</h3>
 <div id="ch2_3_3_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Tikz_simple_lorentz_transform_derivation.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram showing an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> in a frame with another primed frame's axis shown moving in the z-direction.</figcaption>
+<figcaption>&nbsp;A diagram showing an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> in a frame with another primed frame's axis shown moving in the z-direction.</figcaption>
 </figure>
-If we are in a frame \(\lt S\gt \) with origin \(O\) at position \((0,0,0)\) and a primed frame \(\lt S'\gt \) moving in the z-direction at velocity \(v\) such that the position of the primed origin in this frame is
+If we are in a frame \(\lt \!\!S\!\gt \) with origin \(O\) at position \((0,0,0)\) and a primed frame \(\lt \!\!S'\!\!\gt \) moving in the z-direction at velocity \(v\) such that the position of the primed origin in this frame is
+<div class="math">
+<div class="math">
 \begin{equation}
-\overrightarrow{OO'}=(0,0,vt)
+\vec{OO'}=(0,0,vt)
 \end{equation}
+</div>
+</div>
 at time \(t\) from when the origins overlapped, if there is an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> (let's say light or another object reaching a mirror that is moving with the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span>s axis) described in this frames coordinates as
+<div class="math">
 \begin{equation}
 E = (x,y,z,t)
 \end{equation}
+</div>
 with the spatial coordinates shown in the diagram as
+<div class="math">
+<div class="math">
 \begin{equation}
-\overrightarrow{OE}=(x,y,z)
+\vec{OE}=(x,y,z)
 \end{equation}
+</div>
+</div>
 in the primed frame we have the event described as
+<div class="math">
 \begin{equation}
 E' = (x',y',z',t')
 \end{equation}
-now in the current frame, we have the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span>'s axis moving with the mirror, from the previous chapter we should have this primed distance in the z-direction to the event contracted, as the primed z-coordinates are contracted in this frame, as seen from length contraction section; the events z-coordinate is \(z=z'/\gamma\), so that distance between the primes origin and the event in this frame (not the primed frame) is
+</div>
+now in the current frame, we have the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span>'s axis moving with the mirror, from the previous chapter we should have this primed distance in the z-direction to the event contracted, as the primed z-coordinates are contracted in this frame, as seen from length contraction section; the events z-coordinate is \(z=z'/{\gamma}\), so that distance between the primes origin and the event in this frame (not the primed frame) is
+<div class="math">
 \begin{equation}
-\overrightarrow{O'E} = (x,y,z'/\gamma)
+\vec{O'E} = (x,y,z'/{\gamma})
 \end{equation}
+</div>
 noting that we have the x and y-components unaffected due to the cannon and ball thought experiment from the first chapter. From the diagram, we can see
+<div class="math" id="eq: event">
 \begin{equation}
-\overrightarrow{OE}= \overrightarrow{OO'} + \overrightarrow{O'E}
+\vec{OE}= \vec{OO'} + \vec{O'E}
 \label{eq: event}
 \end{equation}
+</div>
 subbing each component into this equation for the z-direction and rearranging, we have
+<div class="math">
 \begin{equation}
-z{'} = \gamma (z-vt)
+z{'} = {\gamma} (z-vt)
 \end{equation}
-If we were instead in frame \(\lt S'\gt \) we would have \(\overrightarrow{OE}=(x,y,z/\gamma)\), \(\overrightarrow{OO'}=(0,0,vt')\), and \(\overrightarrow{O'E} = (x,y,z')\), doing the same for these we have
+</div>
+If we were instead in frame \(\lt \!\!S'\!\!\gt \) we would have \(\vec{OE}=(x,y,z/{\gamma})\), \(\vec{OO'}=(0,0,vt')\), and \(\vec{O'E} = (x,y,z')\), doing the same for these we have
+<div class="math">
 \begin{equation}
-z = \gamma (z'+vt')
+z = {\gamma} (z'+vt')
 \end{equation}
-This should be expected as this shows the expected symmetry between the frames because if we were originally in the \(\lt S'\gt \) frame we would have the \(\lt S\gt \) frame moving instead at -\(v\) in the z-direction relative to the \(\lt S'\gt \) frame, so we would expect that the inverse <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transformation</span> would replace one frame's coordinates with the other and have the negative of the velocity instead.
+</div>
+This should be expected as this shows the expected symmetry between the frames because if we were originally in the \(\lt \!\!S'\!\!\gt \) frame we would have the \(\lt \!\!S\!\gt \) frame moving instead at -\(v\) in the z-direction relative to the \(\lt \!\!S'\!\!\gt \) frame, so we would expect that the inverse <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transformation</span> would replace one frame's coordinates with the other and have the negative of the velocity instead.
 Now substituting the z transforms into each other we have
+<div class="math">
 \begin{equation}
-z = \gamma ( \gamma (z-vt)+vt')
+z = {\gamma} ( {\gamma} (z-vt)+vt')
 \end{equation}
+</div>
 and rearranging gives
+<div class="math">
 \begin{equation}
-t' = \gamma \left( \left( \dfrac{1}{\gamma^2}-1 \right)\frac{z}{v} + t \right)
+t' = {\gamma} \left( \left( \dfrac{1}{{\gamma}^2}-1 \right)\frac{z}{v} + t \right)
 \end{equation}
-with \(\gamma^{-2}=1-v^2/c^2\) then giving
+</div>
+with \({\gamma}^{-2}=1-v^2/c^2\) then giving
+<div class="math">
 \begin{equation}
-t' = \gamma \left( t - \dfrac{vz}{c^2} \right)
+t' = {\gamma} \left( t - \dfrac{vz}{c^2} \right)
 \end{equation}
+</div>
 leaving full description of the location and time of an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> as
+<div class="math" id="eq: Lorentz transformation">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \begin{aligned}
 & x'=x                                         \\
 & y'=y                                         \\
-& z' = \gamma (z-vt)                           \\
+& z' = {\gamma} (z-vt)                           \\
 \text{at time \ \ \ }                           \\
-& t'=\gamma \bigg(t-\frac{vz}{c^2}\bigg)       \\
+& t'={\gamma} \bigg(t-\frac{vz}{c^2}\bigg)       \\
 \text{with \ \ \ }                              \\
-& \gamma = \dfrac{1}{\sqrt{1-\frac{v^2}{c^2}}}
+& {\gamma} = \dfrac{1}{\sqrt{1-\frac{v^2}{c^2}}}
 \end{aligned}
 }
 \label{eq: Lorentz transformation}
 \end{equation}
-For the time <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> the \(\frac{vz}{c^2}\) term is the cause of <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneous</span> <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s in one inertial frame no longer being <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneous</span> in another inertial frame, and the gamma factor \(\gamma\), is the term that causes the overall change in how fast time flows relative in each frame. In the spatial coordinate transforms the gamma factor is the cause of the change of lengths in the direction of the frame's movement. How the transformation works is shown in figure \ref{fig: coordinate transform}.
+</div>
+For the time <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> the \(\frac{vz}{c^2}\) term is the cause of <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneous</span> <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s in one inertial frame no longer being <span onmouseover="document.getElementById('def-simultaneity').style.display='block'" onmouseout="document.getElementById('def-simultaneity').style.display='none'">simultaneous</span> in another inertial frame, and the gamma factor \({\gamma}\), is the term that causes the overall change in how fast time flows relative in each frame. In the spatial coordinate transforms the gamma factor is the cause of the change of lengths in the direction of the frame's movement. How the transformation works is shown in figure \ref{fig: coordinate transform}.
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/coordinate_transforms.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram, showing a grid of points at time \(t=0\) that are at rest in their proper frame (left), giving the direct transformation into the moving primed frame (middle) where the points are now moving in the negative z-direction with the colors and labels showing the desynchronization of the primed times \(t'\), the next figure (right) shows what these points would be when they are synchronized with the origin's time \(t'=0\). *** split plots into several svgs and for other set later too, also call first picture "initial" frame of reference and others primed</figcaption>
+<figcaption>&nbsp;A diagram, showing a grid of points at time \(t=0\) that are at rest in their proper frame (left), giving the direct transformation into the moving primed frame (middle) where the points are now moving in the negative z-direction with the colors and labels showing the desynchronization of the primed times \(t'\), the next figure (right) shows what these points would be when they are synchronized with the origin's time \(t'=0\). *** split plots into several svgs and for other set later too, also call first picture "initial" frame of reference and others primed</figcaption>
 </figure>
 </div> <!-- close subsection-->
 <h3 id="InfintesmalChangesofCoordinates_header">Infintesmal Changes of Coordinates</h3>
 <div id="ch2_3_4_content">
+<div class="math">
 \begin{equation}
 \begin{aligned}
 & x'_2 - x'_1 = x_2 - x_1                                                                               \\
 & y'_2 - y'_1 = y_2 - y_1                                                                               \\
-& z'_2 - z'_1 = \gamma ( z_2 - v t_2) - \gamma ( z_1 - v t_1)                                           \\
-& t'_2 - t'_1=\gamma \bigg( t_2-\frac{v}{c^2} z_2 \bigg) - \gamma \bigg( t_1 - \frac{v}{c^2} z_1 \bigg)
+& z'_2 - z'_1 = {\gamma} ( z_2 - v t_2) - {\gamma} ( z_1 - v t_1)                                           \\
+& t'_2 - t'_1={\gamma} \bigg( t_2-\frac{v}{c^2} z_2 \bigg) - {\gamma} \bigg( t_1 - \frac{v}{c^2} z_1 \bigg)
 \end{aligned}
 \end{equation}
+</div>
 leads to
+<div class="math" id="eq: interval of Coordinates">
 \begin{equation}
 \label{eq: interval of Coordinates}
 \begin{aligned}
 & \Delta x'= \Delta x                                            \\
 & \Delta y'= \Delta y                                            \\
-& \Delta z' = \gamma ( \Delta z-v \Delta t)                      \\
-& \Delta t'=\gamma \bigg( \Delta t-\frac{v}{c^2} \Delta z \bigg)
+& \Delta z' = {\gamma} ( \Delta z-v \Delta t)                      \\
+& \Delta t'={\gamma} \bigg( \Delta t-\frac{v}{c^2} \Delta z \bigg)
 \end{aligned}
 \end{equation}
+</div>
 when taken the changes are infinitesimal this gives the differential quantities
+<div class="math" id="eq: Infintesmal interval of Coordinates">
 \begin{equation}
 \label{eq: Infintesmal interval of Coordinates}
 \begin{aligned}
 & dx'=dx                                      \\
 & dy'=dy                                      \\
-& dz' = \gamma (dz-vdt)                       \\
-& dt'=\gamma \bigg(dt-\frac{v}{c^2} dz \bigg)
+& dz' = {\gamma} (dz-vdt)                       \\
+& dt'={\gamma} \bigg(dt-\frac{v}{c^2} dz \bigg)
 \end{aligned}
 \end{equation}
+</div>
 </div> <!-- close subsection-->
 <h3 id="TransformswithLowRelativeFrameSpeedChange_header">Transforms with Low Relative Frame Speed Change</h3>
 <div id="ch2_3_5_content">
-For the coordinate transforms in the previous section we get back the classical <span onmouseover="document.getElementById('def-galilean-transform').style.display='block'" onmouseout="document.getElementById('def-galilean-transform').style.display='none'">coordinates transform</span> for frame velocities much smaller than the speed of light, i.e. with \(v\ll c\) we have \(\gamma \approx 1\) we get
+For the coordinate transforms in the previous section we get back the classical <span onmouseover="document.getElementById('def-galilean-transform').style.display='block'" onmouseout="document.getElementById('def-galilean-transform').style.display='none'">coordinates transform</span> for frame velocities much smaller than the speed of light, i.e. with \(v\ll c\) we have \({\gamma} \approx 1\) we get
+<div class="math">
 \begin{equation}
 t' \approx t
 \end{equation}
+</div>
+<div class="math">
 \begin{equation}
 z{'} \approx z - vt
 \end{equation}
+</div>
 which is the expected result for the <span onmouseover="document.getElementById('def-galilean-transform').style.display='block'" onmouseout="document.getElementById('def-galilean-transform').style.display='none'">classical coordinates transform</span>, and what we are used to seeing things work in everyday life. The influence of the gamma factor is shown in figure \ref{fig: Gamma Factor}.
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Gamma_Factor.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram, showing the magnitude of the gamma factor with increasing ratio of frame speed to the speed of light, with \(\gamma\) tending to infinity as \(v/c\rightarrow 1\).</figcaption>
+<figcaption>&nbsp;A diagram, showing the magnitude of the gamma factor with increasing ratio of frame speed to the speed of light, with \({\gamma}\) tending to infinity as \(v/c\rightarrow 1\).</figcaption>
 </figure>
 </div>  <!-- close subsection-->
 </div> <!-- close section-->
 <h2 id="Velocity_header">Velocity</h2>
 <div id="ch2_4_content">
-from taking the infinitesimals of equations from eq. \eqref{eq: Lorentz transformation}, we have the velocities as
+from taking the infinitesimals of equations from eq. <span class="eqref" onmouseover="copyContent('eq: Lorentz transformation','equation_hover');" onmouseout="deleteContent('equation_hover');">\eqref{eq: Lorentz transformation}</span>, we have the velocities as
+<div class="math">
 \begin{equation}
 \begin{aligned}
-& u'_x = \frac{dx'}{dt'}=\frac{dx}{\gamma \bigg(dt-\frac{vdz}{c^2}\bigg) }                \\
-& u'_y = \frac{dy'}{dt'}=\frac{dy}{\gamma \bigg(dt-\frac{vdz}{c^2}\bigg) }                \\
-& u'_z = \frac{dz'}{dt'} = \frac{\gamma (dz-vdt)}{\gamma \bigg(dt-\frac{vdz}{c^2}\bigg) }
+& u'_x = \frac{dx'}{dt'}=\frac{dx}{{\gamma} \bigg(dt-\frac{vdz}{c^2}\bigg) }                \\
+& u'_y = \frac{dy'}{dt'}=\frac{dy}{{\gamma} \bigg(dt-\frac{vdz}{c^2}\bigg) }                \\
+& u'_z = \frac{dz'}{dt'} = \frac{{\gamma} (dz-vdt)}{{\gamma} \bigg(dt-\frac{vdz}{c^2}\bigg) }
 \end{aligned}
 \end{equation}
+</div>
 now dividing the top and bottom of the fraction by \(dt\) we can give the equations in their vector form as
+<div class="math" id="eq: velocity transform">
 \begin{equation}
 \label{eq: velocity transform}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \begin{aligned}
-& \mathbf{U}' = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }
+& \mathbf{U}' = \dfrac{1}{{\gamma}\left(1- \dfrac{v}{c^2} u_z\right) }
 \begin{pmatrix}
 u_x                           \\
 u_y                           \\
-\gamma \left( u_z - v \right) \\
+{\gamma} \left( u_z - v \right) \\
 \end{pmatrix}
 \\
 & \text{at position \(\mathbf{R}'\) and time \(t'\) }
 \end{aligned}
 }
 \end{equation}
+</div>
 the generalised velocity <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> derived in appendix (todo) is
+<div class="math">
 \begin{equation}
-\mathbf{U}' = \dfrac{1}{\gamma} \dfrac{\mathbf{u}_s + \Big[\dfrac{\gamma-1}{\|\mathbf{V}\|^2}(\mathbf{u}_s\cdot \mathbf{V})- \gamma \Big] \mathbf{V}}{1 - \dfrac{\mathbf{u}_s\cdot\mathbf{V}}{c^2}}
+\mathbf{U}' = \dfrac{1}{{\gamma}} \dfrac{\mathbf{u}_s + \Big[\dfrac{{\gamma}-1}{\|\mathbf{V}\|^2}(\mathbf{u}_s\cdot \mathbf{V})- {\gamma} \Big] \mathbf{V}}{1 - \dfrac{\mathbf{u}_s\cdot\mathbf{V}}{c^2}}
 \end{equation}
+</div>
 with \(\mathbf{V}\) being the frame's velocity in any generalized direction, instead of just being in the z-direction
 </div> <!-- close section-->
 <h2 id="Acceleration_header">Acceleration</h2>
 <div id="ch2_5_content">
-To find how the acceleration of a particle transforms for an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> in two different frames we take the differential of the velocity <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> eq. \eqref{eq: velocity transform} and use the differentiation rules for two generic functions \(f\) and \(g\): \(d(gf)=f dg+g df\), and \(d[f(g(x))]= dg(x) * df(g(x))\)
+To find how the acceleration of a particle transforms for an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> in two different frames we take the differential of the velocity <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> eq. <span class="eqref" onmouseover="copyContent('eq: velocity transform','equation_hover');" onmouseout="deleteContent('equation_hover');">\eqref{eq: velocity transform}</span> and use the differentiation rules for two generic functions \(f\) and \(g\): \(d(gf)=f dg+g df\), and \(d[f(g(x))]= dg(x) * df(g(x))\)
+<div class="math">
 \begin{equation}
 \begin{aligned}
-d\mathbf{U}' & = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }
+d\mathbf{U}' & = \dfrac{1}{{\gamma}\left(1- \dfrac{v}{c^2} u_z\right) }
 \begin{pmatrix}
 du_x        \\
 du_y        \\
-\gamma du_z \\
+{\gamma} du_z \\
 \end{pmatrix}
-+ \dfrac{\gamma \dfrac{v}{c^2} du_z}{\gamma^2\left(1- \dfrac{v}{c^2} u_z\right)^2 }
++ \dfrac{{\gamma} \dfrac{v}{c^2} du_z}{{\gamma}^2\left(1- \dfrac{v}{c^2} u_z\right)^2 }
 \begin{pmatrix}
 u_x                           \\
 u_y                           \\
-\gamma \left( u_z - v \right) \\
+{\gamma} \left( u_z - v \right) \\
 \end{pmatrix}                                           \\
 & = ...                                                    \\
-& = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right)^2 }
+& = \dfrac{1}{{\gamma}\left(1- \dfrac{v}{c^2} u_z\right)^2 }
 \begin{pmatrix}
 du_x + \frac{v}{c^2}( u_x du_z - u_z du_x) \\
 du_y + \frac{v}{c^2}( u_y du_z - u_z du_y) \\
-\frac{1}{\gamma} du_z                      \\
+\frac{1}{{\gamma}} du_z                      \\
 \end{pmatrix}
 \end{aligned}
 \end{equation}
+</div>
 Now, divide by the time differential from the previous chapter to get the acceleration transform
+<div class="math">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \begin{aligned}
-\mathbf{a}' = \dfrac{1}{\gamma^2\left(1- \dfrac{v}{c^2} u_z\right)^3 }
+\mathbf{a}' = \dfrac{1}{{\gamma}^2\left(1- \dfrac{v}{c^2} u_z\right)^3 }
 \begin{pmatrix}
 a_x + \frac{v}{c^2}(u_x a_z - u_z a_x) \\
 a_y + \frac{v}{c^2}(u_y a_z - u_z a_y) \\
-\frac{1}{\gamma} a_z                   \\
+\frac{1}{{\gamma}} a_z                   \\
 \end{pmatrix}
 \\
 \text{at position \(\mathbf{R}'\) and time \(t'\) }
 \end{aligned}
 }
 \end{equation}
+</div>
 <h3 id="GeneralisedAccelerationTransform_header">Generalised Acceleration Transform</h3>
 <div id="ch2_5_1_content">
 3 acceleration (check this)
+<div class="math">
 \begin{equation}
-\mathbf{a^{'}} = \frac{1}{\gamma ^3 \left(1-\frac{(\mathbf{u}\cdot \mathbf{v})}{c^2}\right)^3}\left[ \gamma \left(1-\frac{(\mathbf{u}\cdot\mathbf{v})}{c^2}\right)\mathbf{a}+\frac{\gamma (\mathbf{a}\cdot\mathbf{v})}{c^2}\mathbf{u} + (1-\gamma ) (\mathbf{a}\cdot\hat{\mathbf{v}}) \cdot\hat{\mathbf{v}}\right]
+\mathbf{a^{'}} = \frac{1}{{\gamma} ^3 \left(1-\frac{(\mathbf{u}\cdot \mathbf{v})}{c^2}\right)^3}\left[ {\gamma} \left(1-\frac{(\mathbf{u}\cdot\mathbf{v})}{c^2}\right)\mathbf{a}+\frac{{\gamma} (\mathbf{a}\cdot\mathbf{v})}{c^2}\mathbf{u} + (1-{\gamma} ) (\mathbf{a}\cdot\hat{\mathbf{v}}) \cdot\hat{\mathbf{v}}\right]
 \end{equation}
+</div>
 at position \(\mathbf{R}'\) and time \(t'\)
 
 </div>  <!-- close subsection-->
 </div> <!-- close section-->
 </div> <!-- close chapter-->
 
-<div>
- <a onclick="showContent('ch1_div')" style="font-weight: bold;"> Previous </a>
- <a onclick="showContent('ch3_div')" style="font-weight: bold;"> Next </a>
+<div class='arrow-nav'>
+ <a onclick="showContent('ch1_wrap')" style="font-weight: bold; padding-left: 10px;"> < Previous </a>
+<a onclick="showContent('ch3_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a>
 </div>
  </section>
- <section id="ch3_div" class="chapter" style="display: none !important;">
+ <section id="ch3_wrap" class="chapter" style="display: none !important;">
  <h1 id="ch3_header">3. Observers Delayed World View</h1>
 <div id="ch3_content">
+<span style="display: hidden">\(\nextSection\)</span>
 Light travels extremely fast (roughly 300,000,000 m/s) compared to other everyday speeds we are used to. In the blink of an eye, light could travel around the world twice. We don't need to normally worry about the delay in the light signal, as the time to propagate the distances in our everyday world is very short, so the signal can be approximated as being instantaneous, therefore ignoring the more complex modeling of the delayed signal. But when it comes to particle physics or astronomy, we might be dealing with speeds close to that of light or also huge distances, e.g. light has taken 152,000 years to travel from the Andromeda galaxy, so we are currently seeing this galaxy where it was and how it looked 152,000 years ago. These past positions that we currently see are called the <span onmouseover="document.getElementById('def-retarded-position').style.display='block'" onmouseout="document.getElementById('def-retarded-position').style.display='none'">retarded position</span>s/delayed view positions.
 <h2 id="RelativisticObserversDelayedview_header">Relativistic Observers Delayed view</h2>
 <div id="ch3_1_content">
+*** change \(\theta_c\) to \(\alpha\)
 When looking at moving objects we see them where they were in their past positions, due to the delay in the light signal, so let's talk about the <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> showing a source particle emitting a photon to an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>, showing the <span onmouseover="document.getElementById('def-retarded-position').style.display='block'" onmouseout="document.getElementById('def-retarded-position').style.display='none'">retarded position</span> the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> sees.
 <br>
 <figure>
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Tikz_Particles_position_in_rest_frame.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Source and <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>'s <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span></figcaption>
+<figcaption>&nbsp;Source and <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>'s <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span></figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Tikz_Particles_position_in_primed_frame_with_delayed_position.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption><span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span></figcaption>
+<figcaption>&nbsp;<span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span></figcaption>
 </figure>
 </div>
 <figcaption>Source and <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>'s <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span></figcaption>
@@ -892,6 +1032,7 @@ When looking at moving objects we see them where they were in their past positio
 <b>system:</b> <br>
 If we take the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> of an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> and a particle that emits a pulse of light from its position at \(\mathbf{R}\) so that it is received by the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> at the origin, at time \(t=0\).
 The time the pulse of light was emitted is \(T_{e}= -\frac{|\mathbf{R}|}{c}\) (were \(\frac{|\mathbf{R}|}{c}\) is the time it takes light to propagate along \(\mathbf{R}\) to the origin), and the velocity of that light that is propagating towards the origin is
+<div class="math">
 \begin{equation}
 \mathbf{c} = c
 \begin{pmatrix}
@@ -900,7 +1041,9 @@ The time the pulse of light was emitted is \(T_{e}= -\frac{|\mathbf{R}|}{c}\) (w
 \cos{\theta_c} \\
 \end{pmatrix}
 \end{equation}
+</div>
 giving the emitted position as
+<div class="math">
 \begin{equation}
 \mathbf{R} = c T_{e}
 \begin{pmatrix}
@@ -909,42 +1052,47 @@ giving the emitted position as
 \cos{\theta_c} \\
 \end{pmatrix}
 \end{equation}
+</div>
 the position vector and light's velocity are in opposite directions which can be seen due to the emitted time being negative. If you wish to have this in terms of the position vector angle from the z-axis you can use the equation for the angles \(\theta_{R} = \theta_c - \pi\). Now inputting the delayed positions and times (with origin time \(t=0\)) in the first frame into the coordinate transform we get the delayed position in the primed frame as
+<div class="math">
 \begin{equation}
 \begin{aligned}
 \mathbf{R}'     & = cT_{e}
 \begin{pmatrix}
 0                                                  \\
 \sin{\theta_c}                                     \\
-\gamma \left( \cos{\theta_c} - \frac{v}{c} \right) \\
+{\gamma} \left( \cos{\theta_c} - \frac{v}{c} \right) \\
 \end{pmatrix}
 =
 \begin{pmatrix}
 0                                  \\
 R_y                                \\
-\gamma \left( R_z - vT_{e} \right) \\
+{\gamma} \left( R_z - vT_{e} \right) \\
 \end{pmatrix}
 \\
 \text{at time } &
-\\ T'_{e} & = \gamma (1-\frac{v}{c} \cos{\theta_c} ) T_{e}
+\\ T'_{e} & = {\gamma} (1-\frac{v}{c} \cos{\theta_c} ) T_{e}
 \end{aligned}
 \end{equation}
+</div>
 we can see that this does agree with the light's velocity <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> as well, as it is in the direct opposite direction to \(\mathbf{R}\) as it should be. With the light being received at the origin of the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> axis at time \(t'=0\), this is the delayed position, if you wanted to find the position of where the particle actually is, we would need to propagate this to the current time of zero of the observer, given by
+<div class="math">
 \begin{equation}
 \mathbf{R}'_{t'=0} = \mathbf{R}' - \mathbf{v}T'_{e} = cT_{e}
 \begin{pmatrix}
 0                               \\
 \sin{\theta_c}                  \\
-\frac{1}{\gamma} \cos{\theta_c} \\
+\frac{1}{{\gamma}} \cos{\theta_c} \\
 \end{pmatrix}
 \end{equation}
+</div>
 </div> <!-- close section-->
 <h2 id="DelayedViewofTransformedCoordinates_header">Delayed View of Transformed Coordinates</h2>
 <div id="ch3_2_content">
 How the delayed view of coordinates is taken into account after a transformation is shown in the figure below.
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/coordinate_transforms_2.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>A diagram, showing an initial grid of points, representing position coordinates, at time \(t=0\) that are at rest in their proper frame \(\lt S\gt \), with an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> at the origin (left), giving the direct transformation into the moving primed frame \(\lt S'\gt \) (second) where the points are now moving at velocity \(-v=-0.9\) which is in the negative z-direction with the colors and labels showing the desynchronization of the primed times \(t'=- \gamma \frac{zv}{c^2}\), the next figure (third) shows what these points would be in the same primed frame when they are synchronized with the origin's time \(t'=0\), the last figure (fourth) shows the same <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> \(\lt S'\gt \) but now with the particles positioned where they would be seen to be at by an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> at the origin with the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s time \(t'=0\), these positions are due to the delay in the light from these particles taking time to get to the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>, also known as the <span onmouseover="document.getElementById('def-retarded-position').style.display='block'" onmouseout="document.getElementById('def-retarded-position').style.display='none'">retarded position</span>s of the particles.</figcaption>
+<figcaption>&nbsp;A diagram, showing an initial grid of points, representing position coordinates, at time \(t=0\) that are at rest in their proper frame \(\lt \!\!S\!\gt \), with an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> at the origin (left), giving the direct transformation into the moving primed frame \(\lt \!\!S'\!\!\gt \) (second) where the points are now moving at velocity \(-v=-0.9\) which is in the negative z-direction with the colors and labels showing the desynchronization of the primed times \(t'=- {\gamma} \frac{zv}{c^2}\), the next figure (third) shows what these points would be in the same primed frame when they are synchronized with the origin's time \(t'=0\), the last figure (fourth) shows the same <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> \(\lt \!\!S'\!\!\gt \) but now with the particles positioned where they would be seen to be at by an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span> at the origin with the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>s time \(t'=0\), these positions are due to the delay in the light from these particles taking time to get to the <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>, also known as the <span onmouseover="document.getElementById('def-retarded-position').style.display='block'" onmouseout="document.getElementById('def-retarded-position').style.display='none'">retarded position</span>s of the particles.</figcaption>
 </figure>
 *** todo: could include the plot of a larger grid of points to show the distribution of delayed view of particles better, or give the heat map of the density of delayed view coordinates
 </div> <!-- close section-->
@@ -956,22 +1104,24 @@ Another option is that you want to go from the object's positions that have time
 </div> <!-- close section-->
 </div> <!-- close chapter-->
 
-<div>
- <a onclick="showContent('ch2_div')" style="font-weight: bold;"> Previous </a>
- <a onclick="showContent('ch4_div')" style="font-weight: bold;"> Next </a>
+<div class='arrow-nav'>
+ <a onclick="showContent('ch2_wrap')" style="font-weight: bold; padding-left: 10px;"> < Previous </a>
+<a onclick="showContent('ch4_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a>
 </div>
  </section>
- <section id="ch4_div" class="chapter" style="display: none !important;">
+ <section id="ch4_wrap" class="chapter" style="display: none !important;">
  <h1 id="ch4_header">4. Spherical light pulses</h1>
 <div id="ch4_content">
+<span style="display: hidden">\(\nextSection\)</span>
 <h2 id="SphericalPolarCoordinates_header">Spherical Polar Coordinates</h2>
 <div id="ch4_1_content">
 This math section is just for reference in later sections,
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Tikz_Spherical_Polar_Coordinates.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Diagram of an axis showing spherical polar coordinates</figcaption>
+<figcaption>&nbsp;Diagram of an axis showing spherical polar coordinates</figcaption>
 </figure>
 For a given coordinate \(\mathbf{R}\) we have the Cartesian coordinates \((x,y,z)\), but we can also write this in terms of spherical polar coordinates \((r,\theta,\phi)\) where the angles from the Z-Axis and X-axis respectively are \(\theta\) (between 0 and \(\pi\)) and \(\phi\) (between 0 and \(2\pi\)), and \(r\) is the distance to the point from the origin, i.e. the magnitude \(|\mathbf{R}|\). So that the coordinate can be written as
+<div class="math">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \mathbf{R} =
@@ -988,7 +1138,9 @@ z \\
 \end{pmatrix}
 }
 \end{equation}
+</div>
 with \(r=\sqrt{x^2+y^2+z^2}\), \(\cos\phi= \frac{x}{\sqrt{x^2+y^2}}\), and \(\cos\theta=\frac{z}{r}\). Some useful formulae for later are the unit vectors
+<div class="math">
 \begin{equation}
 \mathbf{\hat{\text{\(r\)}}} =
 \begin{pmatrix}
@@ -1009,7 +1161,9 @@ with \(r=\sqrt{x^2+y^2+z^2}\), \(\cos\phi= \frac{x}{\sqrt{x^2+y^2}}\), and \(\co
 0                        \\
 \end{pmatrix}
 \end{equation}
+</div>
 and the differentials with respect to each of the coordinates are
+<div class="math">
 \begin{equation}
 \begin{aligned}
 \frac{\partial\mathbf{R}}{\partial r}      & = \mathbf{\hat{\text{\(r\)}}} \\
@@ -1029,10 +1183,12 @@ r \sin\theta \cos\phi  \\
 = r \sin\theta \mathbf{\hat{\text{\(\phi\)}}}
 \end{aligned}
 \end{equation}
+</div>
 </div> <!-- close section-->
 <h2 id="LightSpeedVelocityTransform_header">Light Speed Velocity Transform</h2>
 <div id="ch4_2_content">
 The speed of light remains the same after transforming between frames, but the velocity is not as the direction changes. The velocity transformation in the case where the speed is that of light, \(|u|=c\), with the direction in the initial frame at an angle \(\alpha\) from the z-axis and \(\varphi\) from the x-axis, so that in spherical polar coordinates the velocity of light is
+<div class="math">
 \begin{equation}
 \mathbf{c} = c
 \begin{pmatrix}
@@ -1041,22 +1197,25 @@ The speed of light remains the same after transforming between frames, but the v
 \cos{\alpha}              \\
 \end{pmatrix},
 \end{equation}
-then from the velocity <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> in eq. \eqref{eq: velocity transform} we get
+</div>
+then from the velocity <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> in eq. <span class="eqref" onmouseover="copyContent('eq: velocity transform','equation_hover');" onmouseout="deleteContent('equation_hover');">\eqref{eq: velocity transform}</span> we get
+<div class="math" id="eq: velocity transform for light">
 \begin{equation}
 \label{eq: velocity transform for light}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \begin{aligned}
-& \mathbf{c}' = \dfrac{c}{\gamma\left(1- \frac{v}{c} \cos\alpha\right) }
+& \mathbf{c}' = \dfrac{c}{{\gamma}\left(1- \frac{v}{c} \cos\alpha\right) }
 \begin{pmatrix}
 \sin\alpha\cos\varphi                          \\
 \sin\alpha\sin\varphi                          \\
-\gamma \left( \cos\alpha - \frac{v}{c} \right) \\
+{\gamma} \left( \cos\alpha - \frac{v}{c} \right) \\
 \end{pmatrix}
 \\
 & \text{at position \(\mathbf{R}'\) and time \(t'\) }
 \end{aligned}
 }
 \end{equation}
+</div>
 This still has the same speed of light which can be shown by taking the magnitude of the velocity vector (i.e. the square root of the squares of all of its elements). However, the angle of propagation has been changed.
 </div> <!-- close section-->
 <h2 id="DopplerEffect_header">Doppler Effect</h2>
@@ -1066,31 +1225,39 @@ This still has the same speed of light which can be shown by taking the magnitud
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Tikz_Lights_angle_with_particle_in_its_proper_frame.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Rest Frame</figcaption>
+<figcaption>&nbsp;Rest Frame</figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Tikz_Lights_angle_with_particle_With_particle_moving.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Moving Frame</figcaption>
+<figcaption>&nbsp;Moving Frame</figcaption>
 </figure>
 </div>
 <figcaption>Rest Frame</figcaption>
 </figure>
 <br>In the rest frame of a source \(s\), if it emits a wave at the speed of light in any direction, we have the length the wave has traveled from the source in the time \(d\tau\) as being
+<div class="math">
 \begin{equation}
 d\lambda = cd\tau
 \end{equation}
+</div>
 If we change to a frame where the source is now moving at speed \(u'_s\) in the z-direction and we have the wave now emitted at an angle \(\alpha'\) from the z-axis, traveling distance \(cdt'\) in a time \(dt'\), with the particle moving a distance \( u'_s \cos\alpha' dt'\) in the direction of this emitted part of the wave, this leads to a bunching up of the wave in the direction of the movement of the particle, as the same amount of the wave has been emitted in this primed time, but the distance it has traveled from source is
+<div class="math">
 \begin{equation}
 d\lambda' = cdt' - u'_s \cos\alpha' dt'= (1-\frac{u'_s}{c}\cos\alpha')cdt'
 \end{equation}
-we have \(dt'=\gamma d\tau\), so the ratio of space the wave takes up in that direction compared to in the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> is
+</div>
+we have \(dt'={\gamma} d\tau\), so the ratio of space the wave takes up in that direction compared to in the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> is
+<div class="math">
 \begin{equation}
-Ratio = \frac{d\lambda'}{d\lambda} = \gamma \left(1-\dfrac{u'_s}{c} \cos\alpha' \right)
+Ratio = \frac{d\lambda'}{d\lambda} = {\gamma} \left(1-\dfrac{u'_s}{c} \cos\alpha' \right)
 \end{equation}
+</div>
 since wavelength is inversely proportional to the frequency, and this bunching up at the front will proportionally decrease the wavelength
+<div class="math">
 \begin{equation}
-\Phi_r = \frac{1}{ \gamma \left(1-\dfrac{u'_s}{c} \cos\alpha' \right)}
+\Phi_r = \frac{1}{ {\gamma} \left(1-\dfrac{u'_s}{c} \cos\alpha' \right)}
 \end{equation}
+</div>
 </div> <!-- close section-->
 <h2 id="AberrationinSpecialRelativity_header">Aberration in Special Relativity</h2>
 <div id="ch4_4_content">
@@ -1099,38 +1266,40 @@ since wavelength is inversely proportional to the frequency, and this bunching u
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Aberrated_velocities_restframe.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>rest frame</figcaption>
+<figcaption>&nbsp;rest frame</figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Aberrated_velocities.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>moving frame</figcaption>
+<figcaption>&nbsp;moving frame</figcaption>
 </figure>
 </div>
 <figcaption>rest frame</figcaption>
 </figure>
 <br>The propagation directions of the light as seen in figure \ref{fig: aberrated emitted light}, are transformed such that the angles between them and the Z-Axis, have the aberrational relationship
+<div class="math" id="Cosine transform">
 \begin{equation}
 \label{Cosine transform}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \cos\alpha' = \frac{\mathbf{c}'_z}{\|\mathbf{c}'\|} = \dfrac{\cos\alpha + \dfrac{u'_s}{c}}{1+\dfrac{u'_s}{c}\cos\alpha}.
 }
 \end{equation}
+</div>
 This is the relativistic aberration formula \cite{einstein1905electrodynamics}, it shows how the field's propagation direction transforms. Figure \ref{fig: aberrated absorbed light} shows what would happen in the case of incoming light from all directions.
 <br>
 <figure>
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Aberrated_velocities_inwards_restframe.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>rest frame</figcaption>
+<figcaption>&nbsp;rest frame</figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Aberrated_velocities_inwards.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>moving frame</figcaption>
+<figcaption>&nbsp;moving frame</figcaption>
 </figure>
 </div>
 <figcaption>rest frame</figcaption>
 </figure>
-<br>It can be seen from eq. \eqref{Cosine transform} that as a source's speed tends to the speed of light, \(\cos\alpha'\) tends to \(1\) as the top and bottom of the fraction cancel each other out, hence all emitted or absorbed light in the source's rest frame tends to the direction of the source's movement. But we also have to remember that if there was any time between the start and finishing of the emitting the light, this time would tend to infinity as well, basically any emitted light would remain in the vicinity of the source.
+<br>It can be seen from eq. <span class="eqref" onmouseover="copyContent('Cosine transform','equation_hover');" onmouseout="deleteContent('equation_hover');">\eqref{Cosine transform}</span> that as a source's speed tends to the speed of light, \(\cos\alpha'\) tends to \(1\) as the top and bottom of the fraction cancel each other out, hence all emitted or absorbed light in the source's rest frame tends to the direction of the source's movement. But we also have to remember that if there was any time between the start and finishing of the emitting the light, this time would tend to infinity as well, basically any emitted light would remain in the vicinity of the source.
 </div> <!-- close section-->
 <h2 id="TransformofLightPulsefromOrigin_header">Transform of Light Pulse from Origin</h2>
 <div id="ch4_5_content">
@@ -1139,18 +1308,19 @@ This is the relativistic aberration formula \cite{einstein1905electrodynamics}, 
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Tikz_Light_Pulse_Proper_Frame.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption><span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">proper frame</span></figcaption>
+<figcaption>&nbsp;<span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">proper frame</span></figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Tikz_Light_Pulse_Primed_Frame.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption><span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> with moving source</figcaption>
+<figcaption>&nbsp;<span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> with moving source</figcaption>
 </figure>
 </div>
 <figcaption><span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">proper frame</span></figcaption>
 </figure>
 <br>*** in proper frame lights propagation is in same direction as the coordinate from the origin, but in i.e. vec c in same direction as vec r, but vec c' not in same direction as vec r'
 As visualized in figure (\ref{fig: Retarded field outward field transform}). If we have a light source particle \(s\), in its <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> that had emitted a pulse of light in one direction such that it propagates along \(\mathbf{c}T_{p}\) at an angle \(\alpha\) from the z-axis and is currently at position \(\mathbf{R}\) at time \(t=0\), where \(\mathbf{c}\) is the velocity of light and \(T_{p}\) is the time it took to propagate to \(\mathbf{R}\).
-Using the coordinated transform from eq. \eqref{eq: Lorentz transformation} on \(\mathbf{R}\) with \(t=0\) we get
+Using the coordinated transform from eq. <span class="eqref" onmouseover="copyContent('eq: Lorentz transformation','equation_hover');" onmouseout="deleteContent('equation_hover');">\eqref{eq: Lorentz transformation}</span> on \(\mathbf{R}\) with \(t=0\) we get
+<div class="math" id="displacement transform">
 \begin{equation}
 \label{displacement transform}
 \begin{aligned}
@@ -1158,31 +1328,39 @@ Using the coordinated transform from eq. \eqref{eq: Lorentz transformation} on \
 \begin{pmatrix}
 x        \\
 y        \\
-\gamma z \\
+{\gamma} z \\
 \end{pmatrix},                          \\
 \text{at time \ \ \ }                   \\
-t'          & = - \gamma \frac{vz}{c^2} \\
+t'          & = - {\gamma} \frac{vz}{c^2} \\
 \end{aligned}
 \end{equation}
-the light pulse's velocity using the velocity transform from eq. \eqref{eq: velocity transform for light} in Cartesian coordinates and particles speed in the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> with \(v=-u_s\) is
+</div>
+the light pulse's velocity using the velocity transform from eq. <span class="eqref" onmouseover="copyContent('eq: velocity transform for light','equation_hover');" onmouseout="deleteContent('equation_hover');">\eqref{eq: velocity transform for light}</span> in Cartesian coordinates and particles speed in the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> with \(v=-u_s\) is
+<div class="math" id="light pulse velocity transform">
 \begin{equation}
 \label{light pulse velocity transform}
-\mathbf{c}' = \dfrac{c}{\gamma\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
+\mathbf{c}' = \dfrac{c}{{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
 \begin{pmatrix}
 \frac{x}{\|\mathbf{R}\|}                                        \\
 \frac{y}{\|\mathbf{R}\|}                                        \\
-\gamma \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) \\
+{\gamma} \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) \\
 \end{pmatrix}
 \end{equation}
+</div>
 The time that the particle emits the light in the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">proper frame</span> is \(T_{ret}= - T_{p}\) which corresponds to the contracted time
+<div class="math">
 \begin{equation}
-T'_{ret}= \gamma T_{ret} = - \gamma T_{p}
+T'_{ret}= {\gamma} T_{ret} = - {\gamma} T_{p}
 \end{equation}
+</div>
 So that in the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span>, the <span onmouseover="document.getElementById('def-retarded-position').style.display='block'" onmouseout="document.getElementById('def-retarded-position').style.display='none'">retarded position</span> of the source particle emmits the light pulse is
+<div class="math">
 \begin{equation}
-\mathbf{s}'_{ret} = - \gamma T_{p} \mathbf{u}_s
+\mathbf{s}'_{ret} = - {\gamma} T_{p} \mathbf{u}_s
 \end{equation}
-to find the position the light pulse is currently at, at time \(t'=0\), we have to rewind its time from the position \(\mathbf{R}'\) that it is at when using the <span onmouseover="document.getElementById('def-lorentz-transform').style.display='block'" onmouseout="document.getElementById('def-lorentz-transform').style.display='none'">Lorentz transform</span> at time \(t'= -\gamma\frac{vz}{c^2}= \gamma\frac{u_s z}{c^2}\) taking away the displacement it propagated in this time to get the current position of the light to be (\(T'_{p}=- T'_{ret}\)).
+</div>
+to find the position the light pulse is currently at, at time \(t'=0\), we have to rewind its time from the position \(\mathbf{R}'\) that it is at when using the <span onmouseover="document.getElementById('def-lorentz-transform').style.display='block'" onmouseout="document.getElementById('def-lorentz-transform').style.display='none'">Lorentz transform</span> at time \(t'= -{\gamma}\frac{vz}{c^2}= {\gamma}\frac{u_s z}{c^2}\) taking away the displacement it propagated in this time to get the current position of the light to be (\(T'_{p}=- T'_{ret}\)).
+<div class="math">
 \begin{equation}
 \begin{split}
 \mathbf{L}'
@@ -1190,11 +1368,11 @@ to find the position the light pulse is currently at, at time \(t'=0\), we have 
 \\
 & = \left( \mathbf{c}' - \mathbf{u}_s \right)T'_{p}
 \\
-& = \dfrac{c T'_{p}}{\gamma\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
+& = \dfrac{c T'_{p}}{{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
 \begin{pmatrix}
 \frac{x}{\|\mathbf{R}\|}                                        \\
 \frac{y}{\|\mathbf{R}\|}                                        \\
-\gamma \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) \\
+{\gamma} \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) \\
 \end{pmatrix}
 -
 \begin{pmatrix}
@@ -1203,23 +1381,26 @@ to find the position the light pulse is currently at, at time \(t'=0\), we have 
 u_s T'_{p} \\
 \end{pmatrix}
 \\
-& = \dfrac{c T'_{p}}{\gamma\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
+& = \dfrac{c T'_{p}}{{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
 \begin{pmatrix}
 \frac{x}{\|\mathbf{R}\|}                                                                                                                         \\
 \frac{y}{\|\mathbf{R}\|}                                                                                                                         \\
-\gamma \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) - \gamma\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right) \dfrac{u_s}{c} \\
+{\gamma} \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) - {\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right) \dfrac{u_s}{c} \\
 \end{pmatrix}
 \end{split}
 \end{equation}
+</div>
 which leads to
+<div class="math">
 \begin{equation}
-\mathbf{L}' = \dfrac{c T'_{p}}{\gamma\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
+\mathbf{L}' = \dfrac{c T'_{p}}{{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
 \begin{pmatrix}
 \frac{x}{\|\mathbf{R}\|}                  \\
 \frac{y}{\|\mathbf{R}\|}                  \\
-\frac{1}{\gamma} \frac{z}{\|\mathbf{R}\|} \\
+\frac{1}{{\gamma}} \frac{z}{\|\mathbf{R}\|} \\
 \end{pmatrix}
 \end{equation}
+</div>
 </div> <!-- close section-->
 <h2 id="RelativisticBeaming_header">Relativistic Beaming</h2>
 <div id="ch4_6_content">
@@ -1229,15 +1410,15 @@ The previous section can be used to show us what happens to the angles of propag
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Rest_Pulse.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Source's Rest Frame</figcaption>
+<figcaption>&nbsp;Source's Rest Frame</figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Prime_Pulse.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Source's Moving frame</figcaption>
+<figcaption>&nbsp;Source's Moving frame</figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Prime_Pulse_Simultaneous.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Source's Moving frame</figcaption>
+<figcaption>&nbsp;Source's Moving frame</figcaption>
 </figure>
 </div>
 <figcaption>Source's Rest Frame</figcaption>
@@ -1248,11 +1429,11 @@ The previous section can be used to show us what happens to the angles of propag
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Field_Rest_Frame.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Source's Rest Frame</figcaption>
+<figcaption>&nbsp;Source's Rest Frame</figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Field_Moving_Frame_Doppler.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Source's Moving frame</figcaption>
+<figcaption>&nbsp;Source's Moving frame</figcaption>
 </figure>
 </div>
 <figcaption>Source's Rest Frame</figcaption>
@@ -1262,24 +1443,25 @@ The previous section can be used to show us what happens to the angles of propag
 </div> <!-- close section-->
 </div> <!-- close chapter-->
 
-<div>
- <a onclick="showContent('ch3_div')" style="font-weight: bold;"> Previous </a>
- <a onclick="showContent('ch5_div')" style="font-weight: bold;"> Next </a>
+<div class='arrow-nav'>
+ <a onclick="showContent('ch3_wrap')" style="font-weight: bold; padding-left: 10px;"> < Previous </a>
+<a onclick="showContent('ch5_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a>
 </div>
  </section>
- <section id="ch5_div" class="chapter" style="display: none !important;">
+ <section id="ch5_wrap" class="chapter" style="display: none !important;">
  <h1 id="ch5_header">5. The Field of a Moving Source</h1>
 <div id="ch5_content">
+<span style="display: hidden">\(\nextSection\)</span>
 <br>
 <figure>
 <div style="display: flex; justify-content: space-between;">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Field_Rest_Frame.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Source's Rest Frame</figcaption>
+<figcaption>&nbsp;Source's Rest Frame</figcaption>
 </figure>
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Field_Moving_Frame_Doppler.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>Source's Moving frame</figcaption>
+<figcaption>&nbsp;Source's Moving frame</figcaption>
 </figure>
 </div>
 <figcaption>Source's Rest Frame</figcaption>
@@ -1293,330 +1475,434 @@ The previous section can be used to show us what happens to the angles of propag
 <div id="ch5_1_1_content">
 <figure>
 <img src="../latex/Handbook of Special Relativity/images/svg/Tikz_Surface_Element.svg" style="width:100%; height:auto;" loading="lazy">
-<figcaption>...</figcaption>
+<figcaption>&nbsp;...</figcaption>
 </figure>
 The surface element spanning from \(\theta\) to \(\theta + d\theta\) and \(\phi\) to \(\phi + d\phi\) on a spherical surface at (constant) radius r is then
+<div class="math">
 \begin{equation}
 \mathrm{d}S =
 \left\|\frac{\partial {\mathbf R}}{\partial \theta} \times \frac{\partial {\mathbf R}}{\partial \phi}\right\| \mathrm{d}\theta \,\mathrm{d}\phi = \left| r \mathbf{\mathbf{\hat{\text{\(\theta\)}}}} \times r \sin \theta \mathbf{\mathbf{\hat{\text{\(\phi\)}}}} \right|= r^2 \sin\theta \,\mathrm{d}\theta \,\mathrm{d}\phi
 \end{equation}
+</div>
 The differential solid angle is
+<div class="math">
 \begin{equation}
 \mathrm{d}\Omega = \frac{\mathrm{d}S}{r^2} = \sin\theta \,\mathrm{d}\theta \,\mathrm{d}\phi
 \end{equation}
+</div>
 A solid angle \(\Omega\) is a measure of the amount of the field of view from some particular point that a given object covers.
 The fraction of the field of view covered from a point is given by \(\Omega/ 4\pi\)
 </div> <!-- close subsection-->
 <h3 id="FieldFlux_header">Field Flux</h3>
 <div id="ch5_1_2_content">
 A <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">proper frame</span> of a particle's differential solid angle element (definition given in previous chapter (maybe move that subsection to here))
+<div class="math">
 \begin{equation}
 d\Omega = \sin{\theta} d\theta d\phi,
 \end{equation}
+</div>
 encompasses a certain amount of the wavefront, this is the same amount of the wavefront that is encompassed by the coinciding aberrated differential solid angle
+<div class="math">
 \begin{equation}
 d\Omega' = \sin{\theta'} d\theta' d\phi'.
 \end{equation}
-We can calculate this element by differentiating both sides of eq. \eqref{Cosine transform} with respect to \(\theta\) \cite{hogg1997special}, which gives
+</div>
+We can calculate this element by differentiating both sides of eq. <span class="eqref" onmouseover="copyContent('Cosine transform','equation_hover');" onmouseout="deleteContent('equation_hover');">\eqref{Cosine transform}</span> with respect to \(\theta\) \cite{hogg1997special}, which gives
+<div class="math">
 \begin{equation}
-\sin{\theta'} d\theta' = \dfrac{1-\dfrac{u_s^2}{c^2}}{\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta = \dfrac{1}{\gamma^2\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta
+\sin{\theta'} d\theta' = \dfrac{1-\dfrac{u_s^2}{c^2}}{\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta = \dfrac{1}{{\gamma}^2\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta
 \end{equation}
+</div>
 as \(v=-u_s\) now using this and \(d\phi'=d\phi\) (as the angle \(\phi\) is always perpendicular to the motion of the particle and hence unaffected by <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transformation</span> ) we have the solid angle in the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> given as
+<div class="math">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
-d\Omega' = \dfrac{1}{\gamma^2\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta d\phi.
+d\Omega' = \dfrac{1}{{\gamma}^2\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta d\phi.
 }
 \end{equation}
+</div>
 The relative primed wavefront strength at a given angle is taken as being proportional to the amount of the wavefront per solid angle in the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> relative to that in the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">proper frame</span>, referred to here as the aberrational wavefront strength weighting, given as
+<div class="math" id="eq: aberrational wavefront weighting">
 \begin{equation}
 \label{eq: aberrational wavefront weighting}
 \Phi_\Omega = \frac{d\Omega}{d\Omega'} = \text{Ã…}^2.
 \end{equation}
+</div>
 (define what I mean by strength weighting)
 *** This flux doesnt take into account that the source keeps changing position, so at a change ds from position field is coming from a different retarded position of the source, so theres a rotation of direction and a different flux, theres gradients and rotations
 *** This flux transform is the change in flux in the emitted direction from the source only not what another particle would feel
 </div>  <!-- close subsection-->
 </div> <!-- close chapter-->
 
-<div>
- <a onclick="showContent('ch4_div')" style="font-weight: bold;"> Previous </a>
- <a onclick="showContent('ch6_div')" style="font-weight: bold;"> Next </a>
+<div class='arrow-nav'>
+ <a onclick="showContent('ch4_wrap')" style="font-weight: bold; padding-left: 10px;"> < Previous </a>
+<a onclick="showContent('ch6_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a>
 </div>
  </section>
- <section id="ch6_div" class="chapter" style="display: none !important;">
- <h1 id="ch6_header">6. Invariant/Conserved Quantities</h1>
+ <section id="ch6_wrap" class="chapter" style="display: none !important;">
+ <h1 id="ch6_header">6. Invariant Quantities</h1>
 <div id="ch6_content">
-Quantities that are conserved (do not change) (frame-independent quantity) when transformed between inertial reference frames are called <span onmouseover="document.getElementById('def-lorentz-invariant').style.display='block'" onmouseout="document.getElementById('def-lorentz-invariant').style.display='none'">lorentz invariant</span>. These conserved quantities give us equations to help us model complex systems and experiments
-in this chapter, we will see the conservation principle related to space and time coordinates, velocities, and acceleration, but will also look at the more abstract conservation relation of momentum energy and mass. The reason we care about the concept of energy is because it has a related conserved quantity that can be used as a tool to help us make calculations and model more complex systems.
-We will find a quantity with the units of energy that differs from the previously known energy quantity and its conservation laws, but of course, will approximate to the previous laws at low velocities.
-... the derivations to get the famous \(E=mc^2\) use approximations, assumptions, and redefined definitions of energy and momentum, and the energy-momentum relation used quantum mechanics to derive, which would require another handbook to go into
-... so instead we use the most important thing we need for energy to be and that is to have an associated conservation rule, which means finding a quantity that is unchanged between frames and has a quantity with the units of energy
-... to do this we will start from the space-times' associated invariant quantity.
+<span style="display: hidden">\(\nextSection\)</span>
+Quantities that do not change when transformed between inertial reference frames (frame-independent) are called <span onmouseover="document.getElementById('def-lorentz-invariant').style.display='block'" onmouseout="document.getElementById('def-lorentz-invariant').style.display='none'">lorentz invariant</span>.
+In this chapter, we will see the invariant quantity related to space-time coordinates and use this to find invariant properties associated with velocities, and acceleration, which will lead to the more abstract conservation relation of momentum energy and mass. The reason we care about the concept of energy is because it has a related conserved quantity that can be used as a tool to help us make calculations and model more complex systems.
+We will find a new quantity with the units of energy that has a term which approximates to the kinetic energy of a particle at low velocities and another term that suggests particles have a new type of energy, that was not previously in classical physics, that depends on the mass of a particle (mass-energy equivalence), this will all lead to a new conservation law of energy.
 <h2 id="Space-TimeInterval_header">Space-Time Interval</h2>
 <div id="ch6_1_content">
-We defined the space-time interval \(\Delta S\) between two <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s in a generic frame \(\lt S\gt \) as:
+We define a quantity called the space-time interval \(\Delta S\) between two <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s in a generic frame \(\lt \!\!S\!\gt \) as:
+<div class="math" id="eq: space-time interval">
 \begin{equation}
+\bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{
 \Delta S^2 = (c\Delta t)^2 -\Delta x^2 -\Delta y^2 -\Delta z^2
+}
+\label{eq: space-time interval}
 \end{equation}
-All inertial frames of reference agree on the interval as it is conserved between frames \(\Delta S=\Delta S'\) which can be shown when we sub in the primed version of this equation
+</div>
+All inertial frames of reference agree on this interval as it is invariant between frames, as \(\Delta S=\Delta S'\), which can be shown when we sub the values from equation <span class="eqref" onmouseover="copyContent('eq: interval of Coordinates','equation_hover');" onmouseout="deleteContent('equation_hover');">\eqref{eq: interval of Coordinates}</span> into the primed version of this last equation
+<div class="math">
 \begin{equation}
 \begin{aligned}
 \Delta S'^2 &= (c\Delta t')^2 -\Delta x'^2 -\Delta y'^2 -\Delta z'^2 \\
-&= c^2\gamma \bigg( \Delta t-\frac{v}{c^2} \Delta z \bigg)^2 -\Delta x^2 -\Delta y^2 -\Delta (\gamma ( \Delta z-v \Delta t) )^2 \\
-&= (c\Delta t)^2 -\Delta x^2 -\Delta y^2 -\Delta z^2
+&= c^2{\gamma} \bigg( \Delta t-\frac{v}{c^2} \Delta z \bigg)^2 -\Delta x^2 -\Delta y^2 -\Delta ({\gamma} ( \Delta z-v \Delta t) )^2 \\
+&= (c\Delta t)^2 -\Delta x^2 -\Delta y^2 -\Delta z^2 \\
+&= \Delta S^2
 \end{aligned}
 \end{equation}
-if a particle is moving in frame \(\lt S\gt \) we can define a space-time interval in its positions in this frame as
+</div>
+</div> <!-- close section-->
+<h2 id="Energy-MomentumRelation_header">Energy-Momentum Relation</h2>
+<div id="ch6_2_content">
+We can see from the previous section that if a particle is moving in frame \(\lt \!\!S\!\gt \) we can define the space-time interval of its coordinates in this frame as
+<div class="math">
 \begin{equation}
 \Delta S_p^2 = (c\Delta t_p)^2 -\Delta x_p^2 -\Delta y_p^2 -\Delta z_p^2
 \end{equation}
-and we have the proper time that passes for the particle as \(\Delta\tau\), so taking the limit as the change in time goes to zero we can get the defined abstract space-time velocity
+</div>
+and if we divide by the proper time that passes for the particle in this interval \(\Delta\tau\), so that now taking the limit as the change in time in the interval goes to zero we get an abstract invariant quantity that we will call the space-time velocity
+<div class="math">
 \begin{equation}
 \begin{aligned}
 \left(\frac{dS_p}{d\tau}\right)^2 &=  \left(c\frac{dt_p}{d\tau}\right)^2 - \left(c\frac{dx_p}{d\tau}\right)^2 - \left(\frac{dy_p}{d\tau}\right)^2 - \left(\frac{dz_p}{d\tau}\right)^2 \\
-&= c^2\gamma_{u_p}^2 \left( 1 - \frac{u_x^2 + u_y^2 + u_z^2}{c^2} \right) \\
+&= c^2\gamma_{u}^2 \left( 1 - \frac{u_x^2 + u_y^2 + u_z^2}{c^2} \right) \\
 &= c^2
 \end{aligned}
 \end{equation}
-as can be seen, this is a conserved quantity as the speed of light is constant in all frames, taking the square root of both sides and multiplying by \(c\) and the particle's mass in its rest frame \(m_0\) we have a conserved quantity with the units of energy, we will call this the rest energy of the particle
+</div>
+It can be seen that this is still an invariant quantity as the speed of light is constant in all frames. Now by multiplying both sides by \(c^2\) and the square of the rest mass \(m\) of the particle we have an invariant quantity with the units of energy squared, that is equal to \(mc^2\)
+<div class="math" id="eq: energy-momentum derivation">
 \begin{equation}
-E_0 = m_0 c \frac{dS_p}{d\tau}  = m_0 c^2
+\label{eq: energy-momentum derivation}
+\begin{aligned}
+m^2 c^2 \left(\frac{dS_p}{d\tau}\right)^2 &=  \gamma_{u}^2 m^2 c^4 - \gamma_{u}^2 m^2 \left( u_x^2 + u_y^2 + u_z^2 \right) c^2 \\
+(mc^2)^2  &=  \gamma_{u}^2 m^2 c^4 - \gamma_{u}^2 m^2 u^2 c^2
+\end{aligned}
 \end{equation}
+</div>
+rearranging, we get
+<div class="math" id="eq: total relativistic energy">
+\begin{equation}
+\label{eq: total relativistic energy}
+\left( \gamma_{u} m c^2 \right)^2 = (mc^2)^2 + \left( \gamma_{u} m u c \right)^2
+\end{equation}
+</div>
+using the taylor expansion of \(\gamma_{u}\) on the quantity \(\gamma_{u} mc^2\), we have
+<div class="math">
+\begin{equation}
+\begin{aligned}
+\gamma_{u} mc^2 &= mc^2  \left(1 + \frac{1}{2}\frac{u^2}{c^2} + \frac{3}{8}\frac{u^4}{c^4} + ... \right) \\
+&= mc^2   + \frac{1}{2}mu^2 + \frac{3}{8}\frac{u^4}{c^2} + ...
+\end{aligned}
+\end{equation}
+</div>
+This equation's first quantity is the rest mass energy, and the second quantity is the classical kinetic energy formula with the rest of the terms being negligible at small velocities, so this second term seems to be a formula for the total energy of a particle in the absence of a potential field (i.e. no change in potential energy) with added terms which become non-negligible at large particle speeds, we will denote this total energy \(E\)
+Taking this suggestion we have
+<div class="math">
+\begin{equation}
+E^2 = \left( mc^2 \right)^2 + (\gamma_{u}mu)^2c^2
+\end{equation}
+</div>
+so this assumed total energy to be equal to its rest energy plus this energy that depends on its speed
+this second quantity along with the taylor expansion of \(\gamma_{u}\) gives
+<div class="math">
+\begin{equation}
+\begin{aligned}
+\gamma_{u} muc &= muc  \left(1 + \frac{1}{2}\frac{u^2}{c^2} + \frac{3}{8}\frac{u^4}{c^4} + ... \right) \\
+&= c \left( mu   + \frac{1}{2}m \frac{u^3}{c^2} + \frac{3}{8}\frac{u^5}{c^4} + ... \right)
+\end{aligned}
+\end{equation}
+</div>
+which at small particle velocities is approximately \(muc\) with \(mu\) being the classical momentum, we could redefine momentum to be
+<div class="math">
+\begin{equation}
+p = \gamma_{u} mu
+\end{equation}
+</div>
+as it has the same units and approximates to classical momentum at small particle velocities,
+*** The equation says that there is an energy quantity conserved that we have imposed is the energy of a particle when we are in its rest frame (in the absence of a potential field) and this is equal to a larger energy minus an energy that depends only on its momentum, so we take this larger energy to be the accumalative rest energy and its kenetic energy.
+*** i.e. we have (an energy depending on its mass) equal to (an energy that depends on the mass and its velocity) minus (an energy that depends only on its velocity)
+when the velocity of the particle is zero both sides equal \((mc^2)^2\), the quantity inside the bracket is in units of energy and we shall suggest that this is the energy that a particle has at rest
+<div class="math">
+\begin{equation}
+E_0 = mc^2
+\end{equation}
+</div>
+This is the energy has from its rest mass, if a particle what to be annihilate, the photons emitted from this would be equal to this energy.
 ***
+*** bring this forward
 ***
-\begin{equation}
-m^2_0 c^2 = - \frac{E^2}{c^2} + (\gamma_u p_x)^2 + (\gamma_u p_y)^2 + (\gamma_u p_z)^2 = - \frac{E^2}{c^2} + (\gamma_u p)^2
-\end{equation}
-giving
-\begin{equation}
-E^2 = m_0^2c^4 +\gamma^2p^2c^2
-\end{equation}
-for stationary particles \(u=0\)
-\begin{equation}
-E = m_0c^2
-\end{equation}
-this does not work for massless particles like photons, we have to use a different method of getting this, we know from before that \( \mathbf{P}^2 = m_0^2 c^2 = 0\) leading to the components giving
+</div> <!-- close section-->
+<h2 id="Energy-MomentumRelationForPhotons_header">Energy-Momentum Relation For Photons</h2>
+<div id="ch6_3_content">
+The energy-momentum relation does not work for massless particles like photons, we have to use a different method of getting this, we know from before that \( \mathbf{P}^2 = m_0^2 c^2 = 0\) leading to the components giving
+<div class="math">
+<div class="math">
 \begin{equation}
 \frac{E^2}{c^2} = |p_{light}|^2
 \end{equation}
+</div>
+</div>
 and finally
+<div class="math">
+<div class="math">
 \begin{equation}
 E = c p_{light}
 \end{equation}
+</div>
+</div>
 ....
 not needed:
 definition of momentum for light borrowed from quantum mechanics
+<div class="math">
+<div class="math">
 \begin{equation}
 p = \frac{hf}{c}
 \end{equation}
+</div>
+</div>
 where \(h\) is Planks constant and \(f\) is the frequency of the light
 so that the
 ....
 the reason we use this abstract 4-momentum is because it is conserved and the Newtonian momentum is not conserved when it comes to special relativity
-***
-***
-The proper time between two <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s \(\Delta\tau\) of an object is also agreed upon in all inertial frames and will also therefore agree on derivatives with respect to the proper time of the object \(\tau\) (where it is the time between two <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span>s in the same location?), because they will be <span onmouseover="document.getElementById('def-lorentz-invariant').style.display='block'" onmouseout="document.getElementById('def-lorentz-invariant').style.display='none'">invariant</span>
-we define the 4-position vector of an object in space from its position and time as, where we multiplied time by c
-\begin{equation}
-\mathbf{S} =
-\begin{pmatrix}
-ct \\
-x  \\
-y  \\
-z  \\
-\end{pmatrix}
-\end{equation}
-taking a derivative with respect to the proper time of the object \(\tau\) gives us the 4-velocity of an object with \(\frac{d}{d\tau} = \frac{dt}{d\tau}\frac{d}{dt} = \gamma_u \frac{d}{dt} \)
-\begin{equation}
-\mathbf{U} = \frac{d\mathbf{S}}{d\tau} = \gamma_u \frac{d}{dt}
-\begin{pmatrix}
-ct \\
-x  \\
-y  \\
-z  \\
-\end{pmatrix}
-= \gamma_u
-\begin{pmatrix}
-c   \\
-u_x \\
-u_y \\
-u_z \\
-\end{pmatrix}
-\end{equation}
-know to show that the magnitude of this is <span onmouseover="document.getElementById('def-lorentz-invariant').style.display='block'" onmouseout="document.getElementById('def-lorentz-invariant').style.display='none'">invariant</span> by showing all primed 4-velocities give
-\begin{equation}
-||\mathbf{U}|| = c
-\end{equation}
-... mention proper time and proper position
 </div> <!-- close section-->
 <h2 id="Energy-MomentumRelation_header">Energy-Momentum Relation</h2>
-<div id="ch6_2_content">
+<div id="ch6_4_content">
 The 4 momentum is defined as
+<div class="math">
 \begin{equation}
 \mathbf{P} = m_0 \mathbf{U} =
 \begin{pmatrix}
-\gamma_u m_0 c   \\
-\gamma_u m_0 u_x \\
-\gamma_u m_0 u_y \\
-\gamma_u m_0 u_z \\
+{\gamma}_{u} m_0 c   \\
+{\gamma}_{u} m_0 u_x \\
+{\gamma}_{u} m_0 u_y \\
+{\gamma}_{u} m_0 u_z \\
 \end{pmatrix}
 \end{equation}
-we have the Taylor series expansion of \(\gamma_u\) factor is
+</div>
+we have the Taylor series expansion of \({\gamma}_{u}\) factor is
+<div class="math">
 \begin{equation}
-\gamma_u = 1 + \frac{1}{2}\frac{u^2}{c^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+{\gamma}_{u} = 1 + \frac{1}{2}\frac{u^2}{c^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
 \end{equation}
+</div>
 when subbed into 4-momentum, we have the time component and multiply by \(c\), we have
+<div class="math">
 \begin{equation}
-c |\mathbf{P}_t| = m_0 c^2\gamma_u = m_0 c^2 ( 1 + \frac{1}{2}\frac{u^2}{c^2} +\frac{3}{8}\frac{u^4}{c^4} + ... )
+c |\mathbf{P}_t| = m_0 c^2{\gamma}_{u} = m_0 c^2 ( 1 + \frac{1}{2}\frac{u^2}{c^2} +\frac{3}{8}\frac{u^4}{c^4} + ... )
 \end{equation}
+</div>
+<div class="math">
 \begin{equation}
 c |\mathbf{P}_t| = m_0 c^2 + \frac{1}{2} m_0 u^2 + \frac{3}{8}\frac{u^4}{c^2} + ... )
 \end{equation}
+</div>
 since this
 all terms here are in units of energy, the second term is the classical kinetic energy, and the higher-order terms may be seen as higher-order kinetic energy terms that are very small for \(u\lt \lt c\), the first term does not rely on the velocity of a mass, but only the mass itself, and this can be taken as a new type of energy all masses have even when at rest, i.e. the energy at rest for a mass is
+<div class="math">
 \begin{equation}
 E_{rest} = m_0 c^2
 \end{equation}
+</div>
 we will write this new energy into the 4-momentum
+<div class="math">
 \begin{equation}
 \mathbf{P} =
 \begin{pmatrix}
 \frac{E}{c}      \\
-\gamma_u m_0 u_x \\
-\gamma_u m_0 u_y \\
-\gamma_u m_0 u_z \\
+{\gamma}_{u} m_0 u_x \\
+{\gamma}_{u} m_0 u_y \\
+{\gamma}_{u} m_0 u_z \\
 \end{pmatrix}
 \end{equation}
+</div>
 the magnitude of the 4-momentum can easily be found to be
+<div class="math">
 \begin{equation}
 ||\mathbf{P}|| = m_0 c
 \end{equation}
-another conserved quantity that does not depend on the frame and using this and the 4-momentum vector
+</div>
+another invariant quantity that does not depend on the frame and using this and the 4-momentum vector
 ***
 *** this equation can be brought to earlier
-*** it is the best equtions to explain it all, its all a conserved quantity on both sides
+*** it is the best equtions to explain it all, its all a invariant quantity on both sides
 ***
+<div class="math">
 \begin{equation}
-m^2_0 c^2 = - \frac{E^2}{c^2} + (\gamma_u p_x)^2 + (\gamma_u p_y)^2 + (\gamma_u p_z)^2 = - \frac{E^2}{c^2} + (\gamma_u p)^2
+m^2_0 c^2 = - \frac{E^2}{c^2} + ({\gamma}_{u} p_x)^2 + ({\gamma}_{u} p_y)^2 + ({\gamma}_{u} p_z)^2 = - \frac{E^2}{c^2} + ({\gamma}_{u} p)^2
 \end{equation}
+</div>
 giving
+<div class="math">
 \begin{equation}
-E^2 = m_0^2c^4 +\gamma^2p^2c^2
+E^2 = m_0^2c^4 +{\gamma}_{u}^2p^2c^2
 \end{equation}
+</div>
 for stationary particles \(u=0\)
+<div class="math">
 \begin{equation}
 E = m_0c^2
 \end{equation}
+</div>
 this does not work for massless particles like photons, we have to use a different method of getting this, we know from before that \( \mathbf{P}^2 = m_0^2 c^2 = 0\) leading to the components giving
+<div class="math">
+<div class="math">
 \begin{equation}
 \frac{E^2}{c^2} = |p_{light}|^2
 \end{equation}
+</div>
+</div>
 and finally
+<div class="math">
+<div class="math">
 \begin{equation}
 E = c p_{light}
 \end{equation}
+</div>
+</div>
 ....
 not needed:
 definition of momentum for light borrowed from quantum mechanics
+<div class="math">
+<div class="math">
 \begin{equation}
 p = \frac{hf}{c}
 \end{equation}
+</div>
+</div>
 where \(h\) is Planks constant and \(f\) is the frequency of the light
 so that the
 ....
 the reason we use this abstract 4-momentum is because it is conserved and the Newtonian momentum is not conserved when it comes to special relativity
 <h3 id="Energy-MassEquivalence_header">Energy-Mass Equivalence</h3>
-<div id="ch6_2_1_content">
+<div id="ch6_4_1_content">
 *** E=mc2 is derived using an approximation for v\lt \lt c
 Imagine we have a particle at rest emitting light in all directions so that afterward it is still at rest, but in another frame we have we have this particle moving and the emitted light aberrated, but we still need the particle to remain at a constant velocity after emission. (maybe include a rotation in the impulse/effect of light in each direction on the particle of has)
 - if we have a ball in its <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> that emits a flash of light evenly in all directions, we will have the ball's energy decrease by the amount of energy of the emitted light, and it will remain at rest after due to the light being emitted evenly in all directions
 - its kinetic energy is zero in this frame
 </div> <!-- close subsection-->
 <h3 id="Energy-MomentumEquivalence_header">Energy-Momentum Equivalence</h3>
-<div id="ch6_2_2_content">
+<div id="ch6_4_2_content">
 *** Dirac derived this and used quantum mechanics to do so, which is out of this handbook's domain, still consequences of this equation to be explored, such as the "zitterbewegung"
 Momentum in special relativity is defined slightly differently, to ensure that the law of conservation of momentum holds true in all inertial frames, as required by the first postulate of relativity (it is still approximately unchanged at low velocities). momentum of a particle with rest mass \(m_0\) is given the
+<div class="math">
 \begin{equation}
-\mathbf{p}' = m_0 \frac{dR'}{d\tau}= \gamma_u' m_0 \frac{dR'}{dt'} = \gamma m_0 u'
+\mathbf{p}' = m_0 \frac{dR'}{d\tau}= {\gamma}_{u}' m_0 \frac{dR'}{dt'} = {\gamma}_{u} m_0 u'
 \end{equation}
+</div>
 where \(u'\) is the velocity of the particle in this <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> and \(\gamma_{u'}= 1/\sqrt{1-u'^2/c^2}\). you will sometimes the mass of an object referred to as \(m=\gamma_{u'} m_0\) which is the apparent mass of a moving particle.
 (why not use the 3d time differential equation here?)
 </div>  <!-- close subsection-->
 </div> <!-- close section-->
 <h2 id="Acceleration_header">Acceleration</h2>
-<div id="ch6_3_content">
+<div id="ch6_5_content">
 ...proper acceleration.
 ... this is more complex and one difference in this 4-vector here is that the spatial part of the 4-acceleration is not parallel to the 3-acceleration in a <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span>
+<div class="math">
 \begin{equation}
-\mathbf{A} = \gamma_u^4
+\mathbf{A} = {\gamma}_{u}^4
 \begin{pmatrix}
 -c\frac{\mathbf{a}\cdot\mathbf{u}}{c^2}                              \\
-\frac{1}{\gamma_u^2} a_x - u_x \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
-\frac{1}{\gamma_u^2} a_y - u_y \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
-\frac{1}{\gamma_u^2} a_z - u_z \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
+\frac{1}{{\gamma}_{u}^2} a_x - u_x \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
+\frac{1}{{\gamma}_{u}^2} a_y - u_y \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
+\frac{1}{{\gamma}_{u}^2} a_z - u_z \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
 \end{pmatrix}
 \end{equation}
+</div>
 this is not really the same thing as what we think of when we think of acceleration, as it does not give the rate of change of velocity in the normal sense in 3d space
+<div class="math">
 \begin{equation}
 A=\dfrac{dV}{d\tau}=
 \dfrac{dt}{d\tau}\cdot\dfrac{dV}{dt} \;\;\leftrightarrow\;\; \dfrac{dt}{d\tau}\cdot \dfrac{d}{dt}
-\left(\begin{array}{*{20}{c}} \gamma_u c \\ \gamma_u u \\ 0 \\ 0 \end{array}\right)
-= \gamma_u
-\left(\begin{array}{*{20}{c}} \dfrac{u}{c}\;\gamma_u^3\;a \\ \dfrac{u^2}{c^2}\;\gamma_u^3\;a+\gamma_u a \\ 0 \\ 0 \end{array}\right)
+\left(\begin{array}{*{20}{c}} {\gamma}_{u} c \\ {\gamma}_{u} u \\ 0 \\ 0 \end{array}\right)
+= {\gamma}_{u}
+\left(\begin{array}{*{20}{c}} \dfrac{u}{c}\;{\gamma}_{u}^3\;a \\ \dfrac{u^2}{c^2}\;{\gamma}_{u}^3\;a+{\gamma}_{u} a \\ 0 \\ 0 \end{array}\right)
 =
-\left(\begin{array}{*{20}{c}} \dfrac{u}{c}\;\gamma_u^4\;a \\ \gamma_u^2\left(\dfrac{u^2}{c^2}\;\gamma_u^2+1\right)a \\ 0 \\ 0 \end{array}\right)
-= \gamma_u^4\;a
+\left(\begin{array}{*{20}{c}} \dfrac{u}{c}\;{\gamma}_{u}^4\;a \\ {\gamma}_{u}^2\left(\dfrac{u^2}{c^2}\;{\gamma}_{u}^2+1\right)a \\ 0 \\ 0 \end{array}\right)
+= {\gamma}_{u}^4\;a
 \left(\begin{array}{*{20}{c}} \dfrac{u}{c} \\ 1 \\ 0 \\ 0 \end{array}\right)
 \end{equation}
+</div>
 </div> <!-- close section-->
 <h2 id="Force_header">Force</h2>
-<div id="ch6_4_content">
+<div id="ch6_6_content">
+<div class="math">
 \begin{equation}
 \mathbf{F}= \frac{d\mathbf{p}}{d\tau} = m_0\mathbf{A}
 \end{equation}
+</div>
 <h3 id="ForceTransform_header">Force Transform</h3>
-<div id="ch6_4_1_content">
+<div id="ch6_6_1_content">
 *** one of the most confusing topics in special relativity, from the way it is defined, how it is derived, and how it relates to other things<br>
 *** (a note that the 3-force in special relativity is specifically defined as the time derivative of momentum \(\frac{d\mathbf{p}}{dt}\) and not mass times the acceleration \(m\mathbf{a}\), this is due to newtons 2nd law holding only for the first definition in special relativity) <br>
 *** This means that acceleration turns out not to be in the same direction as the force in special relativity<br>
 force derivation is confusing as most sources give the time derivative of u and v as acceleration, (are they using that each force has opposite and equal force, but that would not take into account the retardedness)
+<div class="math">
 \begin{equation}
-\mathbf{a} = \frac{1}{m_0 \gamma(\mathbf{v})} \left( \mathbf{F} - \frac{ ( \mathbf{v} \cdot \mathbf{F} ) \mathbf{v} }{c^2} \right)
+\mathbf{a} = \frac{1}{m_0 {\gamma}(\mathbf{v})} \left( \mathbf{F} - \frac{ ( \mathbf{v} \cdot \mathbf{F} ) \mathbf{v} }{c^2} \right)
 \end{equation}
+</div>
+<div class="math">
 \begin{equation}
-\mathbf{F} = \gamma^3 m_0 \, \mathbf{a}_\parallel + \gamma m_0 \, \mathbf{a}_\perp
+\mathbf{F} = {\gamma}^3 m_0 \, \mathbf{a}_\parallel + {\gamma} m_0 \, \mathbf{a}_\perp
 \end{equation}
+</div>
 </div> <!-- close subsection-->
 <h3 id="notsurewhatthisis_header">not sure what this is</h3>
-<div id="ch6_4_2_content">
-The force parallel to the velocity of the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> is unchanged, \(\mathbf{F}_{\parallel \langle ' \rangle} =\mathbf{F}_{\parallel}\), and the force perpendicular to this is \(\mathbf{F}_{\perp \langle ' \rangle} =\gamma \mathbf{F}_{\perp}\), with total force, \(\mathbf{F}=\mathbf{F}_{\parallel}+\mathbf{F}_{\perp}\) and
+<div id="ch6_6_2_content">
+The force parallel to the velocity of the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span> is unchanged, \(\mathbf{F}_{\parallel \langle ' \rangle} =\mathbf{F}_{\parallel}\), and the force perpendicular to this is \(\mathbf{F}_{\perp \langle ' \rangle} ={\gamma} \mathbf{F}_{\perp}\), with total force, \(\mathbf{F}=\mathbf{F}_{\parallel}+\mathbf{F}_{\perp}\) and
+<div class="math">
 \begin{equation}
 \mathbf{F}_{\parallel} = \dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
 \end{equation}
+</div>
 and substituting this into the formula for total force:
+<div class="math">
 \begin{equation}
 \mathbf{F}_{\perp} = \mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
 \end{equation}
+</div>
 since \(\mathbf{F}_{\langle ' \rangle} =\mathbf{F}_{\parallel \langle ' \rangle} +\mathbf{F}_{\perp\langle ' \rangle}\) we can use equations above to get:
+<div class="math">
 \begin{equation}
 \begin{split}
-\mathbf{F}_{\langle ' \rangle} & = \dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v} + \gamma\bigg(\mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}\bigg) \\
-& = \gamma\mathbf{F} + (1-\gamma)\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
+\mathbf{F}_{\langle ' \rangle} & = \dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v} + {\gamma}\bigg(\mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}\bigg) \\
+& = {\gamma}\mathbf{F} + (1-{\gamma})\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
 \end{split}
 \end{equation}
+</div>
 this is the same for the electric field as it only differs by some magnitude from the force.<br>
 this is similar to how we get the reverse transform: (is it the primed velocity used in this?)
+<div class="math">
 \begin{equation}
-\mathbf{F} = \dfrac{1}{\gamma}\mathbf{F}_{\langle ' \rangle} + (1-\dfrac{1}{\gamma})\dfrac{(\mathbf{F}_{\langle ' \rangle} \cdot\mathbf{v}_{\langle ' \rangle} )}{|\mathbf{v}_{\langle ' \rangle} |^2}\mathbf{v}_{\langle ' \rangle}
+\mathbf{F} = \dfrac{1}{{\gamma}}\mathbf{F}_{\langle ' \rangle} + (1-\dfrac{1}{{\gamma}})\dfrac{(\mathbf{F}_{\langle ' \rangle} \cdot\mathbf{v}_{\langle ' \rangle} )}{|\mathbf{v}_{\langle ' \rangle} |^2}\mathbf{v}_{\langle ' \rangle}
 \end{equation}
+</div>
 </div>  <!-- close subsection-->
 </div> <!-- close section-->
 <h2 id="Variables..._header">Variables...</h2>
-<div id="ch6_5_content">
+<div id="ch6_7_content">
 ...
 </div>
 <div>
-<a onclick="showContent('ch5_div')" style="font-weight: bold;"> Previous </a>
+<a onclick="showContent('ch5_wrap')" style="font-weight: bold;"> < Previous </a>
 </div>
 </section>    </article>
 
@@ -1627,30 +1913,11 @@ this is similar to how we get the reverse transform: (is it the primed velocity 
         <a href="..." style="padding-top: 5px;"> <b> Resources </b> </a> <br>
         <a href="\latex\Handbook of Special Relativity\Layout.pdf" style="padding-top: 5px;"> <b> ↓ PDF </b> </a> <br>
         <h3 style="cursor: pointer;" onclick="var content = this.nextElementSibling; content.style.display = content.style.display === 'none' ? 'block' : 'none';">Terms ⯆</h3>
+<dl id="Terms_ch1" style="display: none;">
+
+ </dl>
 <dl id="Terms_ch2" style="display: none;">
-<dt style="cursor: pointer;" onclick="document.getElementById('math-E').style.display = document.getElementById('math-E').style.display == 'none' ? 'inline' : 'none';"> \(E\)<b>:</b> </dt>
-<dd id="math-E" style="display: none;">an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> given by the set of spatial and time coordinates. %*** might be confused with energy later ***</dd>
-<br><dt style="cursor: pointer;" onclick="document.getElementById('math-S').style.display = document.getElementById('math-S').style.display == 'none' ? 'inline' : 'none';"> \(\lt S\gt \)<b>:</b> </dt>
-<dd id="math-S" style="display: none;">an <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span>.</dd>
-<br><dt style="cursor: pointer;" onclick="document.getElementById('math-Sprime').style.display = document.getElementById('math-Sprime').style.display == 'none' ? 'inline' : 'none';"> \(\lt S'\gt \)<b>:</b> </dt>
-<dd id="math-Sprime" style="display: none;">a second <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span> moving relative to inertial frame \(\lt S\gt \).</dd>
-<br><dt style="cursor: pointer;" onclick="document.getElementById('math-v').style.display = document.getElementById('math-v').style.display == 'none' ? 'inline' : 'none';"> \(v\)<b>:</b> </dt>
-<dd id="math-v" style="display: none;">is the velocity of second <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span> relative to the first <span onmouseover="document.getElementById('def-Reference-frame').style.display='block'" onmouseout="document.getElementById('def-Reference-frame').style.display='none'">reference frame</span></dd>
-<br><dt style="cursor: pointer;" onclick="document.getElementById('math-c').style.display = document.getElementById('math-c').style.display == 'none' ? 'inline' : 'none';"> \(c\)<b>:</b> </dt>
-<dd id="math-c" style="display: none;">the speed that light travels in empty space when it is not impeded by matter and fields.</dd>
-<br><dt style="cursor: pointer;" onclick="document.getElementById('math-coords').style.display = document.getElementById('math-coords').style.display == 'none' ? 'inline' : 'none';"> \(x,y,z,t\)<b>:</b> </dt>
-<dd id="math-coords" style="display: none;">are the position and time coordinates of <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> in current <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span></dd>
-<br><dt style="cursor: pointer;" onclick="document.getElementById('math-coords-prime').style.display = document.getElementById('math-coords-prime').style.display == 'none' ? 'inline' : 'none';"> \(x',y',z',t'\)<b>:</b> </dt>
-<dd id="math-coords-prime" style="display: none;">are the corresponding position and time coordinates the <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> in another <span onmouseover="document.getElementById('def-Inertial-reference-frame').style.display='block'" onmouseout="document.getElementById('def-Inertial-reference-frame').style.display='none'">inertial reference frame</span>, referred to as the <span onmouseover="document.getElementById('def-Primed-Frame').style.display='block'" onmouseout="document.getElementById('def-Primed-Frame').style.display='none'">primed frame</span>, and denoted with a \('\).</dd>
-<br><dt style="cursor: pointer;" onclick="document.getElementById('math-tau').style.display = document.getElementById('math-tau').style.display == 'none' ? 'inline' : 'none';"> \(\tau\)<b>:</b> </dt>
-<dd id="math-tau" style="display: none;">the time of an <span onmouseover="document.getElementById('def-event').style.display='block'" onmouseout="document.getElementById('def-event').style.display='none'">event</span> in the <span onmouseover="document.getElementById('def-proper-frame').style.display='block'" onmouseout="document.getElementById('def-proper-frame').style.display='none'">rest frame</span> of an <span onmouseover="document.getElementById('def-observer').style.display='block'" onmouseout="document.getElementById('def-observer').style.display='none'">observer</span>.</dd>
-<br><dt style="cursor: pointer;" onclick="document.getElementById('math-delta-t,delta-t-prime').style.display = document.getElementById('math-delta-t,delta-t-prime').style.display == 'none' ? 'inline' : 'none';"> \(\delta t,\delta t'\)<b>:</b> </dt>
-<dd id="math-delta-t,delta-t-prime" style="display: none;">...</dd>
-<br><dt style="cursor: pointer;" onclick="document.getElementById('math-delta-tau,delta-tau-prime').style.display = document.getElementById('math-delta-tau,delta-tau-prime').style.display == 'none' ? 'inline' : 'none';"> \(\delta tau,\delta tau'\)<b>:</b> </dt>
-<dd id="math-delta-tau,delta-tau-prime" style="display: none;">...</dd>
-<br><dt style="cursor: pointer;" onclick="document.getElementById('math-gamma').style.display = document.getElementById('math-gamma').style.display == 'none' ? 'inline' : 'none';"> \(\gamma\)<b>:</b> </dt>
-<dd id="math-gamma" style="display: none;">a relativistic factor given by \(1/\sqrt{1-v^2/c^2}\) which determines how much of an effect the <span onmouseover="document.getElementById('def-transform').style.display='block'" onmouseout="document.getElementById('def-transform').style.display='none'">transform</span> of the coordinates deviates from the classical transform. It is only significant at relative frame speeds close to that of light.</dd>
-<br>
+
  </dl>
 <dl id="Terms_ch3" style="display: none;">
 
@@ -1688,6 +1955,17 @@ this is similar to how we get the reverse transform: (is it the primed velocity 
 <dd id="def-retarded-field" style="display: none;"> <b>Retarded field:</b>  A moving source's field, where at each point has been propagated at the speed of light from the retarded position of the source...  </dd>
 <dd id="def-field" style="display: none;"> <b>Field:</b>    </dd>
 <dd id="def-lorentz-invariant" style="display: none;"> <b>Invariant:</b>  ...  </dd>
+<dd id="math_E" style="display: none;"> <b>\(E\):</b>  an \hyperlink{def-event}{event} given by the set of spatial and time coordinates. %*** might be confused with energy later ***  </dd>
+<dd id="math_lt-S-gt" style="display: none;"> <b>\(<S>\):</b>  an \hyperlink{def-Inertial-reference-frame}{inertial reference frame}.  </dd>
+<dd id="math_lt-S-prime-gt" style="display: none;"> <b>\(<S'>\):</b>  a second \hyperlink{def-Inertial-reference-frame}{inertial reference frame} moving relative to inertial frame \({\lt S\gt }\).  </dd>
+<dd id="math_v" style="display: none;"> <b>\(v\):</b>  is the velocity of second \hyperlink{def-Reference-frame}{reference frame} relative to the first \hyperlink{def-Reference-frame}{reference frame}  </dd>
+<dd id="math_c" style="display: none;"> <b>\(c\):</b>  the speed that light travels in empty space when it is not impeded by matter and fields.  </dd>
+<dd id="math_x,y,z,t" style="display: none;"> <b>\(x,y,z,t\):</b>  are the position and time coordinates of \hyperlink{def-event}{event} in current \hyperlink{def-Inertial-reference-frame}{inertial reference frame}  </dd>
+<dd id="math_x-prime,y-prime,z-prime,t-prime" style="display: none;"> <b>\(x',y',z',t'\):</b>  are the corresponding position and time coordinates the \hyperlink{def-event}{event} in another \hyperlink{def-Inertial-reference-frame}{inertial reference frame}, referred to as the \hyperlink{def-Primed-Frame}{primed frame}, and denoted with a \({'}\).  </dd>
+<dd id="math_tau" style="display: none;"> <b>\(\tau\):</b>  the time of an \hyperlink{def-event}{event} in the \hyperlink{def-proper-frame}{rest frame} of an \hyperlink{def-observer}{observer}.  </dd>
+<dd id="math_delta t,delta t-prime" style="display: none;"> <b>\(\delta t,\delta t'\):</b>  ...  </dd>
+<dd id="math_delta tau,delta tau-prime" style="display: none;"> <b>\(\delta \tau,\delta \tau'\):</b>  ...  </dd>
+<dd id="math_gamma" style="display: none;"> <b>\(\gamma\):</b>  a relativistic factor given by \({1/\sqrt{1-v^2/c^2}}\) which determines how much of an effect the \hyperlink{def-transform}{transform} of the coordinates deviates from the classical transform. It is only significant at relative frame speeds close to that of light.  </dd>
       </dl>
     </aside>
   </main>
@@ -1700,7 +1978,7 @@ this is similar to how we get the reverse transform: (is it the primed velocity 
         .then(data => {
           document.getElementById('banner').innerHTML = data;
           var svgDoc = document.getElementById('banner').getElementsByTagName('svg')[0];
-          svgDoc.style.height = "55px"
+          svgDoc.style.height = "54px"
           var myUses = svgDoc.getElementsByTagName('use');
           var totalItems = myUses.length; // total number of items
           var totalTime = 4; // total time for all animations in seconds
@@ -1767,6 +2045,19 @@ this is similar to how we get the reverse transform: (is it the primed velocity 
       }
   }
   </script>
+
+  <script>
+    function copyContent(sourceId, targetId) {
+      var sourceDiv = document.getElementById(sourceId);
+      var targetDiv = document.getElementById(targetId);
+      targetDiv.innerHTML = sourceDiv.innerHTML; // Copy the content
+    }
+
+    function deleteContent(id) {
+      var myDiv = document.getElementById(id);
+      myDiv.innerHTML = ''; // Delete the content
+    }
+    </script>
 
 
 

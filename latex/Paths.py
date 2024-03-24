@@ -16,7 +16,9 @@ py_to_latex_folder = "Handbook of Special Relativity/"
 
 py_to_main_tex = py_to_latex_folder + "Tex/Main_Matter.tex"
 
-py_to_defs = py_to_latex_folder + "Tex/Terms/Definitions.tex"
+py_to_defs = py_to_latex_folder + "Tex/Terms/Terms_ch1.tex"
+
+py_to_terms = py_to_latex_folder + "Tex/Terms"
 
 py_to_tikz = py_to_latex_folder + "tikz/"
 

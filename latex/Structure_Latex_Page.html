@@ -9,7 +9,31 @@
   <!--<script> var url = window.location.href; url = url.split('.html')[0]; window.history.replaceState(null, null, url); </script> -->
   <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
   <script defer type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script defer> window.MathJax = {  tex: { tags: 'ams' }, loader: {load: ['ui/lazy']}  }; </script>
+  <!--<script defer> window.MathJax = {  tex: { tags: 'ams' }, svg: {fontCache: 'global'} }; </script>-->
+  <script> MathJax = {
+    loader:  {load:  ['[tex]/tagformat']},
+    section:  0,
+    tex:  {
+      tags:  'ams',
+      packages:  {'[+]':  ['tagformat', 'sections']},
+      tagformat:  { number:  (n) => MathJax.config.section + '.' + n }
+    },
+    startup:  {
+      ready() {
+        const Configuration = MathJax._.input.tex.Configuration.Configuration;
+        const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+        new CommandMap('sections', { nextSection:  'NextSection' }, {
+          NextSection(parser, name) {
+            MathJax.config.section++;
+            parser.tags.counter = parser.tags.allCounter = 0;
+          }
+        });
+        Configuration.create( 'sections', {handler:  {macro:  ['sections']}});
+        MathJax.startup.defaultReady();
+      }
+    }
+  };
+  </script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
 
   <style>
@@ -28,12 +52,23 @@
     .navbar {
       display: grid; grid-template-columns: auto 680px auto;
       position: sticky; top: 0; z-index: 1000;
-      height: 60px; width: 100%; padding-top: 3px;
+      height: 60px; width: 100%;
       background-color: grey;
     }
 
+    .math { font-size: smaller; }
+    mjx-container:not([display]) {
+      font-size: smaller !important;
+    }
+
+    .arrow-nav {
+      display: grid; grid-template-columns: 50% 50%;
+      width: 100%;
+      padding-top: 50px;
+    }
+
     h1 {font-size: 2em;}
-    a {text-decoration: none; color: black; padding-left: 10px; padding-right: 10px;}
+    details a {text-decoration: none; color: black; padding-left: 10px; padding-right: 10px;}
     a:hover { text-decoration: underline;}
     #toc a {padding: 0; font-size: 10px; font-family: Arial, sans-serif; line-height: 1.5;}
 
@@ -47,11 +82,12 @@
       .navbar {grid-template-columns: 70px auto 70px;}
       @media (max-width: 700px) {article {min-width: 0px; width: 100vw; margin: 0;}}
     }
-    body {counter-reset: figure-counter;}
+    body {counter-reset: figure-counter chapter-counter;}
+    section { counter-increment: chapter-counter; counter-reset: figure-counter; }
     figure { counter-increment: figure-counter;}
-    figcaption::before {content: "Figure " counter(figure-counter) ": ";}
+    figcaption::before {content: "Figure " counter(chapter-counter) "." counter(figure-counter) ": ";}
 
-    .sidebar{position: sticky; top: 63px; overflow: hidden; align-self: start; height: 100%;}
+    .sidebar{position: sticky; top: 60px; overflow: hidden; align-self: start; height: auto;}
     figcaption {line-height: 1;}
 
     .dropdown-menu {
@@ -78,10 +114,10 @@
 
   <!--Navbar-->
   <div class="navbar">
-    <a href="/index.html"> <img src="/visuals/Images/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 3px;" > </a>
-    <div id="banner" style="width: 100%;"> </div>
-    <div class="menu" style="justify-self: end; width: 70px; cursor: pointer;">
-      <div style="font-size: 40px; justify-content: center; text-align: center; "> &#x2630; </div>
+    <div style="justify-self: start; width: 70px;"><a href="/index.html"> <img src="/visuals/Images/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px" > </a></div>
+    <div id="banner" style="width: 100%; padding-top: 3px; padding-bottom:3px;"> </div>
+    <div class="menu" style="justify-self: end; cursor: pointer; width: 70px;">
+      <div style="font-size: 40px; text-align: right; padding-right: 10px; "> &#x2630; </div>
       <nav class="dropdown-menu">
         <a href="/index.html">Home</a>
         <a href="/pages/topics.html">Topics</a>
@@ -89,6 +125,8 @@
       </nav>
     </div>
   </div>
+
+  <div id="equation_hover" style="position: fixed; top: 50vh;"></div>
 
   <!--Page-->
   <main>
@@ -135,7 +173,7 @@
         .then(data => {
           document.getElementById('banner').innerHTML = data;
           var svgDoc = document.getElementById('banner').getElementsByTagName('svg')[0];
-          svgDoc.style.height = "55px"
+          svgDoc.style.height = "54px"
           var myUses = svgDoc.getElementsByTagName('use');
           var totalItems = myUses.length; // total number of items
           var totalTime = 4; // total time for all animations in seconds
@@ -202,6 +240,19 @@
       }
   }
   </script>
+
+  <script>
+    function copyContent(sourceId, targetId) {
+      var sourceDiv = document.getElementById(sourceId);
+      var targetDiv = document.getElementById(targetId);
+      targetDiv.innerHTML = sourceDiv.innerHTML; // Copy the content
+    }
+
+    function deleteContent(id) {
+      var myDiv = document.getElementById(id);
+      myDiv.innerHTML = ''; // Delete the content
+    }
+    </script>
 
 
 

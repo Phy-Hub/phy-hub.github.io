@@ -2,7 +2,31 @@
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
+\chapter{Intro}
+
+meaningful and concise introduction:
+- [ ] overview of the subject matter that the book will cover
+- [ ] explain the importance of the topic
+- [ ] explain the approach the book will take
+- [ ] explain what the reader can expect to gain from the book
+- [ ] state objectives and key take aways
+- [ ] final sentence to allow this to flow into the first chapter
+
+
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
 \chapter{Conceptual Overview}
+
+meaningful introduction:
+
+- [ ] Intial sentence to allow this to flow from previous chapter
+- [ ] brief overview of chapter and how it is linked to other chapters
+    - [ ] what is needed from previous chaoters for this one
+- [ ] state objectives and key take aways
+- [ ] explain importance of this chapter
+- [ ] make sure this flows from previous chapter
 
 Newtonian physics serves as an excellent approximation at low speeds, accurately predicting the behavior of objects in our everyday world, but it gives way to different effects as we approach the speed of light. It turns out that an \hyperlink{def-observer}{observer} moving at high speed relative to another \hyperlink{def-observer}{observer} would notice lengths contract, time run slower, and \hyperlink{def-event}{event}s that were \hyperlink{def-simultaneity}{simultaneous} to the other \hyperlink{def-observer}{observer}, no longer \hyperlink{def-simultaneity}{simultaneous} to them. There is however one thing that remains constant, the speed that light travels relative to each \hyperlink{def-observer}{observer} is the same. To understand how all this works, we have to redefine our understanding of time and space, with special relativity.
 
@@ -434,9 +458,19 @@ These effects will all be explained more fully with math in the coming chapters,
 *** Explain what a photon sees, i.e. when it is emitted it sees a universe that is infinitely thin in direction of movement and the time between emission and absorption is then zero
 % what will come later...
 
+meaningful conclusion:
+
+- [ ] summarise the key points and how they relate to other parts of book
+- [ ] discuss implications and applications of chapters concepts
+- [ ] draw conections between this chapter and other chapters
+    - [ ] what this will allow us to look at later
+- [ ] pose points to relfect on
+- [ ] give questions still to be answered which will be in later chapters
+- [ ] final sentence to allow this to flow into next chapter
+
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\input{Tex/Terms/Definitions}
+\input{Tex/Terms/Terms_ch1.tex}
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -453,7 +487,7 @@ For classical (Galilean) relativity, if we have two \hyperlink{def-observer}{obs
 
 Before special relativity, it was assumed that distances between two positions were the same for all \hyperlink{def-observer}{observer}s, i.e. the first \hyperlink{def-observer}{observer} would see a stick and measure it to be the same length as another \hyperlink{def-observer}{observer} moving relative to them would measure it to be. long story short, lengths are the same for all \hyperlink{def-observer}{observer}s in \hyperlink{def-galilean-transform}{Galilean transform}. Another assumption is that time is constant for everyone, i.e. clocks move at the same rate for each \hyperlink{def-observer}{observer} and if a particle was to emit light at a particular time. This light would be emitted at the same time for the other \hyperlink{def-observer}{observer}s too.
 
-So let's see how the mathematics works for the classical coordinate system transform between two \hyperlink{def-observer}{observer}s. If we have the coordinate system in one \hyperlink{def-Inertial-reference-frame}{inertial reference frame} $<S>$ to describe an \hyperlink{def-event}{event} $E$, which is given by the set of spatial and time coordinates $(x,y,z)$ and $t$, and we want to find the coordinates of the event in another "primed" \hyperlink{def-Inertial-reference-frame}{inertial reference frame}/coordinate system that is moving at a relative speed $v$ to the first frame in the z-axis, that was initially overlapping with the first frame at time $t=0$, with the events coordinates now described by $x', y', z'$ at time $t'$. The direction of the second frame is in the upwards z-direction instead of being to the right in the case of the truck diagrams from the previous chapter, this is to help us when we use spherical polar coordinates later and to help see the symmetries.
+So let's see how the mathematics works for the classical coordinate system transform between two \hyperlink{def-observer}{observer}s. If we have the coordinate system in one \hyperlink{def-Inertial-reference-frame}{inertial reference frame} $<\!\!S\!>$ to describe an \hyperlink{def-event}{event} $E$, which is given by the set of spatial and time coordinates $(x,y,z)$ and $t$, and we want to find the coordinates of the event in another "primed" \hyperlink{def-Inertial-reference-frame}{inertial reference frame}/coordinate system that is moving at a relative speed $v$ to the first frame in the z-axis, that was initially overlapping with the first frame at time $t=0$, with the events coordinates now described by $x', y', z'$ at time $t'$. The direction of the second frame is in the upwards z-direction instead of being to the right in the case of the truck diagrams from the previous chapter, this is to help us when we use spherical polar coordinates later and to help see the symmetries.
 
 \begin{figure}[H]
 	\figuretitle{...}
@@ -462,7 +496,7 @@ So let's see how the mathematics works for the classical coordinate system trans
 	\begin{tikzpicture}[scale=3]%,tdplot_main_coords]
 		\coordinate (O) at (0,0,0);
 		%
-		\draw (1.7,2,0) node{ {\large $<S>$}};
+		\draw (1.7,2,0) node{ {\large $<\!\!S\!>$}};
 		\draw[black, thick,->] (1.5,0,0) -- (2.1,0,0) node[anchor=north east]{$x$};
 		\draw[black, thick,->] (1.7,-0.2,0) -- (1.7,0.45,0) node[anchor=north west]{$z$};
 		\draw[black, thick,->] (1.7,0,0.3) -- (1.7,0,-0.7) node[anchor=west]{$y$};
@@ -473,38 +507,38 @@ So let's see how the mathematics works for the classical coordinate system trans
 		\draw[gray, thick, ->>] (1.55,1.2,0) -- (1.55,1.42,0) node[anchor=east]{$v$};
 		\fill[red] (2.35,1.4,0) circle (0.6pt);
 		%
-		\draw[red, thick, ->] (1.7,0,0) -- (2.35,1.37,0) node[midway,anchor=west]{$OE$};
-		\draw[red, thick, ->] (1.7,0,0) -- (1.7,1.2,0) node[midway,anchor=east]{$OO'$};
-		\draw[red, thick, ->] (1.7,1.2,0) -- (2.32,1.4,0) node[midway,anchor=south]{$O'E$};
+		\draw[red, thick, ->] (1.7,0,0) -- (2.35,1.37,0) node[midway,anchor=west]{$\vec{OE}$};
+		\draw[red, thick, ->] (1.7,0,0) -- (1.7,1.2,0) node[midway,anchor=east]{$\vec{OO'}$};
+		\draw[red, thick, ->] (1.7,1.2,0) -- (2.32,1.4,0) node[midway,anchor=south]{$\vec{O'E}$};
 		%
 	\end{tikzpicture}
-	\caption{Diagram, of a \protect\hyperlink{def-Reference-frame}{reference frame} $<S>$ with its associated $(x,y,z)$ coordinate system at rest in this frame, it also shows a primed coordinate axis $(x', y', z')$ at time $t=t'$ from when the axis where overlapping, associated with another \protect\hyperlink{def-Inertial-reference-frame}{inertial reference frame}s moving at velocity $v$ in the z-axis, it shows an \protect\hyperlink{def-event}{event} with position vector $\overrightarrow{OE}$ in this frame and the vector $\overrightarrow{OO'}$ to this primed axis origin and the vector $\overrightarrow{O'E}$ which is the vector from this primed origin to the \protect\hyperlink{def-event}{event} in the shown frame.}
+	\caption{Diagram, of a \protect\hyperlink{def-Reference-frame}{reference frame} $<\!\!S\!>$ with its associated $(x,y,z)$ coordinate system at rest in this frame, it also shows a primed coordinate axis $(x', y', z')$ at time $t=t'$ from when the axis where overlapping, associated with another \protect\hyperlink{def-Inertial-reference-frame}{inertial reference frame}s moving at velocity $v$ in the z-axis, it shows an \protect\hyperlink{def-event}{event} with position vector $\vec{OE}$ in this frame and the vector $\vec{OO'}$ to this primed axis origin and the vector $\vec{O'E}$ which is the vector from this primed origin to the \protect\hyperlink{def-event}{event} in the shown frame.}
 	\label{simple Galilean transform derivation}
 \end{figure}
 
-For frame $<S>$ we have its origin $O$ and an \hyperlink{def-event}{event} $E$ located at
+For frame $<\!\!S\!>$ we have its origin $O$ and an \hyperlink{def-event}{event} $E$ located at
 
 \begin{equation}
-	\overrightarrow{OE}=(x,y,z)
+	\vec{OE}=(x,y,z)
 \end{equation}
 
-at time $t$ from axis overlap, and a prime frame $<S'>$'s origin $O'$ moving at relative velocity $v$ so that in the original frame we have after a time
+at time $t$ from axis overlap, and a prime frame $<\!\!S'\!\!>$'s origin $O'$ moving at relative velocity $v$ so that in the original frame we have after a time
 
 \begin{equation}
-	\overrightarrow{OO'}=(0,0,vt)
+	\vec{OO'}=(0,0,vt)
 \end{equation}
 
-in $<S'>$ we have the \hyperlink{def-event}{event}'s coordinates as
+in $<\!\!S'\!\!>$ we have the \hyperlink{def-event}{event}'s coordinates as
 
 \begin{equation}
-	\overrightarrow{O'E} = ( x{'}, y{'}, z{'} ) = \overrightarrow{OE} - \overrightarrow{OO'} = (x,y,z-vt)
+	\vec{O'E} = ( x{'}, y{'}, z{'} ) = \vec{OE} - \vec{OO'} = (x,y,z-vt)
 	\label{eq: classical event}
 \end{equation}
 
-for frame $<S>$ we have
+for frame $<\!\!S\!>$ we have
 
 \begin{equation}
-	\overrightarrow{OE} = (x,y,z) = \overrightarrow{OO'} + \overrightarrow{O'E} = (x{'},y',z'+vt')
+	\vec{OE} = (x,y,z) = \vec{OO'} + \vec{O'E} = (x{'},y',z'+vt')
 	\label{eq: classical event 2}
 \end{equation}
 
@@ -517,7 +551,7 @@ so we have $x=x'$, $y=y'$, $t=t'$ (time is assumed to be the same across referen
 	\end{aligned}
 \end{equation}
 
-This shows the symmetry between the frames, as if we were originally in the $<S'>$ frame we would have the $<S>$ frame moving at -$v$ relative to it, so we would expect that the inverse \hyperlink{def-transform}{transformation} would replace one frame's coordinates with the other and have the opposite \hyperlink{def-frame-velocity}{frame velocity} instead.
+This shows the symmetry between the frames, as if we were originally in the $<\!\!S'\!\!>$ frame we would have the $<\!\!S\!>$ frame moving at -$v$ relative to it, so we would expect that the inverse \hyperlink{def-transform}{transformation} would replace one frame's coordinates with the other and have the opposite \hyperlink{def-frame-velocity}{frame velocity} instead.
 So the inverse of going from \hyperlink{def-Primed-Frame}{primed frame} to original is just a matter of swapping all primed coordinates with original coordinates and changing the sign on the \hyperlink{def-frame-velocity}{frame velocity}, this can be seen from starting at time $t=0$ we have the frame's origins overlapping and that there is a symmetry from here, we have the freedom to choose either frame to be the original, as no frame is particularly special and depending which one you pick the relative velocity is either $v$ or -$v$.
 
 The full description of the position and time \hyperlink{def-transform}{transform} for an \hyperlink{def-event}{event} is given as
@@ -589,13 +623,13 @@ this forms a triangle, so we have the square of the hypotenuse $2D$ equal to the
 rearranging to find the time it took in the \hyperlink{def-Primed-Frame}{primed frame} relative to the time in the \hyperlink{def-proper-frame}{proper frame}, we find
 
 \begin{equation}
-	\Delta t' = \dfrac{1}{\sqrt{1-\dfrac{v^2}{c^2}}} \Delta \tau = \gamma \Delta \tau
+	\Delta t' = \dfrac{1}{\sqrt{1-\dfrac{v^2}{c^2}}} \Delta \tau = {\gamma} \Delta \tau
 \end{equation}
 
 with
 
 \begin{equation}
-	\gamma = \dfrac{1}{\sqrt{1-\dfrac{v^2}{c^2}}}.
+	{\gamma} = \dfrac{1}{\sqrt{1-\dfrac{v^2}{c^2}}}.
 \end{equation}
 
 which means
@@ -646,19 +680,19 @@ and
 adding both times together gives the total primed time
 
 \begin{equation}
-	t' = D'(\frac{1}{c+u} + \frac{1}{c-u})=\frac{D'}{c}\frac{1}{1-u^2/c^2} =\frac{D'}{c}\frac{1}{1-v^2/c^2}=\gamma^2 \frac{D'}{c}
+	t' = D'(\frac{1}{c+u} + \frac{1}{c-u})=\frac{D'}{c}\frac{1}{1-u^2/c^2} =\frac{D'}{c}\frac{1}{1-v^2/c^2}={\gamma}^2 \frac{D'}{c}
 \end{equation}
 
 from the time dilation equation, we have
 
 \begin{equation}
-	ct'=c\gamma t = \gamma D = \gamma^2 D'
+	ct'=c{\gamma} t = {\gamma} D = {\gamma}^2 D'
 \end{equation}
 
 and finally leading to the contracted distance to the front mirror in the primed frame being
 
 \begin{equation}
-	D' = \frac{1}{\gamma}D
+	D' = \frac{1}{{\gamma}}D
 \end{equation}
 
 so we have
@@ -679,7 +713,7 @@ we take from this that distances in the direction of movement of an object are c
 	\begin{tikzpicture}[scale=3]%,tdplot_main_coords]
 		\coordinate (O) at (0,0,0);
 		%
-		\draw (1.7,2,0) node{ {\large $<S>$}};
+		\draw (1.7,2,0) node{ {\large $<\!\!S\!>$}};
 		\draw[black, thick,->] (1.5,0,0) -- (2.1,0,0) node[anchor=north east]{$x$};
 		\draw[black, thick,->] (1.7,-0.2,0) -- (1.7,0.45,0) node[anchor=north west]{$z$};
 		\draw[black, thick,->] (1.7,0,0.3) -- (1.7,0,-0.7) node[anchor=west]{$y$};
@@ -690,19 +724,19 @@ we take from this that distances in the direction of movement of an object are c
 		\draw[gray, thick, ->>] (1.55,1.2,0) -- (1.55,1.42,0) node[anchor=east]{$v$};
 		\fill[red] (2.35,1.4,0) circle (0.6pt);
 		%
-		\draw[red, thick, ->] (1.7,0,0) -- (2.35,1.37,0) node[midway,anchor=west]{$\overrightarrow{OE}$};
-		\draw[red, thick, ->] (1.7,0,0) -- (1.7,1.2,0) node[midway,anchor=east]{$\overrightarrow{OO'}$};
-		\draw[red, thick, ->] (1.7,1.2,0) -- (2.32,1.4,0) node[midway,anchor=south]{$\overrightarrow{O'E}$};
+		\draw[red, thick, ->] (1.7,0,0) -- (2.35,1.37,0) node[midway,anchor=west]{$\vec{OE}$};
+		\draw[red, thick, ->] (1.7,0,0) -- (1.7,1.2,0) node[midway,anchor=east]{$\vec{OO'}$};
+		\draw[red, thick, ->] (1.7,1.2,0) -- (2.32,1.4,0) node[midway,anchor=south]{$\vec{O'E}$};
 		%
 	\end{tikzpicture}
 	\caption{A diagram showing an \protect\hyperlink{def-event}{event} in a frame with another primed frame's axis shown moving in the z-direction.}
 	\label{fig: simple Lorentz transform derivation}
 \end{figure}
 
-If we are in a frame $<S>$ with origin $O$ at position $(0,0,0)$ and a primed frame $<S'>$ moving in the z-direction at velocity $v$ such that the position of the primed origin in this frame is
+If we are in a frame $<\!\!S\!>$ with origin $O$ at position $(0,0,0)$ and a primed frame $<\!\!S'\!\!>$ moving in the z-direction at velocity $v$ such that the position of the primed origin in this frame is
 
 \begin{equation}
-	\overrightarrow{OO'}=(0,0,vt)
+	\vec{OO'}=(0,0,vt)
 \end{equation}
 
 at time $t$ from when the origins overlapped, if there is an \hyperlink{def-event}{event} (let's say light or another object reaching a mirror that is moving with the \hyperlink{def-Primed-Frame}{primed frame}s axis) described in this frames coordinates as
@@ -714,7 +748,7 @@ at time $t$ from when the origins overlapped, if there is an \hyperlink{def-even
 with the spatial coordinates shown in the diagram as
 
 \begin{equation}
-	\overrightarrow{OE}=(x,y,z)
+	\vec{OE}=(x,y,z)
 \end{equation}
 
 in the primed frame we have the event described as
@@ -723,48 +757,48 @@ in the primed frame we have the event described as
 	E' = (x',y',z',t')
 \end{equation}
 
-now in the current frame, we have the \hyperlink{def-Primed-Frame}{primed frame}'s axis moving with the mirror, from the previous chapter we should have this primed distance in the z-direction to the event contracted, as the primed z-coordinates are contracted in this frame, as seen from length contraction section; the events z-coordinate is $z=z'/\gamma$, so that distance between the primes origin and the event in this frame (not the primed frame) is
+now in the current frame, we have the \hyperlink{def-Primed-Frame}{primed frame}'s axis moving with the mirror, from the previous chapter we should have this primed distance in the z-direction to the event contracted, as the primed z-coordinates are contracted in this frame, as seen from length contraction section; the events z-coordinate is $z=z'/{\gamma}$, so that distance between the primes origin and the event in this frame (not the primed frame) is
 
 \begin{equation}
-	\overrightarrow{O'E} = (x,y,z'/\gamma)
+	\vec{O'E} = (x,y,z'/{\gamma})
 \end{equation}
 
 noting that we have the x and y-components unaffected due to the cannon and ball thought experiment from the first chapter. From the diagram, we can see
 
 \begin{equation}
-	\overrightarrow{OE}= \overrightarrow{OO'} + \overrightarrow{O'E}
+	\vec{OE}= \vec{OO'} + \vec{O'E}
 	\label{eq: event}
 \end{equation}
 
 subbing each component into this equation for the z-direction and rearranging, we have
 
 \begin{equation}
-	z{'} = \gamma (z-vt)
+	z{'} = {\gamma} (z-vt)
 \end{equation}
 
-If we were instead in frame $<S'>$ we would have $\overrightarrow{OE}=(x,y,z/\gamma)$, $\overrightarrow{OO'}=(0,0,vt')$, and $\overrightarrow{O'E} = (x,y,z')$, doing the same for these we have
+If we were instead in frame $<\!\!S'\!\!>$ we would have $\vec{OE}=(x,y,z/{\gamma})$, $\vec{OO'}=(0,0,vt')$, and $\vec{O'E} = (x,y,z')$, doing the same for these we have
 
 \begin{equation}
-	z = \gamma (z'+vt')
+	z = {\gamma} (z'+vt')
 \end{equation}
 
-This should be expected as this shows the expected symmetry between the frames because if we were originally in the $<S'>$ frame we would have the $<S>$ frame moving instead at -$v$ in the z-direction relative to the $<S'>$ frame, so we would expect that the inverse \hyperlink{def-transform}{transformation} would replace one frame's coordinates with the other and have the negative of the velocity instead.
+This should be expected as this shows the expected symmetry between the frames because if we were originally in the $<\!\!S'\!\!>$ frame we would have the $<\!\!S\!>$ frame moving instead at -$v$ in the z-direction relative to the $<\!\!S'\!\!>$ frame, so we would expect that the inverse \hyperlink{def-transform}{transformation} would replace one frame's coordinates with the other and have the negative of the velocity instead.
 Now substituting the z transforms into each other we have
 
 \begin{equation}
-	z = \gamma ( \gamma (z-vt)+vt')
+	z = {\gamma} ( {\gamma} (z-vt)+vt')
 \end{equation}
 
 and rearranging gives
 
 \begin{equation}
-	t' = \gamma \left( \left( \dfrac{1}{\gamma^2}-1 \right)\frac{z}{v} + t \right)
+	t' = {\gamma} \left( \left( \dfrac{1}{{\gamma}^2}-1 \right)\frac{z}{v} + t \right)
 \end{equation}
 
-with $\gamma^{-2}=1-v^2/c^2$ then giving
+with ${\gamma}^{-2}=1-v^2/c^2$ then giving
 
 \begin{equation}
-	t' = \gamma \left( t - \dfrac{vz}{c^2} \right)
+	t' = {\gamma} \left( t - \dfrac{vz}{c^2} \right)
 \end{equation}
 
 leaving full description of the location and time of an \hyperlink{def-event}{event} as
@@ -772,19 +806,19 @@ leaving full description of the location and time of an \hyperlink{def-event}{ev
 \begin{equation}
 	\mhl{
 		\begin{aligned}
-			 & x'=x                                         \\
-			 & y'=y                                         \\
-			 & z' = \gamma (z-vt)                           \\
-			\text{at time \ \ \ }                           \\
-			 & t'=\gamma \bigg(t-\frac{vz}{c^2}\bigg)       \\
-			\text{with \ \ \ }                              \\
-			 & \gamma = \dfrac{1}{\sqrt{1-\frac{v^2}{c^2}}}
+			 & x'=x                                           \\
+			 & y'=y                                           \\
+			 & z' = {\gamma} (z-vt)                           \\
+			\text{at time \ \ \ }                             \\
+			 & t'={\gamma} \bigg(t-\frac{vz}{c^2}\bigg)       \\
+			\text{with \ \ \ }                                \\
+			 & {\gamma} = \dfrac{1}{\sqrt{1-\frac{v^2}{c^2}}}
 		\end{aligned}
 	}
 	\label{eq: Lorentz transformation}
 \end{equation}
 
-For the time \hyperlink{def-transform}{transform} the $\frac{vz}{c^2}$ term is the cause of \hyperlink{def-simultaneity}{simultaneous} \hyperlink{def-event}{event}s in one inertial frame no longer being \hyperlink{def-simultaneity}{simultaneous} in another inertial frame, and the gamma factor $\gamma$, is the term that causes the overall change in how fast time flows relative in each frame. In the spatial coordinate transforms the gamma factor is the cause of the change of lengths in the direction of the frame's movement. How the transformation works is shown in figure \ref{fig: coordinate transform}.
+For the time \hyperlink{def-transform}{transform} the $\frac{vz}{c^2}$ term is the cause of \hyperlink{def-simultaneity}{simultaneous} \hyperlink{def-event}{event}s in one inertial frame no longer being \hyperlink{def-simultaneity}{simultaneous} in another inertial frame, and the gamma factor ${\gamma}$, is the term that causes the overall change in how fast time flows relative in each frame. In the spatial coordinate transforms the gamma factor is the cause of the change of lengths in the direction of the frame's movement. How the transformation works is shown in figure \ref{fig: coordinate transform}.
 
 \begin{figure}[H]
 	\figuretitle{...}
@@ -799,10 +833,10 @@ For the time \hyperlink{def-transform}{transform} the $\frac{vz}{c^2}$ term is t
 
 \begin{equation}
 	\begin{aligned}
-		 & x'_2 - x'_1 = x_2 - x_1                                                                               \\
-		 & y'_2 - y'_1 = y_2 - y_1                                                                               \\
-		 & z'_2 - z'_1 = \gamma ( z_2 - v t_2) - \gamma ( z_1 - v t_1)                                           \\
-		 & t'_2 - t'_1=\gamma \bigg( t_2-\frac{v}{c^2} z_2 \bigg) - \gamma \bigg( t_1 - \frac{v}{c^2} z_1 \bigg)
+		 & x'_2 - x'_1 = x_2 - x_1                                                                                   \\
+		 & y'_2 - y'_1 = y_2 - y_1                                                                                   \\
+		 & z'_2 - z'_1 = {\gamma} ( z_2 - v t_2) - {\gamma} ( z_1 - v t_1)                                           \\
+		 & t'_2 - t'_1={\gamma} \bigg( t_2-\frac{v}{c^2} z_2 \bigg) - {\gamma} \bigg( t_1 - \frac{v}{c^2} z_1 \bigg)
 	\end{aligned}
 \end{equation}
 
@@ -811,10 +845,10 @@ leads to
 \begin{equation}
 	\label{eq: interval of Coordinates}
 	\begin{aligned}
-		 & \Delta x'= \Delta x                                            \\
-		 & \Delta y'= \Delta y                                            \\
-		 & \Delta z' = \gamma ( \Delta z-v \Delta t)                      \\
-		 & \Delta t'=\gamma \bigg( \Delta t-\frac{v}{c^2} \Delta z \bigg)
+		 & \Delta x'= \Delta x                                              \\
+		 & \Delta y'= \Delta y                                              \\
+		 & \Delta z' = {\gamma} ( \Delta z-v \Delta t)                      \\
+		 & \Delta t'={\gamma} \bigg( \Delta t-\frac{v}{c^2} \Delta z \bigg)
 	\end{aligned}
 \end{equation}
 
@@ -823,17 +857,17 @@ when taken the changes are infinitesimal this gives the differential quantities
 \begin{equation}
 	\label{eq: Infintesmal interval of Coordinates}
 	\begin{aligned}
-		 & dx'=dx                                      \\
-		 & dy'=dy                                      \\
-		 & dz' = \gamma (dz-vdt)                       \\
-		 & dt'=\gamma \bigg(dt-\frac{v}{c^2} dz \bigg)
+		 & dx'=dx                                        \\
+		 & dy'=dy                                        \\
+		 & dz' = {\gamma} (dz-vdt)                       \\
+		 & dt'={\gamma} \bigg(dt-\frac{v}{c^2} dz \bigg)
 	\end{aligned}
 \end{equation}
 
 %███████████████████████████████████████████████████████████████████
 \subsection{Transforms with Low Relative Frame Speed Change}
 
-For the coordinate transforms in the previous section we get back the classical \hyperlink{def-galilean-transform}{coordinates transform} for frame velocities much smaller than the speed of light, i.e. with $v\ll c$ we have $\gamma \approx 1$ we get
+For the coordinate transforms in the previous section we get back the classical \hyperlink{def-galilean-transform}{coordinates transform} for frame velocities much smaller than the speed of light, i.e. with $v\ll c$ we have ${\gamma} \approx 1$ we get
 
 \begin{equation}
 	t' \approx t
@@ -849,7 +883,7 @@ which is the expected result for the \hyperlink{def-galilean-transform}{classica
 	\figuretitle{...}
 	\centering
 	\includegraphics[width=10cm]{images/pdf/Gamma_Factor.pdf}
-	\caption{A diagram, showing the magnitude of the gamma factor with increasing ratio of frame speed to the speed of light, with $\gamma$ tending to infinity as $v/c\rightarrow 1$.}
+	\caption{A diagram, showing the magnitude of the gamma factor with increasing ratio of frame speed to the speed of light, with ${\gamma}$ tending to infinity as $v/c\rightarrow 1$.}
 	\label{fig: Gamma Factor}
 \end{figure}
 
@@ -861,9 +895,9 @@ from taking the infinitesimals of equations from eq. \eqref{eq: Lorentz transfor
 
 \begin{equation}
 	\begin{aligned}
-		 & u'_x = \frac{dx'}{dt'}=\frac{dx}{\gamma \bigg(dt-\frac{vdz}{c^2}\bigg) }                \\
-		 & u'_y = \frac{dy'}{dt'}=\frac{dy}{\gamma \bigg(dt-\frac{vdz}{c^2}\bigg) }                \\
-		 & u'_z = \frac{dz'}{dt'} = \frac{\gamma (dz-vdt)}{\gamma \bigg(dt-\frac{vdz}{c^2}\bigg) }
+		 & u'_x = \frac{dx'}{dt'}=\frac{dx}{{\gamma} \bigg(dt-\frac{vdz}{c^2}\bigg) }                  \\
+		 & u'_y = \frac{dy'}{dt'}=\frac{dy}{{\gamma} \bigg(dt-\frac{vdz}{c^2}\bigg) }                  \\
+		 & u'_z = \frac{dz'}{dt'} = \frac{{\gamma} (dz-vdt)}{{\gamma} \bigg(dt-\frac{vdz}{c^2}\bigg) }
 	\end{aligned}
 \end{equation}
 
@@ -873,11 +907,11 @@ now dividing the top and bottom of the fraction by $dt$ we can give the equation
 	\label{eq: velocity transform}
 	\mhl{
 		\begin{aligned}
-			 & \mathbf{U}' = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }
+			 & \mathbf{U}' = \dfrac{1}{{\gamma}\left(1- \dfrac{v}{c^2} u_z\right) }
 			\begin{pmatrix}
-				u_x                           \\
-				u_y                           \\
-				\gamma \left( u_z - v \right) \\
+				u_x                             \\
+				u_y                             \\
+				{\gamma} \left( u_z - v \right) \\
 			\end{pmatrix}
 			\\
 			 & \text{at position $\mathbf{R}'$ and time $t'$ }
@@ -888,7 +922,7 @@ now dividing the top and bottom of the fraction by $dt$ we can give the equation
 the generalised velocity \hyperlink{def-transform}{transform} derived in appendix (todo) is
 
 \begin{equation}
-	\mathbf{U}' = \dfrac{1}{\gamma} \dfrac{\mathbf{u}_s + \Big[\dfrac{\gamma-1}{\|\mathbf{V}\|^2}(\mathbf{u}_s\cdot \mathbf{V})- \gamma \Big] \mathbf{V}}{1 - \dfrac{\mathbf{u}_s\cdot\mathbf{V}}{c^2}}
+	\mathbf{U}' = \dfrac{1}{{\gamma}} \dfrac{\mathbf{u}_s + \Big[\dfrac{{\gamma}-1}{\|\mathbf{V}\|^2}(\mathbf{u}_s\cdot \mathbf{V})- {\gamma} \Big] \mathbf{V}}{1 - \dfrac{\mathbf{u}_s\cdot\mathbf{V}}{c^2}}
 \end{equation}
 
 with $\mathbf{V}$ being the frame's velocity in any generalized direction, instead of just being in the z-direction
@@ -901,24 +935,24 @@ To find how the acceleration of a particle transforms for an \hyperlink{def-obse
 
 \begin{equation}
 	\begin{aligned}
-		d\mathbf{U}' & = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }
+		d\mathbf{U}' & = \dfrac{1}{{\gamma}\left(1- \dfrac{v}{c^2} u_z\right) }
 		\begin{pmatrix}
-			du_x        \\
-			du_y        \\
-			\gamma du_z \\
+			du_x          \\
+			du_y          \\
+			{\gamma} du_z \\
 		\end{pmatrix}
-		+ \dfrac{\gamma \dfrac{v}{c^2} du_z}{\gamma^2\left(1- \dfrac{v}{c^2} u_z\right)^2 }
+		+ \dfrac{{\gamma} \dfrac{v}{c^2} du_z}{{\gamma}^2\left(1- \dfrac{v}{c^2} u_z\right)^2 }
 		\begin{pmatrix}
-			u_x                           \\
-			u_y                           \\
-			\gamma \left( u_z - v \right) \\
+			u_x                             \\
+			u_y                             \\
+			{\gamma} \left( u_z - v \right) \\
 		\end{pmatrix}                                           \\
-		             & = ...                                                    \\
-		             & = \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right)^2 }
+		             & = ...                                                      \\
+		             & = \dfrac{1}{{\gamma}\left(1- \dfrac{v}{c^2} u_z\right)^2 }
 		\begin{pmatrix}
 			du_x + \frac{v}{c^2}( u_x du_z - u_z du_x) \\
 			du_y + \frac{v}{c^2}( u_y du_z - u_z du_y) \\
-			\frac{1}{\gamma} du_z                      \\
+			\frac{1}{{\gamma}} du_z                    \\
 		\end{pmatrix}
 	\end{aligned}
 \end{equation}
@@ -928,11 +962,11 @@ Now, divide by the time differential from the previous chapter to get the accele
 \begin{equation}
 	\mhl{
 		\begin{aligned}
-			\mathbf{a}' = \dfrac{1}{\gamma^2\left(1- \dfrac{v}{c^2} u_z\right)^3 }
+			\mathbf{a}' = \dfrac{1}{{\gamma}^2\left(1- \dfrac{v}{c^2} u_z\right)^3 }
 			\begin{pmatrix}
 				a_x + \frac{v}{c^2}(u_x a_z - u_z a_x) \\
 				a_y + \frac{v}{c^2}(u_y a_z - u_z a_y) \\
-				\frac{1}{\gamma} a_z                   \\
+				\frac{1}{{\gamma}} a_z                 \\
 			\end{pmatrix}
 			\\
 			\text{at position $\mathbf{R}'$ and time $t'$ }
@@ -946,7 +980,7 @@ Now, divide by the time differential from the previous chapter to get the accele
 3 acceleration (check this)
 
 \begin{equation}
-	\mathbf{a^{'}} = \frac{1}{\gamma ^3 \left(1-\frac{(\mathbf{u}\cdot \mathbf{v})}{c^2}\right)^3}\left[ \gamma \left(1-\frac{(\mathbf{u}\cdot\mathbf{v})}{c^2}\right)\mathbf{a}+\frac{\gamma (\mathbf{a}\cdot\mathbf{v})}{c^2}\mathbf{u} + (1-\gamma ) (\mathbf{a}\cdot\hat{\mathbf{v}}) \cdot\hat{\mathbf{v}}\right]
+	\mathbf{a^{'}} = \frac{1}{{\gamma} ^3 \left(1-\frac{(\mathbf{u}\cdot \mathbf{v})}{c^2}\right)^3}\left[ {\gamma} \left(1-\frac{(\mathbf{u}\cdot\mathbf{v})}{c^2}\right)\mathbf{a}+\frac{{\gamma} (\mathbf{a}\cdot\mathbf{v})}{c^2}\mathbf{u} + (1-{\gamma} ) (\mathbf{a}\cdot\hat{\mathbf{v}}) \cdot\hat{\mathbf{v}}\right]
 \end{equation}
 
 at position $\mathbf{R}'$ and time $t'$
@@ -965,6 +999,8 @@ Light travels extremely fast (roughly 300,000,000 m/s) compared to other everyda
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Relativistic Observers Delayed view}
+
+*** change $\theta_c$ to $\alpha$
 
 When looking at moving objects we see them where they were in their past positions, due to the delay in the light signal, so let's talk about the \hyperlink{def-transform}{transform} showing a source particle emitting a photon to an \hyperlink{def-observer}{observer}, showing the \hyperlink{def-retarded-position}{retarded position} the \hyperlink{def-observer}{observer} sees.
 
@@ -1060,19 +1096,19 @@ the position vector and light's velocity are in opposite directions which can be
 	\begin{aligned}
 		\mathbf{R}'     & = cT_{e}
 		\begin{pmatrix}
-			0                                                  \\
-			\sin{\theta_c}                                     \\
-			\gamma \left( \cos{\theta_c} - \frac{v}{c} \right) \\
+			0                                                    \\
+			\sin{\theta_c}                                       \\
+			{\gamma} \left( \cos{\theta_c} - \frac{v}{c} \right) \\
 		\end{pmatrix}
 		=
 		\begin{pmatrix}
-			0                                  \\
-			R_y                                \\
-			\gamma \left( R_z - vT_{e} \right) \\
+			0                                    \\
+			R_y                                  \\
+			{\gamma} \left( R_z - vT_{e} \right) \\
 		\end{pmatrix}
 		\\
 		\text{at time } &
-		\\ T'_{e} & = \gamma (1-\frac{v}{c} \cos{\theta_c} ) T_{e}
+		\\ T'_{e} & = {\gamma} (1-\frac{v}{c} \cos{\theta_c} ) T_{e}
 	\end{aligned}
 \end{equation}
 
@@ -1081,9 +1117,9 @@ we can see that this does agree with the light's velocity \hyperlink{def-transfo
 \begin{equation}
 	\mathbf{R}'_{t'=0} = \mathbf{R}' - \mathbf{v}T'_{e} = cT_{e}
 	\begin{pmatrix}
-		0                               \\
-		\sin{\theta_c}                  \\
-		\frac{1}{\gamma} \cos{\theta_c} \\
+		0                                 \\
+		\sin{\theta_c}                    \\
+		\frac{1}{{\gamma}} \cos{\theta_c} \\
 	\end{pmatrix}
 \end{equation}
 
@@ -1098,7 +1134,7 @@ How the delayed view of coordinates is taken into account after a transformation
 	\centering
 	\includegraphics[width=10cm]{images/pdf/coordinate_transforms_2.pdf}
 
-	\caption{A diagram, showing an initial grid of points, representing position coordinates, at time $t=0$ that are at rest in their proper frame $<S>$, with an \protect\hyperlink{def-observer}{observer} at the origin (left), giving the direct transformation into the moving primed frame $<S'>$ (second) where the points are now moving at velocity $-v=-0.9$ which is in the negative z-direction with the colors and labels showing the desynchronization of the primed times $t'=- \gamma \frac{zv}{c^2}$, the next figure (third) shows what these points would be in the same primed frame when they are synchronized with the origin's time $t'=0$, the last figure (fourth) shows the same \protect\hyperlink{def-Primed-Frame}{primed frame} $<S'>$ but now with the particles positioned where they would be seen to be at by an \protect\hyperlink{def-observer}{observer} at the origin with the \protect\hyperlink{def-observer}{observer}s time $t'=0$, these positions are due to the delay in the light from these particles taking time to get to the \protect\hyperlink{def-observer}{observer}, also known as the \protect\hyperlink{def-retarded-position}{retarded position}s of the particles.}
+	\caption{A diagram, showing an initial grid of points, representing position coordinates, at time $t=0$ that are at rest in their proper frame $<\!\!S\!>$, with an \protect\hyperlink{def-observer}{observer} at the origin (left), giving the direct transformation into the moving primed frame $<\!\!S'\!\!>$ (second) where the points are now moving at velocity $-v=-0.9$ which is in the negative z-direction with the colors and labels showing the desynchronization of the primed times $t'=- {\gamma} \frac{zv}{c^2}$, the next figure (third) shows what these points would be in the same primed frame when they are synchronized with the origin's time $t'=0$, the last figure (fourth) shows the same \protect\hyperlink{def-Primed-Frame}{primed frame} $<\!\!S'\!\!>$ but now with the particles positioned where they would be seen to be at by an \protect\hyperlink{def-observer}{observer} at the origin with the \protect\hyperlink{def-observer}{observer}s time $t'=0$, these positions are due to the delay in the light from these particles taking time to get to the \protect\hyperlink{def-observer}{observer}, also known as the \protect\hyperlink{def-retarded-position}{retarded position}s of the particles.}
 	\label{fig: full coordinate transform}
 \end{figure}
 
@@ -1257,7 +1293,7 @@ then from the velocity \hyperlink{def-transform}{transform} in eq. \eqref{eq: ve
 
 % \begin{equation}
 % \begin{aligned}
-% & u'_x =\frac{c\sin\alpha\cos\varphi}{\gamma \bigg(1-\frac{v\cos\alpha}{c}\bigg) } \\ & u'_y =\frac{c\sin\alpha\sin\varphi}{\gamma \bigg(1-\frac{v\cos\alpha}{c}\bigg) } \\ & u'_z =\frac{c\cos\alpha -v}{ \bigg(1-\frac{v\cos\alpha}{c}\bigg) }
+% & u'_x =\frac{c\sin\alpha\cos\varphi}{{\gamma} \bigg(1-\frac{v\cos\alpha}{c}\bigg) } \\ & u'_y =\frac{c\sin\alpha\sin\varphi}{{\gamma} \bigg(1-\frac{v\cos\alpha}{c}\bigg) } \\ & u'_z =\frac{c\cos\alpha -v}{ \bigg(1-\frac{v\cos\alpha}{c}\bigg) }
 % \end{aligned}
 % \end{equation}
 
@@ -1265,11 +1301,11 @@ then from the velocity \hyperlink{def-transform}{transform} in eq. \eqref{eq: ve
 	\label{eq: velocity transform for light}
 	\mhl{
 		\begin{aligned}
-			 & \mathbf{c}' = \dfrac{c}{\gamma\left(1- \frac{v}{c} \cos\alpha\right) }
+			 & \mathbf{c}' = \dfrac{c}{{\gamma}\left(1- \frac{v}{c} \cos\alpha\right) }
 			\begin{pmatrix}
-				\sin\alpha\cos\varphi                          \\
-				\sin\alpha\sin\varphi                          \\
-				\gamma \left( \cos\alpha - \frac{v}{c} \right) \\
+				\sin\alpha\cos\varphi                            \\
+				\sin\alpha\sin\varphi                            \\
+				{\gamma} \left( \cos\alpha - \frac{v}{c} \right) \\
 			\end{pmatrix}
 			\\
 			 & \text{at position $\mathbf{R}'$ and time $t'$ }
@@ -1322,16 +1358,16 @@ If we change to a frame where the source is now moving at speed $u'_s$ in the z-
 	d\lambda' = cdt' - u'_s \cos\alpha' dt'= (1-\frac{u'_s}{c}\cos\alpha')cdt'
 \end{equation}
 
-we have $dt'=\gamma d\tau$, so the ratio of space the wave takes up in that direction compared to in the \hyperlink{def-proper-frame}{rest frame} is
+we have $dt'={\gamma} d\tau$, so the ratio of space the wave takes up in that direction compared to in the \hyperlink{def-proper-frame}{rest frame} is
 
 \begin{equation}
-	Ratio = \frac{d\lambda'}{d\lambda} = \gamma \left(1-\dfrac{u'_s}{c} \cos\alpha' \right)
+	Ratio = \frac{d\lambda'}{d\lambda} = {\gamma} \left(1-\dfrac{u'_s}{c} \cos\alpha' \right)
 \end{equation}
 
 since wavelength is inversely proportional to the frequency, and this bunching up at the front will proportionally decrease the wavelength
 
 \begin{equation}
-	\Phi_r = \frac{1}{ \gamma \left(1-\dfrac{u'_s}{c} \cos\alpha' \right)}
+	\Phi_r = \frac{1}{ {\gamma} \left(1-\dfrac{u'_s}{c} \cos\alpha' \right)}
 \end{equation}
 
 %███████████████████████████████████████████████████████████████████
@@ -1442,8 +1478,6 @@ It can be seen from eq. \eqref{Cosine transform} that as a source's speed tends 
 	\label{fig: Retarded field outward field transform}
 \end{figure}
 
-*** in proper frame lights propagation is in same direction as the coordinate from the origin, but in i.e. vec c in same direction as vec r, but vec c' not in same direction as vec r'
-
 As visualized in figure (\ref{fig: Retarded field outward field transform}). If we have a light source particle $s$, in its \hyperlink{def-proper-frame}{rest frame} that had emitted a pulse of light in one direction such that it propagates along $\mathbf{c}T_{p}$ at an angle $\alpha$ from the z-axis and is currently at position $\mathbf{R}$ at time $t=0$, where $\mathbf{c}$ is the velocity of light and $T_{p}$ is the time it took to propagate to $\mathbf{R}$.
 Using the coordinated transform from eq. \eqref{eq: Lorentz transformation} on $\mathbf{R}$ with $t=0$ we get
 
@@ -1452,12 +1486,12 @@ Using the coordinated transform from eq. \eqref{eq: Lorentz transformation} on $
 	\begin{aligned}
 		\mathbf{R}' & =
 		\begin{pmatrix}
-			x        \\
-			y        \\
-			\gamma z \\
-		\end{pmatrix},                          \\
-		\text{at time \ \ \ }                   \\
-		t'          & = - \gamma \frac{vz}{c^2} \\
+			x          \\
+			y          \\
+			{\gamma} z \\
+		\end{pmatrix},                            \\
+		\text{at time \ \ \ }                     \\
+		t'          & = - {\gamma} \frac{vz}{c^2} \\
 	\end{aligned}
 \end{equation}
 
@@ -1465,11 +1499,11 @@ the light pulse's velocity using the velocity transform from eq. \eqref{eq: velo
 
 \begin{equation}
 	\label{light pulse velocity transform}
-	\mathbf{c}' = \dfrac{c}{\gamma\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
+	\mathbf{c}' = \dfrac{c}{{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
 	\begin{pmatrix}
-		\frac{x}{\|\mathbf{R}\|}                                        \\
-		\frac{y}{\|\mathbf{R}\|}                                        \\
-		\gamma \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) \\
+		\frac{x}{\|\mathbf{R}\|}                                          \\
+		\frac{y}{\|\mathbf{R}\|}                                          \\
+		{\gamma} \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) \\
 	\end{pmatrix}
 \end{equation}
 
@@ -1478,16 +1512,16 @@ the light pulse's velocity using the velocity transform from eq. \eqref{eq: velo
 The time that the particle emits the light in the \hyperlink{def-proper-frame}{proper frame} is $T_{ret}= - T_{p}$ which corresponds to the contracted time
 
 \begin{equation}
-	T'_{ret}= \gamma T_{ret} = - \gamma T_{p}
+	T'_{ret}= {\gamma} T_{ret} = - {\gamma} T_{p}
 \end{equation}
 
 So that in the \hyperlink{def-Primed-Frame}{primed frame}, the \hyperlink{def-retarded-position}{retarded position} of the source particle emmits the light pulse is
 
 \begin{equation}
-	\mathbf{s}'_{ret} = - \gamma T_{p} \mathbf{u}_s
+	\mathbf{s}'_{ret} = - {\gamma} T_{p} \mathbf{u}_s
 \end{equation}
 
-to find the position the light pulse is currently at, at time $t'=0$, we have to rewind its time from the position $\mathbf{R}'$ that it is at when using the \hyperlink{def-lorentz-transform}{Lorentz transform} at time $t'= -\gamma\frac{vz}{c^2}= \gamma\frac{u_s z}{c^2}$ taking away the displacement it propagated in this time to get the current position of the light to be ($T'_{p}=- T'_{ret}$).
+to find the position the light pulse is currently at, at time $t'=0$, we have to rewind its time from the position $\mathbf{R}'$ that it is at when using the \hyperlink{def-lorentz-transform}{Lorentz transform} at time $t'= -{\gamma}\frac{vz}{c^2}= {\gamma}\frac{u_s z}{c^2}$ taking away the displacement it propagated in this time to get the current position of the light to be ($T'_{p}=- T'_{ret}$).
 
 \begin{equation}
 	\begin{split}
@@ -1496,11 +1530,11 @@ to find the position the light pulse is currently at, at time $t'=0$, we have to
 		\\
 		 & = \left( \mathbf{c}' - \mathbf{u}_s \right)T'_{p}
 		\\
-		 & = \dfrac{c T'_{p}}{\gamma\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
+		 & = \dfrac{c T'_{p}}{{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
 		\begin{pmatrix}
-			\frac{x}{\|\mathbf{R}\|}                                        \\
-			\frac{y}{\|\mathbf{R}\|}                                        \\
-			\gamma \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) \\
+			\frac{x}{\|\mathbf{R}\|}                                          \\
+			\frac{y}{\|\mathbf{R}\|}                                          \\
+			{\gamma} \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) \\
 		\end{pmatrix}
 		-
 		\begin{pmatrix}
@@ -1509,21 +1543,21 @@ to find the position the light pulse is currently at, at time $t'=0$, we have to
 			u_s T'_{p} \\
 		\end{pmatrix}
 		\\
-		 & = \dfrac{c T'_{p}}{\gamma\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
+		 & = \dfrac{c T'_{p}}{{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
 		\begin{pmatrix}
-			\frac{x}{\|\mathbf{R}\|}                                                                                                                         \\
-			\frac{y}{\|\mathbf{R}\|}                                                                                                                         \\
-			\gamma \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) - \gamma\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right) \dfrac{u_s}{c} \\
+			\frac{x}{\|\mathbf{R}\|}                                                                                                                             \\
+			\frac{y}{\|\mathbf{R}\|}                                                                                                                             \\
+			{\gamma} \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right) - {\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right) \dfrac{u_s}{c} \\
 		\end{pmatrix}
 	\end{split}
 \end{equation}
 which leads to
 \begin{equation}
-	\mathbf{L}' = \dfrac{c T'_{p}}{\gamma\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
+	\mathbf{L}' = \dfrac{c T'_{p}}{{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
 	\begin{pmatrix}
-		\frac{x}{\|\mathbf{R}\|}                  \\
-		\frac{y}{\|\mathbf{R}\|}                  \\
-		\frac{1}{\gamma} \frac{z}{\|\mathbf{R}\|} \\
+		\frac{x}{\|\mathbf{R}\|}                    \\
+		\frac{y}{\|\mathbf{R}\|}                    \\
+		\frac{1}{{\gamma}} \frac{z}{\|\mathbf{R}\|} \\
 	\end{pmatrix}
 \end{equation}
 %███████████████████████████████████████████████████████████████████
@@ -1783,14 +1817,14 @@ encompasses a certain amount of the wavefront, this is the same amount of the wa
 We can calculate this element by differentiating both sides of eq. \eqref{Cosine transform} with respect to $\theta$ \cite{hogg1997special}, which gives
 
 \begin{equation}
-	\sin{\theta'} d\theta' = \dfrac{1-\dfrac{u_s^2}{c^2}}{\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta = \dfrac{1}{\gamma^2\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta
+	\sin{\theta'} d\theta' = \dfrac{1-\dfrac{u_s^2}{c^2}}{\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta = \dfrac{1}{{\gamma}^2\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta
 \end{equation}
 
 as $v=-u_s$ now using this and $d\phi'=d\phi$ (as the angle $\phi$ is always perpendicular to the motion of the particle and hence unaffected by \hyperlink{def-transform}{transformation} ) we have the solid angle in the \hyperlink{def-Primed-Frame}{primed frame} given as
 
 \begin{equation}
 	\mhl{
-		d\Omega' = \dfrac{1}{\gamma^2\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta d\phi.
+		d\Omega' = \dfrac{1}{{\gamma}^2\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta d\phi.
 	}
 \end{equation}
 
@@ -1812,379 +1846,292 @@ The relative primed wavefront strength at a given angle is taken as being propor
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{Invariant/Conserved Quantities}
+\chapter{Invariant Quantities}
 
-Quantities that are conserved (do not change) (frame-independent quantity) when transformed between inertial reference frames are called \hyperlink{def-lorentz-invariant}{lorentz invariant}. These conserved quantities give us equations to help us model complex systems and experiments
+Quantities that are frame-independent, i.e. do not change when we transform between inertial reference frames, are called \hyperlink{def-lorentz-invariant}{lorentz invariant}.
 
-in this chapter, we will see the conservation principle related to space and time coordinates, velocities, and acceleration, but will also look at the more abstract conservation relation of momentum energy and mass. The reason we care about the concept of energy is because it has a related conserved quantity that can be used as a tool to help us make calculations and model more complex systems.
-
-We will find a quantity with the units of energy that differs from the previously known energy quantity and its conservation laws, but of course, will approximate to the previous laws at low velocities.
-
-... the derivations to get the famous $E=mc^2$ use approximations, assumptions, and redefined definitions of energy and momentum, and the energy-momentum relation used quantum mechanics to derive, which would require another handbook to go into
-
-... so instead we use the most important thing we need for energy to be and that is to have an associated conservation rule, which means finding a quantity that is unchanged between frames and has a quantity with the units of energy
-
-... to do this we will start from the space-times' associated invariant quantity.
+In this chapter, we will see the invariant quantity related to space-time coordinates and use this to find invariant properties associated with velocity, which will lead to the more abstract conservation relation of momentum energy and mass. We will find a new quantity with the units of energy that has a term which approximates to the kinetic energy of a particle at low velocities and another term that suggests particles have a new type of energy, that was not previously in classical physics, that depends on the mass of a particle (mass-energy equivalence), this will all lead to a new conservation law of energy.  The reason we care about the concept of energy is that it has a conservation relation that can be used as a tool to help us make calculations and model more complex systems.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Space-Time Interval}
 
-We defined the space-time interval $\Delta S$ between two \hyperlink{def-event}{event}s in a generic frame $<S>$ as:
+*** maybe explain the interval on a complex triangle instead with it being the hypotenuse and sides being cti and r
+
+We define a quantity called the space-time interval $\Delta S$ between two \hyperlink{def-event}{event}s in a generic inertial reference frame $<\!\!S\!>$ as:
 
 \begin{equation}
-	\Delta S^2 = (c\Delta t)^2 -\Delta x^2 -\Delta y^2 -\Delta z^2
+	\mhl{
+		\Delta S^2 = (c\Delta t)^2 -\Delta x^2 -\Delta y^2 -\Delta z^2
+	}
+	\label{eq: space-time interval}
 \end{equation}
 
-All inertial frames of reference agree on the interval as it is conserved between frames $\Delta S=\Delta S'$ which can be shown when we sub in the primed version of this equation
+All inertial frames of reference agree on this interval as it is invariant between frames, as $\Delta S=\Delta S'$, which can be shown when we sub the values from equation \eqref{eq: interval of Coordinates} into the primed version of this last equation
 
 \begin{equation}
 	\begin{aligned}
-		\Delta S'^2 &= (c\Delta t')^2 -\Delta x'^2 -\Delta y'^2 -\Delta z'^2 \\
-		&= c^2\gamma \bigg( \Delta t-\frac{v}{c^2} \Delta z \bigg)^2 -\Delta x^2 -\Delta y^2 -\Delta (\gamma ( \Delta z-v \Delta t) )^2 \\
-		&= (c\Delta t)^2 -\Delta x^2 -\Delta y^2 -\Delta z^2
+		\Delta S'^2 & = (c\Delta t')^2 -\Delta x'^2 -\Delta y'^2 -\Delta z'^2                                                                            \\
+		            & = c^2{\gamma} \bigg( \Delta t-\frac{v}{c^2} \Delta z \bigg)^2 -\Delta x^2 -\Delta y^2 -\Delta ({\gamma} ( \Delta z-v \Delta t) )^2 \\
+		            & = (c\Delta t)^2 -\Delta x^2 -\Delta y^2 -\Delta z^2                                                                                \\
+		            & = \Delta S^2.
 	\end{aligned}
 \end{equation}
-
-if a particle is moving in frame $<S>$ we can define a space-time interval in its positions in this frame as
-
-\begin{equation}
-	\Delta S_p^2 = (c\Delta t_p)^2 -\Delta x_p^2 -\Delta y_p^2 -\Delta z_p^2
-\end{equation}
-and we have the proper time that passes for the particle as $\Delta\tau$, so taking the limit as the change in time goes to zero we can get the defined abstract space-time velocity
-\begin{equation}
-	\begin{aligned}
-	\left(\frac{dS_p}{d\tau}\right)^2 &=  \left(c\frac{dt_p}{d\tau}\right)^2 - \left(c\frac{dx_p}{d\tau}\right)^2 - \left(\frac{dy_p}{d\tau}\right)^2 - \left(\frac{dz_p}{d\tau}\right)^2 \\
-	&= c^2\gamma_{u_p}^2 \left( 1 - \frac{u_x^2 + u_y^2 + u_z^2}{c^2} \right) \\
-	&= c^2
-\end{aligned}
-\end{equation}
-
-as can be seen, this is a conserved quantity as the speed of light is constant in all frames, taking the square root of both sides and multiplying by $c$ and the particle's mass in its rest frame $m_0$ we have a conserved quantity with the units of energy, we will call this the rest energy of the particle
-
-\begin{equation}
-	E_0 = m_0 c \frac{dS_p}{d\tau}  = m_0 c^2
-\end{equation}
-
-***
-
-***
-
-\begin{equation}
-	m^2_0 c^2 = - \frac{E^2}{c^2} + (\gamma_u p_x)^2 + (\gamma_u p_y)^2 + (\gamma_u p_z)^2 = - \frac{E^2}{c^2} + (\gamma_u p)^2
-\end{equation}
-
-giving
-
-\begin{equation}
-	E^2 = m_0^2c^4 +\gamma^2p^2c^2
-\end{equation}
-
-for stationary particles $u=0$
-
-\begin{equation}
-	E = m_0c^2
-\end{equation}
-
-this does not work for massless particles like photons, we have to use a different method of getting this, we know from before that $ \mathbf{P}^2 = m_0^2 c^2 = 0$ leading to the components giving
-
-\begin{equation}
-	\frac{E^2}{c^2} = |p_{light}|^2
-\end{equation}
-
-and finally
-
-\begin{equation}
-	E = c p_{light}
-\end{equation}
-
-....
-not needed:
-definition of momentum for light borrowed from quantum mechanics
-
-\begin{equation}
-	p = \frac{hf}{c}
-\end{equation}
-
-where $h$ is Planks constant and $f$ is the frequency of the light
-so that the
-....
-
-the reason we use this abstract 4-momentum is because it is conserved and the Newtonian momentum is not conserved when it comes to special relativity
-
-***
-
-***
-
-The proper time between two \hyperlink{def-event}{event}s $\Delta\tau$ of an object is also agreed upon in all inertial frames and will also therefore agree on derivatives with respect to the proper time of the object $\tau$ (where it is the time between two \hyperlink{def-event}{event}s in the same location?), because they will be \hyperlink{def-lorentz-invariant}{invariant}
-we define the 4-position vector of an object in space from its position and time as, where we multiplied time by c
-
-\begin{equation}
-	\mathbf{S} =
-	\begin{pmatrix}
-		ct \\
-		x  \\
-		y  \\
-		z  \\
-	\end{pmatrix}
-\end{equation}
-
-taking a derivative with respect to the proper time of the object $\tau$ gives us the 4-velocity of an object with $\frac{d}{d\tau} = \frac{dt}{d\tau}\frac{d}{dt} = \gamma_u \frac{d}{dt} $
-
-\begin{equation}
-	\mathbf{U} = \frac{d\mathbf{S}}{d\tau} = \gamma_u \frac{d}{dt}
-	\begin{pmatrix}
-		ct \\
-		x  \\
-		y  \\
-		z  \\
-	\end{pmatrix}
-	= \gamma_u
-	\begin{pmatrix}
-		c   \\
-		u_x \\
-		u_y \\
-		u_z \\
-	\end{pmatrix}
-\end{equation}
-
-know to show that the magnitude of this is \hyperlink{def-lorentz-invariant}{invariant} by showing all primed 4-velocities give
-
-\begin{equation}
-	||\mathbf{U}|| = c
-\end{equation}
-
-... mention proper time and proper position
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Energy-Momentum Relation}
 
-The 4 momentum is defined as
+From here forward we will be making some jumps in logic and assertions, leading to claims of what we will call the total energy and rest mass energy, but I will try to give as much reasoning as I can for these choices in assertions.
+
+*** quantum mechanics may help with reasoning for parts of the energy-momentum reasoning
+
+%*** I give as much reasoning as possible to derive this, but you may still have a problem, as to get this there are assumptions, circular statements, and things that seem to be pulled out of thin air. you may feel as though deriving this with the notion of 4-vectors has more meaning behind it but it is just a powerful but abstract mathematical tool that fits the physics nicely,
+
+We can see from the previous section that if a particle is moving in a particular inertial reference frame we can define the space-time interval of its coordinates in this frame as
 
 \begin{equation}
-	\mathbf{P} = m_0 \mathbf{U} =
-	\begin{pmatrix}
-		\gamma_u m_0 c   \\
-		\gamma_u m_0 u_x \\
-		\gamma_u m_0 u_y \\
-		\gamma_u m_0 u_z \\
-	\end{pmatrix}
+	\Delta S_p^2 = (c\Delta t_p)^2 -\Delta x_p^2 -\Delta y_p^2 -\Delta z_p^2
 \end{equation}
 
-we have the Taylor series expansion of $\gamma_u$ factor is
+and if we divide by the square of the proper time that passes for the particle in this interval $\Delta\tau$, so that now taking the limit as the change in time in the interval goes to zero we get an abstract invariant quantity that we will call the space-time velocity
 
 \begin{equation}
-	\gamma_u = 1 + \frac{1}{2}\frac{u^2}{c^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+	\begin{aligned}
+		\left(\frac{dS_p}{d\tau}\right)^2 & =  \left(c\frac{dt_p}{d\tau}\right)^2 - \left(c\frac{dx_p}{d\tau}\right)^2 - \left(\frac{dy_p}{d\tau}\right)^2 - \left(\frac{dz_p}{d\tau}\right)^2 \\
+		                                  & = c^2\gamma_{u}^2 \left( 1 - \frac{u_x^2 + u_y^2 + u_z^2}{c^2} \right) = c^2\gamma_{u}^2 \left( 1 - \frac{u^2}{c^2} \right)                        \\
+		                                  & = c^2
+	\end{aligned}
 \end{equation}
 
-when subbed into 4-momentum, we have the time component and multiply by $c$, we have
+It can be seen that this is still an invariant quantity as the speed of light is constant in all frames. Now by multiplying both sides by $c^2$ and the square of the rest mass $m$ of the particle we have the square of an invariant quantity with the units of energy, that is equal to $mc^2$ and give the equation to be
 
 \begin{equation}
-	c |\mathbf{P}_t| = m_0 c^2\gamma_u = m_0 c^2 ( 1 + \frac{1}{2}\frac{u^2}{c^2} +\frac{3}{8}\frac{u^4}{c^4} + ... )
+	\label{eq: energy-momentum derivation}
+	\begin{aligned}
+		m^2 c^2 \left(\frac{dS_p}{d\tau}\right)^2 & =  \gamma_{u}^2 m^2 c^4 - \gamma_{u}^2 m^2 \left( u_x^2 + u_y^2 + u_z^2 \right) c^2 \\
+		(mc^2)^2                                  & =  \gamma_{u}^2 m^2 c^4 - \gamma_{u}^2 m^2 u^2 c^2
+	\end{aligned}
 \end{equation}
+
+rearranging, we get
 
 \begin{equation}
-	c |\mathbf{P}_t| = m_0 c^2 + \frac{1}{2} m_0 u^2 + \frac{3}{8}\frac{u^4}{c^2} + ... )
+	\label{eq: total relativistic energy}
+	\left( \gamma_{u} m c^2 \right)^2 = (mc^2)^2 + \left( \gamma_{u} m u c \right)^2
 \end{equation}
 
-since this
-
-all terms here are in units of energy, the second term is the classical kinetic energy, and the higher-order terms may be seen as higher-order kinetic energy terms that are very small for $u<<c$, the first term does not rely on the velocity of a mass, but only the mass itself, and this can be taken as a new type of energy all masses have even when at rest, i.e. the energy at rest for a mass is
+using the Taylor expansion of $\gamma_{u}$ on the quantity $\gamma_{u} mc^2$, we have for the squared term on the lefthand side
 
 \begin{equation}
-	E_{rest} = m_0 c^2
+	\begin{aligned}
+		\gamma_{u} mc^2 & = mc^2  \left(1 + \frac{1}{2}\frac{u^2}{c^2} + \frac{3}{8}\frac{u^4}{c^4} + ... \right) \\
+		                & = mc^2   + \frac{1}{2}mu^2 + \frac{3}{8}m\frac{u^4}{c^2} + ...
+	\end{aligned}
 \end{equation}
 
-we will write this new energy into the 4-momentum
+This equation's first quantity is an energy that does not depend on the speed of the particle, and only on its rest mass, we shall call this the rest mass energy and this can be taken as a new type of energy all masses have even when at rest. The second quantity is the classical kinetic energy formula, the rest may be seen as higher-order kinetic energy terms that are very small for $u<<c$, so this seems to be a formula for the total energy of a particle in the absence of a potential field (i.e. no change in potential energy) with added terms which become non-negligible at larger particle speeds, we will denote this total energy $E$. Taking this assertion we have
 
 \begin{equation}
-	\mathbf{P} =
-	\begin{pmatrix}
-		\frac{E}{c}      \\
-		\gamma_u m_0 u_x \\
-		\gamma_u m_0 u_y \\
-		\gamma_u m_0 u_z \\
-	\end{pmatrix}
+	E^2 = \left( mc^2 \right)^2 + (\gamma_{u}mu)^2c^2
 \end{equation}
 
-the magnitude of the 4-momentum can easily be found to be
+so this total energy is equal to its rest energy squared plus a second energy squared that depends on its speed, this second quantity along with the Taylor expansion of $\gamma_{u}$ gives
 
 \begin{equation}
-	||\mathbf{P}|| = m_0 c
+	\begin{aligned}
+		\gamma_{u} muc & = muc  \left(1 + \frac{1}{2}\frac{u^2}{c^2} + \frac{3}{8}\frac{u^4}{c^4} + ... \right)     \\
+		               & = c \left( mu   + \frac{1}{2}m \frac{u^3}{c^2} + \frac{3}{8}m\frac{u^5}{c^4} + ... \right)
+	\end{aligned}
 \end{equation}
 
-another conserved quantity that does not depend on the frame and using this and the 4-momentum vector
-
-***
-
-*** this equation can be brought to earlier
-
-*** it is the best equtions to explain it all, its all a conserved quantity on both sides
-
-***
+which at small particle velocities is approximately $muc$ with $mu$ being the classical momentum, we could assert that this whole energy is momentum in the relativistic context, i.e.
 
 \begin{equation}
-	m^2_0 c^2 = - \frac{E^2}{c^2} + (\gamma_u p_x)^2 + (\gamma_u p_y)^2 + (\gamma_u p_z)^2 = - \frac{E^2}{c^2} + (\gamma_u p)^2
+	p = \gamma_{u} mu
 \end{equation}
 
-giving
+as it has the same units and is approximately the classical momentum at small particle speeds.
 
 \begin{equation}
-	E^2 = m_0^2c^4 +\gamma^2p^2c^2
+	E_0 = mc^2
 \end{equation}
 
-for stationary particles $u=0$
+This is the energy it has from its rest mass, if a particle a particle at rest was to decay into photons, the photons emitted from this would be equal to this energy. The final energy-momentum equation is then given as
 
 \begin{equation}
-	E = m_0c^2
+	\mhl{
+		E^2 = E_0^2 + (pc)^2
+	}
 \end{equation}
 
-this does not work for massless particles like photons, we have to use a different method of getting this, we know from before that $ \mathbf{P}^2 = m_0^2 c^2 = 0$ leading to the components giving
+%*** Momentum in special relativity is defined slightly differently, to ensure that the law of conservation of momentum holds true in all inertial frames, as required by the first postulate of relativity (it is still approximately unchanged at low velocities).
+
+%*** comment that ${\gamma}$ is unitless and hence does not affect the units of energy or momentum
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Energy-Momentum Relation For Photons}
+
+*** First associate the energy of photon E = hf then find its equivalence in mass, then sub this in, and then say momentum for the photon is then hf/c
+
+For a Photon we have the mass equal to zero and the momentum as $p_{light} = \frac{hf}{c}$ which is taken from quantum mechanics and the energy-momentum relation as
 
 \begin{equation}
-	\frac{E^2}{c^2} = |p_{light}|^2
+	E = c p_{light} = hf
 \end{equation}
 
-and finally
+where $h$ is Planks constant and $f$ is the frequency of the light.
 
-\begin{equation}
-	E = c p_{light}
-\end{equation}
-
-....
-not needed:
-definition of momentum for light borrowed from quantum mechanics
-
-\begin{equation}
-	p = \frac{hf}{c}
-\end{equation}
-
-where $h$ is Planks constant and $f$ is the frequency of the light
-so that the
-....
-
-the reason we use this abstract 4-momentum is because it is conserved and the Newtonian momentum is not conserved when it comes to special relativity
+nothing is derived here, just states what to do for a photon
 
 %███████████████████████████████████████████████████████████████████
 \subsection{Energy-Mass Equivalence}
 
-*** E=mc2 is derived using an approximation for v<<c
+*** Imagine we have a particle at rest emitting light in all directions so that afterward it is still at rest, but in another frame we have we have this particle moving and the emitted light aberrated, but we still need the particle to remain at a constant velocity after emission. (maybe include a rotation in the impulse/effect of light in each direction on the particle of has)
 
-Imagine we have a particle at rest emitting light in all directions so that afterward it is still at rest, but in another frame we have we have this particle moving and the emitted light aberrated, but we still need the particle to remain at a constant velocity after emission. (maybe include a rotation in the impulse/effect of light in each direction on the particle of has)
-
-- if we have a ball in its \hyperlink{def-proper-frame}{rest frame} that emits a flash of light evenly in all directions, we will have the ball's energy decrease by the amount of energy of the emitted light, and it will remain at rest after due to the light being emitted evenly in all directions
+*** - if we have a ball in its \hyperlink{def-proper-frame}{rest frame} that emits a flash of light evenly in all directions, we will have the ball's energy decrease by the amount of energy of the emitted light, and it will remain at rest after due to the light being emitted evenly in all directions
 - its kinetic energy is zero in this frame
-
-%███████████████████████████████████████████████████████████████████
-\subsection{Energy-Momentum Equivalence}
-
-*** Dirac derived this and used quantum mechanics to do so, which is out of this handbook's domain, still consequences of this equation to be explored, such as the "zitterbewegung"
-
-Momentum in special relativity is defined slightly differently, to ensure that the law of conservation of momentum holds true in all inertial frames, as required by the first postulate of relativity (it is still approximately unchanged at low velocities). momentum of a particle with rest mass $m_0$ is given the
-
-\begin{equation}
-	\mathbf{p}' = m_0 \frac{dR'}{d\tau}= \gamma_u' m_0 \frac{dR'}{dt'} = \gamma m_0 u'
-\end{equation}
-
-where $u'$ is the velocity of the particle in this \hyperlink{def-Primed-Frame}{primed frame} and $\gamma_{u'}= 1/\sqrt{1-u'^2/c^2}$. you will sometimes the mass of an object referred to as $m=\gamma_{u'} m_0$ which is the apparent mass of a moving particle.
-
-(why not use the 3d time differential equation here?)
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{Acceleration}
-
-...proper acceleration.
-
-... this is more complex and one difference in this 4-vector here is that the spatial part of the 4-acceleration is not parallel to the 3-acceleration in a \hyperlink{def-Primed-Frame}{primed frame}
-
-\begin{equation}
-	\mathbf{A} = \gamma_u^4
-	\begin{pmatrix}
-		-c\frac{\mathbf{a}\cdot\mathbf{u}}{c^2}                              \\
-		\frac{1}{\gamma_u^2} a_x - u_x \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
-		\frac{1}{\gamma_u^2} a_y - u_y \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
-		\frac{1}{\gamma_u^2} a_z - u_z \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
-	\end{pmatrix}
-\end{equation}
-
-this is not really the same thing as what we think of when we think of acceleration, as it does not give the rate of change of velocity in the normal sense in 3d space
-
-\begin{equation}
-	A=\dfrac{dV}{d\tau}=
-	\dfrac{dt}{d\tau}\cdot\dfrac{dV}{dt} \;\;\leftrightarrow\;\; \dfrac{dt}{d\tau}\cdot \dfrac{d}{dt}
-	\left(\begin{array}{*{20}{c}} \gamma_u c \\ \gamma_u u \\ 0 \\ 0 \end{array}\right)
-	= \gamma_u
-	\left(\begin{array}{*{20}{c}} \dfrac{u}{c}\;\gamma_u^3\;a \\ \dfrac{u^2}{c^2}\;\gamma_u^3\;a+\gamma_u a \\ 0 \\ 0 \end{array}\right)
-	=
-	\left(\begin{array}{*{20}{c}} \dfrac{u}{c}\;\gamma_u^4\;a \\ \gamma_u^2\left(\dfrac{u^2}{c^2}\;\gamma_u^2+1\right)a \\ 0 \\ 0 \end{array}\right)
-	= \gamma_u^4\;a
-	\left(\begin{array}{*{20}{c}} \dfrac{u}{c} \\ 1 \\ 0 \\ 0 \end{array}\right)
-\end{equation}
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{Force}
-
-\begin{equation}
-	\mathbf{F}= \frac{d\mathbf{p}}{d\tau} = m_0\mathbf{A}
-\end{equation}
-
-%███████████████████████████████████████████████████████████████████
-\subsection{Force Transform}
-
-*** one of the most confusing topics in special relativity, from the way it is defined, how it is derived, and how it relates to other things\newline
-
-*** (a note that the 3-force in special relativity is specifically defined as the time derivative of momentum $\frac{d\mathbf{p}}{dt}$ and not mass times the acceleration $m\mathbf{a}$, this is due to newtons 2nd law holding only for the first definition in special relativity) \newline
-*** This means that acceleration turns out not to be in the same direction as the force in special relativity\newline
-
-force derivation is confusing as most sources give the time derivative of u and v as acceleration, (are they using that each force has opposite and equal force, but that would not take into account the retardedness)
-
-\begin{equation}
-	\mathbf{a} = \frac{1}{m_0 \gamma(\mathbf{v})} \left( \mathbf{F} - \frac{ ( \mathbf{v} \cdot \mathbf{F} ) \mathbf{v} }{c^2} \right)
-\end{equation}
-
-\begin{equation}
-	\mathbf{F} = \gamma^3 m_0 \, \mathbf{a}_\parallel + \gamma m_0 \, \mathbf{a}_\perp
-\end{equation}
-
-%███████████████████████████████████████████████████████████████████
-\subsection{not sure what this is}
-
-The force parallel to the velocity of the \hyperlink{def-Primed-Frame}{primed frame} is unchanged, $\mathbf{F}_{\parallel \langle ' \rangle} =\mathbf{F}_{\parallel}$, and the force perpendicular to this is $\mathbf{F}_{\perp \langle ' \rangle} =\gamma \mathbf{F}_{\perp}$, with total force, $\mathbf{F}=\mathbf{F}_{\parallel}+\mathbf{F}_{\perp}$ and
-
-\begin{equation}
-	\mathbf{F}_{\parallel} = \dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
-\end{equation}
-
-and substituting this into the formula for total force:
-
-\begin{equation}
-	\mathbf{F}_{\perp} = \mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
-\end{equation}
-
-since $\mathbf{F}_{\langle ' \rangle} =\mathbf{F}_{\parallel \langle ' \rangle} +\mathbf{F}_{\perp\langle ' \rangle}$ we can use equations above to get:
-
-\begin{equation}
-	\begin{split}
-		\mathbf{F}_{\langle ' \rangle} & = \dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v} + \gamma\bigg(\mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}\bigg) \\
-		                               & = \gamma\mathbf{F} + (1-\gamma)\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
-	\end{split}
-\end{equation}
-
-this is the same for the electric field as it only differs by some magnitude from the force.\newline
-this is similar to how we get the reverse transform: (is it the primed velocity used in this?)
-
-\begin{equation}
-	\mathbf{F} = \dfrac{1}{\gamma}\mathbf{F}_{\langle ' \rangle} + (1-\dfrac{1}{\gamma})\dfrac{(\mathbf{F}_{\langle ' \rangle} \cdot\mathbf{v}_{\langle ' \rangle} )}{|\mathbf{v}_{\langle ' \rangle} |^2}\mathbf{v}_{\langle ' \rangle}
-\end{equation}
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Variables...}
 
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\chapter{Outro}
+
+meaningful conclusion:
+
+- [ ] summarise the key points that were discussed in the book
+- [ ] discuss implications and applications of these points
+- [ ] propose areas of expansion for this topic/ future research
+- [ ] what the reader can do next to expand knowledge (i.e. internal and external resources)
+
+*** this was meant as an introduction to physical concepts and mathematical tools
+*** What was left out of this book
+*** Things still to be added to this book
+*** Questions you may have
+*** General confusions
+***
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\chapter{resources}
+
+
+
+
+% %███████████████████████████████████████████████████████████████████
+% %███████████████████████████████████████████████████████████████████
+% \section{Acceleration}
+
+% ...proper acceleration. differentiate the velocity invariant quantity, it will give \( \frac{d^2 S}{d\tau^2}=0=...\frac{d^2 S}{dt'^2} \)
+
+% ... this is bad math explaination using square of derivative
+
+% need to use the square quantity not singular
+
+% \begin{equation}
+% 	\begin{aligned}
+% 		\frac{d}{d\tau} \left(\frac{dS_p}{d\tau}\right)^2 & = \left(\frac{d}{d\tau}\right)^2 \left[ \left(c\gamma_{u}\right)^2  - \left(u\gamma_{u} \right)^2 \right]                           \\
+% 		\frac{1}{2} \frac{dS_p}{d\tau} \frac{d^2S_p}{d\tau^2}                               & = \gamma_u^2\left(\frac{d}{dt}\right)^2 \left[ \left(c\gamma_{u}\right)^2  - \left(u\gamma_{u} \right)^2 \right]                           \\
+% 		                                                              0   & = \gamma_u^2\left(c\frac{d \gamma_{u}}{dt}\right)^2   - \gamma_u^2\left(\frac{d\left(u\gamma_{u} \right)}{dt}\right)^2 \\
+% 																	  &= \gamma_u^2 \left( \gamma_u^3 \frac{u a}{c^2} \right)^2 - \gamma_u^2\left( \gamma_u^3 a \right)^2
+% 	\end{aligned}
+% \end{equation}
+
+% ... this is more complex and one difference in this 4-vector here is that the spatial part of the 4-acceleration is not parallel to the 3-acceleration in a \hyperlink{def-Primed-Frame}{primed frame}
+
+% \begin{equation}
+% 	\mathbf{A} = {\gamma}_{u}^4
+% 	\begin{pmatrix}
+% 		-c\frac{\mathbf{a}\cdot\mathbf{u}}{c^2}                                  \\
+% 		\frac{1}{{\gamma}_{u}^2} a_x - u_x \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
+% 		\frac{1}{{\gamma}_{u}^2} a_y - u_y \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
+% 		\frac{1}{{\gamma}_{u}^2} a_z - u_z \frac{\mathbf{a}\cdot\mathbf{u}}{c^2} \\
+% 	\end{pmatrix}
+% \end{equation}
+
+% this is not really the same thing as what we think of when we think of acceleration, as it does not give the rate of change of velocity in the normal sense in 3d space
+
+% \begin{equation}
+% 	\begin{aligned}
+% 		A & =\dfrac{dV}{d\tau}=
+% 		\dfrac{dt}{d\tau}\cdot\dfrac{dV}{dt}                                                                                                                                   \\
+% 		  & = \dfrac{dt}{d\tau}\cdot \dfrac{d}{dt}
+% 		\left(\begin{array}{*{20}{c}} {\gamma}_{u} c \\ {\gamma}_{u} u \\ 0 \\ 0 \end{array}\right)
+% 		= {\gamma}_{u}
+% 		\left(\begin{array}{*{20}{c}} \dfrac{u}{c}\;{\gamma}_{u}^3\;a \\ \dfrac{u^2}{c^2}\;{\gamma}_{u}^3\;a+{\gamma}_{u} a \\ 0 \\ 0 \end{array}\right) \\
+% 		  & =
+% 		\left(\begin{array}{*{20}{c}} \dfrac{u}{c}\;{\gamma}_{u}^4\;a \\ {\gamma}_{u}^2\left(\dfrac{u^2}{c^2}\;{\gamma}_{u}^2+1\right)a \\ 0 \\ 0 \end{array}\right)
+% 		= {\gamma}_{u}^4\;a
+% 		\left(\begin{array}{*{2}{c}} \dfrac{u}{c} \\ 1 \\ 0 \\ 0 \end{array}\right)
+% 	\end{aligned}
+% \end{equation}
+
+% %███████████████████████████████████████████████████████████████████
+% %███████████████████████████████████████████████████████████████████
+% \section{Force}
+
+% \begin{equation}
+% 	\mathbf{F}= \frac{d\mathbf{p}}{d\tau} = m_0\mathbf{A}
+% \end{equation}
+
+% %███████████████████████████████████████████████████████████████████
+% \subsection{Force Transform}
+
+% *** one of the most confusing topics in special relativity, from the way it is defined, how it is derived, and how it relates to other things\newline
+
+% *** (a note that the 3-force in special relativity is specifically defined as the time derivative of momentum $\frac{d\mathbf{p}}{dt}$ and not mass times the acceleration $m\mathbf{a}$, this is due to newtons 2nd law holding only for the first definition in special relativity) \newline
+% *** This means that acceleration turns out not to be in the same direction as the force in special relativity\newline
+
+% force derivation is confusing as most sources give the time derivative of u and v as acceleration, (are they using that each force has opposite and equal force, but that would not take into account the retardedness)
+
+% \begin{equation}
+% 	\mathbf{a} = \frac{1}{m_0 {\gamma}(\mathbf{v})} \left( \mathbf{F} - \frac{ ( \mathbf{v} \cdot \mathbf{F} ) \mathbf{v} }{c^2} \right)
+% \end{equation}
+
+% \begin{equation}
+% 	\mathbf{F} = {\gamma}^3 m_0 \, \mathbf{a}_\parallel + {\gamma} m_0 \, \mathbf{a}_\perp
+% \end{equation}
+
+% %███████████████████████████████████████████████████████████████████
+% \subsection{not sure what this is}
+
+% The force parallel to the velocity of the \hyperlink{def-Primed-Frame}{primed frame} is unchanged, $\mathbf{F}_{\parallel \langle ' \rangle} =\mathbf{F}_{\parallel}$, and the force perpendicular to this is $\mathbf{F}_{\perp \langle ' \rangle} ={\gamma} \mathbf{F}_{\perp}$, with total force, $\mathbf{F}=\mathbf{F}_{\parallel}+\mathbf{F}_{\perp}$ and
+
+% \begin{equation}
+% 	\mathbf{F}_{\parallel} = \dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
+% \end{equation}
+
+% and substituting this into the formula for total force:
+
+% \begin{equation}
+% 	\mathbf{F}_{\perp} = \mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
+% \end{equation}
+
+% since $\mathbf{F}_{\langle ' \rangle} =\mathbf{F}_{\parallel \langle ' \rangle} +\mathbf{F}_{\perp\langle ' \rangle}$ we can use equations above to get:
+
+% \begin{equation}
+% 	\begin{split}
+% 		\mathbf{F}_{\langle ' \rangle} & = \dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v} + {\gamma}\bigg(\mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}\bigg) \\
+% 		                               & = {\gamma}\mathbf{F} + (1-{\gamma})\dfrac{(\mathbf{F}\cdot\mathbf{v})}{|\mathbf{v}|^2}\mathbf{v}
+% 	\end{split}
+% \end{equation}
+
+% this is the same for the electric field as it only differs by some magnitude from the force.\newline
+% this is similar to how we get the reverse transform: (is it the primed velocity used in this?)
+
+% \begin{equation}
+% 	\mathbf{F} = \dfrac{1}{{\gamma}}\mathbf{F}_{\langle ' \rangle} + (1-\dfrac{1}{{\gamma}})\dfrac{(\mathbf{F}_{\langle ' \rangle} \cdot\mathbf{v}_{\langle ' \rangle} )}{|\mathbf{v}_{\langle ' \rangle} |^2}\mathbf{v}_{\langle ' \rangle}
+% \end{equation}
+
 ...
+
+% %███████████████████████████████████████████████████████████████████
+%\chapter{"zitterbewegung"}
 
 % %███████████████████████████████████████████████████████████████████
 % \chapter{equation for motion in primed frame for arbitrary motion in proper frame}

@@ -532,11 +532,9 @@ INPUT .\images\pdf\Perceived_speed.pdf
 INPUT .\images\pdf\Perceived_speed.pdf
 INPUT .\images\pdf\Perceived_speed.pdf
 INPUT .\images\pdf\Perceived_speed.pdf
-INPUT .\Tex\Terms\Definitions.tex
-INPUT .\Tex\Terms\Definitions.tex
-INPUT .\Tex\Terms\Definitions.tex
-INPUT .\Tex\Terms\Definitions.tex
-INPUT Tex\Terms\Definitions.tex
+INPUT .\Tex\Terms\Terms_ch1.tex
+INPUT .\Tex\Terms\Terms_ch1.tex
+INPUT Tex\Terms\Terms_ch1.tex
 INPUT tikz\Tikz_simple_Galilean_transform_derivation.md5
 INPUT tikz\Tikz_simple_Galilean_transform_derivation.pdf
 INPUT tikz\Tikz_simple_Galilean_transform_derivation.dpth

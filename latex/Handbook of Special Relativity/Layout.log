@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.10)  11 MAR 2024 16:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.10)  24 MAR 2024 01:45
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -978,280 +978,284 @@ Chapter 1.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.12 
-      [1
+l.20 \chapter
+             {Conceptual Overview} [1
 
 
 ]
-<images/pdf/lorry_cannonball.pdf, id=269, 3313.46918pt x 1859.63753pt>
-File: images/pdf/lorry_cannonball.pdf Graphic file (type pdf)
-<use images/pdf/lorry_cannonball.pdf>
-Package pdftex.def Info: images/pdf/lorry_cannonball.pdf  used on input line 39.
-(pdftex.def)             Requested size: 227.62204pt x 127.7476pt.
+Chapter 2.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.46 
-      [2 <./images/pdf/lorry_cannonball.pdf>]
-<images/pdf/Reference Frames.pdf, id=280, 1853.61504pt x 1855.87346pt>
+l.34 
+      [2
+
+]
+<images/pdf/lorry_cannonball.pdf, id=282, 3313.46918pt x 1859.63753pt>
+File: images/pdf/lorry_cannonball.pdf Graphic file (type pdf)
+<use images/pdf/lorry_cannonball.pdf>
+Package pdftex.def Info: images/pdf/lorry_cannonball.pdf  used on input line 63.
+(pdftex.def)             Requested size: 227.62204pt x 127.7476pt.
+ [3 <./images/pdf/lorry_cannonball.pdf>]
+<images/pdf/Reference Frames.pdf, id=294, 1853.61504pt x 1855.87346pt>
 File: images/pdf/Reference Frames.pdf Graphic file (type pdf)
 <use images/pdf/Reference Frames.pdf>
-Package pdftex.def Info: images/pdf/Reference Frames.pdf  used on input line 54.
+Package pdftex.def Info: images/pdf/Reference Frames.pdf  used on input line 78.
 (pdftex.def)             Requested size: 120.7521pt x 120.89087pt.
-<images/pdf/Spring_boxes.pdf, id=285, 3139.55945pt x 1776.06541pt>
+<images/pdf/Spring_boxes.pdf, id=299, 3139.55945pt x 1776.06541pt>
 File: images/pdf/Spring_boxes.pdf Graphic file (type pdf)
 <use images/pdf/Spring_boxes.pdf>
-Package pdftex.def Info: images/pdf/Spring_boxes.pdf  used on input line 67.
+Package pdftex.def Info: images/pdf/Spring_boxes.pdf  used on input line 91.
 (pdftex.def)             Requested size: 310.4979pt x 175.6386pt.
- [3 <./images/pdf/Reference Frames.pdf>]
-<images/pdf/Conveyor_belt_3d.pdf, id=301, 3265.28917pt x 1843.82846pt>
+ [4 <./images/pdf/Reference Frames.pdf>]
+<images/pdf/Conveyor_belt_3d.pdf, id=315, 3265.28917pt x 1843.82846pt>
 File: images/pdf/Conveyor_belt_3d.pdf Graphic file (type pdf)
 <use images/pdf/Conveyor_belt_3d.pdf>
-Package pdftex.def Info: images/pdf/Conveyor_belt_3d.pdf  used on input line 81.
+Package pdftex.def Info: images/pdf/Conveyor_belt_3d.pdf  used on input line 105.
 (pdftex.def)             Requested size: 310.4979pt x 175.3062pt.
- [4 <./images/pdf/Spring_boxes.pdf>]
-<images/pdf/rats_moving.pdf, id=317, 3362.41203pt x 1251.30487pt>
+ [5 <./images/pdf/Spring_boxes.pdf>]
+<images/pdf/rats_moving.pdf, id=332, 3362.41203pt x 1251.30487pt>
 File: images/pdf/rats_moving.pdf Graphic file (type pdf)
 <use images/pdf/rats_moving.pdf>
-Package pdftex.def Info: images/pdf/rats_moving.pdf  used on input line 95.
+Package pdftex.def Info: images/pdf/rats_moving.pdf  used on input line 119.
 (pdftex.def)             Requested size: 310.4979pt x 115.53386pt.
-<images/pdf/rats_platform_frame.pdf, id=320, 3329.28828pt x 1239.25987pt>
+<images/pdf/rats_platform_frame.pdf, id=335, 3329.28828pt x 1239.25987pt>
 File: images/pdf/rats_platform_frame.pdf Graphic file (type pdf)
 <use images/pdf/rats_platform_frame.pdf>
-Package pdftex.def Info: images/pdf/rats_platform_frame.pdf  used on input line 102.
+Package pdftex.def Info: images/pdf/rats_platform_frame.pdf  used on input line 126.
 (pdftex.def)             Requested size: 310.4979pt x 115.57521pt.
- [5 <./images/pdf/Conveyor_belt_3d.pdf>]
-<images/pdf/earth_and_aether.pdf, id=344, 3122.23471pt x 738.58638pt>
+ [6 <./images/pdf/Conveyor_belt_3d.pdf>]
+<images/pdf/earth_and_aether.pdf, id=358, 3122.23471pt x 738.58638pt>
 File: images/pdf/earth_and_aether.pdf Graphic file (type pdf)
 <use images/pdf/earth_and_aether.pdf>
-Package pdftex.def Info: images/pdf/earth_and_aether.pdf  used on input line 121.
+Package pdftex.def Info: images/pdf/earth_and_aether.pdf  used on input line 145.
 (pdftex.def)             Requested size: 310.4979pt x 73.44597pt.
- [6 <./images/pdf/rats_moving.pdf> <./images/pdf/rats_platform_frame.pdf>]
-<images/pdf/Michelson_morley.pdf, id=374, 2958.11153pt x 1803.17659pt>
+ [7 <./images/pdf/rats_moving.pdf> <./images/pdf/rats_platform_frame.pdf>]
+<images/pdf/Michelson_morley.pdf, id=388, 2958.11153pt x 1803.17659pt>
 File: images/pdf/Michelson_morley.pdf Graphic file (type pdf)
 <use images/pdf/Michelson_morley.pdf>
-Package pdftex.def Info: images/pdf/Michelson_morley.pdf  used on input line 133.
+Package pdftex.def Info: images/pdf/Michelson_morley.pdf  used on input line 157.
 (pdftex.def)             Requested size: 227.62204pt x 138.72672pt.
- [7 <./images/pdf/earth_and_aether.pdf> <./images/pdf/Michelson_morley.pdf>] [8]
-<images/pdf/lorry_torch.pdf, id=411, 3313.46918pt x 1859.63753pt>
+ [8 <./images/pdf/earth_and_aether.pdf> <./images/pdf/Michelson_morley.pdf>] [9]
+<images/pdf/lorry_torch.pdf, id=425, 3313.46918pt x 1859.63753pt>
 File: images/pdf/lorry_torch.pdf Graphic file (type pdf)
 <use images/pdf/lorry_torch.pdf>
-Package pdftex.def Info: images/pdf/lorry_torch.pdf  used on input line 153.
+Package pdftex.def Info: images/pdf/lorry_torch.pdf  used on input line 177.
 (pdftex.def)             Requested size: 227.62204pt x 127.7476pt.
- [9 <./images/pdf/lorry_torch.pdf>]
-<images/pdf/lorry_clock.pdf, id=433, 3314.22198pt x 1858.88472pt>
+ [10 <./images/pdf/lorry_torch.pdf>]
+<images/pdf/lorry_clock.pdf, id=447, 3314.22198pt x 1858.88472pt>
 File: images/pdf/lorry_clock.pdf Graphic file (type pdf)
 <use images/pdf/lorry_clock.pdf>
-Package pdftex.def Info: images/pdf/lorry_clock.pdf  used on input line 173.
+Package pdftex.def Info: images/pdf/lorry_clock.pdf  used on input line 197.
 (pdftex.def)             Requested size: 227.62204pt x 127.66753pt.
- [10 <./images/pdf/lorry_clock.pdf>]
-<images/pdf/lorry_simul.pdf, id=452, 3312.71637pt x 1959.01883pt>
+ [11 <./images/pdf/lorry_clock.pdf>]
+<images/pdf/lorry_simul.pdf, id=467, 3312.71637pt x 1959.01883pt>
 File: images/pdf/lorry_simul.pdf Graphic file (type pdf)
 <use images/pdf/lorry_simul.pdf>
-Package pdftex.def Info: images/pdf/lorry_simul.pdf  used on input line 192.
+Package pdftex.def Info: images/pdf/lorry_simul.pdf  used on input line 216.
 (pdftex.def)             Requested size: 227.62204pt x 134.60449pt.
- [11 <./images/pdf/lorry_simul.pdf>]
-<images/pdf/Full_Lorry_Transform.pdf, id=491, 3312.71637pt x 1936.43445pt>
+ [12 <./images/pdf/lorry_simul.pdf>]
+<images/pdf/Full_Lorry_Transform.pdf, id=505, 3312.71637pt x 1936.43445pt>
 File: images/pdf/Full_Lorry_Transform.pdf Graphic file (type pdf)
 <use images/pdf/Full_Lorry_Transform.pdf>
-Package pdftex.def Info: images/pdf/Full_Lorry_Transform.pdf  used on input line 210.
+Package pdftex.def Info: images/pdf/Full_Lorry_Transform.pdf  used on input line 234.
 (pdftex.def)             Requested size: 227.62204pt x 133.05272pt.
- [12 <./images/pdf/Full_Lorry_Transform.pdf>]
-<images/pdf/cars.pdf, id=519, 3312.71637pt x 1921.3782pt>
+ [13 <./images/pdf/Full_Lorry_Transform.pdf>]
+<images/pdf/cars.pdf, id=533, 3312.71637pt x 1921.3782pt>
 File: images/pdf/cars.pdf Graphic file (type pdf)
 <use images/pdf/cars.pdf>
-Package pdftex.def Info: images/pdf/cars.pdf  used on input line 231.
+Package pdftex.def Info: images/pdf/cars.pdf  used on input line 255.
 (pdftex.def)             Requested size: 227.62204pt x 132.0182pt.
- [13] [14 <./images/pdf/cars.pdf>]
-<images/pdf/Cannon_Balls.pdf, id=556, 2973.16779pt x 1602.9085pt>
+ [14] [15 <./images/pdf/cars.pdf>]
+<images/pdf/Cannon_Balls.pdf, id=570, 2973.16779pt x 1602.9085pt>
 File: images/pdf/Cannon_Balls.pdf Graphic file (type pdf)
 <use images/pdf/Cannon_Balls.pdf>
-Package pdftex.def Info: images/pdf/Cannon_Balls.pdf  used on input line 246.
+Package pdftex.def Info: images/pdf/Cannon_Balls.pdf  used on input line 270.
 (pdftex.def)             Requested size: 227.62204pt x 122.7077pt.
-<images/pdf/Doppler.pdf, id=557, 3126.75159pt x 1413.93246pt>
+<images/pdf/Doppler.pdf, id=571, 3126.75159pt x 1413.93246pt>
 File: images/pdf/Doppler.pdf Graphic file (type pdf)
 <use images/pdf/Doppler.pdf>
-Package pdftex.def Info: images/pdf/Doppler.pdf  used on input line 259.
+Package pdftex.def Info: images/pdf/Doppler.pdf  used on input line 283.
 (pdftex.def)             Requested size: 227.62204pt x 102.912pt.
- [15 <./images/pdf/Cannon_Balls.pdf>] [16 <./images/pdf/Doppler.pdf>]
-<images/pdf/Aberrated_lorrys_1.pdf, id=588, 3312.71637pt x 1936.43445pt>
+ [16 <./images/pdf/Cannon_Balls.pdf>] [17 <./images/pdf/Doppler.pdf>]
+<images/pdf/Aberrated_lorrys_1.pdf, id=603, 3312.71637pt x 1936.43445pt>
 File: images/pdf/Aberrated_lorrys_1.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_lorrys_1.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_lorrys_1.pdf  used on input line 279.
+Package pdftex.def Info: images/pdf/Aberrated_lorrys_1.pdf  used on input line 303.
 (pdftex.def)             Requested size: 156.49014pt x 91.44974pt.
-<images/pdf/Aberrated_lorrys_2.pdf, id=589, 3312.71637pt x 1936.43445pt>
+<images/pdf/Aberrated_lorrys_2.pdf, id=604, 3312.71637pt x 1936.43445pt>
 File: images/pdf/Aberrated_lorrys_2.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_lorrys_2.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_lorrys_2.pdf  used on input line 285.
+Package pdftex.def Info: images/pdf/Aberrated_lorrys_2.pdf  used on input line 309.
 (pdftex.def)             Requested size: 156.49014pt x 91.44974pt.
- [17 <./images/pdf/Aberrated_lorrys_1.pdf> <./images/pdf/Aberrated_lorrys_2.pdf>]
-<images/pdf/Rest_velocities.pdf, id=623, 350.5095pt x 232.7094pt>
+ [18 <./images/pdf/Aberrated_lorrys_1.pdf> <./images/pdf/Aberrated_lorrys_2.pdf>]
+<images/pdf/Rest_velocities.pdf, id=637, 350.5095pt x 232.7094pt>
 File: images/pdf/Rest_velocities.pdf Graphic file (type pdf)
 <use images/pdf/Rest_velocities.pdf>
-Package pdftex.def Info: images/pdf/Rest_velocities.pdf  used on input line 314.
+Package pdftex.def Info: images/pdf/Rest_velocities.pdf  used on input line 338.
 (pdftex.def)             Requested size: 142.26378pt x 94.45273pt.
-<images/pdf/Aberrated_velocities.pdf, id=626, 390.86903pt x 281.56392pt>
+<images/pdf/Aberrated_velocities.pdf, id=640, 390.86903pt x 281.56392pt>
 File: images/pdf/Aberrated_velocities.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 319.
+Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 343.
 (pdftex.def)             Requested size: 142.26378pt x 102.47997pt.
- [18]
-<images/pdf/Rest_velocities_inwards.pdf, id=631, 350.5095pt x 232.7094pt>
+ [19]
+<images/pdf/Rest_velocities_inwards.pdf, id=645, 350.5095pt x 232.7094pt>
 File: images/pdf/Rest_velocities_inwards.pdf Graphic file (type pdf)
 <use images/pdf/Rest_velocities_inwards.pdf>
-Package pdftex.def Info: images/pdf/Rest_velocities_inwards.pdf  used on input line 330.
+Package pdftex.def Info: images/pdf/Rest_velocities_inwards.pdf  used on input line 354.
 (pdftex.def)             Requested size: 142.26378pt x 94.45273pt.
-<images/pdf/Aberrated_velocities_inwards.pdf, id=634, 390.86903pt x 281.56392pt>
+<images/pdf/Aberrated_velocities_inwards.pdf, id=648, 390.86903pt x 281.56392pt>
 File: images/pdf/Aberrated_velocities_inwards.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_inwards.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on input line 335.
+Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on input line 359.
 (pdftex.def)             Requested size: 142.26378pt x 102.47997pt.
 
 
-LaTeX Warning: Reference `fig: full field transformation 1' on page 19 undefined on input line 345.
+LaTeX Warning: Reference `fig: full field transformation 1' on page 20 undefined on input line 369.
 
-<images/pdf/Field_Rest_Frame.pdf, id=637, 281.56392pt x 281.56392pt>
+<images/pdf/Field_Rest_Frame.pdf, id=651, 281.56392pt x 281.56392pt>
 File: images/pdf/Field_Rest_Frame.pdf Graphic file (type pdf)
 <use images/pdf/Field_Rest_Frame.pdf>
-Package pdftex.def Info: images/pdf/Field_Rest_Frame.pdf  used on input line 351.
+Package pdftex.def Info: images/pdf/Field_Rest_Frame.pdf  used on input line 375.
 (pdftex.def)             Requested size: 142.26378pt x 142.26382pt.
-<images/pdf/Field_Moving_Frame_Doppler.pdf, id=638, 281.56392pt x 281.56392pt>
+<images/pdf/Field_Moving_Frame_Doppler.pdf, id=652, 281.56392pt x 281.56392pt>
 File: images/pdf/Field_Moving_Frame_Doppler.pdf Graphic file (type pdf)
 <use images/pdf/Field_Moving_Frame_Doppler.pdf>
-Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler.pdf  used on input line 356.
+Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler.pdf  used on input line 380.
 (pdftex.def)             Requested size: 142.26378pt x 142.26382pt.
-[19 <./images/pdf/Rest_velocities.pdf> <./images/pdf/Aberrated_velocities.pdf> <./images/pdf/Rest_velocities_inwards.pdf> <./images/pdf/Aberrated_velocities_inwards.pdf>] [20 <./images/pdf/Field_Rest_Frame.pdf> <./images/pdf/Field_Moving_Frame_Doppler.pdf>]
-<images/pdf/Perceived_speed.pdf, id=704, 3213.33507pt x 1699.27853pt>
+[20 <./images/pdf/Rest_velocities.pdf> <./images/pdf/Aberrated_velocities.pdf> <./images/pdf/Rest_velocities_inwards.pdf> <./images/pdf/Aberrated_velocities_inwards.pdf>] [21 <./images/pdf/Field_Rest_Frame.pdf> <./images/pdf/Field_Moving_Frame_Doppler.pdf>]
+<images/pdf/Perceived_speed.pdf, id=718, 3213.33507pt x 1699.27853pt>
 File: images/pdf/Perceived_speed.pdf Graphic file (type pdf)
 <use images/pdf/Perceived_speed.pdf>
-Package pdftex.def Info: images/pdf/Perceived_speed.pdf  used on input line 374.
+Package pdftex.def Info: images/pdf/Perceived_speed.pdf  used on input line 398.
 (pdftex.def)             Requested size: 284.52756pt x 150.4393pt.
- [21 <./images/pdf/Perceived_speed.pdf>] [22] (Tex/Terms/Definitions.tex [23] [24]) [25]
-Chapter 2.
-[26
+ [22 <./images/pdf/Perceived_speed.pdf>] [23] (Tex/Terms/Terms_ch1.tex [24] [25]) [26]
+Chapter 3.
+[27
 
 ]
 ===== Image './tikz/Tikz_simple_Galilean_transform_derivation' is up-to-date. ======
-[27] [28 <./tikz/Tikz_simple_Galilean_transform_derivation.pdf>] [29]
+[28] [29 <./tikz/Tikz_simple_Galilean_transform_derivation.pdf>] [30]
 
-LaTeX Warning: Reference `spherical light pulse derivation' on page 30 undefined on input line 552.
+LaTeX Warning: Reference `spherical light pulse derivation' on page 31 undefined on input line 586.
 
-<images/pdf/Light_clock.pdf, id=839, 2730.73201pt x 1694.76167pt>
+<images/pdf/Light_clock.pdf, id=853, 2730.73201pt x 1694.76167pt>
 File: images/pdf/Light_clock.pdf Graphic file (type pdf)
 <use images/pdf/Light_clock.pdf>
-Package pdftex.def Info: images/pdf/Light_clock.pdf  used on input line 560.
+Package pdftex.def Info: images/pdf/Light_clock.pdf  used on input line 594.
 (pdftex.def)             Requested size: 284.52756pt x 176.57172pt.
-[30] [31 <./images/pdf/Light_clock.pdf>]
-<images/pdf/Length_Contraction.pdf, id=870, 2683.30482pt x 1552.46pt>
+[31] [32 <./images/pdf/Light_clock.pdf>]
+<images/pdf/Length_Contraction.pdf, id=884, 2683.30482pt x 1552.46pt>
 File: images/pdf/Length_Contraction.pdf Graphic file (type pdf)
 <use images/pdf/Length_Contraction.pdf>
-Package pdftex.def Info: images/pdf/Length_Contraction.pdf  used on input line 615.
+Package pdftex.def Info: images/pdf/Length_Contraction.pdf  used on input line 649.
 (pdftex.def)             Requested size: 284.52756pt x 164.61209pt.
- [32 <./images/pdf/Length_Contraction.pdf>] [33]
+ [33 <./images/pdf/Length_Contraction.pdf>] [34]
 ===== Image './tikz/Tikz_simple_lorentz_transform_derivation' is up-to-date. ======
-[34] [35 <./tikz/Tikz_simple_lorentz_transform_derivation.pdf>] [36]
-<images/pdf/coordinate_transforms.pdf, id=955, 715.43942pt x 291.97081pt>
+[35] [36 <./tikz/Tikz_simple_lorentz_transform_derivation.pdf>] [37]
+<images/pdf/coordinate_transforms.pdf, id=963, 715.43942pt x 291.97081pt>
 File: images/pdf/coordinate_transforms.pdf Graphic file (type pdf)
 <use images/pdf/coordinate_transforms.pdf>
-Package pdftex.def Info: images/pdf/coordinate_transforms.pdf  used on input line 792.
+Package pdftex.def Info: images/pdf/coordinate_transforms.pdf  used on input line 826.
 (pdftex.def)             Requested size: 284.52756pt x 116.11353pt.
- [37] [38 <./images/pdf/coordinate_transforms.pdf>]
-<images/pdf/Gamma_Factor.pdf, id=1010, 433.62pt x 289.08pt>
+ [38] [39 <./images/pdf/coordinate_transforms.pdf>]
+<images/pdf/Gamma_Factor.pdf, id=1018, 433.62pt x 289.08pt>
 File: images/pdf/Gamma_Factor.pdf Graphic file (type pdf)
 <use images/pdf/Gamma_Factor.pdf>
-Package pdftex.def Info: images/pdf/Gamma_Factor.pdf  used on input line 851.
+Package pdftex.def Info: images/pdf/Gamma_Factor.pdf  used on input line 885.
 (pdftex.def)             Requested size: 284.52756pt x 189.69504pt.
- [39] [40 <./images/pdf/Gamma_Factor.pdf>] [41] (Tex/Terms/Terms_ch2.tex) [42] [43]
-Chapter 3.
-[44
+ [40] [41 <./images/pdf/Gamma_Factor.pdf>] [42] (Tex/Terms/Terms_ch2.tex) [43] [44]
+Chapter 4.
+[45
 
 ]
 ===== Image './tikz/Tikz_Particles_position_in_rest_frame' is up-to-date. ======
 ===== Image './tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position' is up-to-date. ======
-[45 <./tikz/Tikz_Particles_position_in_rest_frame.pdf> <./tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position.pdf>]
-<images/pdf/coordinate_transforms_2.pdf, id=1209, 755.64792pt x 260.90886pt>
+[46 <./tikz/Tikz_Particles_position_in_rest_frame.pdf> <./tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position.pdf>]
+<images/pdf/coordinate_transforms_2.pdf, id=1208, 755.64792pt x 260.90886pt>
 File: images/pdf/coordinate_transforms_2.pdf Graphic file (type pdf)
 <use images/pdf/coordinate_transforms_2.pdf>
-Package pdftex.def Info: images/pdf/coordinate_transforms_2.pdf  used on input line 1099.
+Package pdftex.def Info: images/pdf/coordinate_transforms_2.pdf  used on input line 1135.
 (pdftex.def)             Requested size: 284.52756pt x 98.24268pt.
- [46]
-Underfull \hbox (badness 10000) in paragraph at lines 1126--1127
+ [47]
+Underfull \hbox (badness 10000) in paragraph at lines 1162--1163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1128--1129
+Underfull \hbox (badness 10000) in paragraph at lines 1164--1165
 
  []
 
-[47 <./images/pdf/coordinate_transforms_2.pdf>] [48]
-Chapter 4.
+[48 <./images/pdf/coordinate_transforms_2.pdf>] [49]
+Chapter 5.
 ===== Image './tikz/Tikz_Spherical_Polar_Coordinates' is up-to-date. ======
-[49
+[50
 
- <./tikz/Tikz_Spherical_Polar_Coordinates.pdf>] [50]
+ <./tikz/Tikz_Spherical_Polar_Coordinates.pdf>] [51]
 ===== Image './tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame' is up-to-date. ======
 ===== Image './tikz/Tikz_Lights_angle_with_particle_With_particle_moving' is up-to-date. ======
-[51 <./tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.pdf> <./tikz/Tikz_Lights_angle_with_particle_With_particle_moving.pdf>]
-<images/pdf/Aberrated_velocities_restframe.pdf, id=1344, 372.9132pt x 281.56392pt>
+[52 <./tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.pdf> <./tikz/Tikz_Lights_angle_with_particle_With_particle_moving.pdf>]
+<images/pdf/Aberrated_velocities_restframe.pdf, id=1343, 372.9132pt x 281.56392pt>
 File: images/pdf/Aberrated_velocities_restframe.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_restframe.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities_restframe.pdf  used on input line 1345.
+Package pdftex.def Info: images/pdf/Aberrated_velocities_restframe.pdf  used on input line 1381.
 (pdftex.def)             Requested size: 142.26378pt x 107.41212pt.
 File: images/pdf/Aberrated_velocities.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 1350.
+Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 1386.
 (pdftex.def)             Requested size: 142.26378pt x 102.47997pt.
- [52 <./images/pdf/Aberrated_velocities_restframe.pdf>]
+ [53 <./images/pdf/Aberrated_velocities_restframe.pdf>]
 <images/pdf/Aberrated_velocities_inwards_restframe.pdf, id=1375, 372.9132pt x 281.56392pt>
 File: images/pdf/Aberrated_velocities_inwards_restframe.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_inwards_restframe.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards_restframe.pdf  used on input line 1372.
+Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards_restframe.pdf  used on input line 1408.
 (pdftex.def)             Requested size: 142.26378pt x 107.41212pt.
 File: images/pdf/Aberrated_velocities_inwards.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_inwards.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on input line 1377.
+Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on input line 1413.
 (pdftex.def)             Requested size: 142.26378pt x 102.47997pt.
 
 ===== Image './tikz/Tikz_Light_Pulse_Proper_Frame' is up-to-date. ======
 ===== Image './tikz/Tikz_Light_Pulse_Primed_Frame' is up-to-date. ======
-[53 <./images/pdf/Aberrated_velocities_inwards_restframe.pdf>] [54 <./tikz/Tikz_Light_Pulse_Proper_Frame.pdf> <./tikz/Tikz_Light_Pulse_Primed_Frame.pdf>] [55]
-<images/pdf/Rest_Pulse.pdf, id=1482, 187.40424pt x 281.56392pt>
+[54 <./images/pdf/Aberrated_velocities_inwards_restframe.pdf>] [55 <./tikz/Tikz_Light_Pulse_Proper_Frame.pdf> <./tikz/Tikz_Light_Pulse_Primed_Frame.pdf>] [56]
+<images/pdf/Rest_Pulse.pdf, id=1481, 187.40424pt x 281.56392pt>
 File: images/pdf/Rest_Pulse.pdf Graphic file (type pdf)
 <use images/pdf/Rest_Pulse.pdf>
-Package pdftex.def Info: images/pdf/Rest_Pulse.pdf  used on input line 1538.
+Package pdftex.def Info: images/pdf/Rest_Pulse.pdf  used on input line 1572.
 (pdftex.def)             Requested size: 108.12054pt x 162.4479pt.
-<images/pdf/Prime_Pulse.pdf, id=1483, 187.40424pt x 281.56392pt>
+<images/pdf/Prime_Pulse.pdf, id=1482, 187.40424pt x 281.56392pt>
 File: images/pdf/Prime_Pulse.pdf Graphic file (type pdf)
 <use images/pdf/Prime_Pulse.pdf>
-Package pdftex.def Info: images/pdf/Prime_Pulse.pdf  used on input line 1543.
+Package pdftex.def Info: images/pdf/Prime_Pulse.pdf  used on input line 1577.
 (pdftex.def)             Requested size: 108.12054pt x 162.4479pt.
-<images/pdf/Prime_Pulse_Simultaneous.pdf, id=1484, 187.40424pt x 281.56392pt>
+<images/pdf/Prime_Pulse_Simultaneous.pdf, id=1483, 187.40424pt x 281.56392pt>
 File: images/pdf/Prime_Pulse_Simultaneous.pdf Graphic file (type pdf)
 <use images/pdf/Prime_Pulse_Simultaneous.pdf>
-Package pdftex.def Info: images/pdf/Prime_Pulse_Simultaneous.pdf  used on input line 1548.
+Package pdftex.def Info: images/pdf/Prime_Pulse_Simultaneous.pdf  used on input line 1582.
 (pdftex.def)             Requested size: 108.12054pt x 162.4479pt.
- [56]
+ [57]
 File: images/pdf/Field_Rest_Frame.pdf Graphic file (type pdf)
 <use images/pdf/Field_Rest_Frame.pdf>
-Package pdftex.def Info: images/pdf/Field_Rest_Frame.pdf  used on input line 1561.
+Package pdftex.def Info: images/pdf/Field_Rest_Frame.pdf  used on input line 1595.
 (pdftex.def)             Requested size: 142.26378pt x 142.26382pt.
 File: images/pdf/Field_Moving_Frame_Doppler.pdf Graphic file (type pdf)
 <use images/pdf/Field_Moving_Frame_Doppler.pdf>
-Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler.pdf  used on input line 1566.
+Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler.pdf  used on input line 1600.
 (pdftex.def)             Requested size: 142.26378pt x 142.26382pt.
- [57 <./images/pdf/Rest_Pulse.pdf> <./images/pdf/Prime_Pulse.pdf> <./images/pdf/Prime_Pulse_Simultaneous.pdf>] [58]
-Chapter 5.
+ [58 <./images/pdf/Rest_Pulse.pdf> <./images/pdf/Prime_Pulse.pdf> <./images/pdf/Prime_Pulse_Simultaneous.pdf>] [59]
+Chapter 6.
 File: images/pdf/Field_Rest_Frame.pdf Graphic file (type pdf)
 <use images/pdf/Field_Rest_Frame.pdf>
-Package pdftex.def Info: images/pdf/Field_Rest_Frame.pdf  used on input line 1588.
+Package pdftex.def Info: images/pdf/Field_Rest_Frame.pdf  used on input line 1622.
 (pdftex.def)             Requested size: 142.26378pt x 142.26382pt.
 File: images/pdf/Field_Moving_Frame_Doppler.pdf Graphic file (type pdf)
 <use images/pdf/Field_Moving_Frame_Doppler.pdf>
-Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler.pdf  used on input line 1593.
+Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler.pdf  used on input line 1627.
 (pdftex.def)             Requested size: 142.26378pt x 142.26382pt.
-[59
+[60
 
 ]
 \pgf@layerbox@background=\box129
@@ -1263,31 +1267,24 @@ Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler.pdf  used on inpu
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[60] [61 <./tikz/Tikz_Surface_Element.pdf>] [62]
-Chapter 6.
-[63
+[61] [62 <./tikz/Tikz_Surface_Element.pdf>] [63]
+Chapter 7.
+[64
 
-] [64] [65] [66] [67] [68] [69]
-Overfull \hbox (15.69284pt too wide) in paragraph at lines 2090--2091
-[]\OT1/cmr/m/n/10 where $\OML/cmm/m/it/10 u[]$ \OT1/cmr/m/n/10 is the ve-loc-ity of the par-ti-cle in this []primed frame[] and $\OML/cmm/m/it/10 ^^M[] \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 =[]$\OT1/cmr/m/n/10 .
+]
+Overfull \hbox (12.2229pt too wide) in paragraph at lines 1887--1888
+[]\OT1/cmr/m/n/10 *** quan-tum me-chan-ics may help with rea-son-ing for parts of the energy-momentum
  []
 
+[65] [66] [67] [68]
+Chapter 8.
+[69
 
-Overfull \hbox (136.80379pt too wide) detected at line 2124
-[][][]\OML/cmm/m/it/10 A \OT1/cmr/m/n/10 = [] = [] \OMS/cmsy/m/n/10 ^^A []   $   [] ^^A [] [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^M[] [] \OT1/cmr/m/n/10 = [] = \OML/cmm/m/it/10 ^^M[] a []
- []
+]
+Chapter 9.
+) [70
 
-[70]
-Underfull \hbox (badness 10000) in paragraph at lines 2137--2138
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2139--2141
-
- []
-
-[71]) [72] [73
+] [71
 
 ] (Layout.aux)
  ***********
@@ -1299,23 +1296,23 @@ L3 programming layer <2024-01-04>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `Layout.out' has not changed.
-(rerunfilecheck)             Checksum: BBE306E2EE8DCFEDBA460992664777F2;6540.
+(rerunfilecheck)             Checksum: C04B34B786A7D4F9E3006120EF4AC180;6766.
 Package logreq Info: Writing requests to 'Layout.run.xml'.
 \openout1 = `Layout.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37332 strings out of 474486
- 773926 string characters out of 5743755
+ 37297 strings out of 474486
+ 773389 string characters out of 5743755
  1946528 words of memory out of 5000000
- 58741 multiletter control sequences out of 15000+600000
+ 58744 multiletter control sequences out of 15000+600000
  562517 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,23n,121p,1794b,1205s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Layout.pdf (75 pages, 6337540 bytes).
+Output written on Layout.pdf (73 pages, 6321812 bytes).
 PDF statistics:
- 1822 PDF objects out of 2073 (max. 8388607)
- 320 named destinations out of 1000 (max. 500000)
- 697 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1768 PDF objects out of 2073 (max. 8388607)
+ 282 named destinations out of 1000 (max. 500000)
+ 713 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2,37 +2,15 @@
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{Intro}
-
-meaningful and concise introduction:
-- [ ] overview of the subject matter that the book will cover
-- [ ] explain the importance of the topic
-- [ ] explain the approach the book will take
-- [ ] explain what the reader can expect to gain from the book
-- [ ] state objectives and key take aways
-- [ ] final sentence to allow this to flow into the first chapter
-
-
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
 \chapter{Conceptual Overview}
 
 meaningful introduction:
+- [ ] Initial sentence to allow this to flow from the previous chapter
+- [ ] brief overview of the chapter and how it is linked to other chapters
+- [ ] state objectives and key takeaways
+- [ ] Explain the importance of this chapter
 
-- [ ] Intial sentence to allow this to flow from previous chapter
-- [ ] brief overview of chapter and how it is linked to other chapters
-    - [ ] what is needed from previous chaoters for this one
-- [ ] state objectives and key take aways
-- [ ] explain importance of this chapter
-- [ ] make sure this flows from previous chapter
-
-Newtonian physics serves as an excellent approximation at low speeds, accurately predicting the behavior of objects in our everyday world, but it gives way to different effects as we approach the speed of light. It turns out that an \hyperlink{def-observer}{observer} moving at high speed relative to another \hyperlink{def-observer}{observer} would notice lengths contract, time run slower, and \hyperlink{def-event}{event}s that were \hyperlink{def-simultaneity}{simultaneous} to the other \hyperlink{def-observer}{observer}, no longer \hyperlink{def-simultaneity}{simultaneous} to them. There is however one thing that remains constant, the speed that light travels relative to each \hyperlink{def-observer}{observer} is the same. To understand how all this works, we have to redefine our understanding of time and space, with special relativity.
-
-Special relativity is vital for particle, nuclear, and astrophysics. It is needed for calculating the power output when it comes to nuclear fusion and fission or measuring the speed of galaxies and stars from the relativistic effects on the frequency of their emitted light. It is also needed for precision timekeeping for the likes of the fast-moving GPS satellites which need it for accurately calculating positions.
-
-To understand how special relativity works we will need to first look at our classical understanding of the world, and using the fact that light somehow always moves at constant speed relative to everything, we will see how we must change our laws of physics for this to be true. Which in turn will lead to many interesting consequences. We will start with an overview of all the main concepts, leaving the mathematical details and deeper insights for later chapters.
+To understand how special relativity works we will need to first look at our classical understanding of the world, and using the fact that light somehow always moves at constant speed relative to everything, we will see how we must change our laws of physics for this to be true. Which in turn will lead to many interesting consequences. We will start with an overview of all the main concepts, leaving the mathematical details and deeper insights for the next chapters.
 
 %Special relativity is used in calculating the decay rate of fast-moving particles, and in the physics of particle accelerators (such as finding out how fast a particle needs to move to get to the energy you need to create certain other particles or get certain reactions to occur in a particle accelerator, and the radiation given off by accelerating particles)
 
@@ -55,7 +33,7 @@ To understand how special relativity works we will need to first look at our cla
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Classical Addition of Velocities}\label{Section classical velocity addition}
+\section{Classical Addition of Velocities}\label{Sect: classical velocity addition}
 
 \begin{figure}[ht]
 	\figuretitle{...}
@@ -203,6 +181,8 @@ Let's imagine a simple clock, as shown in Figure \ref{fig: truck clock}, made of
 
 Also the closer the truck goes to the speed of light, the bigger the difference in how fast time flows relative to the truck's time (this can be seen as a longer horizontal stretch in the path taken for the light from the perspective of someone standing still on the road).
 
+*** if there were 2 trucks moving relative to eachother, no matter which trucks frame you are in you would observe that the other lorry's time/clock is moving slower
+
 % This section has so far assumed that the distances between the mirrors are not changed due to it being in perpendicular directions to the motion of the truck, which will be addressed in a later section
 
 %███████████████████████████████████████████████████████████████████
@@ -262,7 +242,7 @@ Say we have 3 cars that are equally distanced and at rest on the road, the middl
 Now if we do this a second time, with the middle car releasing another pulse, we have in the frame of the \hyperlink{def-observer}{observer}s in the cars: again the front and back drivers receiving the pulses at the same time meaning that they again will start accelerating simultaneously, and again after the acceleration there will be the same equal distance between the cars. But for the \hyperlink{def-observer}{observer} on the road, they see the back car receive the signal first as that car is moving towards the point where the light pulse was emitted and the front car is moving away from it. This would mean the back car would start accelerating first to get to the final constant velocity and get closer to the front car before the front car begins to accelerate, hence the cars end up closer together after all of this. The \hyperlink{def-observer}{observer}s in the car and the road \hyperlink{def-observer}{observer}, do not agree with what the distances between the cars are. This contraction of length between cars, in the frame in which the cars are moving, is called Lorentz \hyperlink{def-length-contraction}{length contraction}, which means that objects that are moving faster become shorter, and the distances between the objects also become shorter.
 
 %███████████████████████████████████████████████████████████████████
-\subsection{No Width Contraction} \label{width contraction}
+\subsection{No Width Contraction} \label{sect: width contraction}
 
 \begin{figure}[H]
 	\figuretitle{...}
@@ -470,7 +450,7 @@ meaningful conclusion:
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\input{Tex/Terms/Terms_ch1.tex}
+\input{Tex/Terms/Definitions.tex}
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -513,7 +493,7 @@ So let's see how the mathematics works for the classical coordinate system trans
 		%
 	\end{tikzpicture}
 	\caption{Diagram, of a \protect\hyperlink{def-Reference-frame}{reference frame} $<\!\!S\!>$ with its associated $(x,y,z)$ coordinate system at rest in this frame, it also shows a primed coordinate axis $(x', y', z')$ at time $t=t'$ from when the axis where overlapping, associated with another \protect\hyperlink{def-Inertial-reference-frame}{inertial reference frame}s moving at velocity $v$ in the z-axis, it shows an \protect\hyperlink{def-event}{event} with position vector $\vec{OE}$ in this frame and the vector $\vec{OO'}$ to this primed axis origin and the vector $\vec{O'E}$ which is the vector from this primed origin to the \protect\hyperlink{def-event}{event} in the shown frame.}
-	\label{simple Galilean transform derivation}
+	\label{fig: simple Galilean transform derivation}
 \end{figure}
 
 For frame $<\!\!S\!>$ we have its origin $O$ and an \hyperlink{def-event}{event} $E$ located at
@@ -651,7 +631,7 @@ So we take this outcome as the time taken between two \hyperlink{def-event}{even
 	\label{fig: length contraction math}
 \end{figure}
 
-If we have a system in its rest frame with light emitted in three directions from the center, one directly in front and the other two to the sides, with equally distanced mirrors in the three directions so that they will be reflected back and return to the center simultaneously. we require that in the moving frame they also all return to the center simultaneously, as multiple events that happen at a single point simultaneously in one frame, must happen simultaneously in all other frames. This time between the light being emitted and absorbed will be the dilated time from the previous section. To achieve this simultaneity in the return of the light to the bulb, the length of the full path of light from there center to the mirrors and back in each direction has to be the same (as its speed of light is the same in all directions and the return time has to be the same), we can work out the length of the sideways paths from the time dilation section, and this is the length the path needs to be in the vertical directions as well, the paths can only have this length if the system length is contracted when moving in the direction of movement. Note that there is no contraction in the perpendicular direction to the movement due to the paradox explained in chapter \ref{width contraction}.
+If we have a system in its rest frame with light emitted in three directions from the center, one directly in front and the other two to the sides, with equally distanced mirrors in the three directions so that they will be reflected back and return to the center simultaneously. we require that in the moving frame they also all return to the center simultaneously, as multiple events that happen at a single point simultaneously in one frame, must happen simultaneously in all other frames. This time between the light being emitted and absorbed will be the dilated time from the previous section. To achieve this simultaneity in the return of the light to the bulb, the length of the full path of light from there center to the mirrors and back in each direction has to be the same (as its speed of light is the same in all directions and the return time has to be the same), we can work out the length of the sideways paths from the time dilation section, and this is the length the path needs to be in the vertical directions as well, the paths can only have this length if the system length is contracted when moving in the direction of movement. Note that there is no contraction in the perpendicular direction to the movement due to the paradox explained in chapter \ref{sect: width contraction}.
 
 The pulse sent forward has a distance
 
@@ -987,7 +967,7 @@ at position $\mathbf{R}'$ and time $t'$
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\input{Tex/Terms/Terms_ch2}
+\input{Tex/Terms/Terms_ch3.tex}
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -1164,6 +1144,10 @@ This section outlines the steps that should be taken to change between two inert
 Firstly let's talk about going from the retarded coordinates of objects in one frame to a second frame. So if in your initial frame, you have an observer at rest at the origin, and different objects are moving around in this frame, if we take the retarded positions $\mathbf{R}_{ret}$ of the objects (i.e. as the observer sees them positioned due to the delay in the light from the object), and use the retarded times of these objects which is $t_{ret}=- \frac{|\mathbf{R}_{ret}|}{c}$ with the coordinate transform, then these retarded positions in the initial reference frame will be transformed to their retarded positions in the second frame at their retarded times within it. \newline
 
 Another option is that you want to go from the object's positions that have times that are synchronized with the observer to positions that are also synced with the observer in the primed frame. Then we need to start with all objects where they currently are at $t=0$ then the coordinate transformation transforms the positions to the primed positions in the second frame, but at desynchronized times, so that we will have to propagate these objects forward or back in time until they are all at the time of the observer at the origin which is $t'=0$ if the velocities of the objects are constant then you will only need to find their primed velocities, but if the initial frames velocities are not constant this is then a bit trickier, as you will have to worry about the transformations of acceleration to find its position at $t'=0$.
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\input{Tex/Terms/Terms_ch4.tex}
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -1393,7 +1377,7 @@ since wavelength is inversely proportional to the frequency, and this bunching u
 The propagation directions of the light as seen in figure \ref{fig: aberrated emitted light}, are transformed such that the angles between them and the Z-Axis, have the aberrational relationship
 
 \begin{equation}
-	\label{Cosine transform}
+	\label{eq: Cosine transform}
 	\mhl{
 		\cos\alpha' = \frac{\mathbf{c}'_z}{\|\mathbf{c}'\|} = \dfrac{\cos\alpha + \dfrac{u'_s}{c}}{1+\dfrac{u'_s}{c}\cos\alpha}.
 	}
@@ -1417,7 +1401,7 @@ This is the relativistic aberration formula \cite{einstein1905electrodynamics}, 
 	\label{fig: aberrated absorbed light}
 \end{figure}
 
-It can be seen from eq. \eqref{Cosine transform} that as a source's speed tends to the speed of light, $\cos\alpha'$ tends to $1$ as the top and bottom of the fraction cancel each other out, hence all emitted or absorbed light in the source's rest frame tends to the direction of the source's movement. But we also have to remember that if there was any time between the start and finishing of the emitting the light, this time would tend to infinity as well, basically any emitted light would remain in the vicinity of the source.
+It can be seen from eq. \eqref{eq: Cosine transform} that as a source's speed tends to the speed of light, $\cos\alpha'$ tends to $1$ as the top and bottom of the fraction cancel each other out, hence all emitted or absorbed light in the source's rest frame tends to the direction of the source's movement. But we also have to remember that if there was any time between the start and finishing of the emitting the light, this time would tend to infinity as well, basically any emitted light would remain in the vicinity of the source.
 
 
 
@@ -1482,7 +1466,7 @@ As visualized in figure (\ref{fig: Retarded field outward field transform}). If 
 Using the coordinated transform from eq. \eqref{eq: Lorentz transformation} on $\mathbf{R}$ with $t=0$ we get
 
 \begin{equation}
-	\label{displacement transform}
+	\label{eq: displacement transform}
 	\begin{aligned}
 		\mathbf{R}' & =
 		\begin{pmatrix}
@@ -1498,7 +1482,7 @@ Using the coordinated transform from eq. \eqref{eq: Lorentz transformation} on $
 the light pulse's velocity using the velocity transform from eq. \eqref{eq: velocity transform for light} in Cartesian coordinates and particles speed in the \hyperlink{def-Primed-Frame}{primed frame} with $v=-u_s$ is
 
 \begin{equation}
-	\label{light pulse velocity transform}
+	\label{eq: light pulse velocity transform}
 	\mathbf{c}' = \dfrac{c}{{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
 	\begin{pmatrix}
 		\frac{x}{\|\mathbf{R}\|}                                          \\
@@ -1606,9 +1590,7 @@ If we then did the same for multiple pulses to see how they \hyperlink{def-trans
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Variables...}
-
-...
+\input{Tex/Terms/Terms_ch5.tex}
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -1814,7 +1796,7 @@ encompasses a certain amount of the wavefront, this is the same amount of the wa
 	d\Omega' = \sin{\theta'} d\theta' d\phi'.
 \end{equation}
 
-We can calculate this element by differentiating both sides of eq. \eqref{Cosine transform} with respect to $\theta$ \cite{hogg1997special}, which gives
+We can calculate this element by differentiating both sides of eq. \eqref{eq: Cosine transform} with respect to $\theta$ \cite{hogg1997special}, which gives
 
 \begin{equation}
 	\sin{\theta'} d\theta' = \dfrac{1-\dfrac{u_s^2}{c^2}}{\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta = \dfrac{1}{{\gamma}^2\left(1+\dfrac{u_s}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta
@@ -1842,6 +1824,10 @@ The relative primed wavefront strength at a given angle is taken as being propor
 *** This flux doesnt take into account that the source keeps changing position, so at a change ds from position field is coming from a different retarded position of the source, so theres a rotation of direction and a different flux, theres gradients and rotations
 
 *** This flux transform is the change in flux in the emitted direction from the source only not what another particle would feel
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\input{Tex/Terms/Terms_ch6.tex}
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -1965,6 +1951,8 @@ This is the energy it has from its rest mass, if a particle a particle at rest w
 	}
 \end{equation}
 
+*** Outside the scope of SR, should we state that the mass is a measure of its energy content instead?
+
 %*** Momentum in special relativity is defined slightly differently, to ensure that the law of conservation of momentum holds true in all inertial frames, as required by the first postulate of relativity (it is still approximately unchanged at low velocities).
 
 %*** comment that ${\gamma}$ is unitless and hence does not affect the units of energy or momentum
@@ -1990,37 +1978,12 @@ nothing is derived here, just states what to do for a photon
 
 *** Imagine we have a particle at rest emitting light in all directions so that afterward it is still at rest, but in another frame we have we have this particle moving and the emitted light aberrated, but we still need the particle to remain at a constant velocity after emission. (maybe include a rotation in the impulse/effect of light in each direction on the particle of has)
 
-*** - if we have a ball in its \hyperlink{def-proper-frame}{rest frame} that emits a flash of light evenly in all directions, we will have the ball's energy decrease by the amount of energy of the emitted light, and it will remain at rest after due to the light being emitted evenly in all directions
+*** - if we have a ball in its \hyperlink{def-pr oper-frame}{rest frame} that emits a flash of light evenly in all directions, we will have the ball's energy decrease by the amount of energy of the emitted light, and it will remain at rest after due to the light being emitted evenly in all directions
 - its kinetic energy is zero in this frame
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Variables...}
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\chapter{Outro}
-
-meaningful conclusion:
-
-- [ ] summarise the key points that were discussed in the book
-- [ ] discuss implications and applications of these points
-- [ ] propose areas of expansion for this topic/ future research
-- [ ] what the reader can do next to expand knowledge (i.e. internal and external resources)
-
-*** this was meant as an introduction to physical concepts and mathematical tools
-*** What was left out of this book
-*** Things still to be added to this book
-*** Questions you may have
-*** General confusions
-***
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\chapter{resources}
-
-
+\input{Tex/Terms/Terms_ch7.tex}
 
 
 % %███████████████████████████████████████████████████████████████████

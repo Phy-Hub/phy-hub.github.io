@@ -8,7 +8,8 @@ root_to_js_diagrams = "visuals/JS/"
 
 root_to_pdf = "latex/Handbook of Special Relativity/Layout.pdf" ### not linked to python its in stucture file instead
 
-### from python
+
+### from python ###
 
 py_to_root = "../"
 
@@ -20,7 +21,7 @@ py_to_defs = py_to_latex_folder + "Tex/Terms/Terms_ch1.tex"
 
 py_to_terms = py_to_latex_folder + "Tex/Terms"
 
-py_to_tikz = py_to_latex_folder + "tikz/"
+py_to_tikz = py_to_latex_folder + "output/tikz/"
 
 py_to_svgs = py_to_latex_folder + "images/svg/"
 
@@ -30,7 +31,8 @@ py_to_output_page = py_to_root + "pages/special-relativity.html"
 
 py_to_js_diagrams = py_to_root + root_to_js_diagrams
 
-### from html
+
+### from html ###
 
 html_to_root = "../"
 

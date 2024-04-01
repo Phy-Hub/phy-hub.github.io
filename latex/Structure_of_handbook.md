@@ -4,6 +4,7 @@
 
 meaningful and concise introduction:
 
+- [ ] the reason for this book
 - [ ] overview of the subject matter that the book will cover
 - [ ] explain the importance of the topic
 - [ ] explain the approach the book will take

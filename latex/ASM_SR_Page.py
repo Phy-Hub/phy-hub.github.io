@@ -1,5 +1,7 @@
 ###
 #
+# use similar function to that of replace_eqref() to load figures from \ref's
+#
 #
 # need to be able to handle sections and that with *'s i.e. \section*{}
 #
@@ -189,7 +191,7 @@ def process_figure(figure_env):
         return '*** svg figure missing ***'
 
 ###
-def pdfs2svgs(input_directory, output_directory):
+def tikz2svg(input_directory, output_directory):
     # Get a list of all pdf files in the input directory
     pdf_files = [f for f in os.listdir(input_directory) if f.endswith('.pdf')]
 
@@ -415,7 +417,7 @@ replace(Latex_File,'>', r'\\gt ')
 
 # Call the function with your input and output file paths
 Figures_to_HTML(Latex_File)
-pdfs2svgs(path.py_to_tikz, path.py_to_svgs)
+tikz2svg(path.py_to_tikz, path.py_to_svgs)
 replace_blank_lines(Latex_File)
 replace(Latex_File, r'\$(.*?)\$', r'\(\1\)')
 replace(Latex_File, 'mhl', 'bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]')

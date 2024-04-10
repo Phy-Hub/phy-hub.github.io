@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            perspective: 1000px;
+            perspective-origin: 50% 50%;
+            overflow: hidden;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            transform-style: preserve-3d;
+            transform: rotateX(70deg);
+        }
+
+        .row, .column {
+            background: #000;
+        }
+
+        .row {
+            position: absolute;
+            width: 100%;
+            height: 1.5px;
+        }
+
+        .column {
+            position: absolute;
+            width: 1.5px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="grid" class="grid"></div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const gridSize = 30; // Change this to increase or decrease the number of gridlines
+
+        // Generate rows
+        for (let i = 0; i < gridSize; i++) {
+            const row = document.createElement('div');
+            row.className = 'row';
+            row.style.top = `${(i / gridSize) * 100}%`;
+            grid.appendChild(row);
+        }
+
+        // Generate columns
+        for (let i = 0; i < gridSize; i++) {
+            const column = document.createElement('div');
+            column.className = 'column';
+            column.style.left = `${(i / gridSize) * 100}%`;
+            grid.appendChild(column);
+        }
+    </script>
+</body>
+</html>

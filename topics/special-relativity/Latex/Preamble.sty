@@ -1,0 +1,72 @@
+\ProvidesPackage{Preamble}
+
+%█████████████████████████████████████████████████████
+%PAGE LAYOUT
+
+% Page Colour
+\usepackage{xcolor}
+\definecolor{Beige}{HTML}{ffe4c8}
+
+% Page Headers and Footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+% used in Contents spacing
+\usepackage{setspace}
+
+%
+\renewcommand{\baselinestretch}{1.5} % line spacing
+\renewcommand{\headrulewidth}{0.8pt} % header line
+\setlength{\parindent}{0pt}
+
+%
+\usepackage{multicol}
+
+%█████████████████████████████████████████████████████
+% MATH
+
+%\usepackage{mathtools}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+\usepackage[most]{tcolorbox}
+\newcommand\mhl[1]{\tcbhighmath{#1}}
+\tcbset{highlight math style={ colframe=black, colback=yellow!25!white }}
+
+%█████████████████████████████████████████████████████
+% PLOTS
+
+% Figures
+\usepackage{caption}
+\usepackage{subcaption}
+\newcommand*{\figuretitle}[1]{
+\centering
+\textbf{#1}
+\par\medskip
+}
+%\usepackage{wrapfig} % wrap text around fig
+
+% Images
+\usepackage{graphicx}
+%\graphicspath{ {./images} }
+
+% Diagrams
+\usepackage{float}
+\usepackage{asymptote} % \asy enviro
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=./output/tikz/]% define output directory
+%██████████████████████████████████████████████████████
+% Links
+
+%\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+%█████████████████████████████████████████████████████
+% Bib
+
+\usepackage{biblatex}
+\addbibresource{refs.bib}

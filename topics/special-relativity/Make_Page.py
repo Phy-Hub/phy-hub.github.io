@@ -1,7 +1,7 @@
 import subprocess
 
-# Get the path to the other Python file
-ASM_py = "../Scripts/ASM_Page.py"
+topic_folder_name = "special-relativity"
+pdf_name = "Handbook_of_Special_Relativity.pdf"
+Topic_Name = "Special Relativity"
 
-# Run the other Python file
-subprocess.run(["python", ASM_py])
+subprocess.run(["python", "../Scripts/ASM_Page.py", topic_folder_name, pdf_name, Topic_Name ])

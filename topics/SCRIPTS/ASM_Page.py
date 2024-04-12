@@ -8,10 +8,35 @@
 #
 #
 #
-import Paths as path
 import subprocess
 import re
 import os
+import sys
+
+### passed variables:
+topic_folder_name = sys.argv[1]
+pdf_name = sys.argv[2]
+Topic_Name = sys.argv[3]
+
+
+########################################################
+# Paths ################################################
+########################################################
+
+### from make_page.py ###
+py_to_page_structure = "../SCRIPTS/Structure_Page.html"
+py_to_output_page    = "../../pages/" + topic_folder_name + ".html"
+py_to_js_diagrams    = "JS_Animation/"
+py_to_main_tex       = "Latex/Tex/Main_Matter.tex"
+#py_to_defs          = "Latex/Tex/Terms/Definitions.tex"
+py_to_terms          = "Latex/Tex/Terms"
+py_to_tikz           = "Latex/output/tikz/"
+py_to_svgs           = "Latex/images/svg/"
+
+### from html page ###
+html_to_svgs = "../topics/" + topic_folder_name + "/" + py_to_svgs
+html_to_pdf  = "../topics/" + topic_folder_name + "/Latex/output/" + pdf_name
+
 
 ########################################################
 # Formatting ###########################################
@@ -185,8 +210,8 @@ def process_figure(figure_env):
     if include_graphics_match or tikzpicture_env_match:
         filename = include_graphics_match.group('filename') if include_graphics_match else tikzfilename_match.group('filename') if tikzfilename_match else 'missing'
         filename = os.path.splitext(os.path.basename(filename))[0] + '.svg'
-        if not os.path.isfile(path.py_to_svgs + f'{filename}'): print(" # \n # No file: " + path.py_to_svgs + f"{filename} \n #")
-        return f'<figure>\n<img src="' + path.html_to_svgs + f'{filename}" style="width:100%; height:auto;" loading="lazy">\n<figcaption>&nbsp;{caption_match.group("caption")[:-1]}</figcaption>\n</figure>'
+        if not os.path.isfile(py_to_svgs + f'{filename}'): print(" # \n # No file: " + py_to_svgs + f"{filename} \n #")
+        return f'<figure>\n<img src="' + html_to_svgs + f'{filename}" style="width:100%; height:auto;" loading="lazy">\n<figcaption>&nbsp;{caption_match.group("caption")[:-1]}</figcaption>\n</figure>'
     else:
         return '*** svg figure missing ***'
 
@@ -375,7 +400,9 @@ def make_page(input_file, output_file, toc_file, content_file, Defs_file, Math_T
             elif '[Insert Math Terms]' in line:
                 file.writelines(Math_Terms_lines)
             elif '[Insert PDF Link]' in line:
-                file.write('<a href="\\latex\\' + path.html_to_pdf + 'Handbook of Special Relativity\\Layout.pdf" style="padding-top: 5px;"> <b> ↓ PDF </b> </a> <br>')
+                file.write('<a href="' + html_to_pdf + '" style="padding-top: 5px;"> <b> ↓ PDF </b> </a> <br>')
+            elif '[Insert Topic Name]' in line:
+                file.write(Topic_Name)
             else:
                 file.write(line)
 
@@ -409,7 +436,7 @@ def checks(html):
 ###################################################################################
 Latex_File = 'Latex_content.txt'
 
-with open(path.py_to_main_tex, 'rb') as src, open(Latex_File, 'wb') as dst:
+with open(py_to_main_tex, 'rb') as src, open(Latex_File, 'wb') as dst:
     dst.write(src.read())
 
 # to do first to avoid conflicts:
@@ -419,7 +446,7 @@ replace(Latex_File,'>', r'\\gt ')
 
 # Call the function with your input and output file paths
 Figures_to_HTML(Latex_File)
-tikz2svg(path.py_to_tikz, path.py_to_svgs)
+tikz2svg(py_to_tikz, py_to_svgs)
 replace_blank_lines(Latex_File)
 replace(Latex_File, r'\$(.*?)\$', r'\(\1\)')
 replace(Latex_File, 'mhl', 'bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]')
@@ -435,7 +462,7 @@ replace(Latex_File, r'\\mainmatter', '')
 #replace(Latex_File,r'\\label\{.*?\}', '')
 replace(Latex_File,r'\\input\{.*?\}', '')
 colorbox_replace(Latex_File)
-insert_JS(Latex_File, path.py_to_js_diagrams)
+insert_JS(Latex_File, py_to_js_diagrams)
 
 wrap_content(Latex_File)
 
@@ -451,12 +478,12 @@ main_content = replace_eqref(main_content)
 
 # Call the function with your HTML file
 toc = create_toc(main_content) # needs to take final html
-vars = create_math_terms(path.py_to_terms)
-defs = create_terms(path.py_to_terms)
+vars = create_math_terms(py_to_terms)
+defs = create_terms(py_to_terms)
 
-make_page(path.py_to_page_structure, path.py_to_output_page, toc, main_content, defs, vars)
+make_page(py_to_page_structure, py_to_output_page, toc, main_content, defs, vars)
 
-checks(path.py_to_output_page)
+checks(py_to_output_page)
 
 os.remove(Latex_File)
 

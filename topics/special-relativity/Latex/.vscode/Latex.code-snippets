@@ -1,0 +1,50 @@
+{
+	// Place your Latex workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+
+	"figure":
+	{
+		"prefix": "latex_figure",
+		"body":
+		[
+		"\\begin{figure}[H]",
+		"    \\figuretitle{${1:title}}",
+		"    \\centering",
+		"    \\includegraphics[width=0.9\\textwidth]{images/pdf/${2:filename}}",
+		"    \\caption{Diagram ${3:caption}.}",
+		"    \\label{fig: ${4:label}}",
+		"\\end{figure}"
+		],
+	},
+
+	"figures":
+	{
+		"prefix": "latex_figures_two",
+		"body":
+		[
+		"\\begin{figure}[H]",
+		"    \\figuretitle{$1}",
+		"    \\centering",
+		"    \\begin{subfigure}{0.9\\textwidth}",
+		"        \\centering",
+		"        \\includegraphics[width=\\textwidth]{images/pdf/$1}",
+		"        \\caption{$2.}",
+		"        \\label{fig: $3}",
+		"    \\end{subfigure}",
+		"    \\begin{subfigure}{0.9\\textwidth}",
+		"        \\centering",
+		"        \\includegraphics[width=\\textwidth]{images/pdf/$4}",
+		"        \\caption{$5.}",
+		"        \\label{fig: $6}",
+		"    \\end{subfigure}",
+		"    \\caption{Diagram $7.}",
+		"    \\label{fig: $8}",
+		"\\end{figure}"
+		],
+	}
+}

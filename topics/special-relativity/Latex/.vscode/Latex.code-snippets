@@ -9,42 +9,228 @@
 
 	"figure":
 	{
-		"prefix": "latex_figure",
+		"prefix": "l.figure",
 		"body":
 		[
 		"\\begin{figure}[H]",
-		"    \\figuretitle{${1:title}}",
-		"    \\centering",
-		"    \\includegraphics[width=0.9\\textwidth]{images/pdf/${2:filename}}",
-		"    \\caption{Diagram ${3:caption}.}",
-		"    \\label{fig: ${4:label}}",
+		"\t\\figuretitle{${1:title}}",
+		"\t\\centering",
+		"\t\\includegraphics[width=0.9\\textwidth]{images/pdf/${2:filename}}",
+		"\t\\caption{Diagram ${3:caption}.}",
+		"\t\\label{fig: ${1:title}}",
 		"\\end{figure}"
 		],
 	},
 
-	"figures":
+	"figures_2":
 	{
-		"prefix": "latex_figures_two",
+		"prefix": "l.figures_two",
 		"body":
 		[
 		"\\begin{figure}[H]",
-		"    \\figuretitle{$1}",
-		"    \\centering",
-		"    \\begin{subfigure}{0.9\\textwidth}",
-		"        \\centering",
-		"        \\includegraphics[width=\\textwidth]{images/pdf/$1}",
-		"        \\caption{$2.}",
-		"        \\label{fig: $3}",
-		"    \\end{subfigure}",
-		"    \\begin{subfigure}{0.9\\textwidth}",
-		"        \\centering",
-		"        \\includegraphics[width=\\textwidth]{images/pdf/$4}",
-		"        \\caption{$5.}",
-		"        \\label{fig: $6}",
-		"    \\end{subfigure}",
-		"    \\caption{Diagram $7.}",
-		"    \\label{fig: $8}",
+		"\t\\figuretitle{${1:title}}",
+		"\t\\centering",
+		"\t\\begin{subfigure}{0.45\\textwidth}",
+		"\t\t\\centering",
+		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${2:first figure name}}",
+		"\t\t\\caption{${3: first sub caption}}",
+		"\t\t\\label{subfig_1: ${1:title}}",
+		"\t\\end{subfigure}",
+		"\t\\begin{subfigure}{0.45\\textwidth}",
+		"\t\t\\centering",
+		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${4: second figure name}}",
+		"\t\t\\caption{${5:sub caption}}",
+		"\t\t\\label{subfig_2: ${1:title}}",
+		"\t\\end{subfigure}",
+		"\t\\caption{Diagram ${6:main caption}.}",
+		"\t\\label{fig: ${1:title}}",
 		"\\end{figure}"
 		],
-	}
+	},
+
+	"figures_2_column":
+	{
+		"prefix": "l.figures_two_column",
+		"body":
+		[
+		"\\begin{figure}[H]",
+		"\t\\figuretitle{${1:title}}",
+		"\t\\centering",
+		"\t\\begin{subfigure}{0.9\\textwidth}",
+		"\t\t\\centering",
+		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${2:first figure name}}",
+		"\t\t\\caption{${3: first sub caption}}",
+		"\t\t\\label{subfig_1: ${1:title}}",
+		"\t\\end{subfigure}",
+		"\t\\begin{subfigure}{0.9\\textwidth}",
+		"\t\t\\centering",
+		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${4: second figure name}}",
+		"\t\t\\caption{${5:sub caption}}",
+		"\t\t\\label{subfig_2: ${1:title}}",
+		"\t\\end{subfigure}",
+		"\t\\caption{Diagram ${6:main caption}.}",
+		"\t\\label{fig: ${1:title}}",
+		"\\end{figure}"
+		],
+	},
+
+	"figures_3":
+	{
+		"prefix": "l.figures_three",
+		"body":
+		[
+		"\\begin{figure}[H]",
+		"\t\\figuretitle{${1:title}}",
+		"\t\\centering",
+		"\t\\begin{subfigure}{0.32\\textwidth}",
+		"\t\t\\centering",
+		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${2:first figure name}}",
+		"\t\t\\caption{${3: first sub caption}}",
+		"\t\t\\label{subfig_1: ${1:title}}",
+		"\t\\end{subfigure}",
+		"\t\\begin{subfigure}{0.32\\textwidth}",
+		"\t\t\\centering",
+		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${4: second figure name}}",
+		"\t\t\\caption{${5:sub caption}}",
+		"\t\t\\label{subfig_2: ${1:title}}",
+		"\t\\end{subfigure}",
+		"\t\\begin{subfigure}{0.32\\textwidth}",
+		"\t\t\\centering",
+		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${6: third figure name}}",
+		"\t\t\\caption{${7:sub caption}}",
+		"\t\t\\label{subfig_2: ${1:title}}",
+		"\t\\end{subfigure}",
+		"\t\\caption{Diagram ${8:main caption}.}",
+		"\t\\label{fig: ${1:title}}",
+		"\\end{figure}"
+		],
+	},
+
+	"latex_chapter": {
+		"prefix": "l.chapter",
+		"body":
+		[
+		"%███████████████████████████████████████████████████████████████████",
+		"%███████████████████████████████████████████████████████████████████",
+		"%███████████████████████████████████████████████████████████████████",
+		"\\chapter{$1}\\label{Ch:$1}"
+		],
+		"description": "description for latex_chapter"
+	},
+
+	"latex_section": {
+		"prefix": "l.section",
+		"body":
+		[
+		"%███████████████████████████████████████████████████████████████████",
+		"%███████████████████████████████████████████████████████████████████",
+		"\\section{$1}\\label{Sect:$1}"
+		],
+	},
+
+	"latex_subsection": {
+		"prefix": "l.subsection",
+		"body":
+		[
+		"%███████████████████████████████████████████████████████████████████",
+		"\\subsection{$1}\\label{Subsect:$1}"
+		],
+	},
+
+	"latex_subsubsection": {
+		"prefix": "l.subsubsection",
+		"body":
+		[
+		"%███",
+		"\\subsubsection{$1}\\label{Subsubsect:$1}"
+		],
+	},
+
+	"latex_Java_insert": {
+		"prefix": "l.Java_insert",
+		"body":
+		[
+		"\\iffalse javascript{${1:JS animation filename} \\fi"
+		],
+	},
+
+	"latex_hyperlink": {
+		"prefix": "l.hyperlink",
+		"body":
+		[
+		"\\hyperlink{def-${1:defintion ref name}}{${2: phrase}"
+		],
+	},
+
+	"latex_equation_labeled": {
+		"prefix": "l.equation_labeled",
+		"body":
+		[
+		"\\begin{equation}",
+		"\\label{${2:name of equation}}",
+		"${1:equation}",
+		"\\end{equation}"
+		],
+	},
+
+	"latex_eq_aligned": {
+		"prefix": "l.eq_aligned",
+		"body":
+		[
+		"\\begin{aligned}",
+		"\t${1:lhs } &= ${2:rhs} \\\\",
+		"\t&= ${3:line 2} ",
+		"\\end{aligned}"
+		],
+	},
+
+	"latex_eq_brackets": {
+		"prefix": "l.eq_brackets",
+		"body":
+		[
+		"\\left( $1 \\right)"
+		],
+	},
+
+	"latex_eq_matrix": {
+		"prefix": "l.eq_matrix",
+		"body":
+		[
+		"\\begin{pmatrix}",
+		"\t${1: element 1 }  \\\\",
+		"\t${2: element 2 }  \\\\",
+		"\t${3: element 3 }  \\\\",
+		"\\end{pmatrix}"
+		],
+	},
+
+	"latex_eq_highlight": {
+		"prefix": "l.eq_highlight",
+		"body":
+		[
+		"\\mhl{",
+		"\t$1",
+		"}"
+		],
+	},
+
+	"latex_definition": {
+		"prefix": "l.definition",
+		"body":
+		[
+		"% {${1:Term Capitalised}} {...alternative term...}",
+		"\\noindent \\hypertarget{def-${2: ref name}}{\\textbf{${1:Term Capitalised}:}}",
+		"${3:the definition}."
+		],
+	},
+
+	"latex_definition_variable": {
+		"prefix": "l.definition_variable",
+		"body":
+		[
+		"\\noindent ${${1:variable}}$ \\textbf{:}",
+		"${2:the definition}."
+		],
+	},
+
 }

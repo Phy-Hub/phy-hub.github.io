@@ -60,13 +60,13 @@
 		"\t\t\\centering",
 		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${2:first figure name}}",
 		"\t\t\\caption{${3: first sub caption}}",
-		"\t\t\\label{subfig_1: ${1:title}}",
+		"\t\t\\label{fig: ${1:title} subfig_1}",
 		"\t\\end{subfigure}",
 		"\t\\begin{subfigure}{0.9\\textwidth}",
 		"\t\t\\centering",
 		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${4: second figure name}}",
 		"\t\t\\caption{${5:sub caption}}",
-		"\t\t\\label{subfig_2: ${1:title}}",
+		"\t\t\\label{fig: ${1:title} subfig_2}",
 		"\t\\end{subfigure}",
 		"\t\\caption{Diagram ${6:main caption}.}",
 		"\t\\label{fig: ${1:title}}",
@@ -86,19 +86,19 @@
 		"\t\t\\centering",
 		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${2:first figure name}}",
 		"\t\t\\caption{${3: first sub caption}}",
-		"\t\t\\label{subfig_1: ${1:title}}",
+		"\t\t\\label{fig: ${1:title} subfig_1}",
 		"\t\\end{subfigure}",
 		"\t\\begin{subfigure}{0.32\\textwidth}",
 		"\t\t\\centering",
 		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${4: second figure name}}",
 		"\t\t\\caption{${5:sub caption}}",
-		"\t\t\\label{subfig_2: ${1:title}}",
+		"\t\t\\label{fig: ${1:title}} subfig_2",
 		"\t\\end{subfigure}",
 		"\t\\begin{subfigure}{0.32\\textwidth}",
 		"\t\t\\centering",
 		"\t\t\\includegraphics[width=\\textwidth]{images/pdf/${6: third figure name}}",
 		"\t\t\\caption{${7:sub caption}}",
-		"\t\t\\label{subfig_2: ${1:title}}",
+		"\t\t\\label{fig: ${1:title}} subfig_3",
 		"\t\\end{subfigure}",
 		"\t\\caption{Diagram ${8:main caption}.}",
 		"\t\\label{fig: ${1:title}}",
@@ -113,7 +113,7 @@
 		"%███████████████████████████████████████████████████████████████████",
 		"%███████████████████████████████████████████████████████████████████",
 		"%███████████████████████████████████████████████████████████████████",
-		"\\chapter{$1}\\label{Ch:$1}"
+		"\\chapter{$1}\\label{Ch: $1}"
 		],
 		"description": "description for latex_chapter"
 	},
@@ -124,7 +124,7 @@
 		[
 		"%███████████████████████████████████████████████████████████████████",
 		"%███████████████████████████████████████████████████████████████████",
-		"\\section{$1}\\label{Sect:$1}"
+		"\\section{$1}\\label{Sect: $1}"
 		],
 	},
 
@@ -133,7 +133,7 @@
 		"body":
 		[
 		"%███████████████████████████████████████████████████████████████████",
-		"\\subsection{$1}\\label{Subsect:$1}"
+		"\\subsection{$1}\\label{Subsect: $1}"
 		],
 	},
 
@@ -142,7 +142,7 @@
 		"body":
 		[
 		"%███",
-		"\\subsubsection{$1}\\label{Subsubsect:$1}"
+		"\\subsubsection{$1}\\label{Subsubsect: $1}"
 		],
 	},
 
@@ -167,7 +167,7 @@
 		"body":
 		[
 		"\\begin{equation}",
-		"\\label{${2:name of equation}}",
+		"\\label{eq: ${2:name of equation}}",
 		"${1:equation}",
 		"\\end{equation}"
 		],

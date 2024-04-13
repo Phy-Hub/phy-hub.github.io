@@ -233,4 +233,28 @@
 		],
 	},
 
+	"latex_reference": {
+		"prefix": "l.ref",
+		"body":
+		[
+		"figure (\\ref{${1:referenced label name}})"
+		],
+	},
+
+	"latex_reference_equation": {
+		"prefix": "l.ref_equation",
+		"body":
+		[
+		"equation (\\eqref{${eq: 1:referenced equation's label name}})"
+		],
+	},
+
+	"latex_eq_label": {
+		"prefix": "l.equation_labeled",
+		"body":
+		[
+		"\\label{eq: ${1:equation name}}",
+		],
+	},
+
 }

@@ -12,13 +12,15 @@
 		"prefix": "l.figure",
 		"body":
 		[
-		"\\begin{figure}[H]",
+		"%█████████████",
+        "\\begin{figure}[H]",
 		"\t\\figuretitle{${1:title}}",
 		"\t\\centering",
 		"\t\\includegraphics[width=0.9\\textwidth]{images/pdf/${2:filename}}",
 		"\t\\caption{Diagram ${3:caption}.}",
 		"\t\\label{fig: ${1:title}}",
-		"\\end{figure}"
+		"\\end{figure}",
+		"%███████████"
 		],
 	},
 
@@ -27,7 +29,8 @@
 		"prefix": "l.figures_two",
 		"body":
 		[
-		"\\begin{figure}[H]",
+		"%█████████████",
+        "\\begin{figure}[H]",
 		"\t\\figuretitle{${1:title}}",
 		"\t\\centering",
 		"\t\\begin{subfigure}{0.45\\textwidth}",
@@ -44,7 +47,8 @@
 		"\t\\end{subfigure}",
 		"\t\\caption{Diagram ${6:main caption}.}",
 		"\t\\label{fig: ${1:title}}",
-		"\\end{figure}"
+		"\\end{figure}",
+		"%███████████"
 		],
 	},
 
@@ -53,7 +57,8 @@
 		"prefix": "l.figures_two_column",
 		"body":
 		[
-		"\\begin{figure}[H]",
+		"%█████████████",
+        "\\begin{figure}[H]",
 		"\t\\figuretitle{${1:title}}",
 		"\t\\centering",
 		"\t\\begin{subfigure}{0.9\\textwidth}",
@@ -70,7 +75,8 @@
 		"\t\\end{subfigure}",
 		"\t\\caption{Diagram ${6:main caption}.}",
 		"\t\\label{fig: ${1:title}}",
-		"\\end{figure}"
+		"\\end{figure}",
+		"%███████████"
 		],
 	},
 
@@ -79,7 +85,9 @@
 		"prefix": "l.figures_three",
 		"body":
 		[
-		"\\begin{figure}[H]",
+		"%███",
+		"%█████████████"
+        "\\begin{figure}[H]",
 		"\t\\figuretitle{${1:title}}",
 		"\t\\centering",
 		"\t\\begin{subfigure}{0.32\\textwidth}",
@@ -102,7 +110,8 @@
 		"\t\\end{subfigure}",
 		"\t\\caption{Diagram ${8:main caption}.}",
 		"\t\\label{fig: ${1:title}}",
-		"\\end{figure}"
+		"\\end{figure}",
+		"%███████████"
 		],
 	},
 
@@ -150,7 +159,9 @@
 		"prefix": "l.Java_insert",
 		"body":
 		[
-		"\\iffalse javascript{${1:JS animation filename} \\fi"
+		"%█████████████████████████████████████",
+		"\\iffalse javascript{${1:JS animation filename} \\fi %█",
+		"%█████████████████████████████████████"
 		],
 	},
 

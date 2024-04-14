@@ -63,7 +63,7 @@
 
 <script>
   window.onload = function() {
-    fetch('pages/media/Logo/Interference_Pattern.svg')
+    fetch('/pages/media/Logo/Interference_Pattern.svg')
       .then(response => response.text())
       .then(data => {
         document.getElementById('mySVG').innerHTML = data;

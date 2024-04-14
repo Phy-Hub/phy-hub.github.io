@@ -7,9 +7,11 @@
   <meta name="google-site-verification" content="Xidi1F0Zp9k2tF81d2sscPGILkqNLTNKEufMyZ7dWy8" />
 
   <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <style> @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap'); </style>
-
   <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+    @import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
+
     .banner {
       display: flex;
       justify-content: center;
@@ -22,13 +24,20 @@
       align-items: center;
     }
 
-    a { color: black};
+    a {
+      color: black;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: 500;
+      text-decoration: none;
+    };
+    a:hover { text-decoration: underline;};
+
   </style>
 
 </head>
 
 
-<body  style="background-color:#ffe4c8; overflow-x: hidden;">
+<body  style="background-color:#ffe4c8; overflow-x: hidden; margin: 0;">
 
   <div style="position: fixed; left: calc(-600px + 50vw); margin-top: 50px;" class="banner">
     <div>
@@ -56,7 +65,7 @@
     <div style="text-align: center; font-size: 4vw;"><a href="pages/topics.html">Topics</a></div>
     <div style="text-align: center; font-size: 4vw;"><a href="pages/resources.html">Resources</a></div>
     <div style="text-align: center; font-size: 4vw;"><a href="pages/about.html">About</a></div>
-    <div style="text-align: center; font-size: 4vw;"><a href="pages/about.html">The Plan</a></div>
+    <div style="text-align: center; font-size: 4vw;"><a href="pages/about.html">Site Plan</a></div>
   </div>
 
 </body>

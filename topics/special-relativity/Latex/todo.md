@@ -1,5 +1,7 @@
 # Handbook Layout
 
+*** check for what needed information Have I left out, of each bit of information given
+
 ### Book Intro:
 
 meaningful and concise introduction:
@@ -268,6 +270,7 @@ meaningful conclusion:
 - [ ] the equation for motion in the primed frame for arbitrary motion in proper frame
 - [ ] example questions and answers
 - [ ] abstract views of SR (i.e. 4d spacetime and minkoski diagrams)
+- [ ] background math needed
 
 ### resources list:
 

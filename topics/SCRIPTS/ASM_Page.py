@@ -1,6 +1,6 @@
 ###
 #
-# use similar function to that of replace_eqref() to load figures from \ref's
+# use similar function to that of replace_refs() to load figures from ref's
 #
 #
 # need to be able to handle sections and that with *'s i.e. \section*{}
@@ -206,12 +206,18 @@ def process_figure(figure_env):
     tikzpicture_env_match = re.search(r'(\\begin{tikzpicture}.*?\\end{tikzpicture})', figure_env, re.DOTALL)
     tikzfilename_match = re.search(r'\\tikzsetnextfilename\{(?P<filename>.*?)\}', figure_env)
     caption_match = re.search(r'\\caption\{(?P<caption>.*\})', figure_env)
+    label_match = re.search(r'\\label\{(?P<label>.*\})', figure_env)
 
     if include_graphics_match or tikzpicture_env_match:
         filename = include_graphics_match.group('filename') if include_graphics_match else tikzfilename_match.group('filename') if tikzfilename_match else 'missing'
         filename = os.path.splitext(os.path.basename(filename))[0] + '.svg'
         if not os.path.isfile(py_to_svgs + f'{filename}'): print(" # \n # No file: " + py_to_svgs + f"{filename} \n #")
-        return f'<figure>\n<img src="' + html_to_svgs + f'{filename}" style="width:100%; height:auto;" loading="lazy">\n<figcaption>&nbsp;{caption_match.group("caption")[:-1]}</figcaption>\n</figure>'
+        if label_match:
+            fig_id =  f' id="{label_match.group("label")[:-1]}"'
+        else:
+            fig_id = ''
+        return f'<figure' + fig_id +'>\n<img src="' + html_to_svgs + f'{filename}" style="width:100%; height:auto;" loading="lazy">\n<figcaption>&nbsp;{caption_match.group("caption")[:-1]}</figcaption>\n</figure>'
+
     else:
         return '*** svg figure missing ***'
 
@@ -367,18 +373,24 @@ def math_to_HTML(content):
     return content
 
 
-def replace_eqref(input_string):
+def replace_refs(input_string):
     # This pattern matches \eqref{} and captures the content inside the brackets
-    pattern = r'\\eqref\{(.*?)\}'
+    pattern_ref_eq = r'\\eqref\{(.*?)\}'
+    pattern_ref_fig = r'\\ref\{(fig:.*?)\}'
 
     # This function will be used to replace each match
-    def replacer(match):
+    def replacer_ref_eq(match):
         id = match.group(1)
         # Replace with a span element that shows a div with the matched id on hover
-        return f'<span class="eqref" onmouseover="copyContent(\'{id}\',\'equation_hover\');" onmouseout="deleteContent(\'equation_hover\');">\\eqref{{{id}}}</span>'
+        return f'<span class="ref_eq" onmouseover="copyContent(\'{id}\',\'equation_hover\');" onmouseout="deleteContent(\'equation_hover\');">\\eqref{{{id}}}</span>'
+    def replacer_ref_fig(match):
+        id = match.group(1)
+        # Replace with a span element that shows a div with the matched id on hover
+        return f'<span class="ref_fig" onmouseover="copyContent(\'{id}\',\'fig_hover\');" onmouseout="deleteContent(\'fig_hover\');">\\ref{{{id}}}</span>'
 
     # Use re.sub to replace each match in the input string
-    output_string = re.sub(pattern, replacer, input_string)
+    output_string = re.sub(pattern_ref_eq , replacer_ref_eq, input_string)
+    output_string = re.sub(pattern_ref_fig, replacer_ref_fig, output_string)
 
     return output_string
 
@@ -474,7 +486,7 @@ with open(Latex_File, 'r') as file:
 # Convert to HTML headings
 main_content = replace_headings(latex_content)
 main_content = math_to_HTML(main_content)
-main_content = replace_eqref(main_content)
+main_content = replace_refs(main_content)
 
 # Call the function with your HTML file
 toc = create_toc(main_content) # needs to take final html

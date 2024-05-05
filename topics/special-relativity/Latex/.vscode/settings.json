@@ -40,5 +40,20 @@
 
     "workbench.colorTheme": "Solarized Light",
 
+    "highlight.regexes": {
+
+        "(.*\\n\\n\\n.*)": {"backgroundColor": "#ff9d00"},
+        "(figure \\\\ref)": {"backgroundColor": "#ff9d00"},
+        "(section \\\\ref)": {"backgroundColor": "#ff9d00"},
+        "(chapter \\\\ref)": {"backgroundColor": "#ff9d00"},
+        "(equation \\\\eqref)": {"backgroundColor": "#ff9d00"},
+        "(equation \\\\ref)": {"backgroundColor": "#ff9d00"},
+        "(equation \\(\\\\eqref)": {"backgroundColor": "#ff9d00"},
+        "(?<!^%.*)(?<!\\\\caption.*)(^.*\\.\\s.*)": {"backgroundColor": "#ff9d00"},
+
+    }
+
+
+
 
 }

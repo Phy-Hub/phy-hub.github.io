@@ -1,0 +1,18 @@
+%%% regex to help with latex in Visual Studio code
+
+% for specifically breaking up sentences with full stops into new Lines (avoids commented lines or captions)
+    find: "(?<!^%.*)(?<!\\caption.*)(\.\s)"
+    replace: ".\n"
+    %% Check if this affects any other command environments
+
+% for figure formatting
+    find: "Figure \\ref\{(.*?)\}"
+    replace: "Figure (\\ref{$1})"
+
+% find unpaired brackets {} on a single line
+    find: "^(?!.*\{[^}]*(?:[^\{][^}]*\{[^}]*)*\})(?=[^{}]*\})"
+    %% this also finds \mlh{ } and \scalebox{} that usually have brakets on different lines
+
+$ sequential empty lines
+    find: "\n\n\n"
+    replace: "\n\n"

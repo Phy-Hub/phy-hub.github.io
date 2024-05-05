@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  11 APR 2024 02:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  1 MAY 2024 21:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1200,10 +1200,16 @@ Package biblatex Info: Reference section=0 on input line 3.
 Package biblatex Info: Reference segment=0 on input line 3.
 (Tex/toc.tex
 No file ./output/tikz/Tikz_Spherical_Polar_Coordinates.toc.
-) (Tex/Front_Matter.tex) (Tex/Main_Matter.tex
+) (Tex/Front_Matter.tex
+Overfull \hbox (2.13957pt too wide) in paragraph at lines 13--14
+[]\OT1/cmr/m/n/10 This hand-book is meant to of-fer an in-tu-itive, vi-sual, an
+d com-pre-hen-sive overview.
+ []
+
+) (Tex/Main_Matter.tex
 Chapter 1.
 
-LaTeX Warning: Reference `fig: truck cannonball' on page 1 undefined on input l
+LaTeX Warning: Reference `fig: train cannonball' on page 1 undefined on input l
 ine 15.
 
 The command '\includegraphics [width=8cm]{images/pdf/lorry_cannonball.pdf}' has
@@ -1213,20 +1219,20 @@ mes.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disab
 le this.
 
 LaTeX Warning: Reference `fig: spring boxes' on page 3 undefined on input line 
-41.
+45.
 
 The command '\includegraphics [width=0.9\textwidth ]{images/pdf/Spring_boxes.pd
 f}' has been optimized away. Use '/tikz/external/optimize=false' to disable thi
 s.
 
 LaTeX Warning: Reference `fig: 3d conveyor belt' on page 3 undefined on input l
-ine 59.
+ine 65.
 
 The command '\includegraphics [width=0.9\textwidth ]{images/pdf/Conveyor_belt_3
 d.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable
  this.
 
-LaTeX Warning: Reference `fig: treadmill' on page 4 undefined on input line 69.
+LaTeX Warning: Reference `fig: treadmill' on page 4 undefined on input line 77.
 
 
 The command '\includegraphics [width=\textwidth ]{images/pdf/rats_moving.pdf}' 
@@ -1235,75 +1241,94 @@ The command '\includegraphics [width=\textwidth ]{images/pdf/rats_platform_fram
 e.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable
  this.
 
-LaTeX Warning: Reference `fig: treadmill' on page 4 undefined on input line 93.
+LaTeX Warning: Reference `fig: treadmill' on page 4 undefined on input line 103
+.
 
 
-
-LaTeX Warning: Reference `fig: Aether' on page 5 undefined on input line 99.
+LaTeX Warning: Reference `fig: Aether' on page 5 undefined on input line 111.
 
 The command '\includegraphics [width=0.9\textwidth ]{images/pdf/earth_and_aethe
 r.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable
  this.
 
 LaTeX Warning: Reference `fig: Michelson_morley' on page 5 undefined on input l
-ine 109.
+ine 123.
 
 
-LaTeX Warning: Citation 'EtherExperiment' on page 5 undefined on input line 109
+LaTeX Warning: Citation 'EtherExperiment' on page 5 undefined on input line 123
 .
 
 The command '\includegraphics [width=8cm]{images/pdf/Michelson_morley.pdf}' has
  been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig: truck torch' on page 6 undefined on input line 1
-26.
+LaTeX Warning: Reference `fig: train torch' on page 6 undefined on input line 1
+42.
 
 
-LaTeX Warning: Reference `fig: truck cannonball' on page 7 undefined on input l
-ine 130.
+LaTeX Warning: Reference `fig: train cannonball' on page 7 undefined on input l
+ine 146.
 
 The command '\includegraphics [width=8cm]{images/pdf/lorry_torch.pdf}' has been
  optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig: truck cannonball' on page 7 undefined on input l
-ine 140.
+LaTeX Warning: Reference `fig: train cannonball' on page 7 undefined on input l
+ine 158.
 
 
-LaTeX Warning: Reference `fig: truck clock' on page 8 undefined on input line 1
-50.
+LaTeX Warning: Reference `fig: train clock' on page 8 undefined on input line 1
+68.
 
 
 LaTeX Warning: Reference `fig: width contraction' on page 8 undefined on input 
-line 152.
+line 170.
 
 The command '\includegraphics [width=8cm]{images/pdf/Cannon_Balls.pdf}' has bee
 n optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig: truck clock' on page 9 undefined on input line 1
-66.
+LaTeX Warning: Reference `fig: train clock' on page 9 undefined on input line 1
+86.
 
 The command '\includegraphics [width=8cm]{images/pdf/lorry_clock.pdf}' has been
  optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig: truck simultaneity' on page 10 undefined on inpu
-t line 185.
+LaTeX Warning: Reference `fig: train simultaneity' on page 10 undefined on inpu
+t line 207.
 
 The command '\includegraphics [width=8cm]{images/pdf/lorry_simul.pdf}' has been
  optimized away. Use '/tikz/external/optimize=false' to disable this.
+
+LaTeX Warning: Reference `Subsect: Time Dialation' on page 11 undefined on inpu
+t line 227.
+
+
+LaTeX Warning: Reference `Subsect: Time Dialation' on page 11 undefined on inpu
+t line 229.
+
 The command '\includegraphics [width=8cm]{images/pdf/Full_Lorry_Transform.pdf}'
  has been optimized away. Use '/tikz/external/optimize=false' to disable this.
+
+LaTeX Warning: Reference `fig: cars' on page 12 undefined on input line 248.
+
 The command '\includegraphics [width=8cm]{images/pdf/cars.pdf}' has been optimi
 zed away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=8cm]{images/pdf/Doppler.pdf}' has been opt
 imized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig: truck aberrated' on page 15 undefined on input l
-ine 257.
+LaTeX Warning: Reference `fig: train aberrated' on page 14 undefined on input l
+ine 284.
+
+
+LaTeX Warning: Reference `sect: Length Contraction' on page 15 undefined on inp
+ut line 286.
 
 The command '\includegraphics [width=5.5cm]{images/pdf/Aberrated_lorrys_1.pdf}'
  has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=5.5cm]{images/pdf/Aberrated_lorrys_2.pdf}'
  has been optimized away. Use '/tikz/external/optimize=false' to disable this.
+
+LaTeX Warning: Reference `fig: Relativistic Beaming' on page 16 undefined on in
+put line 335.
+
 The command '\includegraphics [width=5cm]{images/pdf/Rest_velocities.pdf}' has 
 been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=5cm]{images/pdf/Aberrated_velocities.pdf}'
@@ -1315,66 +1340,74 @@ The command '\includegraphics [width=5cm]{images/pdf/Aberrated_velocities_inwar
 ds.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disabl
 e this.
 
-LaTeX Warning: Reference `fig: full field transformation 1' on page 16 undefine
-d on input line 330.
+LaTeX Warning: Reference `fig: multiple emitting pulses rest frame' on page 17 
+undefined on input line 378.
+
+
+LaTeX Warning: Reference `fig: multiple emitting pulses moving frame' on page 1
+7 undefined on input line 378.
 
 The command '\includegraphics [width=5cm]{images/pdf/Field_Rest_Frame.pdf}' has
  been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=5cm]{images/pdf/Field_Moving_Frame_Doppler
 .pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable 
 this.
+
+LaTeX Warning: Reference `fig: perceived vs actual speed' on page 18 undefined 
+on input line 410.
+
 The command '\includegraphics [width=10cm]{images/pdf/Perceived_speed.pdf}' has
  been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig: truck clock' on page 19 undefined on input line 
-407.
+LaTeX Warning: Reference `fig: train clock' on page 20 undefined on input line 
+455.
 
 
-LaTeX Warning: Reference `fig: full truck transform' on page 19 undefined on in
-put line 407.
+LaTeX Warning: Reference `fig: full train transform' on page 20 undefined on in
+put line 455.
 
 
-LaTeX Warning: Reference `fig: truck simultaneity' on page 19 undefined on inpu
-t line 409.
+LaTeX Warning: Reference `fig: train simultaneity' on page 20 undefined on inpu
+t line 457.
 
 (Tex/Terms/Definitions.tex)
 Chapter 2.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-
-LaTeX Warning: Reference `spherical light pulse derivation' on page 27 undefine
-d on input line 547.
-
 The command '\includegraphics [width=10cm]{images/pdf/Light_clock.pdf}' has bee
 n optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=10cm]{images/pdf/Length_Contraction.pdf}' 
 has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: width contraction' on page 29 undefined on input
- line 615.
+ line 653.
+
+
+LaTeX Warning: Reference `spherical light pulse derivation' on page 31 undefine
+d on input line 709.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: coordinate transform' on page 33 undefined on in
-put line 782.
+put line 825.
 
 The command '\includegraphics [width=10cm]{images/pdf/coordinate_transforms.pdf
 }' has been optimized away. Use '/tikz/external/optimize=false' to disable this
 .
 
 LaTeX Warning: Reference `fig: Gamma Factor' on page 35 undefined on input line
- 841.
+ 886.
 
 The command '\includegraphics [width=10cm]{images/pdf/Gamma_Factor.pdf}' has be
 en optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `eq: Lorentz transformation' on page 35 undefined on i
-nput line 855.
+nput line 902.
 
 
 LaTeX Warning: Reference `eq: velocity transform' on page 36 undefined on input
- line 895.
+ line 942.
 
 (Tex/Terms/Terms_ch3.tex)
 Chapter 3.
@@ -1386,12 +1419,12 @@ The command '\includegraphics [width=10cm]{images/pdf/coordinate_transforms_2.p
 df}' has been optimized away. Use '/tikz/external/optimize=false' to disable th
 is.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1123--1124
+Underfull \hbox (badness 10000) in paragraph at lines 1174--1175
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1125--1126
+Underfull \hbox (badness 10000) in paragraph at lines 1176--1177
 
  []
 
@@ -1404,7 +1437,7 @@ Chapter 4.
 {C:/Users/one_p/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
 LaTeX Warning: Reference `eq: velocity transform' on page 45 undefined on input
- line 1257.
+ line 1310.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
@@ -1417,15 +1450,15 @@ The command '\includegraphics [width=5cm]{images/pdf/Aberrated_velocities.pdf}'
  has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: aberrated emitted light' on page 47 undefined on
- input line 1358.
+ input line 1415.
 
 
 LaTeX Warning: Citation 'einstein1905electrodynamics' on page 47 undefined on i
-nput line 1367.
+nput line 1424.
 
 
 LaTeX Warning: Reference `fig: aberrated absorbed light' on page 47 undefined o
-n input line 1367.
+n input line 1424.
 
 The command '\includegraphics [width=5cm]{images/pdf/Aberrated_velocities_inwar
 ds_restframe.pdf}' has been optimized away. Use '/tikz/external/optimize=false'
@@ -1435,7 +1468,7 @@ ds.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disabl
 e this.
 
 LaTeX Warning: Reference `eq: Cosine transform' on page 48 undefined on input l
-ine 1385.
+ine 1444.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
@@ -1443,15 +1476,15 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: Retarded field outward field transform' on page 
-49 undefined on input line 1446.
+49 undefined on input line 1507.
 
 
 LaTeX Warning: Reference `eq: Lorentz transformation' on page 49 undefined on i
-nput line 1447.
+nput line 1508.
 
 
 LaTeX Warning: Reference `eq: velocity transform for light' on page 49 undefine
-d on input line 1463.
+d on input line 1524.
 
 The command '\includegraphics [width=3.8cm]{images/pdf/Rest_Pulse.pdf}' has bee
 n optimized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1480,23 +1513,17 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `eq: Cosine transform' on page 55 undefined on input l
-ine 1780.
+ine 1851.
 
 
-LaTeX Warning: Citation 'hogg1997special' on page 55 undefined on input line 17
-80.
+LaTeX Warning: Citation 'hogg1997special' on page 55 undefined on input line 18
+51.
 
 (Tex/Terms/Terms_ch6.tex)
 Chapter 6.
 
 LaTeX Warning: Reference `eq: interval of Coordinates' on page 58 undefined on 
-input line 1837.
-
-
-Overfull \hbox (12.2229pt too wide) in paragraph at lines 1854--1855
-[]\OT1/cmr/m/n/10 *** quan-tum me-chan-ics may help with rea-son-ing for parts 
-of the energy-momentum
- []
+input line 1908.
 
 (Tex/Terms/Terms_ch7.tex)) (Tex/Back_Matter.tex)
 
@@ -1520,20 +1547,20 @@ ordinates.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37010 strings out of 474424
- 766583 string characters out of 5741740
+ 37016 strings out of 474424
+ 766756 string characters out of 5741740
  1943496 words of memory out of 5000000
- 58814 multiletter control sequences out of 15000+600000
+ 58820 multiletter control sequences out of 15000+600000
  562472 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 120i,23n,124p,1783b,1151s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 120i,23n,124p,1794b,1151s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb>
 Output written on ./output/tikz/Tikz_Spherical_Polar_Coordinates.pdf (1 page, 3
-8418 bytes).
+8138 bytes).
 PDF statistics:
- 349 PDF objects out of 1000 (max. 8388607)
+ 335 PDF objects out of 1000 (max. 8388607)
  1 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 

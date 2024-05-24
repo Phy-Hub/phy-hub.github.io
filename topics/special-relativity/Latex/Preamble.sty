@@ -40,11 +40,7 @@
 % Figures
 \usepackage{caption}
 \usepackage{subcaption}
-\newcommand*{\figuretitle}[1]{
-\centering
-\textbf{#1}
-\par\medskip
-}
+\newcommand*{\figuretitle}[1]{ \centering \textbf{#1} \par\medskip }
 %\usepackage{wrapfig} % wrap text around fig
 
 % Images
@@ -58,6 +54,7 @@
 \usepackage{tikz-3dplot}
 \usetikzlibrary{external}
 \tikzexternalize[prefix=./output/tikz/]% define output directory
+\usetikzlibrary{positioning}
 %██████████████████████████████████████████████████████
 % Links
 

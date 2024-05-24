@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{animate}
+\usepackage{fp} % Add this line
+\usepackage{graphicx} % Add this line
+
+\begin{document}
+\begin{figure}
+\scalebox{0.5}{ % Scale the figure to 50% of its original size
+\begin{animateinline}[autoplay,loop]{1} % 1 frames per second
+  \multiframe{11}{iShift=0+1}{ % 101 frames, shift from 0 to 10
+    \FPeval\result{clip(\iShift)} % Calculate the shift
+    \begin{tikzpicture}
+      \def\numArrows{40} % number of arrows
+      \def\circleRadius{3} % radius of the circle
+      \def\squareSide{2.1*\circleRadius} % side of the square
+      \def\smallCircleRadius{0.2*\circleRadius} % radius of the small circles
+
+    \path (-\squareSide,0) -- (10+\squareSide,0);
+
+    % Draw the square and fill it with black
+    \fill[black] (-\squareSide/2 + \result,-\squareSide/2) -- (\squareSide/2 + \result,-\squareSide/2) -- (\squareSide/2 + \result,\squareSide/2) -- (-\squareSide/2 + \result,\squareSide/2) -- cycle;
+
+    % Draw the small circles
+    \fill[black] (-\squareSide/3 + \result,-\squareSide/2) circle (\smallCircleRadius);
+    \fill[black] ( \squareSide/3 + \result,-\squareSide/2) circle (\smallCircleRadius);
+
+    % Draw the circle and fill it with white
+    \fill[white] (0 + \result,0) circle (\circleRadius);
+
+    % Draw the arrows
+    \foreach \i in {1,2,...,\numArrows} {
+        \draw[-latex] (\i*360/\numArrows:0*\circleRadius) -- (\i*360/\numArrows:0.4*\circleRadius);
+    }
+
+      \fill[red] (0,0) circle (0.1);
+
+    \end{tikzpicture}
+  }
+\end{animateinline}
+} % End scalebox
+\caption{zdfg}
+\end{figure}
+
+\end{document}

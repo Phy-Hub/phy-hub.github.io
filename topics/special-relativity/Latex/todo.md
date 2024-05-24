@@ -15,6 +15,15 @@ meaningful and concise introduction:
 
 ### Chapters:
 
+* How is this chapter linked to the previous and next chapters?
+    - Why was the previous chapter important for this one?
+    - why is this chapter important for the rest of the chapters?
+* What will this chapter cover and what is its structure?
+* What is the learning objective for this chapter? what should they be able to understand by the end of it?
+* Why the topic is important to other topics in the book?
+* what are the key concepts in this chapter and what sections from previously will be used to help us in this chapter?
+
+
 meaningful introduction:
 
 - [ ] Intial sentence to allow this to flow from previous chapter

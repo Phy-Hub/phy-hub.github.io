@@ -1,0 +1,15 @@
+[0] Config.pm:308> INFO - This is Biber 2.20
+[0] Config.pm:311> INFO - Logfile is 'output/Handbook_of_Special_Relativity.blg'
+[231] biber-MSWIN64:340> INFO - === 
+[309] Biber.pm:420> INFO - Reading 'output/Handbook_of_Special_Relativity.bcf'
+[471] Biber.pm:994> INFO - Found 3 citekeys in bib section 0
+[490] Biber.pm:4463> INFO - Processing section 0
+[517] Biber.pm:4654> INFO - Looking for bibtex file 'refs.bib' for section 0
+[569] bibtex.pm:1713> INFO - LaTeX decoding ...
+[585] bibtex.pm:1519> INFO - Found BibTeX data source 'refs.bib'
+[676] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[677] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[677] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[677] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[681] bbl.pm:676> INFO - Writing 'output/Handbook_of_Special_Relativity.bbl' with encoding 'UTF-8'
+[683] bbl.pm:779> INFO - Output to output/Handbook_of_Special_Relativity.bbl

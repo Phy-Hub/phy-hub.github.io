@@ -40,20 +40,16 @@
 
     "workbench.colorTheme": "Solarized Light",
 
+    "highlight.decorations": { "backgroundColor": "#ff9d00" },
     "highlight.regexes": {
-
-        "(.*\\n\\n\\n.*)": {"backgroundColor": "#ff9d00"},
-        "(figure \\\\ref)": {"backgroundColor": "#ff9d00"},
-        "(section \\\\ref)": {"backgroundColor": "#ff9d00"},
-        "(chapter \\\\ref)": {"backgroundColor": "#ff9d00"},
-        "(equation \\\\eqref)": {"backgroundColor": "#ff9d00"},
-        "(equation \\\\ref)": {"backgroundColor": "#ff9d00"},
-        "(equation \\(\\\\eqref)": {"backgroundColor": "#ff9d00"},
-        "(?<!^%.*)(?<!\\\\caption.*)(^.*\\.\\s.*)": {"backgroundColor": "#ff9d00"},
-
-    }
-
-
-
+        //"(.*\\n\\s*\\n\\s*\\n.*)": [{"backgroundColor": "#000000"}],
+        "(figure \\\\ref)": [{}],
+        "(section \\\\ref)": [{}],
+        "(chapter \\\\ref)": [{}],
+        "(equation \\\\eqref)": [{}],
+        "(equation \\\\ref)": [{}],
+        "(equation \\(\\\\eqref)": [{}],
+        "(?!%)(?:.){240,}": [{}],
+    },
 
 }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  24 MAY 2024 13:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  27 MAY 2024 13:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1410,37 +1410,38 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: light clock rest frame' on page 30 undefined on 
-input line 854.
+input line 856.
 
-The command '\includegraphics [width = 10cm]{images/pdf/Length_Contraction.pdf}
-' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
-
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
 
 LaTeX Warning: Reference `fig: width contraction' on page 32 undefined on input
- line 922.
+ line 986.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: coordinate transform' on page 36 undefined on in
-put line 1096.
+put line 1160.
 
 The command '\includegraphics [width = 10cm]{images/pdf/coordinate_transforms.p
 df}' has been optimized away. Use '/tikz/external/optimize=false' to disable th
 is.
 
 LaTeX Warning: Reference `fig: Gamma Factor' on page 38 undefined on input line
- 1159.
+ 1223.
 
 The command '\includegraphics [width = 10cm]{images/pdf/Gamma_Factor.pdf}' has 
 been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `eq: Lorentz transformation' on page 38 undefined on i
-nput line 1176.
+nput line 1240.
 
 
 LaTeX Warning: Reference `eq: velocity transform' on page 39 undefined on input
- line 1217.
+ line 1281.
 
 (Tex/Terms/Terms_ch3.tex)
 Chapter 3.
@@ -1452,12 +1453,12 @@ The command '\includegraphics [width = 10cm]{images/pdf/coordinate_transforms_2
 .pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable 
 this.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1478--1479
+Underfull \hbox (badness 10000) in paragraph at lines 1542--1543
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1480--1484
+Underfull \hbox (badness 10000) in paragraph at lines 1544--1548
 
  []
 
@@ -1466,8 +1467,8 @@ Chapter 4.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `eq: velocity transform' on page 48 undefined on input
- line 1623.
+LaTeX Warning: Reference `eq: velocity transform' on page 49 undefined on input
+ line 1687.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
@@ -1480,16 +1481,16 @@ The command '\includegraphics [width = 5cm]{images/pdf/Aberrated_velocities.pdf
 }' has been optimized away. Use '/tikz/external/optimize=false' to disable this
 .
 
-LaTeX Warning: Reference `fig: aberrated emitted light' on page 50 undefined on
- input line 1730.
+LaTeX Warning: Reference `fig: aberrated emitted light' on page 51 undefined on
+ input line 1794.
 
 
-LaTeX Warning: Citation 'einstein1905electrodynamics' on page 50 undefined on i
-nput line 1739.
+LaTeX Warning: Citation 'einstein1905electrodynamics' on page 51 undefined on i
+nput line 1803.
 
 
-LaTeX Warning: Reference `fig: aberrated absorbed light' on page 50 undefined o
-n input line 1740.
+LaTeX Warning: Reference `fig: aberrated absorbed light' on page 51 undefined o
+n input line 1804.
 
 The command '\includegraphics [width = 5cm]{images/pdf/Aberrated_velocities_inw
 ards_restframe.pdf}' has been optimized away. Use '/tikz/external/optimize=fals
@@ -1498,8 +1499,8 @@ The command '\includegraphics [width = 5cm]{images/pdf/Aberrated_velocities_inw
 ards.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disa
 ble this.
 
-LaTeX Warning: Reference `eq: Cosine transform' on page 51 undefined on input l
-ine 1761.
+LaTeX Warning: Reference `eq: Cosine transform' on page 52 undefined on input l
+ine 1825.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
@@ -1507,15 +1508,15 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: Retarded field outward field transform' on page 
-52 undefined on input line 1822.
+53 undefined on input line 1886.
 
 
-LaTeX Warning: Reference `eq: Lorentz transformation' on page 52 undefined on i
-nput line 1825.
+LaTeX Warning: Reference `eq: Lorentz transformation' on page 53 undefined on i
+nput line 1889.
 
 
-LaTeX Warning: Reference `eq: velocity transform for light' on page 52 undefine
-d on input line 1842.
+LaTeX Warning: Reference `eq: velocity transform for light' on page 53 undefine
+d on input line 1906.
 
 The command '\includegraphics [width = 3.8cm]{images/pdf/Rest_Pulse.pdf}' has b
 een optimized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1543,18 +1544,18 @@ e this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `eq: Cosine transform' on page 58 undefined on input l
-ine 2171.
+LaTeX Warning: Reference `eq: Cosine transform' on page 59 undefined on input l
+ine 2235.
 
 
-LaTeX Warning: Citation 'hogg1997special' on page 58 undefined on input line 21
-71.
+LaTeX Warning: Citation 'hogg1997special' on page 59 undefined on input line 22
+35.
 
 (Tex/Terms/Terms_ch6.tex)
 Chapter 6.
 
-LaTeX Warning: Reference `eq: interval of Coordinates' on page 61 undefined on 
-input line 2231.
+LaTeX Warning: Reference `eq: interval of Coordinates' on page 62 undefined on 
+input line 2295.
 
 (Tex/Terms/Terms_ch7.tex)) (Tex/Back_Matter.tex)
 
@@ -1578,19 +1579,19 @@ ativity-figure1.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36882 strings out of 474424
- 764900 string characters out of 5741740
+ 36885 strings out of 474424
+ 765022 string characters out of 5741740
  1943496 words of memory out of 5000000
- 58679 multiletter control sequences out of 15000+600000
+ 58682 multiletter control sequences out of 15000+600000
  562807 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  120i,23n,124p,1406b,1151s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmmi10.pfb>
 Output written on ./output/tikz/Handbook_of_Special_Relativity-figure1.pdf (1 p
-age, 25375 bytes).
+age, 25693 bytes).
 PDF statistics:
- 304 PDF objects out of 1000 (max. 8388607)
+ 306 PDF objects out of 1000 (max. 8388607)
  1 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

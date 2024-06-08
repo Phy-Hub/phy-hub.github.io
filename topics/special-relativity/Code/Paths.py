@@ -1,8 +1,8 @@
 """ Output paths """
 
-pdf = "../images/pdf/"
+pdf = "../Latex/images/pdf/"
 
-svg = "../images/svg/"
+svg = "../Latex/images/svg/"
 
 # to get path use:
 # import Paths as path

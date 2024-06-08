@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 start_time = time.time()
+filename_prefix = "coord_transform_"
 ### Set up ####################################################################
 c = 1
 V = np.array([ 0 , 0.9 ])
@@ -42,24 +43,19 @@ def v_arrow():
           length_includes_head= True, color = "grey")
     plt.annotate("v", xy=(0, 0), xytext=(-ylim,5), color = "grey")
 
+plt.figure(1) ################################################################
 
-### SubPlot 1 #################################################################
-plt.figure(1)
-plt.subplots_adjust(left=0.1,
-                    bottom=0.1,
-                    right=1.6,
-                    top=0.9,
-                    wspace=0.4,
-                    hspace=0.4)
-plt.subplot(1, 3, 1)
 PlotStyle("y","z","black")
 v_arrow()
 plt.plot(yv, zv, marker='o', color='black', linestyle='none',ms=1)
 for I_R in range(N_r):
     plt.annotate("t = 0", xy=(0, 0), xytext=(15,z[I_R]-0.4))
 
-### SubPlot 2 #################################################################
-plt.subplot(1, 3, 2)
+plt.savefig(path.svg + filename_prefix + "initial.svg",bbox_inches='tight', format='svg',transparent=True) # changed from svg
+plt.savefig(path.pdf + filename_prefix + "initial.pdf",bbox_inches='tight', format='pdf',transparent=True) # changed from svg
+
+plt.figure(2) ################################################################
+
 PlotStyle("y'","z'","grey")
 tcolour = np.zeros((N_r,N_r))
 
@@ -77,57 +73,11 @@ plt.quiver(yv, zv_prime, 0, -0.7, tcolour, cmap = 'jet' ,
                 alpha=1,width=0.005, scale=5, scale_units='inches', headwidth=5
                 )#,headwidth=1)   #)
 
-### SubPlot 3 #################################################################
-plt.subplot(1, 3, 3)
-PlotStyle("y'","z'","grey")
-for I_R in range(N_r):
-    zv_prime[I_R] = SR.TRANS_Z_simul(zv[I_R], V[1], -V[1], 0)
+plt.savefig(path.svg + filename_prefix + "primed.svg",bbox_inches='tight', format='svg',transparent=True) # changed from svg
+plt.savefig(path.pdf + filename_prefix + "primed.pdf",bbox_inches='tight', format='pdf',transparent=True) # changed from svg
 
-plt.quiver(yv, zv_prime, 0, -0.7, angles="xy" , zorder=1, pivot="mid", alpha=1,width=0.005,
-           scale=5, scale_units='inches', headwidth=5, color='r')#,headwidth=1)   #)
+plt.figure(3) ################################################################
 
-plt.annotate("t' = 0" , xy=(0, 0), xytext=(15,0-0.4))
-
-###############################################################################
-plt.savefig(path.svg + "coordinate_transforms.svg",bbox_inches='tight', format='svg',transparent=True) # changed from svg
-plt.savefig(path.pdf + "coordinate_transforms.pdf",bbox_inches='tight', format='pdf',transparent=True) # changed from svg
-
-### SubPlot 1 #################################################################
-plt.figure(2)
-plt.subplots_adjust(left=0.1,
-                    bottom=0.1,
-                    right=1.6,
-                    top=0.9,
-                    wspace=0.4,
-                    hspace=0.4)
-plt.subplot(1, 4, 1)
-PlotStyle("y","z","black")
-v_arrow()
-plt.plot(yv, zv, marker='o', color='black', linestyle='none',ms=1)
-for I_R in range(N_r):
-    plt.annotate("t = 0", xy=(0, 0), xytext=(15,z[I_R]-0.4))
-
-### SubPlot 2 #################################################################
-plt.subplot(1, 4, 2)
-PlotStyle("y'","z'","grey")
-tcolour = np.zeros((N_r,N_r))
-
-for I_y in range(N_r):
-    zv_prime[I_y] = SR.TRANS_Z(zv[I_y], V[1], 0)
-
-    for I_z in range(N_r):
-        tcolour[I_y,I_z] = Gamma * ( zv[I_y,I_z] * V[1] )
-
-    t_prime = round( SR.TRANS_1Time(zv[I_y,0], V[1], 0),1)
-    plt.annotate("$t' = %s$" %t_prime, xy=(0, 0), xytext=(15,zv_prime[I_y,0]-0.4))
-
-plt.quiver(yv, zv_prime, 0, -0.7, tcolour, cmap = 'jet' ,
-                angles="xy" , zorder=1, pivot="mid",
-                alpha=1,width=0.005, scale=5, scale_units='inches', headwidth=5
-                )#,headwidth=1)   #)
-
-### SubPlot 3 #################################################################
-plt.subplot(1, 4, 3)
 PlotStyle("y'","z'","grey")
 for I_R in range(N_r):
     zv[I_R] = SR.TRANS_Z_simul(zv[I_R], V[1], -V[1], 0)
@@ -137,8 +87,11 @@ plt.quiver(yv, zv, 0, -0.7, angles="xy" , zorder=1, pivot="mid", alpha=1,width=0
 
 plt.annotate("$t' = 0$" , xy=(0, 0), xytext=(15,5))
 
-### SubPlot 4 #################################################################
-plt.subplot(1, 4, 4)
+plt.savefig(path.svg + filename_prefix + "primed_sychronised.svg",bbox_inches='tight', format='svg',transparent=True) # changed from svg
+plt.savefig(path.pdf + filename_prefix + "primed_sychronised.pdf",bbox_inches='tight', format='pdf',transparent=True) # changed from svg
+
+plt.figure(4) ################################################################
+
 PlotStyle("y'","z'","grey")
 for I_R in range(N_r):
     zv[I_R] = Gamma**2 * zv[I_R] + V[1] * Gamma * np.sqrt(Gamma**2 * zv[I_R]**2 + yv[I_R]**2)
@@ -148,33 +101,17 @@ plt.quiver(yv, zv, 0, -0.7, angles="xy" , zorder=1, pivot="mid", alpha=1,width=0
 
 plt.annotate("$t' = t'_{ret}$" , xy=(0, 0), xytext=(15,5))
 
-###############################################################################
-plt.savefig(path.svg + "coordinate_transforms_2.svg",bbox_inches='tight', format='svg',transparent=True)
-plt.savefig(path.pdf + "coordinate_transforms_2.pdf",bbox_inches='tight', format='pdf',transparent=True)
+plt.savefig(path.svg + filename_prefix + "primed_retarded.svg",bbox_inches='tight', format='svg',transparent=True)
+plt.savefig(path.pdf + filename_prefix + "primed_retarded.pdf",bbox_inches='tight', format='pdf',transparent=True)
 
-###############################################################################
-plt.figure(3)
-plt.subplots_adjust(left=0.1,
-                    bottom=0.1,
-                    right=1,
-                    top=0.9,
-                    wspace=0.4,
-                    hspace=0.4)
-plt.subplot(1, 3, 1)
-PlotStyle("y","z","black")
-v_arrow()
+plt.figure(5) ################################################################
+
+PlotStyle("y'","z'","grey")
+#plt.annotate("Aberrated" , xy=(0, 0), xytext=(15,5))
 
 y = np.linspace(-coords_max, coords_max, N_r)
 z = np.linspace(-coords_max, coords_max, N_r)
 yv, zv = np.meshgrid(y, z)
-
-plt.plot(yv, zv, marker='o', color='black', linestyle='none',ms=1)
-
-plt.annotate("t' = 0" , xy=(0, 0), xytext=(15,5))
-### Sub plot 2 ################################################################
-plt.subplot(1, 3, 2)
-PlotStyle("y'","z'","grey")
-plt.annotate("rotated" , xy=(0, 0), xytext=(15,5))
 
 R_mag = np.sqrt( yv**2 + zv**2 ) +0.0001
 Cos = zv / R_mag
@@ -186,14 +123,20 @@ Sin_PRM = Sin / AA
 
 plt.plot(R_mag * Sin_PRM, R_mag * Cos_PRM, marker='o', color='black', linestyle='none',ms=1)
 
-### Sub plot 3 ################################################################
-plt.subplot(1, 3, 3)
+plt.savefig(path.svg + filename_prefix + "aberrated.svg",bbox_inches='tight', format='svg',transparent=True) # changed from svg
+plt.savefig(path.pdf + filename_prefix + "aberrated.pdf",bbox_inches='tight', format='pdf',transparent=True) # changed from svg
+
+plt.figure(6) ################################################################
+
 PlotStyle("y'","z'","grey")
-plt.annotate("scaled" , xy=(0, 0), xytext=(15,5))
+#plt.annotate("Aberrated \n and \n scaled" , xy=(0, 0), xytext=(15,5))
 
 plt.quiver(AA * R_mag * Sin_PRM, AA *  R_mag * Cos_PRM, 0, -0.7, angles="xy" , zorder=1, pivot="mid", alpha=1,width=0.005,
            scale=5, scale_units='inches', headwidth=5, color='black')#,headwidth=1)   #)
 
+plt.savefig(path.svg + filename_prefix + "aberrated_and_scaled.svg",bbox_inches='tight', format='svg',transparent=True) # changed from svg
+plt.savefig(path.pdf + filename_prefix + "aberrated_and_scaled.pdf",bbox_inches='tight', format='pdf',transparent=True) # changed from svg
 
+###
 plt.show()
 print(" Run time: %s seconds" % (time.time() - start_time))

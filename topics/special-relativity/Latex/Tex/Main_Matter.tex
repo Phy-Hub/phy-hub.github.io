@@ -309,7 +309,7 @@ Also, I have left out any mention of \hyperlink{def-length-contraction}{length c
 %███████████████████████████████████████████████████████████████████
 \subsection{Length Contraction}\label{sect: Length Contraction}
 
- at rest in its own frame of reference, carrying a square container. A light source at the container's center emits light in all four directions
+at rest in its own frame of reference, carrying a square container. A light source at the container's center emits light in all four directions
 
 Consider a truck, in its \hyperlink{def-proper-frame}{rest frame} with a square container.
 If a light source at the container's center emits light in all four directions it will bounce off the mirrored sides of the truck and return to the center \hyperlink{def-simultaneity}{simultaneously}.
@@ -652,7 +652,7 @@ By the end of this chapter you should understand the coordinate transforms conce
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Classical Relativity}
+\section{Classical Relativity}\label{sect: Classical Relativity}
 
 Classical (Galilean) relativity was the previous theory of how to transform coordinates in different inertial frames.
 It is based on two assumptions.
@@ -695,7 +695,7 @@ So let us see how the mathematics works for the classical coordinate system tran
 		\draw[red, thick,->] (1.7,0.7,0)--(3,0.9,0) node[midway,anchor = south]{${\vec{O{'}E}}$};
 		%
 	\end{tikzpicture}
-	\caption{\textbf{An event in initial frame with a primed frame's axis moving relative to its axis}.	This shows an initial frame with its associated x,y,z-coordinate system at rest in its frame, with origin ${O}$. There is also an x',y',z'-coordinate system with origin ${O'}$ associated with a “primed” frame, at position ${\vec{OO'}}$ in the initial frame. It is moving at speed ${v}$ in the z-direction relative to the initial frame. An event ${E}$ in this initial frame is described by a set of spatial and time coordinates ${\vec{OE}} = ({x},{y},{z})$ and ${t}$. We choose the time to be zero in both frames when both axes overlapped, so that ${t}$ is also the time from when they overlapped. We also show ${\vec{O'E}}$ which represents the vector from the primed origin to the event in the initial frame.}
+	\caption{\textbf{An event in initial frame with a primed frame's axis moving relative to its axis}.	This shows an initial frame with its associated x,y,z-coordinate system at rest in its frame, with origin ${O}$. There is also an x',y',z'-coordinate system with origin ${O'}$ associated with a "primed" frame, at position ${\vec{OO'}}$ in the initial frame. It is moving at speed ${v}$ in the z-direction relative to the initial frame. An event ${E}$ in this initial frame is described by a set of spatial and time coordinates ${\vec{OE}} = ({x},{y},{z})$ and ${t}$. We choose the time to be zero in both frames when both axes overlapped, so that ${t}$ is also the time from when they overlapped. We also show ${\vec{O'E}}$ which represents the vector from the primed origin to the event in the initial frame.}
 	\label{fig: simple Galilean transform derivation}
 \end{figure}
 %███████████
@@ -730,7 +730,7 @@ so we have ${x} = {x{'}}$, ${y} = {y{'}}$, ${t} = {t{'}}$, and for the z-compone
 
 \begin{equation}
 	\begin{aligned}
-		 & {z{'}} = {z}-{v}{t} \\
+		 & {z{'}} = {z}-{v}{t}      \\
 		 & {z} = {z{'}} + {v}{t{'}}
 	\end{aligned}
 \end{equation}
@@ -743,11 +743,11 @@ We can write the full description of the position and time \hyperlink{def-transf
 \begin{equation}
 	\mhl{
 		\begin{aligned}
-			& {x{'}} = {x}               \\
-			& {y{'}} = {y}               \\
-			& {z{'}} = {z}-{v}{t}          \\
-			\text{at time \ \ \ } \\
-			& {t{'}}= {t}
+			 & {x{'}} = {x}        \\
+			 & {y{'}} = {y}        \\
+			 & {z{'}} = {z}-{v}{t} \\
+			\text{at time \ \ \ }  \\
+			 & {t{'}}= {t}
 		\end{aligned}
 	}
 	\label{eq: Galilean transformation}
@@ -756,6 +756,8 @@ We can write the full description of the position and time \hyperlink{def-transf
 These are the equations that define classical relativity, we can compare this to the equations of the coordinate transforms in special relativity later. They define the event's location relative to whichever frame's axis that we are in. The special relativistic equations later will look similar but with an extra factor in the z-component and the time no longer the same in both frames.
 
 You might have noticed that the direction of the second frame is in the upward z-direction instead of being to the right in the case of the truck diagrams from the previous chapter, this is to help us when we use spherical polar coordinates later and to help see the symmetries.
+
+
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -786,6 +788,7 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 \begin{figure}[H]
 	\begin{subfigure}{.49\textwidth}
 		\centering
+		\tikzsetnextfilename{Time_dilation_rest_frame}
 		\begin{tikzpicture}[scale = 0.65]
 			% Define the coordinates with more space between ellipses
 			\coordinate (A1) at (0, 6);
@@ -800,15 +803,18 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 
 			% Draw the dashed arrowed lines with custom thick arrowheads
 			\draw[red, dashed, thick arrows] (0, 5.85)--(6, 5.85);
-			\draw[red, dashed, thick arrows] (6, 6.15)--(0, 6.15);
+			\draw[red, dashed, thick arrows] (6, 6.15)--(0, 6.15) node[midway, above] {${l}$};
 
 			% Draw the distance labels
-			\draw[<->, thick] (0, 4.7)--(6, 4.7) node[midway, above] {${W}$};
+			\draw[<->, thick] (0, 4.7)--(6, 4.7) node[midway, above] {${L}$};
+
+			\draw[] (0,-1.25);
 
 		\end{tikzpicture}
 		\caption{\hyperlink{def-proper-frame}{rest frame}}
 		\label{fig: light clock rest frame}
 	\end{subfigure}
+	\tikzsetnextfilename{Time_dilation_moving_frame}
 	\begin{subfigure}{.49\textwidth}
 		\centering
 		\begin{tikzpicture}[scale = 0.65]
@@ -832,20 +838,20 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 			\tikzset{thick arrows/.style = {-stealth, thick, line width = 1.5pt}}
 
 			% Draw the dashed arrowed lines with custom thick arrowheads
-			\draw[red, dashed, thick arrows] (A3)--($(B2)!0.02!(A3)$) node[midway, below, sloped] {${D}$};
-			\draw[red, dashed, thick arrows] (B2)--(A1) node[midway, below, sloped] {${D}$};
+			\draw[red, dashed, thick arrows] (A3)--($(B2)!0.02!(A3)$) node[midway, below] {${l^{'}}$};
+			\draw[red, dashed, thick arrows] (B2)--(A1) node[midway, below] {${l^{'}}$};
 
 			% Draw the velocity arrow
 			\draw[black, thick,->, line width = 1.5pt] (3, 6)-- +  + (0, 0.5) node[midway, right] {${u}$};
 
 			% Draw the distance labels
-			\draw[<->, thick] (0,-1.3)--(6,-1.3) node[midway, above] {${W}$};
-			\draw[<->, thick] (-1, 0)--(-1, 6) node[midway, left] {${L}$};
+			\draw[<->, thick] (0,-1.3)--(6,-1.3) node[midway, above] {${L}$};
+			\draw[<->, thick] (-1, 0)--(-1, 6) node[midway, left] {${D}$};
 
 		\end{tikzpicture}
 		\caption{Moving frame}
 	\end{subfigure}
-	\caption{\textbf{Light clock showing time dilation.} The light clock keeps time by counting each time the light makes a return journey when bouncing between two mirrors with distance ${W}$ between them, the diagram shows the mirror's rest frame (left) and a frame with them moving at speed ${u}$ (right). In this second frame, there is a distance ${L}$ between where the light was reflected by the left mirror and where it returned to it. For this the light had to travel a diagonal distance of $2{D}$ to return.}
+	\caption{\textbf{Light clock showing time dilation.} The light clock keeps time by counting each time the light makes a return journey when bouncing between two mirrors with length ${L}$ between them, the diagram shows the mirror's rest frame (left) and a frame with them moving at speed ${u}$ (right). In this second frame, there is a distance ${D}$ between where the light was reflected by the left mirror and where it returned to it. For this, the light had to travel a diagonal distance of $2{l^{'}}$ to return.}
 	\label{fig: light clock}
 \end{figure}
 %███████████
@@ -854,23 +860,23 @@ The light in the clock, takes a time ${\Delta\tau}$ in the clock's rest frame to
 We can see from Figure (\ref{fig: light clock rest frame}) that in the rest frame, the distance the light travels to the mirror and back in this time is
 
 \begin{equation}
-	2{W} = {c}{\Delta\tau}.
+	2{L} = {c}{\Delta\tau}.
 \end{equation}
 
 The distance the mirrors move during this return journey in the moving frame is
 
 \begin{equation}
-	{L} = {u}{\Delta t{'}} =-{v} {\Delta t{'}},
+	{D} = {u}{\Delta t{'}} =-{v} {\Delta t{'}},
 \end{equation}
 
 where ${\Delta t{'}}$ is the time it took light to return in the moving frame and ${u}$ is the speed of the mirrors, which is in the opposite direction of the movement of the \hyperlink{def-Primed-Frame}{primed frame} relative to the \hyperlink{def-proper-frame}{rest frame}, that is ${u} =-{v}$.
 The distance light travels in this time is
 
 \begin{equation}
-	2{D} ={c}{\Delta t{'}},
+	2{l^{'}} ={c}{\Delta t{'}},
 \end{equation}
 
-This is the hypotenuse of a triangle formed by ${L}$ and $2{W}$, so we have the square of the hypotenuse equal to the square of the other two lengths:
+This is the hypotenuse of a triangle formed by ${D}$ and $2{L}$, so we have the square of the hypotenuse equal to the square of the other two lengths:
 
 \begin{equation}
 	{c}^2 {\Delta t{'}}^2 = {v}^2 {\Delta t{'}}^2 + {c}^2{\Delta\tau}^2
@@ -888,7 +894,7 @@ with
 	{\gamma} = \dfrac{1}{\sqrt{1-\dfrac{{v}^2}{{c}^2}}}.
 \end{equation}
 
-This is used throughout special relativity to simply equations.
+This is used throughout special relativity to simplify equations.
 We find from this equation that the time for the return journey in the frame with the clock moving is longer relative to its rest frame,
 
 \begin{equation}
@@ -897,84 +903,161 @@ We find from this equation that the time for the return journey in the frame wit
 
 So we take this outcome as the time taken between two \hyperlink{def-event}{event}s in the same position in the moving frame taking longer than in the \hyperlink{def-proper-frame}{rest frame} of the clock, due to the longer distance it must travel at the same speed.
 
+*** conclusion statement
+
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Length Contraction}
 
-*** start
+An object's size gets smaller in the direction of movement compared to when it is at rest, this is called length contraction.
+To explain why it happens we will use a system similar to the light clock in the previous section.
+This new system also has light moving perpendicular as well as parallel the the second frame's movement, as shown in Figure (\ref{fig: length contraction math})
 
 %█████████████
 \begin{figure}[H]
-	\figuretitle{...}
-	\centering
-	\includegraphics[width = 10cm]{images/pdf/Length_Contraction.pdf}
-	\caption{A diagram, showing a central bulb emitting light in the three directions, with all light being reflected by the mirrors back to the center, this is shown at rest on the left and moving in another inertial frame with the system now moving, with its length slightly contracted in the direction of movement.}
-	\label{fig: length contraction math *** again remove the left mirror to simplify, also could add initial and primed frame axis moving relative to eachother to the side of each image, remove $<s>$}
-\end{figure}
-%███████████
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\tikzsetnextfilename{Length_contraction_rest_frame}
+		\begin{tikzpicture}[scale = 0.55]
+			% Define the coordinates with more space between ellipses
+			\coordinate (A1) at (0, 0);
+			\coordinate (B1) at (6, 0);
+			\coordinate (C1) at (0, 6);
 
-If we have a system in its rest frame with light emitted in three directions from the center, one directly in front and the other two to the sides, with equally distanced mirrors in the three directions so that they will be reflected back and return to the center simultaneously.
-we require that in the moving frame they also all return to the center simultaneously, as multiple events that happen at a single point simultaneously in one frame, must happen simultaneously in all other frames.
-This time between the light being emitted and absorbed will be the dilated time from the previous section.
-To achieve this simultaneity in the return of the light to the bulb, the length of the full path of light from there center to the mirrors and back in each direction must be the same (as its speed of light is the same in all directions and the return time must be the same), we can work out the length of the sideways paths from the time dilation section, and this is the length the path needs to be in the vertical directions as well, the paths can only have this length if the system length is contracted when moving in the direction of movement.
+			% Draw the ellipses
+			\draw[fill = orange] (A1) ellipse (0.5 and 0.5);
+			\draw[fill = gray] (B1) ellipse (0.5 and 1);
+			\draw[fill = gray] (C1) ellipse (1 and 0.5);
+
+			% Custom arrowhead style with thicker arrowheads
+			\tikzset{thick arrows/.style = {-stealth, thick, line width = 1.5pt}}
+
+			% Draw the dashed arrowed lines with custom thick arrowheads
+			\draw[red, dashed, thick arrows] (0, -0.15)--(6, -0.15);
+			\draw[red, dashed, thick arrows] (6, 0.15)--(0, 0.15);
+			\draw[red, dashed, thick arrows] (-0.15, 0)--(-0.15, 6) node[midway, left] {${l_1}$};
+			\draw[red, dashed, thick arrows] (0.15, 6)--(0.15, 0) node[midway, right] {${l_2}$};
+
+			% Draw the distance labels
+			\draw[<->, thick] (-1.5, 0)--(-1.5, 6) node[midway, left] {${\Delta L}$};
+			\draw[draw=none, fill opacity = 0] (0,-7) circle (0.5);
+
+		\end{tikzpicture}
+		\caption{\hyperlink{def-proper-frame}{Rest frame}}
+		\label{fig: light clock length contraction rest frame}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\tikzsetnextfilename{Length_contraction_moving_frame}
+		\begin{tikzpicture}[scale = 0.55]
+			% Define the coordinates with more space between ellipses
+			\coordinate (A1) at (0, 0);
+			\coordinate (B1) at (6, 0);
+			\coordinate (C1) at (0, 4.5);
+			\coordinate (P1) at (0, -7);
+			\coordinate (P2) at (6, -3.5);
+			\coordinate (P3) at (0, 3);
+
+			% Draw the ellipses
+			\draw[fill = orange] (A1) ellipse (0.5 and 0.5);
+			\draw[fill = gray] (B1) ellipse (0.5 and 1);
+			\draw[fill = gray] (C1) ellipse (1 and 0.5);
+			\draw[fill = orange, fill opacity = 0.1, draw = gray, dashed] (P1) ellipse (0.5 and 0.5);
+			\draw[fill = gray, fill opacity = 0.1, draw = gray, dashed] (P2) ellipse (0.5 and 1);
+			\draw[fill = gray, fill opacity = 0.1, draw = gray, dashed] (P3) ellipse (1 and 0.5);
+
+			% Custom arrowhead style with thicker arrowheads
+			\tikzset{thick arrows/.style = {-stealth, thick, line width = 1.5pt}}
+
+			% Draw the dashed arrowed lines with custom thick arrowheads
+			\draw[red, dashed, thick arrows] ($(P1)+(-0.15,0)$)--($(P3)+(-0.15,0)$) node[midway, left] {${l^{'}_1}$};
+			\draw[red, dashed, thick arrows] ($(P3)+(0.15,0)$)--($(A1)+(0.15,0)$) node[midway, right] {${l^{'}_2}$};
+			\draw[red, dashed, thick arrows] (P1)--(P2);
+			\draw[red, dashed, thick arrows] (P2)--(A1);
+
+			\draw[<->, thick] ($(A1)+(-1.5,0)$)--($(C1)+(-1.5,0)$) node[midway, left] {${\Delta L^{'}}$};
+
+			\draw[black, thick,->, line width = 1.5pt] (3, 4)-- +  + (0, 0.5) node[midway, right] {${u}$};
+
+		\end{tikzpicture}
+		\caption{Moving frame}
+	\end{subfigure}
+	\caption{\textbf{Light paths showing the need for length contraction.} A central orange bulb emits light in two directions, with all light being reflected by the mirrors back to reach the central bulb simultaneously. This is shown at rest, fig (a), and in another inertial frame with the system now moving at speed ${u}$, fig (b), with its length now having to be contracted in the direction of movement to allow for the simultaneous return of light to the bulb. The length between the bulb and front mirror is shown as ${\Delta L}$ and ${\Delta L^{'}}$ in each frame. The paths the light took to the front mirror ${l_1}$ and back ${l_2}$ are shown in the rest frame with the corresponding paths ${l^{'}_1}$ and ${l^{'}_2}$ in the moving frame.}
+	\label{fig: length contraction math}
+\end{figure}
+
+If we have a system as described in Figure (\ref{fig: length contraction math}).
+Since the light returns simultaneously in the rest frame, we need the light to also return simultaneously in the second frame.
+Multiple events that happen at a single point simultaneously in one frame, must happen simultaneously in all other frames.
+The time between the light being emitted and absorbed will be the dilated time from the previous section.
+This can be seen as the perpendicular light path in this and the light clock's setup is the same path.
+In the moving frame, to achieve this simultaneity in the return of the light to the bulb, the length of the full path of light from the central bulb to the front mirror and back (${l^{'}_1} + {l^{'}_2}$) must be the same as the perpendicular path, due to the speed of light being the same for both paths, we can work out the length of the sideways paths from the time dilation section, and this is the length the total path needs to be in the forward directions as well.
+We will find that the paths can only have the distance between the bulb and the front mirror is contracted in the direction of movement.
 Note that there is no contraction in the perpendicular direction to the movement due to the paradox explained in Figure (\ref{fig: width contraction}).
 
-The pulse sent forward has a distance
+In the moving frame, the pulse sent forward has a distance
 
 \begin{equation}
-	L_1 = {c}{t}_1^{'} = D{'} + ut{'}_1
+	{l^{'}_1} = {c}{t^{'}_1} = {\Delta  L^{'}} + {u} {t^{'}_1}
 \end{equation}
 
-to travel to get to the mirror that is moving away from the point it was emitted, where ${t{'}}_1$ is the time taken to get there and ${D{'}}$ is the distance between the mirror in front and the bulb and ${u}$ being the speed the bulb and mirrors are moving in the primed frame.
+to travel to get to the front mirror that is moving away at speed ${u}$ from the point it was emitted.
+Where ${t^{'}_1}$ is the time taken to get there, ${\Delta  L^{'}}$ is the distance between the bulb and the mirror in front.
 After this, the light then must travel back to the bulb a distance
 
 \begin{equation}
-	L_2 = {c}t{'}_2 = D{'}- {u}t{'}_2
+	{l^{'}_2} = {c} {t^{'}_2} = {\Delta  L^{'}} - {u} {t^{'}_2}.
 \end{equation}
 
-where ${t{'}}_2$ is the time taken to return to the bulb from the mirror, both of these give the two times as
+Where ${t^{'}_2}$ is the time taken to return to the bulb from the front mirror, both of these give the two times as
 
 \begin{equation}
-	t{'}_1 = \frac{D'}{{c} - {u}}
+	{t^{'}_1} = \frac{\Delta  L'}{{c} - {u}}
 \end{equation}
 
 and
 
 \begin{equation}
-	{t{'}}_2 = \frac{{D'}}{{c} + {u}}
+	{t^{'}_2} = \frac{{\Delta  L^{'}}}{{c} + {u}}.
 \end{equation}
 
-adding both times together gives the total primed time
+Adding both these times together gives the total dilated time of return as
 
 \begin{equation}
-	{t{'}} = D{'}(\frac{1}{{c} + u} + \frac{1}{{c} - {u}}) = \frac{D'}{c}\frac{1}{1- {u}^2/{c}^2} = \frac{D'}{c}\frac{1}{1-{v}^2/{c}^2} = {\gamma}^2 \frac{D'}{c}
+	{\Delta t{'}} = {\Delta  L^{'}}(\frac{1}{{c} + {u}} + \frac{1}{{c} - {u}}) = \frac{\Delta  L^{'}}{c}\frac{1}{1- {u}^2/{c}^2} = \frac{\Delta  L^{'}}{c}\frac{1}{1-{v}^2/{c}^2} = {\gamma}^2 \frac{\Delta  L^{'}}{c}
 \end{equation}
 
-from the time dilation equation, we have
+where we used ${u}=-{v}$.
+Now from this and using the the time dilation equation, we have
 
 \begin{equation}
-	{c}{t{'}} = {c}{\gamma} {t} = {\gamma} {D} = {\gamma}^2 {D{'}}
+	{c}{\Delta t{'}} = {c}{\gamma} {\Delta t} = {\gamma} {\Delta L} = {\gamma}^2 {\Delta  L^{'}}
 \end{equation}
 
-and finally leading to the contracted distance to the front mirror in the primed frame being
+Finally, this leads to the length from the bulb to the front mirror in the primed frame to be
 
 \begin{equation}
-	{D{'}} = \frac{1}{{\gamma}}{D}
+	{\Delta  L^{'}} = \frac{1}{{\gamma}}{\Delta  L}.
 \end{equation}
 
-so we have
+This means that the distances in the direction of movement of an object are contracted in its direction of movement compared to the rest frame of the object, that is
 
 \begin{equation}
-	{D{'}} \leq {D}
+	{\Delta  L^{'}} \leq {\Delta  L}.
 \end{equation}
 
-we take from this that distances in the direction of movement of an object are contracted in its direction of movement compared to the rest frame of the object.
+*** conclusion statement:
+
+Moving objects and the distance between them are therefore shorter than in a frame with them moving compared to in the rest frame of the objects.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Position and Time Transformation}
 
-For the derivation of the coordinate transformation between two inertial frames, we will follow a similar line of thought as we did in the first chapter on the conceptual introduction.
+We have looked at the dilation between two different times at the same location and the contraction between two different positions at the same time.
+We will use both these concepts to help us see how the combination of the time and the position coordinate, known as an event, transforms when we swap frames.
+For the derivation of the coordinate transformation of an event between two inertial frames, we will follow a similar line of thought as in classical relativity in Section (\ref{sect: Classical Relativity}).
+Starting with the same diagram and applying what we have learned from the time dilation and length contraction sections, to be consistent with the postulates of special relativity, we will derive the transformation equations, known as the Lorentz transformation.
 
 %█████████████
 \begin{figure}[H]
@@ -998,42 +1081,43 @@ For the derivation of the coordinate transformation between two inertial frames,
 		\draw[red, thick,->] (1.7,0.7,0)--(3,0.9,0) node[midway,anchor = south]{${\vec{O{'}E}}$};
 		%
 	\end{tikzpicture}
-	\caption{\textbf{An event in initial frame with a primed frame's axis moving relative to its axis}.	This shows an initial frame with its associated x,y,z-coordinate system at rest in its frame, with origin ${O}$. There is also an x',y',z'-coordinate system with origin ${O'}$ associated with a “primed” frame, at position ${\vec{OO'}}$ in the initial frame. It is moving at speed ${v}$ in the z-direction relative to the initial frame. An event ${E}$ in this initial frame is described by a set of spatial and time coordinates ${\vec{OE}} = ({x},{y},{z})$ and ${t}$. We choose the time to be zero in both frames when both axes overlapped, so that ${t}$ is also the time from when they overlapped. We also show ${\vec{O'E}}$ which represents the vector from the primed origin to the event in the initial frame. *** rewrite for Relaivistic version}
+	\caption{\textbf{An event in initial frame with a primed frame's axis moving relative to it.} This is a diagram of an initial frame with its associated $x,y,z$-coordinate system at rest in its frame, with origin ${O}$. There is also an $x',y',z'$-coordinate system with origin ${O'}$ associated with a "primed" frame, at position ${\vec{OO'}}$ in the initial frame. It is moving at speed ${v}$ in the z-direction relative to the initial frame. An event ${E}$ in the initial frame is described by a set of spatial and time coordinates ${\vec{OE}} = ({x},{y},{z})$ and ${t}$. We choose the time to be zero in both frames when both axes overlapped, so that ${t}$ is also the time from when they overlapped. We also show ${\vec{O'E}}$ which represents the vector from the primed origin to the event in the initial frame.}
 	\label{fig: simple Lorentz transform derivation}
 \end{figure}
 %███████████
 
-If we are in an intial frame with origin ${O}$ at position $(0,0,0)$ and a primed frame moving in the z-direction at velocity ${v}$ such that the position of the primed origin in this frame is
+As shown in the diagram, we are in the initial frame with origin ${O}$ defined by coordinates $(0,0,0)$ and the primed frame is moving in the z-direction at velocity ${v}$ such that the position of the primed origin in the initial frame is
 
 \begin{equation}
 	\vec{OO{'}} = (0,0,{v}{t})
 \end{equation}
 
-at time ${t}$ from when the origins overlapped, if there is an \hyperlink{def-event}{event} (say light or another object reaching a mirror that is moving with the \hyperlink{def-Primed-Frame}{primed frame}s axis) described in this frames coordinates as
-
-\begin{equation}
-	E = ({x},{y},{z},{t})
-\end{equation}
-
-with the spatial coordinates shown in the diagram as
+at time ${t}$ from when the origins overlapped.
+If there is an \hyperlink{def-event}{event} at position
 
 \begin{equation}
 	\vec{OE} = ({x},{y},{z})
 \end{equation}
 
-in the primed frame we have the event described as
+the event is described by
+
+\begin{equation}
+	E = ({x},{y},{z},{t})
+\end{equation}
+
+then in the primed frame, we will the event described by the primed coordinates that we want to transform into, as
 
 \begin{equation}
 	E{'} = ({x{'}},{y{'}},{z{'}},t{'})
 \end{equation}
 
-now in the current frame, we have the \hyperlink{def-Primed-Frame}{primed frame}'s axis moving with the mirror, from the previous chapter we should have this primed distance in the z-direction to the event contracted, as the primed z-coordinates are contracted in this frame, as seen from length contraction section; the events z-coordinate is ${z} = {z{'}}/{\gamma}$, so that distance between the primes origin and the event in this frame (not the primed frame) is
+The primed frame's axis and coordinates are moving relative to the initial frame, so the distance between the primed axis origin and the event would be contracted in the initial frame relative to these coordinates in the primed frame,that is ${z} = {z{'}}/{\gamma}$, giving the distance between the primed axis origin and the event in the initial frame in terms of the primed z-coordinate as
 
 \begin{equation}
 	\vec{O{'}E} = (x,y,{z{'}}/{\gamma})
 \end{equation}
 
-noting that we have the x and y-components unaffected due to the cannon and ball thought experiment from the first chapter.
+Noting that we have the x and y-components unaffected, due to the cannon and ball thought experiment from the first chapter.
 From the diagram, we can see
 
 \begin{equation}
@@ -1041,23 +1125,23 @@ From the diagram, we can see
 	\label{eq: event}
 \end{equation}
 
-subbing each component into this equation for the z-direction and rearranging, we have
+subbing each component into this equation for the z-direction and rearranging, we get the primed z-coordinate of the event in terms of the initial frame's z-coordinate and time as
 
 \begin{equation}
-	{z{'}} = {\gamma} (z-{v}{t})
+	{z{'}} = {\gamma} ({z}-{v}{t})
 \end{equation}
 
-If we were instead in the primed frame we would have ${\vec{OE}} = ({x},{y},{z}/{\gamma})$, ${\vec{OO{'}}} = (0,0,{v}{t{'}})$, and ${\vec{O{'}E}} = (x,y,{z{'}})$, doing the same for these we have
+If we were instead in the primed frame we would have ${(\vec{OE}){'}} = ({x},{y},{z}/{\gamma})$, ${(\vec{OO{'}}){'}} = (0,0,{v}{t{'}})$, and ${(\vec{O{'}E}){'}} = (x,y,{z{'}})$, doing the same for these we have
 
 \begin{equation}
 	{z} = {\gamma} ({z{'}} + {v}{t{'}})
 \end{equation}
 
-This should be expected as this shows the expected symmetry between the frames because if we were originally in the primed frame we would have the intial frame moving instead at -${v}$ in the z-direction relative to the primed frame, so we would expect that the inverse \hyperlink{def-transform}{transformation} would replace one frame's coordinates with the other and have the negative of the velocity instead.
+This shows the expected symmetry between the frames because if we were originally in the primed frame we would have the initial frame moving instead at -${v}$ in the z-direction relative to the primed frame, so we would expect that the inverse \hyperlink{def-transform}{transformation} would replace one frame's coordinates with the other and have the negative of the velocity instead.
 Now substituting the z transforms into each other we have
 
 \begin{equation}
-	{z} = {\gamma} ( {\gamma} (z-{v}{t}) + {v}{t{'}})
+	{z} = {\gamma} ( {\gamma} ({z}-{v}{t}) + {v}{t{'}})
 \end{equation}
 
 and rearranging gives
@@ -1066,78 +1150,111 @@ and rearranging gives
 	{t{'}} = {\gamma} \left( \left( \dfrac{1}{{\gamma}^2}-1 \right)\frac{z}{v} + t \right)
 \end{equation}
 
-with ${\gamma}^{-2} = 1-{v}^2/{c}^2$ then giving
+with ${\gamma}^{-2} = 1-{v}^2/{c}^2$ leading to the prime frames time for the event given in initial frames coordinates as
 
 \begin{equation}
 	{t{'}} = {\gamma} \left( t-\dfrac{{v}{z}}{{c}^2} \right)
 \end{equation}
 
-leaving full description of the location and time of an \hyperlink{def-event}{event} as
+again if we want the inverse transform from prime to initial frame we can swap the prime and initial frame coordinates and put a minus in front of the frame velocity.
+
+We now have the full description of the transformation of the position and time of an \hyperlink{def-event}{event} as
 
 \begin{equation}
 	\mhl{
 		\begin{aligned}
 			 & {x{'}} = x                                           \\
 			 & {y{'}} = y                                           \\
-			 & {z{'}} = {\gamma} (z-{v}{t})                           \\
-			\text{at time \ \ \ }                             \\
-			 & {t{'}} = {\gamma} \bigg(t-\frac{{v}{z}}{{c}^2}\bigg)       \\
-			\text{with \ \ \ }                                \\
+			 & {z{'}} = {\gamma} ({z}-{v}{t})                       \\
+			\text{at time \ \ \ }                                   \\
+			 & {t{'}} = {\gamma} \bigg(t-\frac{{v}{z}}{{c}^2}\bigg) \\
+			 & \text{from the overlap of coordinate axis. \ \ \ }   \\
+			\text{with \ \ \ }                                      \\
 			 & {\gamma} = \dfrac{1}{\sqrt{1-\frac{{v}^2}{{c}^2}}}
 		\end{aligned}
 	}
 	\label{eq: Lorentz transformation}
 \end{equation}
 
-For the time \hyperlink{def-transform}{transform} the $\frac{{v}{z}}{{c}^2}$ term is the cause of \hyperlink{def-simultaneity}{simultaneous} \hyperlink{def-event}{event}s in one inertial frame no longer being \hyperlink{def-simultaneity}{simultaneous} in another inertial frame, and the gamma factor ${\gamma}$, is the term that causes the overall change in how fast time flows relative in each frame.
-In the spatial coordinate transforms the gamma factor is the cause of the change of lengths in the direction of the frame's movement.
-How the transformation works is shown in Figure (\ref{fig: coordinate transform}).
+In the time \hyperlink{def-transform}{transform} equation the $\frac{{v}{z}}{{c}^2}$ term is the cause of \hyperlink{def-simultaneity}{simultaneous} \hyperlink{def-event}{event}s in one inertial frame no longer being \hyperlink{def-simultaneity}{simultaneous} in another inertial frame, and the ${\gamma}$ factor, is the term that causes the overall change in how fast time flows relative in each frame.
+In the spatial coordinate transform equations the the ${v}{t}$ factor is due to both axes moving away from each other and the ${\gamma}$ factor is the cause of the change of lengths in the direction of the frame's movement.
+Figure (\ref{fig: coordinate transform}) shows how points representing the coordinates are transformed between the frames.
 
+%███
 %█████████████
 \begin{figure}[H]
-	\figuretitle{...}
 	\centering
-	\includegraphics[width = 10cm]{images/pdf/coordinate_transforms.pdf}
-	\caption{A diagram, showing a grid of points at time ${t} = 0$ that are at rest in their proper frame (left), giving the direct transformation into the moving primed frame (middle) where the points are now moving in the negative z-direction with the colors and labels showing the desynchronization of the primed times ${t{'}}$, the next figure (right) shows what these points would be when they are synchronized with the origin's time ${t{'}} = 0$. *** split plots into several svgs and for other set later too, also call first picture "initial" frame of reference and others primed}
+	\begin{subfigure}{0.29\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/coord_transform_initial.pdf}
+		\caption{Initial frame}
+		\label{fig: coordinate transform subfig_1}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/coord_transform_primed.pdf}
+		\caption{prime frame}
+		\label{fig: coordinate transform subfig_2}
+	\end{subfigure}
+	\begin{subfigure}{0.29\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/coord_transform_primed_sychronised.pdf}
+		\caption{prime frame (${t{'}}=0$)}
+		\label{fig: coordinate transform subfig_3}
+	\end{subfigure}
+	\caption{\textbf{Transformation of coordinates into a primed frame.} A diagram, showing a grid of points, representing initial frame coordinates, at time ${t} = 0$ that are at rest in their frame (left), giving the direct transformation, using the transform equations, into the moving primed frame (middle) where the points are now moving in the negative z-direction with ${z{'}} = {\gamma} {z}$, the colors and labels show the desynchronization of the primed times ${t{'}} = -\frac{{v}}{{c}^2} {\gamma} {z}$, the next figure (right) shows where these points would be when they are synchronized with the origin's time ${t{'}} = 0$, which can be worked out to be (${z{'}} = \frac{{z}}{{\gamma}}$).}
 	\label{fig: coordinate transform}
 \end{figure}
 %███████████
 
+This diagram shows stationary points representing coordinates in the initial frame.
+In the primed frames these points are positioned at ${z{'}} = {\gamma} {z}$ and now moving at $-{v}$, they are transformed using the transformation equations to points that are more spread out in the primed frame, but the times they are located at each point have desynchronized times.
+Therefore to find these initial frames points in the primed frame at the synchronized time of ${t{'}} = 0$, we must propagate the points to that time, that is ${z{'}} = \frac{{z}}{{\gamma}}$, as shown in figure (\ref{fig: coordinate transform subfig_3}).
+
+we will later see a more natural interpretation of the coordinate transforms when we get to the retarded chapter, giving a better understanding of why the time transform is the way it is.
+
+
 %███████████████████████████████████████████████████████████████████
 \subsection{Infinitesimal Changes of Coordinates}
 
+To get the velocity transform equations we will first need the equations to transform the displacement between two positions and times, and take them in the limit as the changes go to zero.
+That is when we have infintesmal changes of coordinates.
+If we want to know how the displacement between two coordinates ${\vec{R}_1} = (x_1,y_1,z_1)$ and ${\vec{R}_2} = (x_2,y_2,z_2)$ transforms, we can take the difference of the transforms of both the coordinates as follows
+
 \begin{equation}
 	\begin{aligned}
-		 & {x{'}}_2-{x{'}}_1 = x_2-x_1                                                                                   \\
-		 & {y{'}}_2-{y{'}}_1 = y_2-y_1                                                                                   \\
-		 & z{'}_2-z{'}_1 = {\gamma} ( z_2- {v} {t}_2)-{\gamma} ( z_1- {v} {t}_1)                                           \\
+		 & {x{'}}_2-{x{'}}_1 = x_2-x_1                                                                                         \\
+		 & {y{'}}_2-{y{'}}_1 = y_2-y_1                                                                                         \\
+		 & z{'}_2-z{'}_1 = {\gamma} ( z_2- {v} {t}_2)-{\gamma} ( z_1- {v} {t}_1)                                               \\
 		 & {t{'}}_2-t{'}_1 = {\gamma} \bigg( {t}_2-\frac{v}{{c}^2} z_2 \bigg)-{\gamma} \bigg( {t}_1-\frac{v}{{c}^2} z_1 \bigg)
 	\end{aligned}
 \end{equation}
 
-leads to
+rearranging and replacing the difference of the each the first and second coordinates, ${\Delta}{\vec{R}} = ({\Delta}x,{\Delta}y,{\Delta}z) = (x_2-x_1,y_2-y_1,z_2-z_1)$, giving the displacement transform as
 
 \begin{equation}
 	\label{eq: interval of Coordinates}
 	\begin{aligned}
-		 & \Delta x{'} = {\Delta x}                                              \\
-		 & \Delta {y{'}} = \Delta y                                              \\
-		 & \Delta {z{'}} = {\gamma} ( \Delta z- {v} \Delta t)                      \\
+		 & \Delta x{'} = {\Delta x}                                                 \\
+		 & \Delta {y{'}} = \Delta y                                                 \\
+		 & \Delta {z{'}} = {\gamma} ( \Delta z- {v} \Delta t)                       \\
 		 & {\Delta t{'}} = {\gamma} \bigg( \Delta t-\frac{v}{{c}^2} \Delta z \bigg)
 	\end{aligned}
 \end{equation}
 
-when taken the changes are infinitesimal this gives the differential quantities
+We can also get the differential quantities when we take infinitesimal changes, which have the same form
 
 \begin{equation}
 	\label{eq: Infintesmal interval of Coordinates}
 	\begin{aligned}
 		 & {dx{'}} = {dx}                                        \\
 		 & {dy{'}} = {dy}                                        \\
-		 & {dz{'}} = {\gamma} (dz- {v}dt)                       \\
+		 & {dz{'}} = {\gamma} (dz- {v}dt)                        \\
 		 & {dt{'}} = {\gamma} \bigg(dt-\frac{v}{{c}^2} dz \bigg)
 	\end{aligned}
 \end{equation}
+
+so when we make an infintesmal small change in coordinate or time in a frame, we know what the corresponding change is in a primed frame.
 
 %███████████████████████████████████████████████████████████████████
 \subsection{Transforms with Low Relative Frame Speed Change}
@@ -1150,7 +1267,7 @@ with ${v}\ll {c}$ we have ${\gamma} \approx 1$ we get
 \end{equation}
 
 \begin{equation}
-	z{'} \approx z-{v}{t}
+	z{'} \approx {z}-{v}{t}
 \end{equation}
 
 which is the expected result for the \hyperlink{def-galilean-transform}{classical coordinates transform}, and what we are used to seeing things work in everyday life.
@@ -1175,8 +1292,8 @@ from taking the infinitesimals of equations from eq.
 
 \begin{equation}
 	\begin{aligned}
-		 & {{u}_{x}}^{'} = \frac{dx{'}}{dt{'}} = \frac{dx}{{\gamma} \bigg(dt-\frac{vdz}{{c}^2}\bigg) }                  \\
-		 & {{u}_{y}}^{'} = \frac{dy{'}}{dt{'}} = \frac{dy}{{\gamma} \bigg(dt-\frac{vdz}{{c}^2}\bigg) }                  \\
+		 & {{u}_{x}}^{'} = \frac{dx{'}}{dt{'}} = \frac{dx}{{\gamma} \bigg(dt-\frac{vdz}{{c}^2}\bigg) }                   \\
+		 & {{u}_{y}}^{'} = \frac{dy{'}}{dt{'}} = \frac{dy}{{\gamma} \bigg(dt-\frac{vdz}{{c}^2}\bigg) }                   \\
 		 & {{u}_{z}}^{'} = \frac{dz{'}}{dt{'}} = \frac{{\gamma} (dz- {v}dt)}{{\gamma} \bigg(dt-\frac{vdz}{{c}^2}\bigg) }
 	\end{aligned}
 \end{equation}
@@ -1189,8 +1306,8 @@ now dividing the top and bottom of the fraction by ${dt}$ we can give the equati
 		\begin{aligned}
 			 & \mathbf{U}{'} = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right) }
 			\begin{pmatrix}
-				{{u}_{x}}                             \\
-				{{u}_{y}}                             \\
+				{{u}_{x}}                              \\
+				{{u}_{y}}                              \\
 				{\gamma} \left( {{u}_{z}}- {v} \right) \\
 			\end{pmatrix}
 			\\
@@ -1222,19 +1339,19 @@ To find how the acceleration of a particle transforms for an \hyperlink{def-obse
 			d{{u}_{y}}          \\
 			{\gamma} d{{u}_{z}} \\
 		\end{pmatrix}
-		 + \dfrac{{\gamma} \dfrac{v}{{c}^2} d{{u}_{z}}}{{\gamma}^2\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right)^2 }
+		+ \dfrac{{\gamma} \dfrac{v}{{c}^2} d{{u}_{z}}}{{\gamma}^2\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right)^2 }
 		\begin{pmatrix}
-			{{u}_{x}}                             \\
-			{{u}_{y}}                             \\
+			{{u}_{x}}                              \\
+			{{u}_{y}}                              \\
 			{\gamma} \left( {{u}_{z}}- {v} \right) \\
-		\end{pmatrix}                                           \\
-		             & = ...
-                                                     \\
-		             & = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right)^2 }
+		\end{pmatrix} \\
+		               & = ...
+		\\
+		               & = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right)^2 }
 		\begin{pmatrix}
 			d{{u}_{x}} + \frac{v}{{c}^2}( {{u}_{x}} d{{u}_{z}}-{{u}_{z}} d{{u}_{x}}) \\
 			d{{u}_{y}} + \frac{v}{{c}^2}( {{u}_{y}} d{{u}_{z}}-{{u}_{z}} d{{u}_{y}}) \\
-			\frac{1}{{\gamma}} d{{u}_{z}}                    \\
+			\frac{1}{{\gamma}} d{{u}_{z}}                                            \\
 		\end{pmatrix}
 	\end{aligned}
 \end{equation}
@@ -1248,7 +1365,7 @@ Now, divide by the time differential from the previous chapter to get the accele
 			\begin{pmatrix}
 				{{a}_{x}} + \frac{v}{{c}^2}({{u}_{x}} {{a}_{z}}-{{u}_{z}} {{a}_{x}}) \\
 				{{a}_{y}} + \frac{v}{{c}^2}({{u}_{y}} {{a}_{z}}-{{u}_{z}} {{a}_{y}}) \\
-				\frac{1}{{\gamma}} {{a}_{z}}                 \\
+				\frac{1}{{\gamma}} {{a}_{z}}                                         \\
 			\end{pmatrix}
 			\\
 			\text{at position ${\mathbf{R}{'}}$ and time ${t{'}}$ }
@@ -1295,6 +1412,8 @@ meaningful conclusion:
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \chapter{Observers Delayed World View}
+
+- Explain that it’s not normally included in SR sources, and why it is included here
 
 Light travels extremely fast (roughly 300,000,000 m/s) compared to other everyday speeds we are used to.
 In the blink of an eye, light could travel around the world twice.
@@ -1405,16 +1524,16 @@ Now inputting the delayed positions and times (with origin time ${t} = 0$) in th
 
 \begin{equation}
 	\begin{aligned}
-		\mathbf{R}{'}     & = {c}{T}_{e}
+		\mathbf{R}{'}   & = {c}{T}_{e}
 		\begin{pmatrix}
-			0                                                    \\
-			\sin{\theta_c}                                       \\
+			0                                                  \\
+			\sin{\theta_c}                                     \\
 			{\gamma} \left( \cos{\theta_c}-\frac{v}{c} \right) \\
 		\end{pmatrix}
-		 =
+		=
 		\begin{pmatrix}
-			0                                    \\
-			{{R}_{y}}                                  \\
+			0                                               \\
+			{{R}_{y}}                                       \\
 			{\gamma} \left( {{R}_{z}}-{v} {{T}_{e}} \right) \\
 		\end{pmatrix}
 		\\
@@ -1492,6 +1611,8 @@ Then we need to start with all objects where they currently are at ${t} = 0$ the
 %███████████████████████████████████████████████████████████████████
 \chapter{Spherical light pulses}
 
+- Explain that it’s not normally included in SR sources, and why it is included here
+
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Spherical Polar Coordinates}
@@ -1499,7 +1620,7 @@ Then we need to start with all objects where they currently are at ${t} = 0$ the
 This math section is just for reference in later sections,
 
 %█████████████
-\begin{figure}[h]
+\begin{figure}[H]
 	\figuretitle{...}
 	\centering
 	\tdplotsetmaincoords{60}{110}
@@ -1546,7 +1667,7 @@ So that the coordinate can be written as
 			y \\
 			z \\
 		\end{pmatrix}
-		 = r
+		= r
 		\begin{pmatrix}
 			\cos{\phi}\sin{\theta} \\
 			\sin{\phi}\sin{\theta} \\
@@ -1569,11 +1690,11 @@ Some useful formulae for later are the unit vectors
 	\begin{pmatrix}
 		\cos\theta \, \cos\phi \\
 		\cos\theta \, \sin\phi \\
-		-\sin\theta           \\
+		-\sin\theta            \\
 	\end{pmatrix},
 	\mathbf{\hat{\text{$\phi$}}} =
 	\begin{pmatrix}
-		-\, \sin\phi            \\
+		-\, \sin\phi             \\
 		\hphantom{-} \, \cos\phi \\
 		0                        \\
 	\end{pmatrix}
@@ -1590,14 +1711,14 @@ and the differentials with respect to each of the coordinates are
 			r \cos\theta \sin\phi \\
 			-r \sin\theta         \\
 		\end{pmatrix}
-		 = r\mathbf{\hat{\text{$\theta$}}}                                         \\
+		= r\mathbf{\hat{\text{$\theta$}}}                                          \\
 		\frac{\partial\mathbf{R}}{\partial \phi}   & =
 		\begin{pmatrix}
 			-r \sin\theta \sin\phi \\
 			r \sin\theta \cos\phi  \\
 			0
 		\end{pmatrix}
-		 = r \sin\theta \mathbf{\hat{\text{$\phi$}}}
+		= r \sin\theta \mathbf{\hat{\text{$\phi$}}}
 	\end{aligned}
 \end{equation}
 
@@ -1632,8 +1753,8 @@ then from the velocity \hyperlink{def-transform}{transform} in eq.
 		\begin{aligned}
 			 & \mathbf{c}{'} = \dfrac{c}{{\gamma}\left(1-\frac{v}{c} \cos\alpha\right) }
 			\begin{pmatrix}
-				\sin\alpha\cos\varphi                            \\
-				\sin\alpha\sin\varphi                            \\
+				\sin\alpha\cos\varphi                          \\
+				\sin\alpha\sin\varphi                          \\
 				{\gamma} \left( \cos\alpha-\frac{v}{c} \right) \\
 			\end{pmatrix}
 			\\
@@ -1830,9 +1951,9 @@ Using the coordinated transform from eq.
 			x          \\
 			y          \\
 			{\gamma} z \\
-		\end{pmatrix},                            \\
-		\text{at time \ \ \ }                     \\
-		{t{'}}          & =-{\gamma} \frac{{v}{z}}{{c}^2} \\
+		\end{pmatrix},                                  \\
+		\text{at time \ \ \ }                           \\
+		{t{'}}        & =-{\gamma} \frac{{v}{z}}{{c}^2} \\
 	\end{aligned}
 \end{equation}
 
@@ -1880,15 +2001,15 @@ to find the position the light pulse is currently at, at time ${t{'}} = 0$, we h
 		\end{pmatrix}
 		-
 		\begin{pmatrix}
-			0          \\
-			0          \\
+			0              \\
+			0              \\
 			u_s {t{'}_{p}} \\
 		\end{pmatrix}
 		\\
 		 & = \dfrac{{c}t{'}_{p}}{{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right)}
 		\begin{pmatrix}
-			\frac{x}{\|\mathbf{R}\|}                                                                                                                             \\
-			\frac{y}{\|\mathbf{R}\|}                                                                                                                             \\
+			\frac{x}{\|\mathbf{R}\|}                                                                                                                           \\
+			\frac{y}{\|\mathbf{R}\|}                                                                                                                           \\
 			{\gamma} \left( \frac{z}{\|\mathbf{R}\|} + \dfrac{u_s}{c} \right)-{\gamma}\left(1 + \frac{z}{\|\mathbf{R}\|} \dfrac{u_s}{c} \right) \dfrac{u_s}{c} \\
 		\end{pmatrix}
 	\end{split}
@@ -1962,6 +2083,8 @@ If we then did the same for multiple pulses to see how they \hyperlink{def-trans
 %███████████████████████████████████████████████████████████████████
 \chapter{A Moving Source's Field}
 
+- Explain that it’s not normally included in SR sources, and why it is included here
+
 %█████████████
 \begin{figure}[H]
 	\figuretitle{...}
@@ -1988,13 +2111,15 @@ If we then did the same for multiple pulses to see how they \hyperlink{def-trans
 %███████████████████████████████████████████████████████████████████
 \section{Flux from Point Source}
 
+*** - Add more meaning to Flux section
+
 -flux describes the rate at which a quantity flows across a surface (flowrate per unit area)
 
 %███████████████████████████████████████████████████████████████████
 \subsection{Surface element}
 
 %█████████████
-\begin{figure}[h]
+\begin{figure}[H]
 	\figuretitle{Differential Element in Spherical Polar Coordinates}
 	\centering
 	\tikzsetnextfilename{Tikz_Surface_Element}
@@ -2209,7 +2334,7 @@ do not change when we transform between inertial reference frames, are called \h
 
 In this chapter, we will see the invariant quantity related to space-time coordinates and use this to find invariant properties associated with velocity, which will lead to the more abstract conservation relation of momentum energy and mass.
 We will find a new quantity with the units of energy that has a term which approximates to the kinetic energy of a particle at low velocities and another term that suggests particles have a new type of energy, that was not previously in classical physics, that depends on the mass of a particle (mass-energy equivalence), this will all lead to a new conservation law of energy.
- The reason we care about the concept of energy is that it has a conservation relation that can be used as a tool to help us make calculations and model more complex systems.
+The reason we care about the concept of energy is that it has a conservation relation that can be used as a tool to help us make calculations and model more complex systems.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -2221,7 +2346,7 @@ We define a quantity called the space-time interval $\Delta S$ between two \hype
 
 \begin{equation}
 	\mhl{
-		\Delta S^2 = (c\Delta t)^2-{\Delta x}^2-\Delta y^2-\Delta z^2
+	\Delta S^2 = (c\Delta t)^2-{\Delta x}^2-\Delta y^2-\Delta z^2
 	}
 	\label{eq: space-time interval}
 \end{equation}
@@ -2230,10 +2355,10 @@ All inertial frames of reference agree on this interval as it is invariant betwe
 
 \begin{equation}
 	\begin{aligned}
-		\Delta S{'}^2 & = (c{\Delta t{'}})^2-\Delta x{'}^2-\Delta y{'}^2-\Delta z{'}^2                                                                            \\
-		            & = {c}^2{\gamma} \bigg( \Delta t-\frac{v}{{c}^2} \Delta z \bigg)^2-{\Delta x}^2-\Delta y^2-\Delta ({\gamma} ( \Delta z- {v} \Delta t) )^2 \\
-		            & = (c\Delta t)^2-{\Delta x}^2-\Delta y^2-\Delta z^2                                                                                \\
-		            & = \Delta S^2.
+		\Delta S{'}^2 & = (c{\Delta t{'}})^2-\Delta x{'}^2-\Delta y{'}^2-\Delta z{'}^2                                                                           \\
+		              & = {c}^2{\gamma} \bigg( \Delta t-\frac{v}{{c}^2} \Delta z \bigg)^2-{\Delta x}^2-\Delta y^2-\Delta ({\gamma} ( \Delta z- {v} \Delta t) )^2 \\
+		              & = (c\Delta t)^2-{\Delta x}^2-\Delta y^2-\Delta z^2                                                                                       \\
+		              & = \Delta S^2.
 	\end{aligned}
 \end{equation}
 
@@ -2258,7 +2383,7 @@ and if we divide by the square of the proper time that passes for the particle i
 \begin{equation}
 	\begin{aligned}
 		\left(\frac{dS_p}{d\tau}\right)^2 & = \left(c\frac{{{dt}_{p}}}{d\tau}\right)^2-\left(c\frac{dx_p}{d\tau}\right)^2-\left(\frac{dy_p}{d\tau}\right)^2-\left(\frac{dz_p}{d\tau}\right)^2 \\
-		                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{{{u}_{x}}^2 + {{u}_{y}}^2 + {{u}_{z}}^2}{{c}^2} \right) = {c}^2\gamma_{u}^2 \left( 1-\frac{u^2}{{c}^2} \right)                        \\
+		                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{{{u}_{x}}^2 + {{u}_{y}}^2 + {{u}_{z}}^2}{{c}^2} \right) = {c}^2\gamma_{u}^2 \left( 1-\frac{u^2}{{c}^2} \right) \\
 		                                  & = {c}^2
 	\end{aligned}
 \end{equation}
@@ -2270,7 +2395,7 @@ Now by multiplying both sides by ${c}^2$ and the square of the rest mass ${m}$ o
 	\label{eq: energy-momentum derivation}
 	\begin{aligned}
 		m^2 {c}^2 \left(\frac{dS_p}{d\tau}\right)^2 & = \gamma_{u}^2 m^2 c^4-\gamma_{u}^2 m^2 \left( {{u}_{x}}^2 + {{u}_{y}}^2 + {{u}_{z}}^2 \right) {c}^2 \\
-		({m}{c}^2)^2                                  & = \gamma_{u}^2 m^2 c^4-\gamma_{u}^2 m^2 u^2 {c}^2
+		({m}{c}^2)^2                                & = \gamma_{u}^2 m^2 c^4-\gamma_{u}^2 m^2 u^2 {c}^2
 	\end{aligned}
 \end{equation}
 
@@ -2286,8 +2411,8 @@ using the Taylor expansion of $\gamma_{u}$ on the quantity $\gamma_{u} {m}{c}^2$
 \begin{equation}
 	\begin{aligned}
 		\gamma_{u} {m}{c}^2 & = {m}{c}^2  \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
-\right) \\
-		                & = {m}{c}^2 + \frac{1}{2}{m}{u}^2 + \frac{3}{8}m\frac{u^4}{{c}^2} + ...
+		\right)                                                                                                     \\
+		                    & = {m}{c}^2 + \frac{1}{2}{m}{u}^2 + \frac{3}{8}m\frac{u^4}{{c}^2} + ...
 	\end{aligned}
 \end{equation}
 
@@ -2304,10 +2429,10 @@ so this total energy is equal to its rest energy squared plus a second energy sq
 
 \begin{equation}
 	\begin{aligned}
-		\gamma_{u} {m}{u}{c}& = {m}{u}{c} \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
-\right)     \\
-		               & ={c}\left( {m}{u} + \frac{1}{2}m \frac{u^3}{{c}^2} + \frac{3}{8}m\frac{u^5}{c^4} + ...
-\right)
+		\gamma_{u} {m}{u}{c} & = {m}{u}{c} \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+		\right)                                                                                                       \\
+		                     & ={c}\left( {m}{u} + \frac{1}{2}m \frac{u^3}{{c}^2} + \frac{3}{8}m\frac{u^5}{c^4} + ...
+		\right)
 	\end{aligned}
 \end{equation}
 

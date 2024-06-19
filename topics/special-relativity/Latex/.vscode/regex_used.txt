@@ -16,3 +16,11 @@
 $ sequential empty lines
     find: "\n\n\n"
     replace: "\n\n"
+
+$ check chapter formatting
+    find: "^(\\chapter\{([^}]*)\}(?![^\n]*\\label\{ch: \2\}).*)$"
+    replace: "\\chapter{$2} \\label{ch: $2}"
+
+$ check section formatting
+    find: "^(\\section\{([^}]*)\}(?![^\n]*\\label\{sect: \2\}).*)$"
+    replace: "\\section{$2} \\label{sect: $2}"

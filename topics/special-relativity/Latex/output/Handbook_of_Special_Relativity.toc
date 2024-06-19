@@ -28,37 +28,37 @@
 \contentsline {section}{\numberline {2.3}Time Dilation}{34}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Length Contraction}{36}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Position and Time Transformation}{39}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Infinitesimal Changes of Coordinates}{44}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Transforms with Low Relative Frame Speed Change}{46}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.1}Transforms with Low primed Frame Velocity}{44}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Space and Time Intervals}{45}{subsection.2.5.2}%
 \contentsline {section}{\numberline {2.6}Velocity}{47}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Acceleration}{47}{section.2.7}%
-\contentsline {subsection}{\numberline {2.7.1}Generalized Acceleration Transform}{48}{subsection.2.7.1}%
-\contentsline {section}{\numberline {2.8}Paths of Particles}{48}{section.2.8}%
-\contentsline {section}{\numberline {2.9}Summary}{49}{section.2.9}%
-\contentsline {section}{\numberline {2.10}Variables}{49}{section.2.10}%
-\contentsline {chapter}{\numberline {3}Observers Delayed World View}{51}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Relativistic Observers Delayed view}{52}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Delayed View of Transformed Coordinates}{54}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Steps for Changing Frames}{56}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Variables}{57}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Spherical light pulses}{58}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Spherical Polar Coordinates}{58}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Light Speed Velocity Transform}{59}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Doppler Effect}{60}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Aberration in Special Relativity}{61}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Transform of Light Pulse from Origin}{64}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Relativistic Beaming}{66}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Variables}{68}{section.4.7}%
-\contentsline {chapter}{\numberline {5}A Moving Source's Field}{69}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Flux from Point Source}{70}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Surface element}{71}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Field Flux}{72}{subsection.5.1.2}%
-\contentsline {section}{\numberline {5.2}Variables}{73}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Invariant Quantities}{74}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Space-Time Interval}{74}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Energy-Momentum Relation}{75}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Energy-Momentum Relation For Photons}{78}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Energy-Mass Equivalence}{78}{subsection.6.3.1}%
-\contentsline {section}{\numberline {6.4}Variables}{78}{section.6.4}%
-\contentsline {chapter}{Outro}{80}{chapter*.41}%
-\contentsline {chapter}{Resources}{81}{chapter*.42}%
+\contentsline {section}{\numberline {2.7}Acceleration}{48}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Summary}{49}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Variables}{50}{section.2.9}%
+\contentsline {chapter}{\numberline {3}Observers Delayed World View}{52}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Relativistic Observers Delayed view}{53}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Delayed View of Transformed Coordinates}{55}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Perceived Velocity}{57}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Steps for Changing Frames}{57}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Summary}{58}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Variables}{58}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Spherical light pulses}{59}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Spherical Polar Coordinates}{59}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Light Speed Velocity Transform}{60}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Doppler Effect}{61}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Aberration in Special Relativity}{62}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Transform of Light Pulse from Origin}{65}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Relativistic Beaming}{67}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Variables}{69}{section.4.7}%
+\contentsline {chapter}{\numberline {5}A Moving Source's Field}{71}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Flux from Point Source}{72}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Surface element}{73}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Field Flux}{74}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Variables}{75}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Invariant Quantities}{76}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Space-Time Interval}{76}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Energy-Momentum Relation}{77}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Energy-Momentum Relation For Photons}{80}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Energy-Mass Equivalence}{80}{subsection.6.3.1}%
+\contentsline {section}{\numberline {6.4}Variables}{80}{section.6.4}%
+\contentsline {chapter}{Outro}{82}{chapter*.44}%
+\contentsline {chapter}{Resources}{83}{chapter*.45}%

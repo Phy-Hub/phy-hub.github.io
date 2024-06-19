@@ -216,6 +216,7 @@ meaningful conclusion:
 - I'm Im : I am
 - other contractions
 - curly "and ' with straight " and'
+- prime or primed??
 
 ####
 

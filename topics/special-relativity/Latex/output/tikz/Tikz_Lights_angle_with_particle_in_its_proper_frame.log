@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  22 MAY 2024 11:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  12 JUN 2024 17:11
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -728,7 +728,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 )
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/asymptote\asymptote.sty
 Package: asymptote 2024/02/26 v1.38 Asymptote style file for LaTeX
-(output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.pre)
+No file ./output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.pre.
 \ASYbox=\box127
 \ASYdimen=\dimen283
 \c@asy=\count329
@@ -783,7 +783,139 @@ z/libraries\tikzexternalshared.code.tex))
 No auxiliary output files.
 
 \w@pgfexternal@auxout=\write6
-(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/pgfplots\pgfplots.sty
+
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.rev
+ision.tex)
+Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
+
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.cod
+e.tex
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotscore
+.code.tex
+\t@pgfplots@toka=\toks41
+\t@pgfplots@tokb=\toks42
+\t@pgfplots@tokc=\toks43
+\pgfplots@tmpa=\dimen285
+\c@pgfplots@coordindex=\count330
+\c@pgfplots@scanlineindex=\count331
+
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgfplots
+sysgeneric.code.tex))
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\pgfplot
+slibrary.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpgfcompat
+ib\pgfplotsoldpgfsupp_loader.code.tex
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryfpu.code.tex)
+Package pgfplots: loading complementary utilities for your pgf version...
+\t@pgf@toka=\toks44
+\t@pgf@tokb=\toks45
+\t@pgf@tokc=\toks46
+
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpgfcompat
+ib\pgfplotsoldpgfsupp_pgfutil-common-lists.tex))
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
+sutil.code.tex
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructur
+e\pgfplotsliststructure.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructur
+e\pgfplotsliststructureext.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructur
+e\pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count332
+)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructur
+e\pgfplotsmatrix.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/numtable\pgf
+plotstableshared.code.tex
+\c@pgfplotstable@counta=\count333
+\t@pgfplotstable@a=\toks47
+)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructur
+e\pgfplotsdeque.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
+sbinary.code.tex
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
+sbinary.data.code.tex))
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
+sutil.verb.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\pgflibr
+arypgfplots.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count334
+
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgflibra
+rypgfplots.surfshading.pgfsys-pdftex.def)))
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
+scolormap.code.tex
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
+scolor.code.tex))
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsstac
+kedplots.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsplot
+handlers.code.tex
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsmesh
+plothandler.code.tex
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsmesh
+plotimage.code.tex)))
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.sca
+ling.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotscoor
+dprocessing.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.err
+orbars.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.mar
+kers.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotstick
+s.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.pat
+hs.code.tex)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarydecorations.code.tex
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+decorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen286
+\pgfdecoratedremainingdistance=\dimen287
+\pgfdecoratedinputsegmentcompleteddistance=\dimen288
+\pgfdecoratedinputsegmentremainingdistance=\dimen289
+\pgf@decorate@distancetomove=\dimen290
+\pgf@decorate@repeatstate=\count335
+\pgfdecorationsegmentamplitude=\dimen291
+\pgfdecorationsegmentlength=\dimen292
+)
+\tikz@lib@dec@box=\box128
+)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarydecorations.pathmorphing.code.tex
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorat
+ions\pgflibrarydecorations.pathmorphing.code.tex))
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarydecorations.pathreplacing.code.tex
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorat
+ions\pgflibrarydecorations.pathreplacing.code.tex))
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\tikzlib
+rarypgfplots.contourlua.code.tex)
+\pgfplots@numplots=\count336
+\pgfplots@xmin@reg=\dimen293
+\pgfplots@xmax@reg=\dimen294
+\pgfplots@ymin@reg=\dimen295
+\pgfplots@ymax@reg=\dimen296
+\pgfplots@zmin@reg=\dimen297
+\pgfplots@zmax@reg=\dimen298
+)
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.s
+ty
 Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
 
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
@@ -808,11 +940,11 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count330
+\c@section@level=\count337
 )
-\@linkdim=\dimen285
-\Hy@linkcounter=\count331
-\Hy@pagecounter=\count332
+\@linkdim=\dimen299
+\Hy@linkcounter=\count338
+\Hy@pagecounter=\count339
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -820,7 +952,7 @@ Now handling font encoding PD1 ...
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count333
+\Hy@SavedSpaceFactor=\count340
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -833,13 +965,13 @@ Package hyperref Info: Plain pages OFF on input line 4194.
 Package hyperref Info: Backreferencing OFF on input line 4199.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4446.
-\c@Hy@tempcnt=\count334
+\c@Hy@tempcnt=\count341
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen286
+\XeTeXLinkMargin=\dimen300
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
@@ -848,9 +980,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count335
-\Field@Width=\dimen287
-\Fld@charsize=\dimen288
+\Fld@menulength=\count342
+\Field@Width=\dimen301
+\Fld@charsize=\dimen302
 Package hyperref Info: Hyper figures OFF on input line 6063.
 Package hyperref Info: Link nesting OFF on input line 6068.
 Package hyperref Info: Hyper index ON on input line 6071.
@@ -862,15 +994,15 @@ Package hyperref Info: PDF/A mode OFF on input line 6093.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count336
-\c@Item=\count337
-\c@Hfootnote=\count338
+\Hy@abspage=\count343
+\c@Item=\count344
+\c@Hfootnote=\count345
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
-\Fld@listcount=\count339
-\c@bookmark@seq@number=\count340
+\Fld@listcount=\count346
+\c@bookmark@seq@number=\count347
 
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -888,53 +1020,53 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package: biblatex 2024/03/21 v3.20 programmable bibliographies (PK/MW)
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count341
+\lrq@indent=\count348
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-\c@tabx@nest=\count342
-\c@listtotal=\count343
-\c@listcount=\count344
-\c@liststart=\count345
-\c@liststop=\count346
-\c@citecount=\count347
-\c@citetotal=\count348
-\c@multicitecount=\count349
-\c@multicitetotal=\count350
-\c@instcount=\count351
-\c@maxnames=\count352
-\c@minnames=\count353
-\c@maxitems=\count354
-\c@minitems=\count355
-\c@citecounter=\count356
-\c@maxcitecounter=\count357
-\c@savedcitecounter=\count358
-\c@uniquelist=\count359
-\c@uniquename=\count360
-\c@refsection=\count361
-\c@refsegment=\count362
-\c@maxextratitle=\count363
-\c@maxextratitleyear=\count364
-\c@maxextraname=\count365
-\c@maxextradate=\count366
-\c@maxextraalpha=\count367
-\c@abbrvpenalty=\count368
-\c@highnamepenalty=\count369
-\c@lownamepenalty=\count370
-\c@maxparens=\count371
-\c@parenlevel=\count372
-\blx@tempcnta=\count373
-\blx@tempcntb=\count374
-\blx@tempcntc=\count375
-\c@blx@maxsection=\count376
-\blx@maxsegment@0=\count377
-\blx@notetype=\count378
-\blx@parenlevel@text=\count379
-\blx@parenlevel@foot=\count380
-\blx@sectionciteorder@0=\count381
-\blx@sectionciteorderinternal@0=\count382
-\blx@entrysetcounter=\count383
-\blx@biblioinstance=\count384
+\c@tabx@nest=\count349
+\c@listtotal=\count350
+\c@listcount=\count351
+\c@liststart=\count352
+\c@liststop=\count353
+\c@citecount=\count354
+\c@citetotal=\count355
+\c@multicitecount=\count356
+\c@multicitetotal=\count357
+\c@instcount=\count358
+\c@maxnames=\count359
+\c@minnames=\count360
+\c@maxitems=\count361
+\c@minitems=\count362
+\c@citecounter=\count363
+\c@maxcitecounter=\count364
+\c@savedcitecounter=\count365
+\c@uniquelist=\count366
+\c@uniquename=\count367
+\c@refsection=\count368
+\c@refsegment=\count369
+\c@maxextratitle=\count370
+\c@maxextratitleyear=\count371
+\c@maxextraname=\count372
+\c@maxextradate=\count373
+\c@maxextraalpha=\count374
+\c@abbrvpenalty=\count375
+\c@highnamepenalty=\count376
+\c@lownamepenalty=\count377
+\c@maxparens=\count378
+\c@parenlevel=\count379
+\blx@tempcnta=\count380
+\blx@tempcntb=\count381
+\blx@tempcntc=\count382
+\c@blx@maxsection=\count383
+\blx@maxsegment@0=\count384
+\blx@notetype=\count385
+\blx@parenlevel@text=\count386
+\blx@parenlevel@foot=\count387
+\blx@sectionciteorder@0=\count388
+\blx@sectionciteorderinternal@0=\count389
+\blx@entrysetcounter=\count390
+\blx@biblioinstance=\count391
 \labelnumberwidth=\skip65
 \labelalphawidth=\skip66
 \biblabelsep=\skip67
@@ -946,9 +1078,9 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \blx@bcfin=\read4
 \blx@bcfout=\write7
 \blx@langwohyphens=\language79
-\c@mincomprange=\count385
-\c@maxcomprange=\count386
-\c@mincompwidth=\count387
+\c@mincomprange=\count392
+\c@maxcomprange=\count393
+\c@mincompwidth=\count394
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def
@@ -956,74 +1088,74 @@ File: blx-dm.def 2024/03/21 v3.20 biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count388
-\c@savedafterword=\count389
-\c@annotator=\count390
-\c@savedannotator=\count391
-\c@author=\count392
-\c@savedauthor=\count393
-\c@bookauthor=\count394
-\c@savedbookauthor=\count395
-\c@commentator=\count396
-\c@savedcommentator=\count397
-\c@editor=\count398
-\c@savededitor=\count399
-\c@editora=\count400
-\c@savededitora=\count401
-\c@editorb=\count402
-\c@savededitorb=\count403
-\c@editorc=\count404
-\c@savededitorc=\count405
-\c@foreword=\count406
-\c@savedforeword=\count407
-\c@holder=\count408
-\c@savedholder=\count409
-\c@introduction=\count410
-\c@savedintroduction=\count411
-\c@namea=\count412
-\c@savednamea=\count413
-\c@nameb=\count414
-\c@savednameb=\count415
-\c@namec=\count416
-\c@savednamec=\count417
-\c@translator=\count418
-\c@savedtranslator=\count419
-\c@shortauthor=\count420
-\c@savedshortauthor=\count421
-\c@shorteditor=\count422
-\c@savedshorteditor=\count423
-\c@labelname=\count424
-\c@savedlabelname=\count425
-\c@institution=\count426
-\c@savedinstitution=\count427
-\c@lista=\count428
-\c@savedlista=\count429
-\c@listb=\count430
-\c@savedlistb=\count431
-\c@listc=\count432
-\c@savedlistc=\count433
-\c@listd=\count434
-\c@savedlistd=\count435
-\c@liste=\count436
-\c@savedliste=\count437
-\c@listf=\count438
-\c@savedlistf=\count439
-\c@location=\count440
-\c@savedlocation=\count441
-\c@organization=\count442
-\c@savedorganization=\count443
-\c@origlocation=\count444
-\c@savedoriglocation=\count445
-\c@origpublisher=\count446
-\c@savedorigpublisher=\count447
-\c@publisher=\count448
-\c@savedpublisher=\count449
-\c@language=\count450
-\c@savedlanguage=\count451
-\c@origlanguage=\count452
-\c@savedoriglanguage=\count453
-\c@pageref=\count454
-\c@savedpageref=\count455
+\c@afterword=\count395
+\c@savedafterword=\count396
+\c@annotator=\count397
+\c@savedannotator=\count398
+\c@author=\count399
+\c@savedauthor=\count400
+\c@bookauthor=\count401
+\c@savedbookauthor=\count402
+\c@commentator=\count403
+\c@savedcommentator=\count404
+\c@editor=\count405
+\c@savededitor=\count406
+\c@editora=\count407
+\c@savededitora=\count408
+\c@editorb=\count409
+\c@savededitorb=\count410
+\c@editorc=\count411
+\c@savededitorc=\count412
+\c@foreword=\count413
+\c@savedforeword=\count414
+\c@holder=\count415
+\c@savedholder=\count416
+\c@introduction=\count417
+\c@savedintroduction=\count418
+\c@namea=\count419
+\c@savednamea=\count420
+\c@nameb=\count421
+\c@savednameb=\count422
+\c@namec=\count423
+\c@savednamec=\count424
+\c@translator=\count425
+\c@savedtranslator=\count426
+\c@shortauthor=\count427
+\c@savedshortauthor=\count428
+\c@shorteditor=\count429
+\c@savedshorteditor=\count430
+\c@labelname=\count431
+\c@savedlabelname=\count432
+\c@institution=\count433
+\c@savedinstitution=\count434
+\c@lista=\count435
+\c@savedlista=\count436
+\c@listb=\count437
+\c@savedlistb=\count438
+\c@listc=\count439
+\c@savedlistc=\count440
+\c@listd=\count441
+\c@savedlistd=\count442
+\c@liste=\count443
+\c@savedliste=\count444
+\c@listf=\count445
+\c@savedlistf=\count446
+\c@location=\count447
+\c@savedlocation=\count448
+\c@organization=\count449
+\c@savedorganization=\count450
+\c@origlocation=\count451
+\c@savedoriglocation=\count452
+\c@origpublisher=\count453
+\c@savedorigpublisher=\count454
+\c@publisher=\count455
+\c@savedpublisher=\count456
+\c@language=\count457
+\c@savedlanguage=\count458
+\c@origlanguage=\count459
+\c@savedoriglanguage=\count460
+\c@pageref=\count461
+\c@savedpageref=\count462
 \shorthandwidth=\skip73
 \shortjournalwidth=\skip74
 \shortserieswidth=\skip75
@@ -1048,19 +1180,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
 File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
-\c@textcitecount=\count456
-\c@textcitetotal=\count457
-\c@textcitemaxnames=\count458
-\c@biburlbigbreakpenalty=\count459
-\c@biburlbreakpenalty=\count460
-\c@biburlnumpenalty=\count461
-\c@biburlucpenalty=\count462
-\c@biburllcpenalty=\count463
+\c@textcitecount=\count463
+\c@textcitetotal=\count464
+\c@textcitemaxnames=\count465
+\c@biburlbigbreakpenalty=\count466
+\c@biburlbreakpenalty=\count467
+\c@biburlnumpenalty=\count468
+\c@biburlucpenalty=\count469
+\c@biburllcpenalty=\count470
 \biburlbigskip=\muskip18
 \biburlnumskip=\muskip19
 \biburlucskip=\muskip20
 \biburllcskip=\muskip21
-\c@smartand=\count464
+\c@smartand=\count471
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
@@ -1074,8 +1206,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.b
 bx
 File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count465
-\c@bbx:relatedtotal=\count466
+\c@bbx:relatedcount=\count472
+\c@bbx:relatedtotal=\count473
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
@@ -1108,8 +1240,8 @@ Package: expl3 2024-03-14 L3 programming layer (loader)
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2024-03-14 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count467
-\l__pdf_internal_box=\box128
+\l__color_backend_stack_int=\count474
+\l__pdf_internal_box=\box129
 ))
 Package biblatex Info: ... and expl3
 (biblatex)             2024-03-14 L3 programming layer (loader) 
@@ -1124,8 +1256,8 @@ Package: xparse 2024-03-14 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
 )))
-\@quotelevel=\count468
-\@quotereset=\count469
+\@quotelevel=\count475
+\@quotereset=\count476
 No file ./output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.aux.
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
@@ -1149,17 +1281,17 @@ LaTeX Font Info:    ... okay on input line 3.
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count470
-\scratchdimen=\dimen289
-\scratchbox=\box129
-\nofMPsegments=\count471
-\nofMParguments=\count472
-\everyMPshowfont=\toks41
-\MPscratchCnt=\count473
-\MPscratchDim=\dimen290
-\MPnumerator=\count474
-\makeMPintoPDFobject=\count475
-\everyMPtoPDFconversion=\toks42
+\scratchcounter=\count477
+\scratchdimen=\dimen303
+\scratchbox=\box130
+\nofMPsegments=\count478
+\nofMParguments=\count479
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count480
+\MPscratchDim=\dimen304
+\MPnumerator=\count481
+\makeMPintoPDFobject=\count482
+\everyMPtoPDFconversion=\toks49
 )
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -1171,16 +1303,19 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-\c@lstlisting=\count476
+\c@lstlisting=\count483
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks43
-\inpenc@posthook=\toks44
+\inpenc@prehook=\toks50
+\inpenc@posthook=\toks51
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
+Package pgfplots notification 'compat/show suggested version=true': you might b
+enefit from \pgfplotsset{compat=1.18} (current compat level: 1.17).
+
 \providecommand\hyper@newdestlabel[2]{}
 Package hyperref Info: Link coloring OFF on input line 3.
 Package biblatex Info: Trying to load language 'english'...
@@ -1200,15 +1335,24 @@ No file ./output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.bbl.
 Package biblatex Info: Reference section=0 on input line 3.
 Package biblatex Info: Reference segment=0 on input line 3.
 (Tex/toc.tex
+Package biblatex Info: Reference segment=1 on input line 4.
+Package biblatex Info: Setting label 'refsegment:01' on input line 4.
 No file ./output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.toc.
 ) (Tex/Front_Matter.tex
+Package biblatex Info: Reference segment=2 on input line 5.
+Package biblatex Info: Setting label 'refsegment:02' on input line 5.
+
 Overfull \hbox (2.13957pt too wide) in paragraph at lines 15--16
 []\OT1/cmr/m/n/10 This hand-book is meant to of-fer an in-tu-itive, vi-sual, an
 d com-pre-hen-sive overview.
  []
 
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
 ) (Tex/Main_Matter.tex
 Chapter 1.
+Package biblatex Info: Reference segment=3 on input line 5.
+Package biblatex Info: Setting label 'refsegment:03' on input line 5.
 
 LaTeX Warning: Reference `fig: truck cannonball' on page 1 undefined on input l
 ine 25.
@@ -1251,70 +1395,70 @@ LaTeX Warning: Reference `fig: treadmill' on page 5 undefined on input line 141
 .
 
 
-LaTeX Warning: Reference `fig: Aether' on page 5 undefined on input line 155.
+LaTeX Warning: Reference `fig: Aether' on page 5 undefined on input line 156.
 
 The command '\includegraphics [width = 0.9\textwidth ]{images/pdf/earth_and_aet
 her.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disab
 le this.
 
 LaTeX Warning: Reference `fig: Michelson_morley' on page 6 undefined on input l
-ine 167.
+ine 168.
 
 
-LaTeX Warning: Citation 'EtherExperiment' on page 6 undefined on input line 167
+LaTeX Warning: Citation 'EtherExperiment' on page 6 undefined on input line 168
 .
 
 The command '\includegraphics [width = 8cm]{images/pdf/Michelson_morley.pdf}' h
 as been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck torch' on page 7 undefined on input line 1
-97.
+98.
 
 
 LaTeX Warning: Reference `fig: truck cannonball' on page 8 undefined on input l
-ine 204.
+ine 205.
 
 The command '\includegraphics [width = 8cm]{images/pdf/lorry_torch.pdf}' has be
 en optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck cannonball' on page 8 undefined on input l
-ine 217.
+ine 218.
 
 
 LaTeX Warning: Reference `fig: truck clock' on page 8 undefined on input line 2
-29.
+30.
 
 
 LaTeX Warning: Reference `fig: width contraction' on page 9 undefined on input 
-line 234.
+line 235.
 
 The command '\includegraphics [width = 8cm]{images/pdf/Cannon_Balls.pdf}' has b
 een optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck clock' on page 10 undefined on input line 
-250.
+251.
 
 The command '\includegraphics [width = 8cm]{images/pdf/lorry_clock.pdf}' has be
 en optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck simultaneity' on page 11 undefined on inpu
-t line 284.
+t line 285.
 
 The command '\includegraphics [width = 8cm]{images/pdf/lorry_simul.pdf}' has be
 en optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `Subsect: Time Dilation' on page 12 undefined on input
- line 317.
+ line 318.
 
 
 LaTeX Warning: Reference `Subsect: Time Dilation' on page 12 undefined on input
- line 321.
+ line 322.
 
 The command '\includegraphics [width = 8cm]{images/pdf/Full_Lorry_Transform.pdf
 }' has been optimized away. Use '/tikz/external/optimize=false' to disable this
 .
 
-LaTeX Warning: Reference `fig: cars' on page 13 undefined on input line 342.
+LaTeX Warning: Reference `fig: cars' on page 13 undefined on input line 343.
 
 The command '\includegraphics [width = 8cm]{images/pdf/cars.pdf}' has been opti
 mized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1322,11 +1466,11 @@ The command '\includegraphics [width = 8cm]{images/pdf/Doppler.pdf}' has been o
 ptimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck aberrated' on page 15 undefined on input l
-ine 398.
+ine 399.
 
 
-LaTeX Warning: Reference `sect: Length Contraction' on page 15 undefined on inp
-ut line 400.
+LaTeX Warning: Reference `subsect: Length Contraction' on page 15 undefined on 
+input line 401.
 
 The command '\includegraphics [width = 5.5cm]{images/pdf/Aberrated_lorrys_1.pdf
 }' has been optimized away. Use '/tikz/external/optimize=false' to disable this
@@ -1336,7 +1480,7 @@ The command '\includegraphics [width = 5.5cm]{images/pdf/Aberrated_lorrys_2.pdf
 .
 
 LaTeX Warning: Reference `fig: Relativistic Beaming' on page 17 undefined on in
-put line 453.
+put line 454.
 
 The command '\includegraphics [width = 5cm]{images/pdf/Rest_velocities.pdf}' ha
 s been optimized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1351,11 +1495,11 @@ ards.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disa
 ble this.
 
 LaTeX Warning: Reference `fig: multiple emitting pulses rest frame' on page 18 
-undefined on input line 499.
+undefined on input line 500.
 
 
 LaTeX Warning: Reference `fig: multiple emitting pulses moving frame' on page 1
-8 undefined on input line 501.
+8 undefined on input line 502.
 
 The command '\includegraphics [width = 5cm]{images/pdf/Field_Rest_Frame.pdf}' h
 as been optimized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1364,74 +1508,145 @@ er.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disabl
 e this.
 
 LaTeX Warning: Reference `fig: perceived vs actual speed' on page 19 undefined 
-on input line 546.
+on input line 547.
 
 The command '\includegraphics [width = 10cm]{images/pdf/Perceived_speed.pdf}' h
 as been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck clock' on page 20 undefined on input line 
-605.
+606.
 
 
 LaTeX Warning: Reference `fig: full truck transform' on page 20 undefined on in
-put line 605.
+put line 606.
 
 
 LaTeX Warning: Reference `fig: truck simultaneity' on page 21 undefined on inpu
-t line 610.
+t line 611.
 
 (Tex/Terms/Definitions.tex)
+
+Package biblatex Warning: Split bibliography detected.
+(biblatex)                Many simple split bibliography setups with
+(biblatex)                non-overlapping bibliographies benefit from
+(biblatex)                setting 'defernumbers=true'.
+(biblatex)                See the documentation for details.
+(biblatex)                This warning can be suppressed with
+(biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
+
+
+LaTeX Warning: Empty bibliography on input line 636.
+
 Chapter 2.
+Package biblatex Info: Reference segment=4 on input line 641.
+Package biblatex Info: Setting label 'refsegment:04' on input line 641.
 
 LaTeX Warning: Reference `fig: simple Galilean transform derivation' on page 26
- undefined on input line 674.
+ undefined on input line 678.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: simple Galilean transform derivation' on page 27
- undefined on input line 715.
+ undefined on input line 719.
 
 
 LaTeX Warning: Reference `fig: light clock' on page 30 undefined on input line 
-783.
+789.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-The command '\includegraphics [width = 10cm]{images/pdf/Length_Contraction.pdf}
-' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
+
+LaTeX Warning: Reference `fig: light clock rest frame' on page 30 undefined on 
+input line 864.
+
+
+LaTeX Warning: Reference `fig: length contraction math' on page 31 undefined on
+ input line 918.
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+LaTeX Warning: Reference `fig: length contraction math' on page 32 undefined on
+ input line 993.
 
 
 LaTeX Warning: Reference `fig: width contraction' on page 32 undefined on input
- line 918.
+ line 1000.
+
+
+LaTeX Warning: Reference `sect: Classical Relativity' on page 34 undefined on i
+nput line 1063.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `fig: coordinate transform' on page 36 undefined on in
-put line 1092.
+LaTeX Warning: Reference `fig: coordinate transform' on page 37 undefined on in
+put line 1186.
 
-The command '\includegraphics [width = 10cm]{images/pdf/coordinate_transforms.p
-df}' has been optimized away. Use '/tikz/external/optimize=false' to disable th
-is.
+The command '\includegraphics [width=\textwidth ]{images/pdf/coord_transform_in
+itial.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to dis
+able this.
+The command '\includegraphics [width=\textwidth ]{images/pdf/coord_transform_pr
+imed.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disa
+ble this.
+The command '\includegraphics [width=\textwidth ]{images/pdf/coord_transform_pr
+imed_sychronised.pdf}' has been optimized away. Use '/tikz/external/optimize=fa
+lse' to disable this.
 
-LaTeX Warning: Reference `fig: Gamma Factor' on page 38 undefined on input line
- 1155.
-
-The command '\includegraphics [width = 10cm]{images/pdf/Gamma_Factor.pdf}' has 
-been optimized away. Use '/tikz/external/optimize=false' to disable this.
-
-LaTeX Warning: Reference `eq: Lorentz transformation' on page 38 undefined on i
-nput line 1172.
+LaTeX Warning: Reference `fig: coordinate transform subfig_3' on page 38 undefi
+ned on input line 1216.
 
 
-LaTeX Warning: Reference `eq: velocity transform' on page 39 undefined on input
- line 1213.
+LaTeX Warning: Reference `fig: Gamma Factor' on page 39 undefined on input line
+ 1235.
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+LaTeX Warning: Reference `ch: Invariant Quantities' on page 40 undefined on inp
+ut line 1315.
+
+
+LaTeX Warning: Reference `eq: Infintesmal interval of Coordinates' on page 40 u
+ndefined on input line 1322.
+
+
+LaTeX Warning: Reference `eq: velocity transform' on page 41 undefined on input
+ line 1369.
+
+
+LaTeX Warning: Reference `eq: Lorentz transformation' on page 43 undefined on i
+nput line 1447.
+
+
+LaTeX Warning: Reference `eq: acceleration transform' on page 43 undefined on i
+nput line 1448.
+
+
+LaTeX Warning: Reference `eq: velocity transform' on page 43 undefined on input
+ line 1448.
 
 (Tex/Terms/Terms_ch3.tex)
+
+Package biblatex Warning: Split bibliography detected.
+(biblatex)                Many simple split bibliography setups with
+(biblatex)                non-overlapping bibliographies benefit from
+(biblatex)                setting 'defernumbers=true'.
+(biblatex)                See the documentation for details.
+(biblatex)                This warning can be suppressed with
+(biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
+
+
+LaTeX Warning: Empty bibliography on input line 1459.
+
 Chapter 3.
+Package biblatex Info: Reference segment=5 on input line 1464.
+Package biblatex Info: Setting label 'refsegment:05' on input line 1464.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
@@ -1440,27 +1655,41 @@ The command '\includegraphics [width = 10cm]{images/pdf/coordinate_transforms_2
 .pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable 
 this.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1474--1475
+Underfull \hbox (badness 10000) in paragraph at lines 1645--1646
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1476--1480
+Underfull \hbox (badness 10000) in paragraph at lines 1647--1651
 
  []
 
 (Tex/Terms/Terms_ch4.tex)
+
+Package biblatex Warning: Split bibliography detected.
+(biblatex)                Many simple split bibliography setups with
+(biblatex)                non-overlapping bibliographies benefit from
+(biblatex)                setting 'defernumbers=true'.
+(biblatex)                See the documentation for details.
+(biblatex)                This warning can be suppressed with
+(biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
+
+
+LaTeX Warning: Empty bibliography on input line 1660.
+
 Chapter 4.
+Package biblatex Info: Reference segment=6 on input line 1665.
+Package biblatex Info: Setting label 'refsegment:06' on input line 1665.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `eq: velocity transform' on page 48 undefined on input
- line 1619.
+LaTeX Warning: Reference `eq: velocity transform' on page 52 undefined on input
+ line 1795.
 
 \openout6 = `./output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.
 dpth'.
 
-[49
+[52
 
 {C:/Users/one_p/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
@@ -1472,16 +1701,16 @@ The command '\includegraphics [width = 5cm]{images/pdf/Aberrated_velocities.pdf
 }' has been optimized away. Use '/tikz/external/optimize=false' to disable this
 .
 
-LaTeX Warning: Reference `fig: aberrated emitted light' on page 50 undefined on
- input line 1726.
+LaTeX Warning: Reference `fig: aberrated emitted light' on page 53 undefined on
+ input line 1902.
 
 
-LaTeX Warning: Citation 'einstein1905electrodynamics' on page 50 undefined on i
-nput line 1735.
+LaTeX Warning: Citation 'einstein1905electrodynamics' on page 54 undefined on i
+nput line 1911.
 
 
-LaTeX Warning: Reference `fig: aberrated absorbed light' on page 50 undefined o
-n input line 1736.
+LaTeX Warning: Reference `fig: aberrated absorbed light' on page 54 undefined o
+n input line 1912.
 
 The command '\includegraphics [width = 5cm]{images/pdf/Aberrated_velocities_inw
 ards_restframe.pdf}' has been optimized away. Use '/tikz/external/optimize=fals
@@ -1490,8 +1719,8 @@ The command '\includegraphics [width = 5cm]{images/pdf/Aberrated_velocities_inw
 ards.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disa
 ble this.
 
-LaTeX Warning: Reference `eq: Cosine transform' on page 51 undefined on input l
-ine 1757.
+LaTeX Warning: Reference `eq: Cosine transform' on page 54 undefined on input l
+ine 1933.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
@@ -1499,15 +1728,15 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: Retarded field outward field transform' on page 
-52 undefined on input line 1818.
+55 undefined on input line 1994.
 
 
-LaTeX Warning: Reference `eq: Lorentz transformation' on page 52 undefined on i
-nput line 1821.
+LaTeX Warning: Reference `eq: Lorentz transformation' on page 55 undefined on i
+nput line 1997.
 
 
-LaTeX Warning: Reference `eq: velocity transform for light' on page 52 undefine
-d on input line 1838.
+LaTeX Warning: Reference `eq: velocity transform for light' on page 55 undefine
+d on input line 2014.
 
 The command '\includegraphics [width = 3.8cm]{images/pdf/Rest_Pulse.pdf}' has b
 een optimized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1522,33 +1751,66 @@ The command '\includegraphics [width = 5cm]{images/pdf/Field_Moving_Frame_Doppl
 er.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disabl
 e this.
 (Tex/Terms/Terms_ch5.tex)
+
+Package biblatex Warning: Split bibliography detected.
+(biblatex)                Many simple split bibliography setups with
+(biblatex)                non-overlapping bibliographies benefit from
+(biblatex)                setting 'defernumbers=true'.
+(biblatex)                See the documentation for details.
+(biblatex)                This warning can be suppressed with
+(biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
+
+
+LaTeX Warning: Empty bibliography on input line 2135.
+
 Chapter 5.
+Package biblatex Info: Reference segment=7 on input line 2140.
+Package biblatex Info: Setting label 'refsegment:07' on input line 2140.
 The command '\includegraphics [width = 5cm]{images/pdf/Field_Rest_Frame.pdf}' h
 as been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width = 5cm]{images/pdf/Field_Moving_Frame_Doppl
 er.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disabl
 e this.
-\pgf@layerbox@background=\box130
-\pgf@layerboxsaved@background=\box131
-\pgf@layerbox@foreground=\box132
-\pgf@layerboxsaved@foreground=\box133
+\pgf@layerbox@background=\box131
+\pgf@layerboxsaved@background=\box132
+\pgf@layerbox@foreground=\box133
+\pgf@layerboxsaved@foreground=\box134
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `eq: Cosine transform' on page 58 undefined on input l
-ine 2167.
+LaTeX Warning: Reference `eq: Cosine transform' on page 61 undefined on input l
+ine 2350.
 
 
-LaTeX Warning: Citation 'hogg1997special' on page 58 undefined on input line 21
-67.
+LaTeX Warning: Citation 'hogg1997special' on page 61 undefined on input line 23
+50.
 
 (Tex/Terms/Terms_ch6.tex)
+
+Package biblatex Warning: Split bibliography detected.
+(biblatex)                Many simple split bibliography setups with
+(biblatex)                non-overlapping bibliographies benefit from
+(biblatex)                setting 'defernumbers=true'.
+(biblatex)                See the documentation for details.
+(biblatex)                This warning can be suppressed with
+(biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
+
+
+LaTeX Warning: Empty bibliography on input line 2384.
+
 Chapter 6.
+Package biblatex Info: Reference segment=8 on input line 2389.
+Package biblatex Info: Setting label 'refsegment:08' on input line 2389.
 
-LaTeX Warning: Reference `eq: interval of Coordinates' on page 61 undefined on 
-input line 2227.
+LaTeX Warning: Reference `eq: interval of Coordinates' on page 64 undefined on 
+input line 2413.
 
-(Tex/Terms/Terms_ch7.tex)) (Tex/Back_Matter.tex)
+(Tex/Terms/Terms_ch7.tex)) (Tex/Back_Matter.tex
+Package biblatex Info: Reference segment=9 on input line 5.
+Package biblatex Info: Setting label 'refsegment:09' on input line 5.
+Package biblatex Info: Reference segment=10 on input line 23.
+Package biblatex Info: Setting label 'refsegment:010' on input line 23.
+)
 
 LaTeX Warning: Empty bibliography on input line 13.
 
@@ -1572,13 +1834,13 @@ run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36815 strings out of 474424
- 763465 string characters out of 5741740
+ 46833 strings out of 474424
+ 1104456 string characters out of 5741740
  1943496 words of memory out of 5000000
- 58615 multiletter control sequences out of 15000+600000
- 562807 words of font info for 52 fonts, out of 8000000 for 9000
+ 68491 multiletter control sequences out of 15000+600000
+ 564783 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 120i,23n,124p,1398b,1151s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 120i,23n,124p,1406b,1151s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb>
 Output written on ./output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_f

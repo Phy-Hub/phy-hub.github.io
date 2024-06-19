@@ -1,0 +1,26 @@
+# Use the base image specified in devcontainer.json
+FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-20.04
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    perl \
+    wget \
+    && apt-get update \
+    && apt-get install -y \
+    miktex \
+    pdf2svg \
+    && apt-get clean
+
+# Set the default shell to bash
+SHELL ["/bin/bash", "-c"]
+
+# Install pdf2svg Python package
+RUN pip3 install pdf2svg
+
+# Verify installations
+RUN python3 --version && \
+    perl --version && \
+    miktex --version && \
+    pdf2svg --version

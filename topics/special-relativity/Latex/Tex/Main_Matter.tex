@@ -2,9 +2,9 @@
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{Conceptual Overview}
+\chapter{Conceptual Overview} \label{ch: Conceptual Overview}
 
-To grasp special relativity, we will first look at the classical understanding of the world.
+To make sense of special relativity, we will first look at the classical understanding of the world.
 Then, we will see how we must change these classical laws of physics to account for light's constant speed relative to all observers.
 Which in turn will lead to many interesting consequences.
 The chapter begins with an overview of the core concepts to help us understand why we need special relativity and what it means, leaving the mathematical details and deeper insights for the following chapters.
@@ -17,7 +17,7 @@ This chapter will provide an overview of all the required concepts for special r
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Classical Addition of Velocities}\label{Sect: classical velocity addition}
+\section{Classical Addition of Velocities} \label{sect: Classical Addition of Velocities}
 
 Imagine a truck, carrying a cannon, is moving at 20 meters per second, and the cannon fires a ball at 100 meters per second relative to the truck.
 Classically, we add the truck and the ball's speed, to find the ball moves at 120 meters per second relative to the road.
@@ -40,7 +40,7 @@ For now, in the following sections, we will explain what an inertial reference f
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Inertial Reference Frame}
+\section{Inertial Reference Frame} \label{sect: Inertial Reference Frame}
 
 In the previous truck example, we could associate a grid of coordinates that is stationary relative to the truck and, hence, moving along with it.
 This perspective, fixed to the truck, is its frame of reference.
@@ -81,7 +81,7 @@ We will now look at how movement changes in classical relativity when we change 
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Classical Inertial Reference Frames}
+\section{Classical Inertial Reference Frames} \label{sect: Classical Inertial Reference Frames}
 
 To see how to swap between \hyperlink{def-Reference-frame}{reference frame}s in special relativity, we will first have to introduce the classical approach.
 
@@ -149,7 +149,8 @@ So, next, we will look at the notion of a universal medium referred to as the \h
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{The Aether}%, a Medium for Light} % and a Universal Rest Frame}
+\section{The Aether} \label{sect: The Aether}
+%, a Medium for Light} % and a Universal Rest Frame}
 
 In the 1800s, the theory was that light was a wave and, therefore, would need a medium that filled the \hyperlink{def-vacuum}{vacuum} of space for it to travel through, called "the luminiferous \hyperlink{def-aether}{aether}", and that light would travel at a constant speed relative to this \hyperlink{def-aether}{aether}, like how the rats in the previous section moved at a constant speed relative to the medium of the treadmill's platform.
 If the aether existed, the Earth would be moving through it, illustrated in Figure (\ref{fig: Aether}).
@@ -191,7 +192,7 @@ To allow for us to have this universal speed of light (in a \hyperlink{def-vacuu
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Speed of Light}% as a Constant}
+\section{Speed of Light} \label{sect: Speed of Light}
 
 The experiments showed light does not have a medium that it travels at a constant velocity relative to and, therefore, must instead travel at a constant velocity in a \hyperlink{def-vacuum}{vacuum} in all \hyperlink{def-Reference-frame}{reference frame}s.
 This is independent of how fast the source and receiver of that light are moving in the frame, as shown with a moving truck's headlights in Figure (\ref{fig: truck torch}).
@@ -221,10 +222,10 @@ For the curious, it was the \href{https://scienceready.com.au/pages/determinatio
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Position and Time}
+\section{Position and Time} \label{sect: Position and Time}
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Time Dilation}\label{Subsect: Time Dilation}
+\subsection{Time Dilation} \label{Subsect: Time Dilation}
 
 Consider a simple clock, as shown in Figure (\ref{fig: truck clock}), made of a light pulse moving back and forth between two mirrors on a moving truck's floor and roof.
 Each tick of the clock is defined as the time it takes for the light to travel from one mirror to the other and back.
@@ -276,7 +277,7 @@ For now, though, we will continue building up the concepts of special relativity
 *** Discuss the experimental evidence for time dilation using atomic clocks or the muon experiment.
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Simultaneity}
+\subsection{Simultaneity} \label{subsect: Simultaneity}
 
 Imagine a truck in its \hyperlink{def-proper-frame}{rest frame}, with a light bulb in the middle and mirrors on the front and back walls.
 If the light bulb gives off a pulse of light, the light will travel from the center of the truck to the mirrors \hyperlink{def-simultaneity}{simultaneously} and back to reach the light bulb also \hyperlink{def-simultaneity}{simultaneously}.
@@ -307,7 +308,7 @@ A note here is that we are talking about when the events \textbf{actually} happe
 Also, I have left out any mention of \hyperlink{def-length-contraction}{length contraction} of the truck, which will be introduced in the next section, and why it needs to be equal in both directions from the lightbulb for the light to \hyperlink{def-simultaneity}{simultaneously} return to the light bulb.
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Length Contraction}\label{sect: Length Contraction}
+\subsection{Length Contraction} \label{subsect: Length Contraction}
 
 at rest in its own frame of reference, carrying a square container. A light source at the container's center emits light in all four directions
 
@@ -365,7 +366,7 @@ This contraction of length between cars, in the road's frame in which the cars a
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Doppler Effect}
+\section{Doppler Effect} \label{sect: Doppler Effect}
 
 If we have a source at rest, emitting circular pulses of light with equal times between each pulse, we will have concentric circular pulses in this frame.
 But, if we move to a frame where the source is now moving to the right, each circular pulse is emitted from a different position.
@@ -392,12 +393,12 @@ One thing not mentioned yet in this picture so far is how the light is also affe
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Aberration}
+\section{Aberration} \label{sect: Aberration}
 
 Here, we will talk about what the \hyperlink{def-doppler-effect}{Doppler effect} in the previous section has yet to show, which is the effect on the angular distribution of the light in each part of the spherical pulses.
 We will show that there is a higher concentration of light in the direction of the source's movement, as shown in Figure (\ref{fig: truck aberrated}).
 
-With the help of the \hyperlink{def-length-contraction}{length contraction} section (\ref{sect: Length Contraction}), Consider a truck with a spherical mirrored container, with a central bulb emitting light in all directions.
+With the help of the \hyperlink{def-length-contraction}{length contraction} section (\ref{subsect: Length Contraction}), Consider a truck with a spherical mirrored container, with a central bulb emitting light in all directions.
 In the \hyperlink{def-proper-frame}{rest frame} all light reaches the spherical wall \hyperlink{def-simultaneity}{simultaneously} and returns to the center bulb \hyperlink{def-simultaneity}{simultaneously} as well.
 Then in the moving frame, we have the spherical container \hyperlink{def-length-contraction}{length contracted} and the light moving at the same speed but reflecting off the same parts of the walls but at different times, and then returning to the center bulb simultaneously.
 For this to be true, the directions of the light must be aberrated (have their direction of propagation changed) in the way shown in the diagram to allow for this \hyperlink{def-simultaneity}{simultaneous} return to the bulb.
@@ -446,7 +447,7 @@ We will look at the combination of the Doppler effect and aberration next.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Relativistic Beaming}
+\section{Relativistic Beaming} \label{sect: Relativistic Beaming}
 
 When the Doppler effect and relativistic aberration are taken together, it is known as relativistic beaming.
 If we have a source in its \hyperlink{def-proper-frame}{rest frame} emitting a spherical pulse of light with evenly distributed angles.
@@ -494,7 +495,7 @@ We will talk about this next.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Retarded Field}
+\section{Retarded Field} \label{sect: Retarded Field}
 
 If a source in its rest frame continually emits pulses of light with a constant time between each pulse, we get what is shown in Figure (\ref{fig: multiple emitting pulses rest frame}).
 If we wanted to know what this light field looked like in a frame with the source moving, we would need to take into account that the position the source emitted each pulse from is its past position (retarded position).
@@ -533,14 +534,14 @@ This will be used in the next section to show that you can perceive things movin
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Velocity}
+\section{Velocity} \label{sect: (intro) Velocity}
 
 We looked at how velocities at the speed of light change between different frames of reference, that is, how their directions are aberrated.
 However, for objects moving at speeds less than light, we need the transforming speeds to be different, as well as aberrated due to the \hyperlink{def-transform}{transform} needing to tend towards the classical \hyperlink{def-transform}{transform} as the speeds tend towards zero.
 To understand the general velocity \hyperlink{def-transform}{transformation}, some mathematical detail is needed, so we will need to brush over this for now. and instead look at how the perceived speeds of objects can be more than that of light, even if they are moving slower.
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Perceived vs Actual Speed}
+\subsection{Perceived vs Actual Speed} \label{subsect: Perceived vs Actual Speed}
 % REF: relativity visualized book:
 
 Imagine that a ball one light year away (the distance it takes light to travel in a year) is fired directly towards you, as shown in Figure (\ref{fig: perceived vs actual speed}).
@@ -632,27 +633,30 @@ We will derive everything step by step, starting with the transformation of posi
 *** I could add a section about Skewing and Terrell Rotation in Special Relativity
 
 %███████████████████████████████████████████████████████████████████
+\printbibliography[segment=\therefsegment, heading=subbibliography] % , resetnumbers=true]
+
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{Position, Time and Velocity} %The Math Begins:
+%███████████████████████████████████████████████████████████████████
+\chapter{Position, Time and Velocity} \label{ch: Position, Time and Velocity} %The Math Begins:
 
 Now that we have learned about the concepts of special relativity, we can use them and let the mathematics begin.
 Starting with classical relativity, which will give us an understanding of how to \hyperlink{def-transform}{transform} coordinates between \hyperlink{def-Reference-frame}{reference frame}s.
-This will give us something to compare special relativity to later, to help with our intuition.
+This will give us something to compare special relativity to later, and help with our intuition.
 
 What we learn here will be directly used in all of the following chapters, to derive more of the foundational concepts of the theory.
-How the positions and times of events are transformed between two inertial frames to allow the speed of light to stay constant, is what all the other concepts of special relativity are built upon.
+As everything else is all built upon this chapter on how the positions and times are transformed between two inertial frames to allow the speed of light to stay constant.
 
 In this chapter, we will start with how swapping between two inertial frames works classically.
 Then using the two assumed facts that are used as the basis of reasoning for special relativity, we will find out how to swap between frames in special relativity, by following a similar path as we did in the previous conceptual chapter.
-First by deriving the time dilation, and length contraction in order to find the full transform of the space and time coordinates between two inertial frames.
+By first deriving the time dilation, and length contraction equations in order to then find the full transform of the space and time coordinates between two inertial frames.
 We will come across a very useful quantity which we will denote with a ${\gamma}$, this quantity will be used throughout this book to simplify equations.
-After this, we will look at what the transform for infinitesimal lengths and changes in time looks like and use this to derive how velocities and accelerations change when swapping between inertial frames.
-By the end of this chapter you should understand the coordinate transforms conceptually and mathematically when swapping between two frames, and also how to derive the velocity and acceleration transforms.
+After this, we will look at the transform for infinitesimal changes in distances and use this to derive how velocities and accelerations change when swapping between two inertial frames.
+By the end of this chapter you should understand the coordinate transforms conceptually and mathematically when swapping between two frames, and how to derive the velocity and acceleration transforms.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Classical Relativity}\label{sect: Classical Relativity}
+\section{Classical Relativity} \label{sect: Classical Relativity}
 
 Classical (Galilean) relativity was the previous theory of how to transform coordinates in different inertial frames.
 It is based on two assumptions.
@@ -663,9 +667,10 @@ No matter what the relative speed of an inertial frame is, you would observe the
 	\item Time flowing at the same rate, with the time of events remaining the same.
 \end{itemize}
 
-Before special relativity, it was assumed that distances between two positions were the same for all \hyperlink{def-observer}{observer}s. That is, the first \hyperlink{def-observer}{observer} would see a stick and measure it to be the same length as another \hyperlink{def-observer}{observer} moving relative to them would measure it to be.
+Before special relativity, it was assumed that distances between two positions were the same for all \hyperlink{def-observer}{observer}s.
+That is, the first \hyperlink{def-observer}{observer} would see a stick and measure it to be the same length as another \hyperlink{def-observer}{observer} moving relative to the first.
 The other assumption is that time is constant for everyone, that is,
-clocks move at the same rate for each \hyperlink{def-observer}{observer} and if a particle was to emit light at a particular time.
+clocks move at the same rate for each \hyperlink{def-observer}{observer} and if, say, a particle was to emit light at a particular time.
 This light would be emitted at the same time for all \hyperlink{def-observer}{observer}s.
 
 For classical relativity, if we have two \hyperlink{def-observer}{observer}s moving relative to each other at constant velocity and want to find how each \hyperlink{def-observer}{observer} would describe the positions and motion of a particle relative to them, we need to know the positions and times in one observer's frame and how to \hyperlink{def-transform}{transform} them into the other \hyperlink{def-observer}{observer}s frame.
@@ -700,16 +705,29 @@ So let us see how the mathematics works for the classical coordinate system tran
 \end{figure}
 %███████████
 
-As shown in the diagram we have an event in this frame located at
+As shown in the diagram, we are in the initial frame with origin ${O}$ defined by coordinates $(0,0,0)$ and the primed frame is moving in the z-direction at velocity ${v}$ such that the position of the primed origin in the initial frame is
 
 \begin{equation}
-	{\vec{OE}} = ({x},{y},{z})
+	\vec{OO{'}} = (0,0,{v}{t})
 \end{equation}
 
-at time ${t}$ from when both axes overlapped and a prime frame's axis origin ${O{'}}$ moving at relative velocity ${v}$ in the z-direction so that in the initial frame we have
+at time ${t}$ from when the origins overlapped.
+If there is an \hyperlink{def-event}{event} at position
 
 \begin{equation}
-	{\vec{OO{'}}} = (0,0,{v}{t})
+	\vec{OE} = ({x},{y},{z})
+\end{equation}
+
+the event is described by
+
+\begin{equation}
+	E = ({x},{y},{z},{t})
+\end{equation}
+
+then in the primed frame, we will have the event described by the primed coordinates that we want to transform into, as
+
+\begin{equation}
+	E{'} = ({x{'}},{y{'}},{z{'}},t{'})
 \end{equation}
 
 Now to swap into the primed frame's coordinates, we need to recall from the previous assumptions that distances are conserved, with the length and directions of all the vectors between ${O}$, ${O^{'}}$ and ${E}$ the same in each frame, and time flows at the same rate (${t'} = {t}$), from this knowledge and Figure (\ref{fig: simple Galilean transform derivation}) we have the event's coordinates described by
@@ -761,7 +779,7 @@ You might have noticed that the direction of the second frame is in the upward z
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Postulates of Special Relativity}
+\section{Postulates of Special Relativity} \label{sect: Postulates of Special Relativity}
 
 For classical relativity, we started with two assumptions. It turns out that these assumptions need to be thrown away, as they contradict the experimental evidence that the speed of light is constant for every observer and frame. We replace them with two new assumptions, called the postulates of special relativity.
 
@@ -777,7 +795,7 @@ We will now use these with the concept of a light clock.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Time Dilation}
+\section{Time Dilation} \label{sect: Time Dilation}
 
 Time passes more slowly for things moving relative to you, this is called time dilation.
 To explain why it happens we will use the simple concept of a light clock.
@@ -803,7 +821,7 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 
 			% Draw the dashed arrowed lines with custom thick arrowheads
 			\draw[red, dashed, thick arrows] (0, 5.85)--(6, 5.85);
-			\draw[red, dashed, thick arrows] (6, 6.15)--(0, 6.15) node[midway, above] {${l}$};
+			\draw[red, dashed, thick arrows] (6, 6.15)--(0, 6.15) node[midway, above] {$\frac{1}{2}{c}{\Delta t}$};
 
 			% Draw the distance labels
 			\draw[<->, thick] (0, 4.7)--(6, 4.7) node[midway, above] {${L}$};
@@ -838,20 +856,20 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 			\tikzset{thick arrows/.style = {-stealth, thick, line width = 1.5pt}}
 
 			% Draw the dashed arrowed lines with custom thick arrowheads
-			\draw[red, dashed, thick arrows] (A3)--($(B2)!0.02!(A3)$) node[midway, below] {${l^{'}}$};
-			\draw[red, dashed, thick arrows] (B2)--(A1) node[midway, below] {${l^{'}}$};
+			\draw[red, dashed, thick arrows] (A3)--($(B2)!0.02!(A3)$) node[midway, below] {$\frac{1}{2}{c}{\Delta t{'}}$};
+			\draw[red, dashed, thick arrows] (B2)--(A1) node[midway, below] {$\frac{1}{2}{c}{\Delta t{'}}$};
 
 			% Draw the velocity arrow
 			\draw[black, thick,->, line width = 1.5pt] (3, 6)-- +  + (0, 0.5) node[midway, right] {${u}$};
 
 			% Draw the distance labels
 			\draw[<->, thick] (0,-1.3)--(6,-1.3) node[midway, above] {${L}$};
-			\draw[<->, thick] (-1, 0)--(-1, 6) node[midway, left] {${D}$};
+			\draw[<->, thick] (-1, 0)--(-1, 6) node[midway, left] {${u}{\Delta t{'}}$};
 
 		\end{tikzpicture}
 		\caption{Moving frame}
 	\end{subfigure}
-	\caption{\textbf{Light clock showing time dilation.} The light clock keeps time by counting each time the light makes a return journey when bouncing between two mirrors with length ${L}$ between them, the diagram shows the mirror's rest frame (left) and a frame with them moving at speed ${u}$ (right). In this second frame, there is a distance ${D}$ between where the light was reflected by the left mirror and where it returned to it. For this, the light had to travel a diagonal distance of $2{l^{'}}$ to return.}
+	\caption{\textbf{Light clock showing time dilation.} The light clock keeps time by counting each time the light makes a return journey when bouncing between two mirrors with length ${L}={c}{\Delta t}$ between them, the diagram shows the mirror's rest frame (left) and a frame with them moving at speed ${u}$ (right). In this second frame, there is a distance ${u}{\Delta t{'}}$ between where the light was reflected by the left mirror and where it returned to it. For this, the light had to travel a total diagonal distance of ${c}{\Delta t{'}}$ to return.}
 	\label{fig: light clock}
 \end{figure}
 %███████████
@@ -866,17 +884,17 @@ We can see from Figure (\ref{fig: light clock rest frame}) that in the rest fram
 The distance the mirrors move during this return journey in the moving frame is
 
 \begin{equation}
-	{D} = {u}{\Delta t{'}} =-{v} {\Delta t{'}},
+	{u}{\Delta t{'}} =-{v} {\Delta t{'}},
 \end{equation}
 
 where ${\Delta t{'}}$ is the time it took light to return in the moving frame and ${u}$ is the speed of the mirrors, which is in the opposite direction of the movement of the \hyperlink{def-Primed-Frame}{primed frame} relative to the \hyperlink{def-proper-frame}{rest frame}, that is ${u} =-{v}$.
 The distance light travels in this time is
 
 \begin{equation}
-	2{l^{'}} ={c}{\Delta t{'}},
+	{c}{\Delta t{'}}
 \end{equation}
 
-This is the hypotenuse of a triangle formed by ${D}$ and $2{L}$, so we have the square of the hypotenuse equal to the square of the other two lengths:
+This is the hypotenuse of a triangle formed by ${v}{\Delta t{'}}$ and $2{L}$, so we have the square of the hypotenuse equal to the square of the other two lengths:
 
 \begin{equation}
 	{c}^2 {\Delta t{'}}^2 = {v}^2 {\Delta t{'}}^2 + {c}^2{\Delta\tau}^2
@@ -907,7 +925,7 @@ So we take this outcome as the time taken between two \hyperlink{def-event}{even
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Length Contraction}
+\section{Length Contraction} \label{sect: Length Contraction}
 
 An object's size gets smaller in the direction of movement compared to when it is at rest, this is called length contraction.
 To explain why it happens we will use a system similar to the light clock in the previous section.
@@ -1052,7 +1070,7 @@ Moving objects and the distance between them are therefore shorter than in a fra
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Position and Time Transformation}
+\section{Position and Time Transformation} \label{sect: Position and Time Transformation}
 
 We have looked at the dilation between two different times at the same location and the contraction between two different positions at the same time.
 We will use both these concepts to help us see how the combination of the time and the position coordinate, known as an event, transforms when we swap frames.
@@ -1105,7 +1123,7 @@ the event is described by
 	E = ({x},{y},{z},{t})
 \end{equation}
 
-then in the primed frame, we will the event described by the primed coordinates that we want to transform into, as
+then in the primed frame, we will have  the event described by the primed coordinates that we want to transform into, as
 
 \begin{equation}
 	E{'} = ({x{'}},{y{'}},{z{'}},t{'})
@@ -1150,13 +1168,13 @@ and rearranging gives
 	{t{'}} = {\gamma} \left( \left( \dfrac{1}{{\gamma}^2}-1 \right)\frac{z}{v} + t \right)
 \end{equation}
 
-with ${\gamma}^{-2} = 1-{v}^2/{c}^2$ leading to the prime frames time for the event given in initial frames coordinates as
+with ${\gamma}^{-2} = 1-{v}^2/{c}^2$ leading to the primed frames time for the event given in initial frames coordinates as
 
 \begin{equation}
 	{t{'}} = {\gamma} \left( t-\dfrac{{v}{z}}{{c}^2} \right)
 \end{equation}
 
-again if we want the inverse transform from prime to initial frame we can swap the prime and initial frame coordinates and put a minus in front of the frame velocity.
+again if we want the inverse transform from primed to initial frame we can swap the primed and initial frame coordinates and put a minus in front of the frame velocity.
 
 We now have the full description of the transformation of the position and time of an \hyperlink{def-event}{event} as
 
@@ -1178,9 +1196,9 @@ We now have the full description of the transformation of the position and time 
 
 In the time \hyperlink{def-transform}{transform} equation the $\frac{{v}{z}}{{c}^2}$ term is the cause of \hyperlink{def-simultaneity}{simultaneous} \hyperlink{def-event}{event}s in one inertial frame no longer being \hyperlink{def-simultaneity}{simultaneous} in another inertial frame, and the ${\gamma}$ factor, is the term that causes the overall change in how fast time flows relative in each frame.
 In the spatial coordinate transform equations the the ${v}{t}$ factor is due to both axes moving away from each other and the ${\gamma}$ factor is the cause of the change of lengths in the direction of the frame's movement.
+
 Figure (\ref{fig: coordinate transform}) shows how points representing the coordinates are transformed between the frames.
 
-%███
 %█████████████
 \begin{figure}[H]
 	\centering
@@ -1193,13 +1211,13 @@ Figure (\ref{fig: coordinate transform}) shows how points representing the coord
 	\begin{subfigure}{0.32\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/pdf/coord_transform_primed.pdf}
-		\caption{prime frame}
+		\caption{primed frame}
 		\label{fig: coordinate transform subfig_2}
 	\end{subfigure}
 	\begin{subfigure}{0.29\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/pdf/coord_transform_primed_sychronised.pdf}
-		\caption{prime frame (${t{'}}=0$)}
+		\caption{primed frame (${t{'}}=0$)}
 		\label{fig: coordinate transform subfig_3}
 	\end{subfigure}
 	\caption{\textbf{Transformation of coordinates into a primed frame.} A diagram, showing a grid of points, representing initial frame coordinates, at time ${t} = 0$ that are at rest in their frame (left), giving the direct transformation, using the transform equations, into the moving primed frame (middle) where the points are now moving in the negative z-direction with ${z{'}} = {\gamma} {z}$, the colors and labels show the desynchronization of the primed times ${t{'}} = -\frac{{v}}{{c}^2} {\gamma} {z}$, the next figure (right) shows where these points would be when they are synchronized with the origin's time ${t{'}} = 0$, which can be worked out to be (${z{'}} = \frac{{z}}{{\gamma}}$).}
@@ -1213,12 +1231,65 @@ Therefore to find these initial frames points in the primed frame at the synchro
 
 we will later see a more natural interpretation of the coordinate transforms when we get to the retarded chapter, giving a better understanding of why the time transform is the way it is.
 
+%███████████████████████████████████████████████████████████████████
+\subsection{Transforms with Low primed Frame Velocity} \label{subsect: Transforms with Low Primed Frame Velocity}
+
+If we have the primed frame velocity much smaller than the speed of light ($v \ll c$), then we have ${v}/{c}\approx 0$ and $\gamma \approx 1$.
+Hence we get back the classical transforms from before.
+
+\begin{equation}
+	{t{'}} \approx t
+\end{equation}
+
+\begin{equation}
+	z{'} \approx {z}-{v}{t}
+\end{equation}
+
+which is the expected result for the \hyperlink{def-galilean-transform}{classical coordinates transform}, and how we are used to seeing things work in everyday life.
+The influence of the gamma factor is shown in Figure (\ref{fig: Gamma Factor}).
+
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			domain=0:0.99,
+			samples=100,
+			xlabel={$v/c$},
+			ylabel={${\gamma}$},
+			grid=major,
+			grid style={dashed, gray!30},
+			axis lines=middle,
+			xmin=0, xmax=1.01,
+			ymin=0, ymax=7.1,
+			enlargelimits=false,
+			xlabel near ticks,
+			ylabel near ticks,
+			x axis line style={-},
+			y axis line style={-},
+			xlabel style={anchor=west},
+			ylabel style={anchor=south},
+			tick label style={font=\small},
+			width=10cm, % Set the width to take more space
+			height=7cm, % Set the height to a smaller value to stretch the x-axis
+			xtick={0,0.2,...,1},
+			extra x ticks={0},
+			extra x tick style={grid=none},
+			ytick={0,1,...,7}, % Set y-axis ticks every 1 unit
+		]
+			\addplot[thick] {1/sqrt(1-x^2)};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{\textbf{Gamma factor.} A diagram, showing the magnitude of the gamma factor with increasing ratio of frame speed to the speed of light, with ${\gamma}$ tending to infinity as ${v}/{c}\rightarrow 1$.}
+	\label{fig: Gamma Factor}
+\end{figure}
+%███████████
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Infinitesimal Changes of Coordinates}
+\subsection{Space and Time Intervals} \label{subsect: Space and Time Intervals}
 
-To get the velocity transform equations we will first need the equations to transform the displacement between two positions and times, and take them in the limit as the changes go to zero.
-That is when we have infintesmal changes of coordinates.
+To get the velocity transform equations we will first need the equations to transform the displacement between two positions and the interval between times, and take them in the limit as the changes go to zero.
+That is when we have infinitesimal changes of coordinates.
 If we want to know how the displacement between two coordinates ${\vec{R}_1} = (x_1,y_1,z_1)$ and ${\vec{R}_2} = (x_2,y_2,z_2)$ transforms, we can take the difference of the transforms of both the coordinates as follows
 
 \begin{equation}
@@ -1230,15 +1301,15 @@ If we want to know how the displacement between two coordinates ${\vec{R}_1} = (
 	\end{aligned}
 \end{equation}
 
-rearranging and replacing the difference of the each the first and second coordinates, ${\Delta}{\vec{R}} = ({\Delta}x,{\Delta}y,{\Delta}z) = (x_2-x_1,y_2-y_1,z_2-z_1)$, giving the displacement transform as
+rearranging and replacing the difference of the first and second of each coordinate, ${\Delta}{\vec{R}} = ({\Delta}x,{\Delta}y,{\Delta}z) = (x_2-x_1,y_2-y_1,z_2-z_1)$, giving the displacement transform as
 
 \begin{equation}
 	\label{eq: interval of Coordinates}
 	\begin{aligned}
 		 & \Delta x{'} = {\Delta x}                                                 \\
-		 & \Delta {y{'}} = \Delta y                                                 \\
-		 & \Delta {z{'}} = {\gamma} ( \Delta z- {v} \Delta t)                       \\
-		 & {\Delta t{'}} = {\gamma} \bigg( \Delta t-\frac{v}{{c}^2} \Delta z \bigg)
+		 & \Delta {y{'}} = {\Delta y}                                                 \\
+		 & \Delta {z{'}} = {\gamma} ( {\Delta z}- {v} \Delta t)                       \\
+		 & {\Delta t{'}} = {\gamma} \bigg( \Delta t-\frac{v}{{c}^2} {\Delta z} \bigg)
 	\end{aligned}
 \end{equation}
 
@@ -1254,54 +1325,27 @@ We can also get the differential quantities when we take infinitesimal changes, 
 	\end{aligned}
 \end{equation}
 
-so when we make an infintesmal small change in coordinate or time in a frame, we know what the corresponding change is in a primed frame.
-
-%███████████████████████████████████████████████████████████████████
-\subsection{Transforms with Low Relative Frame Speed Change}
-
-For the coordinate transforms in the previous section we get back the classical \hyperlink{def-galilean-transform}{coordinates transform} for frame velocities much smaller than the speed of light, i.e.
-with ${v}\ll {c}$ we have ${\gamma} \approx 1$ we get
-
-\begin{equation}
-	{t{'}} \approx t
-\end{equation}
-
-\begin{equation}
-	z{'} \approx {z}-{v}{t}
-\end{equation}
-
-which is the expected result for the \hyperlink{def-galilean-transform}{classical coordinates transform}, and what we are used to seeing things work in everyday life.
-The influence of the gamma factor is shown in Figure (\ref{fig: Gamma Factor}).
-
-%█████████████
-\begin{figure}[H]
-	\figuretitle{...}
-	\centering
-	\includegraphics[width = 10cm]{images/pdf/Gamma_Factor.pdf}
-	\caption{A diagram, showing the magnitude of the gamma factor with increasing ratio of frame speed to the speed of light, with ${\gamma}$ tending to infinity as ${v}/{c}\rightarrow 1$.}
-	\label{fig: Gamma Factor}
-\end{figure}
-%███████████
+so when we make an infinitesimally small change in position or time within a frame, we know what the corresponding change is in a primed frame, we will use these to get the velocity transform equations, as velocity at any instance is the infinitesimal change in position per infinitesimal change in time.
+These will also be used later to find quantities that remain the same in each frame, for example, the space-time interval and the energy-momentum relationship in Chapter (\ref{ch: Invariant Quantities}).
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Velocity}
+\section{Velocity} \label{sect: Velocity}
 
-from taking the infinitesimals of equations from eq.
-\eqref{eq: Lorentz transformation}, we have the velocities as
+The velocity at any instant is the infinitesimal change in position over the infinitesimal change in time $\frac{d\vec{R}}{dt}$.
+So using the infinitesimals from Equation \eqref{eq: Infintesmal interval of Coordinates}, we get the velocity in each direction as
 
 \begin{equation}
 	\begin{aligned}
 		 & {{u}_{x}}^{'} = \frac{dx{'}}{dt{'}} = \frac{dx}{{\gamma} \bigg(dt-\frac{vdz}{{c}^2}\bigg) }                   \\
 		 & {{u}_{y}}^{'} = \frac{dy{'}}{dt{'}} = \frac{dy}{{\gamma} \bigg(dt-\frac{vdz}{{c}^2}\bigg) }                   \\
-		 & {{u}_{z}}^{'} = \frac{dz{'}}{dt{'}} = \frac{{\gamma} (dz- {v}dt)}{{\gamma} \bigg(dt-\frac{vdz}{{c}^2}\bigg) }
+		 & {{u}_{z}}^{'} = \frac{dz{'}}{dt{'}} = \frac{{\gamma} (dz - {v}dt)}{{\gamma} \bigg(dt-\frac{vdz}{{c}^2}\bigg) }
 	\end{aligned}
 \end{equation}
 
 now dividing the top and bottom of the fraction by ${dt}$ we can give the equations in their vector form as
 
 \begin{equation}
-	\label{eq: velocity transform}
 	\mhl{
 		\begin{aligned}
 			 & \mathbf{U}{'} = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right) }
@@ -1314,22 +1358,29 @@ now dividing the top and bottom of the fraction by ${dt}$ we can give the equati
 			 & \text{at position ${\mathbf{R}{'}}$ and time ${t{'}}$ }
 		\end{aligned}
 	}
+	\label{eq: velocity transform}
 \end{equation}
 
-the generalized velocity \hyperlink{def-transform}{transform} derived in appendix (todo) is
+This can be used to find the velocity of anything in another frame at the corresponding primed position and time.
+We will put this equation to work in a later section when we look at how the light emitted from a source particle has its velocity direction changed/aberrated and the effect this has on its intensity in all directions.
+
+\textbf{Side note:}
+
+For those interested; The generalized velocity \hyperlink{def-transform}{transform} (which we will not derive here) for a frame velocity in any direction and not just the z-direction is
 
 \begin{equation}
 	\mathbf{U}{'} = \dfrac{1}{{\gamma}} \dfrac{\mathbf{u}_s + \Big[\dfrac{{\gamma}-1}{\|\mathbf{V}\|^2}(\mathbf{u}_s\cdot \mathbf{V})-{\gamma} \Big] \mathbf{V}}{1-\dfrac{\mathbf{u}_s\cdot\mathbf{V}}{{c}^2}}
 \end{equation}
 
-with ${\mathbf{V}}$ being the frame's velocity in any generalized direction, instead of just being in the z-direction
+with ${\mathbf{V}}$ being the frame's velocity in any generalized direction.
+
+
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Acceleration}
+\section{Acceleration} \label{sect: Acceleration}
 
-To find how the acceleration of a particle transforms for an \hyperlink{def-observer}{observer} in two different frames we take the differential of the velocity \hyperlink{def-transform}{transform} eq.
-\eqref{eq: velocity transform} and use the differentiation rules for two generic functions ${f}$ and ${g}$: ${d(gf)} = {f} {dg} + {g} {df}$, and ${d[{{f}({g}(x))}]} = {{dg}(x)} * {df({{g}(x)})}$
+To find how the acceleration (known as the 3-acceleration) of a particle transforms for an \hyperlink{def-observer}{observer} in two different frames we take the differential of the velocity \hyperlink{def-transform}{transform} in equation \eqref{eq: velocity transform} and use the differentiation rules for two generic functions ${f}$ and ${g}$: ${d(gf)} = {f} {dg} + {g} {df}$, and ${d[{{f}({g}(x))}]} = {{dg}(x)} * {df({{g}(x)})}$
 
 \begin{equation}
 	\begin{aligned}
@@ -1356,7 +1407,7 @@ To find how the acceleration of a particle transforms for an \hyperlink{def-obse
 	\end{aligned}
 \end{equation}
 
-Now, divide by the time differential from the previous chapter to get the acceleration transform
+Now, divide by the time differential as we did for the velocity in the previous section, we get the acceleration transform as
 
 \begin{equation}
 	\mhl{
@@ -1371,12 +1422,14 @@ Now, divide by the time differential from the previous chapter to get the accele
 			\text{at position ${\mathbf{R}{'}}$ and time ${t{'}}$ }
 		\end{aligned}
 	}
+	\label{eq: acceleration transform}
 \end{equation}
 
-%███████████████████████████████████████████████████████████████████
-\subsection{Generalized Acceleration Transform}
+So if we know how a particle accelerates in one frame we will know its corresponding acceleration in another frame at the corresponding primed time and position.
 
-3 acceleration (check this)
+\textbf{Side note:}
+
+Again for those interested; The generalized acceleration \hyperlink{def-transform}{transform} (which we will not derive here) for a frame velocity in any direction and not just the z-direction is
 
 \begin{equation}
 	\mathbf{a{'}} = \frac{1}{{\gamma} ^3 \left(1-\frac{(\mathbf{u}\cdot \mathbf{v})}{{c}^2}\right)^3}\left[ {\gamma} \left(1-\frac{(\mathbf{u}\cdot\mathbf{v})}{{c}^2}\right)\mathbf{a} + \frac{{\gamma} (\mathbf{a}\cdot\mathbf{v})}{{c}^2}\mathbf{u} + (1-{\gamma} ) (\mathbf{a}\cdot\hat{\mathbf{v}}) \cdot\hat{\mathbf{v}}\right]
@@ -1384,36 +1437,42 @@ Now, divide by the time differential from the previous chapter to get the accele
 
 at position ${\mathbf{R}{'}}$ and time ${t{'}}$
 
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{Paths of Particles}\label{Sect: Paths of Particles}
-
-can you derive how paths of a particles transform into a second frame
+this is again the 3-acceleration, not to be confused with the 4-acceleration that will be mentioned in a later chapter, which is a more abstract concept.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Summary}\label{Sect: Summary}
+\section{Summary}
 
-meaningful conclusion:
+We derived the mathematics for the transformation of the time and spatial coordinates for classical relativity to help us with our the understanding of the derivation of special relativity.
+We then introduced the assumptions, known as the postulates of special relativity and used these to derive how time slows down due to time dilation and lengths of moving ojects get smaller due to length contractin, that allowed us to derive the transformation equations, which in turn allowed us to calculate the velocity and acceleration transforms.
+We were also introduce to the $\gamma$ factor that is used throughout relativity to simplfy equations.
 
--[ ] summarise the key points and how they relate to other parts of book
--[ ] discuss implications and applications of chapters concepts
--[ ] draw conections between this chapter and other chapters
--[ ] what this will allow us to look at later
--[ ] pose points to relfect on
--[ ] give questions still to be answered which will be in later chapters
--[ ] final sentence to allow this to flow into next chapter
+From this chapter we will now be able to transform from one frame into another.
+If you have a system of particles in one in an initial frame and you want to transform their positions to a new frame, you need to first define where this initial axis' origin is.
+You are free to choose were it is.
+This will be were the initial and primed frame's axis initially overlap, you can choose when this overlap is, and define the time as ${t}=0$ (the time of the overlap is also ${t{'}}=0$ in the primed frame).
+You can now transform the positions into the primed frame.
+These particles have these primed frame positions at the calculated primed frame time, these are defined in Equations \eqref{eq: Lorentz transformation}.
+To transform the velocities and acceleration to these primed frame positions at the corresponding primed frame time, you can use equations \eqref{eq: acceleration transform} and \eqref{eq: velocity transform}.
+
+One common mistake is to forget that ${t}$ and ${t{'}}$ are the times from the overlap of the frame origins, in their respective frames.
+
+This chapter is the basis of special relativity, but there is still more to come, but first to help us later we will look into the delayed view of the world to an observer due to the delay in light from their surrounding.
+This will give us another way to view and understand the time transform.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\input{Tex/Terms/Terms_ch3.tex}
+\input{Tex/Terms/Terms_ch2.tex}
+
+%███████████████████████████████████████████████████████████████████
+\printbibliography[segment=\therefsegment, heading=subbibliography]
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{Observers Delayed World View}
+\chapter{Observers Delayed World View} \label{ch: Observers Delayed World View}
 
-- Explain that it’s not normally included in SR sources, and why it is included here
+- Explain that it's not normally included in SR sources, and why it is included here
 
 Light travels extremely fast (roughly 300,000,000 m/s) compared to other everyday speeds we are used to.
 In the blink of an eye, light could travel around the world twice.
@@ -1424,7 +1483,7 @@ These past positions that we currently see are called the \hyperlink{def-retarde
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Relativistic Observers Delayed view}
+\section{Relativistic Observers Delayed view} \label{sect: Relativistic Observers Delayed view}
 
 *** change ${\theta_c}$ to ${\alpha}$
 
@@ -1556,7 +1615,7 @@ With the light being received at the origin of the \hyperlink{def-Primed-Frame}{
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Delayed View of Transformed Coordinates}
+\section{Delayed View of Transformed Coordinates} \label{sect: Delayed View of Transformed Coordinates}
 
 How the delayed view of coordinates is taken into account after a transformation is shown in the figure below.
 
@@ -1572,6 +1631,12 @@ How the delayed view of coordinates is taken into account after a transformation
 %███████████
 
 *** todo: could include the plot of a larger grid of points to show the distribution of delayed view of particles better, or give the heat map of the density of delayed view coordinates
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Perceived Velocity} \label{sect: Perceived Velocity}
+
+for a moving particle derive the retarded $r_ret1$ and $r_ret2$ and thier retarded timed $t_ret1$ and $t_ret2$ (these are not time from axis overlap, or can it be) and get $\frac{dr_ret}{dt_ret}$
 
 % %███████████████████████████████████████████████████████████████████
 % \subsubsection{Delayed Coordinate Distribution and Density}
@@ -1590,7 +1655,7 @@ How the delayed view of coordinates is taken into account after a transformation
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Steps for Changing Frames}
+\section{Steps for Changing Frames} \label{sect: Steps for Changing Frames}
 
 This section outlines the steps that should be taken to change between two inertial frames: \newline
 
@@ -1604,18 +1669,41 @@ Then we need to start with all objects where they currently are at ${t} = 0$ the
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\input{Tex/Terms/Terms_ch4.tex}
+\section{Summary}
+
+3 Observers Delayed World View
+3.1 Relativistic Observers Delayed view
+3.2 Delayed View of Transformed Coordinates
+3.3 Steps for Changing Frames
+3.4 Variables
+
+meaningful conclusion:
+
+-[ ] summarise the key points and how they relate to other parts of book
+-[ ] discuss implications and applications of chapters concepts
+-[ ] draw conections between this chapter and other chapters
+-[ ] what this will allow us to look at later
+-[ ] pose points to relfect on
+-[ ] give questions still to be answered which will be in later chapters
+-[ ] final sentence to allow this to flow into next chapter
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\input{Tex/Terms/Terms_ch3.tex}
+
+%███████████████████████████████████████████████████████████████████
+\printbibliography[segment=\therefsegment, heading=subbibliography]
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{Spherical light pulses}
+\chapter{Spherical light pulses} \label{ch: Spherical light pulses}
 
 - Explain that it’s not normally included in SR sources, and why it is included here
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Spherical Polar Coordinates}
+\section{Spherical Polar Coordinates} \label{sect: Spherical Polar Coordinates}
 
 This math section is just for reference in later sections,
 
@@ -1724,7 +1812,7 @@ and the differentials with respect to each of the coordinates are
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Light Speed Velocity Transform}
+\section{Light Speed Velocity Transform} \label{sect: Light Speed Velocity Transform}
 
 The speed of light remains the same after transforming between frames, but the velocity is not as the direction changes.
 The velocity transformation in the case where the speed is that of light, $|u| = {c}$, with the direction in the initial frame at an angle $\alpha$ from the z-axis and $\varphi$ from the x-axis, so that in spherical polar coordinates the velocity of light is
@@ -1769,7 +1857,7 @@ However, the angle of propagation has been changed.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Doppler Effect}
+\section{Doppler Effect} \label{sect: Doppler Effect}
 
 %█████████████
 \begin{figure}[H]
@@ -1826,7 +1914,7 @@ since wavelength is inversely proportional to the frequency, and this bunching u
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Aberration in Special Relativity}
+\section{Aberration in Special Relativity} \label{sect: Aberration in Special Relativity}
 
 %█████████████
 \begin{figure}[ht]
@@ -1882,7 +1970,7 @@ But we also have to remember that if there was any time between the start and fi
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Transform of Light Pulse from Origin}
+\section{Transform of Light Pulse from Origin} \label{sect: Transform of Light Pulse from Origin}
 
 %█████████████
 \begin{figure}[H]
@@ -2026,7 +2114,7 @@ which leads to
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Relativistic Beaming}
+\section{Relativistic Beaming} \label{sect: Relativistic Beaming}
 
 The previous section can be used to show us what happens to the angles of propagation in a spherical pulse of light with evenly distributed angles.
 Substituting $\frac{x}{\|\mathbf{R}\|} = \cos{\varphi}\sin{\alpha}$, $\frac{y}{\|\mathbf{R}\|} = \sin{\varphi}\sin{\alpha}$ and $ \frac{z}{\|\mathbf{R}\|} = \cos{\alpha}$ for spherical polar coordinates, which leads to
@@ -2076,12 +2164,15 @@ If we then did the same for multiple pulses to see how they \hyperlink{def-trans
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\input{Tex/Terms/Terms_ch5.tex}
+\input{Tex/Terms/Terms_ch4.tex}
+
+%███████████████████████████████████████████████████████████████████
+\printbibliography[segment=\therefsegment, heading=subbibliography]
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{A Moving Source's Field}
+\chapter{A Moving Source's Field} \label{ch: A Moving Source's Field}
 
 - Explain that it’s not normally included in SR sources, and why it is included here
 
@@ -2109,14 +2200,14 @@ If we then did the same for multiple pulses to see how they \hyperlink{def-trans
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Flux from Point Source}
+\section{Flux from Point Source} \label{sect: Flux from Point Source}
 
 *** - Add more meaning to Flux section
 
 -flux describes the rate at which a quantity flows across a surface (flowrate per unit area)
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Surface element}
+\subsection{Surface element} \label{subsect: Surface element}
 
 %█████████████
 \begin{figure}[H]
@@ -2276,7 +2367,7 @@ A solid angle $\Omega$ is a measure of the amount of the field of view from some
 The fraction of the field of view covered from a point is given by $\Omega/ 4\pi$
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Field Flux}
+\subsection{Field Flux} \label{subsect: Field Flux}
 
 A \hyperlink{def-proper-frame}{proper frame} of a particle's differential solid angle element (definition given in previous chapter (maybe move that subsection to here))
 
@@ -2322,12 +2413,15 @@ The relative primed wavefront strength at a given angle is taken as being propor
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\input{Tex/Terms/Terms_ch6.tex}
+\input{Tex/Terms/Terms_ch5.tex}
+
+%███████████████████████████████████████████████████████████████████
+\printbibliography[segment=\therefsegment, heading=subbibliography]
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{Invariant Quantities}
+\chapter{Invariant Quantities} \label{ch: Invariant Quantities}
 
 Quantities that are frame-independent, i.e.
 do not change when we transform between inertial reference frames, are called \hyperlink{def-lorentz-invariant}{Lorentz invariant}.
@@ -2338,7 +2432,7 @@ The reason we care about the concept of energy is that it has a conservation rel
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Space-Time Interval}
+\section{Space-Time Interval} \label{sect: Space-Time Interval}
 
 *** maybe explain the interval on a complex triangle instead with it being the hypotenuse and sides being cti and r
 
@@ -2346,7 +2440,7 @@ We define a quantity called the space-time interval $\Delta S$ between two \hype
 
 \begin{equation}
 	\mhl{
-	\Delta S^2 = (c\Delta t)^2-{\Delta x}^2-\Delta y^2-\Delta z^2
+	\Delta S^2 = (c\Delta t)^2-{\Delta x}^2-{\Delta y}^2-{\Delta z}^2
 	}
 	\label{eq: space-time interval}
 \end{equation}
@@ -2355,16 +2449,16 @@ All inertial frames of reference agree on this interval as it is invariant betwe
 
 \begin{equation}
 	\begin{aligned}
-		\Delta S{'}^2 & = (c{\Delta t{'}})^2-\Delta x{'}^2-\Delta y{'}^2-\Delta z{'}^2                                                                           \\
-		              & = {c}^2{\gamma} \bigg( \Delta t-\frac{v}{{c}^2} \Delta z \bigg)^2-{\Delta x}^2-\Delta y^2-\Delta ({\gamma} ( \Delta z- {v} \Delta t) )^2 \\
-		              & = (c\Delta t)^2-{\Delta x}^2-\Delta y^2-\Delta z^2                                                                                       \\
+		\Delta S{'}^2 & = (c{\Delta t{'}})^2-\Delta x{'}^2-{\Delta y{'}}^2-{\Delta z{'}}^2                                                                           \\
+		              & = {c}^2{\gamma} \bigg( \Delta t-\frac{v}{{c}^2} {\Delta z} \bigg)^2-{\Delta x}^2-{\Delta y}^2-\Delta ({\gamma} ( {\Delta z}- {v} \Delta t) )^2 \\
+		              & = (c\Delta t)^2-{\Delta x}^2-{\Delta y}^2-{\Delta z}^2                                                                                       \\
 		              & = \Delta S^2.
 	\end{aligned}
 \end{equation}
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Energy-Momentum Relation}
+\section{Energy-Momentum Relation} \label{sect: Energy-Momentum Relation}
 
 From here forward we will be making some jumps in logic and assertions, leading to claims of what we will call the total energy and rest mass energy, but I will try to give as much reasoning as I can for these choices in assertions.
 
@@ -2375,7 +2469,7 @@ From here forward we will be making some jumps in logic and assertions, leading 
 We can see from the previous section that if a particle is moving in a particular inertial reference frame, we can define the space-time interval of its coordinates in this frame as
 
 \begin{equation}
-	\Delta S_p^2 = (c\Delta {t}_p)^2-\Delta x_p^2-\Delta y_p^2-\Delta z_p^2
+	\Delta S_p^2 = (c\Delta {t}_p)^2-\Delta x_p^2-{\Delta y_p}^2-{\Delta z_p}^2
 \end{equation}
 
 and if we divide by the square of the proper time that passes for the particle in this interval ${\Delta\tau}$, so that now taking the limit as the change in time in the interval goes to zero, we get an abstract invariant quantity that we will call the space-time velocity
@@ -2465,7 +2559,7 @@ The final energy-momentum equation is then given as
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Energy-Momentum Relation For Photons}
+\section{Energy-Momentum Relation For Photons} \label{sect: Energy-Momentum Relation For Photons}
 
 *** First associate the energy of photon E = hf then find its equivalence in mass, then sub this in, and then say momentum for the photon is then hf/c
 
@@ -2480,7 +2574,7 @@ where ${h}$ is Planks constant and ${f}$ is the frequency of the light.
 nothing is derived here, just states what to do for a photon
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Energy-Mass Equivalence}
+\subsection{Energy-Mass Equivalence} \label{subsect: Energy-Mass Equivalence}
 
 *** Imagine we have a particle at rest emitting light in all directions so that afterward it is still at rest, but in another frame we have we have this particle moving and the emitted light aberrated, but we still need the particle to remain at a constant velocity after emission.
 (maybe include a rotation in the impulse/effect of light in each direction on the particle of has)
@@ -2490,7 +2584,7 @@ nothing is derived here, just states what to do for a photon
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\input{Tex/Terms/Terms_ch7.tex}
+\input{Tex/Terms/Terms_ch6.tex}
 
 % %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -2600,20 +2694,91 @@ nothing is derived here, just states what to do for a photon
 ...
 
 % %███████████████████████████████████████████████████████████████████
-%\chapter{"zitterbewegung"}
+%\chapter{"zitterbewegung"} \label{ch: "zitterbewegung"}
 
 % %███████████████████████████████████████████████████████████████████
-% \chapter{equation for motion in primed frame for arbitrary motion in proper frame}
+% \chapter{equation for motion in primed frame for arbitrary motion in proper frame} \label{ch: equation for motion in primed frame for arbitrary motion in proper frame}
 
 % %███████████████████████████████████████████████████████████████████
-% \chapter{None Point Like Sources}
+% \chapter{None Point Like Sources} \label{ch: None Point Like Sources}
 % ... and seeing moving objects rotated, i.e. can see the rear side of a cube before the rear side has moved past you
 
 % %███████████████████████████████████████████████████████████████████
-% \chapter{Thought Experiments}
+% \chapter{Thought Experiments} \label{ch: Thought Experiments}
 % Bell's Paradox and others
 % two identical particles that have a mass and charge such that in the frame where they are both at rest, such that the force of the gravitational attraction and the force of the electric repulsion cancel out, then in a frame where they are now both moving the forces still have to cancel, is there now a magnetic force, how does the gravitational field have to change. now what if they were instead rotating around the center of mass instead, with the gravity being the correct amount stronger such that there is this orbiting
 
 % ... touch on GR, i.e. elevator thought experiment
 
 % Well we could have things be thinner if moving relative to the aether but not thinner between frames because observer also gets thinner as they are also moving relative to the aether at different speeds in each frame
+
+% %███████████████████████████████████████████████████████████████████
+% \chapter{Cheat Sheet} \label{ch: Cheat Sheet}
+
+% all needed equations
+% steps for tranforming between actuall positions and times
+% steps for transforming retarded positions and times
+
+% %███████████████████████████████████████████████████████████████████
+% %███████████████████████████████████████████████████████████████████
+% \section{Paths of Particles} \label{sect: Paths of Particles}
+
+% In an initial frame, we can describe the position at any time by the following generalized equations were the constants depend on the specific case
+
+% \begin{equation}
+% 	\begin{aligned}
+% 		 & x(t) = a_0 + a_1 t + a_2 t^2 + ... \\
+% 		 & y(t) = b_0 + b_1 t + b_2 t^2 + ... \\
+% 		 & z(t) = c_0 + c_1 t + c_2 t^2 + ...
+% 	\end{aligned}
+% \end{equation}
+
+% then the corresponding primed equations are given as
+
+% \begin{equation}
+% 	\begin{aligned}
+% 		& {x{'}}(t) = x(t)                                         \\
+% 		& {y{'}}(t) = y(t) \\
+% 		& {z{'}}(t) = {\gamma} (z(t) - {v}{t})                       \\
+% 	   \text{at time \ \ \ }                                   \\
+% 		& {t{'}}(t) = {\gamma} \bigg(t-\frac{{v}}{{c}^2} z(t) \bigg)
+%    \end{aligned}
+% \end{equation}
+
+% with
+
+% \begin{equation}
+% 	{t} = {\gamma} \left( t' + \dfrac{{v}{z'}}{{c}^2} \right)
+% \end{equation}
+
+% *** can not make x', y', z' in terms of primed time t'
+
+% \begin{equation}
+% 		\begin{aligned}
+% 			 & \mathbf{U}{'} = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right) }
+% 			\begin{pmatrix}
+% 				{{u}_{x}}                              \\
+% 				{{u}_{y}}                              \\
+% 				{\gamma} \left( {{u}_{z}}- {v} \right) \\
+% 			\end{pmatrix}
+% 			\\
+% 			 & \text{at position ${\mathbf{R}{'}}$ and time ${t{'}}$ }
+% 		\end{aligned}
+% \end{equation}
+
+% \begin{equation}
+% 	{t{'}} = {\gamma} \bigg(t-\frac{{v}{z}}{{c}^2}\bigg)
+% \end{equation}
+
+% \begin{equation}
+% 	{z} = {\gamma} ({z{'}}+{v}{t{'}})
+% \end{equation}
+
+
+% *** to be done,
+
+% may explain how it is not possible to derive how paths of a particle transforms into a second frame generally
+
+% try x,y,z all in terms of time T
+
+% try to give just what the aberrated/retarded path would look like i.e. transform retarded to retarded path

@@ -3,22 +3,10 @@
 
     "latex-workshop.latex.tools": [
         {
-            "name": "pdflatex",
-            "command": "pdflatex",
-            "args": [
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "%DOC%",
-            "-shell-escape"
-            ],
-            "env": {}
-        },
-        {
             "name": "latexmk",
             "command": "latexmk",
             "args": [
-            "-shell-escape", // <---- added this line
+            "-shell-escape",
             "-synctex=1",
             "-interaction=nonstopmode",
             "-file-line-error",
@@ -46,9 +34,9 @@
         "(figure \\\\ref)": [{}],
         "(section \\\\ref)": [{}],
         "(chapter \\\\ref)": [{}],
-        "(equation \\\\eqref)": [{}],
-        "(equation \\\\ref)": [{}],
         "(equation \\(\\\\eqref)": [{}],
+        "(equation \\\\ref)": [{}],
+        "(equation \\(\\\\ref)": [{}],
         "(?!%)(?:.){240,}": [{}],
     },
 

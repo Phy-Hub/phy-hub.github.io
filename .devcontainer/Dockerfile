@@ -5,10 +5,11 @@ FROM ubuntu:20.04
 #ENV DEBIAN_FRONTEND=noninteractive
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
-    perl \
+#RUN apt-get update && apt-get install -y \
+#    python3 \
+#    python3-pip \
+#    perl
+    #\
    # wget \
     #&& apt-get update \
    # && apt-get install -y \
@@ -23,7 +24,7 @@ SHELL ["/bin/bash", "-c"]
 #RUN pip3 install pdf2svg
 
 # Verify installations
-RUN python3 --version && \
-    perl --version && \
-    miktex --version && \
-    pdf2svg --version
+#RUN python3 --version && \
+#    perl --version && \
+ #   miktex --version && \
+ #   pdf2svg --version

@@ -272,9 +272,10 @@ Each truck would see its light moving vertically up and down while the other tru
 Hence, each truck perceives the other truck's clock ticking slower.
 An observer in the road's reference frame would see the trucks move at the same speed and, hence, the passage of time between ticks as being the same for both trucks.
 This concept is confusing and difficult to visualize, but it will get easier with practice.
+
 For now, though, we will continue building up the concepts of special relativity.
 
-*** Discuss the experimental evidence for time dilation using atomic clocks or the muon experiment.
+%*** Discuss the experimental evidence for time dilation using atomic clocks or the muon experiment.
 
 %███████████████████████████████████████████████████████████████████
 \subsection{Simultaneity} \label{subsect: Simultaneity}
@@ -652,31 +653,31 @@ Then using the two assumed facts that are used as the basis of reasoning for spe
 By first deriving the time dilation, and length contraction equations in order to then find the full transform of the space and time coordinates between two inertial frames.
 We will come across a very useful quantity which we will denote with a ${\gamma}$, this quantity will be used throughout this book to simplify equations.
 After this, we will look at the transform for infinitesimal changes in distances and use this to derive how velocities and accelerations change when swapping between two inertial frames.
-By the end of this chapter you should understand the coordinate transforms conceptually and mathematically when swapping between two frames, and how to derive the velocity and acceleration transforms.
+By the end of this chapter, you should understand the coordinate transforms conceptually and mathematically when swapping between two frames, and how to derive the velocity and acceleration transforms.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Classical Relativity} \label{sect: Classical Relativity}
 
 Classical (Galilean) relativity was the previous theory of how to transform coordinates in different inertial frames.
-It is based on two assumptions.
-No matter what the relative speed of an inertial frame is, you would observe the following within that frame:
+
+It is based on two assumptions, which are that \textbf{in each frame, you would observe the following:}
 
 \begin{itemize}
-	\item The distance between objects being the same.
-	\item Time flowing at the same rate, with the time of events remaining the same.
+	\item The distance between objects is the same.
+	\item Time flows at the same rate, giving the same time for all events.
 \end{itemize}
 
-Before special relativity, it was assumed that distances between two positions were the same for all \hyperlink{def-observer}{observer}s.
-That is, the first \hyperlink{def-observer}{observer} would see a stick and measure it to be the same length as another \hyperlink{def-observer}{observer} moving relative to the first.
-The other assumption is that time is constant for everyone, that is,
-clocks move at the same rate for each \hyperlink{def-observer}{observer} and if, say, a particle was to emit light at a particular time.
-This light would be emitted at the same time for all \hyperlink{def-observer}{observer}s.
+Before special relativity, it was assumed that distances between two points were the same for all \hyperlink{def-observer}{observer}s.
+That is, the first \hyperlink{def-observer}{observer} would see a stick and measure it to be the same length as another \hyperlink{def-observer}{observer} who is moving relative to the first would measure it.
+The other assumption is that the flow of time is the same for everyone.
+That is, clocks move at the same rate for each \hyperlink{def-observer}{observer} and if, say, a particle was to emit light at a particular time, this light would be emitted at the same time for all \hyperlink{def-observer}{observer}s.
 
-For classical relativity, if we have two \hyperlink{def-observer}{observer}s moving relative to each other at constant velocity and want to find how each \hyperlink{def-observer}{observer} would describe the positions and motion of a particle relative to them, we need to know the positions and times in one observer's frame and how to \hyperlink{def-transform}{transform} them into the other \hyperlink{def-observer}{observer}s frame.
+For classical relativity, if we have the positions and times of a particle's motion relative to one observer in their frame, and we want to find the motion of the particle relative to a second observer who is moving at constant velocity relative to the first.
+We need to know how to transform the positions and times of the particle into this second observers frame.
 That is, if we have how one \hyperlink{def-observer}{observer} would describe the coordinates of a particle over time relative to them and we want to now know the coordinates of the particle with respect to the other \hyperlink{def-observer}{observer}, we need to know how the transformation of coordinates works.
 
-So let us see how the mathematics works for the classical coordinate system transform between two inertial frames, by looking at the coordinates of an event in an initial reference frame with a second inertial frame's coordinate axis moving relative to the initial frame's axis, illustrated in Figure (\ref{fig: simple Galilean transform derivation})
+So let us see how the mathematics works for the classical coordinate system transform between two inertial observers frames, by looking at the coordinates of an event in an initial reference frame with a second inertial frame's coordinate axis moving relative to the initial frame's axis, illustrated in Figure (\ref{fig: simple Galilean transform derivation}):
 
 %█████████████
 \begin{figure}[H]
@@ -700,12 +701,12 @@ So let us see how the mathematics works for the classical coordinate system tran
 		\draw[red, thick,->] (1.7,0.7,0)--(3,0.9,0) node[midway,anchor = south]{${\vec{O{'}E}}$};
 		%
 	\end{tikzpicture}
-	\caption{\textbf{An event in initial frame with a primed frame's axis moving relative to its axis}.	This shows an initial frame with its associated x,y,z-coordinate system at rest in its frame, with origin ${O}$. There is also an x',y',z'-coordinate system with origin ${O'}$ associated with a "primed" frame, at position ${\vec{OO'}}$ in the initial frame. It is moving at speed ${v}$ in the z-direction relative to the initial frame. An event ${E}$ in this initial frame is described by a set of spatial and time coordinates ${\vec{OE}} = ({x},{y},{z})$ and ${t}$. We choose the time to be zero in both frames when both axes overlapped, so that ${t}$ is also the time from when they overlapped. We also show ${\vec{O'E}}$ which represents the vector from the primed origin to the event in the initial frame.}
+	\caption{\textbf{An event in initial frame with a primed frame's axis moving relative to its axis.}	This shows an initial frame with its associated $x,y,z$-coordinate system at rest in this frame, with origin ${O}$. There is also an $x',y',z'$-coordinate system with origin ${O'}$ associated with the "primed" frame, at position ${\vec{OO'}}=(0,0,{v}{t})$ in the initial frame, where ${v}$ is the speed of the primed frame in the z-direction relative to the initial frame, and ${t}$ is the time in the initial frames. An event ${\vec{E}}$ in this initial frame is described by a set of spatial and time coordinates ${\vec{OE}} = ({x},{y},{z})$ and ${t}$. We choose the time to be zero in both frames when both axes overlapped, so that ${t}$ is also the time from when they overlapped. We also show ${\vec{O'E}}$ which represents the vector from the primed origin to the event in the initial frame.}
 	\label{fig: simple Galilean transform derivation}
 \end{figure}
 %███████████
 
-As shown in the diagram, we are in the initial frame with origin ${O}$ defined by coordinates $(0,0,0)$ and the primed frame is moving in the z-direction at velocity ${v}$ such that the position of the primed origin in the initial frame is
+As shown in the diagram, we are in the initial frame with origin ${O}$ defined by coordinates $(0,0,0)$ and the primed frame is moving in the z-direction at velocity ${v}$ such that the position of the primed origin relative to the initial frame's axis is
 
 \begin{equation}
 	\vec{OO{'}} = (0,0,{v}{t})
@@ -721,42 +722,23 @@ If there is an \hyperlink{def-event}{event} at position
 the event is described by
 
 \begin{equation}
-	E = ({x},{y},{z},{t})
+	\vec{E} = ({x},{y},{z},{t})
 \end{equation}
 
 then in the primed frame, we will have the event described by the primed coordinates that we want to transform into, as
 
 \begin{equation}
-	E{'} = ({x{'}},{y{'}},{z{'}},t{'})
+	\vec{E{'}} = ({x{'}},{y{'}},{z{'}},t{'})
 \end{equation}
 
-Now to swap into the primed frame's coordinates, we need to recall from the previous assumptions that distances are conserved, with the length and directions of all the vectors between ${O}$, ${O^{'}}$ and ${E}$ the same in each frame, and time flows at the same rate (${t'} = {t}$), from this knowledge and Figure (\ref{fig: simple Galilean transform derivation}) we have the event's coordinates described by
+To swap into the primed frame's coordinates, we need to recall from the previous assumptions that distances and times are conserved, and therefore the length and directions of all the vectors between ${O}$, ${O^{'}}$ and ${E}$ are the same in each frame, and time flows at the same rate (${t'} = {t}$), from this knowledge and Figure (\ref{fig: simple Galilean transform derivation}) we have the event's coordinates described in the primed frame by its coordinate axis as
 
 \begin{equation}
 	({\vec{O'E}})^{'} = ({x{'}},{y{'}},{z{'}}) = \vec{OE}-\vec{OO{'}} = ({x},{y},{z}-{v}{t})
 	\label{eq: classical event}
 \end{equation}
 
-We can also write the initial frame's event coordinates in terms of the primed coordinates
-
-\begin{equation}
-	{\vec{OE}} = ({x},{y},{z}) = \vec{OO{'}} + \vec{O{'}E} = ({x{'}},{y{'}},{z{'}} + {v}{t{'}})
-	\label{eq: classical event 2}
-\end{equation}
-
-so we have ${x} = {x{'}}$, ${y} = {y{'}}$, ${t} = {t{'}}$, and for the z-components
-
-\begin{equation}
-	\begin{aligned}
-		 & {z{'}} = {z}-{v}{t}      \\
-		 & {z} = {z{'}} + {v}{t{'}}
-	\end{aligned}
-\end{equation}
-
-This shows the symmetry between the frames. If we were originally in the primed frame we would have the initial frame now moving at-${v}$ relative to it, so we would expect that the inverse \hyperlink{def-transform}{transformation} would replace one frame's coordinates with the other and have the opposite \hyperlink{def-frame-velocity}{frame velocity} instead.
-So the inverse of going from \hyperlink{def-Primed-Frame}{primed frame} to original is just a matter of swapping all primed coordinates with original coordinates and changing the sign on the \hyperlink{def-frame-velocity}{frame velocity}, this can be seen from starting at time ${t} = 0$ we have the frame's origins overlapping and that there is a symmetry from here, we have the freedom to choose either frame to be the original, as no frame is particularly special and depending which one you pick the relative velocity is either ${v}$ or-${v}$. We will have the same rules in special relativity later on when we want to get the inverse transform.
-
-We can write the full description of the position and time \hyperlink{def-transform}{transform} for an \hyperlink{def-event}{event} as
+This gives us the full description of the position and time \hyperlink{def-transform}{transform} for an \hyperlink{def-event}{event} as
 
 \begin{equation}
 	\mhl{
@@ -771,17 +753,32 @@ We can write the full description of the position and time \hyperlink{def-transf
 	\label{eq: Galilean transformation}
 \end{equation}
 
-These are the equations that define classical relativity, we can compare this to the equations of the coordinate transforms in special relativity later. They define the event's location relative to whichever frame's axis that we are in. The special relativistic equations later will look similar but with an extra factor in the z-component and the time no longer the same in both frames.
+These are the equations that define classical relativity, we can compare this to the equations of the coordinate transforms in special relativity later. They define the event's location relative to whichever frame that we are in's axis. The special relativistic equations later will look similar to these, but with an extra factor in the z-component and with the time will no longer be consistent in both frames.
 
-You might have noticed that the direction of the second frame is in the upward z-direction instead of being to the right in the case of the truck diagrams from the previous chapter, this is to help us when we use spherical polar coordinates later and to help see the symmetries.
+We can also write the initial frame's event coordinates in terms of the primed coordinates, by rearranging the transformation equations giving the inverse transform as
 
+\begin{equation}
+		\begin{aligned}
+			 & {x} = {x{'}}       \\
+			 & {y} = {y{'}}       \\
+			 & {z} = {z{'}} + {v}{t{'}} \\
+			\text{at time \ \ \ }  \\
+			 & {t} = {t{'}}
+		\end{aligned}
+	\label{eq: Inverse Galilean transformation}
+\end{equation}
 
+This shows the symmetry between the frames. If we were originally in the primed frame we would have the initial frame now moving at a speed -${v}$ in the z-direction relative to it, so we would expect that the inverse \hyperlink{def-transform}{transformation} would just replace one frame's coordinates with the other and have the opposite \hyperlink{def-frame-velocity}{frame velocity}, as it is shown to have in the transforms.
+So the inverse, going from \hyperlink{def-Primed-Frame}{primed frame} to original is just a matter of swapping all primed an initial coordinates and changing the sign on the \hyperlink{def-frame-velocity}{frame velocity}
+This can be seen at time ${t} = 0$ when we have the frame's origins overlapping and there is a symmetry from here, as we have the freedom to choose either frame to be the original, as no frame is particularly special and depending which one you pick the relative velocity is either ${v}$ or-${v}$. We will have the same rules in special relativity later on when we want to get the inverse transform.
+
+You might have noticed that the direction of the second frame is in the upward z-direction instead of being to the right in the case of the truck diagrams from the previous chapter, this is to help us when we use spherical polar coordinates later and to help see the symmetries. but next we will look at the assumptions of special relativity and their consequences, which we will then apply to the same notion of an event that we have in the Figure (\ref{fig: simple Galilean transform derivation}).
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Postulates of Special Relativity} \label{sect: Postulates of Special Relativity}
 
-For classical relativity, we started with two assumptions. It turns out that these assumptions need to be thrown away, as they contradict the experimental evidence that the speed of light is constant for every observer and frame. We replace them with two new assumptions, called the postulates of special relativity.
+For classical relativity, we started with two assumptions. It turns out that these assumptions need to be thrown away, as they contradict the experimental evidence that the speed of light is constant for every observer and frame. We replace them with two new assumptions, called the \textbf{postulates of special relativity:}
 
 \begin{tcolorbox}%[breakable]
 	\begin{enumerate}
@@ -790,8 +787,8 @@ For classical relativity, we started with two assumptions. It turns out that the
 	\end{enumerate}
 \end{tcolorbox}
 
-The first postulate here will be the most important to us in deriving the transform equations of special relativity and will be used to show how time is dilated. The second postulate has a consequence that if two events happen simultaneously at an overlapping position in one frame, then they will also happen simultaneously in an overlapping position in any other inertial frame, this does not have to be at the same coordinate as it was in the initial frame.
-We will now use these with the concept of a light clock.
+The first postulate here will be the most important to us in deriving the transform equations of special relativity and will be used to show how time is dilated/slowed down for moving objects. The second postulate has a consequence that if events happen simultaneously at an overlapping position in one frame, then they will also happen simultaneously in an overlapping position in any other inertial frame.
+We will now use these assumptions with the concept of a light clock.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -864,12 +861,12 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 
 			% Draw the distance labels
 			\draw[<->, thick] (0,-1.3)--(6,-1.3) node[midway, above] {${L}$};
-			\draw[<->, thick] (-1, 0)--(-1, 6) node[midway, left] {${u}{\Delta t{'}}$};
+			\draw[->, thick] (-1, 0)--(-1, 6) node[midway, left] {${u}{\Delta t{'}}$};
 
 		\end{tikzpicture}
 		\caption{Moving frame}
 	\end{subfigure}
-	\caption{\textbf{Light clock showing time dilation.} The light clock keeps time by counting each time the light makes a return journey when bouncing between two mirrors with length ${L}={c}{\Delta t}$ between them, the diagram shows the mirror's rest frame (left) and a frame with them moving at speed ${u}$ (right). In this second frame, there is a distance ${u}{\Delta t{'}}$ between where the light was reflected by the left mirror and where it returned to it. For this, the light had to travel a total diagonal distance of ${c}{\Delta t{'}}$ to return.}
+	\caption{\textbf{Light clock showing time dilation.} The light clock keeps time by counting each time the light makes a return journey when bouncing between two mirrors with length ${L}=\frac{1}{2}{c}{\Delta \tau}$ between them, the diagram shows the mirror's rest frame (left) and a frame with them moving at speed ${u}=-{v}$ (right). In this second frame, there is a distance ${u}{\Delta t{'}}$ between where the light was reflected by the left mirror and where it returned to it. For this, the light had to travel a total diagonal distance of ${c}{\Delta t{'}}$ to return.}
 	\label{fig: light clock}
 \end{figure}
 %███████████
@@ -887,49 +884,48 @@ The distance the mirrors move during this return journey in the moving frame is
 	{u}{\Delta t{'}} =-{v} {\Delta t{'}},
 \end{equation}
 
-where ${\Delta t{'}}$ is the time it took light to return in the moving frame and ${u}$ is the speed of the mirrors, which is in the opposite direction of the movement of the \hyperlink{def-Primed-Frame}{primed frame} relative to the \hyperlink{def-proper-frame}{rest frame}, that is ${u} =-{v}$.
+where ${\Delta t{'}}$ is the time it took light to return in the moving frame and ${u}$ is the speed of the light clock, which is in the opposite direction of the movement of the \hyperlink{def-Primed-Frame}{primed frame} relative to the \hyperlink{def-proper-frame}{rest frame}, that is ${u} =-{v}$.
 The distance light travels in this time is
 
 \begin{equation}
 	{c}{\Delta t{'}}
 \end{equation}
 
-This is the hypotenuse of a triangle formed by ${v}{\Delta t{'}}$ and $2{L}$, so we have the square of the hypotenuse equal to the square of the other two lengths:
+This is the hypotenuse of a right angled triangle formed by ${v}{\Delta t{'}}$ and $2{L}$, so we have the square of the hypotenuse equal to the square of the other two lengths:
 
 \begin{equation}
 	{c}^2 {\Delta t{'}}^2 = {v}^2 {\Delta t{'}}^2 + {c}^2{\Delta\tau}^2
 \end{equation}
 
-rearranging to find the time it took in the \hyperlink{def-Primed-Frame}{primed frame} relative to the time in the \hyperlink{def-proper-frame}{rest frame}, we find
+rearranging to find the time it took in the \hyperlink{def-Primed-Frame}{primed frame} relative to the \hyperlink{def-proper-frame}{rest frame}, we find
 
 \begin{equation}
-	{\Delta t{'}} = \dfrac{1}{\sqrt{1-\dfrac{{v}^2}{{c}^2}}} {\Delta\tau} = {\gamma} {\Delta\tau}
+	{\Delta t{'}} = \frac{1}{\sqrt{1-\frac{{v}^2}{{c}^2}}} {\Delta\tau} = {\gamma} {\Delta\tau}
 \end{equation}
 
 with
 
 \begin{equation}
-	{\gamma} = \dfrac{1}{\sqrt{1-\dfrac{{v}^2}{{c}^2}}}.
+	{\gamma} = \frac{1}{\sqrt{1-\frac{{v}^2}{{c}^2}}}.
 \end{equation}
 
-This is used throughout special relativity to simplify equations.
-We find from this equation that the time for the return journey in the frame with the clock moving is longer relative to its rest frame,
+This factor, ${\gamma}$, is used throughout special relativity to simplify equations.
+Now from these, we find that the time for the return journey in the frame with the clock moving is longer relative to its rest frame,
 
 \begin{equation}
 	{\Delta t{'}} \geq {\Delta\tau}
 \end{equation}
 
-So we take this outcome as the time taken between two \hyperlink{def-event}{event}s in the same position in the moving frame taking longer than in the \hyperlink{def-proper-frame}{rest frame} of the clock, due to the longer distance it must travel at the same speed.
-
-*** conclusion statement
+We take this outcome as the time taken between two \hyperlink{def-event}{event}s in the same position in the moving frame takes longer than in the \hyperlink{def-proper-frame}{rest frame} of the clock, due to the longer distance it must travel at the same speed.
+Hence systems that are moving seem to have there time flowing slower, one example of this is that unstable particle that are moving faster have longer livespans before they decay.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Length Contraction} \label{sect: Length Contraction}
 
 An object's size gets smaller in the direction of movement compared to when it is at rest, this is called length contraction.
-To explain why it happens we will use a system similar to the light clock in the previous section.
-This new system also has light moving perpendicular as well as parallel the the second frame's movement, as shown in Figure (\ref{fig: length contraction math})
+To explain why it happens we will add a second perpendicular reflected light path to previous section's experimental setup.
+So there is now light moving perpendicular as well as parallel the the primed frame's movement, as shown in Figure (\ref{fig: length contraction math})
 
 %█████████████
 \begin{figure}[H]
@@ -1005,51 +1001,50 @@ This new system also has light moving perpendicular as well as parallel the the 
 \end{figure}
 
 If we have a system as described in Figure (\ref{fig: length contraction math}).
-Since the light returns simultaneously in the rest frame, we need the light to also return simultaneously in the second frame.
-Multiple events that happen at a single point simultaneously in one frame, must happen simultaneously in all other frames.
-The time between the light being emitted and absorbed will be the dilated time from the previous section.
-This can be seen as the perpendicular light path in this and the light clock's setup is the same path.
-In the moving frame, to achieve this simultaneity in the return of the light to the bulb, the length of the full path of light from the central bulb to the front mirror and back (${l^{'}_1} + {l^{'}_2}$) must be the same as the perpendicular path, due to the speed of light being the same for both paths, we can work out the length of the sideways paths from the time dilation section, and this is the length the total path needs to be in the forward directions as well.
-We will find that the paths can only have the distance between the bulb and the front mirror is contracted in the direction of movement.
+Then since the light returns simultaneously in the rest frame, we need the light to also return simultaneously in the second frame.
+Multiple events that happen at a single point simultaneously in one frame, must happen simultaneously at a single point in all other frames.
+The time between the light being emitted and absorbed will be the dilated time that we worked out in the previous section.
+This can be seen as the sideways light path in this and the light clock's setup is the same path.
+In the moving frame, to achieve this simultaneity in the return of the light to the bulb, the length of the full path of light from the central bulb to the front mirror and back ($2 {\Delta L^{'}} = {l^{'}_1} + {l^{'}_2}$) must be the same as the perpendicular path, due to the speed of light being the same for both paths, we can work out the length of the sideways paths from the time dilation section, ${c}{\Delta t^{'}}$, and this is the length the total path needs to be in the forward directions as well.
+We will find that the paths can only have this length, if the distance between the bulb and the front mirror is contracted in the direction of movement.
 Note that there is no contraction in the perpendicular direction to the movement due to the paradox explained in Figure (\ref{fig: width contraction}).
 
-In the moving frame, the pulse sent forward has a distance
+In the moving frame, the pulse sent forward has a path length equal to the speed of light times the time of the path which is also equal to the distance between the bulb and mirror plus the distance the mirror has moved away from the point it was emitted in this time
 
 \begin{equation}
-	{l^{'}_1} = {c}{t^{'}_1} = {\Delta  L^{'}} + {u} {t^{'}_1}
+	{l^{'}_1} = {c}{\Delta t^{'}_1} = {\Delta  L^{'}} + {u} {\Delta t^{'}_1}
 \end{equation}
 
-to travel to get to the front mirror that is moving away at speed ${u}$ from the point it was emitted.
-Where ${t^{'}_1}$ is the time taken to get there, ${\Delta  L^{'}}$ is the distance between the bulb and the mirror in front.
-After this, the light then must travel back to the bulb a distance
+where ${u}$ is the speed that the front mirror is moving away from the point it was emitted, ${\Delta t^{'}_1}$ is the time taken to get to the mirror, and ${\Delta  L^{'}}$ is the distance between the bulb and the mirror in front.
+After reaching the mirror, the light then must travel back to the bulb a distance
 
 \begin{equation}
-	{l^{'}_2} = {c} {t^{'}_2} = {\Delta  L^{'}} - {u} {t^{'}_2}.
+	{l^{'}_2} = {c} {\Delta t^{'}_2} = {\Delta  L^{'}} - {u} {\Delta t^{'}_2}.
 \end{equation}
 
-Where ${t^{'}_2}$ is the time taken to return to the bulb from the front mirror, both of these give the two times as
+Where ${\Delta t^{'}_2}$ is the time taken to return to the bulb from the front mirror, both of these give the two times as
 
 \begin{equation}
-	{t^{'}_1} = \frac{\Delta  L'}{{c} - {u}}
+	{\Delta t^{'}_1} = \frac{\Delta  L'}{{c} - {u}}
 \end{equation}
 
 and
 
 \begin{equation}
-	{t^{'}_2} = \frac{{\Delta  L^{'}}}{{c} + {u}}.
+	{\Delta t^{'}_2} = \frac{{\Delta  L^{'}}}{{c} + {u}}.
 \end{equation}
 
 Adding both these times together gives the total dilated time of return as
 
 \begin{equation}
-	{\Delta t{'}} = {\Delta  L^{'}}(\frac{1}{{c} + {u}} + \frac{1}{{c} - {u}}) = \frac{\Delta  L^{'}}{c}\frac{1}{1- {u}^2/{c}^2} = \frac{\Delta  L^{'}}{c}\frac{1}{1-{v}^2/{c}^2} = {\gamma}^2 \frac{\Delta  L^{'}}{c}
+	{\Delta t{'}} = {\Delta  L^{'}}(\frac{1}{{c} + {u}} + \frac{1}{{c} - {u}}) = \frac{\Delta  L^{'}}{c}\frac{2}{1- {u}^2/{c}^2} =  2{\gamma}^2 \frac{\Delta  L^{'}}{c}
 \end{equation}
 
-where we used ${u}=-{v}$.
+where we used ${u}=-{v}$ and then the ${\gamma}$ factor to simplfy equation.
 Now from this and using the the time dilation equation, we have
 
 \begin{equation}
-	{c}{\Delta t{'}} = {c}{\gamma} {\Delta t} = {\gamma} {\Delta L} = {\gamma}^2 {\Delta  L^{'}}
+	{c}{\Delta t{'}} = {c}{\gamma} {\Delta t} = 2{\gamma} {\Delta L} = 2{\gamma}^2 {\Delta  L^{'}}
 \end{equation}
 
 Finally, this leads to the length from the bulb to the front mirror in the primed frame to be
@@ -1058,24 +1053,24 @@ Finally, this leads to the length from the bulb to the front mirror in the prime
 	{\Delta  L^{'}} = \frac{1}{{\gamma}}{\Delta  L}.
 \end{equation}
 
-This means that the distances in the direction of movement of an object are contracted in its direction of movement compared to the rest frame of the object, that is
+This means that for a system moving relative to an observer the distances in the system in the direction of movement are contracted compared to the rest frame of the object, that is
 
 \begin{equation}
 	{\Delta  L^{'}} \leq {\Delta  L}.
 \end{equation}
 
-*** conclusion statement:
+Objects and the distance between them are therefore shorter in a frame with them moving compared to in the rest frame of the objects.
 
-Moving objects and the distance between them are therefore shorter than in a frame with them moving compared to in the rest frame of the objects.
+With this knowledge and the last section, we can now derive the coordinate transform equations.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Position and Time Transformation} \label{sect: Position and Time Transformation}
 
 We have looked at the dilation between two different times at the same location and the contraction between two different positions at the same time.
-We will use both these concepts to help us see how the combination of the time and the position coordinate, known as an event, transforms when we swap frames.
-For the derivation of the coordinate transformation of an event between two inertial frames, we will follow a similar line of thought as in classical relativity in Section (\ref{sect: Classical Relativity}).
-Starting with the same diagram and applying what we have learned from the time dilation and length contraction sections, to be consistent with the postulates of special relativity, we will derive the transformation equations, known as the Lorentz transformation.
+Now we will use both these concepts to help us see how the combination of the time and the position coordinate, known as an event, transforms when we swap frames.
+For the derivation of the coordinate transformation of an event between two inertial frames, we will be starting with the same diagram as we had in the classical relativity in Section (\ref{sect: Classical Relativity}) and apply what we have learned from the time dilation and length contraction sections so that we are consistent with the postulates of special relativity.
+This will allow us to derive the transformation equations, known as the Lorentz transformation.
 
 %█████████████
 \begin{figure}[H]
@@ -1099,7 +1094,7 @@ Starting with the same diagram and applying what we have learned from the time d
 		\draw[red, thick,->] (1.7,0.7,0)--(3,0.9,0) node[midway,anchor = south]{${\vec{O{'}E}}$};
 		%
 	\end{tikzpicture}
-	\caption{\textbf{An event in initial frame with a primed frame's axis moving relative to it.} This is a diagram of an initial frame with its associated $x,y,z$-coordinate system at rest in its frame, with origin ${O}$. There is also an $x',y',z'$-coordinate system with origin ${O'}$ associated with a "primed" frame, at position ${\vec{OO'}}$ in the initial frame. It is moving at speed ${v}$ in the z-direction relative to the initial frame. An event ${E}$ in the initial frame is described by a set of spatial and time coordinates ${\vec{OE}} = ({x},{y},{z})$ and ${t}$. We choose the time to be zero in both frames when both axes overlapped, so that ${t}$ is also the time from when they overlapped. We also show ${\vec{O'E}}$ which represents the vector from the primed origin to the event in the initial frame.}
+	\caption{\textbf{An event in initial frame with a primed frame's axis moving relative to it.} This shows an initial frame with its associated $x,y,z$-coordinate system at rest in this frame, with origin ${O}$. There is also an $x',y',z'$-coordinate system with origin ${O'}$ associated with the "primed" frame, at position ${\vec{OO'}}=(0,0,{v}{t})$ in the initial frame, where ${v}$ is the speed of the primed frame in the z-direction relative to the initial frame, and ${t}$ is the time in the initial frames. An event ${\vec{E}}$ in this initial frame is described by a set of spatial and time coordinates ${\vec{OE}} = ({x},{y},{z})$ and ${t}$. We choose the time to be zero in both frames when both axes overlapped, so that ${t}$ is also the time from when they overlapped. We also show ${\vec{O'E}}$ which represents the vector from the primed origin to the event in the initial frame.}
 	\label{fig: simple Lorentz transform derivation}
 \end{figure}
 %███████████
@@ -1111,25 +1106,43 @@ As shown in the diagram, we are in the initial frame with origin ${O}$ defined b
 \end{equation}
 
 at time ${t}$ from when the origins overlapped.
-If there is an \hyperlink{def-event}{event} at position
+If there is an \hyperlink{def-event}{event} described by
+
+\begin{equation}
+	\vec{E} = ({x},{y},{z},{t})
+\end{equation}
+
+The displacement between the initial frame's origin and the event's position in the initial frame is
 
 \begin{equation}
 	\vec{OE} = ({x},{y},{z})
 \end{equation}
 
-the event is described by
+and displacement between the primed frame's origin and the event's coordinates in the initial frame is
 
 \begin{equation}
-	E = ({x},{y},{z},{t})
+	\vec{O'E} = ({x},{y},{z}-{v}{t})
 \end{equation}
+
+the event is described by
+
+
 
 then in the primed frame, we will have  the event described by the primed coordinates that we want to transform into, as
 
 \begin{equation}
-	E{'} = ({x{'}},{y{'}},{z{'}},t{'})
+	\vec{E}^{'} = ({x{'}},{y{'}},{z{'}},t{'})
 \end{equation}
 
-The primed frame's axis and coordinates are moving relative to the initial frame, so the distance between the primed axis origin and the event would be contracted in the initial frame relative to these coordinates in the primed frame,that is ${z} = {z{'}}/{\gamma}$, giving the distance between the primed axis origin and the event in the initial frame in terms of the primed z-coordinate as
+The primed frame's axis and coordinates are moving relative to the initial frame, so from the previous section we would have the distance between the primed axis origin and the event length contracted in the initial frame relative to these coordinates in the primed frame, that is the z component of $\vec{O{'}E}$ in the initial frame is equal to 
+
+
+
+
+
+
+
+${z} = {z{'}}/{\gamma}$, giving the distance between the primed axis origin and the event in the initial frame in terms of the primed z-coordinate as
 
 \begin{equation}
 	\vec{O{'}E} = (x,y,{z{'}}/{\gamma})

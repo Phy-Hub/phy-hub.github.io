@@ -1,8 +1,11 @@
 # Use the base image specified in devcontainer.json
-FROM ubuntu:20.04
+FROM miktex/miktex:latest
 
 # Disable prompts during package installation
 #ENV DEBIAN_FRONTEND=noninteractive
+
+# Install any needed packages specified in requirements.txt
+#RUN pip3 install --no-cache-dir -r .devcontainer/requirements.txt
 
 # Install system dependencies
 #RUN apt-get update && apt-get install -y \

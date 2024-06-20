@@ -1,5 +1,5 @@
 # Use the base image specified in devcontainer.json
-FROM miktex/miktex:latest
+FROM ghcr.io/andsfonseca/miktex:latest
 
 # Disable prompts during package installation
 #ENV DEBIAN_FRONTEND=noninteractive

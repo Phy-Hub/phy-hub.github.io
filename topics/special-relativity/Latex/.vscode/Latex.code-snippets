@@ -252,7 +252,7 @@
 		"prefix": "l.ref_equation",
 		"body":
 		[
-		"equation (\\eqref{${eq: 1:referenced equation's label name}})"
+		"equation \\eqref{${eq: 1:referenced equation's label name}}"
 		],
 	},
 

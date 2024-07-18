@@ -49,23 +49,23 @@ for i in range(len(Rs)):
 sc = 0.7 #0.7/3 #arrow scale
 ylim = R_PRM[0,0,2] +4
 xlim = -(Rs_PRM[1,1]+V[1]*T_prop_PRM) + 4
-def PlotStyle(yy,zz,tt):
+def PlotStyle(yy,zz,tt,axis_color):
     plt.axis('equal')
     plt.axis('off')
     plt.axis('square')
     plt.xlim([-xlim, xlim])
-    plt.ylim([-2*xlim,ylim])
+    plt.ylim([-2*xlim +4,ylim])
     plt.arrow(-xlim, 0, 2*xlim-2, 0, lw = 1, head_width=1.3, head_length=1, overhang = sc,
-              length_includes_head= True)
+              length_includes_head= True, ec=axis_color)
     plt.arrow(0, -ylim, 0, 2*ylim -2,lw = 1, head_width=1.3, head_length=1, overhang = sc,
-              length_includes_head= True)
-    plt.annotate(yy, xy=(0, 0), xytext=(xlim-6,2))
-    plt.annotate(zz, xy=(0, 0), xytext=(-3,ylim-6))
-    plt.annotate(tt, xy=(0, 0), xytext=(xlim/3,xlim/1.2))
+              length_includes_head= True, ec=axis_color)
+    plt.annotate(yy, xy=(0, 0), xytext=(xlim-6,2),c=axis_color)
+    plt.annotate(zz, xy=(0, 0), xytext=(-3,ylim-6),c=axis_color)
+    plt.annotate(tt, xy=(0, 0), xytext=(xlim/3,xlim/1.2),c=axis_color)
 
 ### SubPlot 1 #################################################################
 plt.figure(frameon=False)
-PlotStyle("y","z","t = %s" %t)
+PlotStyle("y","z","t = %s" %t,"black")
 for i in range(len(Rs)):
     plt.scatter( Rs[i,1] ,Rs[i,2], color = 'black' , s = 10, animated=True)
     plt.quiver(  R[i,:,1], R[i,:,2] , sc * C[:,1], sc * C[:,2],
@@ -77,8 +77,9 @@ plt.savefig(path.pdf +"Rest_Pulse.pdf",bbox_inches='tight', format='pdf',transpa
 
 ### SubPlot 2 #################################################################
 plt.figure(frameon=False)
-PlotStyle("y'","z'",  r"t' = $- \gamma \frac{vz}{c^2}$") # r"t'=$\gamma(t-\dfrac{vz}{c^2})$ ")
-cm = mpl.cm.cool
+PlotStyle("y'","z'",  r"t' = $- \gamma \frac{vz}{c^2}$","gray") # r"t'=$\gamma(t-\dfrac{vz}{c^2})$ ")
+doppler = SR.Doppler(V[1], C_PRM[0,:,2])
+cm = mpl.cm.rainbow
 for i in range(len(Rs)):
     coord = ( R_PRM[i,:,2] + R_PRM[0,0,2] ) / ( 2 * R_PRM[0,0,2] )
     plt.scatter( Rs_PRM[i,0] ,Rs_PRM[i,1]+V[1]*T_prop_PRM, color = 'grey' , s = 20, animated=True,alpha=0.4)
@@ -86,16 +87,14 @@ for i in range(len(Rs)):
 
     plt.quiver(R_PRM[i,:,1], R_PRM[i,:,2], sc * C_PRM[i,:,1], sc * C_PRM[i,:,2],
                 angles="xy" , zorder=1, pivot="mid", alpha=1,width=0.005,
-                scale=5, scale_units='inches', headwidth=5, color=cm( coord ))
+                scale=5, scale_units='inches', headwidth=5, color=cm( doppler ))
 
 plt.savefig(path.svg +"Prime_Pulse.svg",bbox_inches='tight', format='svg',transparent=True)
 plt.savefig(path.pdf +"Prime_Pulse.pdf",bbox_inches='tight', format='pdf',transparent=True)
 
 ### SubPlot 3 #################################################################
 plt.figure(frameon=False)
-PlotStyle("y'","z'",r"t'= 0") #$\gamma$t")
-doppler = SR.Doppler(V[1], C_PRM[0,:,2])
-cm = mpl.cm.rainbow
+PlotStyle("y'","z'",r"t'= 0","gray") #$\gamma$t")
 for i in range(len(Rs)):
     plt.scatter( Rs_PRM[i,0] ,Rs_PRM[i,1]+V[1]*T_prop_PRM, color = 'grey' , s = 20, animated=True,alpha=0.7)
     plt.scatter( Rs_PRM_[i,0] ,Rs_PRM_[i,1], color = 'black' , s = 20, animated=True)

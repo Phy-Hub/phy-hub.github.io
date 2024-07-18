@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  12 JUN 2024 22:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  24 JUN 2024 00:54
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -728,7 +728,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 )
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/asymptote\asymptote.sty
 Package: asymptote 2024/02/26 v1.38 Asymptote style file for LaTeX
-(output/tikz/Time_dilation_rest_frame.pre)
+No file ./output/tikz/Time_dilation_rest_frame.pre.
 \ASYbox=\box127
 \ASYdimen=\dimen283
 \c@asy=\count329
@@ -1440,24 +1440,24 @@ LaTeX Warning: Reference `fig: truck clock' on page 10 undefined on input line
 The command '\includegraphics [width = 8cm]{images/pdf/lorry_clock.pdf}' has be
 en optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig: truck simultaneity' on page 11 undefined on inpu
-t line 285.
+LaTeX Warning: Reference `fig: truck simultaneity' on page 10 undefined on inpu
+t line 286.
 
 The command '\includegraphics [width = 8cm]{images/pdf/lorry_simul.pdf}' has be
 en optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `Subsect: Time Dilation' on page 12 undefined on input
- line 318.
+ line 319.
 
 
 LaTeX Warning: Reference `Subsect: Time Dilation' on page 12 undefined on input
- line 322.
+ line 323.
 
 The command '\includegraphics [width = 8cm]{images/pdf/Full_Lorry_Transform.pdf
 }' has been optimized away. Use '/tikz/external/optimize=false' to disable this
 .
 
-LaTeX Warning: Reference `fig: cars' on page 13 undefined on input line 343.
+LaTeX Warning: Reference `fig: cars' on page 13 undefined on input line 344.
 
 The command '\includegraphics [width = 8cm]{images/pdf/cars.pdf}' has been opti
 mized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1465,11 +1465,11 @@ The command '\includegraphics [width = 8cm]{images/pdf/Doppler.pdf}' has been o
 ptimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck aberrated' on page 15 undefined on input l
-ine 399.
+ine 400.
 
 
 LaTeX Warning: Reference `subsect: Length Contraction' on page 15 undefined on 
-input line 401.
+input line 402.
 
 The command '\includegraphics [width = 5.5cm]{images/pdf/Aberrated_lorrys_1.pdf
 }' has been optimized away. Use '/tikz/external/optimize=false' to disable this
@@ -1479,7 +1479,7 @@ The command '\includegraphics [width = 5.5cm]{images/pdf/Aberrated_lorrys_2.pdf
 .
 
 LaTeX Warning: Reference `fig: Relativistic Beaming' on page 17 undefined on in
-put line 454.
+put line 455.
 
 The command '\includegraphics [width = 5cm]{images/pdf/Rest_velocities.pdf}' ha
 s been optimized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1494,11 +1494,11 @@ ards.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disa
 ble this.
 
 LaTeX Warning: Reference `fig: multiple emitting pulses rest frame' on page 18 
-undefined on input line 500.
+undefined on input line 501.
 
 
 LaTeX Warning: Reference `fig: multiple emitting pulses moving frame' on page 1
-8 undefined on input line 502.
+8 undefined on input line 503.
 
 The command '\includegraphics [width = 5cm]{images/pdf/Field_Rest_Frame.pdf}' h
 as been optimized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1507,21 +1507,21 @@ er.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disabl
 e this.
 
 LaTeX Warning: Reference `fig: perceived vs actual speed' on page 19 undefined 
-on input line 547.
+on input line 548.
 
 The command '\includegraphics [width = 10cm]{images/pdf/Perceived_speed.pdf}' h
 as been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig: truck clock' on page 20 undefined on input line 
-606.
+607.
 
 
 LaTeX Warning: Reference `fig: full truck transform' on page 20 undefined on in
-put line 606.
+put line 607.
 
 
 LaTeX Warning: Reference `fig: truck simultaneity' on page 21 undefined on inpu
-t line 611.
+t line 612.
 
 (Tex/Terms/Definitions.tex)
 
@@ -1534,24 +1534,28 @@ Package biblatex Warning: Split bibliography detected.
 (biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
 
 
-LaTeX Warning: Empty bibliography on input line 636.
+LaTeX Warning: Empty bibliography on input line 637.
 
 Chapter 2.
-Package biblatex Info: Reference segment=4 on input line 641.
-Package biblatex Info: Setting label 'refsegment:04' on input line 641.
+Package biblatex Info: Reference segment=4 on input line 642.
+Package biblatex Info: Setting label 'refsegment:04' on input line 642.
 
 LaTeX Warning: Reference `fig: simple Galilean transform derivation' on page 26
- undefined on input line 678.
+ undefined on input line 680.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: simple Galilean transform derivation' on page 27
- undefined on input line 719.
+ undefined on input line 734.
+
+
+LaTeX Warning: Reference `fig: simple Galilean transform derivation' on page 29
+ undefined on input line 775.
 
 
 LaTeX Warning: Reference `fig: light clock' on page 30 undefined on input line 
-789.
+800.
 
 \openout6 = `./output/tikz/Time_dilation_rest_frame.dpth'.
 
@@ -1561,34 +1565,34 @@ LaTeX Warning: Reference `fig: light clock' on page 30 undefined on input line
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `fig: light clock rest frame' on page 30 undefined on 
-input line 864.
+LaTeX Warning: Reference `fig: light clock rest frame' on page 31 undefined on 
+input line 875.
 
-
-LaTeX Warning: Reference `fig: length contraction math' on page 31 undefined on
- input line 918.
-
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
 
 LaTeX Warning: Reference `fig: length contraction math' on page 32 undefined on
- input line 993.
+ input line 928.
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+LaTeX Warning: Reference `fig: length contraction math' on page 33 undefined on
+ input line 1003.
 
 
-LaTeX Warning: Reference `fig: width contraction' on page 32 undefined on input
- line 1000.
+LaTeX Warning: Reference `fig: width contraction' on page 33 undefined on input
+ line 1010.
 
 
-LaTeX Warning: Reference `sect: Classical Relativity' on page 34 undefined on i
-nput line 1063.
+LaTeX Warning: Reference `sect: Classical Relativity' on page 35 undefined on i
+nput line 1074.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `fig: coordinate transform' on page 37 undefined on in
-put line 1186.
+LaTeX Warning: Reference `fig: coordinate transform' on page 39 undefined on in
+put line 1204.
 
 The command '\includegraphics [width=\textwidth ]{images/pdf/coord_transform_in
 itial.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to dis
@@ -1600,38 +1604,42 @@ The command '\includegraphics [width=\textwidth ]{images/pdf/coord_transform_pr
 imed_sychronised.pdf}' has been optimized away. Use '/tikz/external/optimize=fa
 lse' to disable this.
 
-LaTeX Warning: Reference `fig: coordinate transform subfig_3' on page 38 undefi
-ned on input line 1216.
+LaTeX Warning: Reference `fig: coordinate transform subfig_3' on page 39 undefi
+ned on input line 1234.
 
 
-LaTeX Warning: Reference `fig: Gamma Factor' on page 39 undefined on input line
- 1235.
+LaTeX Warning: Reference `ch: Observers Delayed Worldview' on page 39 undefined
+ on input line 1237.
+
+
+LaTeX Warning: Reference `fig: Gamma Factor' on page 40 undefined on input line
+ 1254.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `ch: Invariant Quantities' on page 40 undefined on inp
-ut line 1315.
+LaTeX Warning: Reference `ch: Invariant Quantities' on page 41 undefined on inp
+ut line 1340.
 
 
-LaTeX Warning: Reference `eq: Infintesmal interval of Coordinates' on page 40 u
-ndefined on input line 1322.
-
-
-LaTeX Warning: Reference `eq: velocity transform' on page 41 undefined on input
- line 1369.
-
-
-LaTeX Warning: Reference `eq: Lorentz transformation' on page 43 undefined on i
-nput line 1452.
-
-
-LaTeX Warning: Reference `eq: acceleration transform' on page 43 undefined on i
-nput line 1453.
+LaTeX Warning: Reference `eq: Infintesmal interval of Coordinates' on page 42 u
+ndefined on input line 1347.
 
 
 LaTeX Warning: Reference `eq: velocity transform' on page 43 undefined on input
- line 1453.
+ line 1394.
+
+
+LaTeX Warning: Reference `eq: Lorentz transformation' on page 44 undefined on i
+nput line 1467.
+
+
+LaTeX Warning: Reference `eq: acceleration transform' on page 44 undefined on i
+nput line 1468.
+
+
+LaTeX Warning: Reference `eq: velocity transform' on page 44 undefined on input
+ line 1468.
 
 (Tex/Terms/Terms_ch2.tex)
 
@@ -1644,25 +1652,46 @@ Package biblatex Warning: Split bibliography detected.
 (biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
 
 
-LaTeX Warning: Empty bibliography on input line 1468.
+LaTeX Warning: Empty bibliography on input line 1481.
 
 Chapter 3.
-Package biblatex Info: Reference segment=5 on input line 1473.
-Package biblatex Info: Setting label 'refsegment:05' on input line 1473.
+Package biblatex Info: Reference segment=5 on input line 1486.
+Package biblatex Info: Setting label 'refsegment:05' on input line 1486.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
-The command '\includegraphics [width = 10cm]{images/pdf/coordinate_transforms_2
-.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disable 
-this.
+The command '\includegraphics [width=\textwidth ]{images/pdf/coord_transform_in
+itial.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to dis
+able this.
+The command '\includegraphics [width=\textwidth ]{images/pdf/coord_transform_pr
+imed.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disa
+ble this.
+The command '\includegraphics [width=\textwidth ]{images/pdf/coord_transform_pr
+imed_sychronised.pdf}' has been optimized away. Use '/tikz/external/optimize=fa
+lse' to disable this.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1654--1655
+Underfull \hbox (badness 4168) in paragraph at lines 1655--1655
+[]\OT1/cmr/m/n/9 (c) |primed frame
+ []
+
+The command '\includegraphics [width = \textwidth ]{images/pdf/coordinate_trans
+forms_2.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+Underfull \hbox (badness 3078) in paragraph at lines 1661--1661
+[]\OT1/cmr/m/n/9 (d) |primed frame
+ []
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1729--1730
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1656--1660
+Underfull \hbox (badness 10000) in paragraph at lines 1731--1735
 
  []
 
@@ -1677,16 +1706,16 @@ Package biblatex Warning: Split bibliography detected.
 (biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
 
 
-LaTeX Warning: Empty bibliography on input line 1689.
+LaTeX Warning: Empty bibliography on input line 1764.
 
 Chapter 4.
-Package biblatex Info: Reference segment=6 on input line 1694.
-Package biblatex Info: Setting label 'refsegment:06' on input line 1694.
+Package biblatex Info: Reference segment=6 on input line 1769.
+Package biblatex Info: Setting label 'refsegment:06' on input line 1769.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `eq: velocity transform' on page 54 undefined on input
- line 1824.
+LaTeX Warning: Reference `eq: velocity transform' on page 55 undefined on input
+ line 1899.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
@@ -1699,16 +1728,16 @@ The command '\includegraphics [width = 5cm]{images/pdf/Aberrated_velocities.pdf
 }' has been optimized away. Use '/tikz/external/optimize=false' to disable this
 .
 
-LaTeX Warning: Reference `fig: aberrated emitted light' on page 55 undefined on
- input line 1931.
+LaTeX Warning: Reference `fig: aberrated emitted light' on page 56 undefined on
+ input line 2006.
 
 
-LaTeX Warning: Citation 'einstein1905electrodynamics' on page 56 undefined on i
-nput line 1940.
+LaTeX Warning: Citation 'einstein1905electrodynamics' on page 57 undefined on i
+nput line 2015.
 
 
-LaTeX Warning: Reference `fig: aberrated absorbed light' on page 56 undefined o
-n input line 1941.
+LaTeX Warning: Reference `fig: aberrated absorbed light' on page 57 undefined o
+n input line 2016.
 
 The command '\includegraphics [width = 5cm]{images/pdf/Aberrated_velocities_inw
 ards_restframe.pdf}' has been optimized away. Use '/tikz/external/optimize=fals
@@ -1717,8 +1746,8 @@ The command '\includegraphics [width = 5cm]{images/pdf/Aberrated_velocities_inw
 ards.pdf}' has been optimized away. Use '/tikz/external/optimize=false' to disa
 ble this.
 
-LaTeX Warning: Reference `eq: Cosine transform' on page 56 undefined on input l
-ine 1962.
+LaTeX Warning: Reference `eq: Cosine transform' on page 57 undefined on input l
+ine 2037.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
@@ -1726,15 +1755,15 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Warning: Reference `fig: Retarded field outward field transform' on page 
-57 undefined on input line 2023.
+58 undefined on input line 2098.
 
 
-LaTeX Warning: Reference `eq: Lorentz transformation' on page 57 undefined on i
-nput line 2026.
+LaTeX Warning: Reference `eq: Lorentz transformation' on page 58 undefined on i
+nput line 2101.
 
 
-LaTeX Warning: Reference `eq: velocity transform for light' on page 57 undefine
-d on input line 2043.
+LaTeX Warning: Reference `eq: velocity transform for light' on page 58 undefine
+d on input line 2118.
 
 The command '\includegraphics [width = 3.8cm]{images/pdf/Rest_Pulse.pdf}' has b
 een optimized away. Use '/tikz/external/optimize=false' to disable this.
@@ -1759,11 +1788,11 @@ Package biblatex Warning: Split bibliography detected.
 (biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
 
 
-LaTeX Warning: Empty bibliography on input line 2164.
+LaTeX Warning: Empty bibliography on input line 2239.
 
 Chapter 5.
-Package biblatex Info: Reference segment=7 on input line 2169.
-Package biblatex Info: Setting label 'refsegment:07' on input line 2169.
+Package biblatex Info: Reference segment=7 on input line 2244.
+Package biblatex Info: Setting label 'refsegment:07' on input line 2244.
 The command '\includegraphics [width = 5cm]{images/pdf/Field_Rest_Frame.pdf}' h
 as been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width = 5cm]{images/pdf/Field_Moving_Frame_Doppl
@@ -1776,12 +1805,12 @@ e this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `eq: Cosine transform' on page 63 undefined on input l
-ine 2379.
+LaTeX Warning: Reference `eq: Cosine transform' on page 64 undefined on input l
+ine 2454.
 
 
-LaTeX Warning: Citation 'hogg1997special' on page 63 undefined on input line 23
-79.
+LaTeX Warning: Citation 'hogg1997special' on page 64 undefined on input line 24
+54.
 
 (Tex/Terms/Terms_ch5.tex)
 
@@ -1794,14 +1823,14 @@ Package biblatex Warning: Split bibliography detected.
 (biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
 
 
-LaTeX Warning: Empty bibliography on input line 2413.
+LaTeX Warning: Empty bibliography on input line 2488.
 
 Chapter 6.
-Package biblatex Info: Reference segment=8 on input line 2418.
-Package biblatex Info: Setting label 'refsegment:08' on input line 2418.
+Package biblatex Info: Reference segment=8 on input line 2493.
+Package biblatex Info: Setting label 'refsegment:08' on input line 2493.
 
-LaTeX Warning: Reference `eq: interval of Coordinates' on page 66 undefined on 
-input line 2442.
+LaTeX Warning: Reference `eq: interval of Coordinates' on page 67 undefined on 
+input line 2517.
 
 (Tex/Terms/Terms_ch6.tex)) (Tex/Back_Matter.tex
 Package biblatex Info: Reference segment=9 on input line 5.
@@ -1830,21 +1859,21 @@ e.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46869 strings out of 474424
- 1104885 string characters out of 5741740
+ 46882 strings out of 474424
+ 1104773 string characters out of 5741740
  1943496 words of memory out of 5000000
- 68524 multiletter control sequences out of 15000+600000
- 564783 words of font info for 59 fonts, out of 8000000 for 9000
+ 68532 multiletter control sequences out of 15000+600000
+ 567233 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  120i,23n,124p,1406b,1151s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmr10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmr7.pfb>
-Output written on ./output/tikz/Time_dilation_rest_frame.pdf (1 page, 42765 byt
+Output written on ./output/tikz/Time_dilation_rest_frame.pdf (1 page, 42645 byt
 es).
 PDF statistics:
- 314 PDF objects out of 1000 (max. 8388607)
+ 308 PDF objects out of 1000 (max. 8388607)
  1 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

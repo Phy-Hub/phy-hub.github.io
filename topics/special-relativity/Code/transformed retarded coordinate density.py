@@ -25,7 +25,7 @@ density_values = density(x, Y, Z, b, g)
 density_values = np.nan_to_num(density_values, nan=0)
 
 # 2D Plotting (Figure 2)
-fig = plt.figure(figsize=(10, 8))
+fig = plt.figure()
 ax = fig.add_subplot(111)
 
 # Plot the 2D density image

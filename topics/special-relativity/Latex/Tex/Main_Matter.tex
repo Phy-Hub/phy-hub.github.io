@@ -41,8 +41,10 @@ For now, in the following sections, we will explain what an inertial reference f
 %███████████████████████████████████████████████████████████████████
 \section{Inertial Reference Frame} \label{sect: Inertial Reference Frame}
 
-In the previous truck example, we could associate a grid of coordinates that is stationary relative to the truck and, hence, moving along with it.
-This perspective, fixed to the truck, is its frame of reference.
+A reference frame is a grid of coordinates that we can overlay space with, so that we can state with respect to it where and when an event occurs.
+If this grid is stationary or moving at a constant velocity, it is called an inertial reference frame.
+In the previous truck example, we could associate a reference frame with the truck, by introducing a grid of coordinates that is stationary relative to the truck and, hence, moving along with it.
+This perspective, fixed to the truck, is the truck's frame of reference.
 A second grid of coordinates, stationary relative to the road, can also be introduced, representing the road's reference frame.
 These grids of coordinates are shown from the road's reference frame in Figure (\ref{fig: Reference Frames}).
 %An unnecessary and more complex way of saying this is, that a \hyperlink{def-Reference-frame}{reference frame} can be thought of as an abstract coordinate system associated with an observer or object. The origin of its axis, orientation, and scale are specified by a set of points in space and their times. The purpose of it is to provide a standardized means of measuring and describing the times and positions of objects within that frame.
@@ -69,9 +71,8 @@ This principle is used in accelerometers to measure acceleration, as shown in Fi
 	\caption{\textbf{Inertial vs non-inertial frames.} A diagram, showing a ball attached to the walls of a box by springs, with the ball centered in the box in the inertial frame, with no acceleration (left), and in a non-inertial frame (right) where the box is now accelerating to the right, The ball lags behind as the box accelerates.}
 	\label{fig: spring boxes}
 \end{figure}
-%███████████s
+%███████████
 
-Special relativity is just about how we change between inertial frames of reference and how it impacts the positions and the times they are at those positions.
 We will now look at how movement changes in classical relativity when we change between these inertial frames.
 
 % ((a note on free fall being inertial frame)) You may have the question of what about when the box is freefalling in gravity, and the ball would feel weightless and therefore stay in the center of the box, yet the box is accelerating, that is the beginning of general relativity which is for another handbook
@@ -148,7 +149,9 @@ So, next, we will look at the notion of a universal medium referred to as the \h
 \section{The Aether} \label{sect: The Aether}
 %, a Medium for Light} % and a Universal Rest Frame}
 
-In the 1800s, the theory was that light was a wave and, therefore, would need a medium that filled the \hyperlink{def-vacuum}{vacuum} of space for it to travel through, called "the luminiferous \hyperlink{def-aether}{aether}", and that light would travel at a constant speed relative to this \hyperlink{def-aether}{aether}, like how the rats in the previous section moved at a constant speed relative to the medium of the treadmill's platform.
+In the theory electromagnetism from the late 1800s, it was believed that light was a wave and, therefore, would need a medium that filled the \hyperlink{def-vacuum}{vacuum} of space for it to travel through, called "the luminiferous \hyperlink{def-aether}{aether}", and that light traveled at a constant speed relative to this \hyperlink{def-aether}{aether}, like how the rats in the previous section moved at a constant speed relative to the medium of the treadmill's platform.
+It was from the theory of electromagnetism and the experiments performed from it, that showed that light should have a constant speed, atleast relative to this aether, but it was yet to be known that light would actually have a constant speed relative to all things.
+
 If the aether existed, the Earth would be moving through it, illustrated in Figure (\ref{fig: Aether}).
 
 %█████████████
@@ -160,9 +163,9 @@ If the aether existed, the Earth would be moving through it, illustrated in Figu
 \end{figure}
 %███████████
 
-So, an experimental setup by Michelson and Morley, shown in Figure (\ref{fig: Michelson_morley}), called an interferometer, was devised to measure Earth's movement through the \hyperlink{def-aether}{aether} \cite{EtherExperiment}, by measuring how it affected the return times of light that were emitted in different directions, as observed in Earth's \hyperlink{def-Reference-frame}{reference frame}.
+So, an experimental setup by Michelson and Morley, shown in Figure (\ref{fig: Michelson_morley}), called an interferometer, was devised to measure Earth's movement through the \hyperlink{def-aether}{aether} \cite{EtherExperiment}, by measuring how it affected the return times of light emitted in different directions, as observed in Earth's \hyperlink{def-Reference-frame}{reference frame}.
 It did this by splitting a single light beam into two perpendicular paths that are then reflected back to be recombined and sent toward a light detector.
-By rotating the setup, the two light paths could be aligned, one parallel and the other perpendicular to the Earth's motion through the presumed \hyperlink{def-aether}{aether}.
+By rotating a platform that the setup is on, the two light paths could be aligned, one parallel and the other perpendicular to the Earth's motion through the presumed \hyperlink{def-aether}{aether}.
 They reasoned that if the speed of light was constant with respect to the proposed \hyperlink{def-aether}{aether}, just like in the rat experiment from the previous section, the split light beams would recombine at different times.
 
 From the previous section's system of rats on a treadmill, we can see that the treadmill's platform is analogous to the \hyperlink{def-aether}{aether}, and the rats are analogous to the light.
@@ -188,12 +191,12 @@ To allow for us to have this universal speed of light (in a \hyperlink{def-vacuu
 %███████████████████████████████████████████████████████████████████
 \section{Speed of Light} \label{sect: Speed of Light}
 
-The experiments showed light does not have a medium that it travels at a constant velocity relative to and, therefore, must instead travel at a constant velocity in a \hyperlink{def-vacuum}{vacuum} in all \hyperlink{def-Reference-frame}{reference frame}s.
-This is independent of how fast the source and receiver of that light are moving in the frame, as shown with a moving truck's headlights in Figure (\ref{fig: truck torch}).
-Light moves slower in objects such as glass, but this is due to the interactions between the light and the material, impeding the movement of light.
+The experiments within a vaccum, showed light does not just travel at a constant velocity relative to the proposed medium (the aether), and instead travels at a constant velocity regardless of the motion of the \hyperlink{def-Reference-frame}{reference frame}.
+The observed speed of light is independent of how fast the source and receiver of that light are moving in the frame, as shown with a moving truck's headlights in Figure (\ref{fig: truck torch}).
+Light does move slower in objects such as glass, but this is due to the interactions between the light and the material, impeding the movement of light.
 
 Light itself moves extremely fast compared to any other everyday speeds we are used to (roughly 300 000 000 meters per second; it can travel the world's diameter in the blink of an eye).
-This is why we do not notice any delay in things we see in everyday life, though we should remember that there is this delay.
+This is why we do not notice any delay in the light arrriving from the things we see in everyday life, and we assume everything to be located where we are currently seeing it, though we should remember that there is this delay.
 For example, the light we currently see from the sun was emitted eight minutes ago for it to reach us now, and the further an object is located from us, the further back in time we are currently seeing it because of this delay.
 
 When we look at the same truck setup as in Figure (\ref{fig: truck cannonball}), but now have it in a \hyperlink{def-vacuum}{vacuum}, where the cannon firing a cannonball is swapped for headlights emitting light, we will find the same speed of light when measured relative to the truck or the road, but how can this be true?
@@ -223,9 +226,19 @@ For the curious, it was the \href{https://scienceready.com.au/pages/determinatio
 Consider a simple clock, as shown in Figure (\ref{fig: truck clock}), made of a light pulse moving back and forth between two mirrors on a moving truck's floor and roof.
 Each tick of the clock is defined as the time it takes for the light to travel from one mirror to the other and back.
 For an \hyperlink{def-observer}{observer} in the truck, they will see the light go straight up and down between the mirrors, but an \hyperlink{def-observer}{observer} stationary relative to the road will see not just the light traveling up and down but also with the direction of the truck.
-Hence, it will travel a longer distance between ticks.
 
-Given that the distance traveled by the light in the moving frame is longer, yet the speed of light is the same for both reference frames, as shown in previous sections, we are only left with two possibilities to keep the speed of light invariant: either the height of the truck is shorter, to give the same path length for light so that the ticks happen at the same rate, or that time itself moves slower in moving objects, the first option leads to paradoxes as shown in Figure (\ref{fig: width contraction}).
+%█████████████
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 8cm]{images/pdf/lorry_clock.pdf}
+	\caption{\textbf{Light clock on a truck.} A diagram, showing a clock consisting of light being reflected between the floor and roof of a truck to keep time, in the trucks frame (top), and in the road's frame with the truck moving (bottom).}
+	\label{fig: truck clock}
+\end{figure}
+%███████████
+
+Given that the distance traveled by the light in the frame with the truck moving is longer, yet experimentally we know that the speed of light is the same for both reference frames, as shown in previous sections, to keep the speed of light invariant: the clock itself must tick slower in moving objects,
+
+There was also the possibility that the height of the moving truck could be contracted, to give the same path length for light so that the ticks happen at the same rate, but this leads to paradoxes as shown in Figure (\ref{fig: width contraction}).
 
 %█████████████
 \begin{figure}[H]
@@ -242,26 +255,18 @@ From this paradox, we are only left with the possibility that the perceived trav
 
 How much slower the time is passing in the moving truck relative to the road observer can be solved using the ratio of the lengths of the paths in each frame as shown in Figure (\ref{fig: truck clock}), as this is the same ratio as the time between the ticks.
 
-%█████████████
-\begin{figure}[H]
-	\centering
-	\includegraphics[width = 8cm]{images/pdf/lorry_clock.pdf}
-	\caption{\textbf{Light clock on a truck.} A diagram, showing the extra distance light travels in the road's frame with the truck moving, leading to the truck's time being perceived to move slower to an observer in the road's frame of reference.}
-	\label{fig: truck clock}
-\end{figure}
-%███████████
-
 Importantly, this time dilation phenomenon isn't limited to light clocks; it applies universally to all types of clocks.
 If you were to play a movie on the truck, it would take a longer time for it to play through from start to finish for an observer watching it from the road's \hyperlink{def-Reference-frame}{reference frame}.
-The actual time itself is being slowed down.
+An observer on the road and in the truck experience time at different rates. This is not just an illusion, it is physical reality.
 
 The closer the truck goes to the speed of light, the more significant the difference in how fast the road frame's time flows relative to the truck frame's time.
 This can be seen as a longer horizontal stretch in the path taken for the light from the perspective of someone standing still on the road, with the time between each tick approaching infinity as the speed of the truck approaches the speed of light.
 
 If now, we instead had two trucks moving at the same speed relative to the road but in opposite directions.
-Each truck would see its light moving vertically up and down while the other truck's light moves diagonally.
+Each truck would see its light moving vertically up and down with the other truck's light moving diagonally.
 Hence, each truck perceives the other truck's clock ticking slower.
-An observer in the road's reference frame would see the trucks move at the same speed and, hence, the passage of time between ticks as being the same for both trucks.
+An observer in the road's reference frame would see both trucks move at the same speed and, hence, the passage of time between ticks as being the same for both trucks.
+The slowing of time of moving objects is the same regardless of its relative direction of motion, only the relative speed changes the path distance of the ticking light.
 This concept is confusing and difficult to visualize, but it will get easier with practice.
 
 For now, though, we will continue building up the concepts of special relativity.
@@ -301,22 +306,37 @@ Also, I have left out any mention of \hyperlink{def-length-contraction}{length c
 %███████████████████████████████████████████████████████████████████
 \subsection{Length Contraction} \label{subsect: Length Contraction}
 
-at rest in its own frame of reference, carrying a square container. A light source at the container's center emits light in all four directions
-
-Consider a truck, in its \hyperlink{def-proper-frame}{rest frame} with a square container.
+Consider a truck, in its \hyperlink{def-proper-frame}{rest frame} carrying a square container.
 If a light source at the container's center emits light in all four directions it will bounce off the mirrored sides of the truck and return to the center \hyperlink{def-simultaneity}{simultaneously}.
 We require that in the moving frame, they also all return to the center \hyperlink{def-simultaneity}{simultaneously}, as multiple \hyperlink{def-event}{event}s that happen at a single point \hyperlink{def-simultaneity}{simultaneously} in one frame, must happen \hyperlink{def-simultaneity}{simultaneously} in all other frames.
-This time between the light being emitted and absorbed will be the \hyperlink{def-time-dilation}{dilated time}, that was described in section (\ref{Subsect: Time Dilation}).
+The light reflects off the walls at different locations, so the order of reflections in time will depend upon the relative observer, as described in the previous section.
+The time between the light being emitted and absorbed is the \hyperlink{def-time-dilation}{dilated time}, that was described in section (\ref{Subsect: Time Dilation}).
+
+
 
 To achieve this \hyperlink{def-simultaneity}{simultaneity} in the return of the light to the bulb, the total length of the path of light in each of the four directions must be the same.
 As its speed is the same in all directions.
-We can work out the length of the upward path from the \hyperlink{def-time-dilation}{time dilation} section (\ref{Subsect: Time Dilation}), and this is the length the path needs to be in the horizontal directions as well, the paths can only have this length if the truck's length is contracted when moving, the exact amount of contraction can be worked geometrically, and it turns out that the ratio of the increase in the amount of time that passes before the light is reabsorbed is inversely proportional to the amount the truck is contracted in the direction of its movement.
+We can work out the length of the upward path from the \hyperlink{def-time-dilation}{time dilation} section (\ref{Subsect: Time Dilation}), and this is the length the path needs to be in the horizontal directions as well,
+
+
+
+the paths can only have this length if the truck's length is contracted when moving,
+
+*** explain why is length contraction is none contradictory/paradoxical while we have previously seen perpendicular contraction to be so
+
+*** could say that an option is to look at the posibility of length contraction,
+*** or just state that when it is worked out where the light (which is moving at a constant speed) must be reflected by the walls to reach the center simultaneousthe point at which the horizontal light is reflected must be such that the lorry is observed to be contracted
+*** and meantion that this may seem like a non possible option as the width contract leads to contradictions, but it turns out this length contract does not suffer from the same paradox
+
+
+the exact amount of contraction can be worked geometrically, and it turns out that the ratio of the increase in the amount of time that passes before the light is reabsorbed is inversely proportional to the amount the truck is contracted in the direction of its movement.
 
 %█████████████
 \begin{figure}[H]
 	\centering
 	\includegraphics[width = 8cm]{images/pdf/Full_Lorry_Transform.pdf}
-	\caption{\textbf{Length contraction of moving truck.} A diagram, showing a truck with a square container in its \protect\hyperlink{def-proper-frame}{rest frame} (top), emitting light from a central bulb in the four directions, with all light being reflected by the mirrored sides back to the center. In the second frame with the truck now moving (bottom), we see the truck's length contracted and what the light paths would be in this frame.}
+	\caption{\textbf{Length contraction of moving truck.} A diagram, showing a truck with a square container in its \protect\hyperlink{def-proper-frame}{rest frame} (top), emitting light from a central bulb in the four directions, with all light being reflected by the mirrored sides back to the center. In the second frame with the truck now moving (bottom), we see the truck's length contracted and what the light paths would be in this frame.
+	... *** The bottom image could be confusing to some. As the vertical and horizontal path lengths should be equivalent for simultaneity, though the diagram appears to show that the vertical path is longer... make diagram clearer}
 	\label{fig: full truck transform}
 \end{figure}
 %███████████
@@ -329,6 +349,15 @@ If you are unsatisfied with this, the next section will reason the need for leng
 
 %██████████████████████
 \subsubsection{Another Illustration of Length Contraction}
+
+%█████████████
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 8cm]{images/pdf/cars.pdf}
+	\caption{\textbf{Length contraction between three accelerating cars.} A diagram, illustrating an experiment with three cars initially at rest and equally spaced on a road. The middle car emits light that reaches the front and back cars \protect\hyperlink{def-simultaneity}{simultaneously}, triggering all cars to accelerate for a predetermined time. Now another light is emitted from the middle car after the acceleration has finished, the road \protect\hyperlink{def-observer}{observer} sees this second light pulse reach the back car first, as it is moving towards where the light had been emitted, this causes it to begin accelerating before the front car. This results in the cars being closer together after acceleration, demonstrating Lorentz \protect\hyperlink{def-length-contraction}{length contraction}. However, to the car \protect\hyperlink{def-observer}{observer}, the distance between the cars remains unchanged from the initial distances.}
+	\label{fig: cars}
+\end{figure}
+%███████████
 
 Suppose we have three equally distanced cars at rest on the road, as shown in Figure (\ref{fig: cars}).
 If the middle car sends out a pulse of light, it will reach the front and back car at the same time for the road \hyperlink{def-observer}{observer} and the \hyperlink{def-observer}{observer}s in the car. When it reaches them both, all the cars accelerate for a predetermined fixed amount of time to the same speed.
@@ -343,15 +372,6 @@ This would mean the back car would start accelerating first to get to the final 
 This results in the cars being closer together after the acceleration.
 The \hyperlink{def-observer}{observer}s in the car and the road \hyperlink{def-observer}{observer} disagree with what the distances between the cars are.
 This contraction of length between cars, in the road's frame in which the cars are moving, is called Lorentz \hyperlink{def-length-contraction}{length contraction}, which means that objects that are moving faster become shorter, and the distances between the objects also become shorter.
-
-%█████████████
-\begin{figure}[H]
-	\centering
-	\includegraphics[width = 8cm]{images/pdf/cars.pdf}
-	\caption{\textbf{Length contraction between three accelerating cars.} A diagram, illustrating an experiment with three cars initially at rest and equally spaced on a road. The middle car emits light that reaches the front and back cars \protect\hyperlink{def-simultaneity}{simultaneously}, triggering all cars to accelerate for a predetermined time. Now another light is emitted from the middle car after the acceleration has finished, the road \protect\hyperlink{def-observer}{observer} sees this second light pulse reach the back car first, as it is moving towards where the light had been emitted, this causes it to begin accelerating before the front car. This results in the cars being closer together after acceleration, demonstrating Lorentz \protect\hyperlink{def-length-contraction}{length contraction}. However, to the car \protect\hyperlink{def-observer}{observer}, the distance between the cars remains unchanged from the initial distances.}
-	\label{fig: cars}
-\end{figure}
-%███████████
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -397,17 +417,17 @@ For this to be true, the directions of the light must be aberrated (have their d
 	\centering
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\includegraphics[width = 5.5cm]{images/pdf/Aberrated_lorrys_1.pdf}
+		\includegraphics[width = 5.9cm]{images/pdf/Aberrated_lorrys_1.pdf}
 		\caption{Pulse emitted}
 		\label{fig: truck aberrated 1}
 	\end{subfigure}
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\includegraphics[width = 5.5cm]{images/pdf/Aberrated_lorrys_2.pdf}
+		\includegraphics[width = 5.9cm]{images/pdf/Aberrated_lorrys_2.pdf}
 		\caption{Pulse absorbed}
 		\label{fig: truck aberrated 2}
 	\end{subfigure}
-	\caption{\textbf{Aberration of light on a truck.} Two diagrams of a truck with a spherical container in two different frames, a light pulse is emitted from the center of the container (left) and reflected back by the mirrored wall to be absorbed in the center again (right), the truck in its \protect\hyperlink{def-proper-frame}{rest frame} (top of both figures) shows an evenly distributed outward light pulse, but in the frame, with the moving truck (bottom of both figures) the emitted light is now more concentrated in the direction of the truck's movement, which is required to allow the light to be reflected by the same part of the container and returned to the center of the truck \protect\hyperlink{def-simultaneity}{simultaneously}.}
+	\caption{\textbf{Aberration of light on a truck.} Two diagrams of a truck with a spherical container in two different frames, a light pulse is emitted from the center of the container (left) and reflected back by the mirrored wall to be absorbed in the center again (right), the truck in its \protect\hyperlink{def-proper-frame}{rest frame} (top of both figures) shows an evenly distributed outward light pulse, but in the frame, with the moving truck (bottom of both figures) the emitted light is now more concentrated in the direction of the truck's movement, which is required to allow the light to be reflected by the same part of the container and returned to the center of the truck \protect\hyperlink{def-simultaneity}{simultaneously}.... *** could add the 45 degree angle (rest frame) light rays evolving in this scene as shown in previous figure, as the current picture is difficult to following... Maybe stack a and b vertically... }
 	\label{fig: truck aberrated}
 \end{figure}
 %███████████
@@ -439,7 +459,7 @@ We will look at the combination of the Doppler effect and aberration next.
 
 When the Doppler effect and relativistic aberration are taken together, it is known as relativistic beaming.
 If we have a source in its \hyperlink{def-proper-frame}{rest frame} emitting a spherical pulse of light with evenly distributed angles.
-Then in a second frame with the source now moving, the emitted light will have from the Doppler effect, that this spherical pulse's wavelength is bunched up in the direction of movement (giving a change in the color of the light), with the aberrational effect giving the angular spread of the light at a higher concentration in the direction of the movement of the source, as shown in figures (\ref{fig: Relativistic Beaming}).
+Then in a second frame with the source now moving, the doppler effect has the spherical pulse's wavelength bunched up in the direction of movement (giving a change in the color of the light), with the aberrational effect also giving the angular spread of the light at a higher concentration in the direction of the movement of the source, as shown in figures (\ref{fig: Relativistic Beaming}).
 
 %█████████████
 \begin{figure}[H]
@@ -481,38 +501,44 @@ We will talk about this next.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Retarded Field} \label{sect: Retarded Field}
+\section{A Source's Retarded Vector Field of Light} \label{sect: Retarded Field}
 
-If a source in its rest frame continually emits pulses of light with a constant time between each pulse, we get what is shown in Figure (\ref{fig: multiple emitting pulses rest frame}).
-If we wanted to know what this light field looked like in a frame with the source moving, we would need to take into account that the position the source emitted each pulse from is its past position (retarded position).
-We also have the dilated time between pulses in this moving frame, so using these and the beaming effect from the previous section we get the light field as shown in Figure (\ref{fig: multiple emitting pulses moving frame}).
+We can make a vector field plot, which is a plot of arrows that shows the position and direction of light in space.
+So if we have a source in its rest frame that continually emits pulses of light with a constant time between each pulse, we get what is shown in Figure (\ref{fig: multiple emitting pulses rest frame}).
+If we wanted to know what this light vector field looked like in a frame with the source moving, we would need to take into account that the position the source emitted each pulse from is its past position (retarded position).
+We also have the dilated time between pulses in this moving frame, so using these and the beaming effect from the previous section we get the light's vector field as shown in Figure (\ref{fig: multiple emitting pulses moving frame}).
 From this, we can work out the distribution and, hence, the concentration of the light for any moving source relative to when it is at rest.
 If you look closely at the diagrams, you will see the aberrated rings of all the pulses, all with different points from which they were emitted, with them being more compact in the direction of the source's movement.
 
 %█████████████
 \begin{figure}[H]
-	\begin{subfigure}{.49\textwidth}
+	\begin{subfigure}{.325\textwidth}
 		\centering
-		\includegraphics[width = 5cm]{images/pdf/Field_Rest_Frame.pdf}
+		\includegraphics[width = 3.95cm]{images/pdf/Field_Rest_Frame.pdf}
 		\caption{Source's Rest Frame}
-		\label{fig: multiple emitting pulses rest frame}
 	\end{subfigure}
-	\begin{subfigure}{.49\textwidth}
+	\begin{subfigure}{.325\textwidth}
 		\centering
-		\includegraphics[width = 5cm]{images/pdf/Field_Moving_Frame_Doppler.pdf}
-		\caption{Source's Moving frame}
-		\label{fig: multiple emitting pulses moving frame}
+		\includegraphics[width = 3.95cm]{images/pdf/Field_Moving_Frame_Doppler.pdf}
+		\caption{Primed frame}
 	\end{subfigure}
-	\caption{\textbf{Field of light pulses from a source.} A diagram, showing multiple spherically symmetrical pulses of light from a source at rest (left), and in a corresponding inertial frame where the source is now moving (right), the colors show the \protect\hyperlink{def-doppler-effect}{Doppler effect} on the light.} % add retarded sources positions as grey dots
+	\begin{subfigure}{.325\textwidth}
+		\centering
+		\includegraphics[width = 3.95cm]{images/pdf/Field_Moving_Frame_Doppler_circles.pdf}
+		\caption{Primed frame}
+	\end{subfigure}
+	\caption{\textbf{Vector field of light pulses from a source.} A diagram, showing multiple spherically symmetrical pulses of light from a source at rest, fig (a), and in a corresponding inertial frame where the source is now moving, fig (b), the colors show the \protect\hyperlink{def-doppler-effect}{Doppler effect} on the light, and the grey dots show the past positions of source when it had emitted each pulse, there is also a diagram showing the circles of each pulse, fig (c), This shows the spherical waves being closer together in the direction of movement.} % add retarded sources positions as grey dots
 	\label{fig: full field transformation 0}
 \end{figure}
 %███████████
 
-In particle physics, the photon is the particle that is the carrier of the electromagnetic force between charges.
-This light field that gives rise to the electric field in the source charge's rest frame should transform to provide the combined electric and magnetic field in the charge's moving frame.
 
+
+In particle physics, the photon is the particle that composes light.
+It is the carrier of the electromagnetic force between charges.
+So how the light's propagation transforms when swapping between frames is necessary to understand electromagnetism, and how the magnetic field comes about for non stationary sources.
 The diagram of the moving source shows you where the source and light currently are.
-But, if you were an observer at a particular position in the field, you would see the source at its retarded position and not where it currently is, as the light has to travel to you before you see it.
+But, if you were an observer at a particular position in the vector field, you would see the source at its retarded position and not where it currently is, as the light has to travel to you before you see it.
 This will be used in the next section to show that you can perceive things moving faster than light, even if they are not.
 
 %Currently, however, you will not be able to find a complete and direct derivation of the electromagnetic force from special relativity and the electric force if you do find one, though you will find quotes in many physics books (such as the Feynman lectures) that the magnetic field is just the relativistic effect applied to the electric field, so if you find a nice derivation I will add it to the math section.
@@ -521,8 +547,9 @@ This will be used in the next section to show that you can perceive things movin
 %███████████████████████████████████████████████████████████████████
 \section{Velocity} \label{sect: (intro) Velocity}
 
-We looked at how velocities at the speed of light change between different frames of reference, that is, how their directions are aberrated.
-However, for objects moving at speeds slower than light, we need the transforming speeds to be different, as well as aberrated due to the \hyperlink{def-transform}{transform} needing to tend towards the classical \hyperlink{def-transform}{transform} as the speeds tend towards zero.
+We looked at how velocities at the speed of light change between different frames of reference, that is, how their directions of propagation are rotated (aberrated).
+However, for objects moving at velocities slower than that of light, its speed will change in addition to to the direction being transformed when swaping between frames.
+This is due to us needing the relativistic transform to tend towards the classical \hyperlink{def-transform}{transform} as we look at smaller and smaller speeds of objects.
 To understand the general velocity \hyperlink{def-transform}{transformation}, some mathematical detail is needed, so we will need to brush over this for now, and instead look at how the perceived speeds of objects can be more than that of light, even if they are moving slower.
 
 %███████████████████████████████████████████████████████████████████
@@ -594,10 +621,10 @@ It also led to the \hyperlink{def-simultaneity}{simultaneity} of events not bein
 For example, light emitted from the middle of a moving truck reaches the front and back walls simultaneously for an observer at rest in the truck.
 But an observer standing still on the road sees the light hit both walls at different times, as shown in Figure (\ref{fig: truck simultaneity}).
 There is no universal "now" at a distance-observers relate times of events differently.
+It is only events that happen simultaneously at the same location that happen simultaneously in all frames of reference.
 
-Classical physics provides an excellent approximation of reality at low speeds.
-Relativistic effects only become readily noticeable at speeds approaching that of light.
-We do not experience these relativistic effects because motions in everyday life are very slow relative to that of light, which is roughly three hundred million meters per second.
+Classical physics is verified by our day to day experience, though this does not reflect the full reality, as relativistic effects only become readily noticeable at speeds close to that of light.
+With the speed of light being 300 million meters per second, astronomically faster than what occurs in our daily experience.
 
 When it comes to velocities, they combine differently than in classical physics.
 However, we must ensure that the transforms reduce to the intuitive addition of velocities of classical physics at low speeds while accommodating light's constant rate in all frames of reference.
@@ -1679,7 +1706,7 @@ This section here is just a visualisation of how spatial coordinates of an initi
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=5cm]{images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf}
-	\caption{\textbf{Density of initial frame's retarded coordinates in primed frame}. This shows the density of the initial frames coordinates when they are in their retarded positions in the primed frame, with $v=0.9$, and the density scale shown on the right hand side.}
+	\caption{\textbf{Density of initial frame's retarded coordinates in primed frame}. This shows the density of the initial frames coordinates when they are in their retarded positions in the primed frame, with $v=0.9$, and the scale shown on the right hand side is the density.}
 	\label{fig: Density of initial frame's retarded coordinates in primed frame}
 \end{figure}
 %███████████
@@ -2088,7 +2115,7 @@ The surface element at a constant radius ${r}$, spanning from $\theta$ to $\thet
 
 We will also introduce the idea of a solid angle $\Omega$ which is a measure of the amount of the field of view from some particular point that a given object covers. For the differential surface element from the figure we have the differential solid angle
 
-\begin{equation}
+\begin{equation} \label{eq: solid angle}
 	\mathrm{d}\Omega = \frac{\mathrm{d}S}{r^2} = \sin\theta \,\mathrm{d}\theta \,\mathrm{d}\phi
 \end{equation}%██████
 
@@ -2342,47 +2369,11 @@ This transform is shown in the following figure.
 		\includegraphics[width = 3.6cm]{images/pdf/Field_Moving_Frame_Doppler_circles.pdf}
 		\caption{Primed frame}
 	\end{subfigure}
-	\caption{\textbf{Source's field of emitted photons.} A diagram showing, in the y-z plane, multiple spherically symmetrical pulses of light from a source at rest (left), and in a corresponding primed inertial frame where the source is moving (middle), the colors show the \protect\hyperlink{def-doppler-effect}{Doppler effect} on lights light and the grey dots show the past positions of source when it had emitted each pulse, there is also a diagram showing the circles of eahc pulse (right), This shows the spherical waves being closer together in the direction of movement.}
+	\caption{\textbf{Source's field of emitted photons.} A diagram showing, in the y-z plane, multiple spherically symmetrical pulses of light from a source at rest (left), and in a corresponding primed inertial frame where the source is moving (middle), the colors show the \protect\hyperlink{def-doppler-effect}{Doppler effect} on lights light and the grey dots show the past positions of source when it had emitted each pulse, there is also a diagram showing the circles of each pulse (right), This shows the spherical waves being closer together in the direction of movement.}
 	\label{fig: full field transformation}
 \end{figure}
 %███████████
 
-*** What is the change in the rate of change of direction at a coordinate of the light (find in both frames)
-
-\begin{equation}
-	\frac{d\alpha{'}(y{'},z{'},t{'})}{dt{'}}
-\end{equation}
-
-(maybe try
-
-\begin{equation}
-	\frac{d\cos\alpha{'}(y{'},z{'},t{'})}{dt{'}}
-\end{equation}
-
-and
-
-\begin{equation}
-	\frac{d\sin\alpha{'}(y{'},z{'},t{'})}{dt{'}}
-\end{equation}
-
-instead or try it on unit vector) and find at {t{'}} = 0 what is the change in the angle with change in position
-
-\begin{equation}
-	\frac{d\alpha{'}(y{'},z{'},t{'})}{dy{'}}
-\end{equation}
-,
-\begin{equation}
-	\frac{d\alpha{'}(y{'},z{'},t{'})}{dz{'}}
-\end{equation}
-
-and
-
-\begin{equation}
-	\frac{d^2\alpha{'}(y{'},z{'},t{'})}{{dy{'}}{dz{'}}}
-\end{equation}
-
-
-*** What is the density of the field at a certain point, using $k \frac{1}{R^2}$ in a proper frame, and then taking into account the distance from coordinate to retarded position of the source and then the aberration and Doppler effect
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -2432,7 +2423,7 @@ The magnitude of the retarded field displacement is equal to the distance the fi
 \begin{equation}
 	\begin{split}
 		\left( - c T_{p}\right)^2 & = \|\Vec{R}_{ret}\|^2                           \\
-		                          & = (x^2 + y^2 + z^2) + u^2 T_{p}^2 + 2u z T_{p},
+		                          & = (x^2 + y^2 + z^2) + u^2 T_{p}^2 + 2u T_{p} z,
 		%        (c^2 - v^2) T_{p}^2 &=  (x^2 + y^2 + z^2) - 2v T_{p}z
 	\end{split}
 \end{equation}
@@ -2460,172 +2451,148 @@ we get the result
 \end{equation}
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Rate of change of propagation at a point}\label{sect: Rate of change of propagation at a point}
+\subsection{Rate of Change of Direction of Light from Moving Source}\label{subsect: Rate of Change of Direction of Absorbed Light from Moving Source}
 
-If we want to find how quickly the direction of the lights propagation changes at a particular point $\mathbf{R}$, we can think of the source at the origin at time zero and at a point $\mathbf{u} dt$ after a time $dt$, the system at this later time is equivalent to having the origin at the second position and the stationary point now defined as $\mathbf{R} \rightarrow \mathbf{R} - \mathbf{u} dt$.
-
-so lets find the directions of the propagation at time using for time at zero
+Now to see the rate of change of the direction that the light propagates, by taking the partial derivative of $\mathbf{\hat{c}}$ with respect to each coordinate
 
 \begin{equation}
-	\mathbf{\hat{c}}_1 = \frac{1}{c T_{p1}}
-	\begin{pmatrix}
-		x \\
-		y \\
-		z + u T_{p1}
-	\end{pmatrix}
-\end{equation}
-
-and
-
-\begin{equation}
-	T_{p1} = \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2}
-\end{equation}
-
-and after time $dt$
-
-\begin{equation}
-	\mathbf{\hat{c}}_2 = \frac{1}{c T_{p2}}
-	\begin{pmatrix}
-		x \\
-		y \\
-		(z - u dt) + u T_{p2}
-	\end{pmatrix}
-\end{equation}
-
-and
-
-\begin{equation}
-	T_{p2} = \gamma_u^2 \frac{u}{c^2} (z - u dt) + \frac{\gamma_u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 (z - u dt)^2}
-\end{equation}
-
-giving
-
-\begin{equation}
-	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}}_1 = \frac{1}{c T_{p2}}
-	\begin{pmatrix}
-		x \\
-		y \\
-		(z - u dt) + u T_{p2}
-	\end{pmatrix}
-	-
-	\frac{1}{c T_{p1}}
-	\begin{pmatrix}
-		x \\
-		y \\
-		z + u T_{p1}
-	\end{pmatrix}
-\end{equation}
-
-which gives
-
-\begin{equation}
+	\mhl
+	{
 	\begin{aligned}
-	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}}_1 &= \\
-	& \frac{1}{ \gamma_u^2 \frac{u}{c} (z - u dt) + \gamma_u \sqrt{x^2 + y^2 + \gamma_u^2 (z - u dt)^2} }
+		\frac{\partial \mathbf{\hat{c}}}{\partial x} &=
+	\frac{1}{\gamma_u M ( \frac{u}{c} \frac{\gamma_u z}{M} + 1 )^2}
 	\begin{pmatrix}
-		x \\
-		y \\
-		(z - u dt) + \gamma_u^2 \frac{u^2}{c^2} (z - u dt) + \gamma_u \frac{u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 (z - u dt)^2}
+		1 - \frac{x^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M} \\
+		- \frac{x}{M} \frac{y}{M} \\
+		- \frac{x}{M} \frac{z}{M}
 	\end{pmatrix} \\
-	&- \\
-	&\frac{1}{c \left( \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2} \right)}
+	\frac{\partial \mathbf{\hat{c}}}{\partial y} &=
+	\frac{1}{\gamma_u M ( \frac{u}{c} \frac{\gamma_u z}{M} + 1 )^2}
 	\begin{pmatrix}
-		x \\
-		y \\
-		z +  \gamma_u^2 \frac{u^2}{c^2}z + \gamma_u \frac{u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2}
-	\end{pmatrix}
-	\end{aligned}
-\end{equation}
-
-gives
-
-\begin{equation}
-	\begin{aligned}
-	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}}_1 &= \\
-	& \frac{1}{ \gamma_u^2 \frac{u}{c} (z - u dt) + \gamma_u \sqrt{x^2 + y^2 + \gamma_u^2 (z - u dt)^2} }
-	\begin{pmatrix}
-		x \\
-		y \\
-		\gamma_u^2 (z - u dt) + \gamma_u \frac{u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 (z - u dt)^2}
+		- \frac{y}{M} \frac{x}{M} \\
+		1 - \frac{y^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M} \\
+		- \frac{y}{M} \frac{z}{M}
 	\end{pmatrix} \\
-	&- \\
-	&\frac{1}{c \left( \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2} \right)}
+		\frac{\partial \mathbf{\hat{c}}}{\partial z} &= \frac{1}{\gamma_u M
+		(  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
+		\begin{pmatrix}
+			\gamma_u ( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
+			\gamma_u ( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
+			\frac{ x^2 + y^2 }{M^2}
+		\end{pmatrix}\\
+		\frac{\partial \mathbf{\hat{c}}}{\partial t} &= \frac{-u}{\gamma_u M (  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
 	\begin{pmatrix}
-		x \\
-		y \\
-		\gamma_u^2 z + \gamma_u \frac{u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2}
+		\gamma_u ( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
+		\gamma_u ( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
+		 \frac{ x^2 + y^2 }{M^2}
 	\end{pmatrix}
 	\end{aligned}
+	}
 \end{equation}
-
-simplfying using $ \sqrt{x^2 + y^2 + \gamma_u^2 (z - u dt)^2} \approx \sqrt{x^2 + y^2 + \gamma_u^2 z^2} (1 - \frac{2\gamma_u^2 z u dt}{x^2 + y^2 + \gamma_u^2 z^2}) $
 
 \begin{equation}
-	\begin{aligned}
-	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}}_1 &= \\
-	& \frac{1}{ \gamma_u^2 \frac{u}{c} (z - u dt) + \gamma_u \left( \sqrt{x^2 + y^2 + \gamma_u^2 z^2} (1 - \frac{2\gamma_u^2 z u dt}{x^2 + y^2 + \gamma_u^2 z^2})  \right) } \\
-	&
-	\begin{pmatrix}
-		x \\
-		y \\
-		\gamma_u^2 (z - u dt) + \gamma_u \frac{u}{c} \left( \sqrt{x^2 + y^2 + \gamma_u^2 z^2} (1 - \frac{2\gamma_u^2 z u dt}{x^2 + y^2 + \gamma_u^2 z^2})  \right)
-	\end{pmatrix} \\
-	&- \\
-	&\frac{1}{c \left( \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2} \right)} \\
-	&
-	\begin{pmatrix}
-		x \\
-		y \\
-		\gamma_u^2 z + \gamma_u \frac{u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2}
-	\end{pmatrix}
-	\end{aligned}
+	mag = \sqrt{ (1 - \frac{x^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M})^2 + 2\frac{x^2y^2}{M^4} + \frac{x^2z^2}{M^4} +	(1 - \frac{y^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M})^2 + \frac{y^2z^2}{M^4} +	(\gamma_u ( \frac{u}{c}  + \frac{ \gamma_u z }{M} ) \frac{x}{M})^2 + (\gamma_u ( \frac{u}{c}  + \frac{\gamma_u z }{M} ) \frac{y}{M})^2 + (\frac{ x^2 + y^2 }{M^2})^2 }
 \end{equation}
 
-lets look at the x part
+%███
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_x_u_is_0.pdf}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial x}\|$}
+		\label{fig: Rate of change of lights velocity field of rest source subfig_1}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_y_u_is_0.pdf}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial y}\|$}
+		\label{fig: Rate of change of lights velocity field of rest source subfig_2}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_z_u_is_0.pdf}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial z}\|$}
+		\label{fig: Rate of change of lights velocity field of rest source subfig_3}
+	\end{subfigure}
+	\caption{\textbf{The rate of change of the velocity vector field of light from a source at rest}. main caption.}
+	\label{fig: Rate of change of lights velocity field of rest source}
+\end{figure}
+%███████████
+
+these diagrams show the rate of rotation of the lights propagation direction with respect to each coordinate, but the do not show if this rate of change is in the direction of the positive or negative direction of the corresponding axis.
+
+%███
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_x.pdf}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial x}\|$}
+		\label{fig: Rate of change of lights velocity field subfig_1}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_y.pdf}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial y}\|$}
+		\label{fig: Rate of change of lights velocity field subfig_2}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_z.pdf}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial z}\|$}
+		\label{fig: Rate of change of lights velocity field subfig_3}
+	\end{subfigure}
+	\caption{\textbf{The rate of change of the velocity vector field of light from a moving source}. main caption.}
+	\label{fig: Rate of change of lights velocity field}
+\end{figure}
+%███████████
+
+%███
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_t_u_is_0.pdf}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial t}\|$ Source at Rest}
+		\label{fig: Rate of change of lights velocity field with respect to time subfig_2}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_t.pdf}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial t}\|$ Source Moving}
+		\label{fig: Rate of change of lights velocity field with respect to time subfig_3}
+	\end{subfigure}
+	\caption{\textbf{The rate of change of the velocity vector field of light from source}. main caption.}
+	\label{fig: Rate of change of lights velocity field with respect to time}
+\end{figure}
+%███████████
+
+% we can check do see if we take the dot product of the lights velocity with the rate of change that we get a value of zero, as the two vectors should be perpendicular, which we do:
+
+% \begin{equation}
+% 	\mathbf{\hat{c}} \cdot \frac{\partial \mathbf{\hat{c}}}{\partial x} = x (1 - \frac{x^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M}) + y (- \frac{x}{M} \frac{y}{M}) + (\gamma^2 z + \gamma \frac{u}{c} M)(- \frac{x}{M} \frac{z}{M})=0
+% \end{equation}
+
+% \begin{equation}
+% 	\mathbf{\hat{c}} \cdot \frac{\partial \mathbf{\hat{c}}}{\partial z} = x (( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M}) + y (( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M}) + (\gamma^2 z + \gamma \frac{u}{c} M)(\frac{1}{\gamma_u}\frac{ x^2 + y^2 }{M^2})=0
+% \end{equation}
+
+%███████████████████████████████████████████████████████████████████
+\subsection{The rate of change or potential}\label{subsect: The rate of change or potential}
 
 \begin{equation}
-	\begin{aligned}
-	\frac{1}{ \gamma_u^2 \frac{u}{c} (z - u dt) + \gamma_u \left( \sqrt{x^2 + y^2 + \gamma_u^2 z^2} (1 - \frac{2\gamma_u^2 z u dt}{x^2 + y^2 + \gamma_u^2 z^2})  \right) } - \frac{1}{c \left( \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2} \right)} =
-	\\
-	\frac{c \left( \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2} \right) - \left( \gamma_u^2 \frac{u}{c} (z - u dt) + \gamma_u \left( \sqrt{x^2 + y^2 + \gamma_u^2 z^2} (1 - \frac{2\gamma_u^2 z u dt}{x^2 + y^2 + \gamma_u^2 z^2})  \right)  \right) }{ \left( \gamma_u^2 \frac{u}{c} (z - u dt) + \gamma_u \left( \sqrt{x^2 + y^2 + \gamma_u^2 z^2} (1 - \frac{2\gamma_u^2 z u dt}{x^2 + y^2 + \gamma_u^2 z^2})  \right) \right) \cdot c \left( \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2} \right)} =
-	\\
-	\frac{    \gamma_u^2  u dt \left ( \frac{u}{c}  + \gamma_u  \frac{ 2z }{\sqrt{x^2 + y^2 + \gamma_u^2 z^2}}   \right ) }{ \left( \gamma_u^2 \frac{u}{c} (z - u dt) + \gamma_u \left( \sqrt{x^2 + y^2 + \gamma_u^2 z^2} (1 - \frac{2\gamma_u^2 z u dt}{x^2 + y^2 + \gamma_u^2 z^2})  \right) \right) \cdot c \left( \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2} \right)}
-	\end{aligned}
+	dp/dx
 \end{equation}
-
-for the denominator of this using $M = \sqrt{x^2 + y^2 + \gamma_u^2 z^2} $
-
-\begin{equation}
-	\begin{aligned}
-		& \left( \gamma_u^2 \frac{u}{c} (z - u dt) + \gamma_u \left( \sqrt{x^2 + y^2 + \gamma_u^2 z^2} (1 - \frac{2\gamma_u^2 z u dt}{x^2 + y^2 + \gamma_u^2 z^2})  \right) \right) \cdot c \left( \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} \sqrt{x^2 + y^2 + \gamma_u^2 z^2} \right) \\
-		&=
-		\\
-		&\left( \gamma_u^2 \frac{u}{c} (z - u dt) + \gamma_u M - \gamma_u \frac{2\gamma_u^2 z u dt}{M} \right) \cdot  \left( \gamma_u^2 \frac{u}{c}z + \gamma_u M \right) \\
-		&=\\
-		&  \left( \gamma_u^2 \frac{u}{c} z \right)^2  + 2 \gamma_u^3 \frac{u}{c}z M  +  (\gamma_u M)^2 - \left( 2\gamma_u^4 z u  - \gamma_u^3 \frac{u}{c}z \frac{2\gamma_u^2 z u }{M}  - u    M \gamma_u^3 \frac{u}{c} - z \left( \gamma_u^2 \frac{u}{c} \right)^2 u  \right) dt \\
-		&=\\
-		&  \left( \gamma_u^2 \frac{u}{c} z + \gamma_u M \right)^2  - \left( 2\gamma_u z   - 2  \frac{ \gamma_u^2 z^2 }{M} \frac{u}{c}  -  M  \frac{u}{c} - \gamma_u z  \frac{u^2}{c^2}   \right)  \gamma_u^3 u dt
-	\end{aligned}
-\end{equation}
-
-
-for the x and y comonents we have $ dc = \mathbf{\hat{c_2}} - \mathbf{\hat{c_1}} $
-
-\begin{equation}
-	\frac{dc}{dt} = \frac{    \gamma_u^2  u \left ( \frac{u}{c}  + 2\gamma_u  \frac{ z }{M}   \right ) }{ \left( \gamma_u^2 \frac{u}{c} z + \gamma_u M \right)^2 }
-	=
-	\frac{ \gamma_u  u \left ( \frac{u}{c}  + 2 \gamma_u  \frac{ z }{M}   \right ) }{ \left( \gamma_u \frac{u}{c} z +  M \right)^2 }
-	=
-	\frac{ \gamma_u  u \left ( \frac{u}{c}  + 2 \gamma_u  \frac{ z }{M}   \right ) }{ \left( \frac{c}{\gamma} T_p \right)^2 }
-\end{equation}
-
-with denominator $dt$s taken as non influential
-
-
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Flux from Point Source} \label{sect: Flux from Point Source}
+\section{Flux/flowrate  /  radial/angular concentration/density of light from Point Source} \label{sect: Flux from Point Source}
+
+*** What is the density of the field at a certain point, using $k \frac{1}{R^2}$ in a proper frame, and then taking into account the distance from coordinate to retarded position of the source and then the aberration and Doppler effect
 
 *** - Add more meaning to Flux section
 
@@ -2633,39 +2600,39 @@ with denominator $dt$s taken as non influential
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\subsection{Flux Through Surface Element}\label{subsect: Flux Through Surface Element}
+\subsection{Flux of light Through Surface Element}\label{subsect: Flux Through Surface Element}
 
 ... radial flux through surface element (search radial flux)
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Field Flux} \label{subsect: Field Flux}
+\subsection{Flux of Light} \label{subsect: Field Flux}
 
 A \hyperlink{def-proper-frame}{proper frame} of a particle's differential solid angle element (definition given in previous chapter (maybe move that subsection to here))
 
-*** change to $\alpha$
+Using the equation for the solid angle (what is solid angle?) with $\theta = \alpha$ and $\phi= \varphi$ we have
 
 \begin{equation}
-	d\Omega = \sin{\theta} d\theta d\phi,
+	d\Omega = \sin{\alpha} d\alpha d\varphi,
 \end{equation}
 
 encompasses a certain amount of the wavefront, this is the same amount of the wavefront that is encompassed by the coinciding aberrated differential solid angle
 
 \begin{equation}
-	d\Omega{'} = \sin{\theta'} d\theta{'} d\phi{'}.
+	d\Omega{'} = \sin{\alpha'} d\alpha{'} d\varphi{'}.
 \end{equation}
 
 We can calculate this element by differentiating both sides of eq.
-\eqref{eq: Cosine transform} with respect to $\theta$ \cite{hogg1997special}, which gives
+\eqref{eq: Cosine transform} with respect to $\alpha$ \cite{hogg1997special}, which after a bit of work gives
 
 \begin{equation}
-	\sin{\theta'} d\theta{'} = \dfrac{1-\dfrac{u^2}{{c}^2}}{\left(1 + \dfrac{u}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta = \dfrac{1}{{\gamma}^2\left(1 + \dfrac{u}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta
+	\sin{\alpha'} d\alpha{'} = \dfrac{1}{{\gamma}^2\left(1 + \dfrac{u}{c}\cos{\alpha}\right)^2} \sin{\alpha} d\alpha
 \end{equation}
 
-as ${v} =-{u}$ now using this and ${d\phi{'}} = {d\phi}$ (as the angle ${\phi}$ is always perpendicular to the motion of the particle and hence unaffected by \hyperlink{def-transform}{transformation} ) we have the solid angle in the \hyperlink{def-Primed-Frame}{primed frame} given as
+this took into account that ${v} =-{u}$, now using this and ${d\varphi{'}} = {d\varphi}$ (as the angle ${\varphi}$ is always perpendicular to the motion of the particle and hence unaffected by \hyperlink{def-transform}{transformation} ) we have the solid angle in the \hyperlink{def-Primed-Frame}{primed frame} given as
 
 \begin{equation}
 	\mhl{
-		d\Omega{'} = \dfrac{1}{{\gamma}^2\left(1 + \dfrac{u}{c}\cos{\theta}\right)^2} \sin{\theta} d\theta d\phi.
+		d\Omega{'} = \dfrac{1}{{\gamma}^2\left(1 + \dfrac{u}{c}\cos{\alpha}\right)^2} \sin{\alpha} d\alpha d\varphi.
 	}
 \end{equation}
 
@@ -3212,5 +3179,201 @@ nothing is derived here, just states what to do for a photon
 % 		\frac{x}{\|\mathbf{r}\|}                    \\
 % 		\frac{y}{\|\mathbf{r}\|}                    \\
 % 		\frac{1}{{\gamma}} \frac{z}{\|\mathbf{r}\|} \\
+% 	\end{pmatrix}
+% \end{equation}
+
+% If we want to find how quickly the direction of the lights propagation changes at a particular point $\mathbf{R}$, we can think of the source at the origin at time zero and at a point $\mathbf{u} dt$ after a time $dt$, the system at this later time is equivalent to having the origin at the second position and the stationary point now defined as $\mathbf{R} \rightarrow \mathbf{R} - \mathbf{u} dt$.
+
+% so lets find the directions of the propagation at time using for time at zero
+
+% \textbf{General Equations for Light Propagation Direction:}
+
+% \begin{equation}
+% 	\mathbf{\hat{c}} = \frac{1}{c T_{p}}
+% 	\begin{pmatrix}
+% 		x \\
+% 		y \\
+% 		z + u T_{p}
+% 	\end{pmatrix}
+% \end{equation}
+
+% with
+
+% \begin{equation}
+% 	T_{p} = \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} M
+% \end{equation}
+
+% % 1 / (g^2 \frac{u}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
+
+% with $M=\sqrt{x^2 + y^2 + \gamma_u^2 z^2}$.
+
+% \textbf{General Infintesmal Change in all Spatial Coordinates:}
+
+% now we will see what happens when we have an infintesmal change from an intial point $(x,y,z)$ to $(x_2,y_2,z_2)=(x +dx,y+dy,z+dz)$
+
+% two useful simifications we can do is first on $M$ for the point after the displacement we can use the taylor expansion to get
+
+% \begin{equation}
+% 	\begin{aligned}
+% 		M_2 &= \sqrt{(x+dx)^2 + (y+dy)^2 + \gamma_u^2 (z+dz)^2} \\
+% 		&= \sqrt{x^2 + y^2 + \gamma_u^2 z^2} + \frac{xdx + ydy + \gamma^2 zdz}{\sqrt{x^2 + y^2 + \gamma_u^2 z^2}} \\
+% 		&= M + \frac{xdx + ydy + \gamma^2 zdz}{M}
+% 	\end{aligned}
+% \end{equation}
+
+% giving the change in $M$ as
+
+% \begin{equation}
+% 	dM = M_2 - M = \frac{xdx + ydy + \gamma^2 zdz}{M}
+% \end{equation}
+
+% \begin{equation}
+% 		cT_{p} - cT_{p2} = - \gamma_u^2 \frac{u}{c} dz - \gamma_u dM
+% \end{equation}
+
+% now from the light velocity unit vector we have
+
+% which gives
+
+% \begin{equation}
+% 	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}} = \mathbf{\hat{c}}_2 = \frac{1}{c T_{p2}}
+% 	\begin{pmatrix}
+% 		x_2 \\
+% 		y_2 \\
+% 		z_2 + u T_{p2}
+% 	\end{pmatrix} - \frac{1}{c T_{p}}
+% 	\begin{pmatrix}
+% 		x \\
+% 		y \\
+% 		z + u T_{p}
+% 	\end{pmatrix}
+% \end{equation}
+
+% \begin{equation}
+% 	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}} = \frac{1}{c T_{p} \cdot c T_{p2}}
+% 	\begin{pmatrix}
+% 		c T_{p} x_2 - c T_{p2} x\\
+% 		c T_{p} y_2 - c T_{p2} y\\
+% 		c T_{p} (z_2 + u T_{p2}) - c T_{p2} (z + u T_{p})
+% 	\end{pmatrix}
+% \end{equation}
+
+% \textbf{Infintesmal Change in $z$-direction:}
+
+% for only a infintesmal change in z we have $x_2=x$, $y_2=y$ and $z_2 = z + dz$ giving
+
+% \begin{equation}
+% 	dM = \frac{\gamma^2 z d z}{M}
+% \end{equation}
+
+% \begin{equation}
+% 	\begin{aligned}
+% 	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}} &= \frac{1}{c T_{p} \cdot c T_{p2}}
+% 	\begin{pmatrix}
+% 		(c T_{p} - c T_{p2}) x \\
+% 		(c T_{p} - c T_{p2}) y \\
+% 		c T_{p} (z + dz + u T_{p2}) - c T_{p2} (z + u T_{p})
+% 	\end{pmatrix} \\
+% 	&= \frac{1}{c T_{p} \cdot c T_{p2}}
+% 	\begin{pmatrix}
+% 		(c T_{p} - c T_{p2}) x \\
+% 		(c T_{p} - c T_{p2}) y \\
+% 		(c T_{p} - c T_{p2})  z + c T_{p} dz
+% 	\end{pmatrix} \\
+% 	&= \frac{1}{c T_{p} \cdot c T_{p2}}
+% 	\begin{pmatrix}
+% 		(- \gamma_u^2 \frac{u}{c} d z - \gamma_u \frac{\gamma^2 z d z}{M}) x \\
+% 		(- \gamma_u^2 \frac{u}{c} d z - \gamma_u \frac{\gamma^2 z d z}{M}) y \\
+% 		(- \gamma_u^2 \frac{u}{c} d z - \gamma_u \frac{\gamma^2 z d z}{M})  z + (\gamma_u^2 \frac{u}{c}z + \gamma_u M) dz
+% 	\end{pmatrix} \\
+% 	\frac{d\mathbf{\hat{c}}}{dz} &= \frac{\gamma_u^2}{c T_{p} \cdot c T_{p2}}
+% 	\begin{pmatrix}
+% 		(-  \frac{u}{c}  - \frac{\gamma z }{M}) x \\
+% 		(-  \frac{u}{c}  - \frac{\gamma z }{M}) y \\
+% 		\frac{M}{\gamma_u} -  \frac{\gamma z^2 }{M}
+% 	\end{pmatrix}
+% 	\end{aligned}
+% \end{equation}
+
+% substituting in the denominator times and removing negligible terms and, we have
+
+% \begin{equation}
+% 	\frac{d\mathbf{\hat{c}}}{dz} = \frac{\gamma_u^2}{( \gamma_u^2 \frac{u}{c} z + \gamma_u M )^2}
+% 	\begin{pmatrix}
+% 		(- \frac{u}{c}  - \frac{\gamma z }{M}) x \\
+% 		(-  \frac{u}{c}  - \frac{\gamma z }{M}) y \\
+% 		   \frac{M}{\gamma_u}  -  \frac{\gamma z^2 }{M}
+% 	\end{pmatrix}
+% \end{equation}
+
+% now taking an $M$ and $\gamma$ out of each bracket of the denominator and reoving an $M$ from each element of the vector
+
+% \begin{equation}
+% 	\frac{d\mathbf{\hat{c}}}{dz} = \frac{1}{M
+% 	(  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
+% 	\begin{pmatrix}
+% 		( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
+% 		( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
+% 		 \frac{1}{\gamma_u}\frac{ x^2 + y^2 }{M^2}
+% 	\end{pmatrix}
+% \end{equation}
+
+% \textbf{Infintesmal Change in $x$-direction:}
+
+% now for only a infintesmal change in $x$ we have $x_2=x +dx$, $y_2=y$ and $z_2 = z$ giving
+
+% \begin{equation}
+% 	dM = \frac{xdx}{M}
+% \end{equation}
+
+% \begin{equation}
+% 	cT_{p} - cT_{p2} = - \gamma_u dM
+% \end{equation}
+
+
+% \begin{equation}
+% 	\begin{aligned}
+% 	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}} &= \frac{1}{c T_{p} \cdot c T_{p2}}
+% 	\begin{pmatrix}
+% 		c T_{p} x_2 - c T_{p2} x\\
+% 		c T_{p} y_2 - c T_{p2} y\\
+% 		c T_{p} (z_2 + u T_{p2}) - c T_{p2} (z + u T_{p})
+% 	\end{pmatrix} \\
+% 	&=
+% 	\frac{1}{c^2 T_{p} T_{p2}}
+% 	\begin{pmatrix}
+% 		(c T_{p} - c T_{p2}) x + c T_{p} dx \\
+% 		(c T_{p} - c T_{p2}) y \\
+% 		(c T_{p} - c T_{p2}) z
+% 	\end{pmatrix} \\
+% 	&=
+% 	\frac{1}{c^2 T_{p} T_{p2}}
+% 	\begin{pmatrix}
+% 		(- \gamma_u \frac{xdx}{M}) x + c (\gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} M) dx \\
+% 		(- \gamma_u \frac{xdx}{M}) y \\
+% 		(- \gamma_u \frac{xdx}{M}) z
+% 	\end{pmatrix} \\
+% 	\frac{d\mathbf{\hat{c}}}{dx} &=
+% 	\frac{\gamma M}{c^2 T_{p} T_{p2}}
+% 	\begin{pmatrix}
+% 		1 - \frac{x^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M} \\
+% 		- \frac{x}{M} \frac{y}{M} \\
+% 		- \frac{x}{M} \frac{z}{M}
+% 	\end{pmatrix}
+% \end{aligned}
+% \end{equation}
+
+% % no gamma for z in z component because thats not z thats because of effecting factors just for the coordinate
+
+% \textbf{Infintesmal Change in time:}
+
+% Now for an infintesmal change in time we have the source shifting a distance $u dt$ in the z direction, giving the equvialent of the second lights propagation direction with a z-position of $ dz = - u dt$, substituting this into the z derivative and rearranging gives the time derivative as
+
+% \begin{equation}
+% 	\frac{d\mathbf{\hat{c}}}{dt} = \frac{-u}{M (  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
+% 	\begin{pmatrix}
+% 		( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
+% 		( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
+% 		 \frac{1}{\gamma_u}\frac{ x^2 + y^2 }{M^2}
 % 	\end{pmatrix}
 % \end{equation}

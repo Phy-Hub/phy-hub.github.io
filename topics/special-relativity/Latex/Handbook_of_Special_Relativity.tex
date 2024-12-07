@@ -1,30 +1,36 @@
 \documentclass[oneside]{book}
 \usepackage{Preamble}
 \begin{document}
-    \def\comp{0} % 0 = main only, 1 = all
 
-    \if\comp0 % Compile Main only
+\def\comp{0}
 
-        \pagecolor{Beige}
-        \input{Tex/toc}
-        \input{Tex/Front_Matter}
-        \input{Tex/Main_Matter}
-        \input{Tex/Back_Matter}
-        \printbibliography
+% Compile Main only
+\if\comp0
+    \pagecolor{Beige}
+    \input{Tex/toc}
+    \input{Tex/Main_Matter}
+    \printbibliography
+\fi
 
-    \else % Compile All
+% Compile Appendix only
+\if\comp1
+    \input{Tex/toc}
+    \input{Tex/Appendix}
+    %\printbibliography
+\fi
 
-        \input{Tex/Cover_front}
-        \pagecolor{Beige}
-        \input{Tex/Epigraph}
-        \input{Tex/toc}
-        \input{Tex/Front_Matter}
-        \input{Tex/Main_Matter}
-        \input{Tex/Back_Matter}
-        \input{Tex/Appendix}
-        \printbibliography
-        \input{Tex/Cover_back}
-
-    \fi
+% Compile All
+\if\comp2
+    \input{Tex/Cover_front}
+    \pagecolor{Beige}
+    \input{Tex/Epigraph}
+    \input{Tex/toc}
+    \input{Tex/Front_Matter}
+    \input{Tex/Main_Matter}
+    \input{Tex/Back_Matter}
+    \input{Tex/Appendix}
+    \printbibliography
+    \input{Tex/Cover_back}
+\fi
 
 \end{document}

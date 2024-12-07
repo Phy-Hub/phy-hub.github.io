@@ -204,7 +204,7 @@ Special Relativity          </div> </div>
         </div>
       </header>
 
-<section id="ch1_wrap" class="chapter"> 
+<section id="ch1_wrap" class="chapter">
  <h1 id="ch1_header">1. Conceptual Overview</h1>
 <div id="ch1_content">
 <span style="display: hidden">\(\nextSection\)</span>
@@ -712,10 +712,10 @@ We will derive everything step by step, starting with the transformation of posi
 
 <div class='arrow-nav'>
  <a onclick="showContent('ch0_wrap')" style="font-weight: bold; padding-left: 10px;"> < Previous </a>
-<a onclick="showContent('ch2_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a> 
+<a onclick="showContent('ch2_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a>
 </div>
- </section> 
- <section id="ch2_wrap" class="chapter" style="display: none !important;"> 
+ </section>
+ <section id="ch2_wrap" class="chapter" style="display: none !important;">
  <h1 id="ch2_header">2. Position, Time and Velocity</h1>
 <div id="ch2_content">
 <span style="display: hidden">\(\nextSection\)</span>
@@ -1323,10 +1323,10 @@ This will help us understand why we need the time transformation to be the way i
 
 <div class='arrow-nav'>
  <a onclick="showContent('ch1_wrap')" style="font-weight: bold; padding-left: 10px;"> < Previous </a>
-<a onclick="showContent('ch3_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a> 
+<a onclick="showContent('ch3_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a>
 </div>
- </section> 
- <section id="ch3_wrap" class="chapter" style="display: none !important;"> 
+ </section>
+ <section id="ch3_wrap" class="chapter" style="display: none !important;">
  <h1 id="ch3_header">3. Observers Delayed Worldview</h1>
 <div id="ch3_content">
 <span style="display: hidden">\(\nextSection\)</span>
@@ -1534,10 +1534,10 @@ meaningful conclusion:
 
 <div class='arrow-nav'>
  <a onclick="showContent('ch2_wrap')" style="font-weight: bold; padding-left: 10px;"> < Previous </a>
-<a onclick="showContent('ch4_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a> 
+<a onclick="showContent('ch4_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a>
 </div>
- </section> 
- <section id="ch4_wrap" class="chapter" style="display: none !important;"> 
+ </section>
+ <section id="ch4_wrap" class="chapter" style="display: none !important;">
  <h1 id="ch4_header">4. Spherical Polar Coordinates</h1>
 <div id="ch4_content">
 <span style="display: hidden">\(\nextSection\)</span>
@@ -1646,10 +1646,10 @@ The fraction of the field of view covered from a point is given by \(\Omega/ 4\p
 
 <div class='arrow-nav'>
  <a onclick="showContent('ch3_wrap')" style="font-weight: bold; padding-left: 10px;"> < Previous </a>
-<a onclick="showContent('ch5_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a> 
+<a onclick="showContent('ch5_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a>
 </div>
- </section> 
- <section id="ch5_wrap" class="chapter" style="display: none !important;"> 
+ </section>
+ <section id="ch5_wrap" class="chapter" style="display: none !important;">
  <h1 id="ch5_header">5. Spherical light pulses</h1>
 <div id="ch5_content">
 <span style="display: hidden">\(\nextSection\)</span>
@@ -1974,10 +1974,10 @@ The relative primed wavefront strength at a given angle is taken as being propor
 
 <div class='arrow-nav'>
  <a onclick="showContent('ch4_wrap')" style="font-weight: bold; padding-left: 10px;"> < Previous </a>
-<a onclick="showContent('ch6_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a> 
+<a onclick="showContent('ch6_wrap')" style="font-weight: bold; text-align: right; padding-right: 10px; "> Next > </a>
 </div>
- </section> 
- <section id="ch6_wrap" class="chapter" style="display: none !important;"> 
+ </section>
+ <section id="ch6_wrap" class="chapter" style="display: none !important;">
  <h1 id="ch6_header">6. Invariant Quantities</h1>
 <div id="ch6_content">
 <span style="display: hidden">\(\nextSection\)</span>
@@ -2128,7 +2128,7 @@ nothing is derived here, just states what to do for a photon
 ...
 </div>
 <div>
-<a onclick="showContent('ch5_wrap')" style="font-weight: bold;"> < Previous </a> 
+<a onclick="showContent('ch5_wrap')" style="font-weight: bold;"> < Previous </a>
 </div>
 </section>    </article>
 
@@ -2275,15 +2275,11 @@ nothing is derived here, just states what to do for a photon
       $("details").removeAttr("open");
       window.scrollTo(0,0);
     }
-  </script>
 
-  <script>
     $(document).on('click', 'summary', function() {
         $(this).closest('summary').attr('open', '');
     });
-  </script>
 
-  <script>
     function resizeSVGImages() {
       var images = document.getElementsByClassName('resizable-svg-img');
       var resizeFactor = 0.3;
@@ -2303,9 +2299,7 @@ nothing is derived here, just states what to do for a photon
           })(img);
       }
   }
-  </script>
 
-  <script>
     function copyContent(sourceId, targetId) {
       var sourceDiv = document.getElementById(sourceId);
       var targetDiv = document.getElementById(targetId);
@@ -2316,9 +2310,38 @@ nothing is derived here, just states what to do for a photon
       var myDiv = document.getElementById(id);
       myDiv.innerHTML = ''; // Delete the content
     }
-    </script>
+
+    //##################
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get the hash from the URL (e.g., #subsection1)
+      var hash = window.location.hash;
+
+      if (hash) {
+          var subsection = document.querySelector(hash);
+
+          // Find the chapter
+          var chapter = subsection.closest(".chapter");
+          var chapterId = chapter ? chapter.id : null;
+
+          $("details").removeAttr("open");
+          // open chapter in TOC
+          $("#" + chapterId.replace(/_wrap$/, "") + "_details").attr("open", true);
+
+          // Hide all chapters
+          $(".chapter").attr("style", "display: none");
+          // Show chapter
+          $("#" + chapterId).attr("style", "display: block");
+
+          // Optionally scroll to the subsection after it's displayed
+          subsection.scrollIntoView();
+      }
+    });
+  </script>
 
 
+
+  $("details").removeAttr("open");
+  window.scrollTo(0,0);
 
 </body>
 </html>

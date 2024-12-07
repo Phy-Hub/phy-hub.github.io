@@ -264,4 +264,16 @@
 		],
 	},
 
+	"latex_derive_enviro": {
+		"prefix": "l.derive_env",
+		"body":
+		[
+		"%█████████████████",
+		"\\begin{derivation}",
+		"$1",
+		"\\end{derivation}",
+		"%███████████████"
+		],
+	},
+
 }

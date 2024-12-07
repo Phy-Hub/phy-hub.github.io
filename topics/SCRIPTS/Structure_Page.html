@@ -170,6 +170,8 @@
 
   <!--scripts-->
   <script>
+
+    //##################
     window.onload = function() {
       fetch('Media/Logo/DS_Pattern.svg')
         .then(response => response.text())
@@ -199,9 +201,8 @@
           }, 0);
         });
     }
-  </script>
 
-  <script>
+    //##################
     function showContent(divId) {
 
       $(document).ready(function() {
@@ -214,15 +215,13 @@
       $("details").removeAttr("open");
       window.scrollTo(0,0);
     }
-  </script>
 
-  <script>
+    //##################
     $(document).on('click', 'summary', function() {
         $(this).closest('summary').attr('open', '');
     });
-  </script>
 
-  <script>
+    //##################
     function resizeSVGImages() {
       var images = document.getElementsByClassName('resizable-svg-img');
       var resizeFactor = 0.3;
@@ -241,23 +240,48 @@
               };
           })(img);
       }
-  }
-  </script>
+    }
 
-  <script>
+    //##################
+    // could replace targetId with 'fig_hover' but would need to change parser
     function copyContent(sourceId, targetId) {
       var sourceDiv = document.getElementById(sourceId);
       var targetDiv = document.getElementById(targetId);
       targetDiv.innerHTML = sourceDiv.innerHTML; // Copy the content
     }
 
+    //##################
     function deleteContent(id) {
       var myDiv = document.getElementById(id);
       myDiv.innerHTML = ''; // Delete the content
     }
-    </script>
 
+    //##################
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get the hash from the URL (e.g., #subsection1)
+      var hash = window.location.hash;
 
+      if (hash) {
+          var subsection = document.querySelector(hash);
 
+          // Find the chapter
+          var chapter = subsection.closest(".chapter");
+          var chapterId = chapter ? chapter.id : null;
+
+          $("details").removeAttr("open");
+          // open chapter in TOC
+          $("#" + chapterId.replace(/_wrap$/, "") + "_details").attr("open", true);
+
+          // Hide all chapters
+          $(".chapter").attr("style", "display: none");
+          // Show chapter
+          $("#" + chapterId).attr("style", "display: block");
+
+          // Optionally scroll to the subsection after it's displayed
+          subsection.scrollIntoView();
+      }
+    });
+
+  </script>
 </body>
 </html>

@@ -216,23 +216,10 @@ using equation ref() we get the time differential to be
 	d\lambda' = \dfrac{ d\lambda }{ \gamma \left(1-\dfrac{v}{c}\cos\alpha \right)}
 \end{equation}
 
+
+
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Paradoxes and confusions: (possibly for another video)}
-
-Before the discovery of Lorentz transformations the force was the same when it was defined by the multiplication of mass times acceleration or rate of change of momentum, but these two things are not equivalent when it comes to special relativity\\
-So the force in special relativity was chosen to be by definition the later explanation (the rate of change of momentum)\\
-This leaves us with the force not being in the same direction as the acceleration of an object in an inertial frame apart from some special cases, (i.e force and acceleration are in the direction velocity of the frame that we are transforming into)
-
-%███████████████████████████████████████████████████████████████████%███████████████████████████████████████████████████████████████████
-\chapter{Velocity Transform for propagation at \texorpdfstring{$-c$}{TEXT}}
-
-If say the field is moving in the opposite direction than we've been calculating so far, then we can just substitute $c$ with $-c$ in the weighting term to get total weight of both $M$ and $W$ to be
-\begin{equation}%%%%%%%%%%%%%%%
-    M W = \dfrac{1}{\gamma^3}\dfrac{1}{\left( 1 + \dfrac{v_{proper\langle ' \rangle}}{c}\cos{\theta_{\langle ' \rangle}} \right)^3}
-\end{equation}%%%%
-which is the same as flipping the effect through the X,Y - Plane
-
 \chapter{Two Consecutive Velocity Transforms}
 using the velocity transforms from before we transform a velocity to a primed frame
 \begin{equation}%%%%%%%%%%%%%%%
@@ -261,7 +248,7 @@ now we wish to transform this to a second primed frame
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Acceleration Transform with consistent time (checked) (( when transformed to another frame and then back, it does not give original acceleration)) (((assumed wrong as velocity due to the time difference due to position not removed)))}
-differentiating Eq.(\eqref{vector velocity transform}) with respect to the primed time we have the acceleration given as
+differentiating Eq.(*** ref for: vector velocity transform) with respect to the primed time we have the acceleration given as
 \begin{equation}%%%%%%%%%%%%%%%
     \Vec{a'}_p= \dfrac{d\Vec{U'}_p}{dt'} = \dfrac{1}{\gamma}\dfrac{d\Vec{U'}_p}{dt} =  \dfrac{1}{\gamma}\dfrac{d}{dt} \left[ \dfrac{1}{\gamma\left(1- \dfrac{v}{c^2} u_z\right) }\begin{pmatrix}
     u_x \\ u_y  \\ \gamma \left( u_z  - v  \right) \\
@@ -439,7 +426,7 @@ we get the result
     \end{split}
 \end{equation}%%%%
 
-Now in the final step, we finally introduced special relativity, with the lorentz transform we requiring $t'= 0$ for all coordinates, meaning that the primed and proper axis overlap at this time, and taking the primed frame as moving at velocity $v=-u_p$ along the z-axis relative to the proper frame of particle, and hence used the Lorentz transform of the spatial coordinates; $\vec{R}=(x,y,z)=(x',y',\gamma z')$, to get $\|\vec{R}\|$. With this we can rewrite the Z-component of equation (\eqref{displacement}) as
+Now in the final step, we finally introduced special relativity, with the lorentz transform we requiring $t'= 0$ for all coordinates, meaning that the primed and proper axis overlap at this time, and taking the primed frame as moving at velocity $v=-u_p$ along the z-axis relative to the proper frame of particle, and hence used the Lorentz transform of the spatial coordinates; $\vec{R}=(x,y,z)=(x',y',\gamma z')$, to get $\|\vec{R}\|$. With this we can rewrite the Z-component of equation \eqref{displacement} as
 \begin{equation}%%%%%%%%%%%%%%%
     z' - u_p T_{ret}' \Rightarrow \gamma\left(z + \frac{u_p\cdot \|\vec{R}\|}{c}\right),
 \end{equation}%%%%
@@ -463,7 +450,7 @@ where the factor
 \begin{equation}%%%%%%%%%%%%%%%
     \text{\AA} = \gamma\left( 1 + \frac{u_p}{c}\frac{z}{\|\vec{R}\|} \right).
 \end{equation}%%%%
-Now taking the magnitude of the light propagation displacement from equation (\eqref{retarded displacement}) and using equation (\eqref{eq: gamma identity}), we have
+Now taking the magnitude of the light propagation displacement from equation \eqref{retarded displacement} and using equation \eqref{eq: gamma identity}, we have
 \begin{equation}%%%%%%%%%%%%%%%
 \label{eq: field displacement transform}
     \begin{split}
@@ -820,13 +807,13 @@ when we take the change of time at the same location in a rest frame, we always 
 %██████████
 **** this is for receiving particle that is at rest, i.e. $u_p=0$ ****
 
-Figure \ref{fig: Doppler effect appendix}, shows a particle emitting a spherical wave of light, in the proper frame it begins emitting at time $t=0$ and after an infinitesimal amount of time the front of the wave has spread out spherically, such that the front is at a distance $dr$ from the origin at all positions,while the wave continues to be emitted from the origin. In the primed frame the wavefront is emitted at $t'=0$ and reaches a point that is $\gamma dr$ from the origin at all points, with the gamma due to $dr=cdt$ and the the time $dt=\gamma dt'$, but we also now have to take into account that the source particle that is still emitting this wave has moved along the z'-axis to a point $u_p dt'= \gamma u_p dt$ and each part of the wave being emitted from the source is taken as being emitted at an angle $\theta'$, such that any point on the wavefront that is at and angle of $\theta'$ from the particle, will have the distance $dr'$ between it and the source, and the wave that is currently being emitted from the source particle will go to that position on the wavefront (offal description).
+Figure (\ref{fig: Doppler effect appendix}), shows a particle emitting a spherical wave of light, in the proper frame it begins emitting at time $t=0$ and after an infinitesimal amount of time the front of the wave has spread out spherically, such that the front is at a distance $dr$ from the origin at all positions,while the wave continues to be emitted from the origin. In the primed frame the wavefront is emitted at $t'=0$ and reaches a point that is $\gamma dr$ from the origin at all points, with the gamma due to $dr=cdt$ and the the time $dt=\gamma dt'$, but we also now have to take into account that the source particle that is still emitting this wave has moved along the z'-axis to a point $u_p dt'= \gamma u_p dt$ and each part of the wave being emitted from the source is taken as being emitted at an angle $\theta'$, such that any point on the wavefront that is at and angle of $\theta'$ from the particle, will have the distance $dr'$ between it and the source, and the wave that is currently being emitted from the source particle will go to that position on the wavefront (offal description).
 
 We can get the Doppler effect by taking the ratio of the distances the way will have to travel to get to the current point the wavefront is at, which in the rest frame is $dr=cdt$ and in the primed frame is $|d\vec{dr}'| = u_p/c \gamma dr$
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{Alternative Derivation}
+\chapter{Velocity Transformation Alternative Derivation}
 *** diagram *** \newline
 The change in position of particle $\Delta \mathbf{R}_p$, with initial position $\mathbf{R}_0$, and a constant velocity
 \begin{equation}%%%%%%%%%%%%%%%
@@ -891,3 +878,584 @@ decide whether to include minkowski diagram as it is an abstract view rather tha
 \section{Astronomy from Earth}
 
 ... explain how observation from earth works, as you would think the positions of stars at $t'=0$ would be all over the place as it rotates around the sun
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Acceleration}
+
+...proper acceleration. differentiate the velocity invariant quantity, it will give \( \frac{d^2 S}{d\tau^2} = 0 = ...\frac{d^2 S}{dt{'}^2} \)
+
+... this is bad math explaination using square of derivative
+
+need to use the square quantity not singular
+
+\begin{equation}
+	\begin{aligned}
+		\frac{d}{d\tau} \left(\frac{dS_p}{d\tau}\right)^2 & = \left(\frac{d}{d\tau}\right)^2 \left[ \left(c\gamma_{u}\right)^2-\left(u\gamma_{u} \right)^2 \right]                           \\
+		\frac{1}{2} \frac{dS_p}{d\tau} \frac{d^2S_p}{d\tau^2}                               & = \gamma_u^2\left(\frac{d}{dt}\right)^2 \left[ \left(c\gamma_{u}\right)^2-\left(u\gamma_{u} \right)^2 \right]                           \\
+		                                                              0   & = \gamma_u^2\left(c\frac{d \gamma_{u}}{dt}\right)^2-\gamma_u^2\left(\frac{d\left(u\gamma_{u} \right)}{dt}\right)^2 \\
+																	  & = \gamma_u^2 \left( \gamma_u^3 \frac{u a}{{c}^2} \right)^2-\gamma_u^2\left( \gamma_u^3 a \right)^2
+	\end{aligned}
+\end{equation}
+
+... this is more complex and one difference in this 4-vector here is that the spatial part of the 4-acceleration is not parallel to the 3-acceleration in a \hyperlink{def-Primed-Frame}{primed frame}
+
+\begin{equation}
+	\mathbf{A} = {\gamma}_{u}^4
+	\begin{pmatrix}
+		-c\frac{\mathbf{a}\cdot\mathbf{u}}{{c}^2}                                  \\
+		\frac{1}{{\gamma}_{u}^2} {{a}_{x}}-{{u}_{x}} \frac{\mathbf{a}\cdot\mathbf{u}}{{c}^2} \\
+		\frac{1}{{\gamma}_{u}^2} {{a}_{y}}-{{u}_{y}} \frac{\mathbf{a}\cdot\mathbf{u}}{{c}^2} \\
+		\frac{1}{{\gamma}_{u}^2} {{a}_{z}}-{{u}_{z}} \frac{\mathbf{a}\cdot\mathbf{u}}{{c}^2} \\
+	\end{pmatrix}
+\end{equation}
+
+this is not really the same thing as what we think of when we think of acceleration, as it does not give the rate of change of velocity in the normal sense in 3d space
+
+\begin{equation}
+	\begin{aligned}
+		A & = \dfrac{dV}{d\tau} =
+		\dfrac{dt}{d\tau}\cdot\dfrac{dV}{dt}                                                                                                                                   \\
+		  & = \dfrac{dt}{d\tau}\cdot \dfrac{d}{dt}
+		\left(\begin{array}{*{20}{c}} {\gamma}_{u}{c}\\ {\gamma}_{u} u \\ 0 \\ 0 \end{array}\right)
+		 = {\gamma}_{u}
+		\left(\begin{array}{*{20}{c}} \dfrac{u}{c}\;{\gamma}_{u}^3\;a \\ \dfrac{u^2}{{c}^2}\;{\gamma}_{u}^3\;a + {\gamma}_{u} a \\ 0 \\ 0 \end{array}\right) \\
+		  & =
+		\left(\begin{array}{*{20}{c}} \dfrac{u}{c}\;{\gamma}_{u}^4\;a \\ {\gamma}_{u}^2\left(\dfrac{u^2}{{c}^2}\;{\gamma}_{u}^2 + 1\right)a \\ 0 \\ 0 \end{array}\right)
+		 = {\gamma}_{u}^4\;a
+		\left(\begin{array}{*{2}{c}} \dfrac{u}{c} \\ 1 \\ 0 \\ 0 \end{array}\right)
+	\end{aligned}
+\end{equation}
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Force}
+
+\begin{equation}
+	\mathbf{F} = \frac{d\mathbf{p}}{d\tau} = m_0\mathbf{A}
+\end{equation}
+
+%███████████████████████████████████████████████████████████████████
+\subsection{Force Transform}
+
+*** one of the most confusing topics in special relativity, from the way it is defined, how it is derived, and how it relates to other things\newline
+
+*** (a note that the 3-force in special relativity is specifically defined as the time derivative of momentum $\frac{d\mathbf{p}}{dt}$ and not mass times the acceleration $m\mathbf{a}$, this is due to newtons 2nd law holding only for the first definition in special relativity) \newline
+*** This means that acceleration turns out not to be in the same direction as the force in special relativity\newline
+
+force derivation is confusing as most sources give the time derivative of u and v as acceleration, (are they using that each force has opposite and equal force, but that would not take into account the retardedness)
+
+\begin{equation}
+	\mathbf{a} = \frac{1}{m_0 {\gamma}(\mathbf{v})} \left( \mathbf{F}-\frac{ ( \mathbf{v} \cdot \mathbf{F} ) \mathbf{v} }{{c}^2} \right)
+\end{equation}
+
+\begin{equation}
+	\mathbf{F} = {\gamma}^3 m_0 \, \mathbf{a}_\parallel + {\gamma} m_0 \, \mathbf{a}_\perp
+\end{equation}
+
+%███████████████████████████████████████████████████████████████████
+\subsection{not sure what this is}
+
+The force parallel to the velocity of the \hyperlink{def-Primed-Frame}{primed frame} is unchanged, $\mathbf{F}_{\parallel \langle {'} \rangle} = \mathbf{F}_{\parallel}$, and the force perpendicular to this is $\mathbf{F}_{\perp \langle {'} \rangle} = {\gamma} \mathbf{F}_{\perp}$, with total force, $\mathbf{F} = \mathbf{F}_{\parallel} + \mathbf{F}_{\perp}$ and
+
+\begin{equation}
+	\mathbf{F}_{\parallel} = \dfrac{(\mathbf{F}\cdot\mathbf{v})}{\|\mathbf{v}\|^2}\mathbf{v}
+\end{equation}
+
+and substituting this into the formula for total force:
+
+\begin{equation}
+	\mathbf{F}_{\perp} = \mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{\|\mathbf{v}\|^2}\mathbf{v}
+\end{equation}
+
+since $\mathbf{F}_{\langle {'} \rangle} = \mathbf{F}_{\parallel \langle {'} \rangle} + \mathbf{F}_{\perp\langle {'} \rangle}$ we can use equations above to get:
+
+\begin{equation}
+	\begin{split}
+		\mathbf{F}_{\langle {'} \rangle} & = \dfrac{(\mathbf{F}\cdot\mathbf{v})}{\|\mathbf{v}\|^2}\mathbf{v} + {\gamma}\bigg(\mathbf{F}-\dfrac{(\mathbf{F}\cdot\mathbf{v})}{\|\mathbf{v}\|^2}\mathbf{v}\bigg) \\
+		                               & = {\gamma}\mathbf{F} + (1-{\gamma})\dfrac{(\mathbf{F}\cdot\mathbf{v})}{\|\mathbf{v}\|^2}\mathbf{v}
+	\end{split}
+\end{equation}
+
+this is the same for the electric field as it only differs by some magnitude from the force.\newline
+this is similar to how we get the reverse transform: (is it the primed velocity used in this?)
+
+\begin{equation}
+	\mathbf{F} = \dfrac{1}{{\gamma}}\mathbf{F}_{\langle {'} \rangle} + (1-\dfrac{1}{{\gamma}})\dfrac{(\mathbf{F}_{\langle {'} \rangle} \cdot\mathbf{v}_{\langle {'} \rangle} )}{\|\mathbf{v}_{\langle {'} \rangle} \|^2}\mathbf{v}_{\langle {'} \rangle}
+\end{equation}
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Paradoxes and confusions:}
+
+Before the discovery of Lorentz transformations the force was the same when it was defined by the multiplication of mass times acceleration or rate of change of momentum, but these two things are not equivalent when it comes to special relativity\\
+So the force in special relativity was chosen to be by definition the later explanation (the rate of change of momentum)\\
+This leaves us with the force not being in the same direction as the acceleration of an object in an inertial frame apart from some special cases, (i.e force and acceleration are in the direction velocity of the frame that we are transforming into)
+
+
+%███████████████████████████████████████████████████████████████████
+\section{"zitterbewegung"} \label{ch: "zitterbewegung"}
+
+%███████████████████████████████████████████████████████████████████
+\section{equation for motion in primed frame for arbitrary motion in proper frame} \label{ch: equation for motion in primed frame for arbitrary motion in proper frame}
+
+%███████████████████████████████████████████████████████████████████
+\section{None Point Like Sources} \label{ch: None Point Like Sources}
+... and seeing moving objects rotated, i.e. can see the rear side of a cube before the rear side has moved past you
+
+%███████████████████████████████████████████████████████████████████
+\chapter{Thought Experiments} \label{ch: Thought Experiments}
+Bell's Paradox and others
+two identical particles that have a mass and charge such that in the frame where they are both at rest, such that the force of the gravitational attraction and the force of the electric repulsion cancel out, then in a frame where they are now both moving the forces still have to cancel, is there now a magnetic force, how does the gravitational field have to change. now what if they were instead rotating around the center of mass instead, with the gravity being the correct amount stronger such that there is this orbiting
+
+... touch on GR, i.e. elevator thought experiment
+
+Well we could have things be thinner if moving relative to the aether but not thinner between frames because observer also gets thinner as they are also moving relative to the aether at different speeds in each frame
+
+%███████████████████████████████████████████████████████████████████
+\chapter{Cheat Sheet} \label{ch: Cheat Sheet}
+
+all needed equations
+steps for tranforming between actuall positions and times
+steps for transforming retarded positions and times
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Paths of Particles} \label{sect: Paths of Particles}
+
+In an initial frame, we can describe the position at any time by the following generalized equations were the constants depend on the specific case
+
+\begin{equation}
+	\begin{aligned}
+		 & x(t) = a_0 + a_1 t + a_2 t^2 + ... \\
+		 & y(t) = b_0 + b_1 t + b_2 t^2 + ... \\
+		 & z(t) = c_0 + c_1 t + c_2 t^2 + ...
+	\end{aligned}
+\end{equation}
+
+then the corresponding primed equations are given as
+
+\begin{equation}
+	\begin{aligned}
+		& {x{'}}(t) = x(t)                                         \\
+		& {y{'}}(t) = y(t) \\
+		& {z{'}}(t) = {\gamma} (z(t) - {v}{t})                       \\
+	   \text{at time \ \ \ }                                   \\
+		& {t{'}}(t) = {\gamma} \bigg(t-\frac{{v}}{{c}^2} z(t) \bigg)
+   \end{aligned}
+\end{equation}
+
+with
+
+\begin{equation}
+	{t} = {\gamma} \left( t' + \dfrac{{v}{z'}}{{c}^2} \right)
+\end{equation}
+
+*** can not make x', y', z' in terms of primed time t'
+
+\begin{equation}
+		\begin{aligned}
+			 & \mathbf{U}{'} = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right) }
+			\begin{pmatrix}
+				{{u}_{x}}                              \\
+				{{u}_{y}}                              \\
+				{\gamma} \left( {{u}_{z}}- {v} \right) \\
+			\end{pmatrix}
+			\\
+			 & \text{at position ${\mathbf{r}{'}}$ and time ${t{'}}$ }
+		\end{aligned}
+\end{equation}
+
+\begin{equation}
+	{t{'}} = {\gamma} \bigg(t-\frac{{v}{z}}{{c}^2}\bigg)
+\end{equation}
+
+\begin{equation}
+	{z} = {\gamma} ({z{'}}+{v}{t{'}})
+\end{equation}
+
+
+*** to be done,
+
+may explain how it is not possible to derive how paths of a particle transforms into a second frame generally
+
+try x,y,z all in terms of time T
+
+try to give just what the aberrated/retarded path would look like i.e. transform retarded to retarded path
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Steps for Changing Frames} \label{sect: Steps for Changing Frames}
+
+This section outlines the steps that should be taken to change between two inertial frames: \newline
+
+Firstly let us talk about going from the retarded coordinates of objects in one frame to a second frame.
+So if in your initial frame, you have an observer at rest at the origin, and different objects are moving around in this frame, if we take the retarded positions $\mathbf{r}_{ret}$ of the objects (i.e.
+as the observer sees them positioned due to the delay in the light from the object), and use the retarded times of these objects which is ${t}_{ret} =-\frac{\|\mathbf{r}_{ret}\|}{c}$ with the coordinate transform, then these retarded positions in the initial reference frame will be transformed to their retarded positions in the second frame at their retarded times within it.
+\newline
+
+Another option is that you want to go from the object's positions that have times that are synchronized with the observer to positions that are also synced with the observer in the primed frame.
+Then we need to start with all objects where they currently are at ${t} = 0$ then the coordinate transformation transforms the positions to the primed positions in the second frame, but at desynchronized times, so that we will have to propagate these objects forward or back in time until they are all at the time of the observer at the origin which is ${t{'}} = 0$ if the velocities of the objects are constant then you will only need to find their primed velocities, but if the initial frames velocities are not constant this is then a bit trickier, as you will have to worry about the transformations of acceleration to find its position at ${t{'}} = 0$.
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\chapter{paddy time}
+
+yo paddy this was me just messing about with mathematical properties, this is what i was talking about, turned out it was a $1/R$ relationship not $1/R^2$, but alas!
+
+also the general equations for moving source are given too after this.
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{light from a stationary source:}
+
+If you have a stationary light source at the origin that is emitting light constantly in all directions then if we look at any point (x,y,z) we find that the light (which has came from the origin to that point) has the unit vector of its velocity as
+
+\begin{equation}
+	\mathbf{\hat{c}} = \frac{1}{R}
+	\begin{pmatrix}
+		x \\
+		y \\
+		z
+	\end{pmatrix}
+\end{equation}
+
+at that point
+
+% 1 / (g^2 \frac{u}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
+
+with $R=\sqrt{x^2 + y^2 + z^2}$.
+
+The things in this yellow box here are just the velocity vector's partial derivative with respect to each coordinate (they are just given here to help with the velocity vector  gradient matrix next)
+
+\begin{equation}
+	\mhl
+	{
+	\begin{aligned}
+		\frac{\partial \mathbf{\hat{c}}}{\partial x} &=
+	\frac{1}{ R^3 }
+	\begin{pmatrix}
+		R^2 - x^2 \\
+		- x y \\
+		- x z
+	\end{pmatrix} \\
+	\frac{\partial \mathbf{\hat{c}}}{\partial y} &=
+	\frac{1}{ R^3 }
+	\begin{pmatrix}
+		- y x \\
+		R^2 - y^2  \\
+		- y z
+	\end{pmatrix} \\
+		\frac{\partial \mathbf{\hat{c}}}{\partial z} &= \frac{1}{ R^3}
+		\begin{pmatrix}
+			 -  z  x \\
+			 -  z   y \\
+			 x^2 + y^2
+		\end{pmatrix}\\
+		\frac{\partial \mathbf{\hat{c}}}{\partial t} &=
+	\begin{pmatrix}
+		 0 \\
+		 0 \\
+		 0
+	\end{pmatrix}
+	\end{aligned}
+	}
+\end{equation}
+
+the velocity vector gradient matrix of lights velocity is
+
+\begin{equation}
+J =
+\begin{pmatrix}
+	\frac{\partial c_1}{\partial x} & \frac{\partial c_1}{\partial y} & \frac{\partial c_1}{\partial z} \\
+	\frac{\partial c_2}{\partial x} & \frac{\partial c_2}{\partial y} & \frac{\partial c_2}{\partial z}  
+	 \\
+	\frac{\partial c_3}{\partial x} & \frac{\partial c_3}{\partial y} & \frac{\partial c_3}{\partial z}
+	\end{pmatrix}
+	= \frac{1}{ R^3 }
+	\begin{pmatrix}
+		R^2 - x^2 & - y x & -  z  x \\
+		- x y & R^2 - y^2 & -  z   y  \\
+		 - x z & - y z & x^2 + y^2
+	\end{pmatrix}
+    = \frac{1}{ R^3 }
+    \begin{pmatrix}
+        y^2 + z^2 &   -xy     &    -xz   \\
+           -xy    & x^2 + z^2 &    -yz   \\
+           -xz    &   -yz     & x^2 + y^2
+    \end{pmatrix}
+\end{equation}
+
+the norm of this ends up giving
+
+\begin{equation}
+	norm = \frac{1}{R^3} \sqrt{2(x^4 + y^4 + z^4) + 4 (x^2y^2 + x^2z^2 + y^2z^2)} = \frac{\sqrt{2}}{R^3} \sqrt{(x^2 + y^2 + z^2)^2} = \frac{\sqrt{2}}{ R }
+\end{equation}
+
+which is proportional to $1/R$, the thing i told ya about
+
+the distance between two points on a sphere are proportianl to the angle between them and the radius, so with constant angle you get them we have it proportian to $R$ which should be related
+
+this does not work in spherical polar Coordinates
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{General Equations for moving source:}
+
+\begin{equation}
+	\mathbf{\hat{c}} = \frac{1}{c T_{p}}
+	\begin{pmatrix}
+		x \\
+		y \\
+		z + u T_{p}
+	\end{pmatrix}
+\end{equation}
+
+with
+
+\begin{equation}
+	T_{p} = \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} M
+\end{equation}
+
+% 1 / (g^2 \frac{u}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
+
+with $M=\sqrt{x^2 + y^2 + \gamma_u^2 z^2}$.
+
+\begin{equation}
+	\mhl
+	{
+	\begin{aligned}
+		\frac{\partial \mathbf{\hat{c}}}{\partial x} &=
+	\frac{1}{\gamma_u M ( \frac{u}{c} \frac{\gamma_u z}{M} + 1 )^2}
+	\begin{pmatrix}
+		1 - \frac{x^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M} \\
+		- \frac{x}{M} \frac{y}{M} \\
+		- \frac{x}{M} \frac{z}{M}
+	\end{pmatrix} \\
+	\frac{\partial \mathbf{\hat{c}}}{\partial y} &=
+	\frac{1}{\gamma_u M ( \frac{u}{c} \frac{\gamma_u z}{M} + 1 )^2}
+	\begin{pmatrix}
+		- \frac{y}{M} \frac{x}{M} \\
+		1 - \frac{y^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M} \\
+		- \frac{y}{M} \frac{z}{M}
+	\end{pmatrix} \\
+		\frac{\partial \mathbf{\hat{c}}}{\partial z} &= \frac{1}{\gamma_u M
+		(  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
+		\begin{pmatrix}
+			\gamma_u ( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
+			\gamma_u ( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
+			\frac{ x^2 + y^2 }{M^2}
+		\end{pmatrix}\\
+		\frac{\partial \mathbf{\hat{c}}}{\partial t} &= \frac{-u}{\gamma_u M (  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
+	\begin{pmatrix}
+		\gamma_u ( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
+		\gamma_u ( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
+		 \frac{ x^2 + y^2 }{M^2}
+	\end{pmatrix}
+	\end{aligned}
+	}
+\end{equation}
+
+maybe use spacetime gradient on velocity? with the velocity being $( 0 , c_x , c_y , c_z )$ (not four velocity!) giving
+
+gradient being $( \delta_t , \delta_x , \delta_y , \delta_z )$
+
+\begin{equation}
+    J =
+    \begin{pmatrix}
+        0 & 0 & 0 & 0 \\
+        \frac{\partial c_x}{c \partial t} & \frac{\partial c_x}{\partial x} & \frac{\partial c_x}{\partial y} & \frac{\partial c_1}{\partial z} \\
+        \frac{\partial c_y}{c \partial t} & \frac{\partial c_y}{\partial x} & \frac{\partial c_y}{\partial y} & \frac{\partial c_1}{\partial z} \\
+        \frac{\partial c_z}{c \partial t} & \frac{\partial c_z}{\partial x} & \frac{\partial c_z}{\partial y} & \frac{\partial c_1}{\partial z} \\
+    \end{pmatrix}
+\end{equation}
+
+for norm should above have negative time parts? or make complex?
+
+also what about material derivative in the form:
+
+\begin{equation}
+    \rho {\frac {\mathrm {D} \mathbf {u} }{\mathrm {D} t}}=\rho \left({\frac {\partial \mathbf {u} }{\partial t}}+(\mathbf {u} \cdot \nabla )\mathbf {u} \right)
+\end{equation}
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\chapter{differentials form light field}\label{ch: differentials form light field}
+
+%███████████████████████████████████████████████████████████████████
+\subsection{General Infintesmal Change in all Spatial Coordinates:}
+
+
+now we will see what happens when we have an infintesmal change from an intial point $(x,y,z)$ to $(x_2,y_2,z_2)=(x +dx,y+dy,z+dz)$
+
+two useful simifications we can do is first on $M$ for the point after the displacement we can use the taylor expansion to get
+
+\begin{equation}
+	\begin{aligned}
+		M_2 &= \sqrt{(x+dx)^2 + (y+dy)^2 + \gamma_u^2 (z+dz)^2} \\
+		&= \sqrt{x^2 + y^2 + \gamma_u^2 z^2} + \frac{xdx + ydy + \gamma^2 zdz}{\sqrt{x^2 + y^2 + \gamma_u^2 z^2}} \\
+		&= M + \frac{xdx + ydy + \gamma^2 zdz}{M}
+	\end{aligned}
+\end{equation}
+
+giving the change in $M$ as
+
+\begin{equation}
+	dM = M_2 - M = \frac{xdx + ydy + \gamma^2 zdz}{M}
+\end{equation}
+
+\begin{equation}
+		cT_{p} - cT_{p2} = - \gamma_u^2 \frac{u}{c} dz - \gamma_u dM
+\end{equation}
+
+now from the light velocity unit vector we have
+
+which gives
+
+\begin{equation}
+	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}} = \mathbf{\hat{c}}_2 = \frac{1}{c T_{p2}}
+	\begin{pmatrix}
+		x_2 \\
+		y_2 \\
+		z_2 + u T_{p2}
+	\end{pmatrix} - \frac{1}{c T_{p}}
+	\begin{pmatrix}
+		x \\
+		y \\
+		z + u T_{p}
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}} = \frac{1}{c T_{p} \cdot c T_{p2}}
+	\begin{pmatrix}
+		c T_{p} x_2 - c T_{p2} x\\
+		c T_{p} y_2 - c T_{p2} y\\
+		c T_{p} (z_2 + u T_{p2}) - c T_{p2} (z + u T_{p})
+	\end{pmatrix}
+\end{equation}
+
+%███████████████████████████████████████████████████████████████████
+\subsection{Infintesmal Change in $z$-direction:}
+
+for only a infintesmal change in z we have $x_2=x$, $y_2=y$ and $z_2 = z + dz$ giving
+
+\begin{equation}
+	dM = \frac{\gamma^2 z d z}{M}
+\end{equation}
+
+\begin{equation}
+	\begin{aligned}
+	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}} &= \frac{1}{c T_{p} \cdot c T_{p2}}
+	\begin{pmatrix}
+		(c T_{p} - c T_{p2}) x \\
+		(c T_{p} - c T_{p2}) y \\
+		c T_{p} (z + dz + u T_{p2}) - c T_{p2} (z + u T_{p})
+	\end{pmatrix} \\
+	&= \frac{1}{c T_{p} \cdot c T_{p2}}
+	\begin{pmatrix}
+		(c T_{p} - c T_{p2}) x \\
+		(c T_{p} - c T_{p2}) y \\
+		(c T_{p} - c T_{p2})  z + c T_{p} dz
+	\end{pmatrix} \\
+	&= \frac{1}{c T_{p} \cdot c T_{p2}}
+	\begin{pmatrix}
+		(- \gamma_u^2 \frac{u}{c} d z - \gamma_u \frac{\gamma^2 z d z}{M}) x \\
+		(- \gamma_u^2 \frac{u}{c} d z - \gamma_u \frac{\gamma^2 z d z}{M}) y \\
+		(- \gamma_u^2 \frac{u}{c} d z - \gamma_u \frac{\gamma^2 z d z}{M})  z + (\gamma_u^2 \frac{u}{c}z + \gamma_u M) dz
+	\end{pmatrix} \\
+	\frac{d\mathbf{\hat{c}}}{dz} &= \frac{\gamma_u^2}{c T_{p} \cdot c T_{p2}}
+	\begin{pmatrix}
+		(-  \frac{u}{c}  - \frac{\gamma z }{M}) x \\
+		(-  \frac{u}{c}  - \frac{\gamma z }{M}) y \\
+		\frac{M}{\gamma_u} -  \frac{\gamma z^2 }{M}
+	\end{pmatrix}
+	\end{aligned}
+\end{equation}
+
+substituting in the denominator's times and removing negligible terms and, we have
+
+\begin{equation}
+	\frac{d\mathbf{\hat{c}}}{dz} = \frac{\gamma_u^2}{( \gamma_u^2 \frac{u}{c} z + \gamma_u M )^2}
+	\begin{pmatrix}
+		(- \frac{u}{c}  - \frac{\gamma z }{M}) x \\
+		(-  \frac{u}{c}  - \frac{\gamma z }{M}) y \\
+		   \frac{M}{\gamma_u}  -  \frac{\gamma z^2 }{M}
+	\end{pmatrix}
+\end{equation}
+
+now taking an $M$ and $\gamma$ out of each bracket of the denominator and reoving an $M$ from each element of the vector
+
+\begin{equation}
+	\frac{d\mathbf{\hat{c}}}{dz} = \frac{1}{M
+	(  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
+	\begin{pmatrix}
+		( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
+		( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
+		 \frac{1}{\gamma_u}\frac{ x^2 + y^2 }{M^2}
+	\end{pmatrix}
+\end{equation}
+
+%███████████████████████████████████████████████████████████████████
+\subsection{Infintesmal Change in $x$-direction:}
+
+now for only a infintesmal change in $x$ we have $x_2=x +dx$, $y_2=y$ and $z_2 = z$ giving
+
+\begin{equation}
+	dM = \frac{xdx}{M}
+\end{equation}
+
+\begin{equation}
+	cT_{p} - cT_{p2} = - \gamma_u dM
+\end{equation}
+
+
+\begin{equation}
+	\begin{aligned}
+	\mathbf{\hat{c}}_2 - \mathbf{\hat{c}} &= \frac{1}{c T_{p} \cdot c T_{p2}}
+	\begin{pmatrix}
+		c T_{p} x_2 - c T_{p2} x\\
+		c T_{p} y_2 - c T_{p2} y\\
+		c T_{p} (z_2 + u T_{p2}) - c T_{p2} (z + u T_{p})
+	\end{pmatrix} \\
+	&=
+	\frac{1}{c^2 T_{p} T_{p2}}
+	\begin{pmatrix}
+		(c T_{p} - c T_{p2}) x + c T_{p} dx \\
+		(c T_{p} - c T_{p2}) y \\
+		(c T_{p} - c T_{p2}) z
+	\end{pmatrix} \\
+	&=
+	\frac{1}{c^2 T_{p} T_{p2}}
+	\begin{pmatrix}
+		(- \gamma_u \frac{xdx}{M}) x + c (\gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} M) dx \\
+		(- \gamma_u \frac{xdx}{M}) y \\
+		(- \gamma_u \frac{xdx}{M}) z
+	\end{pmatrix} \\
+	\frac{d\mathbf{\hat{c}}}{dx} &=
+	\frac{\gamma M}{c^2 T_{p} T_{p2}}
+	\begin{pmatrix}
+		1 - \frac{x^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M} \\
+		- \frac{x}{M} \frac{y}{M} \\
+		- \frac{x}{M} \frac{z}{M}
+	\end{pmatrix}
+\end{aligned}
+\end{equation}
+
+% no gamma for z in z component because thats not z thats because of effecting factors just for the coordinate
+
+%███████████████████████████████████████████████████████████████████
+\subsection{Infintesmal Change in time:}
+
+Now for an infintesmal change in time we have the source shifting a distance $u dt$ in the z direction, giving the equvialent of the second lights propagation direction with a z-position of $ dz = - u dt$, substituting this into the z derivative and rearranging gives the time derivative as
+
+\begin{equation}
+	\frac{d\mathbf{\hat{c}}}{dt} = \frac{-u}{M (  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
+	\begin{pmatrix}
+		( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
+		( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
+		 \frac{1}{\gamma_u}\frac{ x^2 + y^2 }{M^2}
+	\end{pmatrix}
+\end{equation}

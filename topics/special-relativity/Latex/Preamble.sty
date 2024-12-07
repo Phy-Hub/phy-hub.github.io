@@ -23,6 +23,17 @@
 
 %
 \usepackage{multicol}
+\usepackage{mdframed}
+
+% derivations environment
+\newenvironment{derivation}{
+    \textbf{\color{gray}derivation:} \\
+    %\vspace{-0.45\baselineskip}{\color{gray}\rule{\baselineskip}{0.4pt}}
+    \begin{mdframed}[linecolor=gray, backgroundcolor=Beige, topline=false, rightline=false, bottomline=false]
+        \color{gray}  }{
+    \end{mdframed}
+    \vspace{-0.45\baselineskip}{\color{gray}\rule{\baselineskip}{0.4pt}}
+    \vspace{\baselineskip}}
 
 %█████████████████████████████████████████████████████
 % MATH

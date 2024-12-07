@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber output/Handbook_of_Special_Relativity"] 1732125224.43103 "output/Handbook_of_Special_Relativity.bcf" "output/Handbook_of_Special_Relativity.bbl" "output/Handbook_of_Special_Relativity" 1733573105.88543 0
-  "output/Handbook_of_Special_Relativity.bcf" 1733573105 108706 6b67517a3796e3e8ca4451924076de0f "pdflatex"
+["biber output/Handbook_of_Special_Relativity"] 1732125224.43103 "output/Handbook_of_Special_Relativity.bcf" "output/Handbook_of_Special_Relativity.bbl" "output/Handbook_of_Special_Relativity" 1733573232.79651 0
+  "output/Handbook_of_Special_Relativity.bcf" 1733573232 108706 6b67517a3796e3e8ca4451924076de0f "pdflatex"
   "refs.bib" 1728583394 795 956e55ddb15bced3b8e8f52fb5b6081d ""
   (generated)
   "output/Handbook_of_Special_Relativity.bbl"
   "output/Handbook_of_Special_Relativity.blg"
   (rewritten before read)
-["pdflatex"] 1733573098.14295 "c:/Users/one_p/OneDrive/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/Handbook_of_Special_Relativity.tex" "output/Handbook_of_Special_Relativity.pdf" "Handbook_of_Special_Relativity" 1733573105.88645 0
+["pdflatex"] 1733573228.27603 "c:/Users/one_p/OneDrive/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/Handbook_of_Special_Relativity.tex" "output/Handbook_of_Special_Relativity.pdf" "Handbook_of_Special_Relativity" 1733573232.79776 0
   "C:/Users/one_p/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1731504752 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/one_p/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1715613132 11548 0f14d0117e9e66ef2c570fc60413ffe6 ""
   "C:/Users/one_p/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1712088398 24236005 4934870ea662d3ddca7d0c6dd4054758 ""
@@ -283,7 +283,7 @@
   "C:/Users/one_p/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1695383086 20785 f7d1133a287929598a897c93f8f4c44b ""
   "Handbook_of_Special_Relativity.tex" 1730921686 619 8b1b7eccefb2249cc08a7b89827e8f1e ""
   "Preamble.sty" 1732298320 2608 f7bf896d64d8d86083fad7cf7717c839 ""
-  "Tex/Main_Matter.tex" 1733573096 219505 715533f0af6fb9c9d0423d1d00611642 ""
+  "Tex/Main_Matter.tex" 1733573223 219492 bb0154453bf9b851e8b7063cebb1f3d9 ""
   "Tex/Terms/Definitions.tex" 1729786246 6386 f7083d539366f9ba5f6cc949dc9f8f94 ""
   "Tex/Terms/Terms_ch2.tex" 1720819814 2638 04e702cdaf3a76f24430a17c21dd0196 ""
   "Tex/Terms/Terms_ch3.tex" 1720819712 429 bfe8e1b26300fcdffa3d856d41b03bc7 ""
@@ -335,12 +335,12 @@
   "images/pdf/lorry_torch.pdf" 1714776641 182340 d11f56d716fd72d5b99baab2f6256acd ""
   "images/pdf/rats_moving.pdf" 1714776652 4796 7798253083f5d7d78e4b0b51b170dbb7 ""
   "images/pdf/rats_platform_frame.pdf" 1714776648 256762 56baa123d2229ed30bbd5b5e5599c94e ""
-  "output/Handbook_of_Special_Relativity.aux" 1733573105 69915 e5842fe6fece0c9c353dc03193f4ee04 "pdflatex"
+  "output/Handbook_of_Special_Relativity.aux" 1733573232 69915 e5842fe6fece0c9c353dc03193f4ee04 "pdflatex"
   "output/Handbook_of_Special_Relativity.bbl" 1732125227 4336 34016cc95b2ded7d7ba061dbcf92478b "biber output/Handbook_of_Special_Relativity"
-  "output/Handbook_of_Special_Relativity.out" 1733573105 8119 46221b0f156c60d845efb67e7d82adc6 "pdflatex"
-  "output/Handbook_of_Special_Relativity.pre" 1733573100 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "output/Handbook_of_Special_Relativity.run.xml" 1733573105 2481 d66e984cb2532d166baa2a277f2cae38 "pdflatex"
-  "output/Handbook_of_Special_Relativity.toc" 1733573105 5608 a21e2ebe6349e8259355b94982422a2f "pdflatex"
+  "output/Handbook_of_Special_Relativity.out" 1733573232 8119 46221b0f156c60d845efb67e7d82adc6 "pdflatex"
+  "output/Handbook_of_Special_Relativity.pre" 1733573229 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "output/Handbook_of_Special_Relativity.run.xml" 1733573232 2481 d66e984cb2532d166baa2a277f2cae38 "pdflatex"
+  "output/Handbook_of_Special_Relativity.toc" 1733573232 5608 a21e2ebe6349e8259355b94982422a2f "pdflatex"
   "output/output/tikz/Gamma_Factor.md5" 1728092093 62 b38edc698094ee40cc15c3b970a7894a ""
   "output/output/tikz/Length_contraction_moving_frame.md5" 1728092083 62 9852eb436225c4e2974b465f65fdeb64 ""
   "output/output/tikz/Length_contraction_rest_frame.md5" 1728092078 62 0cb23e1bd13096c59271964ebdfb3cae ""

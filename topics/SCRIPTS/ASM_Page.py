@@ -113,11 +113,11 @@ def replace_headings(latex_content):
     latex_content = re.sub(r'\\chapter\{(.+?)\}', replace_func, latex_content)
 
     # Replace sections with h2 tags
-    latex_content = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h2>', latex_content)
+    latex_content = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">' + m.group(1) + '</h2>', latex_content)
     # Replace subsections with h3 tags
-    latex_content = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h3>', latex_content)
+    latex_content = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">' + m.group(1) + '</h3>', latex_content)
     # Replace subsubsections with h4 tags
-    latex_content = re.sub(r'\\subsubsection\{(.+?)\}', lambda m:'<h4 id="' + m.group(1).replace(' ', '') + '_header">' + m.group(1) + '</h4>', latex_content)
+    latex_content = re.sub(r'\\subsubsection\{(.+?)\}', lambda m:'<h4 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">' + m.group(1) + '</h4>', latex_content)
 
     latex_content += f"\n<div>\n<a onclick=\"showContent('ch{counter[0]-1}_wrap')\" style=\"font-weight: bold;\"> < Previous </a> \n</div>\n"
     latex_content += '</section>'

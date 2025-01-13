@@ -261,7 +261,6 @@ For now, though, we will continue building up the concepts of special relativity
 
 %*** Discuss the experimental evidence for time dilation using atomic clocks or the muon experiment.
 
-
 %███████████████████████████████████████████████████████████████████
 \subsection{Simultaneity} \label{subsect: Simultaneity}
 
@@ -532,8 +531,6 @@ If you look closely at the diagrams, you will see the aberrated rings of all the
 	\label{fig: vector field of light source}
 \end{figure}
 %███████████
-
-
 
 In particle physics, the photon is the particle that composes light.
 It is the carrier of the electromagnetic force between charges.
@@ -1308,7 +1305,7 @@ We can see when the $\gamma$-factor's influence starts to become significant fro
 			\addplot[thick] {1/sqrt(1-x^2)};
 		\end{axis}
 	\end{tikzpicture}
-	\caption{\textbf{$\boldsymbol{\gamma}$-factor.} A diagram, showing the magnitude of $\gamma$ with increasing ratio of primed frame's speed to the speed of light, with ${\gamma}$ tending to infinity as ${v}/{c}\rightarrow 1$.}
+	\caption{$\boldsymbol{\gamma}$\textbf{-factor.} A diagram, showing the magnitude of $\gamma$ with increasing ratio of primed frame's speed to the speed of light, with ${\gamma}$ tending to infinity as ${v}/{c}\rightarrow 1$.}
 	\label{fig: Gamma Factor}
 \end{figure}
 %███████████
@@ -1408,8 +1405,6 @@ For those interested; The generalized velocity \hyperlink{def-transform}{transfo
 \end{equation}
 
 with ${\mathbf{v}}$ being the frame's velocity in any generalized direction.
-
-
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -1676,7 +1671,6 @@ This retarded position is at the retarded time, if you wanted to find the positi
 	\end{pmatrix}
 \end{equation}
 
-
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Transformed Retarded Coordinates} \label{sect: Delayed View of Transformed Coordinates}
@@ -1717,7 +1711,6 @@ if the initial frame is where we see everything at when we are still, then if th
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Perceived Velocity} \label{sect: Perceived Velocity}
-
 
 From Section (\ref{subsect: Perceived vs Actual Speed}) we seen that objects can be perceived to be going faster than light even if they are not.
 Here we will show how to find the percieved speed of objects.
@@ -1805,7 +1798,6 @@ This section is to just show an interesting concept, that should be taken into a
 
 % *** todo: wanna get the relative delayed view proper coordinate density in the primed frame, there should also be a rotational aspect to it due to the non-uniform distribution of delayed proper coordinates
 
-
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Summary}
@@ -1821,7 +1813,6 @@ What we have learned here will be used when transforming a field of light pulses
 
 %███████████████████████████████████████████████████████████████████
 \printbibliography[segment=\therefsegment, heading=subbibliography]
-
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -1914,7 +1905,6 @@ with
 	\end{aligned}
 \end{equation}
 
-
 % Some useful formulae for later are the unit vectors
 
 % \begin{equation}
@@ -1961,9 +1951,574 @@ with
 % \end{equation}
 
 %███████████████████████████████████████████████████████████████████
-\section{Surface Element on a Sphere} \label{subsect: Surface Element on a Sphere}
+%███████████████████████████████████████████████████████████████████
+\section{Light Velocity Transform} \label{sect: Light Velocity Transform}
 
-If we define a sphere with radius $r$ and want to find an infinitesimal portion of the surface of the sphere at angles ${\theta}$ and ${\phi}$ as shown on this figure:
+The speed of light remains the same after transforming between frames, but the velocity does not, as the direction changes.
+The velocity transformation in the case where the speed is that of light, $\|u\| = {c}$, with the direction in the initial frame at an angle $\alpha$ from the z-axis and $\varphi$ from the x-axis, so that the velocity of light in spherical polar coordinates is
+
+\begin{equation}
+	\mathbf{c} = {c} \cdot {\mathbf{\hat{c}}}= {c}
+	\begin{pmatrix}
+		\cos{\varphi}\sin{\alpha} \\
+		\sin{\varphi}\sin{\alpha} \\
+		\cos{\alpha}              \\
+	\end{pmatrix},
+\end{equation}
+
+then from the velocity \hyperlink{def-transform}{transform} from equation \eqref{eq: velocity transform} we get the primed light's velocity as
+
+% \begin{equation}
+% \begin{aligned}
+% & {{u}_{x}}{'} = \frac{c\sin\alpha\cos\varphi}{{\gamma} \bigg(1-\frac{v\cos\alpha}{c}\bigg) } \\ & {{u}_{y}}{'} = \frac{c\sin\alpha\sin\varphi}{{\gamma} \bigg(1-\frac{v\cos\alpha}{c}\bigg) } \\ & {{u}_{z}}{'} = \frac{c\cos\alpha- {v}}{ \bigg(1-\frac{v\cos\alpha}{c}\bigg) }
+% \end{aligned}
+% \end{equation}
+
+\begin{equation}
+	\label{eq: velocity transform for light}
+	\mhl{
+		\begin{aligned}
+			 & \mathbf{c}{'} =
+			c
+			\begin{pmatrix}
+				\cos\varphi\sin\alpha{'} \\
+				\sin\varphi\sin\alpha{'} \\
+				\cos\alpha{'}            \\
+			\end{pmatrix}
+			=
+			\dfrac{c}{{\gamma}\left(1-\frac{v}{c} \cos\alpha\right) }
+			\begin{pmatrix}
+				\cos\varphi\sin\alpha                          \\
+				\sin\varphi\sin\alpha                          \\
+				{\gamma} \left( \cos\alpha-\frac{v}{c} \right) \\
+			\end{pmatrix}
+			\\
+			 & \text{at position $\mathbf{r}{'}$ and time ${t{'}}$ }
+		\end{aligned}
+	}
+\end{equation}
+
+This still has the same speed of light, which can be shown by taking the magnitude of the velocity vector (that is the square root of the squares of all its elements).
+However, the angle of propagation has been changed.
+
+We will make use of the transformation of the cosine we can get from the z-component which gives
+
+\begin{equation}
+	\label{eq: cosine transform}
+	\cos\alpha{'} = \dfrac{{\gamma} \left( \cos\alpha-\frac{v}{c} \right)}{{\gamma}\left(1-\frac{v}{c} \cos\alpha\right) }
+\end{equation}
+
+with its inverse achieved by swaping the primed and proper coordinates and taking the negative of the frames velocity, giving
+
+\begin{equation}
+	\label{eq: inverse cosine transform}
+	\cos\alpha = \dfrac{{\gamma} \left( \cos\alpha{'} + \frac{v}{c} \right)}{{\gamma}\left(1 + \frac{v}{c} \cos\alpha{'}\right) }
+\end{equation}
+
+This equation shows how the angle of the emitted light changes, and will be needed in the next chapter.
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Doppler Effect} \label{sect: Doppler Effect}
+
+When we swap between frames there is also a change in light's wavelength, It is called the doppler effect, which we will describe using the help of the following simple figure of light being emitted from a source in its rest frame and a frame that it is moving.
+
+%█████████████
+\begin{figure}[H]
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\tikzsetnextfilename{Tikz_Lights_angle_with_particle_in_its_proper_frame}
+		\begin{tikzpicture}[scale = 8]
+			\draw[red,ultra thick,->] (0,0,0)--(0.235,-0.05,0) node[midway,anchor = north]{$\mathbf{c}$};
+			\fill[black] (0,0,0) circle (0.7pt);
+		\end{tikzpicture}
+		\caption{Rest Frame}
+		% \label{fig:sub2}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\tikzsetnextfilename{Tikz_Lights_angle_with_particle_With_particle_moving}
+		\begin{tikzpicture}[scale = 8]
+			\draw[-] (0,0.07,0) to[bend left = 45] (0.06,0.04,0);
+			\node at (0.05,0.095,0) {$\alpha{'} $};
+			\draw[cyan,ultra thick,->] (0,0,0)--(0.21,0.13,0) node[midway,anchor = north]{$\mathbf{c}{'}$};
+			\draw[ultra thick,->] (0,0,0)--(0,0.15,0)node[midway,anchor = east]{$\mathbf{u}{'}$};
+			\fill[black] (0,0,0) circle (0.7pt);
+		\end{tikzpicture}
+		\caption{Moving Frame}
+		% \label{fig:sub1}
+	\end{subfigure}
+	\caption{\textbf{The Doppler effect.} Diagrams showing light being emitted by a source at velocity $\mathbf{c}$ in the source rest frame (left) and a frame were the source is now moving at velocity $\mathbf{u}{'}=-\mathbf{v}$ with the light now being emitted at an angle ${\alpha{'}}$ giving the light's velocity now as ${\mathbf{c}{'}}$. The different color of light in each frame is showing the effect on the lights frequency and hence color from the doppler effect.}
+	\label{fig: Doppler effect}
+\end{figure}
+%███████████
+
+In the rest frame of the source, if it emits a wave at the speed of light in any direction, we have the length the wave has traveled from the source in the infinitesimal time ${d\tau}$ as being
+
+\begin{equation}
+	{d\lambda} = {c}{d\tau}
+\end{equation}
+
+If we change to a frame where the source is now moving at velocity ${\mathbf{u}{'}}$ in the z-direction and we have the wave now emitted at an angle $\alpha{'}$ from the z-axis, traveling a distance ${c}{dt{'}}$ in a time ${dt{'}}$, with the source moving a distance $ u{'} \cos\alpha{'} {dt{'}}$ in the direction of this emitted wave, this leads to a bunching up of the wave in the direction of the movement of the source, as the same amount of the wave has been emitted in this primed time, but the distance it has traveled from source is
+
+\begin{equation}
+	{d\lambda{'}} = {c}{dt{'}}-{u}{'} \cos\alpha{'} {dt{'}} = (1-\frac{u{'}}{c}\cos\alpha{'})cdt{'}
+\end{equation}
+
+we have ${dt{'}} = {\gamma} {d\tau}$, so the ratio of space the wave is taking up in that direction compared to in the \hyperlink{def-proper-frame}{rest frame} is
+
+\begin{equation}
+	Ratio = \frac{d\lambda{'}}{d\lambda} = {\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)
+\end{equation}
+
+since wavelength is inversely proportional to the frequency, and this bunching up at the front will proportionally decrease the wavelength, the frequency ratio $\nu{'}/\nu$ is then
+
+\begin{equation}
+	\label{eq: Doppler Effect}
+	\Phi_{r} = \frac{\nu{'}}{\nu} = \frac{d\lambda}{d\lambda{'}} = \frac{1}{ {\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)}
+\end{equation}
+
+This gives us a formula to find out how the frequency of a moving source's emitted light differs from when it is at rest.
+This is used in astronomy to determine how fast stars and galaxys are moving relative to us on earth.
+
+%*** can I find an experiment for the doppler effect on frequency not just directly in forward or behind in the direction of movement, but at all angles. Ives–Stilwell experiment
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Aberration in Special Relativity} \label{sect: Aberration in Special Relativity}
+
+A moving light source emits more of its radiation in the direction of its movement, and here we will show by how much.
+If a source in its rest frame emits light evenly in all directions, then each emitted light's angle of propagation is transformed using equation \eqref{eq: velocity transform for light}.
+So that the angles of the lights propagation from the z-axis can be found to be
+
+\begin{equation}
+	\label{eq: Cosine transform}
+	\mhl{
+		\cos\alpha{'} = \frac{\mathbf{c}_{z}^{'}}{\|\mathbf{c}{'}\|} = \dfrac{\cos\alpha - \dfrac{v}{c} }{1 - \dfrac{v}{c}\cos\alpha}.
+	}
+\end{equation}
+
+with $v=- u{'}$
+
+This is the relativistic aberration formula \cite{einstein1905electrodynamics}, it shows how the light's propagation direction transforms, shown in Figure (\ref{fig: aberrated emitted light}). To convert back we can use the inverse formula by swaping the primed and none primed notation and taking negative of $v$ giving
+
+\begin{equation}
+	\label{eq: Cosine transform inverse}
+		\cos\alpha = \dfrac{\cos\alpha{'} + \dfrac{v}{c} }{1 + \dfrac{v}{c}\cos\alpha{'}}.
+\end{equation}
+
+%█████████████
+\begin{figure}[H]
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[width = 5cm]{images/pdf/Aberrated_velocities_restframe.pdf}
+		\caption{rest frame}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[width = 5cm]{images/pdf/Aberrated_velocities.pdf}
+		\caption{primed frame}
+	\end{subfigure}
+	\caption{\textbf{Transforming emitted light.} Diagram showing the directions of propagation of an evenly distributed light pulse in the rest frame of a source (left) and the corresponding distribution of the light pulse's propagation directions in a primed frame in which the source is now moving (right), with the colors showing the Doppler effect on the light's frequency from the previous section.}
+	\label{fig: aberrated emitted light}
+\end{figure}
+%███████████
+
+If we want to see the opposite, when light is being absorbed, we can look at Figure (\ref{fig: aberrated absorbed light}) which shows what would happen in the case of incoming light from all directions.
+
+%█████████████
+\begin{figure}[H]
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[width = 5cm]{images/pdf/Aberrated_velocities_inwards_restframe.pdf}
+		\caption{rest frame}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[width = 5cm]{images/pdf/Aberrated_velocities_inwards.pdf}
+		\caption{primed frame}
+	\end{subfigure}
+	\caption{\textbf{Transformeing absorbed light.} Diagram showing the directions of evenly distributed light being absorbed by a reciever in its rest frame (left) and the corresponding distribution of the light pulse's propagation directions in a primed frame in which the reciever is now moving (right), with the colors showing the Doppler effect on the light's frequency.}
+	\label{fig: aberrated absorbed light}
+\end{figure}
+%███████████
+
+It can be seen from equation \eqref{eq: Cosine transform} that as a source's speed tends to the speed of light, $u'/c$ tends to 1 and as a result, $\cos\alpha{'}$ tends to 1.
+Hence all emitted or absorbed light in the source's rest frame tends to the direction of the source's movement.
+But we also have to remember that the flow of time of the moving source relative to the primed frame, will become infinitly slow, coming to a stop at the speed of light.
+That is, the act of emittance of the light stalls.
+For both these reasons the light would remain in the vicinity of the source.
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Relativistic Beaming} \label{sect: Relativistic Beaming}
+
+Relativistic beaming is the combination of both of the two previous sections.
+If we have a single pulse of light that is evenly spherically distributed, then after a certain time it will look like what is shown in the following figure, due to its aberrated emittion and Doppler effected frequency.
+
+%█████████████
+\begin{figure}[H]
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width = 3.8cm]{images/pdf/Rest_Pulse.pdf}
+		\caption{Rest Frame \newline}
+		\label{fig: Relativistic beaming 1}
+	\end{subfigure}
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width = 3.8cm]{images/pdf/Prime_Pulse.pdf}
+		\caption{Primed frame \newline}
+		\label{fig: Relativistic beaming 2}
+	\end{subfigure}
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width = 3.8cm]{images/pdf/Prime_Pulse_Simultaneous.pdf}
+		\caption{Primed frame: synced times}
+		\label{fig: Relativistic beaming 3}
+	\end{subfigure}
+	\caption{\textbf{Relativistic beaming.} Diagram showing, the position of an evenly spherically distributed light pulse after propagating for a certain amount of time, with its current time ${t}=0$, in the rest frame (left), it is also shown in the primed frame using the direct coordinate transform (middle) giving an ellipsoid with unsynchronised times, and also shown in the primed frame with each part of light pulse propagated forward or backwards to the origins time $t{'}=0$ (right). The black dot shows the current location of the source, with grey dot showing its position when the pulse was emitted. all the propagation of the light is in the directly away from this point.}
+	\label{fig Relativistic beaming}
+\end{figure}
+%███████████
+
+The pulse positions in the primed frame with their time synced with the origin are shown in figure (\ref{fig: Relativistic beaming 3}) and can be found from the transformed primed frame coordinates from figure (\ref{fig: Relativistic beaming 2}) by propagating the the light from these coordinates forward or backwards in time to be synced with the origins time of $t{'}=0$, that is
+
+\begin{equation}
+	\mathbf{r}^{'}_{t{'}=0} = \mathbf{r}{'} - \mathbf{c}{'} t{'}
+\end{equation}
+
+This can be extened to multiple pulses as we will do later in the next chapter.
+
+% %███████████████████████████████████████████████████████████████████
+% %███████████████████████████████████████████████████████████████████
+% \section{Retarded Light Pulse Position Transform}\label{sect: Retarded Light Pulse Position Transform}
+
+% *** what about math and diagram for the retarded time it takes light to get to R, i.e at $2T_p$ and the transform of this?
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section[Retarded Light Propagation in Source's Primed Frame]{Retarded Light Propagation in Source's \\ Primed Frame}\label{subsect: Retarded Light Propagation}
+
+There is a delay in the time light is emitted from a source and the time it reaches a reciever, so there is a difference in where you see moving objects compared to where they currently are due to this, and if the object is moving at velocity $\mathbf{u'}$ you see it in a previous position $\mathbf{u'} {T}'_{ret}$ due to this, this is called its retarded position where it was at the retarded time ${T}'_{ret}$.
+The time the object and the light took to propagate from the objects retarded position to where they currently are is the same, $T'_{p}=-{T}'_{ret}$.
+We can use the following figure to find the retarded position, and work out the distance $L'_{p}=\|\mathbf{c'} {T}'_{p}\|$ it has traveled from the retarded position in terms of the positions coordinates and the objects velocity.
+This is done by first finding the propagation time in terms of the observers coordinates and the objects velocity, which can be derived from the following figure:
+
+%█████████████
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{Tikz_Light_Pulse_Primed_Frame}
+	\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
+		%\usetikzlibrary{arrows.meta}
+		%node[anchor = north west]{\textcolor{black}{ $\mathbf{P}$}}; %$\mathbf{P}$}};
+		\draw[gray!40,fill = gray!40] (0,0,0) circle (1pt);
+		\draw[black, thick,->] (0,0.7,0)--(0.29,0.7,0) node[anchor = north]{${y}'$};
+		\draw[black, thick,->] (0,0.7,0)--(0,1,0) node[anchor = west]{${z}'$};
+		\draw[black, thick,->] (0,0.7,0)--(0,0.7,0.45) node[anchor = south east] {${x}'$};
+		\draw[red, thick, dotted,->] (0,0,0)--(0.68,0.88,0) node[midway, right] {$\mathbf{c}' {T}'_{p} $};
+		\draw[red,->] (0,0.7,0)--(0.68,0.9,0) node[midway,above] {\text{ $\mathbf{l'}$}};
+		\draw[blue, fill = blue] (0,0.7,0) circle (1pt);
+		\draw[thick,blue,dotted,->] (0,0,0)--(0,0.66,0);
+		\draw[blue, fill = blue] (0,0.7,0);
+		\draw[blue, thick,->>] (0,0.7,0)--(0,0.8,0) node[left]{$\mathbf{u'}$};
+		\fill[red] (0.7,0.9,0) circle (0.4pt);
+		\node[blue, right] at (0,0.4,0) {$\mathbf{u'} {T}'_{p}$};
+	\end{tikzpicture}
+	\caption{The diagram shows a source particle moving at velocity $\mathbf{u'} = (0,0,u')$ in the z-direction in this frame, with the particle currently at the origin with time ${t'} = 0$, the particle was at the \protect\hyperlink{def-retarded-position}{retarded position} $-\mathbf{u'} {T}'_{p}$ shown in grey (with ${T}'_{p}$ being the propagation time of the light), the emitted light was then propagated from the particles retarded position, along $\mathbf{c'} {T}'_{p}$ shown by red dotted line, to reach position $\mathbf{l'}$ at ${t'} = 0$.}
+	\label{fig: Retarded field outward field transform}
+\end{figure}
+%███████████
+
+%*** explain what is going to be derived and how it will be derived (pre-expose the line of thought):
+%*** make it so that it makes sense whether the derivation is hidden or not
+%█████████████████
+\begin{derivation}
+
+	The triangle that the three vectors make allow us to get the equation for the velocity of the light as
+
+	\begin{equation}
+		\mathbf{c'} T'_{p} = \mathbf{u'} T'_{p} + \mathbf{l'}
+	\end{equation}
+
+	with $\mathbf{l'}=(l_x',l_y',l_z')$, writing out the vectors and rearanging to get the velocity vector for propagated light, gives
+
+	\begin{equation}
+		\mathbf{c'} = \frac{c}{ T'_{p}}
+		\begin{pmatrix}
+			l_x' \\
+			l_y' \\
+			l_z' + u' T'_{p}
+		\end{pmatrix}
+	\end{equation}
+
+	The magnitude of the lights displacement is equal to the distance the light travels in the corresponding propagation time $ c T'_{p} = \|\mathbf{c'} T'_{p}\|$. The square of this gives
+
+	\begin{equation}
+		\begin{split}
+			\left( c T'_{p}\right)^2 & = \|\mathbf{c'} T'_{p}\|^2                        \\
+			                        & = (l_x'^2 + l_y'^2 + l_z'^2) + u'^2 {T'_{p}}^2 + 2u' T'_{p} l_z,
+			%        (c^2 - v^2) T_{p}^2 &=  (x^2 + y^2 + z^2) - 2v T_{p}z
+		\end{split}
+	\end{equation}
+	rearranging this, we get the quadratic
+	\begin{equation}
+		{T'_{p}}^{2} - \left(2\gamma^2\frac{u'}{c^2} l_z'\right)T'_{p} - \frac{\gamma^2}{c^2}(l_x'^2 + l_y'^2 + l_z'^2) = 0,
+	\end{equation}
+	where $\gamma = (1 - u'^2/c^2)^{-1/2}$. Now taking the solution for the past time, and making use of the identity
+	\begin{equation}
+		\gamma^2 = 1+\gamma^2\frac{u'^2}{c^2},
+	\end{equation}
+	we get the result (you can skip past this if you would like, as it doesnt add to understanding)
+	\begin{equation}
+		\begin{split}
+			T'_{p} & = \gamma^2\frac{u'}{c^2}z' + \sqrt{\left(-\gamma^2\frac{u'}{c^2} l_z' \right)^2+\frac{\gamma^2}{c^2}(l_x'^2 + l_y'^2+ l_z'^2)} \\
+			      & = \gamma^2\frac{u'}{c^2} l_z' + \frac{\gamma}{c}\sqrt{l_x'^2+ l_y'^2+\left(1+\gamma^2\frac{u'^2}{c^2}\right) l_z'^2}        \\
+			      & = \gamma^2\frac{u'}{c^2} l_z' + \frac{\gamma}{c}\sqrt{l_x'^2 + l_y'^2+\gamma^2 l_z'^2}                                      \\
+			      & = \gamma^2\frac{u'}{c^2} l_z' + \frac{\gamma}{c} L
+		\end{split}
+	\end{equation}
+
+	with $ L=\sqrt{l_x'^2+l_y'^2+\gamma^2 l_z'^2}$.
+
+	This is the time it has taken to propagate the light from where the source was when it was emitted to reach the current position.
+
+\end{derivation}
+%███████████████
+
+The propagated distance between where the light was emmited and its current position, can then be given from this derivation of $T'_{p}$ as
+
+\begin{equation}
+	\label{eq: propagation distance}
+	L'_{p} = cT'_{p} = \gamma^2 \frac{u'}{c} l_z' + \gamma  L
+\end{equation}
+
+this can then be used to find out how much the intensity of a field composed of spherical pulses of light from the moving source has dispated. as so we can find the density of light at a particular point in the field.
+
+\begin{equation}
+	\label{eq: direction of light from moving source}
+	\mhl{
+		\mathbf{c'} = \frac{c}{ \frac{u'}{c} \gamma \frac{l_z'}{L} + 1}
+		\begin{pmatrix}
+			\frac{1}{\gamma} \frac{l_x'}{L}  \\
+			\frac{1}{\gamma}  \frac{l_y'}{L} \\
+			\gamma \frac{l_z'}{L} + \frac{u'}{c}
+		\end{pmatrix}
+	}
+\end{equation}
+
+We can find the cosine of the angle from the z-axis from the z-component of the unit vector of the velocity of light that is equal to the z-component of this equation with its magnitude $c$ removed, giving
+
+\begin{equation}
+	\label{eq: cos alpha prime}
+	\cos{\alpha'} = \frac{\gamma \frac{l_z'}{L} + \frac{u'}{c}}{ \frac{u'}{c} \gamma \frac{l_z'}{L} + 1}
+\end{equation}
+
+The reason I have explained this seperate this from the next subsection, is that I want to emphasise that the gamma function $\gamma$ has a role to play in retarded positions and times before we even get to swapping frames.
+It has to be this way to allow us to swap between frames smoothly, in special relativity.
+A reminder here, being that we are not changing betwen frames, we are just looking at the delay in signal that light has to get to a particular point, even though we have made use of the gamma symbol to simply the equations like we do in special relativity, we are not evoking special special relativity, but we will be looking at this when swapping between frames in the next section.
+
+We could just as easily have said that this setup system is an initial frame and used the coordinates without the symbol to represent a primed frame ($'$), but we have the choice to denote this as the primed frame, and this will help in a later chapter.
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Emitted Light When Swapping Frame}\label{subsect: Emitted Light When Swapping Frame}
+
+This section is similar to what we have just done, but the emphasis here will be on swapping between frames, and will be used in the next chapter when we have continuous pulses of light in all directions from a source and want to see how this field of light transforms and what it looks like for moving sources.
+
+Here, we will look at light being emitted from a source at rest first and then swap to a frame where the source is now moving, using the lorentz transformation of the emitted lights current locations (from $\mathbf{r}$ to $\mathbf{r}{'}$), but remembering these lorentz transformed times $t'$ are not sychronised with the sources time of zero.
+To find this we need to use primed velocity of light $\mathbf{c}{'}$ to propagate back the light from where it is at $t'$ to were it was at the origins time of zero.
+To get this position $L'$ where the light is at the syncronised time of zero with the source, we can use the triangle formed in figure (\ref{fig: primed frame 1}), which gives $\mathbf{L}' = (\mathbf{c}' - \mathbf{u'}) t'_p$.
+The time $t'_p$ taken for the light to propagate from the source to point $\mathbf{L}'$ in the primed frame, is the dilated propagation time ($t'_p = \gamma t_p$)
+
+%█████████████
+\begin{figure}[H]
+	\begin{subfigure}{.49\textwidth}
+		\tikzsetnextfilename{Tikz_Light_Pulse_Proper_Frame}
+		\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
+			%\usetikzlibrary{arrows.meta}
+			\node[blue] at (0.06,-0.06,0) {$\mathbf{s}$};
+			\draw[blue, thick,->] (0,0,0)--(0.4,0,0) node[anchor = north east]{${y}$};
+			\draw[blue, thick,->] (0,0,0)--(0,0.4,0) node[anchor = north west]{${z}$};
+			\draw[blue, thick,->] (0,0,0)--(0,0,0.55) node[anchor = south east] {${x}$};
+			%\node[red] at (0.08,0.17,0) {$\alpha $};
+			%\draw[red,->] (0,0.25,0) to[bend left = 45] (0.21,0.145,0);
+			\draw[thick,red, dotted,->] (0,0,0)--(0.69,0.46,0) node[midway , right] {\text{ $\mathbf{c} {T}_{p}$}};
+			\fill[blue] (0,0,0) circle (1pt);
+			\fill[black] (0.71,0.48,0) circle (0.4pt) node[above] {\text{$ \mathbf{r}$}};
+		\end{tikzpicture}
+		\caption{proper frame}
+		\label{fig: proper frame 1}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+		\tikzsetnextfilename{Tikz_Light_Pulse_Primed_Frame_2}
+		\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
+			%\usetikzlibrary{arrows.meta}
+			%node[anchor = north west]{\textcolor{black}{ $\mathbf{P}{'}$}}; %$\mathbf{P}{'}$}};
+			\node[gray] at (0.1,-0.1,0) {$\mathbf{s}_{ret}^{'}$};
+			\draw[gray!40,fill = gray!40] (0,0,0) circle (1pt);
+			\fill[red!40] (0.68*0.883,0.9*0.85,0) circle (0.4pt);
+			\draw[black, thick,->] (0,0.7,0)--(0.29,0.7,0) node[anchor = north]{{\color{blue} ${y}$},${y{'}}$};
+			\draw[black, thick,->] (0,0.7,0)--(0,1,0) node[anchor = west]{{\color{blue} ${z}$},${z{'}}$};
+			\draw[black, thick,->] (0,0.7,0)--(0,0.7,0.45) node[anchor = south east] {{\color{blue} ${x}$}, ${x{'}}$};
+			\draw[gray, dashed,->] (0,0,0)--(0.25,0,0) node[anchor = south east]{${y}$};
+			\draw[gray, dashed,->] (0,0,0)--(0,0.2,0) node[anchor = north east]{${z}$};
+			\draw[gray, dashed,->] (0,0,0)--(0,0,0.35) node[anchor = south east] {${x}$};
+			%\node[red] at (0.06,0.17,0) {$\alpha {'}$};
+			%\draw[red,->] (0,0.25,0) to[bend left = 40] (0.15,0.2,0);
+			\draw[red, thick, dotted,->] (0,0,0)--(0.69*0.85,0.88*0.85,0) node[midway, right] {$\mathbf{c}{'} {T}_{p}^{'}$};
+			\draw[gray, thick, dotted] (0.69*0.85,0.88*0.85,0)--(0.69,0.88,0);
+			\draw[black,->] (0,0.7,0)--(0.68,0.9,0) node[midway,above] {\text{ $\mathbf{r}{'}$}};
+			\draw[red,->] (0,0.7,0)--(0.68*0.85,0.9*0.85,0);
+			\node[red] at (0.4,0.68,0) {\text{ $\mathbf{L}{'}$}};
+			\draw[blue, fill = blue] (0,0.7,0) circle (1pt) node[anchor = north west]{$\mathbf{s}{'}$};
+			\draw[thick,blue,dotted,->] (0,0,0)--(0,0.66,0);
+			\draw[blue, thick,->>] (0,0.7,0)--(0,0.8,0) node[left]{$\mathbf{u}$};
+			\fill (0.7,0.9,0) circle (0.4pt);
+			\node[blue, right] at (0,0.4,0) {$\mathbf{u'} {T}_{p}^{'}$};
+		\end{tikzpicture}
+		\caption{primed frame with moving source}
+		\label{fig: primed frame 1}
+	\end{subfigure}
+	\caption{The diagram shows a source particle ${s}$ in blue at rest in the \protect\hyperlink{def-proper-frame}{proper frame}, Fig (a), with a light pulse that has propagated along $\mathbf{c} {T}_{p}$ shown in red, to coordinate $\mathbf{r}$ shown in black, with the current time for whole system being ${t} = 0$. Fig (b), shows the system transformed to a \protect\hyperlink{def-Primed-Frame}{primed frame} moving at velocity $\mathbf{v} = (0,0,v)$ in the z-direction relative to the \protect\hyperlink{def-proper-frame}{proper frame}, such that the particle and its attached proper axis in this frame are moving at velocity $\mathbf{u'} =-\mathbf{v}$ and is currently at the primed origin with time ${t{'}} = 0$. when the light was emitted from the particle, the particle and attached proper axis were at the \protect\hyperlink{def-retarded-position}{retarded position} $\mathbf{s}_{ret}^{'}$ shown in grey, the emitted light was then propagated, along $\mathbf{c}{'} {T}_{p}^{'}$ to reach $\mathbf{L}{'}$ at ${t{'}} = 0$. with it reaching the \protect\hyperlink{def-lorentz-transform}{Lorentz transformed} coordinate $\mathbf{r}{'}$ at desynchronised time $t'$.}
+	\label{fig: appendix Retarded field outward field transform}
+\end{figure}
+%███████████
+
+As visualized in above figure.
+If we have a light source particle ${s}$, in its \hyperlink{def-proper-frame}{rest frame} that had emitted a pulse of light in one direction such that it propagates along $\mathbf{c} {T}_{p}$ to its current position $\mathbf{r}$ at time ${t} = 0$, where $\mathbf{c}$ is the velocity of light and ${T}_{p}$ is the time it took to propagate to $\mathbf{r}$.
+Using the coordinated transform from equation \eqref{eq: Lorentz transformation} on position $\mathbf{r}$ with time ${t} = 0$ we get
+
+\begin{equation}
+	\label{eq: displacement transform}
+	\begin{aligned}
+		\mathbf{r}{'} & =
+		\begin{pmatrix}
+			x          \\
+			y          \\
+			{\gamma} z \\
+		\end{pmatrix},                                  \\
+		\text{at time \ \ \ }                           \\
+		{t{'}}        & =-{\gamma} \frac{{v}{z}}{{c}^2} \\
+	\end{aligned}
+\end{equation}
+
+The light pulse's velocity using the velocity transform from equation \eqref{eq: velocity transform for light} in Cartesian coordinates with the particle's speed in the \hyperlink{def-Primed-Frame}{primed frame} ${v} =-{u'}$ gives the lights velocity to be
+
+\begin{equation}
+	\label{eq: light pulse velocity transform}
+	\mathbf{c}{'} = \dfrac{c}{1 + \dfrac{u'}{c} \frac{z}{R} }
+	\begin{pmatrix}
+		\frac{1}{\gamma} \frac{x}{R} \\
+		\frac{1}{\gamma} \frac{y}{R} \\
+		\dfrac{u'}{c} + \frac{z}{R}   \\
+	\end{pmatrix}
+\end{equation}
+
+% can also show in spherical polar coordinates
+
+The time that the particle emits the light in the \hyperlink{def-proper-frame}{proper frame} is ${T}_{ret} =-{T}_{p}$ which corresponds to the contracted time
+
+\begin{equation}
+	T{'}_{ret} = {\gamma} {T}_{ret} =-{\gamma} {T}_{p}
+\end{equation}
+
+So that in the \hyperlink{def-Primed-Frame}{primed frame}, the \hyperlink{def-retarded-position}{retarded position} that the source particle emits the light pulse is
+
+\begin{equation}
+	\mathbf{s}_{ret}^{'} =-{\gamma} {T}_{p} \mathbf{u'}
+\end{equation}
+
+to find the position the light pulse is currently at, at time ${t{'}} = 0$, we have to rewind its time from the position $\mathbf{r}{'}$ that it is at when using the \hyperlink{def-lorentz-transform}{Lorentz transform} at time ${t{'}} =-{\gamma}\frac{{v}{z}}{{c}^2} = {\gamma}\frac{u' z}{{c}^2}$ taking away how much it propagated from the desynchronised time to get the current times position of the light to be (${t{'}_{p}} =-{T{'}_{ret}}$).
+
+\begin{equation}
+	\begin{split}
+		\mathbf{L}{'}
+		 & = \mathbf{s}_{ret}^{'} + \mathbf{c}{'}t{'}_{p}
+		\\
+		 & \color{gray} = \left( \mathbf{c}{'}-\mathbf{u'} \right)t{'}_{p}
+		\\
+		 & \color{gray} = \dfrac{{c}t{'}_{p}}{{\gamma}\left(1 + \frac{z}{R} \dfrac{u'}{c} \right)}
+		\begin{pmatrix}
+			\frac{x}{R}                                        \\
+			\frac{y}{R}                                        \\
+			{\gamma} \left( \frac{z}{R} + \dfrac{u'}{c} \right) \\
+		\end{pmatrix}
+		-
+		\begin{pmatrix}
+			0            \\
+			0            \\
+			u' {t{'}_{p}} \\
+		\end{pmatrix}
+		\\
+		 & \color{gray} = \dfrac{{c}t{'}_{p}}{{\gamma}\left(1 + \frac{z}{R} \dfrac{u'}{c} \right)}
+		\begin{pmatrix}
+			\frac{x}{R}                                                                                                                     \\
+			\frac{y}{R}                                                                                                                     \\
+			{\gamma} \left( \frac{z}{R} + \dfrac{u'}{c} \right)-{\gamma}\left(1 + \frac{z}{R} \dfrac{u'}{c} \right) \dfrac{u'}{c} \\
+		\end{pmatrix}
+		\\
+		 & = \dfrac{{c}t{'}_{p}}{{\gamma}\left(1 + \frac{z}{R} \dfrac{u'}{c} \right)}
+		\begin{pmatrix}
+			\frac{x}{R}                    \\
+			\frac{y}{R}                    \\
+			\frac{1}{{\gamma}} \frac{z}{R} \\
+		\end{pmatrix}
+	\end{split}
+\end{equation}
+
+now using $ t{'}_{p} = {\gamma} {T}_{p}$ and ${T}_{p}= R / c$
+
+\begin{equation}
+	\label{eq: time synced transform}
+	\mhl{
+		\begin{aligned}
+			& \mathbf{L}{'} = \dfrac{1}{\left(1 + \frac{z}{R} \dfrac{u'}{c} \right)}
+			\begin{pmatrix}
+				x                    \\
+				y                    \\
+				\frac{1}{{\gamma}} z \\
+			\end{pmatrix}
+			\\
+			& \text{at time ${t{'}}=0$ }
+		\end{aligned}
+	}
+\end{equation}
+
+
+This is the position of the light at time zero, i.e. the same time as the source which is at the origin at time zero. This equation is what we will use to transform the positions of light, when we look at light that is being continuously emmited from a source, as shown in figure (\ref{fig: full field transformation}).
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\input{Tex/Terms/Terms_ch4.tex}
+
+%███████████████████████████████████████████████████████████████████
+\printbibliography[segment=\therefsegment, heading=subbibliography]
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\chapter{A Point Source: Continually Emitting Light Radially Outwards} \label{ch: A Point Source Continually Emitting Light}
+
+*** - different mathematical properties of this field of light
+
+This chapter will look at a source that continuously emits evenly distributed pulses of light radially outwards, giving in its rest frame a "field" of light that spreads out the further it is from the source.
+The amount this is spread out, at a distance $r$, is proportional to the inverse square of the distance $1/r^2$.
+The inverse square law is used to decribe how the classical forces between two masses or charges disipate with the distance between them.
+How this "field" looks is shown in the first diagram in figure (\ref{fig: full field transformation}), with the second diagram in the figure showing how this "field" of light would look like in a frame with the source now moving, using equation \eqref{eq: time synced transform} to transform each part of the pulses of light.
+This second frame shows the combination of the relativistic doppler and aberration effects together, which is called relativistic beaming.
+The third diagram of the figure shows the rings of each pulse, the doppler effect in each direction can be seen from the ammount of spreading out or compacting of the rings in that direction, with the aberrational effect being shown on each particular ring with how the light is spread out on that ring.
+
+Now that we have the means to transform this "field" of light, we can look at some of its physical/mathematical features/properties, looking at each feature in it rest frame and then finding out how it extends to a frame in which it is moving.
+First we will look at the flux of light at each point which is a measure of the rate of flow at each position.
+Then we will look at a few properties that are proportional to the square of the distance from the source in its rest frame (properties that have an inverse sqaure law), and see what these look like for frames in which the sources are now moving.
+
+So lets start by seeing what this light looks like in each frame.
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Surface Element on a Sphere and the Solid Angle} \label{subsect: Surface Element on a Sphere}
+
+If we define a sphere with radius $r$ we can find an infinitesimal portion of the surface of the sphere at angles ${\theta}$ and ${\phi}$ as shown on this figure:
 
 %█████████████
 \begin{figure}[H]
@@ -2112,519 +2667,100 @@ The surface element at a constant radius ${r}$, spanning from $\theta$ to $\thet
 	%\left\|\frac{\partial {\mathbf R}}{\partial \theta} \times \frac{\partial {\mathbf R}}{\partial \phi}\right\| \mathrm{d}\theta \,\mathrm{d}\phi = \left\| r \mathbf{\mathbf{\hat{\text{$\theta$}}}} \times r \sin \theta \mathbf{\mathbf{\hat{\text{$\phi$}}}} \right\|
 \end{equation}
 
-We will also introduce the idea of a solid angle $\Omega$ which is a measure of the amount of the field of view from some particular point that a given object covers. For the differential surface element from the figure we have the differential solid angle
+This surface elements size depends on the angle from the z-axis and the distance from the origin, but if we want a quantity that only depends on the angle, we can divide the surface element by $r^2$, this gives what is called the solid angle.
+The solid angle element $d\Omega$ is a measure of the amount of the field of view, from the origin, that the surface element covers. For the differential surface element shown in the figure we have the differential solid angle
 
 \begin{equation} \label{eq: solid angle}
 	\mathrm{d}\Omega = \frac{\mathrm{d}S}{r^2} = \sin\theta \,\mathrm{d}\theta \,\mathrm{d}\phi
-\end{equation}%██████
-
-If we were to integrate this over the whole sphere $ \int_{0}^{2\pi} \int_{0}^{\pi} \, \sin \phi \, d\theta \, d\phi$, we would get this equal to $4\pi$, which is when the view from the origin is fully covered by the surface.
-The fraction of the view from the origin that is covered by a solid angle is given by $\Omega/ 4\pi$.
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{Light Velocity Transform} \label{sect: Light Velocity Transform}
-
-The speed of light remains the same after transforming between frames, but the velocity does not, as the direction changes.
-The velocity transformation in the case where the speed is that of light, $\|u\| = {c}$, with the direction in the initial frame at an angle $\alpha$ from the z-axis and $\varphi$ from the x-axis, so that the velocity of light in spherical polar coordinates is
-
-\begin{equation}
-	\mathbf{c} = {c} \cdot {\mathbf{\hat{c}}}= {c}
-	\begin{pmatrix}
-		\cos{\varphi}\sin{\alpha} \\
-		\sin{\varphi}\sin{\alpha} \\
-		\cos{\alpha}              \\
-	\end{pmatrix},
 \end{equation}
 
-then from the velocity \hyperlink{def-transform}{transform} from equation \eqref{eq: velocity transform} we get the primed light's velocity as
+If we were to integrate this over the whole sphere $ \int_{0}^{2\pi} \int_{0}^{\pi} \, \sin \phi \, d\theta \, d\phi$, we would get $4\pi$, which is when the view from the origin is fully covered by the surface.
+The fraction of the view from the origin that is covered by a solid angle $\Omega$ is given by $\Omega/ 4\pi$.
+
+
+% %███████████████████████████████████████████████████████████████████
+% %███████████████████████████████████████████████████████████████████
+% \section{Intensity of Light per surface area}\label{sect: Intensity of Light per surface area}
+
+% If in a sources rest frame we have surface element $\mathrm{d}s = l_{p}^2 \sin\theta \,\mathrm{d}\theta \,\mathrm{d}\phi$ with an amount of light $a$ on this surface, then when we switch to another frame there is still the same amount of this light on this surface in the primed frame which is now given by $\mathrm{d}s' = l_{p}'^2 \sin\theta' \,\mathrm{d}\theta' \,\mathrm{d}\phi'$ *** hmm is it $l_p'$
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Density of Light in a Infintesmal Solid Angle from a Point Source}\label{sect: Intensity of Light per differential solid angle from a Point Source}
+
+% *** flowrate,  radial/angular concentration/density
+%we can also look at what is called flux, which is defined as ...
+%Flux is a messure of how much of a quantity is passing through a given surface in a given time, in our case it is how much light is passing through each infintesmal surface that is perpedicular to the direction the light is propagating at that point per infintesmal unit of time.
+%- Add more meaning to \hyperlink{def-flux}{flux} section
+%-\hyperlink{def-flux}{flux} describes the rate at which a quantity flows across a surface (flowrate per unit area)
+%%███████████████████████████████████████████████████████████████████
+%\subsection{Flux of light Through Surface Element}\label{subsect: Flux Through Surface Element}
+%... radial \hyperlink{def-flux}{flux} through surface element (search radial \hyperlink{def-flux}{flux})
+
+If we have a source at rest emitting light out in all directions we can say at certain angles $\theta = \alpha$ and $\phi= \varphi$ we have have a quantity of light $Q$ emitted in the solid angle
+
+\begin{equation}
+	d\Omega = \sin{\alpha} d\alpha d\varphi,
+\end{equation}
+
+So this solid angle encompasses a certain amount of the wavefront, this is the same amount of the wavefront that is encompassed by the coinciding aberrated differential solid angle
+
+\begin{equation}
+	d\Omega{'} = \sin{\alpha'} d\alpha{'} d\varphi{'}.
+\end{equation}
+
+We can calculate this element by differentiating both sides of eq.
+\eqref{eq: Cosine transform} with respect to $\alpha$ \cite{hogg1997special}, which after a bit of work gives
+
+\begin{equation}
+	\sin{\alpha'} d\alpha{'} = \dfrac{1}{{\gamma}^2\left(1 + \dfrac{u'}{c}\cos{\alpha}\right)^2} \sin{\alpha} d\alpha
+\end{equation}
+
+now using this and ${d\varphi{'}} = {d\varphi}$ (as the angle ${\varphi}$ is always perpendicular to the motion of the particle and hence unaffected by \hyperlink{def-transform}{transformation}) we have the solid angle in the \hyperlink{def-Primed-Frame}{primed frame} given as
+
+\begin{equation}
+		d\Omega{'} = \dfrac{1}{{\gamma}^2\left(1 + \dfrac{u'}{c}\cos{\alpha}\right)^2} \sin{\alpha} d\alpha d\varphi.
+\end{equation}
+
+%The overall amount of wavefront is conserved, as can be seen when integrating over the corresponding solid angle in either frame, both of which give the same value of $4\pi$.
+% proportional to the amount of the wavefront in the given proper differential element of the solid angle, and
+
+If there is an amount of light/quantity of light $Q$ in the solid angle element, then the density of light in the solid angle in both frames is $Q/d\Omega$ and $Q/d\Omega{'}$ respectively, giving the ratio of the density in the solid angle element in the primed frame relative to the rest frame as
+
+\begin{equation}
+	\Phi_\Omega = \frac{d\Omega}{d\Omega'} = {\gamma}^2\left(1 + \dfrac{u'}{c}\cos{\alpha}\right)^2.
+\end{equation}
+
+In the sources rest frame we have the lights propagation direction being in the same direction as the position it is at relative to the coordinate axis allowing us to use $\cos\alpha=\cos\theta = \frac{ z}{\sqrt{x^2+y^2+z^2}} = \frac{\gamma z'}{\sqrt{x'^2+y'^2+\gamma^2 z'^2}} = \frac{\gamma z'}{R}$
+
+with $R=\sqrt{x'^2+y'^2+\gamma^2 z'^2}$. Giving the last equation to be
+
+\begin{equation}
+	\Phi_\Omega = {\gamma}^2\left(1 + \dfrac{u'}{c}\frac{\gamma z'}{R}\right)^2.
+\end{equation}
+
+We can also write the equation in terms of the direction of the light from the z-axis in the primed frame ($\alpha'$), by substituting in equation \eqref{eq: Cosine transform inverse}, which gives
+
+\begin{equation}
+	\label{eq: aberrational wavefront weighting}
+	\Phi_\Omega = \frac{1}{{\gamma}^2\left(1 - \dfrac{u'}{c}\cos{\alpha'}\right)^2}.
+\end{equation}
+
+all three ways of writing this look very similar, which can be confusing and easily mixed up, be careful if using these.
+
+% substituting in $\cos{\alpha'}$ from equation \eqref{eq: cos alpha prime}, we have
 
 % \begin{equation}
-% \begin{aligned}
-% & {{u}_{x}}{'} = \frac{c\sin\alpha\cos\varphi}{{\gamma} \bigg(1-\frac{v\cos\alpha}{c}\bigg) } \\ & {{u}_{y}}{'} = \frac{c\sin\alpha\sin\varphi}{{\gamma} \bigg(1-\frac{v\cos\alpha}{c}\bigg) } \\ & {{u}_{z}}{'} = \frac{c\cos\alpha- {v}}{ \bigg(1-\frac{v\cos\alpha}{c}\bigg) }
-% \end{aligned}
+% 	\label{eq: aberration density weighting}
+% 	\Phi_\Omega =  \frac{1}{{\gamma}^2\left(1 - \dfrac{u'}{c}\frac{\gamma \frac{z'}{ R} + \frac{u'}{c}}{ \frac{u'}{c} \gamma \frac{z'}{ R} + 1}\right)^2} = \gamma^2 \left( 1 +\frac{u'}{c} \gamma \frac{z'}{ R} \right)^2
 % \end{equation}
 
-\begin{equation}
-	\label{eq: velocity transform for light}
-	\mhl{
-		\begin{aligned}
-			 & \mathbf{c}{'} =
-			c
-			\begin{pmatrix}
-				\cos\varphi\sin\alpha{'} \\
-				\sin\varphi\sin\alpha{'} \\
-				\cos\alpha{'}            \\
-			\end{pmatrix}
-			=
-			\dfrac{c}{{\gamma}\left(1-\frac{v}{c} \cos\alpha\right) }
-			\begin{pmatrix}
-				\cos\varphi\sin\alpha                          \\
-				\sin\varphi\sin\alpha                          \\
-				{\gamma} \left( \cos\alpha-\frac{v}{c} \right) \\
-			\end{pmatrix}
-			\\
-			 & \text{at position $\mathbf{r}{'}$ and time ${t{'}}$ }
-		\end{aligned}
-	}
-\end{equation}
-
-This still has the same speed of light, which can be shown by taking the magnitude of the velocity vector (that is the square root of the squares of all its elements).
-However, the angle of propagation has been changed.
-
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Doppler Effect} \label{sect: Doppler Effect}
+\section{A Moving Source's Relativistic Beaming of its emitted light} \label{ch: A Moving Source's Field}
 
-When we swap between frames there is also a change in light's wavelength, It is called the doppler effect, which we will describe using the help of the following simple figure of light being emitted from a source in its rest frame and a frame that it is moving.
-
-%█████████████
-\begin{figure}[H]
-	\begin{subfigure}{.49\textwidth}
-		\centering
-		\tikzsetnextfilename{Tikz_Lights_angle_with_particle_in_its_proper_frame}
-		\begin{tikzpicture}[scale = 8]
-			\draw[red,ultra thick,->] (0,0,0)--(0.235,-0.05,0) node[midway,anchor = north]{$\mathbf{c}$};
-			\fill[black] (0,0,0) circle (0.7pt);
-		\end{tikzpicture}
-		\caption{Rest Frame}
-		% \label{fig:sub2}
-	\end{subfigure}
-	\begin{subfigure}{.49\textwidth}
-		\centering
-		\tikzsetnextfilename{Tikz_Lights_angle_with_particle_With_particle_moving}
-		\begin{tikzpicture}[scale = 8]
-			\draw[-] (0,0.07,0) to[bend left = 45] (0.06,0.04,0);
-			\node at (0.05,0.095,0) {$\alpha{'} $};
-			\draw[cyan,ultra thick,->] (0,0,0)--(0.21,0.13,0) node[midway,anchor = north]{$\mathbf{c}{'}$};
-			\draw[ultra thick,->] (0,0,0)--(0,0.15,0)node[midway,anchor = east]{$\mathbf{u}{'}$};
-			\fill[black] (0,0,0) circle (0.7pt);
-		\end{tikzpicture}
-		\caption{Moving Frame}
-		% \label{fig:sub1}
-	\end{subfigure}
-	\caption{\textbf{The Doppler effect.} Diagrams showing light being emitted by a source at velocity $\mathbf{c}$ in the source rest frame (left) and a frame were the source is now moving at velocity $\mathbf{u}{'}=-\mathbf{v}$ with the light now being emitted at an angle ${\alpha{'}}$ giving the light's velocity now as ${\mathbf{c}{'}}$. The different color of light in each frame is showing the effect on the lights frequency and hence color from the doppler effect.}
-	\label{fig: Doppler effect}
-\end{figure}
-%███████████
-
-In the rest frame of the source, if it emits a wave at the speed of light in any direction, we have the length the wave has traveled from the source in the infinitesimal time ${d\tau}$ as being
-
-\begin{equation}
-	{d\lambda} = {c}{d\tau}
-\end{equation}
-
-If we change to a frame where the source is now moving at velocity ${\mathbf{u}{'}}$ in the z-direction and we have the wave now emitted at an angle $\alpha{'}$ from the z-axis, traveling a distance ${c}{dt{'}}$ in a time ${dt{'}}$, with the source moving a distance $ u{'} \cos\alpha{'} {dt{'}}$ in the direction of this emitted wave, this leads to a bunching up of the wave in the direction of the movement of the source, as the same amount of the wave has been emitted in this primed time, but the distance it has traveled from source is
-
-\begin{equation}
-	{d\lambda{'}} = {c}{dt{'}}-{u}{'} \cos\alpha{'} {dt{'}} = (1-\frac{u{'}}{c}\cos\alpha{'})cdt{'}
-\end{equation}
-
-we have ${dt{'}} = {\gamma} {d\tau}$, so the ratio of space the wave is taking up in that direction compared to in the \hyperlink{def-proper-frame}{rest frame} is
-
-\begin{equation}
-	Ratio = \frac{d\lambda{'}}{d\lambda} = {\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)
-\end{equation}
-
-since wavelength is inversely proportional to the frequency, and this bunching up at the front will proportionally decrease the wavelength, the frequency ratio $\nu{'}/\nu$ is then
-
-\begin{equation}
-	\Phi_{r} = \frac{\nu{'}}{\nu} = \frac{d\lambda}{d\lambda{'}} = \frac{1}{ {\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)}
-\end{equation}
-
-This gives us a formula to find out how the frequency of a moving source's emitted light differs from when it is at rest.
-This is used in astronomy to determine how fast stars and galaxys are moving relative to us on earth.
-
-%*** can I find an experiment for the doppler effect on frequency not just directly in forward or behind in the direction of movement, but at all angles. Ives–Stilwell experiment
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{Aberration in Special Relativity} \label{sect: Aberration in Special Relativity}
-
-A moving light source emits more of its radiation in the direction of its movement, and here we will show by how much.
-If a source in its rest frame emits light evenly in all directions, then each emitted light's angle of propagation is transformed using equation \eqref{eq: velocity transform for light}.
-So that the angles of the lights propagation from the z-axis can be found to be
-
-\begin{equation}
-	\label{eq: Cosine transform}
-	\mhl{
-		\cos\alpha{'} = \frac{\mathbf{c}_{z}^{'}}{\|\mathbf{c}{'}\|} = \dfrac{\cos\alpha + \dfrac{u{'}}{c}}{1 + \dfrac{u{'}}{c}\cos\alpha}.
-	}
-\end{equation}
-
-This is the relativistic aberration formula \cite{einstein1905electrodynamics}, it shows how the light's propagation direction transforms, shown in Figure (\ref{fig: aberrated emitted light}).
-
-%█████████████
-\begin{figure}[H]
-	\begin{subfigure}{.49\textwidth}
-		\centering
-		\includegraphics[width = 5cm]{images/pdf/Aberrated_velocities_restframe.pdf}
-		\caption{rest frame}
-	\end{subfigure}
-	\begin{subfigure}{.49\textwidth}
-		\centering
-		\includegraphics[width = 5cm]{images/pdf/Aberrated_velocities.pdf}
-		\caption{primed frame}
-	\end{subfigure}
-	\caption{\textbf{Transforming emitted light.} Diagram showing the directions of propagation of an evenly distributed light pulse in the rest frame of a source (left) and the corresponding distribution of the light pulse's propagation directions in a primed frame in which the source is now moving (right), with the colors showing the Doppler effect on the light's frequency from the previous section.}
-	\label{fig: aberrated emitted light}
-\end{figure}
-%███████████
-
-If we want to see the opposite, when light is being absorbed, we can look at Figure (\ref{fig: aberrated absorbed light}) which shows what would happen in the case of incoming light from all directions.
-
-%█████████████
-\begin{figure}[H]
-	\begin{subfigure}{.49\textwidth}
-		\centering
-		\includegraphics[width = 5cm]{images/pdf/Aberrated_velocities_inwards_restframe.pdf}
-		\caption{rest frame}
-	\end{subfigure}
-	\begin{subfigure}{.49\textwidth}
-		\centering
-		\includegraphics[width = 5cm]{images/pdf/Aberrated_velocities_inwards.pdf}
-		\caption{primed frame}
-	\end{subfigure}
-	\caption{\textbf{Transformeing absorbed light.} Diagram showing the directions of evenly distributed light being absorbed by a reciever in its rest frame (left) and the corresponding distribution of the light pulse's propagation directions in a primed frame in which the reciever is now moving (right), with the colors showing the Doppler effect on the light's frequency.}
-	\label{fig: aberrated absorbed light}
-\end{figure}
-%███████████
-
-It can be seen from equation \eqref{eq: Cosine transform} that as a source's speed tends to the speed of light, $u'/c$ tends to 1 and as a result, $\cos\alpha{'}$ tends to 1.
-Hence all emitted or absorbed light in the source's rest frame tends to the direction of the source's movement.
-But we also have to remember that the flow of time of the moving source relative to the primed frame, will become infinitly slow, coming to a stop at the speed of light.
-That is, the act of emittance of the light stalls.
-For both these reasons the light would remain in the vicinity of the source.
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{Relativistic Beaming} \label{sect: Relativistic Beaming}
-
-Relativistic beaming is the combination of both of the two previous sections.
-If we have a single pulse of light that is evenly spherically distributed, then after a certain time it will look like what is shown in the following figure, due to its aberrated emittion and Doppler effected frequency.
-
-%█████████████
-\begin{figure}[H]
-	\begin{subfigure}{.32\textwidth}
-		\centering
-		\includegraphics[width = 3.8cm]{images/pdf/Rest_Pulse.pdf}
-		\caption{Rest Frame \newline}
-		\label{fig: Relativistic beaming 1}
-	\end{subfigure}
-	\begin{subfigure}{.32\textwidth}
-		\centering
-		\includegraphics[width = 3.8cm]{images/pdf/Prime_Pulse.pdf}
-		\caption{Primed frame \newline}
-		\label{fig: Relativistic beaming 2}
-	\end{subfigure}
-	\begin{subfigure}{.32\textwidth}
-		\centering
-		\includegraphics[width = 3.8cm]{images/pdf/Prime_Pulse_Simultaneous.pdf}
-		\caption{Primed frame: synced times}
-		\label{fig: Relativistic beaming 3}
-	\end{subfigure}
-	\caption{\textbf{Relativistic beaming.} Diagram showing, the position of an evenly spherically distributed light pulse after propagating for a certain amount of time, with its current time ${t}=0$, in the rest frame (left), it is also shown in the primed frame using the direct coordinate transform (middle) giving an ellipsoid with unsynchronised times, and also shown in the primed frame with each part of light pulse propagated forward or backwards to the origins time $t{'}=0$ (right). The black dot shows the current location of the source, with grey dot showing its position when the pulse was emitted. all the propagation of the light is in the directly away from this point.}
-	\label{fig Relativistic beaming}
-\end{figure}
-%███████████
-
-The pulse positions in the primed frame with their time synced with the origin are shown in figure (\ref{fig: Relativistic beaming 3}) and can be found from the transformed primed frame coordinates from figure (\ref{fig: Relativistic beaming 2}) by propagating the the light from these coordinates forward or backwards in time to be synced with the origins time of $t{'}=0$, that is
-
-\begin{equation}
-	\mathbf{r}^{'}_{t{'}=0} = \mathbf{r}{'} - \mathbf{c}{'} t{'}
-\end{equation}
-
-This can be extened to multiple pulses as we will do later in the next chapter.
-
-% %███████████████████████████████████████████████████████████████████
-% %███████████████████████████████████████████████████████████████████
-% \section{Retarded Light Pulse Position Transform}\label{sect: Retarded Light Pulse Position Transform}
-
-% *** what about math and diagram for the retarded time it takes light to get to R, i.e at $2T_p$ and the transform of this?
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{Retarded Light Propagation}\label{subsect: Retarded Light Propagation}
-
-There is a delay in the time light is emitted from a source and the time it reaches a reciever, so there is a difference in where you see moving objects compared to where they currently are due to this, and if the object is moving at velocity $\mathbf{U}$ you see it in a previous position $\mathbf{u} {T}_{ret}$ due to this, this is called its retarded position where it was at the retarded time ${T}_{ret}$.
-The time the object and the light took to propagate from the objects retarded position to where they currently are is the same, $T_{p}=-{T}_{ret}$.
-We can use the following figure to find the retarded position, and work out the distance $R_{p}=\|\mathbf{c} {T}_{p}\|$ it has traveled from the retarded position in terms of the positions coordinates and the objects velocity.
-This is done by first finding the propagation time in terms of the observers coordinates and the objects velocity, which can be derived from the following figure:
-
-
-%█████████████
-\begin{figure}[H]
-	\centering
-	\tikzsetnextfilename{Tikz_Light_Pulse_Primed_Frame}
-	\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
-		%\usetikzlibrary{arrows.meta}
-		%node[anchor = north west]{\textcolor{black}{ $\mathbf{P}$}}; %$\mathbf{P}$}};
-		\draw[gray!40,fill = gray!40] (0,0,0) circle (1pt);
-		\draw[black, thick,->] (0,0.7,0)--(0.29,0.7,0) node[anchor = north]{${y}$};
-		\draw[black, thick,->] (0,0.7,0)--(0,1,0) node[anchor = west]{${z}$};
-		\draw[black, thick,->] (0,0.7,0)--(0,0.7,0.45) node[anchor = south east] {${x}$};
-		\draw[red, thick, dotted,->] (0,0,0)--(0.68,0.88,0) node[midway, right] {$\mathbf{c} {T}_{p} $};
-		\draw[black,->] (0,0.7,0)--(0.68,0.9,0) node[midway,above] {\text{ $\mathbf{r}$}};
-		\draw[blue, fill = blue] (0,0.7,0) circle (1pt);
-		\draw[thick,blue,dotted,->] (0,0,0)--(0,0.66,0);
-		\draw[blue, fill = blue] (0,0.7,0);
-		\draw[blue, thick,->>] (0,0.7,0)--(0,0.8,0) node[left]{$\mathbf{u}$};
-		\fill (0.7,0.9,0) circle (0.4pt);
-		\node[blue, right] at (0,0.4,0) {$\mathbf{u} {T}_{p}$};
-	\end{tikzpicture}
-	\caption{The diagram shows a source particle moving at velocity $\mathbf{u} = (0,0,u)$ in the z-direction in this frame, with the particle currently at the origin with time ${t} = 0$, the particle was at the \protect\hyperlink{def-retarded-position}{retarded position} $-\mathbf{u} {T}_{p}$ shown in grey (with ${T}_{p}$ being the propagation time of the light), the emitted light was then propagated from the particles retarded position, along $\mathbf{c} {T}_{p}$ shown in red, to reach position $\mathbf{r}$ at ${t} = 0$.}
-	\label{fig: Retarded field outward field transform}
-\end{figure}
-%███████████
-
-
-%*** explain what is going to be derived and how it will be derived (pre-expose the line of thought):
-%*** make it so that it makes sense whether the derivation is hidden or not
-%█████████████████
-\begin{derivation}
-
-The triangle that the three vectors make allow us to get the equation for the velocity of the light as
-
-\begin{equation}
-	\mathbf{c} T_{p} = \mathbf{u} T_{p} + \mathbf{r}
-\end{equation}
-
-writing out the vectors and rearanging to get the velocity vector for propagated light, gives
-
-\begin{equation}
-	\mathbf{c} = \frac{1}{ T_{p}}
-	\begin{pmatrix}
-		x \\
-		y \\
-		z + u T_{p}
-	\end{pmatrix}
-\end{equation}
-
-The magnitude of the lights displacement is equal to the distance the light travels in the corresponding propagation time $ c T_{p} = \|\mathbf{c} T_{p}\|$. The square of this gives
-
-\begin{equation}
-	\begin{split}
-		\left( c T_{p}\right)^2 & = \|\mathbf{c} T_{p}\|^2                           \\
-		                          & = (x^2 + y^2 + z^2) + u^2 T_{p}^2 + 2u T_{p} z,
-		%        (c^2 - v^2) T_{p}^2 &=  (x^2 + y^2 + z^2) - 2v T_{p}z
-	\end{split}
-\end{equation}
-rearranging this, we get the quadratic
-\begin{equation}
-	T_{p}^{2} - \left(2\gamma^2\frac{u}{c^2} z\right)T_{p} - \frac{\gamma^2}{c^2}(x^2+y^2+z^2) = 0,
-\end{equation}
-where $\gamma = (1 - u^2/c^2)^{-1/2}$. Now taking the solution for the past time, and making use of the identity
-\begin{equation}
-	\gamma^2 = 1+\gamma^2\frac{u^2}{c^2},
-\end{equation}
-we get the result (you can skip past this if you would like, as it doesnt add to understanding)
-\begin{equation}
-	\begin{split}
-		T_{p} & = \gamma^2\frac{u}{c^2}z + \sqrt{\left(-\gamma^2\frac{u}{c^2} z\right)^2+\frac{\gamma^2}{c^2}(x^2+y^2+z^2)} \\
-		      & = \gamma^2\frac{u}{c^2}z + \frac{\gamma}{c}\sqrt{x^2+y^2+\left(1+\gamma^2\frac{u^2}{c^2}\right) z^2}        \\
-		      & = \gamma^2\frac{u}{c^2}z + \frac{\gamma}{c}\sqrt{x^2+y^2+\gamma^2 z^2}.
-	\end{split}
-\end{equation}
-
-This is the time it has taken to propagate the light from where the source was when it was emitted to reach the current position.
-
-\end{derivation}
-%███████████████
-
-The propagated distance between where the light was emmited and its current position, can then be given from this derivation of $T_{p}$ as
-
-\begin{equation}
-	R_{p} = cT_{p} = \gamma_u^2 \frac{u}{c}z + \gamma_u \sqrt{x^2 + y^2 + \gamma_u^2 z^2}
-\end{equation}
-
-this can then be used to find out how much the intensity of a field composed of spherical pulses of light from the moving source has dispated. as so we can find the density of light at a particular point in the field.
-
-The reason I have explained this seperate this from the next subsection, is that I want to emphasise that the gamma function $\gamma$ has a role to play in retarded positions and times before we even get to swapping frames.
-It has to be this way to allow us to swap between frames smoothly, in special relativity.
-A reminder here, being that we are not changing betwen frames, we are just looking at the delay in signal that light has to get to a particular point, even though we have made use of the gamma symbol to simply the equations like we do in special relativity, we are not evoking special special relativity, but we will be looking at this when swapping between frames in the next section.
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\subsection{Emitted Light When Swapping Frame}\label{subsect: Emitted Light When Swapping Frame}
-
-This section is similar to what we have just done, but the emphasis here will be on swapping between frames, and will be use in the next chapter when we have continuous pulses of light in all directions from a source and want to see how this field of light transforms and what it looks like for moving sources.
-
-
-We will look at light being emitted from a source at rest first and then swap to a frame where the source is now moving, using the lorentz transformation of the emitted lights current location (from $\mathbf{r}$ to $\mathbf{r}{'}$), but this is at a time $t'$ that is not sychronised with the sources time of zero.
-To find this we need to use $\mathbf{c}{'}$ to propagate back the light from where it is at $t'$ to were it was at time zero.
-To get the position $L'$ where the light is at the syncronised time of zero with the source, we can use the triangle formed in figure (\ref{fig: primed frame 1}), which gives $\mathbf{L}' = (\mathbf{c}' - \mathbf{u}) t'_p$
-The time taken for the light to propagate from the source to point $\mathbf{L}'$ in the primed frame $t'_p$, is gamma times that of time passed in rest frame ($\gamma t_p$)
-allowing
-
-%█████████████
-\begin{figure}[H]
-	\begin{subfigure}{.49\textwidth}
-		\tikzsetnextfilename{Tikz_Light_Pulse_Proper_Frame}
-		\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
-			%\usetikzlibrary{arrows.meta}
-			\node[blue] at (0.06,-0.06,0) {$\mathbf{s}$};
-			\draw[blue, thick,->] (0,0,0)--(0.4,0,0) node[anchor = north east]{${y}$};
-			\draw[blue, thick,->] (0,0,0)--(0,0.4,0) node[anchor = north west]{${z}$};
-			\draw[blue, thick,->] (0,0,0)--(0,0,0.55) node[anchor = south east] {${x}$};
-			%\node[red] at (0.08,0.17,0) {$\alpha $};
-			%\draw[red,->] (0,0.25,0) to[bend left = 45] (0.21,0.145,0);
-			\draw[thick,red, dotted,->] (0,0,0)--(0.69,0.46,0) node[midway , right] {\text{ $\mathbf{c} {T}_{p}$}};
-			\fill[blue] (0,0,0) circle (1pt);
-			\fill[black] (0.71,0.48,0) circle (0.4pt) node[above] {\text{$ \mathbf{r}$}};
-		\end{tikzpicture}
-		\caption{proper frame}
-		\label{fig: proper frame 1}
-	\end{subfigure}
-	\begin{subfigure}{.49\textwidth}
-		\tikzsetnextfilename{Tikz_Light_Pulse_Primed_Frame_2}
-		\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
-			%\usetikzlibrary{arrows.meta}
-			%node[anchor = north west]{\textcolor{black}{ $\mathbf{P}{'}$}}; %$\mathbf{P}{'}$}};
-			\node[gray] at (0.1,-0.1,0) {$\mathbf{s}_{ret}^{'}$};
-			\draw[gray!40,fill = gray!40] (0,0,0) circle (1pt);
-			\draw[black, thick,->] (0,0.7,0)--(0.29,0.7,0) node[anchor = north]{{\color{blue} ${y}$},${y{'}}$};
-			\draw[black, thick,->] (0,0.7,0)--(0,1,0) node[anchor = west]{{\color{blue} ${z}$},${z{'}}$};
-			\draw[black, thick,->] (0,0.7,0)--(0,0.7,0.45) node[anchor = south east] {{\color{blue} ${x}$}, ${x{'}}$};
-			\draw[gray, dashed,->] (0,0,0)--(0.25,0,0) node[anchor = south east]{${y}$};
-			\draw[gray, dashed,->] (0,0,0)--(0,0.2,0) node[anchor = north east]{${z}$};
-			\draw[gray, dashed,->] (0,0,0)--(0,0,0.35) node[anchor = south east] {${x}$};
-			%\node[red] at (0.06,0.17,0) {$\alpha {'}$};
-			%\draw[red,->] (0,0.25,0) to[bend left = 40] (0.15,0.2,0);
-			\draw[red, thick, dotted,->] (0,0,0)--(0.69*0.85,0.88*0.85,0) node[midway, right] {$\mathbf{c}{'} {T}_{p}^{'}$};
-			\draw[gray, thick, dotted] (0.69*0.85,0.88*0.85,0)--(0.69,0.88,0);
-			\draw[black,->] (0,0.7,0)--(0.68,0.9,0) node[midway,above] {\text{ $\mathbf{r}{'}$}};
-			\draw[black,->] (0,0.7,0)--(0.68*0.85,0.9*0.85,0);
-			\node at (0.4,0.68,0) {\text{ $\mathbf{L}{'}$}};
-			\draw[blue, fill = blue] (0,0.7,0) circle (1pt) node[anchor = north west]{$\mathbf{s}{'}$};
-			\draw[thick,blue,dotted,->] (0,0,0)--(0,0.66,0);
-			\draw[blue, thick,->>] (0,0.7,0)--(0,0.8,0) node[left]{$\mathbf{u}$};
-			\fill (0.7,0.9,0) circle (0.4pt);
-			\node[blue, right] at (0,0.4,0) {$\mathbf{u} {T}_{p}^{'}$};
-		\end{tikzpicture}
-		\caption{primed frame with moving source}
-		\label{fig: primed frame 1}
-	\end{subfigure}
-	\caption{The diagram shows a source particle ${s}$ in blue at rest in the \protect\hyperlink{def-proper-frame}{proper frame}, Fig (a), with a light pulse that has propagated along $\mathbf{c} {T}_{p}$ shown in red, at an angle $\alpha$ from the z-axis, to coordinate $\mathbf{r}$ shown in black, with the current time for whole system being ${t} = 0$. Fig (b), shows the system transformed to a \protect\hyperlink{def-Primed-Frame}{primed frame} moving at velocity $\mathbf{v} = (0,0,v)$ in the z-direction relative to the \protect\hyperlink{def-proper-frame}{proper frame}, such that the particle and its attached proper axis in this frame are moving at velocity $\mathbf{u} =-\mathbf{v}$ and is currently at the primed origin with time ${t{'}} = 0$. when the light was emitted from the particle, the particle and attached proper axis were at the \protect\hyperlink{def-retarded-position}{retarded position} $\mathbf{s}_{ret}^{'}$ shown in grey, the emitted light was then propagated at an angle $\alpha{'}$ from the z-axis, along $\mathbf{c}{'} {T}_{p}^{'}$ to reach $\mathbf{L}{'}$ at ${t{'}} = 0$. it has not yet reached the corresponding \protect\hyperlink{def-lorentz-transform}{Lorentz transformed} coordinate $\mathbf{r}{'}$.}
-	\label{fig: appendix Retarded field outward field transform}
-\end{figure}
-%███████████
-
-
-
-As visualized in above figure.
-If we have a light source particle ${s}$, in its \hyperlink{def-proper-frame}{rest frame} that had emitted a pulse of light in one direction such that it propagates along $\mathbf{c} {T}_{p}$ at an angle $\alpha$ from the z-axis and is currently at position $\mathbf{r}$ at time ${t} = 0$, where $\mathbf{c}$ is the velocity of light and ${T}_{p}$ is the time it took to propagate to $\mathbf{r}$.
-Using the coordinated transform from equation \eqref{eq: Lorentz transformation} on position $\mathbf{r}$ with time ${t} = 0$ we get
-
-\begin{equation}
-	\label{eq: displacement transform}
-	\begin{aligned}
-		\mathbf{r}{'} & =
-		\begin{pmatrix}
-			x          \\
-			y          \\
-			{\gamma} z \\
-		\end{pmatrix},                                  \\
-		\text{at time \ \ \ }                           \\
-		{t{'}}        & =-{\gamma} \frac{{v}{z}}{{c}^2} \\
-	\end{aligned}
-\end{equation}
-
-the light pulse's velocity using the velocity transform from eq.
-*** ref for: eq: velocity transform for light) in Cartesian coordinates and particles speed in the \hyperlink{def-Primed-Frame}{primed frame} with ${v} =-{u}$ is
-
-\begin{equation}
-	\label{eq: light pulse velocity transform}
-	\mathbf{c}{'} = \dfrac{c}{{\gamma}\left(1 + \frac{z}{\|\mathbf{r}\|} \dfrac{u}{c} \right)}
-	\begin{pmatrix}
-		\frac{x}{\|\mathbf{r}\|}                                        \\
-		\frac{y}{\|\mathbf{r}\|}                                        \\
-		{\gamma} \left( \frac{z}{\|\mathbf{r}\|} + \dfrac{u}{c} \right) \\
-	\end{pmatrix}
-\end{equation}
-
-% can also show in spherical polar coordinates
-
-The time that the particle emits the light in the \hyperlink{def-proper-frame}{proper frame} is ${T}_{ret} =-{T}_{p}$ which corresponds to the contracted time
-
-\begin{equation}
-	t{'}_{ret} = {\gamma} {T}_{ret} =-{\gamma} {T}_{p}
-\end{equation}
-
-So that in the \hyperlink{def-Primed-Frame}{primed frame}, the \hyperlink{def-retarded-position}{retarded position} of the source particle emits the light pulse is
-
-\begin{equation}
-	\mathbf{s}_{ret}^{'} =-{\gamma} {T}_{p} \mathbf{u}
-\end{equation}
-
-to find the position the light pulse is currently at, at time ${t{'}} = 0$, we have to rewind its time from the position $\mathbf{r}{'}$ that it is at when using the \hyperlink{def-lorentz-transform}{Lorentz transform} at time ${t{'}} =-{\gamma}\frac{{v}{z}}{{c}^2} = {\gamma}\frac{u z}{{c}^2}$ taking away the displacement it propagated in this time to get the current position of the light to be (${t{'}_{p}} =-{t{'}_{ret}}$).
-
-\begin{equation}
-	\begin{split}
-		\mathbf{L}{'}
-		 & = \mathbf{s}_{ret}^{'} + \mathbf{c}{'}t{'}_{p}
-		\\
-		 & \color{gray} = \left( \mathbf{c}{'}-\mathbf{u} \right)t{'}_{p}
-		\\
-		 & \color{gray} = \dfrac{{c}t{'}_{p}}{{\gamma}\left(1 + \frac{z}{\|\mathbf{r}\|} \dfrac{u}{c} \right)}
-		\begin{pmatrix}
-			\frac{x}{\|\mathbf{r}\|}                                        \\
-			\frac{y}{\|\mathbf{r}\|}                                        \\
-			{\gamma} \left( \frac{z}{\|\mathbf{r}\|} + \dfrac{u}{c} \right) \\
-		\end{pmatrix}
-		-
-		\begin{pmatrix}
-			0            \\
-			0            \\
-			u {t{'}_{p}} \\
-		\end{pmatrix}
-		\\
-		 & = \dfrac{{c}t{'}_{p}}{{\gamma}\left(1 + \frac{z}{\|\mathbf{r}\|} \dfrac{u}{c} \right)}
-		\begin{pmatrix}
-			\frac{x}{\|\mathbf{r}\|}                                                                                                                     \\
-			\frac{y}{\|\mathbf{r}\|}                                                                                                                     \\
-			{\gamma} \left( \frac{z}{\|\mathbf{r}\|} + \dfrac{u}{c} \right)-{\gamma}\left(1 + \frac{z}{\|\mathbf{r}\|} \dfrac{u}{c} \right) \dfrac{u}{c} \\
-		\end{pmatrix}
-	\end{split}
-\end{equation}
-which leads to
-
-*** put in $t'_p = \gamma t_p$ i believe
-
-\begin{equation}
-	\mathbf{L}{'} = \dfrac{{c}t{'}_{p}}{{\gamma}\left(1 + \frac{z}{\|\mathbf{r}\|} \dfrac{u}{c} \right)}
-	\begin{pmatrix}
-		\frac{x}{\|\mathbf{r}\|}                    \\
-		\frac{y}{\|\mathbf{r}\|}                    \\
-		\frac{1}{{\gamma}} \frac{z}{\|\mathbf{r}\|} \\
-	\end{pmatrix}
-\end{equation}
-
-If we want to find how quickly the direction of the lights propagation changes at a particular point $\mathbf{R}$, we can think of the source at the origin at time zero and at a point $\mathbf{u} dt$ after a time $dt$, the system at this later time is equivalent to having the origin at the second position and the stationary point now defined as $\mathbf{R} \rightarrow \mathbf{R} - \mathbf{u} dt$.
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\input{Tex/Terms/Terms_ch4.tex}
-
-%███████████████████████████████████████████████████████████████████
-\printbibliography[segment=\therefsegment, heading=subbibliography]
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\chapter{A Point Source: Continually Emitting Light Radially Outwards} \label{ch: A Point Source Continually Emitting Light}
-
-***
-Both of the effects from the previous chapter ... and .. together gives relativistic beaming, allowing us to transform a field of continuous pulses of light from a source in the next chapter.
-We will then find equations that describe this field of light, like the \hyperlink{def-flux}{flux} of the light and the density/intensity of the light at any point.
-***
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{A Moving Source's Field of light} \label{ch: A Moving Source's Field}
-
-Let us look now at a source continuously emitting light in all directions in its rest frame.
-To transform each part of the emitted light, we use the position and time ${t}=0$ in the coordinate transformation equation to get the light in the primed frame at its desynchronised times $t'$ and propagate the light forward or backwards in time from its primed time to find its location when its time is synced with the primed times origin, $t'=0$.
-This transform is shown in the following figure.
+If we have a source at rest continously emitting light as shown in the first diagram in the figure below, we can find out what a moving sources field looks like by using equation \eqref{eq: time synced transform} to transform the positions of each part of the propagating light to where it is at time $t'=0$ (the time that is sychronised with the source at the origin).
+This is shown in the second diagram in the figure below, with the third diagram showing the rings of each pulse in the primed frame.
 
 %█████████████
 \begin{figure}[H]
@@ -2637,155 +2773,324 @@ This transform is shown in the following figure.
 	\begin{subfigure}{.3\textwidth}
 		\centering
 		\includegraphics[width = 3.6cm]{images/pdf/Field_Moving_Frame_Doppler.pdf}
-		\caption{Primed frame}
+		\caption{Primed Frame}
 	\end{subfigure}
 	\begin{subfigure}{.3\textwidth}
 		\centering
 		\includegraphics[width = 3.6cm]{images/pdf/Field_Moving_Frame_Doppler_circles.pdf}
-		\caption{Primed frame}
+		\caption{Primed Frame again}
 	\end{subfigure}
-	\caption{\textbf{Source's field of emitted photons.} A diagram showing, in the y-z plane, multiple spherically symmetrical pulses of light from a source at rest (left), and in a corresponding primed inertial frame where the source is moving (middle), the colors show the \protect\hyperlink{def-doppler-effect}{Doppler effect} on lights light and the grey dots show the past positions of source when it had emitted each pulse, there is also a diagram showing the circles of each pulse (right), This shows the spherical waves being closer together in the direction of movement.}
+	\caption{\textbf{Source's field of Emmited Light.} A diagram showing, in the y-z plane, multiple spherically symmetrical pulses of light from a source at rest (left), and in a corresponding primed inertial frame where the source is moving (middle) with a time of $t'=0$ everywhere, the colors show the \protect\hyperlink{def-doppler-effect}{Doppler effect} on the light and the grey dots show the past positions of the source when it had emitted each pulse, there is also a diagram showing the circles of each of the spherical pulses (right), it shows the spherical waves being closer together in the direction of movement.}
 	\label{fig: full field transformation}
 \end{figure}
 %███████████
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Flux/flowrate  /  radial/angular concentration/density of light from Point Source} \label{sect: Flux from Point Source}
+\section{Emitted Light's Density}\label{sect: Field Density}
 
-*** this is only section in this chapter that transforms between two frames
-
-*** What is the density of the field at a certain point, using $k \frac{1}{R^2}$ in a proper frame, and then taking into account the distance from coordinate to retarded position of the source and then the aberration and Doppler effect
-
-*** - Add more meaning to \hyperlink{def-flux}{flux} section
-
--\hyperlink{def-flux}{flux} describes the rate at which a quantity flows across a surface (flowrate per unit area)
+will use these to get inverse square law
 
 %███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\subsection{Flux of light Through Surface Element}\label{subsect: Flux Through Surface Element}
+\subsection{Scalar Density of Light}\label{subsect: Field Scalar Density}
 
-... radial \hyperlink{def-flux}{flux} through surface element (search radial \hyperlink{def-flux}{flux})
+In the previous chapter of a single spherical pulse in the rest frame, we have a surface of a sphere that the pulse creates, getting bigger as it propagates outwards, with the surface area of a sphere equal to $4 \pi r^2$.
+Since there is the same amount of light in this increasing sphere and the area of this sphere's surface increases relative to the square of its radius.
+We have the surface area density on this sphere being proportional to the inverse square of the radius $1/r^2$. This is the angular/azimuthal density.
 
-%███████████████████████████████████████████████████████████████████
-\subsection{Flux of Light} \label{subsect: Field Flux}
-
-A \hyperlink{def-proper-frame}{proper frame} of a particle's differential solid angle element (definition given in previous chapter (maybe move that subsection to here))
-
-Using the equation for the solid angle (what is solid angle?) with $\theta = \alpha$ and $\phi= \varphi$ we have
+For the case of light being continuously emitted, the light is spherically symetric and is emitted from the stationary source at a constant rate, and therefore has no change in density in the direction that is radially outwards, and only a difference in the direction perpendicular to this, i.e. the angular direction, which is parralel to the spherical surface each pulse creates, giving the total scalar density of light at any point $D$ as being proportional to the inverse square of the radius $1/r^2$,
 
 \begin{equation}
-	d\Omega = \sin{\alpha} d\alpha d\varphi,
+	D = \frac{k}{r^2}
 \end{equation}
 
-encompasses a certain amount of the wavefront, this is the same amount of the wavefront that is encompassed by the coinciding aberrated differential solid angle
+where k is the proportionality constant
+
+%█████████████
+\subsubsection{General Equations for Moving Source}\label{subsubsect: General Equations for Moving Source 0}
+
+*** look back at section 4.8 to update this to use the surface area element instead
+
+If we have position $(x',y',z')$, we need to use the distance the light had to propagate from where it was emmited to get to that position, which is given in equation \eqref{eq: propagation distance}, to allow us to find out how much the the lights density has disipated from when it was emmited, giving the disipation to be proportional to
 
 \begin{equation}
-	d\Omega{'} = \sin{\alpha'} d\alpha{'} d\varphi{'}.
+	\frac{1}{L_p'^2} = \frac{1}{\left( \gamma^2 \frac{u'}{c} z' + \gamma  L \right)^2}
 \end{equation}
 
-We can calculate this element by differentiating both sides of eq.
-\eqref{eq: Cosine transform} with respect to $\alpha$ \cite{hogg1997special}, which after a bit of work gives
+giving the disipation with the angular denisty of the light from equation \eqref{eq: aberration density weighting} as
 
 \begin{equation}
-	\sin{\alpha'} d\alpha{'} = \dfrac{1}{{\gamma}^2\left(1 + \dfrac{u}{c}\cos{\alpha}\right)^2} \sin{\alpha} d\alpha
+	\frac{\gamma^2 \left( 1 +\frac{u'}{c} \gamma \frac{z'}{ L} \right)^2}{\left( \gamma^2 \frac{u'}{c} z' + \gamma  L \right)^2} = \frac{1}{  L^2}
 \end{equation}
 
-this took into account that ${v} =-{u}$, now using this and ${d\varphi{'}} = {d\varphi}$ (as the angle ${\varphi}$ is always perpendicular to the motion of the particle and hence unaffected by \hyperlink{def-transform}{transformation} ) we have the solid angle in the \hyperlink{def-Primed-Frame}{primed frame} given as
+The doppler effect from equation \eqref{eq: Doppler Effect} also gives the change in lights density, but this time in the direction of the light's propagation relative to the rest frame as
 
 \begin{equation}
-	\mhl{
-		d\Omega{'} = \dfrac{1}{{\gamma}^2\left(1 + \dfrac{u}{c}\cos{\alpha}\right)^2} \sin{\alpha} d\alpha d\varphi.
-	}
+	\Phi_{r} = \frac{d\lambda}{d\lambda{'}} = \frac{1}{ {\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)}
 \end{equation}
 
-%The overall amount of wavefront is conserved, as can be seen when integrating over the corresponding solid angle in either frame, both of which give the same value of $4\pi$.
-% proportional to the amount of the wavefront in the given proper differential element of the solid angle, and
-The relative primed wavefront strength at a given angle is taken as being proportional to the amount of the wavefront per solid angle in the \hyperlink{def-Primed-Frame}{primed frame} relative to that in the \hyperlink{def-proper-frame}{proper frame}, referred to here as the aberrational wavefront strength weighting, given as
+Now combining these gives the density of light at any point as
 
 \begin{equation}
-	\label{eq: aberrational wavefront weighting}
-	\Phi_\Omega = \frac{d\Omega}{d\Omega'} = \text{\AA}^2.
+	D = \frac{\Phi_{r}}{ L^2} = \frac{1}{{\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)  L^2}  = \frac{\gamma \left( 1 +\frac{u'}{c} \gamma \frac{z'}{ L} \right)}{ L^2}
 \end{equation}
 
-(define what I mean by strength weighting)
+The density of light for a moving source at any point can be seen in the following diagram
 
-*** This \hyperlink{def-flux}{flux} does not take into account that the source keeps changing position, so at a change ds from position field is coming from a different retarded position of the source, so there is a rotation of direction and a different \hyperlink{def-flux}{flux}, there is gradients and rotations
-
-*** This \hyperlink{def-flux}{flux} transform is the change in \hyperlink{def-flux}{flux} in the emitted direction from the source only not what another particle would feel
+\textbf{*** add diagram}
 
 %███████████████████████████████████████████████████████████████████
-\subsection{General Equations for Light Propagation Direction:}
+\subsection{Density of Light in a Vector Form}\label{subsect: Field Vector Density}
 
-*** this is all the intial frame
+*** This is not a quantity/property that is used in physics, this was me having some fun trying something different to see if there was anything interesting I could get out of it
 
-given the previous diagrams for source at rest emitting light continously in all directions from a point source at the origin, we have at position $(x,y,z)$...
+*** to be checked:
+
+in spherical polar coordinates, with direction of propagation light being direction of $r$ with the origin at the retarded emision position of the source and
+
+I used
 
 \begin{equation}
-	\mathbf{\hat{c}} = \frac{1}{c T_{p}}
+	\nabla = (\frac{\partial}{\partial r},\frac{\partial}{\partial\theta},\frac{\partial}{\partial\phi})
+\end{equation}
+
+instead of
+
+\begin{equation}
+	\nabla = \frac{\partial}{\partial r} \mathbf{e}_r + \frac{1}{r} \frac{\partial}{\partial\theta} \mathbf{e}_\theta + \frac{1}{r \sin{\theta}} \frac{\partial}{\partial\phi} \mathbf{e}_\phi
+\end{equation}
+
+\begin{equation}
+	\mathbf{D} = (k_r, \frac{k_\theta}{r}, \frac{k_\phi}{r})
+\end{equation}
+
+this density is in the cartesian coordinate system
+
+check for $\| \nabla  \mathbf{D} \|$ and $\| ( \nabla  \| \mathbf{D} \| ) \|$
+
+\begin{equation}
+	\| \nabla \mathbf{D} \| = \frac{\sqrt{k_\theta^2 + k_\phi^2 }}{r^2} = \frac{k_{AngTot}}{r^2}
+\end{equation}
+
+\begin{equation}
+	\| \mathbf{D} \| = \sqrt{k_r^2 + \frac{k_\theta^2}{r^2} + \frac{k_\phi^2}{r^2}}
+\end{equation}
+
+\begin{equation}
+	\| ( \nabla \| \mathbf{D} \| ) \| = \frac{k_\theta^2 + k_\phi^2}{r^3\sqrt{k_r^2 + \frac{k_\phi^2 + k_\theta^2}{r^2}}} = \frac{k_\theta^2 + k_\phi^2}{\sqrt{k_r^2 r^6 + \left(k_\phi^2 + k_\theta^2\right)r^4}}
+\end{equation}
+
+if $k_r$ is insignificant then
+
+\begin{equation}
+	\| ( \nabla \| \mathbf{D} \| ) \| \approx \frac{k_\theta^2 + k_\phi^2}{r^3\sqrt{ \frac{k_\phi^2 + k_\theta^2}{r^2}}} = \frac{k_{ang-tot}}{r^2}
+\end{equation}
+
+checking in cartesian Coordinates:
+
+\begin{equation}
+	\mathbf{\hat{\text{${r}$}}} =
 	\begin{pmatrix}
-		x \\
-		y \\
-		z + u T_{p}
+		\sin\theta \, \cos\phi \\
+		\sin\theta \, \sin\phi \\
+		\cos\theta            \\
+	\end{pmatrix},
+	\mathbf{\hat{\text{$\theta$}}} =
+	\begin{pmatrix}
+		\cos\theta \, \cos\phi \\
+		\cos\theta \, \sin\phi \\
+		-\sin\theta            \\
+	\end{pmatrix},
+	\mathbf{\hat{\text{$\phi$}}} =
+	\begin{pmatrix}
+		-\, \sin\phi             \\
+		\hphantom{-} \, \cos\phi \\
+		0                        \\
 	\end{pmatrix}
 \end{equation}
 
-with
-
 \begin{equation}
-	T_{p} = \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} M
+	\mathbf{\hat{\text{${D}$}}} = \frac{1}{r\rho}
+	\begin{pmatrix}
+		ax\rho +bxz - byr  \\
+		ay\rho + byz + bxr \\
+		az - b(x^2+y^2)
+	\end{pmatrix}
 \end{equation}
 
-% 1 / (g^2 \frac{u}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
+with $r=\sqrt{x^2+y^2+z^2}$ and $\rho=\sqrt{x^2+z^2}$
 
-with $M=\sqrt{x^2 + y^2 + \gamma_u^2 z^2}$.
+%█████████████
+\subsubsection{General Equations for Moving Source}\label{subsubsect: General Equations for Moving Source 2}
 
-now we will see what happens when we have an infintesmal change from an intial point $(x,y,z)$ to $(x_2,y_2,z_2)=(x +dx,y+dy,z+dz)$
+in direction of propagation the density is proportional to the doppler effect $ 1/ ( \gamma( 1 - u'/c \cos{\alpha'}) )$ from eq 5.4 and in each of the perpendiuclar directions the density is the square root of eq 5.3 which is  $ 1/ L$
 
+giving
+
+*** alpha prime in terms of z and  $L$ :
+
+\begin{equation}
+	\mathbf{D} = \left(\frac{k_r}{\gamma( 1 - u'/c \cos{\alpha'})}, \frac{k_\theta}{L}, \frac{k_\phi}{L} \right)
+\end{equation}
+
+using equation \eqref{eq: cos alpha prime} and $L = \sqrt{x'^2+y'^2+\gamma^2z'^2}$
+
+giving
+
+\begin{equation}
+	\frac{1}{{\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)}  = \gamma \left( 1 +\frac{u'}{c} \gamma \frac{z'}{L} \right)
+\end{equation}
+
+and using $\beta = - u'/c$ we have
+
+\begin{equation}
+	\mathbf{D} = \left(k_r \gamma( 1 - \beta \frac{\gamma z'}{\sqrt{x'^2+y'^2+\gamma^2 {z'}^2}}), \frac{k_\theta}{\sqrt{x'^2+y'^2+\gamma^2z'^2}}, \frac{k_\phi}{\sqrt{x'^2+y'^2+\gamma^2z'^2}} \right)
+\end{equation}
+
+%█████████████████
+\begin{derivation}
+
+\begin{equation}
+	\nabla \mathbf{D} = \frac{1}{L^3}
+	\begin{pmatrix}
+		k_r \gamma^2 \beta x'z' & k_r \gamma^2 \beta y'z' & - k_r \gamma^2 \beta (x'^2 +y'^2)  \\
+		-k_\theta x' & -k_\theta y' & -k_\theta\gamma^2 z' \\
+		-k_\phi x' & -k_\phi y' & -k_\phi\gamma^2 z'
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+	\| \nabla \mathbf{D} \| = \frac{1}{L^3} \sqrt{\left( k_\theta^2 +k_\phi^2 + k_r^2 \gamma^4 \beta^2 ( z^2 - 1 ) (x^2+y^2) \right)L^2}
+\end{equation}
+
+\end{derivation}
+%███████████████
+
+\begin{equation}
+	\| \nabla \mathbf{D} \| = \frac{1}{L^2} \sqrt{ k_\theta^2 +k_\phi^2 + k_r^2 \gamma^4 \beta^2 ( z^2 - 1 ) (x^2+y^2) }
+\end{equation}
+
+if $k_r\approx 0$ then
+
+\begin{equation}
+	\| \nabla \mathbf{D} \| = \frac{\sqrt{ k_\theta^2 +k_\phi^2 }}{L^2}
+\end{equation}
+
+now lets look at $\|\left(\nabla \|\mathbf{D}\| \right) \|$
+
+%█████████████████
+\begin{derivation}
+
+double checked:
+
+\begin{equation}
+	\|\mathbf{D}\| = \sqrt{ \frac{k_\theta^2 + k_\phi^2}{L^2} + k_r^2 \gamma^2\left( 1-\beta \gamma \frac{z'}{L} \right)^2 } = \sqrt{ \frac{k_a^2}{L^2} + k_r^2 \gamma^2\left( 1-\beta \gamma \frac{z'}{L} \right)^2 }
+\end{equation}
+
+\begin{equation}
+	\nabla \|\mathbf{D}\| = \frac{1}{L^3 \sqrt{\frac{K_a^2}{L^2} + k_r^2\gamma^2(1-\gamma\beta\frac{z'}{L})^2}}
+	\begin{pmatrix}
+		-\frac{x'}{L} k_a^2 + k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{z'}{L}) x'z' \\
+		-\frac{y'}{L} k_a^2 + k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{z'}{L}) y'z' \\
+		-\gamma^2\frac{z'}{L} k_a^2 - k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{z'}{L}) (x'^2 + y'^2)
+	\end{pmatrix}
+\end{equation}
+
+$e=\frac{1}{L^3 \sqrt{\frac{K_a^2}{L^2} + k_r^2\gamma^2(1-\gamma\beta\frac{z'}{L})^2}}$,
+
+$f= k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{z'}{L})$
+
+$a = k_a^2$
+
+
+\begin{equation}
+	\nabla \|\mathbf{D}\| = e
+	\begin{pmatrix}
+		-\frac{x'}{L} a +  f x'z' \\
+		-\frac{y'}{L} a +  f y'z' \\
+		-\gamma^2\frac{z'}{L} a -  f (x'^2 + y'^2)
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+	\|\left(\nabla \|\mathbf{D}\| \right) \| = e \sqrt{(-\frac{x'}{L} a +  f x'z')^2 + (-\frac{y'}{L} a +  f y'z')^2 + (\gamma^2\frac{z'}{L} a +  f (x'^2 + y'^2))^2 }
+\end{equation}
+
+\end{derivation}
+%███████████████
+
+\begin{equation}
+	\|\left(\nabla \|\mathbf{D}\| \right) \| = e \sqrt{ (x'^2+y'^2+\gamma^4 z'^2) \frac{a^2}{L^2} + (x'^4 + y'^4) (z'^2 + 1) f^2 + (\gamma^2 - 1 ) (x'^2 + y'^2 ) \frac{2fa z'}{L} }
+\end{equation}
+
+
+
+if $k_r\approx 0$ then
+
+\begin{equation}
+	\|\left(\nabla \|\mathbf{D}\| \right) \| = \frac{k_a}{ L^2} \sqrt{ \frac{x'^2+y'^2+\gamma^4 z'^2}{x'^2+y'^2+\gamma^2 z'^2} }
+\end{equation}
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Rate of Change of Direction of Light from Moving Source}\label{subsect: Rate of Change of Direction of Absorbed Light from Moving Source}
+%███████████████████████████████████████████████████████████████████
+\section{Rate of change of propagation direction}\label{sect: Rate of change of propagation direction}
 
+given the previous diagrams for source at rest emitting light continously in all directions from a point source at the origin, we from equation \eqref{eq: direction of light from moving source} have at position $\mathbf{l'}=(l'_x,l'_y,l'_z)=(x,y,z)$ the direction of the propagating light as
+
+\begin{equation}
+	\mathbf{\hat{c}} = \frac{1}{ \frac{u'}{c} \gamma \frac{z}{L} + 1 }
+	\begin{pmatrix}
+		\frac{1}{\gamma} \frac{x}{L} \\
+		\frac{1}{\gamma} \frac{y}{L} \\
+		\gamma \frac{z}{L} + \frac{u'}{c}
+	\end{pmatrix}
+\end{equation}
+
+with $ R=\sqrt{x'^2 + y'^2 + \gamma^2 z'^2}$.
+
+now we will see what happens when we have an infintesmal change from an intial point $(x,y,z)$ to $(x_2,y_2,z_2)=(x+dx,y+dy,z+dz)$
+
+... If we want to find how quickly the direction of the lights propagation changes at a particular point $\mathbf{R}$, we can think of the source at the origin at time zero and at a point $\mathbf{u'} dt$ after a time $dt$, the system at this later time is equivalent to having the origin at the second position and the stationary point now defined as $\mathbf{R} \rightarrow \mathbf{R} - \mathbf{u} dt$. ...
 
 Now to see the rate of change of the direction that the light propagates relative to each coordinate, by taking the partial derivative of $\mathbf{\hat{c}}$ with respect to each coordinate
 
 \begin{equation}
 	\mhl
 	{
-	\begin{aligned}
-		\frac{\partial \mathbf{\hat{c}}}{\partial x} &=
-	\frac{1}{\gamma_u M ( \frac{u}{c} \frac{\gamma_u z}{M} + 1 )^2}
-	\begin{pmatrix}
-		1 - \frac{x^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M} \\
-		- \frac{x}{M} \frac{y}{M} \\
-		- \frac{x}{M} \frac{z}{M}
-	\end{pmatrix} \\
-	\frac{\partial \mathbf{\hat{c}}}{\partial y} &=
-	\frac{1}{\gamma_u M ( \frac{u}{c} \frac{\gamma_u z}{M} + 1 )^2}
-	\begin{pmatrix}
-		- \frac{y}{M} \frac{x}{M} \\
-		1 - \frac{y^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M} \\
-		- \frac{y}{M} \frac{z}{M}
-	\end{pmatrix} \\
-		\frac{\partial \mathbf{\hat{c}}}{\partial z} &= \frac{1}{\gamma_u M
-		(  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
-		\begin{pmatrix}
-			\gamma_u ( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
-			\gamma_u ( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
-			\frac{ x^2 + y^2 }{M^2}
-		\end{pmatrix}\\
-		\frac{\partial \mathbf{\hat{c}}}{\partial t} &= \frac{-u}{\gamma_u M (  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
-	\begin{pmatrix}
-		\gamma_u ( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
-		\gamma_u ( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
-		 \frac{ x^2 + y^2 }{M^2}
-	\end{pmatrix}
-	\end{aligned}
+		\begin{aligned}
+			\frac{\partial \mathbf{\hat{c}}}{\partial x} & =
+			\frac{1}{\gamma  R ( \frac{u'}{c} \frac{\gamma z}{L} + 1 )^2}
+			\begin{pmatrix}
+				1 - \frac{x^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L} \\
+				- \frac{x}{L} \frac{y}{L}                             \\
+				- \frac{x}{L} \frac{z}{L}
+			\end{pmatrix}                                                               \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial y} & =
+			\frac{1}{\gamma  R ( \frac{u'}{c} \frac{\gamma z}{L} + 1 )^2}
+			\begin{pmatrix}
+				- \frac{y}{L} \frac{x}{L}                             \\
+				1 - \frac{y^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L} \\
+				- \frac{y}{L} \frac{z}{L}
+			\end{pmatrix}                                                               \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial z} & = \frac{1}{\gamma  R
+				(  \frac{u'}{c} \frac{\gamma z}{L} +  1 )^2}
+			\begin{pmatrix}
+				\gamma ( - \frac{u'}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L} \\
+				\gamma ( - \frac{u'}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}  \\
+				\frac{ x^2 + y^2 }{ R^2}
+			\end{pmatrix}                                                    \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial t} & = \frac{-u'}{\gamma  R (  \frac{u'}{c} \frac{\gamma z}{L} +  1 )^2}
+			\begin{pmatrix}
+				\gamma ( - \frac{u'}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L} \\
+				\gamma ( - \frac{u'}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}  \\
+				\frac{ x^2 + y^2 }{ R^2}
+			\end{pmatrix}
+		\end{aligned}
 	}
 \end{equation}
 
 \begin{equation}
-	mag = \sqrt{ (1 - \frac{x^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M})^2 + 2\frac{x^2y^2}{M^4} + \frac{x^2z^2}{M^4} +	(1 - \frac{y^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M})^2 + \frac{y^2z^2}{M^4} +	(\gamma_u ( \frac{u}{c}  + \frac{ \gamma_u z }{M} ) \frac{x}{M})^2 + (\gamma_u ( \frac{u}{c}  + \frac{\gamma_u z }{M} ) \frac{y}{M})^2 + (\frac{ x^2 + y^2 }{M^2})^2 }
+	mag = \sqrt{ (1 - \frac{x^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L})^2 + 2\frac{x^2y^2}{ R^4} + \frac{x^2z^2}{ R^4} +	(1 - \frac{y^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L})^2 + \frac{y^2z^2}{ R^4} +	(\gamma ( \frac{u'}{c}  + \frac{ \gamma z }{L} ) \frac{x}{L})^2 + (\gamma ( \frac{u'}{c}  + \frac{\gamma z }{L} ) \frac{y}{L})^2 + (\frac{ x^2 + y^2 }{ R^2})^2 }
 \end{equation}
 
 %███
@@ -2860,7 +3165,7 @@ these diagrams show the rate of rotation of the lights propagation direction wit
 		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial t}\|$ Source Moving}
 		\label{fig: Rate of change of lights velocity field with respect to time subfig_3}
 	\end{subfigure}
-	\caption{\textbf{The rate of change of the velocity vector field of light from source}. main caption.}
+	\caption{\textbf{The rate of change of the velocity vector field of continuously emitted light from source with respect to time}. main caption.}
 	\label{fig: Rate of change of lights velocity field with respect to time}
 \end{figure}
 %███████████
@@ -2868,21 +3173,200 @@ these diagrams show the rate of rotation of the lights propagation direction wit
 % we can check do see if we take the dot product of the lights velocity with the rate of change that we get a value of zero, as the two vectors should be perpendicular, which we do:
 
 % \begin{equation}
-% 	\mathbf{\hat{c}} \cdot \frac{\partial \mathbf{\hat{c}}}{\partial x} = x (1 - \frac{x^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M}) + y (- \frac{x}{M} \frac{y}{M}) + (\gamma^2 z + \gamma \frac{u}{c} M)(- \frac{x}{M} \frac{z}{M})=0
+% 	\mathbf{\hat{c}} \cdot \frac{\partial \mathbf{\hat{c}}}{\partial x} = x (1 - \frac{x^2}{ R^2} + \frac{u}{c}\frac{\gamma z}{L}) + y (- \frac{x}{L} \frac{y}{L}) + (\gamma^2 z + \gamma \frac{u}{c}  R)(- \frac{x}{L} \frac{z}{L})=0
 % \end{equation}
 
 % \begin{equation}
-% 	\mathbf{\hat{c}} \cdot \frac{\partial \mathbf{\hat{c}}}{\partial z} = x (( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M}) + y (( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M}) + (\gamma^2 z + \gamma \frac{u}{c} M)(\frac{1}{\gamma_u}\frac{ x^2 + y^2 }{M^2})=0
+% 	\mathbf{\hat{c}} \cdot \frac{\partial \mathbf{\hat{c}}}{\partial z} = x (( - \frac{u}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L}) + y (( - \frac{u}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}) + (\gamma^2 z + \gamma \frac{u}{c}  R)(\frac{1}{\gamma}\frac{ x^2 + y^2 }{ R^2})=0
 % \end{equation}
 
-%███████████████████████████████████████████████████████████████████
-\subsection{The rate of change of light density}\label{subsect: The rate of change or potential}
+...
+...
+...
+
+magnitude of the rate of change in all directions (magnitude of jacobian/...), check from first section of chapter
+
+yo paddy this was me just messing about with mathematical properties, this is what i was talking about, turned out it was a $1/R$ relationship not $1/R^2$, but alas!
+
+also the general equat ions for moving source are given too after this.
+
+\textbf{light from a stationary source:}
+
+If you have a stationary light source at the origin that is emitting light constantly in all directions then if we look at any point (x,y,z) we find that the light (which has came from the origin to that point) has the unit vector of its velocity as
 
 \begin{equation}
-	dp/dx
+	\mathbf{\hat{c}} = \frac{1}{R}
+	\begin{pmatrix}
+		x \\
+		y \\
+		z
+	\end{pmatrix}
 \end{equation}
 
-*** a goal for this handbook would to write up the relation between this and classical field theory/ and quantum feild theory if possible.
+at that point
+
+% 1 / (g^2 \frac{u'}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
+
+with $R=\sqrt{x^2 + y^2 + z^2}$.
+
+The things in this yellow box here are just the velocity vector's partial derivative with respect to each coordinate (they are just given here to help with the velocity vector  gradient matrix next)
+
+\begin{equation}
+	\mhl
+	{
+		\begin{aligned}
+			\frac{\partial \mathbf{\hat{c}}}{\partial x} & =
+			\frac{1}{ R^3 }
+			\begin{pmatrix}
+				R^2 - x^2 \\
+				- x y     \\
+				- x z
+			\end{pmatrix}                                                  \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial y} & =
+			\frac{1}{ R^3 }
+			\begin{pmatrix}
+				- y x     \\
+				R^2 - y^2 \\
+				- y z
+			\end{pmatrix}                                                  \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial z} & = \frac{1}{ R^3}
+			\begin{pmatrix}
+				-  z  x  \\
+				-  z   y \\
+				x^2 + y^2
+			\end{pmatrix}                                                  \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial t} & =
+			\begin{pmatrix}
+				0 \\
+				0 \\
+				0
+			\end{pmatrix}
+		\end{aligned}
+	}
+\end{equation}
+
+the velocity vector gradient matrix of lights velocity is
+
+\begin{equation}
+	J =
+	\begin{pmatrix}
+		\frac{\partial c_1}{\partial x} & \frac{\partial c_1}{\partial y} & \frac{\partial c_1}{\partial z} \\
+		\frac{\partial c_2}{\partial x} & \frac{\partial c_2}{\partial y} & \frac{\partial c_2}{\partial z}
+		\\
+		\frac{\partial c_3}{\partial x} & \frac{\partial c_3}{\partial y} & \frac{\partial c_3}{\partial z}
+	\end{pmatrix}
+	= \frac{1}{ R^3 }
+	\begin{pmatrix}
+		R^2 - x^2 & - y x     & -  z  x   \\
+		- x y     & R^2 - y^2 & -  z   y  \\
+		- x z     & - y z     & x^2 + y^2
+	\end{pmatrix}
+	= \frac{1}{ R^3 }
+	\begin{pmatrix}
+		y^2 + z^2 & -xy       & -xz       \\
+		-xy       & x^2 + z^2 & -yz       \\
+		-xz       & -yz       & x^2 + y^2
+	\end{pmatrix}
+\end{equation}
+
+the norm of this ends up giving
+
+\begin{equation}
+	norm = \frac{1}{R^3} \sqrt{2(x^4 + y^4 + z^4) + 4 (x^2y^2 + x^2z^2 + y^2z^2)} = \frac{\sqrt{2}}{R^3} \sqrt{(x^2 + y^2 + z^2)^2} = \frac{\sqrt{2}}{ R }
+\end{equation}
+
+which is proportional to $1/R$, the thing i told ya about
+
+the distance between two points on a sphere are proportianl to the angle between them and the radius, so with constant angle you get them we have it proportian to $R$ which should be related
+
+this does not work in spherical polar Coordinates
+
+%█████████████
+\subsubsection{General Equations for moving source:}\label{subsubsect: General Equations for Moving Source 3}
+
+\begin{equation}
+	\mathbf{\hat{c}} = \frac{1}{c T_{p}}
+	\begin{pmatrix}
+		x \\
+		y \\
+		z + u' T_{p}
+	\end{pmatrix}
+\end{equation}
+
+with
+
+\begin{equation}
+	T_{p} = \gamma^2 \frac{u'}{c^2}z + \frac{\gamma}{c}  R
+\end{equation}
+
+% 1 / (g^2 \frac{u'}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
+
+with $ R=\sqrt{x'^2 + y'^2 + \gamma^2 z'^2}$.
+
+\begin{equation}
+	\mhl
+	{
+		\begin{aligned}
+			\frac{\partial \mathbf{\hat{c}}}{\partial x} & =
+			\frac{1}{\gamma  R ( \frac{u'}{c} \frac{\gamma z}{L} + 1 )^2}
+			\begin{pmatrix}
+				1 - \frac{x^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L} \\
+				- \frac{x}{L} \frac{y}{L}                             \\
+				- \frac{x}{L} \frac{z}{L}
+			\end{pmatrix}                                                               \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial y} & =
+			\frac{1}{\gamma  R ( \frac{u'}{c} \frac{\gamma z}{L} + 1 )^2}
+			\begin{pmatrix}
+				- \frac{y}{L} \frac{x}{L}                             \\
+				1 - \frac{y^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L} \\
+				- \frac{y}{L} \frac{z}{L}
+			\end{pmatrix}                                                               \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial z} & = \frac{1}{\gamma  R
+				(  \frac{u'}{c} \frac{\gamma z}{L} +  1 )^2}
+			\begin{pmatrix}
+				\gamma ( - \frac{u'}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L} \\
+				\gamma ( - \frac{u'}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}  \\
+				\frac{ x^2 + y^2 }{ R^2}
+			\end{pmatrix}                                                    \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial t} & = \frac{-u'}{\gamma  R (  \frac{u'}{c} \frac{\gamma z}{L} +  1 )^2}
+			\begin{pmatrix}
+				\gamma ( - \frac{u'}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L} \\
+				\gamma ( - \frac{u'}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}  \\
+				\frac{ x^2 + y^2 }{ R^2}
+			\end{pmatrix}
+		\end{aligned}
+	}
+\end{equation}
+
+maybe use spacetime gradient on velocity? with the velocity being $( 0 , c_x , c_y , c_z )$ (not four velocity!) giving
+
+gradient being $( \delta_t , \delta_x , \delta_y , \delta_z )$
+
+\begin{equation}
+	J =
+	\begin{pmatrix}
+		0                                 & 0                               & 0                               & 0                               \\
+		\frac{\partial c_x}{c \partial t} & \frac{\partial c_x}{\partial x} & \frac{\partial c_x}{\partial y} & \frac{\partial c_1}{\partial z} \\
+		\frac{\partial c_y}{c \partial t} & \frac{\partial c_y}{\partial x} & \frac{\partial c_y}{\partial y} & \frac{\partial c_1}{\partial z} \\
+		\frac{\partial c_z}{c \partial t} & \frac{\partial c_z}{\partial x} & \frac{\partial c_z}{\partial y} & \frac{\partial c_1}{\partial z} \\
+	\end{pmatrix}
+\end{equation}
+
+for norm should above have negative time parts? or make complex?
+
+also what about material derivative in the form:
+
+\begin{equation}
+	\rho {\frac {\mathrm {D} \mathbf {u'} }{\mathrm {D} t}}=\rho \left({\frac {\partial \mathbf {u'} }{\partial t}}+(\mathbf {u'} \cdot \nabla )\mathbf {u'} \right)
+\end{equation}
+
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\input{Tex/Terms/Terms_ch5.tex}
+
+%███████████████████████████████████████████████████████████████████
+\printbibliography[segment=\therefsegment, heading=subbibliography]
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -2913,7 +3397,7 @@ All inertial frames of reference agree on this interval as it is invariant betwe
 
 \begin{equation}
 	\begin{aligned}
-		\Delta S{'}^2 & = (c{\Delta t{'}})^2-\Delta x{'}^2-{\Delta y{'}}^2-{\Delta z{'}}^2                                                                             \\
+		\Delta S{'}^2 & = (c{\Delta t{'}})^2-\Delta x{'}^2-{\Delta y{'}}^2-{\Delta z{'}}^2                                                                                          \\
 		              & \color{gray} = {c}^2{\gamma} \bigg( \Delta t-\frac{v}{{c}^2} {\Delta z} \bigg)^2-{\Delta x}^2-{\Delta y}^2-\Delta ({\gamma} ( {\Delta z}- {v} \Delta t) )^2 \\
 		              & \color{gray} = (c\Delta t)^2-{\Delta x}^2-{\Delta y}^2-{\Delta z}^2                                                                                         \\
 		              & = \Delta S^2.
@@ -2937,7 +3421,7 @@ and if we divide by the square of the proper time that passes for the particle i
 \begin{equation}
 	\begin{aligned}
 		\left(\frac{dS_p}{d\tau}\right)^2 & = \left(c\frac{{{dt}_{p}}}{d\tau}\right)^2-\left(c\frac{dx_p}{d\tau}\right)^2-\left(\frac{dy_p}{d\tau}\right)^2-\left(\frac{dz_p}{d\tau}\right)^2 \\
-		                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{{{u}_{x}}^2 + {{u}_{y}}^2 + {{u}_{z}}^2}{{c}^2} \right) = {c}^2\gamma_{u}^2 \left( 1-\frac{u^2}{{c}^2} \right) \\
+		                                  & = {c}^2\gamma^2 \left( 1-\frac{{{u}_{x}}^2 + {{u}_{y}}^2 + {{u}_{z}}^2}{{c}^2} \right) = {c}^2\gamma^2 \left( 1-\frac{u^2}{{c}^2} \right) \\
 		                                  & = {c}^2
 	\end{aligned}
 \end{equation}
@@ -2948,8 +3432,8 @@ Now by multiplying both sides by ${c}^2$ and the square of the rest mass ${m}$ o
 \begin{equation}
 	\label{eq: energy-momentum derivation}
 	\begin{aligned}
-		m^2 {c}^2 \left(\frac{dS_p}{d\tau}\right)^2 & = \gamma_{u}^2 m^2 c^4-\gamma_{u}^2 m^2 \left( {{u}_{x}}^2 + {{u}_{y}}^2 + {{u}_{z}}^2 \right) {c}^2 \\
-		({m}{c}^2)^2                                & = \gamma_{u}^2 m^2 c^4-\gamma_{u}^2 m^2 u^2 {c}^2
+		m^2 {c}^2 \left(\frac{dS_p}{d\tau}\right)^2 & = \gamma^2 m^2 c^4-\gamma^2 m^2 \left( {{u}_{x}}^2 + {{u}_{y}}^2 + {{u}_{z}}^2 \right) {c}^2 \\
+		({m}{c}^2)^2                                & = \gamma^2 m^2 c^4-\gamma^2 m^2 u^2 {c}^2
 	\end{aligned}
 \end{equation}
 
@@ -2957,19 +3441,19 @@ rearranging, we get
 
 \begin{equation}
 	\label{eq: total relativistic energy}
-	\left( \gamma_{u} m {c}^2 \right)^2 = ({m}{c}^2)^2 + \left( \gamma_{u} {m}{u}{c}\right)^2
+	\left( \gamma m {c}^2 \right)^2 = ({m}{c}^2)^2 + \left( \gamma {m}{u}{c}\right)^2
 \end{equation}
 
-using the Taylor expansion of $\gamma_{u}$ on the quantity $\gamma_{u} {m}{c}^2$, we have for the squared term on the lefthand side
+using the Taylor expansion of $\gamma$ on the quantity $\gamma {m}{c}^2$, we have for the squared term on the lefthand side
 
 *** this needs to be taylor expansion of squared term on lhs, not the none squared term
 \begin{equation}
-	\gamma_{u} = 1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+	\gamma = 1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
 \end{equation}
 
 \begin{equation}
 	\begin{aligned}
-		\gamma_{u} {m}{c}^2 & = {m}{c}^2  \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+		\gamma {m}{c}^2 & = {m}{c}^2  \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
 		\right)                                                                                                     \\
 		                    & = {m}{c}^2 + \frac{1}{2}{m}{u}^2 + \frac{3}{8}m\frac{u^4}{{c}^2} + ...
 	\end{aligned}
@@ -2981,14 +3465,14 @@ no change in potential energy) with added terms which become non-negligible at l
 Taking this assertion we have
 
 \begin{equation}
-	E^2 = \left( {m}{c}^2 \right)^2 + (\gamma_{u}{m}{u})^2{c}^2
+	E^2 = \left( {m}{c}^2 \right)^2 + (\gamma{m}{u})^2{c}^2
 \end{equation}
 
-so this total energy is equal to its rest energy squared plus a second energy squared that depends on its speed, this second quantity along with the Taylor expansion of $\gamma_{u}$ gives
+so this total energy is equal to its rest energy squared plus a second energy squared that depends on its speed, this second quantity along with the Taylor expansion of $\gamma$ gives
 
 \begin{equation}
 	\begin{aligned}
-		\gamma_{u} {m}{u}{c} & = {m}{u}{c} \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+		\gamma {m}{u}{c} & = {m}{u}{c} \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
 		\right)                                                                                                       \\
 		                     & ={c}\left( {m}{u} + \frac{1}{2}m \frac{u^3}{{c}^2} + \frac{3}{8}m\frac{u^5}{c^4} + ...
 		\right)
@@ -2998,7 +3482,7 @@ so this total energy is equal to its rest energy squared plus a second energy sq
 which at small particle velocities is approximately ${m}{u}{c}$ with ${m}{u}$ being the classical momentum, we could assert that this whole energy is momentum in the relativistic context, i.e.
 
 \begin{equation}
-	p = \gamma_{u} {m}{u}
+	p = \gamma {m}{u}
 \end{equation}
 
 as it has the same units and is approximately the classical momentum at small particle speeds.

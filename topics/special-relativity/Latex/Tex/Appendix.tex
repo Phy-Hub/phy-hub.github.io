@@ -1100,188 +1100,6 @@ Then we need to start with all objects where they currently are at ${t} = 0$ the
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{paddy time}
-
-yo paddy this was me just messing about with mathematical properties, this is what i was talking about, turned out it was a $1/R$ relationship not $1/R^2$, but alas!
-
-also the general equations for moving source are given too after this.
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{light from a stationary source:}
-
-If you have a stationary light source at the origin that is emitting light constantly in all directions then if we look at any point (x,y,z) we find that the light (which has came from the origin to that point) has the unit vector of its velocity as
-
-\begin{equation}
-	\mathbf{\hat{c}} = \frac{1}{R}
-	\begin{pmatrix}
-		x \\
-		y \\
-		z
-	\end{pmatrix}
-\end{equation}
-
-at that point
-
-% 1 / (g^2 \frac{u}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
-
-with $R=\sqrt{x^2 + y^2 + z^2}$.
-
-The things in this yellow box here are just the velocity vector's partial derivative with respect to each coordinate (they are just given here to help with the velocity vector  gradient matrix next)
-
-\begin{equation}
-	\mhl
-	{
-	\begin{aligned}
-		\frac{\partial \mathbf{\hat{c}}}{\partial x} &=
-	\frac{1}{ R^3 }
-	\begin{pmatrix}
-		R^2 - x^2 \\
-		- x y \\
-		- x z
-	\end{pmatrix} \\
-	\frac{\partial \mathbf{\hat{c}}}{\partial y} &=
-	\frac{1}{ R^3 }
-	\begin{pmatrix}
-		- y x \\
-		R^2 - y^2  \\
-		- y z
-	\end{pmatrix} \\
-		\frac{\partial \mathbf{\hat{c}}}{\partial z} &= \frac{1}{ R^3}
-		\begin{pmatrix}
-			 -  z  x \\
-			 -  z   y \\
-			 x^2 + y^2
-		\end{pmatrix}\\
-		\frac{\partial \mathbf{\hat{c}}}{\partial t} &=
-	\begin{pmatrix}
-		 0 \\
-		 0 \\
-		 0
-	\end{pmatrix}
-	\end{aligned}
-	}
-\end{equation}
-
-the velocity vector gradient matrix of lights velocity is
-
-\begin{equation}
-J =
-\begin{pmatrix}
-	\frac{\partial c_1}{\partial x} & \frac{\partial c_1}{\partial y} & \frac{\partial c_1}{\partial z} \\
-	\frac{\partial c_2}{\partial x} & \frac{\partial c_2}{\partial y} & \frac{\partial c_2}{\partial z}  
-	 \\
-	\frac{\partial c_3}{\partial x} & \frac{\partial c_3}{\partial y} & \frac{\partial c_3}{\partial z}
-	\end{pmatrix}
-	= \frac{1}{ R^3 }
-	\begin{pmatrix}
-		R^2 - x^2 & - y x & -  z  x \\
-		- x y & R^2 - y^2 & -  z   y  \\
-		 - x z & - y z & x^2 + y^2
-	\end{pmatrix}
-    = \frac{1}{ R^3 }
-    \begin{pmatrix}
-        y^2 + z^2 &   -xy     &    -xz   \\
-           -xy    & x^2 + z^2 &    -yz   \\
-           -xz    &   -yz     & x^2 + y^2
-    \end{pmatrix}
-\end{equation}
-
-the norm of this ends up giving
-
-\begin{equation}
-	norm = \frac{1}{R^3} \sqrt{2(x^4 + y^4 + z^4) + 4 (x^2y^2 + x^2z^2 + y^2z^2)} = \frac{\sqrt{2}}{R^3} \sqrt{(x^2 + y^2 + z^2)^2} = \frac{\sqrt{2}}{ R }
-\end{equation}
-
-which is proportional to $1/R$, the thing i told ya about
-
-the distance between two points on a sphere are proportianl to the angle between them and the radius, so with constant angle you get them we have it proportian to $R$ which should be related
-
-this does not work in spherical polar Coordinates
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{General Equations for moving source:}
-
-\begin{equation}
-	\mathbf{\hat{c}} = \frac{1}{c T_{p}}
-	\begin{pmatrix}
-		x \\
-		y \\
-		z + u T_{p}
-	\end{pmatrix}
-\end{equation}
-
-with
-
-\begin{equation}
-	T_{p} = \gamma_u^2 \frac{u}{c^2}z + \frac{\gamma_u}{c} M
-\end{equation}
-
-% 1 / (g^2 \frac{u}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
-
-with $M=\sqrt{x^2 + y^2 + \gamma_u^2 z^2}$.
-
-\begin{equation}
-	\mhl
-	{
-	\begin{aligned}
-		\frac{\partial \mathbf{\hat{c}}}{\partial x} &=
-	\frac{1}{\gamma_u M ( \frac{u}{c} \frac{\gamma_u z}{M} + 1 )^2}
-	\begin{pmatrix}
-		1 - \frac{x^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M} \\
-		- \frac{x}{M} \frac{y}{M} \\
-		- \frac{x}{M} \frac{z}{M}
-	\end{pmatrix} \\
-	\frac{\partial \mathbf{\hat{c}}}{\partial y} &=
-	\frac{1}{\gamma_u M ( \frac{u}{c} \frac{\gamma_u z}{M} + 1 )^2}
-	\begin{pmatrix}
-		- \frac{y}{M} \frac{x}{M} \\
-		1 - \frac{y^2}{M^2} + \frac{u}{c}\frac{\gamma_u z}{M} \\
-		- \frac{y}{M} \frac{z}{M}
-	\end{pmatrix} \\
-		\frac{\partial \mathbf{\hat{c}}}{\partial z} &= \frac{1}{\gamma_u M
-		(  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
-		\begin{pmatrix}
-			\gamma_u ( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
-			\gamma_u ( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
-			\frac{ x^2 + y^2 }{M^2}
-		\end{pmatrix}\\
-		\frac{\partial \mathbf{\hat{c}}}{\partial t} &= \frac{-u}{\gamma_u M (  \frac{u}{c} \frac{\gamma_u z}{M} +  1 )^2}
-	\begin{pmatrix}
-		\gamma_u ( - \frac{u}{c}  - \frac{ \gamma_u z }{M} ) \frac{x}{M} \\
-		\gamma_u ( - \frac{u}{c}  - \frac{\gamma_u z }{M} ) \frac{y}{M} \\
-		 \frac{ x^2 + y^2 }{M^2}
-	\end{pmatrix}
-	\end{aligned}
-	}
-\end{equation}
-
-maybe use spacetime gradient on velocity? with the velocity being $( 0 , c_x , c_y , c_z )$ (not four velocity!) giving
-
-gradient being $( \delta_t , \delta_x , \delta_y , \delta_z )$
-
-\begin{equation}
-    J =
-    \begin{pmatrix}
-        0 & 0 & 0 & 0 \\
-        \frac{\partial c_x}{c \partial t} & \frac{\partial c_x}{\partial x} & \frac{\partial c_x}{\partial y} & \frac{\partial c_1}{\partial z} \\
-        \frac{\partial c_y}{c \partial t} & \frac{\partial c_y}{\partial x} & \frac{\partial c_y}{\partial y} & \frac{\partial c_1}{\partial z} \\
-        \frac{\partial c_z}{c \partial t} & \frac{\partial c_z}{\partial x} & \frac{\partial c_z}{\partial y} & \frac{\partial c_1}{\partial z} \\
-    \end{pmatrix}
-\end{equation}
-
-for norm should above have negative time parts? or make complex?
-
-also what about material derivative in the form:
-
-\begin{equation}
-    \rho {\frac {\mathrm {D} \mathbf {u} }{\mathrm {D} t}}=\rho \left({\frac {\partial \mathbf {u} }{\partial t}}+(\mathbf {u} \cdot \nabla )\mathbf {u} \right)
-\end{equation}
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
 \chapter{differentials form light field}\label{ch: differentials form light field}
 
 %███████████████████████████████████████████████████████████████████
@@ -1459,3 +1277,33 @@ Now for an infintesmal change in time we have the source shifting a distance $u 
 		 \frac{1}{\gamma_u}\frac{ x^2 + y^2 }{M^2}
 	\end{pmatrix}
 \end{equation}
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{gradient of potential to get inverse square law}\label{sect: gradient of potential to get inverse square law}
+
+*** can not realy explain ths in a way to get something in primed frame
+
+scalar potential $ \Phi = k/r$
+
+gradient:
+
+\begin{equation}
+	\nabla = \begin{pmatrix}
+		\partial_t \\
+		\partial_x \\
+		\partial_y \\
+		\partial_z
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+	\nabla \Phi = -\frac{k}{r^3} \begin{pmatrix}
+		x \\ y \\ z
+	\end{pmatrix}
+\end{equation}
+
+so that $\|\nabla\Phi\|= ... = \frac{k}{r^2}$
+
+%█████████████
+\subsection{General Equations for Moving Source}\label{subsubsect: General Equations for Moving Source 1}

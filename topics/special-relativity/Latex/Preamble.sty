@@ -1,7 +1,9 @@
 \ProvidesPackage{Preamble}
 
+
 %█████████████████████████████████████████████████████
 %PAGE LAYOUT
+
 
 % Page Colour
 \usepackage{xcolor}
@@ -34,6 +36,15 @@
     \end{mdframed}
     \vspace{-0.45\baselineskip}{\color{gray}\rule{\baselineskip}{0.4pt}}
     \vspace{\baselineskip}}
+
+% variable table
+\usepackage{colortbl}
+\usepackage{xtab}
+\newcommand{\linesep}{%
+  \vspace{-0.6\baselineskip}%
+  \noindent\textcolor{gray}{\rule{\linewidth}{0.4pt}}%
+  \vspace{-.4\baselineskip}%
+}
 
 %█████████████████████████████████████████████████████
 % MATH

@@ -146,7 +146,7 @@
 		"prefix": "l.subsubsection",
 		"body":
 		[
-		"%███",
+		"%█████████████",
 		"\\subsubsection{$1}\\label{subsubsect: $1}"
 		],
 	},
@@ -215,9 +215,12 @@
 		"prefix": "l.eq_highlight",
 		"body":
 		[
-		"\\mhl{",
-		"\t$1",
-		"}"
+		"\\begin{equation}",
+		"\t\\label{eq: ${1: label}}",
+		"\t\\mhl{",
+		"\t\t$2",
+		"\t}",
+		"\\end{equation}"
 		],
 	},
 
@@ -252,15 +255,7 @@
 		"prefix": "l.ref_equation",
 		"body":
 		[
-		"equation \\eqref{${eq: 1:referenced equation's label name}}"
-		],
-	},
-
-	"latex_eq_label": {
-		"prefix": "l.equation_labeled",
-		"body":
-		[
-		"\\label{eq: ${1:equation name}}",
+		"equation \\eqref{eq: ${1:referenced equation's label name}}"
 		],
 	},
 

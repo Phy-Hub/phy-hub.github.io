@@ -41,25 +41,28 @@
 \contentsline {section}{\numberline {3.5}Variables}{60}{section.3.5}%
 \contentsline {chapter}{\numberline {4}A Point Source: Emitting a Pulse of Light}{61}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Spherical Polar Coordinates}{62}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Surface Element on a Sphere}{63}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Light Velocity Transform}{65}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Doppler Effect}{66}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Aberration in Special Relativity}{67}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Relativistic Beaming}{69}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Retarded Light Propagation}{70}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}Emitted Light When Swapping Frame}{73}{subsection.4.7.1}%
-\contentsline {section}{\numberline {4.8}Variables}{76}{section.4.8}%
-\contentsline {chapter}{\numberline {5}A Point Source: Continually Emitting Light Radially Outwards}{78}{chapter.5}%
-\contentsline {section}{\numberline {5.1}A Moving Source's Field of light}{78}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Flux/flowrate / radial/angular concentration/density of light from Point Source}{79}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Flux of light Through Surface Element}{79}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Flux of Light}{80}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}General Equations for Light Propagation Direction:}{81}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Rate of Change of Direction of Light from Moving Source}{81}{subsection.5.2.4}%
-\contentsline {subsection}{\numberline {5.2.5}The rate of change of light density}{83}{subsection.5.2.5}%
-\contentsline {chapter}{\numberline {6}Invariant Quantities}{84}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Space-Time Interval}{84}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Energy-Momentum Relation}{85}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Energy-Momentum Relation For Photons}{88}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Energy-Mass Equivalence}{88}{subsection.6.3.1}%
-\contentsline {section}{\numberline {6.4}Variables}{88}{section.6.4}%
+\contentsline {section}{\numberline {4.2}Light Velocity Transform}{63}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Doppler Effect}{64}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Aberration in Special Relativity}{66}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Relativistic Beaming}{67}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Retarded Light Propagation in Source's Primed Frame}{69}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Emitted Light When Swapping Frame}{72}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Variables}{75}{section.4.8}%
+\contentsline {chapter}{\numberline {5}A Point Source: Continually Emitting Light Radially Outwards}{77}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Surface Element on a Sphere and the Solid Angle}{78}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Density of Light in a Infintesmal Solid Angle from a Point Source}{80}{section.5.2}%
+\contentsline {section}{\numberline {5.3}A Moving Source's Relativistic Beaming of its emitted light}{81}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Emitted Light's Density}{82}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Scalar Density of Light}{82}{subsection.5.4.1}%
+\contentsline {subsubsection}{General Equations for Moving Source}{83}{section*.43}%
+\contentsline {subsection}{\numberline {5.4.2}Density of Light in a Vector Form}{84}{subsection.5.4.2}%
+\contentsline {subsubsection}{General Equations for Moving Source}{85}{section*.44}%
+\contentsline {section}{\numberline {5.5}Rate of change of propagation direction}{88}{section.5.5}%
+\contentsline {subsubsection}{General Equations for moving source:}{92}{section*.48}%
+\contentsline {section}{\numberline {5.6}Variables}{94}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Invariant Quantities}{95}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Space-Time Interval}{95}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Energy-Momentum Relation}{96}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Energy-Momentum Relation For Photons}{99}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Energy-Mass Equivalence}{99}{subsection.6.3.1}%
+\contentsline {section}{\numberline {6.4}Variables}{99}{section.6.4}%

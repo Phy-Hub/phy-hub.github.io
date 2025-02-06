@@ -1,0 +1,102 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import Paths as path
+filename_prefix = "coord_transform_"
+
+# Define the density function
+def density_rest_frame(x, y, z):
+    return  1 / (x**2 + y**2 + z**2)
+
+def density_primed_frame(x, y, z, b, g):
+    L = np.sqrt(x**2 + y**2 + g**2 * z**2)
+    return  ( g * ( 1 - b *( g * z) / L ) ) / (L**2)
+
+def vector_density_primed_frame(x, y, z, b, g):
+    L_squared = (x**2 + y**2 + g**2 * z**2)
+    return  1/L_squared
+
+def vector_density_norm_primed_frame(x, y, z, b, g):
+    L_squared = (x**2 + y**2 + g**2 * z**2)
+    M = (x**2 + y**2 + g**4 * z**2)
+    return  np.sqrt( M / L_squared ) / L_squared
+
+# Parameters
+b = 0.9
+g = 1 / np.sqrt(1 - b**2)
+
+# Set x to a constant (for the y-z plane)
+x = 0
+
+# Grid creation
+y = np.linspace(-5, 5, 1000)
+z = np.linspace(-5, 5, 1000)
+Y, Z = np.meshgrid(y, z)
+
+nan_space = 1
+Y = np.where( np.sqrt(y**2 + Z**2) > nan_space, y, np.nan)
+Z = np.where( np.sqrt(y**2 + Z**2) > nan_space, Z, np.nan)
+
+# Calculate prime frame density values
+density_values_rest_frame = density_rest_frame(x, Y, Z)
+density_values_rest_frame = np.nan_to_num(density_values_rest_frame, nan=0)
+density_values_primed_frame = density_primed_frame(x, Y, Z, b, g)
+density_values_primed_frame = np.nan_to_num(density_values_primed_frame, nan=0)
+vector_density_values_primed_frame = vector_density_primed_frame(x, Y, Z, b, g)
+vector_density_values_primed_frame = np.nan_to_num(vector_density_values_primed_frame, nan=0)
+vector_density_norm_values_primed_frame = vector_density_norm_primed_frame(x, Y, Z, b, g)
+vector_density_norm_values_primed_frame = np.nan_to_num(vector_density_norm_values_primed_frame, nan=0)
+
+# 2D Plotting (Figure 1)
+fig_rest = plt.figure(1)
+ax_rest = fig_rest.add_subplot(111)
+# Plot the 2D density image
+im_rest = ax_rest.imshow(density_values_rest_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig_rest.colorbar(im_rest)
+ax_rest.set_xlabel("$l_y'$")
+ax_rest.set_ylabel("$l_z'$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+plt.savefig(path.svg + "Density_of_Light_from_Rest_Source.svg",bbox_inches='tight', format='svg',transparent=True)
+plt.savefig(path.pdf + "Density_of_Light_from_Rest_Source.pdf",bbox_inches='tight', format='pdf',transparent=True)
+
+# 2D Plotting (Figure 2)
+fig = plt.figure(2)
+ax = fig.add_subplot(111)
+# Plot the 2D density image
+im = ax.imshow(density_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig.colorbar(im)
+ax.set_xlabel("$l_y'$")
+ax.set_ylabel("$l_z'$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+plt.savefig(path.svg + "Density_of_Light_from_Moving_Source.svg",bbox_inches='tight', format='svg',transparent=True)
+plt.savefig(path.pdf + "Density_of_Light_from_Moving_Source.pdf",bbox_inches='tight', format='pdf',transparent=True)
+
+# 2D Plotting (Figure 3)
+fig_vec = plt.figure(3)
+ax_vec = fig_vec.add_subplot(111)
+# Plot the 2D density image
+im_vec = ax_vec.imshow(vector_density_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig_vec.colorbar(im_vec)
+ax_vec.set_xlabel("$l_y'$")
+ax_vec.set_ylabel("$l_z'$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+plt.savefig(path.svg + "Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.svg",bbox_inches='tight', format='svg',transparent=True)
+plt.savefig(path.pdf + "Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf",bbox_inches='tight', format='pdf',transparent=True)
+
+# 2D Plotting (Figure 3)
+fig_norm = plt.figure(4)
+ax_norm = fig_norm.add_subplot(111)
+# Plot the 2D density image
+im_norm = ax_norm.imshow(vector_density_norm_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig_norm.colorbar(im_norm)
+ax_norm.set_xlabel("$l_y'$")
+ax_norm.set_ylabel("$l_z'$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+plt.savefig(path.svg + "Rate_of_Change_of_Vector_Density_norm_of_Light_from_Moving_Source.svg",bbox_inches='tight', format='svg',transparent=True)
+plt.savefig(path.pdf + "Rate_of_Change_of_Vector_Density_norm_of_Light_from_Moving_Source.pdf",bbox_inches='tight', format='pdf',transparent=True)
+
+# Show both figures
+plt.show()

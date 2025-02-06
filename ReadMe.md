@@ -14,6 +14,12 @@
     - git clone https://github.com/jalios/pdf2svg-windows.git pdf2svg
     - add C:\pdf2svg\dist-64bits; to PATH
 
+- svgo (makes svg files smaller)
+    - git clone https://github.com/svg/svgo.git svgo
+    or
+    - npm install -g svgo
+
+
 - GPL ghostscript (not sure if needed)
 
 - Inkscape

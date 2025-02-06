@@ -1,9 +1,7 @@
 \ProvidesPackage{Preamble}
 
-
 %█████████████████████████████████████████████████████
 %PAGE LAYOUT
-
 
 % Page Colour
 \usepackage{xcolor}
@@ -29,13 +27,24 @@
 
 % derivations environment
 \newenvironment{derivation}{
-    \textbf{\color{gray}derivation:} \\
-    %\vspace{-0.45\baselineskip}{\color{gray}\rule{\baselineskip}{0.4pt}}
-    \begin{mdframed}[linecolor=gray, backgroundcolor=Beige, topline=false, rightline=false, bottomline=false]
-        \color{gray}  }{
-    \end{mdframed}
-    \vspace{-0.45\baselineskip}{\color{gray}\rule{\baselineskip}{0.4pt}}
-    \vspace{\baselineskip}}
+  \textbf{\color{gray}derivation:} \\
+  %\vspace{-0.45\baselineskip}{\color{gray}\rule{\baselineskip}{0.4pt}}
+  \begin{mdframed}[linecolor=gray, backgroundcolor=Beige, topline=false, rightline=false, bottomline=false]
+      \color{gray}  }{
+  \end{mdframed}
+  \vspace{-0.45\baselineskip}{\color{gray}\rule{\baselineskip}{0.4pt}}
+  \vspace{\baselineskip}
+}
+
+% boxed environment for points
+\newenvironment{mainpoints}{
+  \begin{tcolorbox}%[breakable]
+    \begin{enumerate}  }{
+    \end{enumerate}
+  \end{tcolorbox}
+}
+
+
 
 % variable table
 \usepackage{colortbl}
@@ -44,6 +53,14 @@
   \vspace{-0.6\baselineskip}%
   \noindent\textcolor{gray}{\rule{\linewidth}{0.4pt}}%
   \vspace{-.4\baselineskip}%
+}
+\newcommand{\variable}[2]{%
+  \noindent #1 \textbf{:} #2%
+
+  \vspace{-0.6\baselineskip}%
+  \noindent\textcolor{gray}{\rule{\linewidth}{0.4pt}}%
+  \vspace{-0.4\baselineskip}%
+
 }
 
 %█████████████████████████████████████████████████████

@@ -128,8 +128,8 @@ Figure (\ref{fig: treadmill}) shows what the direction of movement of the rats a
 \end{figure}
 %███████████
 
-\iffalse javascript{rats_on_treadmill}
-\fi
+%\iffalse javascript{rats_on_treadmill}
+%\fi
 
 From the room's perspective, the platform is moving backwards.
 The rat that is moving along the direction of the treadmill's motion will have impedance to its movement from the backwards pull of the platform.
@@ -214,7 +214,7 @@ For this to be true, we need a new way of thinking about velocity addition.
 This is because the velocities of objects must be added in a way that is consistent with the requirement that the speed of light is constant but also gives the approximate classical addition at speeds of objects at much less than the speed of light, like how we observed in the situation with the cannon and truck, shown in Figure (\ref{fig: truck cannonball}).
 Since the speed of the light depends only on the units of time and positions, the only way to correct for this is to have the measured positions and times of objects \hyperlink{def-transform}{transform} differently when swapping between \hyperlink{def-Reference-frame}{reference frame}s than the classical way.
 This is what we will talk about next.
-For the curious, it was the \href{https://scienceready.com.au/pages/determination-of-speed-of-light}{experiment by Ole Rømer} that showed that light traveled at a finite speed rather than being instantaneously emitted and received.
+For the curious, it was the experiment by Ole Rømer (\href{https://scienceready.com.au/pages/determination-of-speed-of-light}{link}) that showed that light traveled at a finite speed rather than being instantaneously emitted and received.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -235,6 +235,10 @@ For an \hyperlink{def-observer}{observer} in the truck, they will see the light 
 	\label{fig: truck clock}
 \end{figure}
 %███████████
+
+%█████████████████████████████████
+\iffalse javascript{createTruckDiagram: 2, Math.PI / 2 } %█
+\fi%██████████████████████████████
 
 Given that the distance traveled by the light in the frame with the truck moving is longer, and from the previous sections we know that the speed of light is the same for both reference frames, to keep the speed of light invariant: the clock itself must tick slower in moving objects.
 
@@ -281,6 +285,10 @@ Because of this, the \hyperlink{def-observer}{observer} on the road will see the
 \end{figure}
 %███████████
 
+%█████████████████████████████████
+\iffalse javascript{createTruckDiagram: 2 } %█
+\fi%██████████████████████████████
+
 Consequently, times of \hyperlink{def-event}{event}s, such as when the light reaches either mirror, are different for \hyperlink{def-observer}{observer}s in different \hyperlink{def-Reference-frame}{reference frame}s.
 There is no one true order of \hyperlink{def-event}{event}s.
 For example, an \hyperlink{def-observer}{observer} in a faster-moving vehicle moving in the opposite direction would see the light reach the front wall first.
@@ -318,6 +326,10 @@ This is shown in the following figure.
 	\label{fig: full truck transform}
 \end{figure}
 %███████████
+
+%█████████████████████████████████
+\iffalse javascript{createTruckDiagram: 4 } %█
+\fi%██████████████████████████████
 
 We now know that moving objects must shrink in the direction they move to allow for a consistent speed of light in each frame.
 But this srinking is not noticeable when objects move much slower than light speed.
@@ -430,7 +442,7 @@ For this to be true, the directions of the light must be aberrated (have their d
 %███████████
 
 %█████████████████████████████████
-\iffalse javascript{Aberration} %█
+\iffalse javascript{createTruckDiagram: 33} %█
 \fi%██████████████████████████████
 
 From the diagrams, you can see how light's direction of propagation is changed when emitted or absorbed by a moving source relative to its \hyperlink{def-proper-frame}{rest frame}, this is called relativistic aberration. The faster the source is moving, the more the direction of each part of the light pulse is changed/aberrated.
@@ -673,7 +685,7 @@ It was based on two assumptions, which are that \textbf{in each frame, you would
 
 \begin{itemize}
 	\item The distance between objects is the same.
-	\item Time flows at the same rate, giving the same time for all events.
+	\item Time flows at the same rate, giving the same time for an event in each frame.
 \end{itemize}
 
 Before special relativity, it was assumed that distances between two points were the same for all \hyperlink{def-observer}{observer}s.
@@ -787,12 +799,10 @@ You might have noticed that the direction of the second frame is in the upward z
 
 For classical relativity, we started with two assumptions. It turns out that these assumptions need to be thrown away, as they contradict the experimental evidence that the speed of light is constant for every observer and frame. We replace them with two new assumptions, called the \textbf{postulates of special relativity:}
 
-\begin{tcolorbox}%[breakable]
-	\begin{enumerate}
+\begin{mainpoints}
 		\item The speed of light in a \hyperlink{def-vacuum}{vacuum} is the same in all inertial/non-accelerating frames of reference.
 		\item The laws of physics and outcome of experiments are the same in all \hyperlink{def-Inertial-reference-frame}{inertial frames of reference}. If an observer in an inertial reference frame carries out an experiment, they would find the same result if they had carried it out within a different inertial frame instead.
-	\end{enumerate}
-\end{tcolorbox}
+\end{mainpoints}
 
 The first postulate here will be the most important to us in deriving the transform equations of special relativity and will be used to show how time is dilated/slowed down for moving objects. The second postulate has a consequence that if events happen simultaneously at an overlapping position in one frame, then they will also happen simultaneously in an overlapping position in any other inertial frame.
 We will now use these assumptions with the concept of a light clock to show the effect of length contraction.
@@ -1442,14 +1452,14 @@ Now, divide by ${dt{'}}$ as we did for the velocity in the previous section, and
 \begin{equation}
 	\mhl{
 		\begin{aligned}
-			\mathbf{a}{'} = \dfrac{1}{{\gamma}^2\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right)^3 }
+			&\mathbf{a}{'} = \dfrac{1}{{\gamma}^2\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right)^3 }
 			\begin{pmatrix}
 				{{a}_{x}} + \frac{v}{{c}^2}({{u}_{x}} {{a}_{z}}-{{u}_{z}} {{a}_{x}}) \\
 				{{a}_{y}} + \frac{v}{{c}^2}({{u}_{y}} {{a}_{z}}-{{u}_{z}} {{a}_{y}}) \\
 				\frac{1}{{\gamma}} {{a}_{z}}                                         \\
 			\end{pmatrix}
 			\\
-			\text{at position ${\mathbf{r}{'}}$ and time ${t{'}}$ }
+			&\text{at position ${\mathbf{r}{'}}$ and time ${t{'}}$ }
 		\end{aligned}
 	}
 	\label{eq: acceleration transform}
@@ -1504,6 +1514,8 @@ This will help us understand why we need the time transformation to be the way i
 %███████████████████████████████████████████████████████████████████
 \chapter{Observers Delayed Worldview} \label{ch: Observers Delayed Worldview}
 
+*** start here
+
 Light travels extremely fast compared to other everyday speeds we are used to, roughly at 300,000,000 m/s.
 In the blink of an eye, light could travel around the world twice.
 We do not need to normally worry about the delay in the light signal, as the time to propagate the distances in our everyday world is extremely short, so the signal can be approximated as being instantaneous, ignoring the more complex modeling of the delayed signal.
@@ -1514,6 +1526,9 @@ The topics in this chapter are not normally included in Special relativity texts
 But they are needed to get you a more full story and understanding of relativity.
 They come with extra insights into the reason for why the coordinate transform equations have to be the way that they are.
 As we will see when transforming retarded coordinates.
+
+*** this chapter is not specific to special relativity, and does not contain any equations from it, as there is no swaping between frames, it is a standalone chapter that does not use anything from the previous chapter.
+*** It will be put to use in further chapters though, and you will notice some equations that look like they will fit very well into the special relativity later on, and they do. and its necessary that they do, to keep everything self-consistent.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -1756,7 +1771,7 @@ we can simplfy this expression by using
 		                             & = \sqrt{\mathbf{r} \cdot \mathbf{r} + 2 \mathbf{r} \cdot d\mathbf{r} + d\mathbf{r} \cdot d\mathbf{r}}                                         \\
 		                             & \approx \sqrt{\mathbf{r} \cdot \mathbf{r} + 2 \mathbf{r} \cdot d\mathbf{r}}                                                                   \\
 		                             & = \|\mathbf{r}\| \sqrt{ 1 + \frac{2 \mathbf{r} \cdot d\mathbf{r}}{\mathbf{r} \cdot \mathbf{r}}}                                               \\
-		                             & \text{using the Taylor expansion $\sqrt{1 + x} \approx 1 + \frac{x}{2}\) for \(x \ll 1$:}                                                     \\
+		                             & \text{using the Taylor expansion $\sqrt{1 + x} \approx 1 + \frac{x}{2} \text{ for } x \ll 1$:}                                                     \\
 		                             & \approx \|\mathbf{r}\| \left(1 + \frac{\mathbf{r} \cdot d\mathbf{r}}{\|\mathbf{r}\| }\right) = \|\mathbf{r}\|  + \mathbf{r} \cdot d\mathbf{r}
 	\end{aligned}
 \end{equation}
@@ -2075,7 +2090,7 @@ since wavelength is inversely proportional to the frequency, and this bunching u
 
 \begin{equation}
 	\label{eq: Doppler Effect}
-	\Phi_{r} = \frac{\nu{'}}{\nu} = \frac{d\lambda}{d\lambda{'}} = \frac{1}{ {\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)}
+	D_{r} = \frac{\nu{'}}{\nu} = \frac{d\lambda}{d\lambda{'}} = \frac{1}{ {\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)}
 \end{equation}
 
 This gives us a formula to find out how the frequency of a moving source's emitted light differs from when it is at rest.
@@ -2100,7 +2115,7 @@ So that the angles of the lights propagation from the z-axis can be found to be
 
 with $v=- u{'}$
 
-This is the relativistic aberration formula \cite{einstein1905electrodynamics}, it shows how the light's propagation direction transforms, shown in Figure (\ref{fig: aberrated emitted light}). To convert back we can use the inverse formula by swaping the primed and none primed notation and taking negative of $v$ giving
+This is the relativistic aberration formula \cite{einstein1905electrodynamics}, it shows how the light's propagation direction transforms, shown in Figure (\ref{fig: aberrated emitted light}). To convert back we can use the inverse formula by either rearranging the equation, or simply swaping the primed and none primed notation and then taking negative of $v$ giving
 
 \begin{equation}
 	\label{eq: Cosine transform inverse}
@@ -2184,7 +2199,7 @@ If we have a single pulse of light that is evenly spherically distributed, then 
 The pulse positions in the primed frame with their time synced with the origin are shown in figure (\ref{fig: Relativistic beaming 3}) and can be found from the transformed primed frame coordinates from figure (\ref{fig: Relativistic beaming 2}) by propagating the the light from these coordinates forward or backwards in time to be synced with the origins time of $t{'}=0$, that is
 
 \begin{equation}
-	\mathbf{r}^{'}_{t{'}=0} = \mathbf{r}{'} - \mathbf{c}{'} t{'}
+	\mathbf{l}{'} = \mathbf{r}{'} - \mathbf{c}{'} t{'}
 \end{equation}
 
 This can be extened to multiple pulses as we will do later in the next chapter.
@@ -2271,7 +2286,7 @@ This is done by first finding the propagation time in terms of the observers coo
 	we get the result (you can skip past this if you would like, as it doesnt add to understanding)
 	\begin{equation}
 		\begin{split}
-			T'_{p} & = \gamma^2\frac{u'}{c^2}z' + \sqrt{\left(-\gamma^2\frac{u'}{c^2} l_z' \right)^2+\frac{\gamma^2}{c^2}(l_x'^2 + l_y'^2+ l_z'^2)} \\
+			T'_{p} & = \gamma^2\frac{u'}{c^2} l_z' + \sqrt{\left(-\gamma^2\frac{u'}{c^2} l_z' \right)^2+\frac{\gamma^2}{c^2}(l_x'^2 + l_y'^2+ l_z'^2)} \\
 			      & = \gamma^2\frac{u'}{c^2} l_z' + \frac{\gamma}{c}\sqrt{l_x'^2+ l_y'^2+\left(1+\gamma^2\frac{u'^2}{c^2}\right) l_z'^2}        \\
 			      & = \gamma^2\frac{u'}{c^2} l_z' + \frac{\gamma}{c}\sqrt{l_x'^2 + l_y'^2+\gamma^2 l_z'^2}                                      \\
 			      & = \gamma^2\frac{u'}{c^2} l_z' + \frac{\gamma}{c} L
@@ -2289,28 +2304,31 @@ The propagated distance between where the light was emmited and its current posi
 
 \begin{equation}
 	\label{eq: propagation distance}
-	L'_{p} = cT'_{p} = \gamma^2 \frac{u'}{c} l_z' + \gamma  L
+	L'_{p} = cT'_{p} = \gamma^2 \frac{u'}{c} l_z' + \gamma  L = \gamma \left( 1 + \frac{u'}{c} \frac{\gamma l_z'}{L} \right) L
 \end{equation}
 
-this can then be used to find out how much the intensity of a field composed of spherical pulses of light from the moving source has dispated. as so we can find the density of light at a particular point in the field.
+with $ L=\sqrt{l_x'^2+l_y'^2+\gamma^2 l_z'^2}$.
+
+This can then be used to find out how much the density of a field of light composed of spherical pulses of light from the moving source has dispated. as so we can find the density of light at a particular point in the field.
 
 \begin{equation}
 	\label{eq: direction of light from moving source}
 	\mhl{
-		\mathbf{c'} = \frac{c}{ \frac{u'}{c} \gamma \frac{l_z'}{L} + 1}
-		\begin{pmatrix}
-			\frac{1}{\gamma} \frac{l_x'}{L}  \\
-			\frac{1}{\gamma}  \frac{l_y'}{L} \\
-			\gamma \frac{l_z'}{L} + \frac{u'}{c}
-		\end{pmatrix}
+		\mathbf{c'} =
+		\frac{c}{ \gamma \left( 1 + \frac{u'}{c} \frac{\gamma l_z'}{L} \right) }
+	\begin{pmatrix}
+		 \frac{l_x'}{L} \\
+		 \frac{l_y'}{L} \\
+		\gamma \left( \frac{\gamma l_z'}{L} + \frac{u'}{c} \right)
+	\end{pmatrix}
 	}
 \end{equation}
 
 We can find the cosine of the angle from the z-axis from the z-component of the unit vector of the velocity of light that is equal to the z-component of this equation with its magnitude $c$ removed, giving
 
 \begin{equation}
-	\label{eq: cos alpha prime}
-	\cos{\alpha'} = \frac{\gamma \frac{l_z'}{L} + \frac{u'}{c}}{ \frac{u'}{c} \gamma \frac{l_z'}{L} + 1}
+	\label{eq: cos alpha prime in terms of l}
+	\cos{\alpha'} = \frac{ \frac{\gamma l_z'}{L} + \frac{u'}{c}}{ 1 + \frac{u'}{c} \frac{\gamma l_z'}{L}}
 \end{equation}
 
 The reason I have explained this seperate this from the next subsection, is that I want to emphasise that the gamma function $\gamma$ has a role to play in retarded positions and times before we even get to swapping frames.
@@ -2323,12 +2341,14 @@ We could just as easily have said that this setup system is an initial frame and
 %███████████████████████████████████████████████████████████████████
 \section{Emitted Light When Swapping Frame}\label{subsect: Emitted Light When Swapping Frame}
 
+*** decide which to write in terms of, from these two options $(x,y,z)=(l_x,l_y,l_z)$
+
 This section is similar to what we have just done, but the emphasis here will be on swapping between frames, and will be used in the next chapter when we have continuous pulses of light in all directions from a source and want to see how this field of light transforms and what it looks like for moving sources.
 
 Here, we will look at light being emitted from a source at rest first and then swap to a frame where the source is now moving, using the lorentz transformation of the emitted lights current locations (from $\mathbf{r}$ to $\mathbf{r}{'}$), but remembering these lorentz transformed times $t'$ are not sychronised with the sources time of zero.
 To find this we need to use primed velocity of light $\mathbf{c}{'}$ to propagate back the light from where it is at $t'$ to were it was at the origins time of zero.
-To get this position $L'$ where the light is at the syncronised time of zero with the source, we can use the triangle formed in figure (\ref{fig: primed frame 1}), which gives $\mathbf{L}' = (\mathbf{c}' - \mathbf{u'}) t'_p$.
-The time $t'_p$ taken for the light to propagate from the source to point $\mathbf{L}'$ in the primed frame, is the dilated propagation time ($t'_p = \gamma t_p$)
+To get this position $L'$ where the light is at the syncronised time of zero with the source, we can use the triangle formed in figure (\ref{fig: primed frame 1}), which gives $\mathbf{l}' = (\mathbf{c}' - \mathbf{u'}) t'_p$.
+The time $t'_p$ taken for the light to propagate from the source to point $\mathbf{l}'$ in the primed frame, is the dilated propagation time ($t'_p = \gamma t_p$)
 
 %█████████████
 \begin{figure}[H]
@@ -2369,7 +2389,7 @@ The time $t'_p$ taken for the light to propagate from the source to point $\math
 			\draw[gray, thick, dotted] (0.69*0.85,0.88*0.85,0)--(0.69,0.88,0);
 			\draw[black,->] (0,0.7,0)--(0.68,0.9,0) node[midway,above] {\text{ $\mathbf{r}{'}$}};
 			\draw[red,->] (0,0.7,0)--(0.68*0.85,0.9*0.85,0);
-			\node[red] at (0.4,0.68,0) {\text{ $\mathbf{L}{'}$}};
+			\node[red] at (0.4,0.68,0) {\text{ $\mathbf{l}{'}$}};
 			\draw[blue, fill = blue] (0,0.7,0) circle (1pt) node[anchor = north west]{$\mathbf{s}{'}$};
 			\draw[thick,blue,dotted,->] (0,0,0)--(0,0.66,0);
 			\draw[blue, thick,->>] (0,0.7,0)--(0,0.8,0) node[left]{$\mathbf{u}$};
@@ -2379,7 +2399,7 @@ The time $t'_p$ taken for the light to propagate from the source to point $\math
 		\caption{primed frame with moving source}
 		\label{fig: primed frame 1}
 	\end{subfigure}
-	\caption{The diagram shows a source particle ${s}$ in blue at rest in the \protect\hyperlink{def-proper-frame}{proper frame}, Fig (a), with a light pulse that has propagated along $\mathbf{c} {T}_{p}$ shown in red, to coordinate $\mathbf{r}$ shown in black, with the current time for whole system being ${t} = 0$. Fig (b), shows the system transformed to a \protect\hyperlink{def-Primed-Frame}{primed frame} moving at velocity $\mathbf{v} = (0,0,v)$ in the z-direction relative to the \protect\hyperlink{def-proper-frame}{proper frame}, such that the particle and its attached proper axis in this frame are moving at velocity $\mathbf{u'} =-\mathbf{v}$ and is currently at the primed origin with time ${t{'}} = 0$. when the light was emitted from the particle, the particle and attached proper axis were at the \protect\hyperlink{def-retarded-position}{retarded position} $\mathbf{s}_{ret}^{'}$ shown in grey, the emitted light was then propagated, along $\mathbf{c}{'} {T}_{p}^{'}$ to reach $\mathbf{L}{'}$ at ${t{'}} = 0$. with it reaching the \protect\hyperlink{def-lorentz-transform}{Lorentz transformed} coordinate $\mathbf{r}{'}$ at desynchronised time $t'$.}
+	\caption{The diagram shows a source particle ${s}$ in blue at rest in the \protect\hyperlink{def-proper-frame}{proper frame}, Fig (a), with a light pulse that has propagated along $\mathbf{c} {T}_{p}$ shown in red, to coordinate $\mathbf{r}$ shown in black, with the current time for whole system being ${t} = 0$. Fig (b), shows the system transformed to a \protect\hyperlink{def-Primed-Frame}{primed frame} moving at velocity $\mathbf{v} = (0,0,v)$ in the z-direction relative to the \protect\hyperlink{def-proper-frame}{proper frame}, such that the particle and its attached proper axis in this frame are moving at velocity $\mathbf{u'} =-\mathbf{v}$ and is currently at the primed origin with time ${t{'}} = 0$. when the light was emitted from the particle, the particle and attached proper axis were at the \protect\hyperlink{def-retarded-position}{retarded position} $\mathbf{s}_{ret}^{'}$ shown in grey, the emitted light was then propagated, along $\mathbf{c}{'} {T}_{p}^{'}$ to reach $\mathbf{l}{'}$ at ${t{'}} = 0$. with it reaching the \protect\hyperlink{def-lorentz-transform}{Lorentz transformed} coordinate $\mathbf{r}{'}$ at desynchronised time $t'$.}
 	\label{fig: appendix Retarded field outward field transform}
 \end{figure}
 %███████████
@@ -2412,7 +2432,15 @@ The light pulse's velocity using the velocity transform from equation \eqref{eq:
 		\frac{1}{\gamma} \frac{y}{R} \\
 		\dfrac{u'}{c} + \frac{z}{R}   \\
 	\end{pmatrix}
+	= \dfrac{c}{1 + \dfrac{u'}{c} \frac{l_z}{L} }
+	\begin{pmatrix}
+		\frac{1}{\gamma} \frac{l_x}{L} \\
+		\frac{1}{\gamma} \frac{l_y}{L} \\
+		\dfrac{u'}{c} + \frac{l_z}{L}   \\
+	\end{pmatrix}
 \end{equation}
+
+$L=R$ and $(x,y,z)=(l_x,l_y,l_z)$
 
 % can also show in spherical polar coordinates
 
@@ -2432,7 +2460,7 @@ to find the position the light pulse is currently at, at time ${t{'}} = 0$, we h
 
 \begin{equation}
 	\begin{split}
-		\mathbf{L}{'}
+		\mathbf{l}{'}
 		 & = \mathbf{s}_{ret}^{'} + \mathbf{c}{'}t{'}_{p}
 		\\
 		 & \color{gray} = \left( \mathbf{c}{'}-\mathbf{u'} \right)t{'}_{p}
@@ -2472,11 +2500,17 @@ now using $ t{'}_{p} = {\gamma} {T}_{p}$ and ${T}_{p}= R / c$
 	\label{eq: time synced transform}
 	\mhl{
 		\begin{aligned}
-			& \mathbf{L}{'} = \dfrac{1}{\left(1 + \frac{z}{R} \dfrac{u'}{c} \right)}
+			& \mathbf{l}{'} = \dfrac{1}{\left(1 + \frac{z}{R} \dfrac{u'}{c} \right)}
 			\begin{pmatrix}
 				x                    \\
 				y                    \\
 				\frac{1}{{\gamma}} z \\
+			\end{pmatrix}
+			= \dfrac{1}{\left(1 + \dfrac{u'}{c} \frac{l_z}{L} \right)}
+			\begin{pmatrix}
+				l_x                    \\
+				l_y                    \\
+				\frac{1}{{\gamma}} l_z \\
 			\end{pmatrix}
 			\\
 			& \text{at time ${t{'}}=0$ }
@@ -2499,20 +2533,44 @@ This is the position of the light at time zero, i.e. the same time as the source
 %███████████████████████████████████████████████████████████████████
 \chapter{A Point Source: Continually Emitting Light Radially Outwards} \label{ch: A Point Source Continually Emitting Light}
 
-*** - different mathematical properties of this field of light
-
 This chapter will look at a source that continuously emits evenly distributed pulses of light radially outwards, giving in its rest frame a "field" of light that spreads out the further it is from the source.
 The amount this is spread out, at a distance $r$, is proportional to the inverse square of the distance $1/r^2$.
-The inverse square law is used to decribe how the classical forces between two masses or charges disipate with the distance between them.
-How this "field" looks is shown in the first diagram in figure (\ref{fig: full field transformation}), with the second diagram in the figure showing how this "field" of light would look like in a frame with the source now moving, using equation \eqref{eq: time synced transform} to transform each part of the pulses of light.
-This second frame shows the combination of the relativistic doppler and aberration effects together, which is called relativistic beaming.
-The third diagram of the figure shows the rings of each pulse, the doppler effect in each direction can be seen from the ammount of spreading out or compacting of the rings in that direction, with the aberrational effect being shown on each particular ring with how the light is spread out on that ring.
+This inverse square law is used to decribe how the classical forces between two masses or charges disipate with the distance between them.
+But, this relative scalar density is not the only way to get an inverse square law, and in this chapter we will look at the rest of the other properties of a field of continously emitted light and we will see that they can also give you an inverse square law.
 
-Now that we have the means to transform this "field" of light, we can look at some of its physical/mathematical features/properties, looking at each feature in it rest frame and then finding out how it extends to a frame in which it is moving.
-First we will look at the flux of light at each point which is a measure of the rate of flow at each position.
-Then we will look at a few properties that are proportional to the square of the distance from the source in its rest frame (properties that have an inverse sqaure law), and see what these look like for frames in which the sources are now moving.
+So a source at rest that is continously emitting evenly distributed light, gives the "field" of light shown in the first diagram in figure (\ref{fig: full field transformation}), with the second diagram in the figure showing how this "field" of light would look like in a frame with the source now moving.
+Equation \eqref{eq: time synced transform} was used to transform each part of the propagating light to where it is at time $t'=0$ (the time that it is sychronised with the source at the origin).
+The third diagram of the figure shows the rings of each pulse in th eprimed frame.
+The doppler effect in each direction can be seen from the ammount of spreading out or compacting of the rings in that direction, with the aberrational effect being shown on each particular ring with how the light is spread out on that ring.
+This combination of the relativistic doppler and aberration effects together, is called relativistic beaming.
 
-So lets start by seeing what this light looks like in each frame.
+
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[width = 3.6cm]{images/pdf/Field_Rest_Frame.pdf}
+		\caption{Source's Rest Frame}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[width = 3.6cm]{images/pdf/Field_Moving_Frame_Doppler.pdf}
+		\caption{Primed Frame}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[width = 3.6cm]{images/pdf/Field_Moving_Frame_Doppler_circles.pdf}
+		\caption{Primed Frame again}
+	\end{subfigure}
+	\caption{\textbf{Source's field of Emmited Light.} A diagram showing, in the y-z plane, multiple spherically symmetrical pulses of light from a source at rest (left), and in a corresponding primed inertial frame where the source is moving (middle) with a time of $t'=0$ everywhere, the colors show the \protect\hyperlink{def-doppler-effect}{Doppler effect} on the light and the grey dots show the past positions of the source when it had emitted each pulse, there is also a diagram showing the circles of each of the spherical pulses (right), it shows the spherical waves being closer together in the direction of movement.}
+	\label{fig: full field transformation}
+\end{figure}
+%███████████
+
+Now that we have the means to transform this "field" of light, we can look at some of its physical/mathematical features/properties, looking at each feature in its rest frame and then finding out how it extends to a frame in which it is moving.
+But first we will look at how to describe an infintesmal element on the surface of each spherical pulse at each point.
+With this we will see how the density of the light on each pulse's surface changes when changing to a sources primed frame, along with the doppler effects on the density of light in the radial direction.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -2589,19 +2647,20 @@ If we define a sphere with radius $r$ we can find an infinitesimal portion of th
 				%
 				\tdplotdrawarc[tdplot_main_coords]{(O)}{\rvec}{\phivec}{\phivec + \dphivec}{}{}
 				%
-				\tdplotdrawarc[tdplot_main_coords]{(O)}{\rvec + \drvec}{\phivec}{\phivec + \dphivec}{below, rotate = 13}{$r\sin\theta\mathrm{d}\phi$}
+				\tdplotdrawarc[tdplot_main_coords]{(O)}{\rvec + \drvec}{\phivec}{\phivec + \dphivec}{below, rotate = 13}{$r\mathrm{d}\phi$}
 			\end{pgfonlayer}
 			%
 			%Angles
 			\begin{pgfonlayer}{foreground}
 				%Phi
-				\tdplotdrawarc[-stealth]{(O)}{1.5}{0}{\phivec}{anchor = north}{$\phi$}
+				\tdplotdrawarc[-stealth]{(O)}{1.5}{0}{\phivec}{}{}{}
+				\node at (0.8,0.3,0) {$\phi$};
 				\tdplotdrawarc[-stealth]{(O)}{1.5}{\phivec}{\phivec + \dphivec}{}{}
 				\node at (1.4,1.9,0) {$\mathrm{d}\phi$};
 				\tdplotsetthetaplanecoords{\phivec}
 				%Theta
 				\tdplotdrawarc[tdplot_rotated_coords,-stealth]{(0,0,0)}{1.5}{0}{\thetavec}{}{}
-				\node at (0,0.3,1.5) {$\theta$};
+				\node at (0,0.15,0.8) {$\theta$};
 				\tdplotdrawarc[tdplot_rotated_coords,-stealth]{(0,0,0)}{1.5}{\thetavec}{\thetavec + \dthetavec}{anchor = south west}{$\mathrm{d}\theta$}
 			\end{pgfonlayer}
 			%
@@ -2639,6 +2698,7 @@ If we define a sphere with radius $r$ we can find an infinitesimal portion of th
 				\tdplotsetrotatedcoords{55}{-30.3813}{-8.6492} %
 				\tdplotdrawarc[tdplot_rotated_coords, thick]{(O)}{\rvec}{0}{17.2983}{}{}
 				\tdplotdrawarc[tdplot_rotated_coords, thick]{(O)}{\rvec + \drvec}{0}{17.2983}{}{}
+				\node[anchor=center, rotate=14, below] at (1.5,2.78,1.8) {$r\mathrm{d}\phi \sin\theta$};
 			\end{pgfonlayer}
 			%
 			%Fill Color
@@ -2675,7 +2735,7 @@ The solid angle element $d\Omega$ is a measure of the amount of the field of vie
 \end{equation}
 
 If we were to integrate this over the whole sphere $ \int_{0}^{2\pi} \int_{0}^{\pi} \, \sin \phi \, d\theta \, d\phi$, we would get $4\pi$, which is when the view from the origin is fully covered by the surface.
-The fraction of the view from the origin that is covered by a solid angle $\Omega$ is given by $\Omega/ 4\pi$.
+The fraction of the view from the origin that is covered by a solid angle $\Omega$ is therefore given by $\Omega/ 4\pi$.
 
 
 % %███████████████████████████████████████████████████████████████████
@@ -2697,20 +2757,20 @@ The fraction of the view from the origin that is covered by a solid angle $\Omeg
 %\subsection{Flux of light Through Surface Element}\label{subsect: Flux Through Surface Element}
 %... radial \hyperlink{def-flux}{flux} through surface element (search radial \hyperlink{def-flux}{flux})
 
-If we have a source at rest emitting light out in all directions we can say at certain angles $\theta = \alpha$ and $\phi= \varphi$ we have have a quantity of light $Q$ emitted in the solid angle
+If we have a source at rest emitting light out in all directions we can say at certain angles given as the spherical polar coordinates $\theta = \alpha$ and $\phi= \varphi$ we have have a quantity of light emitted in the solid angle
 
 \begin{equation}
 	d\Omega = \sin{\alpha} d\alpha d\varphi,
 \end{equation}
 
-So this solid angle encompasses a certain amount of the wavefront, this is the same amount of the wavefront that is encompassed by the coinciding aberrated differential solid angle
+this solid angle encompasses a certain amount of the wavefront $Q$, this is the same amount of the wavefront that is encompassed by the coinciding aberrated differential solid angle in the primed frame
 
 \begin{equation}
 	d\Omega{'} = \sin{\alpha'} d\alpha{'} d\varphi{'}.
 \end{equation}
 
 We can calculate this element by differentiating both sides of eq.
-\eqref{eq: Cosine transform} with respect to $\alpha$ \cite{hogg1997special}, which after a bit of work gives
+\eqref{eq: Cosine transform} with respect to $\alpha$ \cite{hogg1997special}, which after working out gives
 
 \begin{equation}
 	\sin{\alpha'} d\alpha{'} = \dfrac{1}{{\gamma}^2\left(1 + \dfrac{u'}{c}\cos{\alpha}\right)^2} \sin{\alpha} d\alpha
@@ -2725,78 +2785,41 @@ now using this and ${d\varphi{'}} = {d\varphi}$ (as the angle ${\varphi}$ is alw
 %The overall amount of wavefront is conserved, as can be seen when integrating over the corresponding solid angle in either frame, both of which give the same value of $4\pi$.
 % proportional to the amount of the wavefront in the given proper differential element of the solid angle, and
 
-If there is an amount of light/quantity of light $Q$ in the solid angle element, then the density of light in the solid angle in both frames is $Q/d\Omega$ and $Q/d\Omega{'}$ respectively, giving the ratio of the density in the solid angle element in the primed frame relative to the rest frame as
+If there is the same amount of light/quantity of light $Q$ in the solid angle element in both frames, then the density of light in the solid angle in each frames is $Q/d\Omega$ and $Q/d\Omega{'}$ respectively, giving the ratio of the density in the solid angle element in the primed frame relative to the rest frame as
 
 \begin{equation}
-	\Phi_\Omega = \frac{d\Omega}{d\Omega'} = {\gamma}^2\left(1 + \dfrac{u'}{c}\cos{\alpha}\right)^2.
+	D_\Omega = \frac{d\Omega}{d\Omega'} = {\gamma}^2\left(1 + \dfrac{u'}{c}\cos{\alpha}\right)^2.
 \end{equation}
 
-In the sources rest frame we have the lights propagation direction being in the same direction as the position it is at relative to the coordinate axis allowing us to use $\cos\alpha=\cos\theta = \frac{ z}{\sqrt{x^2+y^2+z^2}} = \frac{\gamma z'}{\sqrt{x'^2+y'^2+\gamma^2 z'^2}} = \frac{\gamma z'}{R}$
-
-with $R=\sqrt{x'^2+y'^2+\gamma^2 z'^2}$. Giving the last equation to be
+by subsittuting equation \eqref{eq: cos alpha prime in terms of l} into equation \eqref{eq: Cosine transform inverse} we get $\cos\alpha=\frac{\gamma l_z'}{L}$, and this now gives
 
 \begin{equation}
-	\Phi_\Omega = {\gamma}^2\left(1 + \dfrac{u'}{c}\frac{\gamma z'}{R}\right)^2.
+	D_\Omega = {\gamma}^2\left(1 + \dfrac{u'}{c}\frac{\gamma l_z'}{L}\right)^2.
 \end{equation}
 
-We can also write the equation in terms of the direction of the light from the z-axis in the primed frame ($\alpha'$), by substituting in equation \eqref{eq: Cosine transform inverse}, which gives
+We can also write the equation in terms of the direction of the light from the z-axis in the primed frame, by substituting in equation \eqref{eq: Cosine transform inverse}, which gives
 
 \begin{equation}
 	\label{eq: aberrational wavefront weighting}
-	\Phi_\Omega = \frac{1}{{\gamma}^2\left(1 - \dfrac{u'}{c}\cos{\alpha'}\right)^2}.
+	D_\Omega = \frac{1}{{\gamma}^2\left(1 - \dfrac{u'}{c}\cos{\alpha'}\right)^2}.
 \end{equation}
 
-all three ways of writing this look very similar, which can be confusing and easily mixed up, be careful if using these.
+all three ways of writing this relative density look very similar, which can be confusing and easily mixed up, so be careful if using these.
 
 % substituting in $\cos{\alpha'}$ from equation \eqref{eq: cos alpha prime}, we have
 
 % \begin{equation}
 % 	\label{eq: aberration density weighting}
-% 	\Phi_\Omega =  \frac{1}{{\gamma}^2\left(1 - \dfrac{u'}{c}\frac{\gamma \frac{z'}{ R} + \frac{u'}{c}}{ \frac{u'}{c} \gamma \frac{z'}{ R} + 1}\right)^2} = \gamma^2 \left( 1 +\frac{u'}{c} \gamma \frac{z'}{ R} \right)^2
+% 	D_\Omega =  \frac{1}{{\gamma}^2\left(1 - \dfrac{u'}{c}\frac{\gamma \frac{z'}{ R} + \frac{u'}{c}}{ \frac{u'}{c} \gamma \frac{z'}{ R} + 1}\right)^2} = \gamma^2 \left( 1 +\frac{u'}{c} \gamma \frac{z'}{ R} \right)^2
 % \end{equation}
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{A Moving Source's Relativistic Beaming of its emitted light} \label{ch: A Moving Source's Field}
+\section{Scalar Density of Light}\label{sect: Field Scalar Density}
 
-If we have a source at rest continously emitting light as shown in the first diagram in the figure below, we can find out what a moving sources field looks like by using equation \eqref{eq: time synced transform} to transform the positions of each part of the propagating light to where it is at time $t'=0$ (the time that is sychronised with the source at the origin).
-This is shown in the second diagram in the figure below, with the third diagram showing the rings of each pulse in the primed frame.
-
-%█████████████
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{.3\textwidth}
-		\centering
-		\includegraphics[width = 3.6cm]{images/pdf/Field_Rest_Frame.pdf}
-		\caption{Source's Rest Frame}
-	\end{subfigure}
-	\begin{subfigure}{.3\textwidth}
-		\centering
-		\includegraphics[width = 3.6cm]{images/pdf/Field_Moving_Frame_Doppler.pdf}
-		\caption{Primed Frame}
-	\end{subfigure}
-	\begin{subfigure}{.3\textwidth}
-		\centering
-		\includegraphics[width = 3.6cm]{images/pdf/Field_Moving_Frame_Doppler_circles.pdf}
-		\caption{Primed Frame again}
-	\end{subfigure}
-	\caption{\textbf{Source's field of Emmited Light.} A diagram showing, in the y-z plane, multiple spherically symmetrical pulses of light from a source at rest (left), and in a corresponding primed inertial frame where the source is moving (middle) with a time of $t'=0$ everywhere, the colors show the \protect\hyperlink{def-doppler-effect}{Doppler effect} on the light and the grey dots show the past positions of the source when it had emitted each pulse, there is also a diagram showing the circles of each of the spherical pulses (right), it shows the spherical waves being closer together in the direction of movement.}
-	\label{fig: full field transformation}
-\end{figure}
-%███████████
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{Emitted Light's Density}\label{sect: Field Density}
-
-will use these to get inverse square law
-
-%███████████████████████████████████████████████████████████████████
-\subsection{Scalar Density of Light}\label{subsect: Field Scalar Density}
-
-In the previous chapter of a single spherical pulse in the rest frame, we have a surface of a sphere that the pulse creates, getting bigger as it propagates outwards, with the surface area of a sphere equal to $4 \pi r^2$.
-Since there is the same amount of light in this increasing sphere and the area of this sphere's surface increases relative to the square of its radius.
-We have the surface area density on this sphere being proportional to the inverse square of the radius $1/r^2$. This is the angular/azimuthal density.
+In the previous chapter of a single spherical pulse in the rest frame, the outward going pulse creates the shape of a surface of a sphere, growing bigger as it propagates outwards, with the surface area of the sphere equal to $4 \pi r^2$.
+Since there is the same amount of light in this increasing pulse's sphere and the area of this sphere's surface increases relative to the square of its radius.
+We have the surface area density on this sphere being proportional to the inverse square of the radius $1/r^2$. This we will call the angular density.
 
 For the case of light being continuously emitted, the light is spherically symetric and is emitted from the stationary source at a constant rate, and therefore has no change in density in the direction that is radially outwards, and only a difference in the direction perpendicular to this, i.e. the angular direction, which is parralel to the spherical surface each pulse creates, giving the total scalar density of light at any point $D$ as being proportional to the inverse square of the radius $1/r^2$,
 
@@ -2809,85 +2832,189 @@ where k is the proportionality constant
 %█████████████
 \subsubsection{General Equations for Moving Source}\label{subsubsect: General Equations for Moving Source 0}
 
-*** look back at section 4.8 to update this to use the surface area element instead
+**** note here i do not worry about density in time $cdt'$ which i could add into it, this more the denisity of the flow
 
-If we have position $(x',y',z')$, we need to use the distance the light had to propagate from where it was emmited to get to that position, which is given in equation \eqref{eq: propagation distance}, to allow us to find out how much the the lights density has disipated from when it was emmited, giving the disipation to be proportional to
+Now, what if the source is moving, we will need to look at how this density is affected.
+
+*** start
+
+The doppler effect from equation \eqref{eq: Doppler Effect} gives the change in lights density relative to the rest frame, in the direction of the light's propagation of
+
+*** swap $D_r$ with $\lambda$
 
 \begin{equation}
-	\frac{1}{L_p'^2} = \frac{1}{\left( \gamma^2 \frac{u'}{c} z' + \gamma  L \right)^2}
+	\label{eq: radial density}
+	D_{r} = \frac{d\lambda}{d\lambda{'}} = \frac{1}{ {\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)} = {\gamma}\left(1 + \dfrac{u'}{c}\frac{\gamma l_z'}{L}\right)
 \end{equation}
 
-giving the disipation with the angular denisty of the light from equation \eqref{eq: aberration density weighting} as
+together with density in the angular direction from equation ... and the fact it has propagated a distance $L_p'$ from where it was emmited shown in equation \eqref{eq: propagation distance} to dissipate by a magnitude of
 
 \begin{equation}
-	\frac{\gamma^2 \left( 1 +\frac{u'}{c} \gamma \frac{z'}{ L} \right)^2}{\left( \gamma^2 \frac{u'}{c} z' + \gamma  L \right)^2} = \frac{1}{  L^2}
+	\frac{1}{L_p'^2} = \frac{1}{\gamma^2 \left( 1 + \frac{u'}{c} \frac{\gamma l_z'}{L} \right)^2 L^2}
 \end{equation}
 
-The doppler effect from equation \eqref{eq: Doppler Effect} also gives the change in lights density, but this time in the direction of the light's propagation relative to the rest frame as
+giving the density to be
 
 \begin{equation}
-	\Phi_{r} = \frac{d\lambda}{d\lambda{'}} = \frac{1}{ {\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)}
-\end{equation}
-
-Now combining these gives the density of light at any point as
-
-\begin{equation}
-	D = \frac{\Phi_{r}}{ L^2} = \frac{1}{{\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)  L^2}  = \frac{\gamma \left( 1 +\frac{u'}{c} \gamma \frac{z'}{ L} \right)}{ L^2}
+	\begin{aligned}
+		D &= \frac{D_\Omega D_r}{L_p'^2} =  {\gamma}^2\left(1 + \dfrac{u'}{c}\frac{\gamma l_z'}{L}\right)^2 \cdot {\gamma}\left(1 + \dfrac{u'}{c}\frac{\gamma l_z'}{L}\right) \cdot \frac{1}{\gamma^2 \left( 1 + \frac{u'}{c} \frac{\gamma l_z'}{L} \right)^2 L^2} \\
+		&= \frac{{\gamma}\left(1 + \dfrac{u'}{c}\frac{\gamma l_z'}{L}\right)}{L^2}
+	\end{aligned}
 \end{equation}
 
 The density of light for a moving source at any point can be seen in the following diagram
 
-\textbf{*** add diagram}
+
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Density_of_Light_from_Rest_Source.pdf}
+		\caption{Rest Frame}
+		\label{subfig_1: Density of light emitted from a source}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Density_of_Light_from_Moving_Source.pdf}
+		\caption{Primed Frame}
+		\label{subfig_2: Density of light emitted from a source}
+	\end{subfigure}
+	\caption{\textbf{Density of light emitted from a source}. This Figure shows the volume density of the emitted light from a source at any position, the density at the centre of each figure goes to infinity as we get closer to the source, so for us to be able to color the graph nicely we needed to remove the center, hence the black cirlce in the center.}
+	\label{fig: Density of light emitted from a source}
+\end{figure}
+%███████████
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Density of Light in a Vector Form}\label{subsect: Field Vector Density}
+\section{Density of Light deconstructed into Vector}\label{sect: Field Vector Density}
 
-*** This is not a quantity/property that is used in physics, this was me having some fun trying something different to see if there was anything interesting I could get out of it
+This quantity/property that we are about to derive is not used in physics, this is instead just having some fun trying something different to see if there was anything interesting to get out of it.
 
-*** to be checked:
+We can deconstruct the scalar density into 3 parts one radially outwards in direction ($\hat{r}$) and two perpendicular to this in the angular directions ($\hat{\theta}$ and $\hat{\phi}$)
 
-in spherical polar coordinates, with direction of propagation light being direction of $r$ with the origin at the retarded emision position of the source and
-
-I used
-
-\begin{equation}
-	\nabla = (\frac{\partial}{\partial r},\frac{\partial}{\partial\theta},\frac{\partial}{\partial\phi})
-\end{equation}
-
-instead of
+% instead of
+% \begin{equation}
+% 	\nabla = \frac{\partial}{\partial r} \mathbf{e}_r + \frac{1}{r} \frac{\partial}{\partial\theta} \mathbf{e}_\theta + \frac{1}{r \sin{\theta}} \frac{\partial}{\partial\phi} \mathbf{e}_\phi
+% \end{equation}
 
 \begin{equation}
-	\nabla = \frac{\partial}{\partial r} \mathbf{e}_r + \frac{1}{r} \frac{\partial}{\partial\theta} \mathbf{e}_\theta + \frac{1}{r \sin{\theta}} \frac{\partial}{\partial\phi} \mathbf{e}_\phi
-\end{equation}
-
-\begin{equation}
-	\mathbf{D} = (k_r, \frac{k_\theta}{r}, \frac{k_\phi}{r})
+	\mathbf{D} = k_r \hat{r} + \frac{k_\theta}{r} \hat{\theta} + \frac{k_\phi}{r} \hat{\phi}
 \end{equation}
 
 this density is in the cartesian coordinate system
 
 check for $\| \nabla  \mathbf{D} \|$ and $\| ( \nabla  \| \mathbf{D} \| ) \|$
 
+%███████████████████████████████████████████████████████████████████
+\subsection{Norm of the Density Gradient}\label{subsect: Norm of the Density Gradient}
+
+using the Del operator
+
 \begin{equation}
-	\| \nabla \mathbf{D} \| = \frac{\sqrt{k_\theta^2 + k_\phi^2 }}{r^2} = \frac{k_{AngTot}}{r^2}
+	\nabla = (\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{\partial}{\partial z})
 \end{equation}
 
 \begin{equation}
-	\| \mathbf{D} \| = \sqrt{k_r^2 + \frac{k_\theta^2}{r^2} + \frac{k_\phi^2}{r^2}}
+	\| \nabla \mathbf{D} \| = \frac{\sqrt{k_\theta^2 + k_\phi^2 }}{r^2} = \frac{k_{a}}{r^2}
+\end{equation}
+
+with $k_{a}=\sqrt{k_\theta^2 + k_\phi^2}$
+
+This is the same equation as we had for the previous light density for a source at rest.
+
+%█████████████
+\subsubsection{General Equations for Moving Source}\label{subsubsect: General Equations for Moving Source 1}
+
+in direction of propagation the density is proportional to the doppler effect $ 1/ ( \gamma( 1 - u'/c \cos{\alpha'}) )$ from eq 5.4 and in each of the perpendiuclar directions the density is the square root of eq 5.12 which is  $ 1/ L$
+
+giving, using equation \eqref{eq: radial density}
+
+\begin{equation}
+	\frac{D_\Omega}{L_p'^2} =  {\gamma}^2\left(1 + \dfrac{u'}{c}\frac{\gamma l_z'}{L}\right)^2 \cdot \frac{1}{\gamma^2 \left( 1 + \frac{u'}{c} \frac{\gamma l_z'}{L} \right)^2 L^2} = \frac{1}{L^2}
 \end{equation}
 
 \begin{equation}
-	\| ( \nabla \| \mathbf{D} \| ) \| = \frac{k_\theta^2 + k_\phi^2}{r^3\sqrt{k_r^2 + \frac{k_\phi^2 + k_\theta^2}{r^2}}} = \frac{k_\theta^2 + k_\phi^2}{\sqrt{k_r^2 r^6 + \left(k_\phi^2 + k_\theta^2\right)r^4}}
+	\mathbf{D} = \left( D_r k_r , \sqrt{\frac{D_\Omega}{L_p'^2}} k_\theta, \sqrt{\frac{D_\Omega}{L_p'^2}}k_\phi \right) = \left({\gamma}\left(1 + \dfrac{u'}{c}\frac{\gamma l_z'}{L}\right) k_r , \frac{k_\theta}{L}, \frac{k_\phi}{L} \right)
 \end{equation}
 
-if $k_r$ is insignificant then
+Now subsittuting in $L$ and $\beta = - u'/c$ we can find the gradient of the density vector as
+
+%█████████████████
+\begin{derivation}
+
+%%% checked with
+% https://www.wolframalpha.com/input?i=gradient+of+%28+g+%281+-b+%28g+z%29%2F%28+sqrt%28x%5E2%2By%5E2%2B+g%5E2+z%5E2%29%29+%29+M%2C+J+%2F++sqrt%28x%5E2%2By%5E2%2B+g%5E2+z%5E2%29%2C+K+%2F++sqrt%28x%5E2%2By%5E2%2B+g%5E2+z%5E2%29+%29+
 
 \begin{equation}
-	\| ( \nabla \| \mathbf{D} \| ) \| \approx \frac{k_\theta^2 + k_\phi^2}{r^3\sqrt{ \frac{k_\phi^2 + k_\theta^2}{r^2}}} = \frac{k_{ang-tot}}{r^2}
+	\nabla \mathbf{D} = \frac{1}{L^3}
+	\begin{pmatrix}
+		k_r \gamma^2 \beta l_x'l_z' & k_r \gamma^2 \beta l_y'l_z' & - k_r \gamma^2 \beta (l_x'^2 +l_y'^2)  \\
+		-k_\theta l_x' & -k_\theta l_y' & -k_\theta\gamma^2 l_z' \\
+		-k_\phi l_x' & -k_\phi l_y' & -k_\phi\gamma^2 l_z'
+	\end{pmatrix}
+\end{equation}
+
+%checked
+\begin{equation}
+	\| \nabla \mathbf{D} \| = \frac{1}{L^3} \sqrt{ k_{a}^2 L^2 + k_r^2 \gamma^4 \beta^2  (l_x'^2+l_y'^2)( l_x'^2 + l_y'^2 + l_z'^2 )}
+\end{equation}
+
+\end{derivation}
+%███████████████
+
+\begin{equation}
+	\| \nabla \mathbf{D} \| = \frac{1}{L^2} \sqrt{ k_{a}^2 + k_r^2 \gamma^4 \beta^2 (l_x'^2+l_y'^2) \frac{\|\mathbf{l'}\|^2}{L^2} }
+\end{equation}
+
+if $k_r\approx 0$ then
+
+\begin{equation}
+	\| \nabla \mathbf{D} \| = \frac{k_{a}}{L^2}
+\end{equation}
+
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Density_of_Light_from_Rest_Source.pdf}
+		\caption{Rest Frame}
+		\label{subfig_1: light emitted from a source's rate of change of vector density}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf}
+		\caption{Primed Frame}
+		\label{subfig_2: light emitted from a source's rate of change of vector density}
+	\end{subfigure}
+	\caption{\textbf{Rate of change of vector density of light emitted from a source}. This Figure shows the rate of change of the vector density of the emitted light from a source at any position, the rate of change of the vector density at the centre of each figure goes to infinity as we get closer to the source, so for us to be able to color the graph nicely we needed to remove the center, hence the black cirlce in the center.}
+	\label{fig: light emitted from a source's rate of change of vector density}
+\end{figure}
+%███████████
+
+
+
+
+%███████████████████████████████████████████████████████████████████
+\subsection{Norm of the Gradient of the Density Vector Magnitude}\label{subsect: Norm of the Gradient of the Density Vector Magnitude}
+
+Now lets try this but in a different order, and taking the norm of the vector density first.
+
+\begin{equation}
+	\| \mathbf{D} \| = \sqrt{k_r^2 + \frac{k_{a}^2}{r^2} }
+\end{equation}
+
+\begin{equation}
+	\Big\| \nabla \| \mathbf{D} \| \Big\| = \frac{k_{a}^2}{r^2\sqrt{r^2 k_r^2 + k_{a}^2}}
+\end{equation}
+
+This is obviously not the same as previous due to the extra $r^2 k_r$ term in the denominator, but if this is insignificant ($k_r\approx 0$ ) then we do get back the previous sections equation for the rest source:
+
+\begin{equation}
+	\Big\| \nabla \| \mathbf{D} \| \Big\| \approx  \frac{k_{a}}{r^2}
 \end{equation}
 
 checking in cartesian Coordinates:
-
 \begin{equation}
 	\mathbf{\hat{\text{${r}$}}} =
 	\begin{pmatrix}
@@ -2908,7 +3035,6 @@ checking in cartesian Coordinates:
 		0                        \\
 	\end{pmatrix}
 \end{equation}
-
 \begin{equation}
 	\mathbf{\hat{\text{${D}$}}} = \frac{1}{r\rho}
 	\begin{pmatrix}
@@ -2917,180 +3043,123 @@ checking in cartesian Coordinates:
 		az - b(x^2+y^2)
 	\end{pmatrix}
 \end{equation}
-
 with $r=\sqrt{x^2+y^2+z^2}$ and $\rho=\sqrt{x^2+z^2}$
 
-%█████████████
 \subsubsection{General Equations for Moving Source}\label{subsubsect: General Equations for Moving Source 2}
 
-in direction of propagation the density is proportional to the doppler effect $ 1/ ( \gamma( 1 - u'/c \cos{\alpha'}) )$ from eq 5.4 and in each of the perpendiuclar directions the density is the square root of eq 5.3 which is  $ 1/ L$
-
-giving
-
-*** alpha prime in terms of z and  $L$ :
-
-\begin{equation}
-	\mathbf{D} = \left(\frac{k_r}{\gamma( 1 - u'/c \cos{\alpha'})}, \frac{k_\theta}{L}, \frac{k_\phi}{L} \right)
-\end{equation}
-
-using equation \eqref{eq: cos alpha prime} and $L = \sqrt{x'^2+y'^2+\gamma^2z'^2}$
-
-giving
-
-\begin{equation}
-	\frac{1}{{\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)}  = \gamma \left( 1 +\frac{u'}{c} \gamma \frac{z'}{L} \right)
-\end{equation}
-
-and using $\beta = - u'/c$ we have
-
-\begin{equation}
-	\mathbf{D} = \left(k_r \gamma( 1 - \beta \frac{\gamma z'}{\sqrt{x'^2+y'^2+\gamma^2 {z'}^2}}), \frac{k_\theta}{\sqrt{x'^2+y'^2+\gamma^2z'^2}}, \frac{k_\phi}{\sqrt{x'^2+y'^2+\gamma^2z'^2}} \right)
-\end{equation}
+now lets look at $\big\| \nabla \|\mathbf{D}\| \big\|$
 
 %█████████████████
 \begin{derivation}
 
 \begin{equation}
-	\nabla \mathbf{D} = \frac{1}{L^3}
+	\|\mathbf{D}\| = \sqrt{ \frac{k_a^2}{L^2} + k_r^2 \gamma^2\left( 1-\beta \gamma \frac{l_z'}{L} \right)^2 }
+\end{equation}
+
+% https://www.wolframalpha.com/input?i=Grad%5Bsqrt%28+%28a%5E2%29%2F%28x%5E2%2By%5E2%2B+g%5E2+z%5E2%29+%2B+k%5E2+g%5E2+%28+1-b+g+%28z%29+%2F+sqrt%28x%5E2%2By%5E2%2B+g%5E2+z%5E2%29+%29%5E2+%29+%5D
+
+\begin{equation}
+	\nabla \|\mathbf{D}\| = \frac{1}{L^3 \sqrt{\frac{K_a^2}{L^2} + k_r^2\gamma^2(1-\gamma\beta\frac{l_z'}{L})^2}}
 	\begin{pmatrix}
-		k_r \gamma^2 \beta x'z' & k_r \gamma^2 \beta y'z' & - k_r \gamma^2 \beta (x'^2 +y'^2)  \\
-		-k_\theta x' & -k_\theta y' & -k_\theta\gamma^2 z' \\
-		-k_\phi x' & -k_\phi y' & -k_\phi\gamma^2 z'
+		-\frac{l_x'}{L} k_a^2 + k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{l_z'}{L}) l_x'l_z' \\
+		-\frac{l_y'}{L} k_a^2 + k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{l_z'}{L}) l_y'l_z' \\
+		-\gamma^2\frac{l_z'}{L} k_a^2 - k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{l_z'}{L}) (l_x'^2 + l_y'^2)
 	\end{pmatrix}
 \end{equation}
 
-\begin{equation}
-	\| \nabla \mathbf{D} \| = \frac{1}{L^3} \sqrt{\left( k_\theta^2 +k_\phi^2 + k_r^2 \gamma^4 \beta^2 ( z^2 - 1 ) (x^2+y^2) \right)L^2}
-\end{equation}
+$H=\beta \gamma^3 k_r^2 (1-\beta\frac{\gamma l_z'}{L})$
 
 \end{derivation}
 %███████████████
 
-\begin{equation}
-	\| \nabla \mathbf{D} \| = \frac{1}{L^2} \sqrt{ k_\theta^2 +k_\phi^2 + k_r^2 \gamma^4 \beta^2 ( z^2 - 1 ) (x^2+y^2) }
-\end{equation}
 
-if $k_r\approx 0$ then
+% \begin{equation}
+% 	\Big\| \nabla \|\mathbf{D}\| \Big\| = \frac{1}{L^2\sqrt{k_a^2+ \gamma^2(1-\beta\gamma\frac{l_z'}{L})^2 L^2k_r^2}} \sqrt{ \frac{l_x'^2+l_y'^2+\gamma^4 l_z'^2}{L^2} k_a^4 + \frac{l_x'^2 + l_y'^2}{L^2} \left( \frac{\|\mathbf{l}'\|^2}{L^2} H^2 + 2 (\gamma^2-1)k_a^2 \frac{l_z'}{L} H \right) }
+% \end{equation}
 
-\begin{equation}
-	\| \nabla \mathbf{D} \| = \frac{\sqrt{ k_\theta^2 +k_\phi^2 }}{L^2}
-\end{equation}
-
-now lets look at $\|\left(\nabla \|\mathbf{D}\| \right) \|$
-
-%█████████████████
-\begin{derivation}
-
-double checked:
+If we take the norm of this we get a very long equation, but if it happens to be that $k_r \approx 0$ then we would instead have the much shorter
 
 \begin{equation}
-	\|\mathbf{D}\| = \sqrt{ \frac{k_\theta^2 + k_\phi^2}{L^2} + k_r^2 \gamma^2\left( 1-\beta \gamma \frac{z'}{L} \right)^2 } = \sqrt{ \frac{k_a^2}{L^2} + k_r^2 \gamma^2\left( 1-\beta \gamma \frac{z'}{L} \right)^2 }
+	\Big\| \nabla \|\mathbf{D}\| \Big\| \approx \frac{k_a}{ L^2} \sqrt{ \frac{l_x'^2+l_y'^2+\gamma^4 l_z'^2}{l_x'^2+l_y'^2+\gamma^2 l_z'^2} }
 \end{equation}
 
-\begin{equation}
-	\nabla \|\mathbf{D}\| = \frac{1}{L^3 \sqrt{\frac{K_a^2}{L^2} + k_r^2\gamma^2(1-\gamma\beta\frac{z'}{L})^2}}
-	\begin{pmatrix}
-		-\frac{x'}{L} k_a^2 + k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{z'}{L}) x'z' \\
-		-\frac{y'}{L} k_a^2 + k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{z'}{L}) y'z' \\
-		-\gamma^2\frac{z'}{L} k_a^2 - k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{z'}{L}) (x'^2 + y'^2)
-	\end{pmatrix}
-\end{equation}
-
-$e=\frac{1}{L^3 \sqrt{\frac{K_a^2}{L^2} + k_r^2\gamma^2(1-\gamma\beta\frac{z'}{L})^2}}$,
-
-$f= k_r^2 \gamma^3 \beta (1-\gamma\beta \frac{z'}{L})$
-
-$a = k_a^2$
-
-
-\begin{equation}
-	\nabla \|\mathbf{D}\| = e
-	\begin{pmatrix}
-		-\frac{x'}{L} a +  f x'z' \\
-		-\frac{y'}{L} a +  f y'z' \\
-		-\gamma^2\frac{z'}{L} a -  f (x'^2 + y'^2)
-	\end{pmatrix}
-\end{equation}
-
-\begin{equation}
-	\|\left(\nabla \|\mathbf{D}\| \right) \| = e \sqrt{(-\frac{x'}{L} a +  f x'z')^2 + (-\frac{y'}{L} a +  f y'z')^2 + (\gamma^2\frac{z'}{L} a +  f (x'^2 + y'^2))^2 }
-\end{equation}
-
-\end{derivation}
-%███████████████
-
-\begin{equation}
-	\|\left(\nabla \|\mathbf{D}\| \right) \| = e \sqrt{ (x'^2+y'^2+\gamma^4 z'^2) \frac{a^2}{L^2} + (x'^4 + y'^4) (z'^2 + 1) f^2 + (\gamma^2 - 1 ) (x'^2 + y'^2 ) \frac{2fa z'}{L} }
-\end{equation}
-
-
-
-if $k_r\approx 0$ then
-
-\begin{equation}
-	\|\left(\nabla \|\mathbf{D}\| \right) \| = \frac{k_a}{ L^2} \sqrt{ \frac{x'^2+y'^2+\gamma^4 z'^2}{x'^2+y'^2+\gamma^2 z'^2} }
-\end{equation}
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Density_of_Light_from_Rest_Source.pdf}
+		\caption{Rest Frame}
+		\label{subfig_1: light emitted from a source's rate of change of vector density norm}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_Change_of_Vector_Density_norm_of_Light_from_Moving_Source.pdf}
+		\caption{Primed Frame}
+		\label{subfig_2: light emitted from a source's rate of change of vector density norm}
+	\end{subfigure}
+	\caption{\textbf{Rate of change of vector density norm of light emitted from a source}. This Figure shows the rate of change of the vector density norm of the emitted light from a source at any position, with the assumption $K_r\approx 0$, the rate of change of the vector density norm at the centre of each figure goes to infinity as we get closer to the source, so for us to be able to color the graph nicely we needed to remove the center, hence the black cirlce in the center.}
+	\label{fig: light emitted from a source's rate of change of vector density norm}
+\end{figure}
+%███████████
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Rate of change of propagation direction}\label{sect: Rate of change of propagation direction}
 
-given the previous diagrams for source at rest emitting light continously in all directions from a point source at the origin, we from equation \eqref{eq: direction of light from moving source} have at position $\mathbf{l'}=(l'_x,l'_y,l'_z)=(x,y,z)$ the direction of the propagating light as
+If you have a stationary light source at the origin that is emitting light constantly in all directions shown in the first diagram of figure (\ref{fig: full field transformation}), then at any point $(l_x,l_y,l_z)=(x,y,z)$ we have that the light (which has came from the origin to that point) has the velocity unit vector of
 
 \begin{equation}
-	\mathbf{\hat{c}} = \frac{1}{ \frac{u'}{c} \gamma \frac{z}{L} + 1 }
+	\mathbf{\hat{c}} = \frac{1}{R}
 	\begin{pmatrix}
-		\frac{1}{\gamma} \frac{x}{L} \\
-		\frac{1}{\gamma} \frac{y}{L} \\
-		\gamma \frac{z}{L} + \frac{u'}{c}
+		x \\
+		y \\
+		z
 	\end{pmatrix}
 \end{equation}
 
-with $ R=\sqrt{x'^2 + y'^2 + \gamma^2 z'^2}$.
+at that point
 
-now we will see what happens when we have an infintesmal change from an intial point $(x,y,z)$ to $(x_2,y_2,z_2)=(x+dx,y+dy,z+dz)$
+% 1 / (g^2 \frac{u'}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
 
-... If we want to find how quickly the direction of the lights propagation changes at a particular point $\mathbf{R}$, we can think of the source at the origin at time zero and at a point $\mathbf{u'} dt$ after a time $dt$, the system at this later time is equivalent to having the origin at the second position and the stationary point now defined as $\mathbf{R} \rightarrow \mathbf{R} - \mathbf{u} dt$. ...
+with $R=\sqrt{x^2 + y^2 + z^2}$.
 
-Now to see the rate of change of the direction that the light propagates relative to each coordinate, by taking the partial derivative of $\mathbf{\hat{c}}$ with respect to each coordinate
+The rate of change of this unit velocity vector with respect to each of these coordinates are given as
+
+The things in this yellow box here are just the velocity vector's partial derivative with respect to each coordinate (they are just given here to help with the velocity vector gradient matrix next)
+
+% https://www.wolframalpha.com/input?i=d%2Fdx+%5B+%28x%2Cy%2Cz%29%2Fsqrt%28x%5E2%2By%5E2%2Bz%5E2%29%5D
+% https://www.wolframalpha.com/input?i=d%2Fdy+%5B+%28x%2Cy%2Cz%29%2Fsqrt%28x%5E2%2By%5E2%2Bz%5E2%29%5D
 
 \begin{equation}
-	\mhl
-	{
 		\begin{aligned}
 			\frac{\partial \mathbf{\hat{c}}}{\partial x} & =
-			\frac{1}{\gamma  R ( \frac{u'}{c} \frac{\gamma z}{L} + 1 )^2}
+			\frac{1}{ R^3 }
 			\begin{pmatrix}
-				1 - \frac{x^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L} \\
-				- \frac{x}{L} \frac{y}{L}                             \\
-				- \frac{x}{L} \frac{z}{L}
-			\end{pmatrix}                                                               \\
+				y^2 + z^2 \\
+				- x y     \\
+				- x z
+			\end{pmatrix}                                                  \\
 			\frac{\partial \mathbf{\hat{c}}}{\partial y} & =
-			\frac{1}{\gamma  R ( \frac{u'}{c} \frac{\gamma z}{L} + 1 )^2}
+			\frac{1}{ R^3 }
 			\begin{pmatrix}
-				- \frac{y}{L} \frac{x}{L}                             \\
-				1 - \frac{y^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L} \\
-				- \frac{y}{L} \frac{z}{L}
-			\end{pmatrix}                                                               \\
-			\frac{\partial \mathbf{\hat{c}}}{\partial z} & = \frac{1}{\gamma  R
-				(  \frac{u'}{c} \frac{\gamma z}{L} +  1 )^2}
+				- x y    \\
+				x^2 + z^2 \\
+				- y z
+			\end{pmatrix}                                                  \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial z} & = \frac{1}{ R^3}
 			\begin{pmatrix}
-				\gamma ( - \frac{u'}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L} \\
-				\gamma ( - \frac{u'}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}  \\
-				\frac{ x^2 + y^2 }{ R^2}
-			\end{pmatrix}                                                    \\
-			\frac{\partial \mathbf{\hat{c}}}{\partial t} & = \frac{-u'}{\gamma  R (  \frac{u'}{c} \frac{\gamma z}{L} +  1 )^2}
+				-  x z  \\
+				-  y z \\
+				x^2 + y^2
+			\end{pmatrix}                                                  \\
+			\frac{\partial \mathbf{\hat{c}}}{\partial t} & =
 			\begin{pmatrix}
-				\gamma ( - \frac{u'}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L} \\
-				\gamma ( - \frac{u'}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}  \\
-				\frac{ x^2 + y^2 }{ R^2}
+				0 \\
+				0 \\
+				0
 			\end{pmatrix}
 		\end{aligned}
-	}
-\end{equation}
-
-\begin{equation}
-	mag = \sqrt{ (1 - \frac{x^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L})^2 + 2\frac{x^2y^2}{ R^4} + \frac{x^2z^2}{ R^4} +	(1 - \frac{y^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L})^2 + \frac{y^2z^2}{ R^4} +	(\gamma ( \frac{u'}{c}  + \frac{ \gamma z }{L} ) \frac{x}{L})^2 + (\gamma ( \frac{u'}{c}  + \frac{\gamma z }{L} ) \frac{y}{L})^2 + (\frac{ x^2 + y^2 }{ R^2})^2 }
 \end{equation}
 
 %███
@@ -3120,7 +3189,102 @@ Now to see the rate of change of the direction that the light propagates relativ
 \end{figure}
 %███████████
 
-these diagrams show the rate of rotation of the lights propagation direction with respect to each coordinate, but the do not show if this rate of change is in the direction of the positive or negative direction of the corresponding axis.
+these diagrams show magnitude of the rate of rotation of the lights propagation direction with respect to each coordinate.
+
+the velocity vector gradient matrix of lights velocity is
+
+\begin{equation}
+	\mathbf{J} =
+	\begin{pmatrix}
+		\frac{\partial c_1}{\partial x} & \frac{\partial c_1}{\partial y} & \frac{\partial c_1}{\partial z} \\
+		\frac{\partial c_2}{\partial x} & \frac{\partial c_2}{\partial y} & \frac{\partial c_2}{\partial z}
+		\\
+		\frac{\partial c_3}{\partial x} & \frac{\partial c_3}{\partial y} & \frac{\partial c_3}{\partial z}
+	\end{pmatrix}
+	= \frac{1}{ R^3 }
+	\begin{pmatrix}
+		y^2 + z^2 & -xy       & -xz       \\
+		-xy       & x^2 + z^2 & -yz       \\
+		-xz       & -yz       & x^2 + y^2
+	\end{pmatrix}
+\end{equation}
+
+the norm of this ends up giving
+
+\begin{equation}
+	\begin{aligned}
+	\|\mathbf{J}\| &= \color{gray} \frac{1}{R^3} \sqrt{2(x^4 + y^4 + z^4) + 4 (x^2y^2 + x^2z^2 + y^2z^2)} \\
+	& \color{gray} = \frac{\sqrt{2}}{R^3} \sqrt{(x^2 + y^2 + z^2)^2} \\
+	 &= \frac{\sqrt{2}}{ R }
+\end{aligned}
+\end{equation}
+
+The square of the jacobian would then be proportional to $1/R^2$ (this may seem like a bit of a cheat to get it)
+
+\begin{equation}
+	\|\mathbf{J}\|^2 = \frac{2}{R^2}
+\end{equation}
+
+or you could take the gradient of the jacobian and then take the norm of that to also get a value proportional to $1/R^2$
+
+\begin{equation}
+	\big\| \nabla \|\mathbf{J}\| \big\| = \frac{\sqrt{2}}{R^2}
+\end{equation}
+
+None of this is meant to be taken too seriously, I am just trying to find to get an $1/R^2$ relationship using as many different meathods as I can, in the hope something will be of use down the line.
+I have however exhausted the different ways that I thought were reasonable avenues to check. apart from a property called the material derivative, given as
+
+\begin{equation}
+	\rho {\frac {\mathrm {D} \mathbf {u'} }{\mathrm {D} t}}=\rho \left({\frac {\partial \mathbf {u'} }{\partial t}}+(\mathbf {u'} \cdot \nabla )\mathbf {u'} \right)
+\end{equation}
+
+which when the normal is taken you get $1/R$, but I shall not got through this here as its a bit too much.
+So lets look at this for a moving source.
+
+%█████████████
+\subsubsection{General Equations for moving source:}\label{subsubsect: General Equations for Moving Source 3}
+
+Now if we have light continously being emitted evenly in all directions from a moving point source that is currently at the origin, as shown in figure (\ref{fig: full field transformation}) with the lights velocity described at each position $\mathbf{l'}=(l_x',l_y',l_z')$ by the equation \eqref{eq: direction of light from moving source}
+
+If we want to find the rate of change of the direction of the light's propagation $\mathbf{\hat{c}}'$, at a point $\mathbf{l'}$ with respect to each coordinate we can take the partial differentiates of the unit vector for the lights propagation from equation \eqref{eq: direction of light from moving source} (which is the same, just without the magnitude $c$).
+This give the rate of change of the lights propagation with respect to each coordinate as:
+
+% https://www.wolframalpha.com/input?i=d%2Fdx+%28+%281%29%2F%28g%29+%28x%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+%281%29%2F%28g%29+%28y%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+-+b%09%29%2F%28+1+-+b+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29%29+%29
+% https://www.wolframalpha.com/input?i=d%2Fdy+%28+%281%29%2F%28g%29+%28x%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+%281%29%2F%28g%29+%28y%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+-+b%09%29%2F%28+1+-+b+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29%29+%29
+% https://www.wolframalpha.com/input?i=d%2Fdz+%28+%281%29%2F%28g%29+%28x%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+%281%29%2F%28g%29+%28y%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+-+b%09%29%2F%28+1+-+b+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29%29+%29
+%
+\begin{equation}
+		\begin{aligned}
+			&\frac{\partial \mathbf{\hat{c}}'}{\partial l_x'}  =
+			\frac{1}{\gamma  L ( 1 + \frac{u'}{c} \frac{\gamma l_z'}{L} )^2}
+			\begin{pmatrix}
+				\frac{l_y'^2}{ L^2} + \frac{\gamma l_z'}{ L} \left(\frac{\gamma l_z'}{L}+\frac{u'}{c}\right) \\
+				- \frac{l_x'}{L} \frac{l_y'}{L}                             \\
+				- \frac{l_x'}{L} \frac{l_z'}{L}
+			\end{pmatrix}                                                               \\
+			&\frac{\partial \mathbf{\hat{c}}'}{\partial l_y'}  =
+			\frac{1}{\gamma  L (1+ \frac{u'}{c} \frac{\gamma l_z'}{L} )^2}
+			\begin{pmatrix}
+				- \frac{l_y'}{L} \frac{l_x'}{L}                             \\
+				\frac{l_x'^2}{ L^2} + \frac{\gamma l_z'}{ L} \left(\frac{\gamma l_z'}{L}+\frac{u'}{c}\right) \\
+				- \frac{l_y'}{L} \frac{l_z'}{L}
+			\end{pmatrix}                                                               \\
+			&\frac{\partial \mathbf{\hat{c}}'}{\partial l_z'}  = \frac{1}{\gamma  L
+				( 1 + \frac{u'}{c} \frac{\gamma l_z'}{L} )^2}
+			\begin{pmatrix}
+				\gamma ( - \frac{u'}{c}  - \frac{ \gamma l_z' }{L} ) \frac{l_x'}{L} \\
+				\gamma ( - \frac{u'}{c}  - \frac{\gamma l_z' }{L} ) \frac{l_y'}{L}  \\
+				\frac{ l_x'^2 + l_y'^2 }{ L^2}
+			\end{pmatrix}                                            \\
+			&\frac{\partial \mathbf{\hat{c}}'}{\partial t'}  = \frac{-u'}{\gamma  L ( 1 + \frac{u'}{c} \frac{\gamma l_z'}{L} )^2}
+			\begin{pmatrix}
+				\gamma ( - \frac{u'}{c}  - \frac{ \gamma l_z' }{L} ) \frac{l_x'}{L} \\
+				\gamma ( - \frac{u'}{c}  - \frac{\gamma l_z' }{L} ) \frac{l_y'}{L}  \\
+				\frac{ l_x'^2 + l_y'^2 }{ L^2}
+			\end{pmatrix} \\
+			&\text{with $ L=\sqrt{l_x'^2 + l_y'^2 + \gamma^2 l_z'^2}$ }
+		\end{aligned}
+\end{equation}
 
 %███
 %█████████████
@@ -3129,19 +3293,19 @@ these diagrams show the rate of rotation of the lights propagation direction wit
 	\begin{subfigure}{0.32\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_x.pdf}
-		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial x}\|$}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}'}{\partial x'}\|$}
 		\label{fig: Rate of change of lights velocity field subfig_1}
 	\end{subfigure}
 	\begin{subfigure}{0.32\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_y.pdf}
-		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial y}\|$}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}'}{\partial y}\|$}
 		\label{fig: Rate of change of lights velocity field subfig_2}
 	\end{subfigure}
 	\begin{subfigure}{0.32\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_z.pdf}
-		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial z}\|$}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}'}{\partial z}\|$}
 		\label{fig: Rate of change of lights velocity field subfig_3}
 	\end{subfigure}
 	\caption{\textbf{The rate of change of the velocity vector field of light from a moving source}. main caption.}
@@ -3162,7 +3326,7 @@ these diagrams show the rate of rotation of the lights propagation direction wit
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_t.pdf}
-		\caption{$\|\frac{\partial \mathbf{\hat{c}}}{\partial t}\|$ Source Moving}
+		\caption{$\|\frac{\partial \mathbf{\hat{c}}'}{\partial t}\|$ Source Moving}
 		\label{fig: Rate of change of lights velocity field with respect to time subfig_3}
 	\end{subfigure}
 	\caption{\textbf{The rate of change of the velocity vector field of continuously emitted light from source with respect to time}. main caption.}
@@ -3173,192 +3337,35 @@ these diagrams show the rate of rotation of the lights propagation direction wit
 % we can check do see if we take the dot product of the lights velocity with the rate of change that we get a value of zero, as the two vectors should be perpendicular, which we do:
 
 % \begin{equation}
-% 	\mathbf{\hat{c}} \cdot \frac{\partial \mathbf{\hat{c}}}{\partial x} = x (1 - \frac{x^2}{ R^2} + \frac{u}{c}\frac{\gamma z}{L}) + y (- \frac{x}{L} \frac{y}{L}) + (\gamma^2 z + \gamma \frac{u}{c}  R)(- \frac{x}{L} \frac{z}{L})=0
+% 	\mathbf{\hat{c}}' \cdot \frac{\partial \mathbf{\hat{c}}'}{\partial x'} = l_x' (1 - \frac{l_x'^2}{ L^2} + \frac{u}{c}\frac{\gamma l_z'}{L}) + l_y' (- \frac{l_x'}{L} \frac{l_y'}{L}) + (\gamma^2 l_z' + \gamma \frac{u}{c}  L)(- \frac{l_x'}{L} \frac{l_z'}{L})=0
 % \end{equation}
 
 % \begin{equation}
-% 	\mathbf{\hat{c}} \cdot \frac{\partial \mathbf{\hat{c}}}{\partial z} = x (( - \frac{u}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L}) + y (( - \frac{u}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}) + (\gamma^2 z + \gamma \frac{u}{c}  R)(\frac{1}{\gamma}\frac{ x^2 + y^2 }{ R^2})=0
+% 	\mathbf{\hat{c}}' \cdot \frac{\partial \mathbf{\hat{c}}'}{\partial z'} = l_x' (( - \frac{u}{c}  - \frac{ \gamma l_z' }{L} ) \frac{l_x'}{L}) + l_y' (( - \frac{u}{c}  - \frac{\gamma l_z' }{L} ) \frac{l_y'}{L}) + (\gamma^2 l_z' + \gamma \frac{u}{c}  L)(\frac{1}{\gamma}\frac{ l_x'^2 + l_y'^2 }{ L^2})=0
 % \end{equation}
 
-...
-...
-...
-
-magnitude of the rate of change in all directions (magnitude of jacobian/...), check from first section of chapter
-
-yo paddy this was me just messing about with mathematical properties, this is what i was talking about, turned out it was a $1/R$ relationship not $1/R^2$, but alas!
-
-also the general equat ions for moving source are given too after this.
-
-\textbf{light from a stationary source:}
-
-If you have a stationary light source at the origin that is emitting light constantly in all directions then if we look at any point (x,y,z) we find that the light (which has came from the origin to that point) has the unit vector of its velocity as
-
-\begin{equation}
-	\mathbf{\hat{c}} = \frac{1}{R}
-	\begin{pmatrix}
-		x \\
-		y \\
-		z
-	\end{pmatrix}
-\end{equation}
-
-at that point
-
-% 1 / (g^2 \frac{u'}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
-
-with $R=\sqrt{x^2 + y^2 + z^2}$.
-
-The things in this yellow box here are just the velocity vector's partial derivative with respect to each coordinate (they are just given here to help with the velocity vector  gradient matrix next)
-
-\begin{equation}
-	\mhl
-	{
-		\begin{aligned}
-			\frac{\partial \mathbf{\hat{c}}}{\partial x} & =
-			\frac{1}{ R^3 }
-			\begin{pmatrix}
-				R^2 - x^2 \\
-				- x y     \\
-				- x z
-			\end{pmatrix}                                                  \\
-			\frac{\partial \mathbf{\hat{c}}}{\partial y} & =
-			\frac{1}{ R^3 }
-			\begin{pmatrix}
-				- y x     \\
-				R^2 - y^2 \\
-				- y z
-			\end{pmatrix}                                                  \\
-			\frac{\partial \mathbf{\hat{c}}}{\partial z} & = \frac{1}{ R^3}
-			\begin{pmatrix}
-				-  z  x  \\
-				-  z   y \\
-				x^2 + y^2
-			\end{pmatrix}                                                  \\
-			\frac{\partial \mathbf{\hat{c}}}{\partial t} & =
-			\begin{pmatrix}
-				0 \\
-				0 \\
-				0
-			\end{pmatrix}
-		\end{aligned}
-	}
-\end{equation}
-
-the velocity vector gradient matrix of lights velocity is
-
-\begin{equation}
-	J =
-	\begin{pmatrix}
-		\frac{\partial c_1}{\partial x} & \frac{\partial c_1}{\partial y} & \frac{\partial c_1}{\partial z} \\
-		\frac{\partial c_2}{\partial x} & \frac{\partial c_2}{\partial y} & \frac{\partial c_2}{\partial z}
-		\\
-		\frac{\partial c_3}{\partial x} & \frac{\partial c_3}{\partial y} & \frac{\partial c_3}{\partial z}
-	\end{pmatrix}
-	= \frac{1}{ R^3 }
-	\begin{pmatrix}
-		R^2 - x^2 & - y x     & -  z  x   \\
-		- x y     & R^2 - y^2 & -  z   y  \\
-		- x z     & - y z     & x^2 + y^2
-	\end{pmatrix}
-	= \frac{1}{ R^3 }
-	\begin{pmatrix}
-		y^2 + z^2 & -xy       & -xz       \\
-		-xy       & x^2 + z^2 & -yz       \\
-		-xz       & -yz       & x^2 + y^2
-	\end{pmatrix}
-\end{equation}
-
-the norm of this ends up giving
-
-\begin{equation}
-	norm = \frac{1}{R^3} \sqrt{2(x^4 + y^4 + z^4) + 4 (x^2y^2 + x^2z^2 + y^2z^2)} = \frac{\sqrt{2}}{R^3} \sqrt{(x^2 + y^2 + z^2)^2} = \frac{\sqrt{2}}{ R }
-\end{equation}
-
-which is proportional to $1/R$, the thing i told ya about
-
-the distance between two points on a sphere are proportianl to the angle between them and the radius, so with constant angle you get them we have it proportian to $R$ which should be related
-
-this does not work in spherical polar Coordinates
-
-%█████████████
-\subsubsection{General Equations for moving source:}\label{subsubsect: General Equations for Moving Source 3}
-
-\begin{equation}
-	\mathbf{\hat{c}} = \frac{1}{c T_{p}}
-	\begin{pmatrix}
-		x \\
-		y \\
-		z + u' T_{p}
-	\end{pmatrix}
-\end{equation}
-
-with
-
-\begin{equation}
-	T_{p} = \gamma^2 \frac{u'}{c^2}z + \frac{\gamma}{c}  R
-\end{equation}
-
-% 1 / (g^2 \frac{u'}{c}z + g \sqrt{x^2 + y^2 + g^2 z^2})
-
-with $ R=\sqrt{x'^2 + y'^2 + \gamma^2 z'^2}$.
-
-\begin{equation}
-	\mhl
-	{
-		\begin{aligned}
-			\frac{\partial \mathbf{\hat{c}}}{\partial x} & =
-			\frac{1}{\gamma  R ( \frac{u'}{c} \frac{\gamma z}{L} + 1 )^2}
-			\begin{pmatrix}
-				1 - \frac{x^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L} \\
-				- \frac{x}{L} \frac{y}{L}                             \\
-				- \frac{x}{L} \frac{z}{L}
-			\end{pmatrix}                                                               \\
-			\frac{\partial \mathbf{\hat{c}}}{\partial y} & =
-			\frac{1}{\gamma  R ( \frac{u'}{c} \frac{\gamma z}{L} + 1 )^2}
-			\begin{pmatrix}
-				- \frac{y}{L} \frac{x}{L}                             \\
-				1 - \frac{y^2}{ R^2} + \frac{u'}{c}\frac{\gamma z}{L} \\
-				- \frac{y}{L} \frac{z}{L}
-			\end{pmatrix}                                                               \\
-			\frac{\partial \mathbf{\hat{c}}}{\partial z} & = \frac{1}{\gamma  R
-				(  \frac{u'}{c} \frac{\gamma z}{L} +  1 )^2}
-			\begin{pmatrix}
-				\gamma ( - \frac{u'}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L} \\
-				\gamma ( - \frac{u'}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}  \\
-				\frac{ x^2 + y^2 }{ R^2}
-			\end{pmatrix}                                                    \\
-			\frac{\partial \mathbf{\hat{c}}}{\partial t} & = \frac{-u'}{\gamma  R (  \frac{u'}{c} \frac{\gamma z}{L} +  1 )^2}
-			\begin{pmatrix}
-				\gamma ( - \frac{u'}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L} \\
-				\gamma ( - \frac{u'}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}  \\
-				\frac{ x^2 + y^2 }{ R^2}
-			\end{pmatrix}
-		\end{aligned}
-	}
-\end{equation}
-
-maybe use spacetime gradient on velocity? with the velocity being $( 0 , c_x , c_y , c_z )$ (not four velocity!) giving
-
-gradient being $( \delta_t , \delta_x , \delta_y , \delta_z )$
+The Magnitude of this jacobian is messy so I will not write it out here, as it would serve no purpose.
+Also unsure wether to include the time derivate into the jacobian to make it a 4 by 4 tensor like below, using the velocity $( 0 , c_x' , c_y' , c_z' )$ (with the zero representing the derivatives of time), giving
 
 \begin{equation}
 	J =
 	\begin{pmatrix}
 		0                                 & 0                               & 0                               & 0                               \\
-		\frac{\partial c_x}{c \partial t} & \frac{\partial c_x}{\partial x} & \frac{\partial c_x}{\partial y} & \frac{\partial c_1}{\partial z} \\
-		\frac{\partial c_y}{c \partial t} & \frac{\partial c_y}{\partial x} & \frac{\partial c_y}{\partial y} & \frac{\partial c_1}{\partial z} \\
-		\frac{\partial c_z}{c \partial t} & \frac{\partial c_z}{\partial x} & \frac{\partial c_z}{\partial y} & \frac{\partial c_1}{\partial z} \\
+		\frac{\partial c_x'}{c \partial t} & \frac{\partial c_x'}{\partial l_x'} & \frac{\partial c_x'}{\partial l_y'} & \frac{\partial c_x'}{\partial l_z'} \\
+		\frac{\partial c_y'}{c \partial t} & \frac{\partial c_y'}{\partial l_x'} & \frac{\partial c_y'}{\partial l_y'} & \frac{\partial c_y'}{\partial l_z'} \\
+		\frac{\partial c_z'}{c \partial t} & \frac{\partial c_z'}{\partial l_x'} & \frac{\partial c_z'}{\partial l_y'} & \frac{\partial c_z'}{\partial l_z'} \\
 	\end{pmatrix}
 \end{equation}
 
-for norm should above have negative time parts? or make complex?
+But instead of going through this, I will end the madness of this chapter here and move on to looking at quantities that do not change when swaping frames, which will lead to the famous energy-mass and energy-momentum equations.
 
-also what about material derivative in the form:
 
-\begin{equation}
-	\rho {\frac {\mathrm {D} \mathbf {u'} }{\mathrm {D} t}}=\rho \left({\frac {\partial \mathbf {u'} }{\partial t}}+(\mathbf {u'} \cdot \nabla )\mathbf {u'} \right)
-\end{equation}
+
+% gradient being $( \delta_t , \delta_x , \delta_y , \delta_z )$
+
+
+
+%for norm should above have negative time parts? or make complex?
 
 
 %███████████████████████████████████████████████████████████████████
@@ -3373,16 +3380,15 @@ also what about material derivative in the form:
 %███████████████████████████████████████████████████████████████████
 \chapter{Invariant Quantities} \label{ch: Invariant Quantities}
 
-Quantities that are frame-independent, i.e.
-do not change when we transform between inertial reference frames, are called \hyperlink{def-lorentz-invariant}{Lorentz invariant}.
+Quantities that are frame-independent (quantities that do not change when we transform between inertial reference frames) are called \hyperlink{def-lorentz-invariant}{Lorentz invariant}.
 
-In this chapter, we will see the invariant quantity related to space-time coordinates and use this to find invariant properties associated with velocity, which will lead to the more abstract conservation relation of momentum energy and mass.
-We will find a new quantity with the units of energy that has a term which approximates to the kinetic energy of a particle at low velocities and another term that suggests particles have a new type of energy, that was not previously in classical physics, that depends on the mass of a particle (mass-energy equivalence), this will all lead to a new conservation law of energy.
-The reason we care about the concept of energy is that it has a conservation relation that can be used as a tool to help us make calculations and model more complex systems.
+In this chapter, we will see the invariant quantity related to the space-time coordinates ($x,y,z,t$) and use this to find invariant properties associated with velocities, which will lead to the more abstract conservation relation between momentum, energy and mass.
+We will find a new quantity with the units of energy that has a term which approximates to the kinetic energy of a particle at low velocities and another term that suggests particles another type of energy, that was not previously in classical physics, that depends on the mass of a particle (mass-energy equivalence), this will all lead to a new conservation law of energy.
+The reason we care about the concept of energy is that it has this conservation relation that we will learn about, that can be used as a tool to help us make calculations and model more complex systems.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Space-Time Interval} \label{sect: Space-Time Interval}
+\section{The Space-Time Interval} \label{sect: Space-Time Interval}
 
 We define a quantity called the space-time interval $\Delta S$ between two \hyperlink{def-event}{event}s in a generic inertial reference frame as:
 
@@ -3393,7 +3399,7 @@ We define a quantity called the space-time interval $\Delta S$ between two \hype
 	\label{eq: space-time interval}
 \end{equation}
 
-All inertial frames of reference agree on this interval as it is invariant between frames, as $\Delta S = \Delta S{'}$, which can be shown when we sub the values from equation \eqref{eq: interval of Coordinates} into the primed version of this last equation
+All inertial frames of reference agree on this interval as it is invariant between frames, $\Delta S = \Delta S{'}$, which can be shown when we sub the coordinate transforms from equation \eqref{eq: interval of Coordinates} into the primed version of this last equation
 
 \begin{equation}
 	\begin{aligned}
@@ -3404,52 +3410,68 @@ All inertial frames of reference agree on this interval as it is invariant betwe
 	\end{aligned}
 \end{equation}
 
+This relationship will come in useful for our next section.
+
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Energy-Momentum Relation} \label{sect: Energy-Momentum Relation}
+\section{Energy, Mass and Momentum Relation} \label{sect: Energy, Mass and Momentum Relation}
+
+**** this title, may have trouble in HTML
 
 From here forward we will be making some jumps in logic and assertions, leading to claims of what we will call the total energy and rest mass energy, but I will try to give as much reasoning as I can for these choices in assertions.
 
-We can see from the previous section that if a particle is moving in a particular inertial reference frame, we can define the space-time interval of its coordinates in this frame as
+We can see from the previous section that if a particle $p$, is moving in an inertial reference frame, we can define the space-time interval of its coordinates in this frame as
 
 \begin{equation}
 	\Delta S_p^2 = (c\Delta {t}_p)^2-\Delta x_p^2-{\Delta y_p}^2-{\Delta z_p}^2
 \end{equation}
 
-and if we divide by the square of the proper time that passes for the particle in this interval ${\Delta\tau}$, so that now taking the limit as the change in time in the interval goes to zero, we get an abstract invariant quantity that we will call the space-time velocity
+We will not used primed notation here ($'$), as we will not be changing between reference frames, so we will define this as our intial frame.
+
+So now, if we divide by the square of the proper time that passes for the particle in this interval ${\Delta\tau}$ (the interval in time that passes in the particles rest frame), so that now taking the limit as the change in proper time in the interval goes to zero, we get a derivative that is an abstract invariant quantity that we will call the space-time velocity, which reduces to the following:
 
 \begin{equation}
 	\begin{aligned}
 		\left(\frac{dS_p}{d\tau}\right)^2 & = \left(c\frac{{{dt}_{p}}}{d\tau}\right)^2-\left(c\frac{dx_p}{d\tau}\right)^2-\left(\frac{dy_p}{d\tau}\right)^2-\left(\frac{dz_p}{d\tau}\right)^2 \\
-		                                  & = {c}^2\gamma^2 \left( 1-\frac{{{u}_{x}}^2 + {{u}_{y}}^2 + {{u}_{z}}^2}{{c}^2} \right) = {c}^2\gamma^2 \left( 1-\frac{u^2}{{c}^2} \right) \\
+		                                  & = {c}^2\gamma^2 \left( 1-\frac{{{u}_{px}}^2 + {{u}_{py}}^2 + {{u}_{pz}}^2}{{c}^2} \right)\\
+										  & = {c}^2\gamma^2 \left( 1-\frac{u_p^2}{{c}^2} \right) \\
 		                                  & = {c}^2
 	\end{aligned}
 \end{equation}
 
 It can be seen that this is still an invariant quantity as the speed of light is constant in all frames.
-Now by multiplying both sides by ${c}^2$ and the square of the rest mass ${m}$ of the particle we have the square of an invariant quantity with the units of energy, that is equal to ${m}{c}^2$ and give the equation to be
+Now by multiplying both sides of the third line by ${m}^2{c}^2$ where $m$ is the rest mass of the particle, so we get
 
 \begin{equation}
 	\label{eq: energy-momentum derivation}
 	\begin{aligned}
-		m^2 {c}^2 \left(\frac{dS_p}{d\tau}\right)^2 & = \gamma^2 m^2 c^4-\gamma^2 m^2 \left( {{u}_{x}}^2 + {{u}_{y}}^2 + {{u}_{z}}^2 \right) {c}^2 \\
-		({m}{c}^2)^2                                & = \gamma^2 m^2 c^4-\gamma^2 m^2 u^2 {c}^2
+		m^2 {c}^2 \left(\frac{dS_p}{d\tau}\right)^2 & = m^2{c}^4\gamma^2 \left( 1-\frac{u_p^2}{{c}^2} \right)  \\
+		({m}{c}^2)^2                                & = \gamma^2 m^2 c^4-\gamma^2 m^2 u_p^2 {c}^2
 	\end{aligned}
 \end{equation}
 
-rearranging, we get
+this is an invariant quantity with the units of energy squared, this quantity does not depend on the speed of a particle, it is an intrinsic energy that a particle of mass $m$ has, we could call this the rest mass energy of a particle:
+
+\begin{equation}
+	E_0=mc^2
+\end{equation}
+
+This could be taken as a new type of energy all masses have even when at rest, so say a particle at rest was to decay into photons, we would have the photons emitted from it, be equal to this energy.
+I agree this does not seem like a very proper way to get this equation, or atleast looks like that we have took a shortcut, but we will look at what the other terms represent, to see if we get anything else that may convince us a little more that this is an okay interpretation of this invariant quantity of energy.
+So lets rearrange the previous equation, to get
 
 \begin{equation}
 	\label{eq: total relativistic energy}
-	\left( \gamma m {c}^2 \right)^2 = ({m}{c}^2)^2 + \left( \gamma {m}{u}{c}\right)^2
+	\left( \gamma m {c}^2 \right)^2 = ({m}{c}^2)^2 + \left( \gamma {m}{u_p}{c}\right)^2
 \end{equation}
 
-using the Taylor expansion of $\gamma$ on the quantity $\gamma {m}{c}^2$, we have for the squared term on the lefthand side
+we can use what is called the Taylor expansion to write out $\gamma$ in an infinite series that converges to a value the more you go along it, this techniques shows that $\gamma$ is equivalent to writing it out as this
 
-*** this needs to be taylor expansion of squared term on lhs, not the none squared term
 \begin{equation}
-	\gamma = 1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+	\gamma \equiv 1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
 \end{equation}
+
+now multiplying this term by $mc^2$ we have this energy term given as
 
 \begin{equation}
 	\begin{aligned}
@@ -3459,27 +3481,27 @@ using the Taylor expansion of $\gamma$ on the quantity $\gamma {m}{c}^2$, we hav
 	\end{aligned}
 \end{equation}
 
-This equation's first quantity is an energy that does not depend on the speed of the particle, and only on its rest mass, we shall call this the rest mass energy, and this can be taken as a new type of energy all masses have even when at rest.
-The second quantity is the classical kinetic energy formula, the rest may be seen as higher-order kinetic energy terms that are very small for ${u}<<{c}$, so this seems to be a formula for the total energy of a particle in the absence of a potential field (i.e.
-no change in potential energy) with added terms which become non-negligible at larger particle speeds, we will denote this total energy ${E}$.
-Taking this assertion we have
+This equation's first quantity is an energy that does not depend on the speed of the particle.
+It is the invariant energy from before, the rest mass energy.
+The second quantity is the classical kinetic energy formula, the rest may be seen as higher-order kinetic energy terms, that are not seen in classical physics because they are very small for ${u}<<{c}$, so this seems like it could be a formula for the total energy of a particle (in a vaccum, that is with no potential energy).
+we will denote this total energy ${E}$, with the rest energy from before denoted as $E_0$ giving equation \eqref{eq: total relativistic energy} to be written as
 
 \begin{equation}
-	E^2 = \left( {m}{c}^2 \right)^2 + (\gamma{m}{u})^2{c}^2
+	E^2 = E_0^2 + (\gamma{m}{u}{c})^2
 \end{equation}
 
-so this total energy is equal to its rest energy squared plus a second energy squared that depends on its speed, this second quantity along with the Taylor expansion of $\gamma$ gives
+Now let us look at this second quantity along with the Taylor expansion of $\gamma$ which gives
 
 \begin{equation}
 	\begin{aligned}
-		\gamma {m}{u}{c} & = {m}{u}{c} \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+		\gamma {c}{m}{u} & = {c}{m}{u} \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
 		\right)                                                                                                       \\
 		                     & ={c}\left( {m}{u} + \frac{1}{2}m \frac{u^3}{{c}^2} + \frac{3}{8}m\frac{u^5}{c^4} + ...
 		\right)
 	\end{aligned}
 \end{equation}
 
-which at small particle velocities is approximately ${m}{u}{c}$ with ${m}{u}$ being the classical momentum, we could assert that this whole energy is momentum in the relativistic context, i.e.
+which at small particle velocities is approximately $({m}{u}){c}$ with ${m}{u}$ being the classical momentum, we could assert that this whole energy $E_p$ is just momentum times speed of light, but in the relativistic context, that is we can not think of this as the relativistic momentum:
 
 \begin{equation}
 	p = \gamma {m}{u}
@@ -3487,30 +3509,43 @@ which at small particle velocities is approximately ${m}{u}{c}$ with ${m}{u}$ be
 
 as it has the same units and is approximately the classical momentum at small particle speeds.
 
-\begin{equation}
-	E_0 = {m}{c}^2
-\end{equation}
-
-This is the energy it has from its rest mass, if a particle a particle at rest was to decay into photons, the photons emitted from this would be equal to this energy.
-The final energy-momentum equation is then given as
+If we are to believe all this then we would have the final equation relating the energy and momentum of a particle as
 
 \begin{equation}
 	\mhl{
-		E^2 = E_0^2 + (pc)^2
+		\begin{aligned}
+		E^2 & = E_0^2 + (E_p)^2 \\
+		    & = (mc^2)^2 + (pc)^2
+		\end{aligned}
 	}
 \end{equation}
 
-*** Outside the scope of SR, should we state that the mass is a measure of its energy content instead?
+The reason we believe all this to be the correct interpretation of these equations is because they agree with experiments, so despite the strange way of getting to them, they seem to be correct, or atleast extremely good approximations.
 
 %*** Momentum in special relativity is defined slightly differently, to ensure that the law of conservation of momentum holds true in all inertial frames, as required by the first postulate of relativity (it is still approximately unchanged at low velocities).
 
 %*** comment that ${\gamma}$ is unitless and hence does not affect the units of energy or momentum
 
 %███████████████████████████████████████████████████████████████████
+\subsection{Energy-Mass Equivalence} \label{subsect: Energy-Mass Equivalence}
+
+Lets go back for a moment to the invariant energy quantity from before that gives the relationship between mass and the energy of a particl at rest
+
+\begin{equation}
+	E_0 = mc^2
+\end{equation}
+
+So a particle with a mass $m$ has an energy due to that mass of $mc^2$, this means if it were to decay into light, that light's energy could be measured and it should equal to this.
+Experiments do confirm that this assertion is true and that the energy-mass equivalence is correct.
+You can give thanks to this for the ability to get energy from decaying radioactive elements in nuclear power plants, and maybe the future posibilty that we can get energy from nuclear fusion aswell.
+Best to ignore the whole nuclear bombs part though.
+That does give it the best reputation.
+
+%███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Energy-Momentum Relation For Photons} \label{sect: Energy-Momentum Relation For Photons}
 
-*** First associate the energy of photon E = hf then find its equivalence in mass, then sub this in, and then say momentum for the photon is then hf/c
+*** First associate the energy of photon $E = h \nu$ then find its equivalence in mass, then sub this in, and then say momentum for the photon is then $hf/c$
 
 For a Photon we have the mass equal to zero and the momentum as $p_{light} = \frac{hf}{c}$ which is taken from quantum mechanics and the energy-momentum relation as
 
@@ -3520,16 +3555,21 @@ For a Photon we have the mass equal to zero and the momentum as $p_{light} = \fr
 
 where ${h}$ is Planks constant and ${\nu}$ is the frequency of the light.
 
-nothing is derived here, just states what to do for a photon
-
 %███████████████████████████████████████████████████████████████████
-\subsection{Energy-Mass Equivalence} \label{subsect: Energy-Mass Equivalence}
+%███████████████████████████████████████████████████████████████████
+\section{Momentum of Emmitted Light from Source}\label{sect: Momentum of Emmitted Light from Source}
 
-*** Imagine we have a particle at rest emitting light in all directions so that afterward it is still at rest, but in another frame we have we have this particle moving and the emitted light aberrated, but we still need the particle to remain at a constant velocity after emission.
-(maybe include a rotation in the impulse/effect of light in each direction on the particle of has)
+say we have a point or spherical source, that in its rest frame emits light in all directions evenly and at with the same frequency, since this is evenly distributed the momentum kick that each bit of the light produces cancel out, so that the source is still at rest.
+But in another primed frame we have that the light is aberrated in the direction of movement meaning there is more light in this direction.
+The light is also subject to the doppler effect that meaning that it has a higher frequency and therefore momentum in the direction of movement.
 
-***-if we have a ball in its \hyperlink{def-proper-frame}{rest frame} that emits a flash of light evenly in all directions, we will have the ball's energy decrease by the amount of energy of the emitted light, and it will remain at rest after due to the light being emitted evenly in all directions
--its kinetic energy is zero in this frame
+The source in this frame will continue at its constant velocity as it remains at rest in first frame.
+Therefor we need it to be that each part of the light imparts a momentum that is in the direction that the light imparts in the sources rest frame, without a change in the momentum kick that depends on the angle its emitted.
+
+We will have the ball's energy decrease by the amount of energy of the emitted light, meaning it will lose the equivalent of this energy in its mass.
+We also have a kinectic energy of the ball to think about in the primed frame.
+*** should the kinetic energy of the source be the relativistic kenetic energy from before.
+*** lets calculate the momentum of source and light, and calculate the energies as well, and make sure they are conserved.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████

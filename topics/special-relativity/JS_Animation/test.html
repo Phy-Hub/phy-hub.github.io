@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Length Contraction Diagrams</title>
+    <script src="SR_Truck.js"></script>
+</head>
+<body>
+    <h1>My Length Contraction Diagrams</h1>
+    <div id="diagram1"></div>
+    <div id="diagram2"></div>
+    <div id="another_diagram"></div>
+    <div id="meow" style="width: 200px;"></div>
+    <script>
+        // Create the diagrams
+        createTruckDiagram("diagram1",2, Math.PI / 2); // Default N_ang (33)
+        createTruckDiagram("diagram2", 500); // Custom N_ang
+        const myDiagram = createTruckDiagram("another_diagram", 2, Math.PI / 2);
+        myDiagram.setSpeed(0.99);
+        createTruckDiagram("meow", 33); // Custom N_ang
+    </script>
+</body>
+</html>

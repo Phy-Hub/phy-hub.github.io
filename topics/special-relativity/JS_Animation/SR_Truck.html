@@ -1,0 +1,222 @@
+<div id="js_truck_length_contraction">
+    <canvas id="myCanvas"></canvas>
+    <div><label for="timeSlider">Time:</label>
+        <input type="range" id="timeSlider" min="0" value="0" style="width: 100%;">
+    </div>
+    <div style="display: flex; flex-direction: row;"> Frame:
+        <label><input type="checkbox" id="checkboxRest" checked> Rest </label>
+        <label><input type="checkbox" id="checkboxMoving"> Moving at 0.8c </label>
+    </div>
+    <div>
+        <label><input type="checkbox" id="checkboxPaths" checked> Show Paths </label>
+    </div>
+
+    <script defer>
+        let this_div_id = "js_truck_length_contraction";
+        let _U = 0; // initially in rest frame
+        let _Beta = 0.8;
+        let _Gamma = 1 / Math.sqrt(1 - Math.pow(_Beta, 2));
+        let _t = 0;
+        let _T_tot;
+        let _N_ang = 33;
+        let _ang = Array.from({ length: _N_ang }, (_, i) => (2 * Math.PI) * i / _N_ang);
+        let _paths = Array.from({ length: _N_ang }, () => []);
+        let _showPaths = true; // Initially show paths
+
+        let canvas = document.getElementById('myCanvas');
+        let ctx = canvas.getContext('2d');
+        let slider = document.getElementById('timeSlider');
+        let checkboxRest = document.getElementById('checkboxRest');
+        let checkboxMoving = document.getElementById('checkboxMoving');
+        let checkboxPaths = document.getElementById('checkboxPaths');
+
+        function setup() {
+            let myDiv = document.getElementById(this_div_id);
+            let divWidth = myDiv.offsetWidth;
+            _T_tot = 2 * divWidth / (2 * _Gamma * _Beta + 1 / _Gamma + 1);
+            padding_truck = _T_tot / 10;
+            canvas.width = divWidth;
+            canvas.height = _T_tot + 10 + padding_truck;
+            slider.max = _T_tot;
+        }
+
+        function resetPaths() {
+            _paths = Array.from({ length: _N_ang }, () => []);
+        }
+
+        checkboxRest.addEventListener('change', () => {
+            if (checkboxRest.checked) {
+                _U = 0;
+                checkboxMoving.checked = false;
+                resetPaths();
+                draw();
+            }
+        });
+
+        checkboxMoving.addEventListener('change', () => {
+            if (checkboxMoving.checked) {
+                _U = 0.8;
+                checkboxRest.checked = false;
+                resetPaths();
+                draw();
+            }
+        });
+
+        checkboxPaths.addEventListener('change', () => {
+            _showPaths = checkboxPaths.checked;
+            draw();
+        });
+
+        slider.addEventListener('input', () => {
+            _t = parseFloat(slider.value);
+            draw();
+        });
+
+        function draw() {
+            _t = parseFloat(slider.value);
+            V = [0, -_U];
+            _Gamma = 1 / Math.sqrt(1 - Math.pow(_U, 2));
+            // Calculate R_source based on time and far-left initial position: -20 _T_tot
+            Width_of_div = canvas.width;
+            R_emit_x = - Width_of_div / 2 + _T_tot / 2;
+            R_source = [R_emit_x + _U * _Gamma * _t, -0.5 * padding_truck];
+            let t_PRM = _Gamma * _t;
+            let Rc_PRM = [];
+            let C = [];
+            // Initial position remains offset from the top for path drawing:
+            let R_initial = [R_emit_x, -0.5 * padding_truck];
+
+            for (let I_a = 0; I_a < _N_ang; I_a++) {
+                let C_PRM = [_Gamma * (Math.cos(_ang[I_a]) - V[1]), Math.sin(_ang[I_a])].map(x => x / (_Gamma * (1 - V[1] * Math.cos(_ang[I_a]))));
+                let Cr_PRM = [_Gamma * (-Math.cos(_ang[I_a]) - V[1]), -Math.sin(_ang[I_a])].map(x => x / (_Gamma * (1 - V[1] * -Math.cos(_ang[I_a]))));
+                let T_reflect_PRM = _Gamma * (1 - (V[1] * Math.cos(_ang[I_a]))) * _T_tot / 2;
+
+                if (t_PRM < T_reflect_PRM) {
+                    Rc_PRM.push(C_PRM.map(x => x * t_PRM));
+                    C.push(C_PRM);
+
+                    // Store path from initial position to current position
+                    _paths[I_a] = [[R_initial[0], R_initial[1]]]; // Start path at initial R_source
+                    _paths[I_a].push([R_initial[0] + Rc_PRM[I_a][0], R_initial[1] + Rc_PRM[I_a][1]]); // End at current Rc_PRM
+
+                } else {
+                    // First path segment: from initial position to reflection point
+                    let reflectionPoint = C_PRM.map(x => x * T_reflect_PRM);
+                    _paths[I_a] = [[R_initial[0], R_initial[1]]]; // Start at initial R_source
+                    _paths[I_a].push([R_initial[0] + reflectionPoint[0], R_initial[1] + reflectionPoint[1]]); // To reflection point
+
+                    // Second path segment: from reflection point to current position
+                    let currentPos = C_PRM.map((x, i) => x * T_reflect_PRM + (t_PRM - T_reflect_PRM) * Cr_PRM[i]);
+                    Rc_PRM.push(currentPos);
+                    C.push(Cr_PRM);
+                    _paths[I_a].push([R_initial[0] + currentPos[0], R_initial[1] + currentPos[1]]); // End at current position
+                }
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#ddd";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.save();
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.fillStyle = "#fff";
+            ctx.strokeStyle = "#000";
+            ctx.lineWidth = 2;
+
+            let Rs_x = R_source[0];
+            let Rs_y = R_source[1];
+            let w = _T_tot / _Gamma;
+            let h = _T_tot;
+
+            let offsetX = w / 5;
+            let bottomY = Rs_y + h / 2;
+            let leftX = Rs_x - (w / 2) + offsetX;
+            let rightX = Rs_x + (w / 2) - offsetX;
+
+            ctx.fillStyle = "#000";
+            // Centering the ellipses:
+            drawEllipse(ctx, leftX - w / 10 / _Gamma, bottomY - h / 10, w / 5 / _Gamma, h / 5);
+            drawEllipse(ctx, rightX - w / 10 / _Gamma, bottomY - h / 10, w / 5 / _Gamma, h / 5);
+            ctx.fillStyle = "#646464";
+            ctx.fillRect(Rs_x - w / 2, Rs_y - h / 2, w, h);
+            ctx.fillStyle = "#fff";
+            // Centering the larger ellipse:
+            drawEllipse(ctx, Rs_x - w / 2, Rs_y - h / 2, w, h);
+
+            for (let i = 0; i < Rc_PRM.length; i++) {
+                let pos = Rc_PRM[i];
+                let dir = C[i];
+                let C_mag = Math.sqrt(dir[0] * dir[0] + dir[1] * dir[1]);
+                dir[0] /= C_mag;
+                dir[1] /= C_mag;
+                dir[0] *= 20;
+                dir[1] *= 20;
+
+                // Draw the path only if _showPaths is true
+                if (_showPaths) {
+                    ctx.strokeStyle = "#000";
+                    ctx.lineWidth = 1.5;
+                    ctx.setLineDash([7, 2]);
+                    ctx.beginPath();
+                    ctx.moveTo(_paths[i][0][0], _paths[i][0][1]);
+                    for (let j = 1; j < _paths[i].length; j++) {
+                        ctx.lineTo(_paths[i][j][0], _paths[i][j][1]);
+                    }
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+
+                // Draw the arrow at the end of the path
+                ctx.save();
+                ctx.fillStyle = "#f00";
+                ctx.translate(_paths[i][_paths[i].length - 1][0], _paths[i][_paths[i].length - 1][1]);
+                ctx.rotate(Math.atan2(dir[1], dir[0]));
+                let arrowSize = 10;
+                ctx.beginPath();
+                ctx.moveTo(C_mag - arrowSize / 2, arrowSize / 2);
+                ctx.lineTo(C_mag - arrowSize / 2, -arrowSize / 2);
+                ctx.lineTo(C_mag - arrowSize / 2 + arrowSize, 0);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            }
+
+            ctx.save();
+            ctx.fillStyle = 'red'; // Changed stroke to fill
+            //ctx.lineWidth = 10; // Removed linewidth
+            ctx.beginPath();
+            //ctx.moveTo(R_source[0], R_source[1]); // Removed moveTo and lineTo
+            //ctx.lineTo(R_source[0]+1, R_source[1]+1);
+            ctx.arc(R_source[0], R_source[1], 5, 0, 2 * Math.PI); // Added filled circle
+            //ctx.stroke(); // Removed stroke
+            ctx.fill(); // Added fill
+            ctx.restore();
+
+            ctx.restore();
+        }
+
+        function drawEllipse(ctx, x, y, w, h) {
+            ctx.beginPath();
+            ctx.ellipse(x + w / 2, y + h / 2, w / 2, h / 2, 0, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.stroke();
+          }
+
+        function windowResized() {
+            let myDiv = document.getElementById(this_div_id);
+            let divWidth = myDiv.offsetWidth;
+            _Gamma = 1 / Math.sqrt(1 - Math.pow(_Beta, 2));
+            _T_tot = 2 * divWidth / (2 * _Gamma * _Beta + 1 / _Gamma + 1);
+            padding_truck = _T_tot / 10;
+            canvas.width = divWidth;
+            canvas.height = _T_tot + 10 + padding_truck;
+            slider.max = _T_tot;
+            resetPaths();
+            draw();
+        }
+
+        setup();
+        draw();
+        window.addEventListener('resize', windowResized);
+    </script>
+</div>

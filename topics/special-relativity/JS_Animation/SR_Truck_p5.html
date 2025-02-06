@@ -1,0 +1,192 @@
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.min.js"></script>
+
+<div id="js_truck_length_contraction">
+    <script defer>
+        let this_div_id = document.currentScript.parentElement.id; //"js_truck_length_contraction";
+        let _U = 0; // initially in rest frame
+        let _Beta = 0.8;
+        let _Gamma = 1 / Math.sqrt(1 - Math.pow(_Beta, 2));
+        let _t = 0;
+        let _T_tot;
+        let _N_ang = 33;
+        let _ang = Array.from({ length: _N_ang }, (_, i) => (2 * Math.PI) * i / _N_ang); // + Math.PI / 2);
+        let _paths = Array.from({ length: _N_ang }, () => []);
+        let _showPaths = true; // Initially show paths
+
+        function setup() {
+            let myDiv = select('#' + this_div_id);
+            let divWidth = myDiv.width;
+            _T_tot = 2 * divWidth / (2 * _Gamma * _Beta + 1 / _Gamma + 1);
+            padding_truck = _T_tot / 10;
+            let fig_size = createCanvas(divWidth, _T_tot + 10 + padding_truck); // if this is changed then the resizing window needs to be changed
+            fig_size.parent(this_div_id);
+
+            let sliderDiv = createDiv();
+            sliderDiv.style('display', 'flex');
+            sliderDiv.parent(this_div_id);
+            let p = createP('Time:');
+            p.style('margin-right', '10px');
+            slider = createSlider(0, _T_tot, 0);
+            slider.style('width', '100%');
+            p.parent(sliderDiv);
+            slider.parent(sliderDiv);
+
+            let checkboxDiv = createDiv('Frame:');
+            checkboxDiv.style('display', 'flex');
+            checkboxDiv.style('flex-direction', 'row')
+            checkboxDiv.parent(this_div_id);
+            let checkboxVp0 = createCheckbox('Rest', true);
+            let checkboxVp08 = createCheckbox('Moving', false);
+            checkboxVp0.parent(checkboxDiv);
+            checkboxVp08.parent(checkboxDiv);
+            checkboxVp0.changed(() => {
+                if (checkboxVp0.checked()) {
+                    _U = 0;
+                    checkboxVp08.checked(false);
+                    slider.value(0);
+                    resetPaths();
+                }
+            });
+            checkboxVp08.changed(() => {
+                if (checkboxVp08.checked()) {
+                    _U = 0.8;
+                    checkboxVp0.checked(false);
+                    slider.value(0);
+                    resetPaths();
+                }
+            });
+
+            // Add checkbox for showing/hiding paths
+            let checkboxPathsDiv = createDiv();
+            checkboxPathsDiv.style('display', 'flex');
+            checkboxPathsDiv.parent(this_div_id);
+            let checkboxPaths = createCheckbox('Show Paths', true);
+            checkboxPaths.parent(checkboxPathsDiv);
+            checkboxPaths.changed(() => {
+                _showPaths = checkboxPaths.checked();
+            });
+        }
+
+        function resetPaths() {
+            _paths = Array.from({
+                length: _N_ang
+            }, () => []);
+        }
+
+        function draw() {
+            _t = slider.value();
+            V = [0, -_U];
+            _Gamma = 1 / Math.sqrt(1 - Math.pow(_U, 2));
+            R_source = [_U * _Gamma * _t, -0.5 * padding_truck];
+            let t_PRM = _Gamma * _t;
+            let Rc_PRM = [];
+            let C = [];
+            let R_initial = [0, R_source[1]];
+
+            for (let I_a = 0; I_a < _N_ang; I_a++) {
+                let C_PRM = [_Gamma * (Math.cos(_ang[I_a]) - V[1]), Math.sin(_ang[I_a])].map(x => x / (_Gamma * (1 - V[1] * Math.cos(_ang[I_a]))));
+                let Cr_PRM = [_Gamma * (-Math.cos(_ang[I_a]) - V[1]), -Math.sin(_ang[I_a])].map(x => x / (_Gamma * (1 - V[1] * -Math.cos(_ang[I_a]))));
+                let T_reflect_PRM = _Gamma * (1 - (V[1] * Math.cos(_ang[I_a]))) * _T_tot / 2;
+
+                if (t_PRM < T_reflect_PRM) {
+                    Rc_PRM.push(C_PRM.map(x => x * t_PRM));
+                    C.push(C_PRM);
+
+                    // Store path from initial position to current position
+                    _paths[I_a] = [[R_initial[0], R_initial[1]]]; // Start path at initial R_source
+                    _paths[I_a].push([R_initial[0] + Rc_PRM[I_a][0], R_initial[1] + Rc_PRM[I_a][1]]); // End at current Rc_PRM
+
+                } else {
+                    // First path segment: from initial position to reflection point
+                    let reflectionPoint = C_PRM.map(x => x * T_reflect_PRM);
+                    _paths[I_a] = [[R_initial[0], R_initial[1]]]; // Start at initial R_source
+                    _paths[I_a].push([R_initial[0] + reflectionPoint[0], R_initial[1] + reflectionPoint[1]]); // To reflection point
+
+                    // Second path segment: from reflection point to current position
+                    let currentPos = C_PRM.map((x, i) => x * T_reflect_PRM + (t_PRM - T_reflect_PRM) * Cr_PRM[i]);
+                    Rc_PRM.push(currentPos);
+                    C.push(Cr_PRM);
+                    _paths[I_a].push([R_initial[0] + currentPos[0], R_initial[1] + currentPos[1]]); // End at current position
+                }
+            }
+
+            background(220);
+            translate(_T_tot / 2, height / 2);
+            fill(255);
+            stroke(0);
+            strokeWeight(2);
+
+            let Rs_x = R_source[0];
+            let Rs_y = R_source[1];
+            let w = _T_tot / _Gamma;
+            let h = _T_tot;
+
+            let offsetX = w / 5;
+            let bottomY = Rs_y + h / 2;
+            let leftX = Rs_x - (w / 2) + offsetX;
+            let rightX = Rs_x + (w / 2) - offsetX;
+
+            fill(0);
+            ellipse(leftX, bottomY, w / 5 / _Gamma, h / 5);
+            ellipse(rightX, bottomY, w / 5 / _Gamma, h / 5);
+            fill(100);
+            rectMode(CENTER);
+            rect(Rs_x, Rs_y, w, h);
+            fill(255);
+            ellipse(Rs_x, Rs_y, w, h);
+
+            for (let i = 0; i < Rc_PRM.length; i++) {
+                let pos = Rc_PRM[i];
+                let dir = C[i];
+                let C_mag = Math.sqrt(dir[0] * dir[0] + dir[1] * dir[1]);
+                dir[0] /= C_mag;
+                dir[1] /= C_mag;
+                dir[0] *= 20;
+                dir[1] *= 20;
+
+                // Draw the path only if _showPaths is true
+                if (_showPaths) {
+                    stroke(0);
+                    strokeWeight(2);
+                    drawingContext.setLineDash([5, 5]);
+                    noFill();
+                    beginShape();
+                    for (let pt of _paths[i]) {
+                        vertex(pt[0], pt[1]);
+                    }
+                    endShape();
+                    drawingContext.setLineDash([]);
+                }
+
+                // Draw the arrow at the end of the path
+                push();
+                fill(255, 0, 0);
+                noStroke();
+
+                translate(_paths[i][_paths[i].length - 1][0], _paths[i][_paths[i].length - 1][1]);
+                rotate(Math.atan2(dir[1], dir[0]));
+                let arrowSize = 10;
+                translate(C_mag - arrowSize / 2, 0);
+                triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+                pop();
+            }
+
+            push();
+            stroke('red');
+            strokeWeight(10);
+            point(R_source[0], R_source[1]);
+            pop();
+        }
+
+        function windowResized() {
+            let myDiv = select('#' + this_div_id);
+            let divWidth = myDiv.width;
+            _Gamma = 1 / Math.sqrt(1 - Math.pow(_Beta, 2));
+            _T_tot = 2 * divWidth / (2 * _Gamma * _Beta + 1 / _Gamma + 1);
+            padding_truck = _T_tot / 10;
+            resizeCanvas(divWidth, _T_tot + 10 + padding_truck);
+            slider.elt.max = _T_tot;
+            resetPaths();
+        }
+    </script>
+</div>

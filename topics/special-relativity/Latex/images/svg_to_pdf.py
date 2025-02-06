@@ -10,4 +10,5 @@ for svg_file in svg_files:
 
     # Check if the pdf file exists and is older than the svg file
     if not os.path.exists(pdf_file) or os.path.getmtime(svg_file_path) > os.path.getmtime(pdf_file):
+
         subprocess.run(['inkscape', '--export-filename=' + pdf_file, svg_file_path])

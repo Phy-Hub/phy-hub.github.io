@@ -9,6 +9,7 @@
   <!--<script> var url = window.location.href; url = url.split('.html')[0]; window.history.replaceState(null, null, url); </script> -->
   <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
   <script defer type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
   <!--<script defer> window.MathJax = {  tex: { tags: 'ams' }, svg: {fontCache: 'global'} }; </script>-->
   <script> MathJax = {
     loader:  {load:  ['[tex]/tagformat']},
@@ -34,7 +35,7 @@
     }
   };
   </script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.min.js"></script>
+  <script src="SR_Truck.js"></script>
 
   <style>
 
@@ -85,7 +86,6 @@
     body {counter-reset: figure-counter chapter-counter;}
     section { counter-increment: chapter-counter; counter-reset: figure-counter; }
     figure { counter-increment: figure-counter;}
-    figcaption::before {content: "Figure " counter(chapter-counter) "." counter(figure-counter) ": ";}
 
     .sidebar{position: sticky; top: 60px; overflow: hidden; align-self: start; height: auto;}
     figcaption {line-height: 1;}
@@ -126,14 +126,16 @@
     </div>
   </div>
 
-  <div id="equation_hover" style="position: fixed; top: 50vh; background-color:#f99830; width: 100%;"></div>
-  <div id="fig_hover" style="position: fixed; top: 60px; background-color:#f99830; width: 100%;"></div>
+  <div id="equation_hover" style="position: fixed; top: 60px; padding-right: 20px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
+  <div id="fig_hover" style="position: fixed; top: 60px; padding-right: 20px; padding-left: 20px; background-color:#f99830; width: 660px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
+
 
   <!--Page-->
   <main>
     <!--Page Navbar-->
     <nav id="toc" class="sidebar">
       [Insert TOC] <!-- needs to be in seperate line for ASM.py --> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p>
+      [Insert PDF Link]
       <a href="/pages/about.html" style="position: fixed; left: 10px; bottom: 10px;"> <div> About Phy-Hub</div> </a>
     </nav>
 
@@ -151,14 +153,18 @@
         </div>
       </header>
       [Insert Content] <!-- needs to be in seperate line for ASM.py --> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p>
+      <h3> Bibliography</h3>
+      <div id="partial_bib"></div>
+      <div id="bibliography">
+        [Insert Bib]
+      </div>
     </article>
 
     <!--Sidebar-->
-    <aside class="sidebar">
+    <aside class="sidebar" style="overflow-y: auto; max-height: calc(100vh - 100px);">
       <dl id="vars">
         <a href="..." style="padding-top: 5px;"> <b> Relativity Playground </b> </a> <br>
         <a href="..." style="padding-top: 5px;"> <b> Resources </b> </a> <br>
-        [Insert PDF Link]
         <h3 style="cursor: pointer;" onclick="var content = this.nextElementSibling; content.style.display = content.style.display === 'none' ? 'block' : 'none';">Terms ⯆</h3>
         [Insert Math Terms] <dl id="dts_ch2" style="display: none;"><dt style="cursor: pointer;" onclick="document.getElementById('math-E').style.display = document.getElementById('math-E').style.display == 'none' ? 'inline' : 'none';"> \(E\)<b>:</b> </dt><definition id="math-E" style="display: none;">an <dt onmouseover="document.getElementById('event').style.display='block'" onmouseout="document.getElementById('event').style.display='none'">event</dt> *** might be confused with energy later ***</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-v')style.display = document.getElementById('math-v').style.display == 'none' ? 'inline' : 'none';"> \(v\)<b>:</b> </dt><definition id="math-v" style="display: none;">is the velocity of second <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt> relative to the first <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt></definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-c').style.display = document.getElementById('math-c').style.display == 'none' ? 'inline' : 'none';"> \(c\)<b>:</b> </dt><definition id="math-c" style="display: none;">the speed that light travels in empty space when it is not impeded by matter and fields.</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-gamma').style.display = document.getElementById('math-gamma').style.display == 'none' ? 'inline' : 'none';"> \(\gamma\)<b>:</b> </dt><definition id="math-gamma" style="display: none;">a relativistic factor given by \(1/\sqrt{1-v^2/c^2}\) which determines how much of an effect the <dt onmouseover="document.getElementById('transform').style.display='block'" onmouseout="document.getElementById('transform').style.display='none'">transform</dt> of the coordinates deviates from the classical transform. It is only significant at relative frame speeds close to that of light.</definition></dl>
       </dl>
@@ -167,6 +173,8 @@
       </dl>
     </aside>
   </main>
+
+
 
   <!--scripts-->
   <script>
@@ -281,6 +289,8 @@
           subsection.scrollIntoView();
       }
     });
+
+  [Insert Script]
 
   </script>
 </body>

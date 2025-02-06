@@ -497,14 +497,13 @@ def replace_refs(input_string, fig_dict):
     # This pattern matches \eqref{} and captures the content inside the brackets
     pattern_ref_eq = r'\\eqref\{(.*?)\}'
     pattern_ref_fig = r'\\ref\{(.*?)\}'
-    pattern_cite_bib = r'\\cite\{(.*?)\}'
-
 
     # This function will be used to replace each match
     def replacer_ref_eq(match):
         id = match.group(1).replace(" ", "_")
+        eq_number = find_key_from_label(eq_dict, id)
         # Replace with a span element that shows a div with the matched id on hover
-        return f'<span class="ref_eq" onmouseover="copyContent(\'{id}\',\'equation_hover\'); " onmouseout="deleteContent(\'equation_hover\');">\\eqref{{{id}}}</span>'
+        return f'<span class="ref_eq" onmouseover="copyContent(\'{id}\',\'equation_hover\'); " onmouseout="deleteContent(\'equation_hover\');">({eq_number})</span>'
     def replacer_ref_fig(match):
         id = match.group(1).replace(" ", "_")
         fig_num = find_key_from_label(fig_dict,id)

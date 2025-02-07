@@ -100,6 +100,11 @@ def colorbox_replace(filename):
 
 ###
 # *** when next/previous clicked, need to load the right TOC ***
+#
+# *** some \chapters{} and sections{} have [] before {} for their alternative name or alternative label, check TOC includes it once fixed
+#
+# *** i started merging this with next function
+# *** need to change id's to their labels instead of counters, also make sure they have labels
 
 def replace_headings(latex_content):
     # Replace chapters with h1 tags
@@ -114,6 +119,8 @@ def replace_headings(latex_content):
             return f'<section id="ch{counter[0]}_wrap" class="chapter"> \n <h1 id="ch{counter[0]}_header">' + f"{counter[0]}. " + m.group(1) + '</h1>'
 
     latex_content = re.sub(r'\\chapter\{(.+?)\}', replace_func, latex_content)
+
+
 
     # Replace sections with h2 tags
     latex_content = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">' + m.group(1) + '</h2>', latex_content)
@@ -157,6 +164,7 @@ def wrap_content(latex_file):
                 output.append('</div>  <!-- close subsection-->')
             if section_num > 1:
                 output.append('</div> <!-- close section-->')
+            line = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">'+ f"{chapter_num}.{section_num} " + m.group(1) + '</h2>', line)
             output.append(line.strip())
             output.append(f'<div id="ch{chapter_num}_{section_num}'+'_content">')
             subsection_num = 0
@@ -164,6 +172,7 @@ def wrap_content(latex_file):
             subsection_num += 1
             if subsection_num > 1:
                 output.append('</div> <!-- close subsection-->')
+            line = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">'+ f"{chapter_num}.{section_num}.{subsection_num} " + m.group(1) + '</h3>', line)
             output.append(line.strip())
             output.append(f'<div id="ch{chapter_num}_{section_num}_{subsection_num}'+'_content">')
         else:
@@ -183,23 +192,19 @@ def Figures_to_HTML(file):
     with open(file, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    chapter_counter = 0  # Initialize chapter counter
-    figure_counter = 0  # Initialize figure counter
+    chapter_counter = 0
+    figure_counter = 0
 
-    # Find chapter starts (you might need to adjust the regex)
     chapter_starts = re.findall(r'\\chapter\{.*?\}', content)
 
-    # Process each chapter separately
     for chapter_index, chapter_start in enumerate(chapter_starts):
-        chapter_num = chapter_index + 1 # Auto-increment chapter number
+        chapter_num = chapter_index + 1
 
-        # Find the end of the current chapter (this is a simplification)
-        # You might need a more robust way to determine chapter boundaries
         next_chapter_index = chapter_index + 1
         if next_chapter_index < len(chapter_starts):
             chapter_end_index = content.find(chapter_starts[next_chapter_index])
         else:
-            chapter_end_index = len(content) # End of the document
+            chapter_end_index = len(content)
 
         chapter_content = content[content.find(chapter_start):chapter_end_index]
 
@@ -208,26 +213,34 @@ def Figures_to_HTML(file):
         for figure_env in figure_envs:
             figure_counter += 1
             subfigure_envs = re.findall(r'\\begin{subfigure}.*?\\end{subfigure}', figure_env, re.DOTALL)
+
             if subfigure_envs:
-                replacement = f'<br>\n \t <figure>\n <div style="display: flex; justify-content: space-between;">\n'
+                # Extract main figure caption and label FIRST
+                caption_match = re.search(r'\\caption\{(?P<caption>.*\})', figure_env)
+                label_match = re.search(r'\\label\{(?P<label>.*\})', figure_env)
+
+                replacement = f'<br>\n \t <figure'
+                if label_match:
+                    replacement += f' id="{label_match.group("label")[:-1].replace(" ", "_")}"'  # Add ID to <figure>
+                replacement += '>\n <div style="display: flex; justify-content: space-between;">\n'
+
                 subfig_letter = 'a'
                 for subfigure_env in subfigure_envs:
                     replacement += '   ' + process_figure(subfigure_env, chapter_num, figure_counter, subfig_letter) + '\n'
                     subfig_letter = chr(ord(subfig_letter) + 1)
+
                 replacement += '</div>\n'
-                caption_match = re.search(r'\\caption\{(?P<caption>.*\})', figure_env)
+
                 if caption_match:
-                    # Add chapter and figure number to caption
                     replacement += f'<figcaption>Figure {chapter_num}.{figure_counter}: {caption_match.group("caption")[:-1]}</figcaption>\n'
                 replacement += '</figure>\n'
+
             else:
                 replacement = process_figure(figure_env, chapter_num, figure_counter, '')
 
-            # Replace in the original content
             content = content.replace(figure_env, replacement)
 
-        # Reset figure counter for the next chapter
-        figure_counter = 0
+        figure_counter = 0  # Reset for next chapter
 
     with open(file, 'w', encoding='utf-8') as f:
         f.write(content)
@@ -496,7 +509,8 @@ def math_to_HTML(content):
 def replace_refs(input_string, fig_dict):
     # This pattern matches \eqref{} and captures the content inside the brackets
     pattern_ref_eq = r'\\eqref\{(.*?)\}'
-    pattern_ref_fig = r'\\ref\{(.*?)\}'
+    pattern_ref_fig = r'\\ref\{(fig.*?)\}'
+    pattern_ref_toc = r'\\ref\{(.*?)\}'
 
     # This function will be used to replace each match
     def replacer_ref_eq(match):
@@ -509,13 +523,16 @@ def replace_refs(input_string, fig_dict):
         fig_num = find_key_from_label(fig_dict,id)
         # Replace with a span element that shows a div with the matched id on hover
         return f'<span class="ref_fig" onmouseover="copyContent(\'{id}\',\'fig_hover\');" onmouseout="deleteContent(\'fig_hover\');">{fig_num}</span>'
-    def replacer_cite_bib(match):
-        id = match.group(1)
-
+    def replacer_ref_toc(match):
+        id = match.group(1).replace(" ", "_")
+        toc_num = find_key_from_label(toc_dict,id)
+        # Replace with a span element that shows a div with the matched id on hover
+        return f'<span class="ref_toc" >{toc_num}</span>'
 
     # Use re.sub to replace each match in the input string
     output_string = re.sub(pattern_ref_eq , replacer_ref_eq, input_string)
     output_string = re.sub(pattern_ref_fig, replacer_ref_fig, output_string)
+    output_string = re.sub(pattern_ref_toc, replacer_ref_toc, output_string) # must be after fig replacer
 
     return output_string
 
@@ -623,7 +640,8 @@ def create_dictionary_of_toc(filepath):
                 level = match.group(1)
                 short_title = match.group(2).strip() if match.group(2) else None
                 title = match.group(3).strip()
-                label = match.group(4).strip() if match.group(4) else None
+                label = match.group(4).replace(" ", "_") if match.group(4) else None
+
 
                 # Replace title with short_title if short_title exists
                 if short_title:
@@ -712,11 +730,11 @@ def create_dictionary_of_figures(latex_file):
                     # Find label within the caption or outside of it
                     label_match = re.search(r'\\label{([^}]*?)}', subfigure_caption_match.group(1))
                     if label_match:
-                        subfigure_label = label_match.group(1).strip()
+                        subfigure_label = label_match.group(1).replace(" ", "_")
                     else:
                         label_match = re.search(r'\\label{([^}]*?)}', subfigure_match)
                         if label_match:
-                            subfigure_label = label_match.group(1).strip()
+                            subfigure_label = label_match.group(1).replace(" ", "_")
 
                 subfigure_id = f"{chapter_number}.{figure_number}.{subfigure_letter}"
                 figure_data[subfigure_id] = {"title": subfigure_title, "label": subfigure_label}  # Store as dictionary
@@ -763,6 +781,7 @@ def find_key_from_label(data_dict, target_label):
     for key, value in data_dict.items():
         if value['label'] == target_label:
             return key
+    print("label: ", target_label, " does not have a key" )
     return None
 
 ###
@@ -770,6 +789,7 @@ def find_label_from_key(data_dict, target_key):
     if target_key in data_dict:
         return data_dict[target_key]['label']
     else:
+        print("Key: ", target_key, " does not have a label" )
         return None
 
 ###
@@ -908,6 +928,7 @@ eq_dict  = create_dictionary_of_equations(Latex_File)
 check_duplicate_labels(toc_dict)
 check_duplicate_labels(fig_dict)
 check_duplicate_labels(eq_dict)
+
 
 # Call the function with your input and output file paths
 Figures_to_HTML(Latex_File)

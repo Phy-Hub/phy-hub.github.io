@@ -171,8 +171,6 @@ function createTruckDiagram(containerId, N_ang = 33, angleOffset = 0) {
         }
 
         instance.ctx.clearRect(0, 0, instance.canvas.width, instance.canvas.height);
-        instance.ctx.fillStyle = "#f6da66";
-        instance.ctx.fillRect(0, 0, instance.canvas.width, instance.canvas.height);
 
         instance.ctx.save();
         instance.ctx.translate(instance.canvas.width / 2, instance.canvas.height / 2);

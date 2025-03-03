@@ -1,0 +1,1 @@
+{"rule":"EN_SPECIFIC_CASE","sentence":"^\\QFor example, light has taken 152,000 years to travel from the Andromeda galaxy, so we are currently seeing the Andromeda galaxy where it was and how it looked 152,000 years ago.\\E$"}

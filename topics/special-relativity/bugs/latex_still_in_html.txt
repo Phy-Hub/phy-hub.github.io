@@ -1,5 +1,6 @@
 ### PROBLEM LaTeX LINES ###
+### Line 188: '<a href='#RetardedLightPropagationinSources\\PrimedFrame_header' style='display: block; margin-left: 20px;'>4.6 Retarded Light Propagation in Source's \\ Primed Frame</a>'
 ######################
-number of lines with bugs: 0 
+number of lines with bugs: 1 
 ######################
 commands: 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mouseover Screen Position</title>
+<style>
+#div_content, #div_to_copy_to {
+  width: 200px; height: 100px; border: 1px solid black;
+  margin: 10px; padding: 10px;
+}
+#div_content { background-color: lightgray; }
+#div_to_copy_to { background-color: lightyellow; }
+</style>
+</head>
+<body>
+
+<div id="div_content">Content to copy.</div>
+<div id="div_to_copy_to">Copy goes here.</div>
+
+<span id="hoverSpan" style="display: inline-block; padding: 10px; border: 1px solid blue;">Hover over me</span>
+
+<script>
+function copyContent(sourceId, destinationId, event) { // Pass the event object
+  const source = document.getElementById(sourceId);
+  const destination = document.getElementById(destinationId);
+  if (!source || !destination) return; // Concise error check
+
+  const viewportMidpoint = window.innerHeight / 2;
+  const spanMiddleY = event.clientY; // Directly use clientY from the event
+
+  destination.textContent = (spanMiddleY < viewportMidpoint ? "Top" : "Bottom") + " Half: " + source.textContent;
+}
+
+// Attach onmouseover directly in JavaScript for cleaner code.
+document.getElementById('hoverSpan').onmouseover = function(event) {
+  copyContent('div_content', 'div_to_copy_to', event);
+};
+</script>
+
+</body>
+</html>

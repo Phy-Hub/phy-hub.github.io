@@ -468,7 +468,7 @@ We will look at the combination of the Doppler effect and aberration next.
 
 When the Doppler effect and relativistic aberration are taken together, it is known as relativistic beaming.
 If we have a source in its \hyperlink{def-proper-frame}{rest frame} emitting a spherical pulse of light with evenly distributed angles.
-Then in a second frame with the source now moving, the doppler effect has the spherical pulse's wavelength bunched up in the direction of movement (giving a change in the color of the light), with the aberrational effect also giving the angular spread of the light at a higher concentration in the direction of the movement of the source, as shown in figures (\ref{fig: Relativistic Beaming}).
+Then in a second frame with the source now moving, the Doppler effect has the spherical pulse's wavelength bunched up in the direction of movement (giving a change in the color of the light), with the aberrational effect also giving the angular spread of the light at a higher concentration in the direction of the movement of the source, as shown in figures (\ref{fig: Relativistic Beaming}).
 
 %█████████████
 \begin{figure}[H]
@@ -503,6 +503,10 @@ Then in a second frame with the source now moving, the doppler effect has the sp
 	\label{fig: Relativistic Beaming Recieved}
 \end{figure}
 %███████████
+
+%█████████████████████████████████████
+\iffalse javascript{createAberrationDiagram} \fi %█
+%█████████████████████████████████████
 
 For astrophysics, we need to consider this beaming when looking at distant stars that are moving relative to us so that we can accurately calculate their brightness and the spectrum of light that they are emitting, along with some other things.
 We also need to consider that the position we are currently seeing the stars in is their past position due to the delay in light traveling to us on Earth, which is referred to as the retarded position.
@@ -641,7 +645,7 @@ However, we must ensure that the transforms reduce to the intuitive addition of 
 This leads to initially bizarre outcomes such as \textbf{apparent} faster-than-light motion emerging from how relativistic optical effects play out across distances, which is due to the delay in light signals from objects at a distance.
 Nevertheless, special relativity gives a truer, more accurate picture of reality.
 
-Due to space-time effects on wave propagation, we also have seen that the emitted light's frequencies shift (doppler effect) for a moving source, and that light is concentrated in the direction of the source's motion (aberrational effect).
+Due to space-time effects on wave propagation, we also have seen that the emitted light's frequencies shift (Doppler effect) for a moving source, and that light is concentrated in the direction of the source's motion (aberrational effect).
 Together, both intensely focus light in the direction of rapidly moving objects, giving relativistic beaming.
 
 These effects will all be explained more fully with math in the coming chapters, along with other effects that require the math to fully understand, as well as new energy, mass, and momentum conservation laws.
@@ -1061,7 +1065,11 @@ and
 Adding both these times together gives the total dilated time of return as
 
 \begin{equation}
-	{\Delta t{'}} = {\Delta  L^{'}}(\frac{1}{{c} + {u}} + \frac{1}{{c} - {u}}) = \frac{\Delta  L^{'}}{c}\frac{2}{1- {u}^2/{c}^2} =  2{\gamma}^2 \frac{\Delta  L^{'}}{c}
+	\begin{aligned}
+	{\Delta t{'}} &\color{gray} = {\Delta  L^{'}}(\frac{1}{{c} + {u}} + \frac{1}{{c} - {u}}) \\
+	&\color{gray} = \frac{\Delta  L^{'}}{c}\frac{2}{1- {u}^2/{c}^2} \\
+	&=  2{\gamma}^2 \frac{\Delta  L^{'}}{c}
+	\end{aligned}
 \end{equation}
 
 where we used ${u}=-{v}$ and then the ${\gamma}$ factor to simplfy equation.
@@ -1424,7 +1432,7 @@ To find how the acceleration (known as the 3-acceleration) of a particle transfo
 
 \begin{equation}
 	\begin{aligned}
-		d\mathbf{u}{'} & = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right) }
+		d\mathbf{u}{'} &\color{gray} = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right) }
 		\begin{pmatrix}
 			d{{u}_{x}}          \\
 			d{{u}_{y}}          \\
@@ -1436,7 +1444,7 @@ To find how the acceleration (known as the 3-acceleration) of a particle transfo
 			{{u}_{y}}                              \\
 			{\gamma} \left( {{u}_{z}}- {v} \right) \\
 		\end{pmatrix} \\
-		               & = ...
+		               &\color{gray} = ...
 		\\
 		               & = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {{u}_{z}}\right)^2 }
 		\begin{pmatrix}
@@ -1483,23 +1491,24 @@ This is the 3-acceleration, not to be confused with the 4-acceleration that will
 %███████████████████████████████████████████████████████████████████
 \section{Summary}
 
-We derived the mathematics for the transformation of the spatial and time coordinates for classical relativity to help us understand the derivation of special relativity.
-We then introduced the assumptions, known as the postulates of special relativity, which we use to derive how time slows down due to time dilation and lengths of moving objects get smaller due to length contraction.
-This allowed us to derive the transformation equations, which in turn allowed us to calculate the velocity and acceleration transforms.
-We were also introduced to $\gamma$, which is a factor used throughout relativity to simplify equations.
+In this chapter, we derived the mathematics for the transformation of the spatial and time coordinates for classical relativity to help us, later, understand the derivation of special relativity.
+We then introduced the assumptions, known as the postulates of special relativity, which we use to derive how time slows down due to time dilation, and how lengths of moving objects get smaller due to length contraction.
+This introduced us to $\gamma$, which is a factor used throughout relativity to simplify equations.
+From this we had the tools to derive the transformation equations, which in turn allowed us to calculate the velocity and acceleration transforms.
 
-From this chapter, we will now be able to transform from one frame into another, in special relativity.
+So we have learnt how to transform from one reference frame into another, in special relativity.
+The outline of steps to transform a system of particles and their properties such as position, time, velcoity and accelerationa are as follows.
 If you have a system of particles in an initial frame and you want to transform their positions to a new frame, you need to first define where this initial axis' origin is.
 You are free to choose where it is.
-The primed frame's axis will overlap with this initial frame's axis at your chosen starting time, that is when you define the time as ${t}=0$ (the time of the overlap is also ${t{'}}=0$ in the primed frame).
+The primed frame's axis will overlap with this initial frame's axis at your arbitrarily chosen starting time, that is when you define the time as ${t}=0$ (the time of the overlap is also ${t{'}}=0$ in the primed frame).
 You can now transform the positions into the primed frame.
-These particles have these primed frame positions at the calculated primed frame times, these are defined in Equations \eqref{eq: Lorentz transformation}.
-To transform the velocities and acceleration to these primed frame positions at the corresponding primed frame times, you can use equations \eqref{eq: acceleration transform} and \eqref{eq: velocity transform}.
+These particles have these primed frame positions at the calculated primed frame times, defined in Equations \eqref{eq: Lorentz transformation}.
+To transform the velocities and acceleration of these particles at their primed frame positions at the corresponding primed times in the primed frame, you can use equations \eqref{eq: acceleration transform} and \eqref{eq: velocity transform}.
 
-An easy mistake to make is to forget that ${t}$ and ${t{'}}$ are the times from the overlap of the frame origins, in their respective frames.
+And this is all the steps that are needed, but an easy mistake to make is to forget that ${t}$ and ${t{'}}$ are the times from the overlap of the frame origins, in their respective frames.
 
-This chapter shows the foundations of special relativity, but there is still more to come.
-Before we go further though, we will take a look at the delayed view of the world to an observer due to the delay in light from their surrounding.
+So, this chapter shows the foundations of special relativity, but there is still more to come.
+Before we go further though, we will take a look at the delayed view of the world an observer sees, due to the delay in light from their surrounding.
 This will help us understand why we need the time transformation to be the way it is.
 
 %███████████████████████████████████████████████████████████████████
@@ -1514,30 +1523,26 @@ This will help us understand why we need the time transformation to be the way i
 %███████████████████████████████████████████████████████████████████
 \chapter{Observers Delayed Worldview} \label{ch: Observers Delayed Worldview}
 
-*** start here
-
-Light travels extremely fast compared to other everyday speeds we are used to, roughly at 300,000,000 m/s.
+Light travels extremely fast compared to other everyday speeds we are used to, roughly at 300,000,000 meters per second.
 In the blink of an eye, light could travel around the world twice.
-We do not need to normally worry about the delay in the light signal, as the time to propagate the distances in our everyday world is extremely short, so the signal can be approximated as being instantaneous, ignoring the more complex modeling of the delayed signal.
+So we do not need to normally worry about the delay in the light signal, as the time to propagate the distances in our everyday world is extremely short, so the signal can be approximated as being instantaneous, ignoring the more complex modeling of the delayed light signal.
 But when it comes to particle physics or astronomy, we might be dealing with speeds close to that of light or huge distances.
-For example, light has taken 152,000 years to travel from the Andromeda galaxy, so we are currently seeing this galaxy where it was and how it looked 152,000 years ago.
-These past positions that we currently see are called the \hyperlink{def-retarded-position}{retarded}/delayed view positions.
-The topics in this chapter are not normally included in Special relativity texts.
-But they are needed to get you a more full story and understanding of relativity.
-They come with extra insights into the reason for why the coordinate transform equations have to be the way that they are.
-As we will see when transforming retarded coordinates.
-
-*** this chapter is not specific to special relativity, and does not contain any equations from it, as there is no swaping between frames, it is a standalone chapter that does not use anything from the previous chapter.
-*** It will be put to use in further chapters though, and you will notice some equations that look like they will fit very well into the special relativity later on, and they do. and its necessary that they do, to keep everything self-consistent.
+For example, light has taken 152,000 years to travel from the Andromeda Galaxy, so we are currently seeing the Andromeda Galaxy where it was and how it looked 152,000 years ago.
+These past positions that we currently see are called the delayed view/\hyperlink{def-retarded-position}{retarded} positions.
+The topic in this chapter is not normally included in Special relativity texts, but it is needed to give you a more full story and understanding of relativity.
+This comes with extra insights into the reason for why the coordinate transform equations have to be the way that they are.
+As we will see when transforming retarded positions between frames.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Relativistic Observers Delayed view} \label{sect: Relativistic Observers Delayed view}
+\section{Retarded Coordinates} \label{sect: Retarded Coordinates}
 
-When looking at moving objects we see them where they were in their past positions, due to the delay in the light signal from them.
-So we will look at what the transform would be if we wanted to transform this delayed view position that is called the retarded coordinate, that consists of the retarded position and retarded time of this position.
-Imagine that all coordinates act like a source of emmiting light.
-Let us describe a coordinate emitting a photon to an \hyperlink{def-observer}{observer} at the origin, showing the \hyperlink{def-retarded-position}{retarded position} the \hyperlink{def-observer}{observer} sees the coordinate source at.
+*** include an x-coordinate in the vectors
+
+In an initial frame we have its own coordinates at rest.
+If a light signal is emitted from a coordinate to an observer at the origin, it takes time to reach them, so the observer would see this stationary coordinate at the previous time that the light was emitted from this coordinate, this is the coordinate's retarded time.
+
+%We will separate out the coordinate which we attach to the coordinate system and the position of the object which moves independently of the coordinate system, but which we describe relative to the coordinate system.
 
 %█████████████
 \begin{figure}[ht]
@@ -1598,13 +1603,19 @@ Let us describe a coordinate emitting a photon to an \hyperlink{def-observer}{ob
 		\caption{\hyperlink{def-Primed-Frame}{primed frame}}
 		% \label{fig:sub2}
 	\end{subfigure}
-	\caption{\textbf{Retarded coordinates.} Diagram of a stationary source of light that represents the coordinate ${\mathbf{r}} = {\mathbf{r}_{ret}}$ (blue) emitting light (red) at an angle ${\alpha}$ and ${\alpha^{'}}$ towards the origin, which is recieved by an \protect\hyperlink{def-observer}{observer} positioned at the origin at time ${t} = {t{'}} = 0$ with the \protect\hyperlink{def-observer}{observer} and source at rest in the first inertial frame (left) and then shown moving in a \protect\hyperlink{def-Primed-Frame}{primed frame} moving at speed ${v}$ in the z-direction (right). The past, retarded position of the rest frames coordinate ${\mathbf{r}_{ret}^{'}}$ at its retarded time is shown in gray, with its current position ${\mathbf{r}_{{t{'}} = 0}^{'}}$ shown in blue. The path light takes is shown in red. The corresponding axis in each frame is also shown.}
+	\caption{\textbf{Retarded coordinates.} Diagrams of a source of light that represents, in the source's rest frame, the coordinate ${\mathbf{r}} = {\mathbf{r}_{ret}}$ (blue) emitting light (red) at an angle ${\alpha}$ and ${\alpha^{'}}$ respectively towards the origin, which is received by an \protect\hyperlink{def-observer}{observer} positioned at the origin at time ${t} = {t{'}} = 0$ with the \protect\hyperlink{def-observer}{observer} and source at rest in the first inertial frame (left) and then shown moving in a \protect\hyperlink{def-Primed-Frame}{primed frame} at speed $-{v}$ in the z-direction (right). in the primed frame, the past, retarded position of the rest frame and also the source's coordinate ${\mathbf{r}_{ret}^{'}}$ at its retarded time are shown in gray, with the source's current position ${\mathbf{r}_{{t{'}} = 0}^{'}}$ shown in blue. The path light takes is shown in red. The corresponding axis in each frame is also shown in black. The angle of the retarded position from the origin is ${\theta_{ret}}$ and ${\theta_{ret}^{'}}$ respectively.}
 	\label{fig: Retarded field}
 \end{figure}
 %███████████
 
 As shown in the diagram, if we take the \hyperlink{def-proper-frame}{rest frame} of an \hyperlink{def-observer}{observer} and a source that emits a pulse of light from its position at ${\mathbf{r}}$ so that it is received by the \hyperlink{def-observer}{observer} at the origin, at time ${t} = 0$.
-The retarded time the pulse of light was emitted is ${{t}_{ret}} =-\frac{\|\mathbf{r}\|}{c}$, which is the negative of the time it took for light to propagate along ${\mathbf{r}}$ to the origin.
+The retarded time the pulse of light was emitted is
+
+\begin{equation}
+{{t}_{ret}} =-\frac{\|\mathbf{r}\|}{c},
+\end{equation}
+
+which is the negative of the time it took for light to propagate along ${\mathbf{r}}$ to the origin.
 The velocity of the light that propagated to the origin is
 
 \begin{equation}
@@ -1617,10 +1628,10 @@ The velocity of the light that propagated to the origin is
 \end{equation}
 
 Were ${\alpha}$ is the direction of propagation.
-This gives the retarded position the light was emmitted from as
+This and the retarded time (which is negative) gives the retarded position the light was emitted from as
 
 \begin{equation}
-	\mathbf{r}_{ret} = \mathbf{r} ={c}{{{t}_{ret}}}
+	\mathbf{r}_{ret} = -\|\mathbf{r}\|\hat{c} ={c}{{{t}_{ret}}}
 	\begin{pmatrix}
 		0            \\
 		\sin{\alpha} \\
@@ -1628,9 +1639,9 @@ This gives the retarded position the light was emmitted from as
 	\end{pmatrix}
 \end{equation}
 
-The source's position and retarded position are the same in the rest frame as it is not moving.
+The source's position and retarded position are the same in the rest frame as the source is not moving.
 Also, the position vector and light's velocity vector are in opposite directions, The emitted time being negative flips the direction of the velocity vector here.
-Now inputting the retarded position and times in the first frame into the coordinate transform we get the retarded position and time in the primed frame as
+Now inputting this retarded position and time into the coordinate transform we get the retarded position and time in the primed frame as
 
 \begin{equation}
 	\begin{aligned}
@@ -1652,7 +1663,7 @@ Now inputting the retarded position and times in the first frame into the coordi
 	\end{aligned}
 \end{equation}
 
-If instead we use the angle of the retarded coordinate from the z-axis, $\theta_{ret} = \alpha - \pi$, we have that $\cos{\alpha}=\cos{\theta_{ret}+\pi}=-\cos{\theta_{ret}}$ and therefor the retarded time is given as
+If instead we use the angle of the retarded coordinate from the z-axis, $\theta_{ret} = \alpha - \pi$, we have that $\cos{\alpha}=\cos{(\theta_{ret}+\pi)}=-\cos{\theta_{ret}}$ and therefor the retarded time can be given as
 
 \begin{equation}
 	\\ {{t}_{ret}^{'}} = {\gamma} \left(1 + \frac{v}{c} \cos{\theta_{ret}} \right) {{{t}_{ret}}}
@@ -1660,25 +1671,25 @@ If instead we use the angle of the retarded coordinate from the z-axis, $\theta_
 
 With the light being received at the origin of the \hyperlink{def-Primed-Frame}{primed frame} axis at time ${t{'}} = 0$.
 
-The coordinate transform here for retarded coordinates is the same as normal coordiante transform, except the time transform simplfies and allows us to take the retarded time out of brackets with just the factor $\text{\AA}={\gamma} \left(1-\frac{v}{c} \cos{\alpha} \right) = {\gamma} \left(1 + \frac{v}{c} \cos{\theta_{ret}} \right)$ now infront of it.
-This factor will also come up in the doppler effect, in aberration and when finding the \hyperlink{def-flux}{flux} of a field.
-We will use it to simplfy equations like we did with $\gamma$.
-We will call $\text{\AA}$ the aberrational factor, but it is also refered to as the relativistic doppler factor.
+The coordinate transform here for retarded coordinates is the normal coordinate transform, except the time transform simplifies and allows us to take the retarded time out of brackets with just the factor $\text{\AA}={\gamma} \left(1-\frac{v}{c} \cos{\alpha} \right) = {\gamma} \left(1 + \frac{v}{c} \cos{\theta_{ret}} \right)$ now in front of it.
+This factor will also come up in the Doppler effect, in aberration and when finding the density of light from a source that is emitting it continuously in all directions.
+We can use this factor to simplify equations like we did with $\gamma$ previously.
+We will call $\text{\AA}$ the aberrational factor, but it is also referred to as the relativistic Doppler factor.
 
-The retarded view of the world is due to the delay in the light from the world.
-So at the moment all the light that is being received by the origin is what it sees.
-When we transform the retarded coordinates when swapping to another frame, the angle the light is being recieved now to the primed frames origin, which is at the same location at ${t}={t{'}}=0$, is changed, this is called the relativistic aberration of light.
+When swapping to the primed frame, the angle that the light is being emitted and the angle it is being received at has changed, this is called the relativistic aberration of light.
 This aberration will be described fully in the next chapter.
 
 \textbf{Side Note:}
 
-This retarded position is at the retarded time, if you wanted to find the position of where the source currently is, we would need to propagate this to the current time of zero of the observer, which after a bit of workingout gives
-
-*** double check this formula:
+This retarded position of the source is at its retarded time.
+If you wanted to find the position of where the source is at the same time as the observer, $t'=0$, we need to propagate this from its retarded position and time, to this time of zero.
+So we need to take into account that the source is moving at $u = -v$ and the retarded time is the negative of the time that we want to pass, for the source to move to its current position.
+These negatives cancel out.
+This gives the current position, with a bit of working out, as
 
 \begin{equation}
 	\label{eq: primed position with synced times}
-	\mathbf{r}_{{t{'}} = 0}^{'} = \mathbf{r}_{ret}^{'}-\mathbf{v}t_{ret}^{'} = {c}{{t}_{ret}}
+	\mathbf{r}_{{t{'}} = 0}^{'} = \mathbf{r}_{ret}^{'} + \mathbf{v}t_{ret}^{'} = {c}{{t}_{ret}}
 	\begin{pmatrix}
 		0                               \\
 		\sin{\alpha}                    \\
@@ -1686,11 +1697,14 @@ This retarded position is at the retarded time, if you wanted to find the positi
 	\end{pmatrix}
 \end{equation}
 
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{Transformed Retarded Coordinates} \label{sect: Delayed View of Transformed Coordinates}
+So for a stationary source in the rest frame at $t=0$, we have this position in the primed frame at $t'=0$.
 
-This section here is just a visualisation of how spatial coordinates of an initial frame transform into their retarded positions in a primed frame, showing how they are spread, as shown in figure (\ref{fig: retarded coordinate transform}).
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{The Transformed Retarded Coordinates} \label{sect: Delayed View of Transformed Coordinates}
+
+If we treat the coordinates of a coordinate system as retarded sources of light in the same way as we did for the source in the previous section, we can transform these retarded coordinates of the initial frame into the primed frame
+This is shown in the figure below for a small subset of coordinates, to give you an idea of how the initial frame's retarded coordinates are spread in the primed frame.
 
 %█████████████
 \begin{figure}[H]
@@ -1698,45 +1712,50 @@ This section here is just a visualisation of how spatial coordinates of an initi
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[height=5cm]{images/pdf/coord_transform_initial_with_retarded_time.pdf}
-		\caption{Initial frame}
+		\caption{Initial frame (${t_{ret}}$)}
 		\label{fig: retarded coordinate transform subfig_1}
 	\end{subfigure}
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[height=5cm]{images/pdf/coord_transform_primed_retarded.pdf}
-		\caption{primed frame (${t{'}}={t_{ret}^{'}}$)}
+		\caption{primed frame (${t_{ret}^{'}}$)}
 		\label{fig: retarded coordinate transform subfig_2}
 	\end{subfigure}
-	\caption{\textbf{Retarded coordinate transform.} A diagram, showing an initial small grid of points, representing some position coordinates that are at rest in their proper frame, with an \protect\hyperlink{def-observer}{observer} at the origin (left), using the retarded time ${t_{ret}} = \frac{\|\mathbf{r}\|}{c}$ for these coordinates, we can transform these to their retarded positions in a primed frame using the coordinate transform, with the original frames coordinates now moving at velocity $-{v} =-0.9$, the initial frames coordinates are transformed to where they would be seen to be at by an \protect\hyperlink{def-observer}{observer} at the origin with the \protect\hyperlink{def-observer}{observer}s time ${t{'}} = 0$, these positions are due to the delay in the light from these points taking time to get to the origin, they are also known as the \protect\hyperlink{def-retarded-position}{retarded position}s.}
+	\caption{\textbf{Retarded coordinate transform.} A diagram, showing an initial small grid of points, representing some position coordinates that are at rest in their proper frame (left), with an \protect\hyperlink{def-observer}{observer} at the origin, using the retarded time ${t_{ret}} = \frac{\|\mathbf{r}\|}{c}$ for these coordinates, we can transform these to their retarded positions in a primed frame using the coordinate transform, with the original frames coordinates now moving at velocity $-{v} =-0.9$, the initial frames coordinates are transformed to where they would be seen to be at by an \protect\hyperlink{def-observer}{observer} at the origin with the \protect\hyperlink{def-observer}{observer}s time ${t{'}} = 0$, these positions are due to the delay in the light from these points taking time to get to the origin, they are also known as the \protect\hyperlink{def-retarded-position}{retarded position}s.}
 	\label{fig: retarded coordinate transform}
 \end{figure}
 %███████████
+
+The density of these  initials frame's retarded coordinates in its own frame is constant everywhere, but in the primed frame, these initial frames coordinates have a density that depends on the angle $\alpha'$, as shown in the figure below.
+This figure is shown but not derived, as this requires mathematics from later in section (\ref{sect: Intensity of Light per differential solid angle from a Point Source}).
 
 %█████████████
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=5cm]{images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf}
-	\caption{\textbf{Density of initial frame's retarded coordinates in primed frame}. This shows the density of the initial frames coordinates when they are in their retarded positions in the primed frame, with $v=0.9$, and the scale shown on the right hand side is the density.}
+	\caption{\textbf{Density of initial frame's retarded coordinates in primed frame}. This shows the density of the initial frames coordinates when they are in their retarded positions in the primed frame, with $v=0.9$, with the colour scale showing the density.}
 	\label{fig: Density of initial frame's retarded coordinates in primed frame}
 \end{figure}
 %███████████
 
-if the initial frame is where we see everything at when we are still, then if there was another observer overlapping with us moving a ${v}$ they would see all the points distributed as they are shown in their primed frame.
+If we are at rest in the initial frame and we see the points as they are shown the initial frame in figure (\ref{fig: retarded coordinate transform subfig_1}), then if there was another observer overlapping with us moving at $\mathbf{v}$ then they would see all the points distributed as they are shown in their primed frame in figure (\ref{fig: retarded coordinate transform subfig_2}).
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Perceived Velocity} \label{sect: Perceived Velocity}
 
-From Section (\ref{subsect: Perceived vs Actual Speed}) we seen that objects can be perceived to be going faster than light even if they are not.
-Here we will show how to find the percieved speed of objects.
+From the previous section we have seen that objects are perceived to be at their retarded positions, That would also mean that we also have that the rate of change of the perceived positions being different to their actual rate of change.
+That is, the perceived velocity of an object is different from its actual velocity.
+This was demonstrated in section (\ref{subsect: Perceived vs Actual Speed}), where we have seen that objects can be perceived to be going faster than light even if they are not actually doing so.
+Here we will show how to find the perceived velocity of objects.
 
-So if we have a moving particle positioned at $\mathbf{r}$, in a infintesmal time ${dt}$ it will move
+If we have a moving particle positioned at $\mathbf{r}$, then in a infinitesimal time ${dt}$ it will move
 
 \begin{equation}
 	d\mathbf{r}= \mathbf{u} {dt}
 \end{equation}
 
-as shown in the diagram
+to position $\mathbf{r} + d\mathbf{r}$, as shown in the diagram
 
 %█████████████
 \begin{figure}[H]
@@ -1752,51 +1771,52 @@ as shown in the diagram
 		\fill[blue] (0.4,0.4,0) circle (0.4pt) node[anchor = south] {\text{ ${\mathbf{r}}$}};
 		\fill[blue] (0.5,0.3,0) circle (0.4pt) node[anchor = west] {\text{ ${\mathbf{r}} + {\mathbf{dr}}$}};
 	\end{tikzpicture}
-	\caption{\textbf{Perceived velocity.} Diagram showing a particle (blue) moving from $\mathbf{r}$ by displacement of $d\mathbf{r}=\mathbf{u}dt$ and the paths that light (red) has to travel to get to the origin from both these positions. leading to a different retarded time between the positions than the actual time difference. This gives a different percieved velocity.}
+	\caption{\textbf{Perceived velocity.} Diagram showing a particle (blue) moving from $\mathbf{r}$ by displacement of $d\mathbf{r}=\mathbf{u}dt$ with the paths that light (red) has to travel to get to the origin from both these positions. Leading to a different retarded time between the positions than the actual time between them. As, there is the actual time between these positions, but, due to the particle moving to a different position, the light may also have to travel a different distance, which also introduces an additional time difference. This gives a different perceived velocity to the actual velocity.}
 	\label{fig: Perceived velocity}
 \end{figure}
 %███████████
 
-The difference between the retarded times of light from each position reaching the origin is
+The difference between the retarded times of light from each position reaching the origin is the time that light takes to get from position  $\mathbf{r} + d\mathbf{r}$ minus the time it takes to get from position $\mathbf{r}$, plus the time it takes for the particle to move to the new position $dt$. Which is
+
 
 \begin{equation}
-	dt_{ret} =  \left( dt + \frac{\|\mathbf{r} + d\mathbf{r}\|}{c} \right) -  \frac{\|\mathbf{r}\|}{c}
+	dt_{ret} =   \frac{\|\mathbf{r} + d\mathbf{r}\|}{c} -  \frac{\|\mathbf{r}\|}{c} + dt
 \end{equation}
 
-we can simplfy this expression by using
-
-\begin{equation}
-	\begin{aligned}
-		\|\mathbf{r} + d\mathbf{r}\| & =  \sqrt{(\mathbf{r} + d\mathbf{r}) \cdot (\mathbf{r} + d\mathbf{r})}                                                                         \\
-		                             & = \sqrt{\mathbf{r} \cdot \mathbf{r} + 2 \mathbf{r} \cdot d\mathbf{r} + d\mathbf{r} \cdot d\mathbf{r}}                                         \\
-		                             & \approx \sqrt{\mathbf{r} \cdot \mathbf{r} + 2 \mathbf{r} \cdot d\mathbf{r}}                                                                   \\
-		                             & = \|\mathbf{r}\| \sqrt{ 1 + \frac{2 \mathbf{r} \cdot d\mathbf{r}}{\mathbf{r} \cdot \mathbf{r}}}                                               \\
-		                             & \text{using the Taylor expansion $\sqrt{1 + x} \approx 1 + \frac{x}{2} \text{ for } x \ll 1$:}                                                     \\
-		                             & \approx \|\mathbf{r}\| \left(1 + \frac{\mathbf{r} \cdot d\mathbf{r}}{\|\mathbf{r}\| }\right) = \|\mathbf{r}\|  + \mathbf{r} \cdot d\mathbf{r}
-	\end{aligned}
-\end{equation}
-
-giving the precieved time between these events at the origin as
+since $d\mathbf{r}$ is infinitesmally small we can simplify this expression by using some approximations as shown in the following
 
 \begin{equation}
 	\begin{aligned}
-		dt_{ret} & =   dt + \frac{\mathbf{r} d\mathbf{r}}{\|\mathbf{r}\| c}               \\
-		         & = dt + \frac{\hat{\mathbf{r}} \cdot \mathbf{u} dt}{ c}                 \\
-		         & = \left( 1 + \frac{ \mathbf{u} \cdot \hat{\mathbf{r}} }{ c} \right) dt
+		\|\mathbf{r} + d\mathbf{r}\| &\color{gray} =  \sqrt{(\mathbf{r} + d\mathbf{r}) \cdot (\mathbf{r} + d\mathbf{r})}                                                                         \\
+		                             &\color{gray} = \sqrt{\mathbf{r} \cdot \mathbf{r} + 2 \mathbf{r} \cdot d\mathbf{r} + d\mathbf{r} \cdot d\mathbf{r}}                                         \\
+		                             &\color{gray} \approx \sqrt{\mathbf{r} \cdot \mathbf{r} + 2 \mathbf{r} \cdot d\mathbf{r}}                                                                   \\
+		                             &\color{gray} = \|\mathbf{r}\| \sqrt{ 1 + \frac{2 \mathbf{r} \cdot d\mathbf{r}}{\mathbf{r} \cdot \mathbf{r}}}                                               \\
+		                             &\color{gray} \text{using the Taylor expansion $\sqrt{1 + x} \approx 1 + \frac{x}{2} \text{ for } x \ll 1$:}                                                     \\
+		                             &\color{gray} \approx \|\mathbf{r}\| \left(1 + \frac{\mathbf{r} \cdot d\mathbf{r}}{\|\mathbf{r}\| }\right) \\
+									 & \approx \|\mathbf{r}\|  + \mathbf{r} \cdot d\mathbf{r}
 	\end{aligned}
 \end{equation}
 
-The distances between the points is the same to the observer as the true distance between them, its just the precieved times that are different.
-Therefore we can get the precieved/retarded velocity to be
+so for infinitesimal changes $\|\mathbf{r} + d\mathbf{r}\|= \|\mathbf{r}\|  + \mathbf{r} \cdot d\mathbf{r}$, we have the perceived time between these events at the origin as
 
 \begin{equation}
-	\mathbf{u}_{ret} = \frac{d\mathbf{r}}{dt_{ret}} = \frac{d\mathbf{r}}{ \left( 1 + \frac{ \mathbf{u} \cdot \hat{\mathbf{r}} }{ c} \right) dt } = \frac{\mathbf{u}}{ 1 + \frac{ \mathbf{u} \cdot \hat{\mathbf{r}} }{ c} }
+	\begin{aligned}
+		dt_{ret} &\color{gray} =   dt + \frac{\mathbf{r} \cdot d\mathbf{r}}{ c}               \\
+		         &\color{gray} = dt + \frac{\mathbf{r} \cdot \mathbf{u} dt}{ c}                 \\
+		         & = \left( 1 + \frac{ \mathbf{u} \cdot \mathbf{r} }{ c} \right) dt
+	\end{aligned}
 \end{equation}
 
-For speeds of particles between zero and the speeds of light, the denominator can range between zero and two meaning that we can have perceived speeds between zero and infinity.
-For something moving at the speed of light, the slowest we could precieve it, which is when its directly moving away, is $0.5{c}$.
+The distances between the points is the same to the observer as the true distance between them, it is just the perceived times that are different.
+Therefore, we can get the perceived/retarded velocity as
 
-This section is to just show an interesting concept, that should be taken into account when making some experimental observations.
+\begin{equation}
+	\mathbf{u}_{ret} = \frac{d\mathbf{r}}{dt_{ret}} = \frac{d\mathbf{r}}{ \left( 1 + \frac{ \mathbf{u} \cdot \mathbf{r} }{ c} \right) dt } = \frac{\mathbf{u}}{ 1 + \frac{ \mathbf{u} \cdot \mathbf{r} }{ c} }
+\end{equation}
+
+This equation shows that the perceived velocity can be much smaller or larger depending on which direction the object is moving and the distance it is from you.
+
+This section is to just highlight an interesting concept, that needs to be taken into account when making some experimental observations.
 
 % %███████████████████████████████████████████████████████████████████
 % \subsubsection{Delayed Coordinate Distribution and Density}
@@ -1817,10 +1837,13 @@ This section is to just show an interesting concept, that should be taken into a
 %███████████████████████████████████████████████████████████████████
 \section{Summary}
 
-Here we introduced the retarded positions that are due to the delay in light signal to an observer, and there associated retarded times and derived the transform of these retarded coordinates to the prime frames coordinates.
-The retarded coordinate transform and also the density of the transformed intial frames retarded coordinates in the primed frame were shown in figure (\ref{fig: retarded coordinate transform}) and figure (\ref{fig: Density of initial frame's retarded coordinates in primed frame}).
-We then showed what the precieved velocity of an observer at the origin would be.
-What we have learned here will be used when transforming a field of light pulses later in the next chapter.
+In this chapter we introduced retarded positions which are the positions an observer perceives objects to be at due to the delay in the light signal from the object to the observer, with their associated retarded time, which is the time light takes to travel from the retarded position to the observer.
+We also derived how to transform these retarded coordinates to the prime frames retarded coordinates.
+The retarded coordinate transform and also the density of the transformed initial frames retarded coordinates in the primed frame were shown in figure (\ref{fig: retarded coordinate transform}) and figure (\ref{fig: Density of initial frame's retarded coordinates in primed frame}) respectively.
+We then derived the retarded velocity of objects, which is the velocity that an observer perceives an object to be moving at, that is consequence of the delay in the light signal.
+You could go one step further and find the retarded acceleration if you wanted to, but we will leave that for now.
+This differs to the actual speed the object is moving.
+What we have learned here will be used later when transforming light pulses later.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -1834,12 +1857,13 @@ What we have learned here will be used when transforming a field of light pulses
 %███████████████████████████████████████████████████████████████████
 \chapter{A Point Source: Emitting a Pulse of Light} \label{ch: A Point Source Emitting a Pulse of Light}
 
-If light pulse is emmited from a resting point source in all directions in one reference frame, how will this be effected when swaping to a frame where the source is now moving.
+If light pulse is emitted from a resting point source in all directions, in a reference frame, how will this be effected when swapping to a frame where the source is now moving.
 This will be the topic of this chapter.
-We will look at the velocity transform specifically for the speed of light, which will be used throughout this chapter, starting with looking at the doppler effect on the frequency of light that a source emits.
-Next we will get to relativistic aberration, which is the how the angle the emitted light is propagated at, is effected.
-Both of these effects together gives relativistic beaming, allowing us to transform a field of continuous pulses of light from a source in the next chapter.
-But we will start with looking into the mathematics of spherical polar coordinates which will allow us to look at all of this.
+We will look at the velocity transform specifically for the speed of light, which will be used throughout this chapter, starting with the Doppler effect on the frequency of light that a source emits.
+Next we will get to relativistic aberration, which is how, the angle that the emitted light is propagated at, is effected.
+The combined effects of these together is called relativistic beaming.
+Knowing this allows us to transform a field of continuous pulses of light from a source in the next chapter.
+We will start with looking at the mathematics of spherical polar coordinates which will allow us to look at all of this.
 The topics of relativistic aberration and beaming are not topics that are touched upon in most special relativity sources, but they are interesting and hold some important insights, that you will hopefully appreciate.
 
 %███████████████████████████████████████████████████████████████████
@@ -1847,12 +1871,10 @@ The topics of relativistic aberration and beaming are not topics that are touche
 \section{Spherical Polar Coordinates}\label{sec: Spherical Polar Coordinates}
 
 Before we go any further with special relativity, we will need to take some time making sure we know the math needed for what comes next.
-This section will be about spherical polar coordinates and its differential elements, which will be used to get what is called a surface element, and in turn find out what the solid angle is and how to derive it.
-This will then lead into finding the \hyperlink{def-flux}{flux} of light through this solid angle element.
-Which will be needed when looking at the aberration section.
-I realise a lot of these terms may be new to you, but they will be explained as we go.
+This section will be about spherical polar coordinates, which will help us describe how the propagation of light changes between frames, by allowing us to explain aberration, which is how the propagation angle changes between frames, and the Doppler effect, which is how the wave length of light changes between frames.
+So let us start with how to describe a vector in terms of the Spherical Polar Coordinates, which is shown in the following figure in red:
 
-So lets start with how to describe a vector in terms of the Spherical Polar Coordinates, which is shown in the following figure in red:
+*** This is how far aran has got doing some checks to see if ive messed up anything
 
 %█████████████
 \begin{figure}[H]
@@ -2036,7 +2058,7 @@ This equation shows how the angle of the emitted light changes, and will be need
 %███████████████████████████████████████████████████████████████████
 \section{Doppler Effect} \label{sect: Doppler Effect}
 
-When we swap between frames there is also a change in light's wavelength, It is called the doppler effect, which we will describe using the help of the following simple figure of light being emitted from a source in its rest frame and a frame that it is moving.
+When we swap between frames there is also a change in light's wavelength, It is called the Doppler effect, which we will describe using the help of the following simple figure of light being emitted from a source in its rest frame and a frame that it is moving.
 
 %█████████████
 \begin{figure}[H]
@@ -2063,7 +2085,7 @@ When we swap between frames there is also a change in light's wavelength, It is 
 		\caption{Moving Frame}
 		% \label{fig:sub1}
 	\end{subfigure}
-	\caption{\textbf{The Doppler effect.} Diagrams showing light being emitted by a source at velocity $\mathbf{c}$ in the source rest frame (left) and a frame were the source is now moving at velocity $\mathbf{u}{'}=-\mathbf{v}$ with the light now being emitted at an angle ${\alpha{'}}$ giving the light's velocity now as ${\mathbf{c}{'}}$. The different color of light in each frame is showing the effect on the lights frequency and hence color from the doppler effect.}
+	\caption{\textbf{The Doppler effect.} Diagrams showing light being emitted by a source at velocity $\mathbf{c}$ in the source rest frame (left) and a frame were the source is now moving at velocity $\mathbf{u}{'}=-\mathbf{v}$ with the light now being emitted at an angle ${\alpha{'}}$ giving the light's velocity now as ${\mathbf{c}{'}}$. The different color of light in each frame is showing the effect on the lights frequency and hence color from the Doppler effect.}
 	\label{fig: Doppler effect}
 \end{figure}
 %███████████
@@ -2094,9 +2116,9 @@ since wavelength is inversely proportional to the frequency, and this bunching u
 \end{equation}
 
 This gives us a formula to find out how the frequency of a moving source's emitted light differs from when it is at rest.
-This is used in astronomy to determine how fast stars and galaxys are moving relative to us on earth.
+This is used in astronomy to determine how fast stars and galaxies are moving relative to us on earth.
 
-%*** can I find an experiment for the doppler effect on frequency not just directly in forward or behind in the direction of movement, but at all angles. Ives–Stilwell experiment
+%*** can I find an experiment for the Doppler effect on frequency not just directly in forward or behind in the direction of movement, but at all angles. Ives–Stilwell experiment
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -2138,6 +2160,8 @@ This is the relativistic aberration formula \cite{einstein1905electrodynamics}, 
 	\label{fig: aberrated emitted light}
 \end{figure}
 %███████████
+
+
 
 If we want to see the opposite, when light is being absorbed, we can look at Figure (\ref{fig: aberrated absorbed light}) which shows what would happen in the case of incoming light from all directions.
 
@@ -2212,7 +2236,7 @@ This can be extened to multiple pulses as we will do later in the next chapter.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section[Retarded Light Propagation in Source's Primed Frame]{Retarded Light Propagation in Source's \\ Primed Frame}\label{subsect: Retarded Light Propagation}
+\section{Retarded Light Propagation in Source's Primed Frame} \label{subsect: Retarded Light Propagation}
 
 There is a delay in the time light is emitted from a source and the time it reaches a reciever, so there is a difference in where you see moving objects compared to where they currently are due to this, and if the object is moving at velocity $\mathbf{u'}$ you see it in a previous position $\mathbf{u'} {T}'_{ret}$ due to this, this is called its retarded position where it was at the retarded time ${T}'_{ret}$.
 The time the object and the light took to propagate from the objects retarded position to where they currently are is the same, $T'_{p}=-{T}'_{ret}$.
@@ -2300,7 +2324,7 @@ This is done by first finding the propagation time in terms of the observers coo
 \end{derivation}
 %███████████████
 
-The propagated distance between where the light was emmited and its current position, can then be given from this derivation of $T'_{p}$ as
+The propagated distance between where the light was emitted and its current position, can then be given from this derivation of $T'_{p}$ as
 
 \begin{equation}
 	\label{eq: propagation distance}
@@ -2340,8 +2364,6 @@ We could just as easily have said that this setup system is an initial frame and
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Emitted Light When Swapping Frame}\label{subsect: Emitted Light When Swapping Frame}
-
-*** decide which to write in terms of, from these two options $(x,y,z)=(l_x,l_y,l_z)$
 
 This section is similar to what we have just done, but the emphasis here will be on swapping between frames, and will be used in the next chapter when we have continuous pulses of light in all directions from a source and want to see how this field of light transforms and what it looks like for moving sources.
 
@@ -2519,7 +2541,7 @@ now using $ t{'}_{p} = {\gamma} {T}_{p}$ and ${T}_{p}= R / c$
 \end{equation}
 
 
-This is the position of the light at time zero, i.e. the same time as the source which is at the origin at time zero. This equation is what we will use to transform the positions of light, when we look at light that is being continuously emmited from a source, as shown in figure (\ref{fig: full field transformation}).
+This is the position of the light at time zero, i.e. the same time as the source which is at the origin at time zero. This equation is what we will use to transform the positions of light, when we look at light that is being continuously emitted from a source, as shown in figure (\ref{fig: full field transformation}).
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -2541,8 +2563,8 @@ But, this relative scalar density is not the only way to get an inverse square l
 So a source at rest that is continously emitting evenly distributed light, gives the "field" of light shown in the first diagram in figure (\ref{fig: full field transformation}), with the second diagram in the figure showing how this "field" of light would look like in a frame with the source now moving.
 Equation \eqref{eq: time synced transform} was used to transform each part of the propagating light to where it is at time $t'=0$ (the time that it is sychronised with the source at the origin).
 The third diagram of the figure shows the rings of each pulse in th eprimed frame.
-The doppler effect in each direction can be seen from the ammount of spreading out or compacting of the rings in that direction, with the aberrational effect being shown on each particular ring with how the light is spread out on that ring.
-This combination of the relativistic doppler and aberration effects together, is called relativistic beaming.
+The Doppler effect in each direction can be seen from the ammount of spreading out or compacting of the rings in that direction, with the aberrational effect being shown on each particular ring with how the light is spread out on that ring.
+This combination of the relativistic Doppler and aberration effects together, is called relativistic beaming.
 
 
 %█████████████
@@ -2570,11 +2592,19 @@ This combination of the relativistic doppler and aberration effects together, is
 
 Now that we have the means to transform this "field" of light, we can look at some of its physical/mathematical features/properties, looking at each feature in its rest frame and then finding out how it extends to a frame in which it is moving.
 But first we will look at how to describe an infintesmal element on the surface of each spherical pulse at each point.
-With this we will see how the density of the light on each pulse's surface changes when changing to a sources primed frame, along with the doppler effects on the density of light in the radial direction.
+With this we will see how the density of the light on each pulse's surface changes when changing to a sources primed frame, along with the Doppler effects on the density of light in the radial direction.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Surface Element on a Sphere and the Solid Angle} \label{subsect: Surface Element on a Sphere}
+
+...
+This section will be about the differential elements of spherical polar coordinates, which will be used to get what is called a surface element, and in turn find out what the solid angle is and how to derive it.
+*** start and check this next sentence
+This will then lead into finding the density of light through this solid angle element.
+Which will be needed when looking at the aberration section.
+I realize a lot of these terms may be new to you, but they will be explained as we go.
+...
 
 If we define a sphere with radius $r$ we can find an infinitesimal portion of the surface of the sphere at angles ${\theta}$ and ${\phi}$ as shown on this figure:
 
@@ -2821,7 +2851,7 @@ In the previous chapter of a single spherical pulse in the rest frame, the outwa
 Since there is the same amount of light in this increasing pulse's sphere and the area of this sphere's surface increases relative to the square of its radius.
 We have the surface area density on this sphere being proportional to the inverse square of the radius $1/r^2$. This we will call the angular density.
 
-For the case of light being continuously emitted, the light is spherically symetric and is emitted from the stationary source at a constant rate, and therefore has no change in density in the direction that is radially outwards, and only a difference in the direction perpendicular to this, i.e. the angular direction, which is parralel to the spherical surface each pulse creates, giving the total scalar density of light at any point $D$ as being proportional to the inverse square of the radius $1/r^2$,
+For the case of light being continuously emitted, the light is spherically symmetric and is emitted from the stationary source at a constant rate, and therefore has no change in density in the direction that is radially outwards, and only a difference in the direction perpendicular to this, i.e. the angular direction, which is parallel to the spherical surface each pulse creates, giving the total scalar density of light at any point $D$ as being proportional to the inverse square of the radius $1/r^2$,
 
 \begin{equation}
 	D = \frac{k}{r^2}
@@ -2832,22 +2862,15 @@ where k is the proportionality constant
 %█████████████
 \subsubsection{General Equations for Moving Source}\label{subsubsect: General Equations for Moving Source 0}
 
-**** note here i do not worry about density in time $cdt'$ which i could add into it, this more the denisity of the flow
-
 Now, what if the source is moving, we will need to look at how this density is affected.
-
-*** start
-
-The doppler effect from equation \eqref{eq: Doppler Effect} gives the change in lights density relative to the rest frame, in the direction of the light's propagation of
-
-*** swap $D_r$ with $\lambda$
+We have the Doppler effect from equation \eqref{eq: Doppler Effect}, which gives the change in light's density relative to the rest frame, in the direction of the light's propagation, as
 
 \begin{equation}
 	\label{eq: radial density}
 	D_{r} = \frac{d\lambda}{d\lambda{'}} = \frac{1}{ {\gamma} \left(1-\dfrac{u{'}}{c} \cos\alpha{'} \right)} = {\gamma}\left(1 + \dfrac{u'}{c}\frac{\gamma l_z'}{L}\right)
 \end{equation}
 
-together with density in the angular direction from equation ... and the fact it has propagated a distance $L_p'$ from where it was emmited shown in equation \eqref{eq: propagation distance} to dissipate by a magnitude of
+together with density in the angular direction from equation ... and the fact it has propagated a distance $L_p'$ from where it was emitted shown in equation \eqref{eq: propagation distance} to dissipate by a magnitude of
 
 \begin{equation}
 	\frac{1}{L_p'^2} = \frac{1}{\gamma^2 \left( 1 + \frac{u'}{c} \frac{\gamma l_z'}{L} \right)^2 L^2}
@@ -2901,18 +2924,20 @@ We can deconstruct the scalar density into 3 parts one radially outwards in dire
 	\mathbf{D} = k_r \hat{r} + \frac{k_\theta}{r} \hat{\theta} + \frac{k_\phi}{r} \hat{\phi}
 \end{equation}
 
-this density is in the cartesian coordinate system
+this density is in the Cartesian coordinate system
 
 check for $\| \nabla  \mathbf{D} \|$ and $\| ( \nabla  \| \mathbf{D} \| ) \|$
 
 %███████████████████████████████████████████████████████████████████
 \subsection{Norm of the Density Gradient}\label{subsect: Norm of the Density Gradient}
 
-using the Del operator
+We can find the magnitude of the density gradient using the Del operator
 
 \begin{equation}
 	\nabla = (\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{\partial}{\partial z})
 \end{equation}
+
+giving
 
 \begin{equation}
 	\| \nabla \mathbf{D} \| = \frac{\sqrt{k_\theta^2 + k_\phi^2 }}{r^2} = \frac{k_{a}}{r^2}
@@ -2923,9 +2948,9 @@ with $k_{a}=\sqrt{k_\theta^2 + k_\phi^2}$
 This is the same equation as we had for the previous light density for a source at rest.
 
 %█████████████
-\subsubsection{General Equations for Moving Source}\label{subsubsect: General Equations for Moving Source 1}
+\subsubsection{General Equations for Moving Source}\label{subsubsect: General Equations for Moving Source 2}
 
-in direction of propagation the density is proportional to the doppler effect $ 1/ ( \gamma( 1 - u'/c \cos{\alpha'}) )$ from eq 5.4 and in each of the perpendiuclar directions the density is the square root of eq 5.12 which is  $ 1/ L$
+in direction of propagation the density is proportional to the Doppler effect $ 1/ ( \gamma( 1 - u'/c \cos{\alpha'}) )$ from eq 5.4 and in each of the perpendicular directions the density is the square root of *** eq 5.12 *** which is  $ 1/ L$
 
 giving, using equation \eqref{eq: radial density}
 
@@ -3414,9 +3439,7 @@ This relationship will come in useful for our next section.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Energy, Mass and Momentum Relation} \label{sect: Energy, Mass and Momentum Relation}
-
-**** this title, may have trouble in HTML
+\section{Energy-Mass and Momentum Relation} \label{sect: Energy-Mass and Momentum Relation}
 
 From here forward we will be making some jumps in logic and assertions, leading to claims of what we will call the total energy and rest mass energy, but I will try to give as much reasoning as I can for these choices in assertions.
 
@@ -3561,7 +3584,7 @@ where ${h}$ is Planks constant and ${\nu}$ is the frequency of the light.
 
 say we have a point or spherical source, that in its rest frame emits light in all directions evenly and at with the same frequency, since this is evenly distributed the momentum kick that each bit of the light produces cancel out, so that the source is still at rest.
 But in another primed frame we have that the light is aberrated in the direction of movement meaning there is more light in this direction.
-The light is also subject to the doppler effect that meaning that it has a higher frequency and therefore momentum in the direction of movement.
+The light is also subject to the Doppler effect that meaning that it has a higher frequency and therefore momentum in the direction of movement.
 
 The source in this frame will continue at its constant velocity as it remains at rest in first frame.
 Therefor we need it to be that each part of the light imparts a momentum that is in the direction that the light imparts in the sources rest frame, without a change in the momentum kick that depends on the angle its emitted.

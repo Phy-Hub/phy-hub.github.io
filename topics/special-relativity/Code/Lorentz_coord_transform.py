@@ -21,6 +21,7 @@ zv_prime, yv_prime = np.meshgrid(y, z)
 ### Format ####################################################################
 sc =  0.7/3 #arrow scale
 zlim = 24
+zlim_neg = 13
 ylim = 13
 def PlotStyle(y_name,z_name, axis_color):
     #plt.figure(frameon=False)
@@ -28,10 +29,10 @@ def PlotStyle(y_name,z_name, axis_color):
     plt.axis('off')
     plt.axis('square')
     plt.xlim([-ylim, ylim])
-    plt.ylim([-zlim,zlim])
+    plt.ylim([-zlim_neg,zlim])
     plt.arrow(-ylim, 0, 2*ylim, 0, lw = 1, head_width=1.3, head_length=1, overhang = sc,
               length_includes_head= True, color = axis_color)
-    plt.arrow(0, -zlim, 0, 2*zlim ,lw = 1, head_width=1.3, head_length=1, overhang = sc,
+    plt.arrow(0, -zlim_neg, 0, zlim+zlim_neg ,lw = 1, head_width=1.3, head_length=1, overhang = sc,
               length_includes_head= True, color = axis_color)
     plt.annotate(y_name, xy=(0, 0), xytext=(ylim-1,1),color = axis_color)
     plt.annotate(z_name, xy=(0, 0), xytext=(1,zlim-2),color = axis_color)
@@ -46,6 +47,7 @@ def v_arrow():
 plt.figure(1) ################################################################
 
 PlotStyle("y","z","black")
+plt.ylim([-zlim,zlim])
 v_arrow()
 plt.plot(yv, zv, marker='o', color='black', linestyle='none',ms=1)
 for I_R in range(N_r):
@@ -57,6 +59,7 @@ plt.savefig(path.pdf + filename_prefix + "initial.pdf",bbox_inches='tight', form
 plt.figure(2) ################################################################
 
 PlotStyle("y'","z'","grey")
+plt.ylim([-zlim,zlim])
 tcolour = np.zeros((N_r,N_r))
 
 for I_y in range(N_r):
@@ -79,6 +82,7 @@ plt.savefig(path.pdf + filename_prefix + "primed.pdf",bbox_inches='tight', forma
 plt.figure(3) ################################################################
 
 PlotStyle("y'","z'","grey")
+plt.ylim([-zlim,zlim])
 for I_R in range(N_r):
     zv[I_R] = SR.TRANS_Z_simul(zv[I_R], V[1], -V[1], 0)
 

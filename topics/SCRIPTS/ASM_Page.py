@@ -99,42 +99,14 @@ def colorbox_replace(filename):
         file.write(html_content)
 
 ###
-# *** when next/previous clicked, need to load the right TOC ***
 #
 # *** some \chapters{} and sections{} have [] before {} for their alternative name or alternative label, check TOC includes it once fixed
 #
-# *** i started merging this with next function
 # *** need to change id's to their labels instead of counters, also make sure they have labels
 
-def replace_headings(latex_content):
-    # Replace chapters with h1 tags
-    counter = [0]
-    def replace_func(m):
-        counter[0] += 1
-        if counter[0] == 2:
-            return f"\n<div class='arrow-nav'>\n <a></a>\n<a onclick=\"showContent('ch{counter[0]}_wrap'); document.getElementById('ch{counter[0]}_details').open = true;\" style=\"font-weight: bold; text-align: right; padding-right: 10px; \"> Next > </a> \n</div>\n </section> \n <section id=\"ch{counter[0]}_wrap\" class=\"chapter\" style=\"display: none !important;\"> \n <h1 id=\"ch{counter[0]}_header\">" + f"{counter[0]}. " + m.group(1) + '</h1>'
-        elif counter[0] > 2:
-            return f"\n<div class='arrow-nav'>\n <a onclick=\"showContent('ch{counter[0]-2}_wrap'); document.getElementById('ch{counter[0]-2}_details').open = true;\" style=\"font-weight: bold; padding-left: 10px;\"> < Previous </a>\n<a onclick=\"showContent('ch{counter[0]}_wrap'); document.getElementById('ch{counter[0]}_details').open = true;\" style=\"font-weight: bold; text-align: right; padding-right: 10px; \"> Next > </a> \n</div>\n </section> \n <section id=\"ch{counter[0]}_wrap\" class=\"chapter\" style=\"display: none !important;\"> \n <h1 id=\"ch{counter[0]}_header\">" + f"{counter[0]}. " + m.group(1) + '</h1>'
-        else:
-            return f'<section id="ch{counter[0]}_wrap" class="chapter"> \n <h1 id="ch{counter[0]}_header">' + f"{counter[0]}. " + m.group(1) + '</h1>'
-
-    latex_content = re.sub(r'\\chapter\{(.+?)\}', replace_func, latex_content)
-
-
-
-    # Replace sections with h2 tags
-    latex_content = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">' + m.group(1) + '</h2>', latex_content)
-    # Replace subsections with h3 tags
-    latex_content = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">' + m.group(1) + '</h3>', latex_content)
-    # Replace subsubsections with h4 tags
-    latex_content = re.sub(r'\\subsubsection\{(.+?)\}', lambda m:'<h4 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">' + m.group(1) + '</h4>', latex_content)
-
-    latex_content += f"\n<div>\n<a onclick=\"showContent('ch{counter[0]-1}_wrap'); document.getElementById('ch{counter[0]-1}_details').open = true;\" style=\"font-weight: bold;\"> < Previous </a> \n</div>\n"
-    latex_content += '</section>'
-
-    return latex_content
-
 ###
+import re
+
 def wrap_content(latex_file):
     with open(latex_file, 'r', encoding='utf-8') as file:
         lines = file.readlines()
@@ -143,46 +115,157 @@ def wrap_content(latex_file):
     chapter_num = 0
     section_num = 0
     subsection_num = 0
+    subsubsection_num = 0
 
     for line in lines:
+        line = line.strip()
+        # Handle \chapter
         if line.startswith('\\chapter'):
-            chapter_num   += 1
-            if subsection_num > 0:
-                output.append('</div>  <!-- close subsection-->')
-            if section_num > 1:
-                output.append('</div> <!-- close section-->')
-            if chapter_num > 1:
-                output.append('</div> <!-- close chapter-->')
-            output.append(line.strip())
-            output.append(f'<div id="ch{chapter_num}'+'_content">')
-            output.append('<span style="display: hidden">\\(\\nextSection\\)</span>')
-            section_num    = 0
-            subsection_num = 0
+            chapter_match = re.search(r'\\chapter(?:\[[^\]]*\])?\{(.+?)\}', line)
+            if chapter_match:
+                chapter_title = chapter_match.group(1)
+                chapter_num += 1
+
+                # Close previous sections if any
+                if subsubsection_num > 0:
+                    output.append(f'</div>  <!-- close subsubsection {chapter_num}.{section_num}.{subsection_num}.{subsubsection_num} -->')
+                    subsubsection_num = 0
+                if subsection_num > 0:
+                    output.append(f'</div>  <!-- close subsection {chapter_num}.{section_num}.{subsection_num} -->')
+                    subsection_num = 0
+                if section_num > 0:
+                    output.append(f'</div> <!-- close section {chapter_num}.{section_num} -->')
+                    section_num = 0
+
+                # Generate navigation links
+                if chapter_num == 2:
+                    replace_func = (
+                        f"\n<div class='arrow-nav'>\n"
+                        f" <a></a>\n"
+                        f"<a onclick=\"showContent('ch{chapter_num}_wrap'); document.getElementById('ch{chapter_num}_details').open = true;\" "
+                        f"style=\"font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;\"> Next > </a> \n"
+                        f"</div>\n </section> <!-- close chapter {chapter_num-1} --> \n"
+                        f"<section id=\"ch{chapter_num}_wrap\" class=\"chapter\" style=\"display: none !important;\"> \n"
+                        f"<h1 id=\"ch{chapter_num}_header\">{chapter_num} {chapter_title}</h1>"
+                    )
+                elif chapter_num > 2:
+                    replace_func = (
+                        f"\n<div class='arrow-nav'>\n"
+                        f"<a onclick=\"showContent('ch{chapter_num-2}_wrap'); document.getElementById('ch{chapter_num-2}_details').open = true;\" "
+                        f"style=\"font-weight: bold; padding-left: 10px; cursor: pointer;\"> < Previous </a>\n"
+                        f"<a onclick=\"showContent('ch{chapter_num}_wrap'); document.getElementById('ch{chapter_num}_details').open = true;\" "
+                        f"style=\"font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;\"> Next > </a> \n"
+                        f"</div>\n </section> <!-- close chapter {chapter_num-1} --> \n"
+                        f"<section id=\"ch{chapter_num}_wrap\" class=\"chapter\" style=\"display: none !important;\"> \n"
+                        f"<h1 id=\"ch{chapter_num}_header\">{chapter_num} {chapter_title}</h1>"
+                    )
+                else:
+                    replace_func = (
+                        f'<section id="ch{chapter_num}_wrap" class="chapter"> \n'
+                        f' <h1 id="ch{chapter_num}_header">{chapter_num} {chapter_title}</h1>'
+                    )
+
+                # Replace the line with HTML structure
+                line = re.sub(r'\\chapter(?:\[[^\]]*\])?\{.+?\}', replace_func, line)
+                output.append(line)
+                output.append(f'<div id="ch{chapter_num}_content">')
+                output.append('<span style="display: hidden">\\(\\nextSection\\)</span>')
+                section_num = 0
+                subsection_num = 0
+                subsubsection_num = 0
+            else:
+                output.append(line)
+
+        # Handle \section
         elif line.startswith('\\section'):
-            section_num   += 1
-            if subsection_num > 0:
-                output.append('</div>  <!-- close subsection-->')
-            if section_num > 1:
-                output.append('</div> <!-- close section-->')
-            line = re.sub(r'\\section\{(.+?)\}', lambda m:'<h2 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">'+ f"{chapter_num}.{section_num} " + m.group(1) + '</h2>', line)
-            output.append(line.strip())
-            output.append(f'<div id="ch{chapter_num}_{section_num}'+'_content">')
-            subsection_num = 0
+            section_match = re.search(r'\\section(?:\[[^\]]*\])?\{(.+?)\}', line)
+            if section_match:
+                section_num += 1
+                section_title = section_match.group(1)
+
+                # Close previous subsections if any
+                if subsubsection_num > 0:
+                    output.append(f'</div>  <!-- close subsubsection {chapter_num}.{section_num}.{subsection_num}.{subsubsection_num} -->')
+                    subsubsection_num = 0
+                if subsection_num > 0:
+                    output.append(f'</div>  <!-- close subsection {chapter_num}.{section_num}.{subsection_num} -->')
+                    subsection_num = 0
+                if section_num > 1:
+                    output.append(f'</div> <!-- close section {chapter_num}.{section_num - 1} -->')
+
+                # Create the HTML header
+                header_id = section_title.replace(' ', '').replace("'", "")
+                line = f'<h2 id="{header_id}_header">{chapter_num}.{section_num} {section_title}</h2>'
+                output.append(line)
+                output.append(f'<div id="ch{chapter_num}_{section_num}_content">')
+            else:
+                output.append(line)
+
+        # Handle \subsection
         elif line.startswith('\\subsection'):
-            subsection_num += 1
-            if subsection_num > 1:
-                output.append('</div> <!-- close subsection-->')
-            line = re.sub(r'\\subsection\{(.+?)\}', lambda m:'<h3 id="' + m.group(1).replace(' ', '').replace("'","") + '_header">'+ f"{chapter_num}.{section_num}.{subsection_num} " + m.group(1) + '</h3>', line)
-            output.append(line.strip())
-            output.append(f'<div id="ch{chapter_num}_{section_num}_{subsection_num}'+'_content">')
+            subsection_match = re.search(r'\\subsection(?:\[[^\]]*\])?\{(.+?)\}', line)
+            if subsection_match:
+                subsection_num += 1
+                subsection_title = subsection_match.group(1)
+
+                # Close previous subsubsections if any
+                if subsubsection_num > 0:
+                    output.append(f'</div>  <!-- close subsubsection {chapter_num}.{section_num}.{subsection_num}.{subsubsection_num} -->')
+                    subsubsection_num = 0
+                if subsection_num > 1:
+                    output.append(f'</div>  <!-- close subsection {chapter_num}.{section_num}.{subsection_num - 1} -->')
+
+                # Create the HTML header
+                header_id = subsection_title.replace(' ', '').replace("'", "")
+                line = f'<h3 id="{header_id}_header">{chapter_num}.{section_num}.{subsection_num} {subsection_title}</h3>'
+                output.append(line)
+                output.append(f'<div id="ch{chapter_num}_{section_num}_{subsection_num}_content">')
+            else:
+                output.append(line)
+
+        # Handle \subsubsection
+        elif line.startswith('\\subsubsection'):
+            subsubsection_match = re.search(r'\\subsubsection(?:\[[^\]]*\])?\{(.+?)\}', line)
+            if subsubsection_match:
+                subsubsection_num += 1
+                subsubsection_title = subsubsection_match.group(1)
+
+                if subsubsection_num > 1:
+                    output.append(f'</div>  <!-- close subsubsection {chapter_num}.{section_num}.{subsection_num}.{subsubsection_num - 1} -->')
+
+                # Create the HTML header
+                header_id = subsubsection_title.replace(' ', '').replace("'", "")
+                line = f'<h4 id="{header_id}_header">{subsubsection_title}</h4>'
+                output.append(line)
+                output.append(f'<div id="ch{chapter_num}_{section_num}_{subsection_num}_{subsubsection_num}_content">')
+            else:
+                output.append(line)
         else:
-            output.append(line.strip())
+            output.append(line)
 
+    # Close any open tags at the end
+    if subsubsection_num > 0:
+        output.append(f'</div>  <!-- close subsubsection {chapter_num}.{section_num}.{subsection_num}.{subsubsection_num} -->')
+    if subsection_num > 0:
+        output.append(f'</div>  <!-- close subsection {chapter_num}.{section_num}.{subsection_num} -->')
+    if section_num > 0:
+        output.append(f'</div> <!-- close section {chapter_num}.{section_num} -->')
+
+    # Close the last chapter
     if chapter_num > 1:
-        output.append('</div>') # to close last chapter
+        output.append(
+            f"\n<div class='arrow-nav'>\n"
+            f" <a onclick=\"showContent('ch{chapter_num-1}_wrap'); document.getElementById('ch{chapter_num-1}_details').open = true;\" "
+            f"style=\"font-weight: bold; cursor: pointer;\"> < Previous </a> \n"
+            f"</div>\n</section>"
+        )
+    else:
+        output.append('</section>')
 
+    # Write the modified content back to the file
     with open(latex_file, 'w', encoding='utf-8') as file:
         file.write('\n'.join(output))
+
 
 ########################################################
 # Graphics #############################################
@@ -221,7 +304,8 @@ def Figures_to_HTML(file):
 
                 replacement = f'<br>\n \t <figure'
                 if label_match:
-                    replacement += f' id="{label_match.group("label")[:-1].replace(" ", "_")}"'  # Add ID to <figure>
+                    main_fig_label = find_label_from_key(fig_dict, f"{chapter_num}.{figure_counter}")
+                    replacement += f' id="{main_fig_label}"'  # Add ID to <figure>
                 replacement += '>\n <div style="display: flex; justify-content: space-between;">\n'
 
                 subfig_letter = 'a'
@@ -231,8 +315,10 @@ def Figures_to_HTML(file):
 
                 replacement += '</div>\n'
 
+                main_caption = find_caption_from_key(fig_dict, f"{chapter_num}.{figure_counter}")
+
                 if caption_match:
-                    replacement += f'<figcaption>Figure {chapter_num}.{figure_counter}: {caption_match.group("caption")[:-1]}</figcaption>\n'
+                    replacement += f'<figcaption>Figure {chapter_num}.{figure_counter}: {main_caption}</figcaption>\n'
                 replacement += '</figure>\n'
 
             else:
@@ -259,7 +345,7 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
         filename = os.path.splitext(os.path.basename(filename))[0] + '.svg'
         if not os.path.isfile(py_to_svgs + f'{filename}'): print(" # \n # No file: " + py_to_svgs + f"{filename} \n #")
         if label_match:
-            fig_id =  f' id="{label_match.group("label")[:-1].replace(" ", "_")}"'
+            fig_id =  f'{label_match.group("label")[:-1].replace(" ", "_")}'
         else:
             fig_id = ''
 
@@ -272,10 +358,12 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
         if "\\begin{subfigure}" in figure_env:
             caption = f"{subfig_letter}) {caption_text}"
         else:
+            caption_text = find_caption_from_key(fig_dict, f"{chapter_num}.{figure_counter}")
+            fig_id = find_label_from_key(fig_dict, f"{chapter_num}.{figure_counter}")
             caption = f"Figure {chapter_num}.{figure_counter}: {caption_text}"
 
 
-        return f'<figure' + fig_id +'>\n<img src="' + html_to_svgs + f'{filename}" style="width:100%; height:auto;" loading="lazy">\n<figcaption>{caption}</figcaption>\n</figure>'
+        return f'<figure id="' + fig_id +'">\n<img src="' + html_to_svgs + f'{filename}" style="width:100%; height:auto;" loading="lazy">\n<figcaption>{caption}</figcaption>\n</figure>'
 
     else:
         return '*** svg figure missing ***'
@@ -305,14 +393,22 @@ def insert_JS(filename,js_location):
         script_lines = []
         for line in lines:
             match = re.search(r'javascript\{createTruckDiagram:(.*)\}', line)
+            match2 = re.search(r'javascript\{createAberrationDiagram(.*)\}', line)
 
             if match:
                 N_s = N_s + 1
                 script_line = 'createTruckDiagram("TruckFig_'+ str(N_s) + '",' + match.group(1) + ');\n'
                 script_lines.append(script_line)
-                file.write(f'<div id="TruckFig_' + str(N_s) + '"></div>\n')
+                file.write(f'<div class="js-fig-wrap" ><div class="js-fig" id="TruckFig_' + str(N_s) + '"></div>\n</div>\n')
+            elif match2:
+                script_line = 'createAberrationDiagram("AberrationFig");\n'
+                script_lines.append(script_line)
+                file.write(f'<div class="js-fig-wrap" ><div class="js-fig" id="AberrationFig"></div>\n</div>\n')
             else:
                 file.write(line)
+
+
+
 
     return script_lines
 
@@ -669,6 +765,8 @@ def create_dictionary_of_toc(filepath):
     return structure_dict
 
 ###
+import re
+
 def create_dictionary_of_figures(latex_file):
     with open(latex_file, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -676,70 +774,103 @@ def create_dictionary_of_figures(latex_file):
     figure_data = {}
     chapter_number = 0
     figure_number = 0
-    label_count = 0
 
-    chapters = re.split(r'\\chapter{', content)[1:]
+    chapters = re.split(r'\\chapter\{', content)[1:]  # Fix to properly escape the brace
 
     for chapter_content in chapters:
         chapter_number += 1
         figure_number = 0
 
-        figure_matches = re.findall(r'\\begin{figure}(.*?)\\end{figure}', chapter_content, re.DOTALL)
+        figure_matches = re.findall(r'\\begin\{figure\}(.*?)\\end\{figure\}', chapter_content, re.DOTALL)
 
         for figure_match in figure_matches:
             figure_number += 1
 
-            label_count += len(re.findall(r'\\label{', figure_match))
+            # Remove subfigure environments from figure_match
+            temp_figure_match = re.sub(r'\\begin\{subfigure\}.*?\\end\{subfigure\}', '', figure_match, flags=re.DOTALL)
 
-            # Find main figure title and label
+            # Now search for caption and label in temp_figure_match
+            figure_caption = ""
             figure_title = ""
             figure_label = ""
-            caption_match = re.search(r'\\caption\s*(\{.*?\})\s*(?:\\label\s*\{([^}]+)\})?', figure_match, re.DOTALL)
+
+            # Function to find matching bracket
+            def find_matching_bracket(text, open_bracket_pos):
+                stack = []
+                for i in range(open_bracket_pos, len(text)):
+                    if text[i] == '{':
+                        stack.append('{')
+                    elif text[i] == '}':
+                        if stack:
+                            stack.pop()
+                        if not stack:
+                            return i
+                return -1
+
+            # Search for the main figure caption
+            caption_match = re.search(r'\\caption\s*\{', temp_figure_match)
             if caption_match:
-                title_match = re.search(r'\\textbf{([^}]*?)}', caption_match.group(1))
-                if title_match:
-                    figure_title = title_match.group(1).strip()
+                open_bracket_pos = caption_match.end() - 1
+                close_bracket_pos = find_matching_bracket(temp_figure_match, open_bracket_pos)
+                if close_bracket_pos != -1:
+                    figure_caption = temp_figure_match[open_bracket_pos + 1:close_bracket_pos].strip()
 
-            # Find label OUTSIDE of any subfigure environment
-            temp_figure_match = figure_match
-            for subfigure_match in re.findall(r'\\begin{subfigure}(.*?)\\end{subfigure}', figure_match, re.DOTALL):
-                temp_figure_match = temp_figure_match.replace(subfigure_match, "")
+                    # Extract the figure title from the caption
+                    title_match = re.search(r'\\textbf\{([^}]*?)\}', figure_caption)
+                    if title_match:
+                        figure_title = title_match.group(1).strip()
 
-            label_match = re.search(r'\\label{([^}]*?)}', temp_figure_match)
+            # Find label in temp_figure_match
+            label_match = re.search(r'\\label\{([^}]*?)\}', temp_figure_match)
             if label_match:
                 figure_label = label_match.group(1).replace(" ", "_")
 
             figure_id = f"{chapter_number}.{figure_number}"
-            figure_data[figure_id] = {"title": figure_title, "label": figure_label}  # Store as dictionary
+            figure_data[figure_id] = {
+                "title": figure_title,
+                "label": figure_label,
+                "caption": figure_caption
+            }
 
-            subfigure_matches = re.findall(r'\\begin{subfigure}(.*?)\\end{subfigure}', figure_match, re.DOTALL)
+            # Now process subfigures
+            subfigure_matches = re.findall(r'\\begin\{subfigure\}(.*?)\\end\{subfigure\}', figure_match, re.DOTALL)
 
             for i, subfigure_match in enumerate(subfigure_matches):
                 subfigure_letter = chr(ord('a') + i)
 
-                # Find subfigure title
+                # Find subfigure caption and label
                 subfigure_title = ""
                 subfigure_label = ""
+                subfigure_caption = ""
 
-                subfigure_caption_match = re.search(r'\\caption{(.*?)}', subfigure_match, re.DOTALL)
+                subfigure_caption_match = re.search(r'\\caption\s*\{', subfigure_match)
                 if subfigure_caption_match:
-                    subfigure_title_match = re.search(r'\\textbf{([^}]*?)}', subfigure_caption_match.group(1))
-                    if subfigure_title_match:
-                        subfigure_title = subfigure_title_match.group(1).strip()
+                    open_bracket_pos = subfigure_caption_match.end() - 1
+                    close_bracket_pos = find_matching_bracket(subfigure_match, open_bracket_pos)
+                    if close_bracket_pos != -1:
+                        subfigure_caption = subfigure_match[open_bracket_pos + 1:close_bracket_pos].strip()
 
-                    # Find label within the caption or outside of it
-                    label_match = re.search(r'\\label{([^}]*?)}', subfigure_caption_match.group(1))
-                    if label_match:
-                        subfigure_label = label_match.group(1).replace(" ", "_")
-                    else:
-                        label_match = re.search(r'\\label{([^}]*?)}', subfigure_match)
-                        if label_match:
-                            subfigure_label = label_match.group(1).replace(" ", "_")
+                        # Extract the subfigure title from the caption
+                        subfigure_title_match = re.search(r'\\textbf\{([^}]*?)\}', subfigure_caption)
+                        if subfigure_title_match:
+                            subfigure_title = subfigure_title_match.group(1).strip()
+
+                # Find label in subfigure_match
+                label_match = re.search(r'\\label\{([^}]*?)\}', subfigure_match)
+                if label_match:
+                    subfigure_label = label_match.group(1).replace(" ", "_")
 
                 subfigure_id = f"{chapter_number}.{figure_number}.{subfigure_letter}"
-                figure_data[subfigure_id] = {"title": subfigure_title, "label": subfigure_label}  # Store as dictionary
+                figure_data[subfigure_id] = {
+                    "title": subfigure_title,
+                    "label": subfigure_label,
+                    "caption": subfigure_caption
+                }
 
     return figure_data
+
+
+
 
 ###
 def create_dictionary_of_equations(latex_file):
@@ -790,6 +921,14 @@ def find_label_from_key(data_dict, target_key):
         return data_dict[target_key]['label']
     else:
         print("Key: ", target_key, " does not have a label" )
+        return None
+
+###
+def find_caption_from_key(data_dict, target_key):
+    if target_key in data_dict:
+        return data_dict[target_key]['caption']
+    else:
+        print("Key: ", target_key, " does not have a caption" )
         return None
 
 ###
@@ -964,7 +1103,7 @@ with open(Latex_File, 'r', encoding='utf-8') as file:
     latex_content = file.read()
 
 # Convert to HTML headings
-main_content = replace_headings(latex_content)
+main_content = latex_content
 main_content = math_to_HTML(main_content)
 main_content = replace_refs(main_content, fig_dict)
 main_content += '\n'

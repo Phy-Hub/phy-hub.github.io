@@ -36,6 +36,7 @@
   };
   </script>
   <script src="SR_Truck.js"></script>
+  <script src="SR_Aberration.js"></script>
 
   <style>
 
@@ -60,6 +61,15 @@
     .math { font-size: smaller; }
     mjx-container:not([display]) {
       font-size: smaller !important;
+    }
+
+    .js-fig-wrap {
+      width: 90%;
+      background-color: #ffd4a6;
+      margin: 40px auto;
+    }
+    .js-fig {
+      padding-top: 10px;
     }
 
     .arrow-nav {
@@ -255,7 +265,27 @@
     function copyContent(sourceId, targetId) {
       var sourceDiv = document.getElementById(sourceId);
       var targetDiv = document.getElementById(targetId);
-      targetDiv.innerHTML = sourceDiv.innerHTML; // Copy the content
+      // Clear the target div first (good practice, in case it had something)
+      targetDiv.innerHTML = '';
+
+      // Create a deep clone of the source div's content.  Crucially important!
+      var clonedContent = sourceDiv.cloneNode(true);
+
+      // Remove the ID from the cloned content to prevent duplicate IDs
+      clonedContent.removeAttribute("id");
+
+      // Style the *images* (or other elements) within the cloned content.
+      var images = clonedContent.getElementsByTagName('img'); // Get all images
+      for (var i = 0; i < images.length; i++) {
+        images[i].style.maxHeight = "40vh";  // Limit height to 100% of container
+        images[i].style.maxWidth = "100%";   // Limit width to 100% of container
+        images[i].style.height = "auto";    // Maintain aspect ratio
+        images[i].style.width = "auto";     // Maintain aspect ratio
+        images[i].style.objectFit = "contain"; // Important: Ensure the entire image is visible
+      }
+
+      // Append the styled, cloned content to the target div.
+      targetDiv.appendChild(clonedContent);
     }
 
     //##################

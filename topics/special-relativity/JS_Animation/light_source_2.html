@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Relativity Visualization (Multiple Emissions)</title>
+    <style>
+        /* --- CSS Styles (Identical to previous version) --- */
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 5px; /* Reduced margin */
+        }
+        p.subtitle { /* Style for the subtitle */
+             margin-top: 0;
+             margin-bottom: 20px;
+             color: #555;
+             font-size: 0.9em;
+             text-align: center; /* Center subtitle */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* Space between diagrams */
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-width: 430px; /* Ensure containers don't get too small */
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+            background-color: #ffffff;
+        }
+
+        .controls {
+            background-color: #fff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        #timeSlider {
+            width: 300px;
+            cursor: pointer;
+        }
+
+        #timeValue {
+            font-weight: bold;
+            min-width: 35px; /* Allow space for negative sign */
+            text-align: right;
+        }
+
+        .legend {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #333;
+            position: relative; /* Needed for absolute positioning of labels */
+            width: 80%; /* Control width of the legend area */
+        }
+
+        #colorbar {
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to right, hsl(240, 100%, 50%), hsl(180, 100%, 50%), hsl(120, 100%, 50%), hsl(60, 100%, 50%), hsl(0, 100%, 50%)); /* Blue to Red through spectrum */
+            border: 1px solid #ccc;
+            margin-bottom: 25px; /* Space for labels below */
+        }
+
+        /* Positioning labels relative to the colorbar */
+        #minTPrimeLabel, #maxTPrimeLabel {
+            position: absolute;
+            bottom: 5px; /* Position below the color bar */
+            font-size: 0.8em;
+            background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent background */
+            padding: 1px 3px;
+            border-radius: 2px;
+        }
+
+        #minTPrimeLabel {
+            left: 0;
+        }
+
+        #maxTPrimeLabel {
+            right: 0;
+        }
+
+        .legend span:last-child { /* The "Transformed Time (t')" label */
+             margin-top: -20px; /* Adjust spacing if needed */
+        }
+    </style>
+</head>
+<body>
+    <h1>Light Emission: Stationary vs. Moving Frame</h1>
+    <!-- Updated description -->
+    <p class="subtitle">Light is emitted from the origin in Frame S starting at t = -10<br>and every 0.5 time units thereafter, expanding outwards.</p>
+
+    <div class="container">
+        <div class="diagram-container">
+            <h2>Stationary Frame (S)</h2>
+            <canvas id="canvas1" width="400" height="400"></canvas>
+        </div>
+        <div class="diagram-container">
+            <h2>Moving Frame (S') (v = -0.9c in y)</h2>
+            <canvas id="canvas2" width="400" height="400"></canvas>
+             <div class="legend">
+                <div id="colorbar"></div>
+                <span id="minTPrimeLabel">t' min</span>
+                <span id="maxTPrimeLabel">t' max</span>
+                <span>Transformed Time (t')</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <label for="timeSlider">Time (t): </label>
+        <!-- Slider range remains -10 to 0 -->
+        <input type="range" id="timeSlider" min="-10" max="0" step="0.1" value="-10">
+        <span id="timeValue">-10.0</span>
+    </div>
+
+    <script>
+        // --- JavaScript Logic ---
+        const canvas1 = document.getElementById('canvas1');
+        const ctx1 = canvas1.getContext('2d');
+        const canvas2 = document.getElementById('canvas2');
+        const ctx2 = canvas2.getContext('2d');
+
+        const timeSlider = document.getElementById('timeSlider');
+        const timeValueSpan = document.getElementById('timeValue');
+        const minTPrimeLabel = document.getElementById('minTPrimeLabel');
+        const maxTPrimeLabel = document.getElementById('maxTPrimeLabel');
+
+        // --- Constants ---
+        const C = 1; // Speed of light
+        const V = -0.9 * C; // Velocity of frame S' relative to S (in -y direction)
+        const GAMMA = 1 / Math.sqrt(1 - (V * V) / (C * C));
+        const PLOT_MIN = -10;
+        const PLOT_MAX = 10;
+        const PLOT_RANGE = PLOT_MAX - PLOT_MIN;
+        const CANVAS_WIDTH = canvas1.width;
+        const CANVAS_HEIGHT = canvas1.height;
+        const NUM_ARROWS = 24; // Reduced slightly for clarity with multiple wavefronts
+        const ARROW_LENGTH_PLOT = 0.6; // Reduced slightly for clarity
+        const ARROW_HEAD_SIZE = 4; // Reduced slightly
+        const T_FIRST_EMISSION = -10.0; // <<< Time of first emission in Frame S
+        const EMISSION_INTERVAL = 0.5; // <<< Interval between emissions
+        const FLOAT_EPSILON = 1e-9; // Small number for float comparisons
+
+        // --- Simulation Parameters ---
+        const SLIDER_MIN_TIME = parseFloat(timeSlider.min); // Should be T_FIRST_EMISSION
+        const SLIDER_MAX_TIME = parseFloat(timeSlider.max); // Should be 0
+        let currentTime = parseFloat(timeSlider.value); // Initialize from slider
+
+        // Calculate theoretical min/max t' for the color bar range
+        // Based on the entire simulation window [SLIDER_MIN_TIME, SLIDER_MAX_TIME]
+        // Max radius occurs at t=SLIDER_MAX_TIME for emission at T_FIRST_EMISSION
+        const maxSimRadius = C * (SLIDER_MAX_TIME - T_FIRST_EMISSION);
+        // t' = gamma * (t - V*y/C^2)
+        // Test corners: (t_min, y=0), (t_max, y=+Rmax), (t_max, y=-Rmax)
+        const tPrimeA = GAMMA * T_FIRST_EMISSION; // at t=T_FIRST_EMISSION, y=0
+        const tPrimeB = GAMMA * (SLIDER_MAX_TIME - V * maxSimRadius / (C * C)); // at t=SLIDER_MAX_TIME, y=+maxSimRadius
+        const tPrimeC = GAMMA * (SLIDER_MAX_TIME - V * (-maxSimRadius) / (C * C)); // at t=SLIDER_MAX_TIME, y=-maxSimRadius
+        const T_PRIME_MIN_THEORY = Math.min(tPrimeA, tPrimeB, tPrimeC);
+        const T_PRIME_MAX_THEORY = Math.max(tPrimeA, tPrimeB, tPrimeC);
+
+
+        // Update color bar labels
+        minTPrimeLabel.textContent = T_PRIME_MIN_THEORY.toFixed(1);
+        maxTPrimeLabel.textContent = T_PRIME_MAX_THEORY.toFixed(1);
+
+        // --- Coordinate Mapping ---
+        function mapX(x) {
+            return ((x - PLOT_MIN) / PLOT_RANGE) * CANVAS_WIDTH;
+        }
+
+        function mapY(y) {
+            // Y needs to be inverted for canvas coordinates (0 is top)
+            return CANVAS_HEIGHT - ((y - PLOT_MIN) / PLOT_RANGE) * CANVAS_HEIGHT;
+        }
+
+        // --- Drawing Functions ---
+
+        function drawAxes(ctx) {
+            ctx.strokeStyle = '#ccc';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            // X-axis
+            ctx.moveTo(0, mapY(0));
+            ctx.lineTo(CANVAS_WIDTH, mapY(0));
+            // Y-axis
+            ctx.moveTo(mapX(0), 0);
+            ctx.lineTo(mapX(0), CANVAS_HEIGHT);
+            ctx.stroke();
+
+            // Labels
+            ctx.fillStyle = '#aaa';
+            ctx.font = '10px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'top';
+            ctx.fillText('X', CANVAS_WIDTH - 10, mapY(0) + 5);
+             ctx.fillText(PLOT_MAX.toString(), mapX(PLOT_MAX) -10 , mapY(0) + 5);
+             ctx.fillText(PLOT_MIN.toString(), mapX(PLOT_MIN) +10 , mapY(0) + 5);
+
+
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Y', mapX(0) - 5, 10);
+            ctx.fillText(PLOT_MAX.toString(), mapX(0) - 5, mapY(PLOT_MAX) +5);
+            ctx.fillText(PLOT_MIN.toString(), mapX(0) - 5, mapY(PLOT_MIN) -5);
+        }
+
+        function drawArrow(ctx, plotX, plotY, vx, vy, color, arrowLengthPlot = ARROW_LENGTH_PLOT) {
+            const startXCanvas = mapX(plotX);
+            const startYCanvas = mapY(plotY);
+
+            // Normalize velocity vector
+            const magV = Math.sqrt(vx * vx + vy * vy);
+            let endXPlot, endYPlot;
+
+            if (magV > FLOAT_EPSILON) {
+                const normVx = vx / magV;
+                const normVy = vy / magV;
+                // Calculate end point in plot coordinates based on normalized velocity
+                endXPlot = plotX + normVx * arrowLengthPlot;
+                endYPlot = plotY + normVy * arrowLengthPlot;
+            } else {
+                endXPlot = plotX;
+                endYPlot = plotY;
+                 // Optionally draw nothing or a point marker here instead
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(startXCanvas, startYCanvas, 1.5, 0, 2*Math.PI);
+                ctx.fill();
+                return; // Don't draw line/arrowhead for zero velocity
+            }
+
+            const endXCanvas = mapX(endXPlot);
+            const endYCanvas = mapY(endYPlot); // mapY handles inversion
+
+            // Draw line segment
+            ctx.strokeStyle = color;
+            ctx.fillStyle = color; // Arrowhead fill
+            ctx.lineWidth = 1.0; // Thinner lines for less clutter
+            ctx.beginPath();
+            ctx.moveTo(startXCanvas, startYCanvas);
+            ctx.lineTo(endXCanvas, endYCanvas);
+            ctx.stroke();
+
+            // Draw arrowhead
+            const angle = Math.atan2(endYCanvas - startYCanvas, endXCanvas - startXCanvas);
+            ctx.beginPath();
+            ctx.moveTo(endXCanvas, endYCanvas);
+            ctx.lineTo(
+                endXCanvas - ARROW_HEAD_SIZE * Math.cos(angle - Math.PI / 6),
+                endYCanvas - ARROW_HEAD_SIZE * Math.sin(angle - Math.PI / 6)
+            );
+            ctx.lineTo(
+                endXCanvas - ARROW_HEAD_SIZE * Math.cos(angle + Math.PI / 6),
+                endYCanvas - ARROW_HEAD_SIZE * Math.sin(angle + Math.PI / 6)
+            );
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        // Maps a value in a range to an HSL color (Blue -> Red)
+        function getColorForValue(value, minVal, maxVal) {
+            if (maxVal <= minVal) return 'hsl(240, 100%, 50%)'; // Default blue if range is invalid
+            const clampedValue = Math.max(minVal, Math.min(maxVal, value));
+            const normalized = (clampedValue - minVal) / (maxVal - minVal);
+            const hue = 240 * (1 - normalized);
+            return `hsl(${hue}, 100%, 50%)`;
+        }
+
+
+        function drawDiagram1(t) {
+            ctx1.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            drawAxes(ctx1);
+
+            // Draw source *emission location* at the origin (0,0)
+            ctx1.fillStyle = 'black';
+            ctx1.beginPath();
+            ctx1.arc(mapX(0), mapY(0), 3, 0, 2 * Math.PI);
+            ctx1.fill();
+
+            // Loop through all possible emission times up to the current time t
+            for (let emissionTime = T_FIRST_EMISSION; emissionTime <= t + FLOAT_EPSILON; emissionTime += EMISSION_INTERVAL) {
+                // Calculate time elapsed since this specific emission
+                const timeElapsed = t - emissionTime;
+
+                // Should always be >= 0 because of loop condition, but check anyway
+                if (timeElapsed < 0) continue;
+
+                const radius = C * timeElapsed;
+
+                // If radius is effectively zero, don't draw arrows for this wavefront
+                if (radius < FLOAT_EPSILON) continue;
+
+                // Draw arrows for this specific wavefront
+                for (let i = 0; i < NUM_ARROWS; i++) {
+                    const angle = (i / NUM_ARROWS) * 2 * Math.PI;
+                    const x = radius * Math.cos(angle);
+                    const y = radius * Math.sin(angle);
+
+                    // Check if the point is within the plot range
+                    if (x >= PLOT_MIN && x <= PLOT_MAX && y >= PLOT_MIN && y <= PLOT_MAX) {
+                        // Velocity components in S: magnitude C, always pointing *outward*
+                        const ux = C * Math.cos(angle);
+                        const uy = C * Math.sin(angle);
+                        // Use a slightly dimmer red for inner wavefronts? Optional. Sticking to red.
+                        drawArrow(ctx1, x, y, ux, uy, 'red');
+                    }
+                }
+            }
+        }
+
+        function drawDiagram2(t) {
+            ctx2.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            drawAxes(ctx2);
+
+             // Draw the *source object's* transformed position AT THE CURRENT TIME t
+             ctx2.fillStyle = 'black';
+             ctx2.beginPath();
+             const source_x_prime = 0;
+             const source_y_prime = GAMMA * (0 - V * t); // y' = gamma*(y - V*t)
+             // Draw source object's current position if within bounds
+             if (source_x_prime >= PLOT_MIN && source_x_prime <= PLOT_MAX && source_y_prime >= PLOT_MIN && source_y_prime <= PLOT_MAX) {
+                 ctx2.arc(mapX(source_x_prime), mapY(source_y_prime), 3, 0, 2 * Math.PI);
+                 ctx2.fill();
+             }
+
+            // Loop through all possible emission times up to the current time t
+            for (let emissionTime = T_FIRST_EMISSION; emissionTime <= t + FLOAT_EPSILON; emissionTime += EMISSION_INTERVAL) {
+                 // Calculate time elapsed since this specific emission
+                const timeElapsed = t - emissionTime;
+
+                // Should always be >= 0
+                if (timeElapsed < 0) continue;
+
+                const radius = C * timeElapsed; // S-frame radius for this wavefront
+
+                // If radius is effectively zero, don't draw arrows yet
+                if (radius < FLOAT_EPSILON) continue;
+
+                // Draw arrows for this specific wavefront after transformation
+                for (let i = 0; i < NUM_ARROWS; i++) {
+                    const angle = (i / NUM_ARROWS) * 2 * Math.PI;
+
+                    // --- Position and Velocity in Frame S AT CURRENT TIME t ---
+                    // Position is on the sphere emitted at emissionTime
+                    const x = radius * Math.cos(angle);
+                    const y = radius * Math.sin(angle);
+                    // Velocity is always C, radially outward from the emission event
+                    const ux = C * Math.cos(angle);
+                    const uy = C * Math.sin(angle);
+
+                    // --- Lorentz Transform Position for time t ---
+                    // Uses CURRENT time t and the calculated x, y for this wavefront
+                    const t_prime = GAMMA * (t - (V * y) / (C * C));
+                    const x_prime = x;
+                    const y_prime = GAMMA * (y - V * t);
+
+                    // --- Relativistic Velocity Transformation (using outward S-frame velocity) ---
+                    const denominator = 1 - (V * uy) / (C * C);
+                    if (Math.abs(denominator) < FLOAT_EPSILON) continue; // Avoid division by zero
+
+                    const ux_prime = ux / (GAMMA * denominator);
+                    const uy_prime = (uy - V) / denominator;
+
+                    // Check if the transformed point is within the plot range
+                    if (x_prime >= PLOT_MIN && x_prime <= PLOT_MAX && y_prime >= PLOT_MIN && y_prime <= PLOT_MAX) {
+                        // --- Determine Color based on t' ---
+                        const color = getColorForValue(t_prime, T_PRIME_MIN_THEORY, T_PRIME_MAX_THEORY);
+
+                        // --- Draw Arrow in S' ---
+                        drawArrow(ctx2, x_prime, y_prime, ux_prime, uy_prime, color);
+                    }
+                }
+             } // End loop over emission times
+        }
+
+
+        // --- Event Listener ---
+        timeSlider.addEventListener('input', (e) => {
+            currentTime = parseFloat(e.target.value);
+            timeValueSpan.textContent = currentTime.toFixed(1);
+            requestAnimationFrame(() => { // Use requestAnimationFrame for smoother updates
+                 drawDiagram1(currentTime);
+                 drawDiagram2(currentTime);
+            });
+        });
+
+        // --- Initial Draw ---
+        function initialDraw() {
+            timeValueSpan.textContent = currentTime.toFixed(1); // Set initial text
+            drawDiagram1(currentTime);
+            drawDiagram2(currentTime);
+             console.log(`Gamma (v=${V/C}c): ${GAMMA.toFixed(4)}`);
+             console.log(`First Emission Time (t_em): ${T_FIRST_EMISSION}`);
+             console.log(`Emission Interval: ${EMISSION_INTERVAL}`);
+             console.log(`Color bar t' range: [${T_PRIME_MIN_THEORY.toFixed(2)}, ${T_PRIME_MAX_THEORY.toFixed(2)}]`);
+        }
+
+        // Ensure the DOM is ready before trying to draw initially
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initialDraw);
+        } else {
+            initialDraw(); // DOM is already ready
+        }
+
+    </script>
+</body>
+</html>

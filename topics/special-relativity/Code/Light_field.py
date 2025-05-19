@@ -1,21 +1,23 @@
 import Paths as path
 import numpy as np
 import matplotlib.pyplot as plt
+import subprocess
 
 # Define the parameters
 u = 0.9  # 0 or 0.9
 c = 1  # You can set this to any value
 gamma = 1 / np.sqrt(1 - (u / c)**2)  # Lorentz factor
 
-N_coords = 100 # 100, but increase to 300 for bigger file but better diagrams
+N_coords = 1000 # 100, but increase to 300 for bigger file but better diagrams
 # Create a grid of x and z values
-x_values = np.linspace(-10, 10, N_coords) # 1000
-z_values = np.linspace(-10, 10, N_coords) # 1000
-X, Z = np.meshgrid(x_values, z_values)
-Y = 0
+coord_max = 10
+y_values = np.linspace(-coord_max, coord_max, N_coords) # 1000
+z_values = np.linspace(-coord_max, coord_max, N_coords) # 1000
+Y, Z = np.meshgrid(y_values, z_values)
+X = 0
 nan_space = 1.5
-X = np.where( np.sqrt(X**2 + Z**2) > nan_space-0.17, X, np.nan)
-Z = np.where( np.sqrt(X**2 + Z**2) > nan_space-0.17, Z, np.nan)
+Y = np.where( np.sqrt(Y**2 + Z**2) > nan_space-0.17, Y, np.nan)
+Z = np.where( np.sqrt(Y**2 + Z**2) > nan_space-0.17, Z, np.nan)
 
 M = np.sqrt(X**2 + Y**2 + gamma**2 * Z**2)
 front_factor = 1 / ( gamma * M * ( 1 + (u/c) * (gamma * Z / M ) )**2 )
@@ -53,16 +55,21 @@ def mag(partial_dc,x,y,z):
     return np.sqrt(partial_dc[0]**2 + partial_dc[1]**2 + partial_dc[2]**2)
 
 def PlotStyle(fig_n, partial, coord):
-    plt.figure(fig_n)
-    contour = plt.contourf(X, Z, mag(partial,X,0,Z), levels=300, cmap='nipy_spectral') # levels=300
+    # plt.figure(fig_n)
+    # contour = plt.contourf(Y, Z, mag(partial,X,Y,Z), levels=300, cmap='nipy_spectral') # levels=300
+
+    fig = plt.figure(fig_n)
+    ax = fig.add_subplot(111)
+    contour = ax.imshow(mag(partial,X,Y,Z), extent=[-coord_max, coord_max, -coord_max, coord_max], origin='lower', cmap='nipy_spectral')
+
     cbar = plt.colorbar(contour, format='%.2f')
     plt.axis('square')
     circle = plt.Circle((0, 0), nan_space, color='black')
     plt.gca().add_patch(circle)
-    plt.xlabel("$l_x'$")
-    plt.ylabel("$l_z'$")
-    plt.xticks(np.arange(-10, 11, 5))
-    plt.yticks(np.arange(-10, 11, 5))
+    plt.xlabel("$y$")
+    plt.ylabel("$z$")
+    plt.xticks(np.arange(-coord_max, 11, 5))
+    plt.yticks(np.arange(-coord_max, 11, 5))
 
     filename = "Rate_of_change_of_lights_velocity_field_with_respect_to_" + coord
     if u == 0:
@@ -81,6 +88,8 @@ def PlotStyle(fig_n, partial, coord):
 
     with open(path.svg + filename + ".svg", "w") as file:
         file.write(svg_content)
+
+    subprocess.run(['svgo', path.svg + filename + ".svg", '-o', path.svg + filename + ".svg"], shell=True)
 
 
 

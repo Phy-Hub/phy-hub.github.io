@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorentz Transformation Visualization</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .diagramContainer {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* Spacing between diagrams */
+            margin-bottom: 20px;
+            align-items: flex-start; /* Align tops */
+        }
+        .canvasContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+         .canvasContainer p {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-weight: bold;
+         }
+        canvas {
+            border: 1px solid black;
+            background-color: #fff;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #timeSlider {
+            width: 400px;
+        }
+        #timeValue {
+            font-weight: bold;
+            min-width: 50px; /* Prevent layout shifts */
+            text-align: right;
+        }
+        .colorBarContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 10px; /* Space it from the right diagram */
+        }
+        #colorBar {
+            width: 30px;
+            height: 300px; /* Match canvas height roughly */
+            border: 1px solid black;
+        }
+        .colorBarLabel {
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Lorentz Transformation of Emitted Light</h1>
+
+<div class="diagramContainer">
+    <div class="canvasContainer">
+         <p>Lab Frame (S)</p>
+         <canvas id="labFrame" width="400" height="400"></canvas>
+    </div>
+    <div class="canvasContainer">
+         <p>Moving Frame (S') (v = -0.9c in y)</p>
+         <canvas id="movingFrame" width="400" height="400"></canvas>
+    </div>
+    <div class="colorBarContainer">
+        <p style="margin-bottom: 5px;">Transformed Time (t')</p>
+        <span id="tPrimeMaxLabel" class="colorBarLabel">Max t'</span>
+        <canvas id="colorBar"></canvas>
+        <span id="tPrimeMinLabel" class="colorBarLabel">Min t'</span>
+    </div>
+</div>
+
+<div class="controls">
+    <label for="timeSlider">Time (t):</label>
+    <input type="range" id="timeSlider" min="0" max="8" step="0.05" value="0">
+    <span id="timeValue">0.00</span>
+</div>
+
+<script>
+    // --- Constants ---
+    const v = -0.9; // Velocity of frame S' relative to S (in units of c) along the negative y-axis
+    const c = 1;    // Speed of light
+    const gamma = 1 / Math.sqrt(1 - (v * v) / (c * c));
+    const numArrows = 36; // Number of light rays to show
+    const minCoord = -10;
+    const maxCoord = 10;
+    const plotRange = maxCoord - minCoord;
+    const arrowHeadSize = 5; // Pixel size of arrowheads
+    const transformedArrowLength = 15; // Fixed pixel length for arrows in moving frame
+
+    // --- Canvas Setup ---
+    const labCanvas = document.getElementById('labFrame');
+    const movingCanvas = document.getElementById('movingFrame');
+    const colorBarCanvas = document.getElementById('colorBar');
+    const labCtx = labCanvas.getContext('2d');
+    const movingCtx = movingCanvas.getContext('2d');
+    const colorBarCtx = colorBarCanvas.getContext('2d');
+
+    const canvasWidth = labCanvas.width;
+    const canvasHeight = labCanvas.height;
+
+    // --- Controls ---
+    const timeSlider = document.getElementById('timeSlider');
+    const timeValueSpan = document.getElementById('timeValue');
+    const maxTime = parseFloat(timeSlider.max);
+
+    const tPrimeMinLabel = document.getElementById('tPrimeMinLabel');
+    const tPrimeMaxLabel = document.getElementById('tPrimeMaxLabel');
+
+    // --- Coordinate Transformation ---
+    function toCanvasX(x, ctx) {
+        return ctx.canvas.width * (x - minCoord) / plotRange;
+    }
+
+    function toCanvasY(y, ctx) {
+        // Y is inverted in canvas coordinates
+        return ctx.canvas.height * (1 - (y - minCoord) / plotRange);
+    }
+
+     // --- Drawing Functions ---
+    function drawAxes(ctx) {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.strokeStyle = '#ccc'; // Light grey for axes
+        ctx.lineWidth = 1;
+
+        // Origin in canvas coordinates
+        const originX = toCanvasX(0, ctx);
+        const originY = toCanvasY(0, ctx);
+
+        // X-axis
+        ctx.beginPath();
+        ctx.moveTo(0, originY);
+        ctx.lineTo(ctx.canvas.width, originY);
+        ctx.stroke();
+
+        // Y-axis
+        ctx.beginPath();
+        ctx.moveTo(originX, 0);
+        ctx.lineTo(originX, ctx.canvas.height);
+        ctx.stroke();
+
+        // Add labels/ticks (optional enhancement)
+        ctx.fillStyle = '#aaa';
+        ctx.font = '10px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText('0', originX + 5, originY + 5);
+        ctx.fillText(maxCoord.toString(), toCanvasX(maxCoord, ctx) -10, originY + 5);
+        ctx.fillText(minCoord.toString(), toCanvasX(minCoord, ctx) + 10, originY + 5);
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(maxCoord.toString(), originX - 5, toCanvasY(maxCoord, ctx) + 5);
+        ctx.fillText(minCoord.toString(), originX - 5, toCanvasY(minCoord, ctx) - 5);
+
+    }
+
+    function drawArrow(ctx, x1, y1, x2, y2, color, headSize) {
+        const angle = Math.atan2(y2 - y1, x2 - x1);
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.lineWidth = 1.5;
+
+        // Draw line
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+
+        // Draw arrowhead
+        ctx.beginPath();
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(x2 - headSize * Math.cos(angle - Math.PI / 6), y2 - headSize * Math.sin(angle - Math.PI / 6));
+        ctx.lineTo(x2 - headSize * Math.cos(angle + Math.PI / 6), y2 - headSize * Math.sin(angle + Math.PI / 6));
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    // --- Color Mapping ---
+    function getColorForTimePrime(tPrime, minTPrime, maxTPrime) {
+        if (maxTPrime <= minTPrime) return 'hsl(240, 100%, 50%)'; // Default blue if range is invalid
+
+        // Normalize tPrime to 0-1 range
+        const normalizedTime = Math.max(0, Math.min(1, (tPrime - minTPrime) / (maxTPrime - minTPrime)));
+
+        // Map normalized time to Hue (e.g., Blue=240 to Red=0)
+        const hue = 240 - normalizedTime * 240;
+        return `hsl(${hue}, 100%, 50%)`;
+    }
+
+    // --- Color Bar ---
+    function drawColorBar() {
+        const barWidth = colorBarCanvas.width;
+        const barHeight = colorBarCanvas.height;
+
+        // Calculate the t' range corresponding to t=0 and t=maxTime at y=0
+        // t' = gamma * (t + v*y/c^2)
+        const tPrimeLegendMin = gamma * (0 + v * 0 / (c*c)) ; // t=0, y=0
+        const tPrimeLegendMax = gamma * (maxTime + v * 0 / (c*c)); // t=maxTime, y=0
+
+        for (let i = 0; i < barHeight; i++) {
+            const tPrime = tPrimeLegendMin + (tPrimeLegendMax - tPrimeLegendMin) * (1 - i / barHeight); // Invert i for top=max
+            const color = getColorForTimePrime(tPrime, tPrimeLegendMin, tPrimeLegendMax);
+            colorBarCtx.fillStyle = color;
+            colorBarCtx.fillRect(0, i, barWidth, 1);
+        }
+
+        // Update labels
+        tPrimeMinLabel.textContent = tPrimeLegendMin.toFixed(2);
+        tPrimeMaxLabel.textContent = tPrimeLegendMax.toFixed(2);
+    }
+
+
+    // --- Main Drawing Logic ---
+    function drawDiagrams() {
+        const t = parseFloat(timeSlider.value);
+        timeValueSpan.textContent = t.toFixed(2);
+
+        drawAxes(labCtx);
+        drawAxes(movingCtx);
+
+        // Calculate the actual min/max t' across the visible wavefront at time t
+        // for more accurate coloring across the whole diagram.
+        // Check points at y = +/- c*t (extent of wavefront)
+        let currentMinTPrime = Infinity;
+        let currentMaxTPrime = -Infinity;
+
+        if (t > 0) {
+             // Max y reached by light is c*t, min is -c*t (within bounds)
+            const y_max_wave = Math.min(maxCoord, c * t);
+            const y_min_wave = Math.max(minCoord, -c * t);
+
+             // t' = gamma * (t + v*y/c^2)
+             // Since v is negative, max t' occurs at min y, min t' occurs at max y
+             currentMaxTPrime = gamma * (t + v * y_min_wave / (c*c));
+             currentMinTPrime = gamma * (t + v * y_max_wave / (c*c));
+        } else {
+            currentMinTPrime = 0;
+            currentMaxTPrime = 0;
+        }
+        // Add a small epsilon if min/max are equal to avoid division by zero
+        if (currentMaxTPrime <= currentMinTPrime) {
+             currentMaxTPrime = currentMinTPrime + 1e-6;
+        }
+
+
+        for (let i = 0; i < numArrows; i++) {
+            const angle = (2 * Math.PI * i) / numArrows;
+
+            // --- Lab Frame (S) ---
+            const x = c * t * Math.cos(angle);
+            const y = c * t * Math.sin(angle);
+
+            // Draw only if within bounds (approx)
+            if (Math.abs(x) <= maxCoord && Math.abs(y) <= maxCoord && t > 0) {
+                const canvasX1_lab = toCanvasX(0, labCtx);
+                const canvasY1_lab = toCanvasY(0, labCtx);
+                const canvasX2_lab = toCanvasX(x, labCtx);
+                const canvasY2_lab = toCanvasY(y, labCtx);
+                drawArrow(labCtx, canvasX1_lab, canvasY1_lab, canvasX2_lab, canvasY2_lab, 'blue', arrowHeadSize);
+            }
+
+            // --- Moving Frame (S') ---
+            // Lorentz transform position (event: light pulse at x, y, t)
+            // Frame S' moves at -v along y relative to S
+            // Transformation from S to S':
+            // t' = gamma * (t - (-v)*y/c^2) = gamma * (t + v*y/c^2)
+            // x' = x
+            // y' = gamma * (y - (-v)*t) = gamma * (y + v*t)
+            const tPrime = gamma * (t + v * y / (c * c));
+            const xPrime = x;
+            const yPrime = gamma * (y + v * t);
+
+
+            // Velocity components in Lab Frame (S)
+            const ux = c * Math.cos(angle);
+            const uy = c * Math.sin(angle);
+
+            // Lorentz transform velocity components
+            // Transformation from S to S' (frame moving at -v along y):
+            // ux' = ux / (gamma * (1 - (-v)*uy/c^2)) = ux / (gamma * (1 + v*uy/c^2))
+            // uy' = (uy - (-v)) / (1 - (-v)*uy/c^2) = (uy + v) / (1 + v*uy/c^2)
+             const denominator = 1 + (v * uy) / (c * c);
+             const uxPrime = ux / (gamma * denominator);
+             const uyPrime = (uy + v) / denominator;
+
+             // Check magnitude (should still be c=1)
+             // console.log("Transformed speed:", Math.sqrt(uxPrime**2 + uyPrime**2));
+
+
+            // Draw arrow in Moving Frame
+            if (Math.abs(xPrime) <= maxCoord && Math.abs(yPrime) <= maxCoord && t > 0) {
+                const color = getColorForTimePrime(tPrime, currentMinTPrime, currentMaxTPrime);
+
+                // Base of the small arrow in canvas coords
+                const arrowBaseX_mov = toCanvasX(xPrime, movingCtx);
+                const arrowBaseY_mov = toCanvasY(yPrime, movingCtx);
+
+                // Tip of the small arrow (scaled by fixed length and velocity direction)
+                // Need to convert velocity vector (plot units/time) to canvas displacement
+                // Scale dx', dy' to canvas pixels. A change of dx' corresponds to canvasWidth*(dx'/plotRange) pixels.
+                // We want a fixed *pixel* length arrow.
+                const norm = Math.sqrt(uxPrime*uxPrime + uyPrime*uyPrime); // Should be c=1 if t>0
+                const dirX = (norm > 1e-6) ? uxPrime / norm : 0;
+                 // Inverted Y for canvas direction: use -uyPrime
+                const dirY = (norm > 1e-6) ? -uyPrime / norm : 0;
+
+
+                const arrowTipX_mov = arrowBaseX_mov + dirX * transformedArrowLength;
+                const arrowTipY_mov = arrowBaseY_mov + dirY * transformedArrowLength; // Use canvas Y direction
+
+
+                drawArrow(movingCtx, arrowBaseX_mov, arrowBaseY_mov, arrowTipX_mov, arrowTipY_mov, color, arrowHeadSize);
+            }
+        }
+    }
+
+    // --- Initialization and Event Listener ---
+    timeSlider.addEventListener('input', drawDiagrams);
+
+    // Initial Draw
+    drawColorBar();
+    drawDiagrams();
+
+</script>
+
+</body>
+</html>

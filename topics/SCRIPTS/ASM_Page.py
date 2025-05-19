@@ -1020,6 +1020,9 @@ def checks(html_file):
         for Latex_command in Latex_commands:
             outfile.write(f'\\{Latex_command} \n')
 
+        print("number of lines with bugs: ", i)
+        print("check latex_still_in_html.txt for details of bugs")
+
 import re
 
 def check_ids_for_spaces(html_file_path):

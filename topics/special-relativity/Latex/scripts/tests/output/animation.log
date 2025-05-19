@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  24 JUN 2024 00:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  13 MAR 2025 15:54
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/one_p/OneDrive/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/tests/animation.tex
-(c:/Users/one_p/OneDrive/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/tests/animation.tex
+**c:/Users/one_p/OneDrive/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/scripts/tests/animation.tex
+(c:/Users/one_p/OneDrive/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/scripts/tests/animation.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -347,7 +347,7 @@ Package: fp-eqn 1995/04/03
 Package: fp-upn 1996/10/21
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-eval.sty
 Package: fp-eval 1995/04/03
-)) (c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\output\animation.aux)
+)) (c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\output\animation.aux)
 \openout1 = `animation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -382,7 +382,7 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-)) ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr0> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr1> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr2> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr3> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr4> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr5> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr6> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr7> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr8> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr9> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr10> [1{C:/Users/one_p/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\output\animation.aux)
+)) ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr0> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr1> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr2> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr3> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr4> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr5> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr6> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr7> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr8> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr9> ( FP-EVAL ( FP-UPN ( FP-CLIP ) ) ) <a0,fr10> [1{C:/Users/one_p/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\output\animation.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -390,14 +390,14 @@ L3 programming layer <2024-03-14>
  ) 
 Here is how much of TeX's memory you used:
  14554 strings out of 474424
- 303285 string characters out of 5741740
+ 303373 string characters out of 5741740
  1928496 words of memory out of 5000000
  36637 multiletter control sequences out of 15000+600000
  558069 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,6n,107p,496b,866s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,6n,107p,504b,866s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\output\animation.pdf (1 page, 33610 bytes).
+Output written on c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\output\animation.pdf (1 page, 33598 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

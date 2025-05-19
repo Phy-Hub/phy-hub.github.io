@@ -65,7 +65,7 @@ def PlotStyle(yy,zz,tt,axis_color):
 
 ### SubPlot 1 #################################################################
 plt.figure(frameon=False)
-PlotStyle("y","z","t = %s" %t,"black")
+PlotStyle("$y_0$","$z_0$","$t_0$ = %s" %t,"black")
 for i in range(len(Rs)):
     plt.scatter( Rs[i,1] ,Rs[i,2], color = 'black' , s = 10, animated=True)
     plt.quiver(  R[i,:,1], R[i,:,2] , sc * C[:,1], sc * C[:,2],
@@ -77,7 +77,7 @@ plt.savefig(path.pdf +"Rest_Pulse.pdf",bbox_inches='tight', format='pdf',transpa
 
 ### SubPlot 2 #################################################################
 plt.figure(frameon=False)
-PlotStyle("y'","z'",  r"t' = $- \gamma \frac{vz}{c^2}$","gray") # r"t'=$\gamma(t-\dfrac{vz}{c^2})$ ")
+PlotStyle("y","z",  r"t = $ \gamma \frac{uz_0}{c^2}$","gray") # r"t'=$\gamma(t-\dfrac{vz}{c^2})$ ")
 doppler = SR.Doppler(V[1], C_PRM[0,:,2])
 cm = mpl.cm.rainbow
 for i in range(len(Rs)):
@@ -94,7 +94,7 @@ plt.savefig(path.pdf +"Prime_Pulse.pdf",bbox_inches='tight', format='pdf',transp
 
 ### SubPlot 3 #################################################################
 plt.figure(frameon=False)
-PlotStyle("y'","z'",r"t'= 0","gray") #$\gamma$t")
+PlotStyle("y","z",r"t= 0","gray") #$\gamma$t")
 for i in range(len(Rs)):
     plt.scatter( Rs_PRM[i,0] ,Rs_PRM[i,1]+V[1]*T_prop_PRM, color = 'grey' , s = 20, animated=True,alpha=0.7)
     plt.scatter( Rs_PRM_[i,0] ,Rs_PRM_[i,1], color = 'black' , s = 20, animated=True)

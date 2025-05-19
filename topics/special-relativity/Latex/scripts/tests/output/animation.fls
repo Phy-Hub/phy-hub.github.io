@@ -1,7 +1,7 @@
-PWD c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests
+PWD c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests
 INPUT C:\Users\one_p\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\animation.tex
-OUTPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\output\animation.log
+INPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\animation.tex
+OUTPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\output\animation.log
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\base\size10.clo
@@ -183,10 +183,10 @@ INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\fp\fp-upn.sty
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\fp\fp-upn.sty
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\fp\fp-eval.sty
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\fp\fp-eval.sty
-INPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\output\animation.aux
-INPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\output\animation.aux
-INPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\output\animation.aux
-OUTPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\output\animation.aux
+INPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\output\animation.aux
+INPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\output\animation.aux
+INPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\output\animation.aux
+OUTPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\output\animation.aux
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
@@ -195,8 +195,8 @@ INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstop
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
-OUTPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\output\animation.pdf
+OUTPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\output\animation.pdf
 INPUT C:\Users\one_p\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
-INPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\tests\output\animation.aux
+INPUT c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\scripts\tests\output\animation.aux
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb

@@ -2,6 +2,11 @@
 
 %█████████████████████████████████████████████████████
 %PAGE LAYOUT
+%█████████████████████████████████████████████████████
+
+% font
+\usepackage[T1]{fontenc}
+\usepackage{tgschola}% fourier}% utopia}% lmodern}%
 
 % Page Colour
 \usepackage{xcolor}
@@ -25,14 +30,25 @@
 \usepackage{multicol}
 \usepackage{mdframed}
 
+% equation spacing
+\usepackage{mathtools}
+\setlength{\abovedisplayskip}{1pt}
+\setlength{\belowdisplayskip}{1pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+
+%█████████████████████████████████████████████████████
+%New commands
+%█████████████████████████████████████████████████████
+
 % derivations environment
 \newenvironment{derivation}{
-  \textbf{\color{gray}derivation:} \\
   %\vspace{-0.45\baselineskip}{\color{gray}\rule{\baselineskip}{0.4pt}}
-  \begin{mdframed}[linecolor=gray, backgroundcolor=Beige, topline=false, rightline=false, bottomline=false]
-      \color{gray}  }{
+  \begin{mdframed}[linecolor=gray, backgroundcolor=Beige, topline=false, bottomline=false]
+    \color{gray} \underline{\textbf{derivation:}}
+    }{% \vspace{- 0.5\baselineskip} \hspace{-0.76\baselineskip} \color{gray}\rule{\baselineskip}{0.4pt}  \vspace{-0.27\baselineskip}
   \end{mdframed}
-  \vspace{-0.45\baselineskip}{\color{gray}\rule{\baselineskip}{0.4pt}}
   \vspace{\baselineskip}
 }
 
@@ -47,26 +63,28 @@
 % variable table
 \usepackage{colortbl}
 \usepackage{xtab}
-\newcommand{\linesep}{%
-  \vspace{-0.6\baselineskip}%
-  \noindent\textcolor{gray}{\rule{\linewidth}{0.4pt}}%
-  \vspace{-.4\baselineskip}%
+\newcommand{\linesep}{
+  \vspace{-0.6\baselineskip}
+  \noindent\textcolor{gray}{\rule{\linewidth}{0.4pt}}
+  \vspace{-.4\baselineskip}
 }
-\newcommand{\variable}[2]{%
-  \noindent #1 \textbf{:} #2%
 
-  \vspace{-0.6\baselineskip}%
-  \noindent\textcolor{gray}{\rule{\linewidth}{0.4pt}}%
-  \vspace{-0.4\baselineskip}%
+\newcommand{\variable}[2]{
+  \noindent #1 \textbf{:} #2
+
+  \vspace{-0.6\baselineskip}
+  \noindent\textcolor{gray}{\rule{\linewidth}{0.4pt}}
+  \vspace{-0.4\baselineskip}
 
 }
 
 %█████████████████████████████████████████████████████
 % MATH
+%█████████████████████████████████████████████████████
 
 %\usepackage{mathtools}
 %\usepackage{amsmath}
-%\usepackage{amssymb}
+\usepackage{amssymb}
 %\usepackage{bm}
 \usepackage[most]{tcolorbox}
 \newcommand\mhl[1]{\tcbhighmath{#1}}
@@ -74,6 +92,7 @@
 
 %█████████████████████████████████████████████████████
 % PLOTS
+%█████████████████████████████████████████████████████
 
 % Figures
 \usepackage{caption}
@@ -96,15 +115,18 @@
 \usetikzlibrary{calc}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
+
 %██████████████████████████████████████████████████████
-% Links
+% LINKS
+%█████████████████████████████████████████████████████
 
 %\usepackage{url}
 \usepackage{hyperref}
 \hypersetup{hidelinks}
 
 %█████████████████████████████████████████████████████
-% Bib
+% BIBLIOGRAPHY
+%█████████████████████████████████████████████████████
 
 \usepackage[backend=biber, refsegment=chapter]{biblatex}
 \addbibresource{refs.bib}

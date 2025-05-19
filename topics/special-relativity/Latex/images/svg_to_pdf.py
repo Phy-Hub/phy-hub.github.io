@@ -12,3 +12,5 @@ for svg_file in svg_files:
     if not os.path.exists(pdf_file) or os.path.getmtime(svg_file_path) > os.path.getmtime(pdf_file):
 
         subprocess.run(['inkscape', '--export-filename=' + pdf_file, svg_file_path])
+
+        print("pdf updated: ", pdf_file )

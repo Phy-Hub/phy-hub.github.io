@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import Paths as path
-filename_prefix = "coord_transform_"
+import subprocess
 
 # Define the density function
 def density_rest_frame(x, y, z):
@@ -19,6 +19,84 @@ def vector_density_norm_primed_frame(x, y, z, b, g):
     L_squared = (x**2 + y**2 + g**2 * z**2)
     M = (x**2 + y**2 + g**4 * z**2)
     return  np.sqrt( M / L_squared ) / L_squared
+
+
+def vector_density_directional_derivative(x, y, z, b, g):
+    L = np.sqrt(x**2 + y**2 + g**2 * z**2)
+    return - (x**2 + y**2 + g**4 * z**2 - b*z*L*g**3  ) / ( g * ( 1 - b*g*z / L ) * L**4 )
+
+
+def jacobian_norm_square(x, y, z, b, g):
+    L = np.sqrt(x**2 + y**2 + g**2 * z**2)
+    M = g * ( g*z - b * L )
+    J_norm = np.sqrt( 2 * ( x**2 + y**2 )**2 + (x**2 + y**2) * ( M + z )**2 + 2 * z**2 * M**2 ) / (  g *  L**3 * ( 1 - b * g * z/L )**2  )
+    return J_norm**2
+
+# https://www.wolframalpha.com/input?i=d%2Fdx+1+%2F+%28++g++%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29%5E3+%28+1+-+b+%28g+z%29+%2F++%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29++++%29%5E2+%29
+# https://www.wolframalpha.com/input?i=d%2Fdz+1+%2F+%28++g++%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29%5E3+%28+1+-+b+%28g+z%29+%2F++%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29++++%29%5E2+%29
+# https://www.wolframalpha.com/input?i=d%2Fdz+2+%28+x%5E2%2B+y%5E2+%29%5E2+%2B+%28x%5E2%2By%5E2%29%28g+%28+-b+%5Csqrt%7Bx%5E2%2By%5E2%2Bg%5E2z%5E2%7D+++%2B+g+z+%29%2Bz%29%5E2+%2B+2+z%5E2+g%5E2+%28+-b+%5Csqrt%7Bx%5E2%2By%5E2%2Bg%5E2z%5E2%7D+%2B+g+z++%29%5E2
+
+def jacobian_gradient_norm(x, y, z, b, g):
+    L = np.sqrt(x**2 + y**2 + g**2 * z**2)
+    r = np.sqrt(x**2 + y**2 + z**2)
+    M = g * ( g*z - b * L )
+    h = 2 * ( x**2 + y**2 )**2 + (x**2 + y**2) * ( M + z )**2 + 2 * z**2 * M**2
+
+    dh_dx = 2 * x * (  b**2 * g**2 * ( g**2 * z**2 + 2*r**2) -  b*g*z/L * ( 3*(g**2+1)*(x**2+y**2) + 2*(g**2+2) * g**2 * z**2 ) + (g**2+1)**2 * z**2 + 4*(x**2+y**2) )
+    dh_dy = 2 * y * (  b**2 * g**2 * ( g**2 * z**2 + 2*r**2) -  b*g*z/L * ( 3*(g**2+1)*(x**2+y**2) + 2*(g**2+2) * g**2 * z**2 ) + (g**2+1)**2 * z**2 + 4*(x**2+y**2) )
+    dh_dz = 4 * g**2 * z * ( g*z - b*L) * ( g*z*(1- b*g*z/L) + ( g*z - b*L) ) + 2 * (x**2+y**2) * ( g**2+1 - b*g**3 *z/L) * (- b*g*L + (g**2+1) * z )
+
+    D_xy = (( 3*L - b*g*z))/( g*L**3 *( b*g*z - L)**3) * np.sqrt( h )
+    D_xyz = 1/( g*L**3 * (1- b * (g*z)/(L))**2) * 1/(2*np.sqrt(h))
+
+    dj_dx1 = x * D_xy
+    dj_dx2 = D_xyz * dh_dx
+
+    dj_dy1 = y * D_xy
+    dj_dy2 = D_xyz * dh_dy
+
+    dj_dz1 =  (( 3*L - b*g*z)*g*z - 2*b*L**2 )/( L**3 *( b*g*z - L)**3) * np.sqrt( h )
+    dj_dz2 = D_xyz * dh_dz
+
+    dj_dx = dj_dx1 + dj_dx2
+    dj_dy = dj_dy1 + dj_dy2
+    dj_dz = dj_dz1 + dj_dz2
+
+    return np.sqrt( dj_dx**2 + dj_dy**2 + dj_dz**2 )
+
+def jacobian_directional_derivative(x, y, z, b, g):
+    L = np.sqrt(x**2 + y**2 + g**2 * z**2)
+    r = np.sqrt(x**2 + y**2 + z**2)
+    M = g * ( g*z - b * L )
+    h = 2 * ( x**2 + y**2 )**2 + (x**2 + y**2) * ( M + z )**2 + 2 * z**2 * M**2
+
+    cc = 1/( g * (1-b*g*z/L))
+    cx = cc * x/L
+    cy = cc * y/L
+    cz = cc * g * ( g*z/L - b )
+
+    dh_dx = 2 * x * (  b**2 * g**2 * ( g**2 * z**2 + 2*r**2) -  b*g*z/L * ( 3*(g**2+1)*(x**2+y**2) + 2*(g**2+2) * g**2 * z**2 ) + (g**2+1)**2 * z**2 + 4*(x**2+y**2) )
+    dh_dy = 2 * y * (  b**2 * g**2 * ( g**2 * z**2 + 2*r**2) -  b*g*z/L * ( 3*(g**2+1)*(x**2+y**2) + 2*(g**2+2) * g**2 * z**2 ) + (g**2+1)**2 * z**2 + 4*(x**2+y**2) )
+    dh_dz = 4 * g**2 * z * ( g*z - b*L) * ( g*z*(1- b*g*z/L) + ( g*z - b*L) ) + 2 * (x**2+y**2) * ( g**2+1 - b*g**3 *z/L) * (- b*g*L + (g**2+1) * z )
+
+    D_xy = (( 3*L - b*g*z))/( g*L**3 *( b*g*z - L)**3) * np.sqrt( h )
+    D_xyz = 1/( g*L**3 * (1- b * (g*z)/(L))**2) * 1/(2*np.sqrt(h))
+
+    dj_dx1 = x * D_xy
+    dj_dx2 = D_xyz * dh_dx
+
+    dj_dy1 = y * D_xy
+    dj_dy2 = D_xyz * dh_dy
+
+    dj_dz1 =  (( 3*L - b*g*z)*g*z - 2*b*L**2 )/( L**3 *( b*g*z - L)**3) * np.sqrt( h )
+    dj_dz2 = D_xyz * dh_dz
+
+    dj_dx = dj_dx1 + dj_dx2
+    dj_dy = dj_dy1 + dj_dy2
+    dj_dz = dj_dz1 + dj_dz2
+
+    return  dj_dx * cx + dj_dy * cy + dj_dz * cz
+
 
 # Parameters
 b = 0.9
@@ -46,6 +124,29 @@ vector_density_values_primed_frame = np.nan_to_num(vector_density_values_primed_
 vector_density_norm_values_primed_frame = vector_density_norm_primed_frame(x, Y, Z, b, g)
 vector_density_norm_values_primed_frame = np.nan_to_num(vector_density_norm_values_primed_frame, nan=0)
 
+vector_density_directional_derivative_values_primed_frame = vector_density_directional_derivative(x, Y, Z, b, g)
+vector_density_directional_derivative_values_primed_frame = np.nan_to_num(vector_density_directional_derivative_values_primed_frame, nan=0)
+vector_density_directional_derivative_values_rest_frame = vector_density_directional_derivative(x, Y, Z, 0, 1)
+vector_density_directional_derivative_values_rest_frame = np.nan_to_num(vector_density_directional_derivative_values_rest_frame, nan=0)
+
+jacobian_norm_square_values_primed_frame = jacobian_norm_square(x, Y, Z, b, g)
+jacobian_norm_square_values_primed_frame = np.nan_to_num(jacobian_norm_square_values_primed_frame, nan=0)
+
+jacobian_gradient_norm_values_primed_frame = jacobian_gradient_norm(x, Y, Z, b, g)
+jacobian_gradient_norm_values_primed_frame = np.nan_to_num(jacobian_gradient_norm_values_primed_frame, nan=0)
+
+jacobian_directional_derivative_values_primed_frame = jacobian_directional_derivative(x, Y, Z, b, g)
+jacobian_directional_derivative_values_primed_frame = np.nan_to_num(jacobian_directional_derivative_values_primed_frame, nan=0)
+
+
+
+def plotsave(filename):
+    circle = plt.Circle((0, 0), nan_space, color='black')
+    plt.gca().add_patch(circle)
+    plt.savefig(path.svg + filename + ".svg",bbox_inches='tight', format='svg',transparent=True)
+    plt.savefig(path.pdf + filename + ".pdf",bbox_inches='tight', format='pdf',transparent=True)
+    subprocess.run(['svgo', path.svg + filename + ".svg", '-o', path.svg + filename + ".svg"], shell=True)
+
 # 2D Plotting (Figure 1)
 fig_rest = plt.figure(1)
 ax_rest = fig_rest.add_subplot(111)
@@ -53,11 +154,11 @@ ax_rest = fig_rest.add_subplot(111)
 im_rest = ax_rest.imshow(density_values_rest_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
 # Add colorbar and labels
 fig_rest.colorbar(im_rest)
-ax_rest.set_xlabel("$l_y'$")
-ax_rest.set_ylabel("$l_z'$", rotation=0)
+ax_rest.set_xlabel("$y$")
+ax_rest.set_ylabel("$z$", rotation=0)
 #ax.set_title("Retarded Coordinate Density Transform")
-plt.savefig(path.svg + "Density_of_Light_from_Rest_Source.svg",bbox_inches='tight', format='svg',transparent=True)
-plt.savefig(path.pdf + "Density_of_Light_from_Rest_Source.pdf",bbox_inches='tight', format='pdf',transparent=True)
+filename = "Density_of_Light_from_Rest_Source"
+plotsave(filename)
 
 # 2D Plotting (Figure 2)
 fig = plt.figure(2)
@@ -66,11 +167,11 @@ ax = fig.add_subplot(111)
 im = ax.imshow(density_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
 # Add colorbar and labels
 fig.colorbar(im)
-ax.set_xlabel("$l_y'$")
-ax.set_ylabel("$l_z'$", rotation=0)
+ax.set_xlabel("$y$")
+ax.set_ylabel("$z$", rotation=0)
 #ax.set_title("Retarded Coordinate Density Transform")
-plt.savefig(path.svg + "Density_of_Light_from_Moving_Source.svg",bbox_inches='tight', format='svg',transparent=True)
-plt.savefig(path.pdf + "Density_of_Light_from_Moving_Source.pdf",bbox_inches='tight', format='pdf',transparent=True)
+filename = "Density_of_Light_from_Moving_Source"
+plotsave(filename)
 
 # 2D Plotting (Figure 3)
 fig_vec = plt.figure(3)
@@ -79,24 +180,92 @@ ax_vec = fig_vec.add_subplot(111)
 im_vec = ax_vec.imshow(vector_density_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
 # Add colorbar and labels
 fig_vec.colorbar(im_vec)
-ax_vec.set_xlabel("$l_y'$")
-ax_vec.set_ylabel("$l_z'$", rotation=0)
+ax_vec.set_xlabel("$y$")
+ax_vec.set_ylabel("$z$", rotation=0)
 #ax.set_title("Retarded Coordinate Density Transform")
-plt.savefig(path.svg + "Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.svg",bbox_inches='tight', format='svg',transparent=True)
-plt.savefig(path.pdf + "Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf",bbox_inches='tight', format='pdf',transparent=True)
+filename = "Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source"
+plotsave(filename)
 
-# 2D Plotting (Figure 3)
+# 2D Plotting (Figure 4)
 fig_norm = plt.figure(4)
 ax_norm = fig_norm.add_subplot(111)
 # Plot the 2D density image
 im_norm = ax_norm.imshow(vector_density_norm_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
 # Add colorbar and labels
 fig_norm.colorbar(im_norm)
-ax_norm.set_xlabel("$l_y'$")
-ax_norm.set_ylabel("$l_z'$", rotation=0)
+ax_norm.set_xlabel("$y$")
+ax_norm.set_ylabel("$z$", rotation=0)
 #ax.set_title("Retarded Coordinate Density Transform")
-plt.savefig(path.svg + "Rate_of_Change_of_Vector_Density_norm_of_Light_from_Moving_Source.svg",bbox_inches='tight', format='svg',transparent=True)
-plt.savefig(path.pdf + "Rate_of_Change_of_Vector_Density_norm_of_Light_from_Moving_Source.pdf",bbox_inches='tight', format='pdf',transparent=True)
+filename = "Rate_of_Change_of_Vector_Density_norm_of_Light_from_Moving_Source"
+plotsave(filename)
+
+# 2D Plotting (Figure 5)
+fig_norm = plt.figure(5)
+ax_norm = fig_norm.add_subplot(111)
+# Plot the 2D density image
+im_norm = ax_norm.imshow(vector_density_directional_derivative_values_rest_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+circle = plt.Circle((0, 0), nan_space, color='black')
+plt.gca().add_patch(circle)
+# Add colorbar and labels
+fig_norm.colorbar(im_norm)
+ax_norm.set_xlabel("$y$")
+ax_norm.set_ylabel("$z$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+filename = "Directional_Derivative_of_Vector_Density_norm_of_Light_from_Rest_Source"
+plotsave(filename)
+
+# 2D Plotting (Figure 6)
+fig_norm = plt.figure(6)
+ax_norm = fig_norm.add_subplot(111)
+# Plot the 2D density image
+im_norm = ax_norm.imshow(vector_density_directional_derivative_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig_norm.colorbar(im_norm)
+ax_norm.set_xlabel("$y$")
+ax_norm.set_ylabel("$z$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+filename = "Directional_Derivative_of_Vector_Density_norm_of_Light_from_Moving_Source"
+plotsave(filename)
+
+# 2D Plotting (Figure 7)
+fig_norm = plt.figure(7)
+ax_norm = fig_norm.add_subplot(111)
+# Plot the 2D density image
+im_norm = ax_norm.imshow(jacobian_norm_square_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig_norm.colorbar(im_norm)
+ax_norm.set_xlabel("$y$")
+ax_norm.set_ylabel("$z$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+filename = "jacobian_of_lights_velocity_norm_squared_for_Moving_Source"
+plotsave(filename)
+
+# 2D Plotting (Figure 8)
+fig_norm = plt.figure(8)
+ax_norm = fig_norm.add_subplot(111)
+# Plot the 2D density image
+im_norm = ax_norm.imshow(jacobian_gradient_norm_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig_norm.colorbar(im_norm)
+ax_norm.set_xlabel("$y$")
+ax_norm.set_ylabel("$z$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+filename = "jacobian_of_lights_velocity_gradient_norm_for_Moving_Source"
+plotsave(filename)
+
+# 2D Plotting (Figure 9)
+fig_norm = plt.figure(9)
+ax_norm = fig_norm.add_subplot(111)
+# Plot the 2D density image
+im_norm = ax_norm.imshow(jacobian_directional_derivative_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig_norm.colorbar(im_norm)
+ax_norm.set_xlabel("$y$")
+ax_norm.set_ylabel("$z$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+filename = "jacobian_of_lights_velocity_directional derivative_for_Moving_Source"
+plotsave(filename)
+
 
 # Show both figures
 plt.show()

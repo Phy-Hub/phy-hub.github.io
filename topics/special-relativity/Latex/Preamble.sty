@@ -3,7 +3,6 @@
 %█████████████████████████████████████████████████████
 %PAGE LAYOUT
 %█████████████████████████████████████████████████████
-
 % font
 \usepackage[T1]{fontenc}
 \usepackage{tgschola}% fourier}% utopia}% lmodern}%
@@ -44,6 +43,7 @@
 
 % derivations environment
 \newenvironment{derivation}{
+  \vspace{0.2\baselineskip}
   %\vspace{-0.45\baselineskip}{\color{gray}\rule{\baselineskip}{0.4pt}}
   \begin{mdframed}[linecolor=gray, backgroundcolor=Beige, topline=false, bottomline=false]
     \color{gray} \underline{\textbf{derivation:}}
@@ -77,6 +77,23 @@
   \vspace{-0.4\baselineskip}
 
 }
+
+% creating Part title page
+\makeatletter
+\renewcommand{\part}[1]{%
+  \newpage
+  \thispagestyle{plain}
+  \refstepcounter{part}%
+  \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
+  \vspace*{2cm} % vertical space before part title
+  \begin{center}%
+    {\Huge \bfseries \partname~\thepart\par}%
+    \vspace{1cm}%
+    {\Huge \bfseries #1\par}%
+  \end{center}%
+  \vspace{2cm} % vertical space after part title
+}
+\makeatother
 
 %█████████████████████████████████████████████████████
 % MATH
@@ -113,6 +130,8 @@
 \tikzexternalize[prefix=./output/tikz/]% define output directory
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
+\usetikzlibrary{math}
+\usetikzlibrary{arrows.meta}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
 

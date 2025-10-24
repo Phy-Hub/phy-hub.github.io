@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html  lang="en">
-<head><title>The Physics Hub</title>
+<head><title>Physics Hub</title> <!--<title>&phi;hy-Hub</title> <title>The Physics Hub</title>-->
   <meta name="keywords" content="...">
   <meta name="description" content="...">
-  <meta name="author" content="Phyllis Hubble">
+  <meta name="author" content="Phyra Hubble">
   <meta name="google-site-verification" content="Xidi1F0Zp9k2tF81d2sscPGILkqNLTNKEufMyZ7dWy8" />
 
   <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <style>
+
+<style>
 
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
     @import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
@@ -37,6 +38,16 @@
       text-decoration: none;
     }
     a:hover {text-decoration: underline;}
+
+
+    .phi-symbol {
+
+      font-family: "Noto Sans Math", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+
+  }
 
   </style>
 
@@ -89,18 +100,16 @@
         var myUses = svgDoc.getElementsByTagName('use');
         var totalItems = myUses.length; // total number of items
         var totalTime = 4; // total time for all animations in seconds
-        var timePerItemSlow = totalTime / 1000; // time per item for first 300 items
-        var timePerItemFast = (totalTime - (timePerItemSlow * 100)) / (totalItems - 100); // time per item for remaining items
+
+        const scalingFactor = totalTime / Math.sqrt(totalItems -1);
+
         for (var i = 0; i < myUses.length; i++) {
           myUses[i].style.opacity = 0;
-          if (i < 300) {
-            myUses[i].style.transition = `opacity 0s`;
-            myUses[i].style.transitionDelay = `${i * timePerItemSlow}s`; // Set a different delay for each use
-          } else {
-            myUses[i].style.transition = `opacity 0s`;
-            myUses[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`; // Set a different delay for each use
-          }
+          const delay = scalingFactor * Math.sqrt(i);
+          myUses[i].style.transition = `opacity 0s`;
+          myUses[i].style.transitionDelay = `${delay}s`;
         }
+
         setTimeout(function() {
           for (var i = 0; i < myUses.length; i++) {
             myUses[i].style.opacity = 1;

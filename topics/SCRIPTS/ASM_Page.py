@@ -30,6 +30,7 @@ py_to_main_tex       = "Latex/Tex/Main_Matter.tex"
 py_to_terms          = "Latex/Tex/Terms"
 py_to_tikz           = "Latex/output/tikz/"
 py_to_svgs           = "Latex/images/svg/"
+py_to_pdfs           = "Latex/images/pdf/"
 py_to_bib            = "Latex/refs.bib"
 py_to_bugs           = "bugs/"
 
@@ -340,6 +341,15 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
     label_match = re.search(r'\\label\{(?P<label>.*\})', figure_env)
     subfigures = re.findall(r'(\\begin\{subfigure\}.*?\\end\{subfigure\})', figure_env, re.DOTALL)
 
+    # if include_graphics_match:
+    #     pdfname = include_graphics_match.group('filename')
+    #     svgname = os.path.splitext(os.path.basename(pdfname))[0] + '.svg'
+
+    #     if not os.path.isfile(py_to_svgs + f'{svgname}'): print(" # \n # No file: " + py_to_svgs + f"{svgname} \n #")
+    #     #svg_file = os.path.join(py_to_svgs, os.path.splitext(pdfname)[0] + '.svg')
+    #     #subprocess.run(['pdf2svg', os.path.join(py_to_pdfs, pdfname), svg_file])
+
+
     if include_graphics_match or tikzpicture_env_match:
         filename = include_graphics_match.group('filename') if include_graphics_match else tikzfilename_match.group('filename') if tikzfilename_match else 'missing'
         filename = os.path.splitext(os.path.basename(filename))[0] + '.svg'
@@ -605,7 +615,7 @@ def math_to_HTML(content):
 def replace_refs(input_string, fig_dict):
     # This pattern matches \eqref{} and captures the content inside the brackets
     pattern_ref_eq = r'\\eqref\{(.*?)\}'
-    pattern_ref_fig = r'\\ref\{(fig.*?)\}'
+    pattern_ref_fig = r'\\ref\{(.*?fig.*?)\}'
     pattern_ref_toc = r'\\ref\{(.*?)\}'
 
     # This function will be used to replace each match
@@ -1019,6 +1029,7 @@ def checks(html_file):
         outfile.write('commands: \n')
         for Latex_command in Latex_commands:
             outfile.write(f'\\{Latex_command} \n')
+            print("### latex function to fix: " + f'\\{Latex_command}')
 
         print("number of lines with bugs: ", i)
         print("check latex_still_in_html.txt for details of bugs")

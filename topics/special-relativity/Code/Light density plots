@@ -32,6 +32,15 @@ def jacobian_norm_square(x, y, z, b, g):
     J_norm = np.sqrt( 2 * ( x**2 + y**2 )**2 + (x**2 + y**2) * ( M + z )**2 + 2 * z**2 * M**2 ) / (  g *  L**3 * ( 1 - b * g * z/L )**2  )
     return J_norm**2
 
+def jacobian_with_time_norm_square(x, y, z, b, g):
+    L = np.sqrt(x**2 + y**2 + g**2 * z**2)
+    J_norm = np.sqrt(2) / (g * L * (1 - b * g * z / L))
+    return J_norm**2
+
+def jacobian_with_time_directional_derivative(x, y, z, b, g):
+    L = np.sqrt(x**2 + y**2 + g**2 * z**2)
+    return np.sqrt(2) / ( L**2 * ( 1 - b * g * z / L ) )
+
 # https://www.wolframalpha.com/input?i=d%2Fdx+1+%2F+%28++g++%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29%5E3+%28+1+-+b+%28g+z%29+%2F++%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29++++%29%5E2+%29
 # https://www.wolframalpha.com/input?i=d%2Fdz+1+%2F+%28++g++%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29%5E3+%28+1+-+b+%28g+z%29+%2F++%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29++++%29%5E2+%29
 # https://www.wolframalpha.com/input?i=d%2Fdz+2+%28+x%5E2%2B+y%5E2+%29%5E2+%2B+%28x%5E2%2By%5E2%29%28g+%28+-b+%5Csqrt%7Bx%5E2%2By%5E2%2Bg%5E2z%5E2%7D+++%2B+g+z+%29%2Bz%29%5E2+%2B+2+z%5E2+g%5E2+%28+-b+%5Csqrt%7Bx%5E2%2By%5E2%2Bg%5E2z%5E2%7D+%2B+g+z++%29%5E2
@@ -97,6 +106,9 @@ def jacobian_directional_derivative(x, y, z, b, g):
 
     return  dj_dx * cx + dj_dy * cy + dj_dz * cz
 
+def d_alembert_operator_on_lights_propagation_direction(x, y, z, b, g):
+    L = np.sqrt(x**2 + y**2 + g**2 * z**2)
+    return -2 / (g * L * (1 - b * g * z / L))**2
 
 # Parameters
 b = 0.9
@@ -132,11 +144,21 @@ vector_density_directional_derivative_values_rest_frame = np.nan_to_num(vector_d
 jacobian_norm_square_values_primed_frame = jacobian_norm_square(x, Y, Z, b, g)
 jacobian_norm_square_values_primed_frame = np.nan_to_num(jacobian_norm_square_values_primed_frame, nan=0)
 
+jacobian_with_time_norm_square_values_primed_frame = jacobian_with_time_norm_square(x, Y, Z, b, g)
+jacobian_with_time_norm_square_values_primed_frame = np.nan_to_num(jacobian_with_time_norm_square_values_primed_frame, nan=0)
+
 jacobian_gradient_norm_values_primed_frame = jacobian_gradient_norm(x, Y, Z, b, g)
 jacobian_gradient_norm_values_primed_frame = np.nan_to_num(jacobian_gradient_norm_values_primed_frame, nan=0)
 
 jacobian_directional_derivative_values_primed_frame = jacobian_directional_derivative(x, Y, Z, b, g)
 jacobian_directional_derivative_values_primed_frame = np.nan_to_num(jacobian_directional_derivative_values_primed_frame, nan=0)
+
+jacobian_with_time_directional_derivative_values_primed_frame = jacobian_with_time_directional_derivative(x, Y, Z, b, g)
+jacobian_with_time_directional_derivative_values_primed_frame = np.nan_to_num(jacobian_with_time_directional_derivative_values_primed_frame, nan=0)
+
+d_alembert_operator_on_lights_propagation_direction_values_primed_frame = d_alembert_operator_on_lights_propagation_direction(x, Y, Z, b, g)
+d_alembert_operator_on_lights_propagation_direction_primed_frame = np.nan_to_num(d_alembert_operator_on_lights_propagation_direction_values_primed_frame, nan=0)
+
 
 
 
@@ -264,6 +286,45 @@ ax_norm.set_xlabel("$y$")
 ax_norm.set_ylabel("$z$", rotation=0)
 #ax.set_title("Retarded Coordinate Density Transform")
 filename = "jacobian_of_lights_velocity_directional derivative_for_Moving_Source"
+plotsave(filename)
+
+# 2D Plotting (Figure 10)
+fig_norm = plt.figure(10)
+ax_norm = fig_norm.add_subplot(111)
+# Plot the 2D density image
+im_norm = ax_norm.imshow(jacobian_with_time_norm_square_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig_norm.colorbar(im_norm)
+ax_norm.set_xlabel("$y$")
+ax_norm.set_ylabel("$z$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+filename = "jacobian_of_lights_velocity_with_time_norm_squared_for_Moving_Source"
+plotsave(filename)
+
+# 2D Plotting (Figure 11)
+fig_norm = plt.figure(11)
+ax_norm = fig_norm.add_subplot(111)
+# Plot the 2D density image
+im_norm = ax_norm.imshow(jacobian_with_time_directional_derivative_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig_norm.colorbar(im_norm)
+ax_norm.set_xlabel("$y$")
+ax_norm.set_ylabel("$z$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+filename = "jacobian_of_lights_velocity_with_time_directional_derivative_for_Moving_Source"
+plotsave(filename)
+
+# 2D Plotting (Figure 12)
+fig_norm = plt.figure(12)
+ax_norm = fig_norm.add_subplot(111)
+# Plot the 2D density image
+im_norm = ax_norm.imshow(d_alembert_operator_on_lights_propagation_direction_values_primed_frame, extent=[y.min(), y.max(), z.min(), z.max()], origin='lower', cmap='nipy_spectral')
+# Add colorbar and labels
+fig_norm.colorbar(im_norm)
+ax_norm.set_xlabel("$y$")
+ax_norm.set_ylabel("$z$", rotation=0)
+#ax.set_title("Retarded Coordinate Density Transform")
+filename = "d_alembert_operator_on_lights_velocity_unit_vector"
 plotsave(filename)
 
 

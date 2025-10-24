@@ -19,8 +19,15 @@
     %\printbibliography
 \fi
 
-% Compile All
+% Compile Appendix long only
 \if\comp2
+    \input{Tex/toc}
+    \input{Tex/Appendix_long}
+    %\printbibliography
+\fi
+
+% Compile All
+\if\comp3
     \input{Tex/Cover_front}
     \pagecolor{Beige}
     \input{Tex/Epigraph}

@@ -4,28 +4,6 @@
 %███████████████████████████████████████████████████████████████████
 \chapter{Overview of Aberration equations}
 
-\section{Aberration Equations}
-\section{Vectors}
-\begin{equation}%%%%%%%%%%%%%%%
-\label{retarded displacement 2}
-    \Vec{R}'_{ret}= \begin{pmatrix}
-    x\\ y \\ \gamma \left(z + \dfrac{u_p \cdot \|\vec{R}\|}{c}\right)
-    \end{pmatrix} = \|\vec{R}\|\begin{pmatrix}
-    \frac{x}{\|\vec{R}\|}\\ \frac{y}{\|\vec{R}\|} \\ \gamma \left( \frac{z}{\|\vec{R}\|} + \dfrac{u_p}{c} \right)\\
-    \end{pmatrix}.
-\end{equation}%%%%
-
-\begin{equation}%%%%%%%%%%%%%%%
-\label{eq: unit retarded velocity 2}
-    \hat{\mathbf{\vec{U}'}} = \hat{\mathbf{\vec{R}'}}_{ret} = \dfrac{1}{\text{\AA}} \begin{pmatrix}
-    \frac{x}{\|\vec{R}\|}\\ \frac{y}{\|\vec{R}\|} \\ \gamma \left( \frac{z}{\|\vec{R}\|} + \dfrac{u_p}{c} \right)
-    \end{pmatrix},
-\end{equation}%%%%
-
-\begin{equation}%%%%%%%%%%%%%%%
-\label{eq: field displacement transform 2}
-    \|\Vec{R}'_{ret}\|^2 = \text{\AA}^2 \|\vec{R}\|^2
-\end{equation}%%%%
 
 \section{Trig}
 \begin{equation}%%%%%%%%%%%%%%%
@@ -881,7 +859,7 @@ decide whether to include minkowski diagram as it is an abstract view rather tha
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{Acceleration}
+\section{Four Acceleration}
 
 ...proper acceleration. differentiate the velocity invariant quantity, it will give \( \frac{d^2 S}{d\tau^2} = 0 = ...\frac{d^2 S}{dt{'}^2} \)
 
@@ -1328,3 +1306,647 @@ so that $\|\nabla\Phi\|= ... = \frac{k}{r^2}$
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{continuous emition of light from point source}\label{sect: continuous emition of light from point source}
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{Rate of change of propagation direction}\label{sect: Rate of change of propagation direction}
+
+*** the redo:
+
+If we have light continuously being emitted evenly in all directions from a moving point source that is currently at the origin, as shown in figure (\ref{fig: full field transformation}).
+The lights velocity is described at each position $\underline{l}=(x,y,z)$ by the equation \eqref{eq: direction of light from moving source}
+
+If we want to find the rate of change of the direction of the light's propagation $\underline{\hat{c}}$, at a point $\underline{l}$ with respect to each coordinate we can take the partial differentiates of the unit vector for the lights propagation from equation \eqref{eq: direction of light from moving source} (which is the same, just without the magnitude $c$).
+This give the rate of change of the lights propagation with respect to each coordinate as:
+
+% https://www.wolframalpha.com/input?i=d%2Fdx+%28+%281%29%2F%28g%29+%28x%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+%281%29%2F%28g%29+%28y%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+-+b%09%29%2F%28+1+-+b+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29%29+%29
+% https://www.wolframalpha.com/input?i=d%2Fdy+%28+%281%29%2F%28g%29+%28x%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+%281%29%2F%28g%29+%28y%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+-+b%09%29%2F%28+1+-+b+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29%29+%29
+% https://www.wolframalpha.com/input?i=d%2Fdz+%28+%281%29%2F%28g%29+%28x%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+%281%29%2F%28g%29+%28y%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+%2C+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2z%5E2%29%29+-+b%09%29%2F%28+1+-+b+g+%28z%29%2F%28%5Csqrt%28x%5E2%2By%5E2%2Bg%5E2+z%5E2%29%29+%29
+%
+\begin{equation}
+	\begin{aligned}
+		 & \frac{\partial \underline{\hat{c}}}{\partial x}  =
+		\frac{1}{\gamma  L ( 1 + \frac{u}{c} \frac{\gamma z}{L} )^2}
+		\begin{pmatrix}
+			\frac{y^2}{ L^2} + \frac{\gamma z}{ L} \left(\frac{\gamma z}{L}+\frac{u}{c}\right) \\
+			- \frac{x}{L} \frac{y}{L}                                                          \\
+			- \frac{x}{L} \frac{z}{L}
+		\end{pmatrix}                                  \\
+		 & \frac{\partial \underline{\hat{c}}}{\partial y}  =
+		\frac{1}{\gamma  L (1+ \frac{u}{c} \frac{\gamma z}{L} )^2}
+		\begin{pmatrix}
+			- \frac{y}{L} \frac{x}{L}                                                          \\
+			\frac{x^2}{ L^2} + \frac{\gamma z}{ L} \left(\frac{\gamma z}{L}+\frac{u}{c}\right) \\
+			- \frac{y}{L} \frac{z}{L}
+		\end{pmatrix}                                  \\
+		 & \frac{\partial \underline{\hat{c}}}{\partial z}  = \frac{1}{\gamma  L
+			( 1 + \frac{u}{c} \frac{\gamma z}{L} )^2}
+		\begin{pmatrix}
+			\gamma ( - \frac{u}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L} \\
+			\gamma ( - \frac{u}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}  \\
+			\frac{ x^2 + y^2 }{ L^2}
+		\end{pmatrix}                                                        \\
+		 & \frac{\partial \underline{\hat{c}}}{\partial t}  = \frac{-u}{\gamma  L ( 1 + \frac{u}{c} \frac{\gamma z}{L} )^2}
+		\begin{pmatrix}
+			\gamma ( - \frac{u}{c}  - \frac{ \gamma z }{L} ) \frac{x}{L} \\
+			\gamma ( - \frac{u}{c}  - \frac{\gamma z }{L} ) \frac{y}{L}  \\
+			\frac{ x^2 + y^2 }{ L^2}
+		\end{pmatrix}                                                        \\
+		 & \text{with $ L=\sqrt{x^2 + y^2 + \gamma^2 z^2}$ }
+	\end{aligned}
+\end{equation}
+
+%███
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_x_u_is_0.pdf}
+		\caption{$\|\frac{\partial \underline{\hat{c}}}{\partial x}\|$}
+		\label{fig: Rate of change of lights velocity field of rest source subfig_1}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_y_u_is_0.pdf}
+		\caption{$\|\frac{\partial \underline{\hat{c}}}{\partial y}\|$}
+		\label{fig: Rate of change of lights velocity field of rest source subfig_2}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_z_u_is_0.pdf}
+		\caption{$\|\frac{\partial \underline{\hat{c}}}{\partial z}\|$}
+		\label{fig: Rate of change of lights velocity field of rest source subfig_3}
+	\end{subfigure}
+	\caption{\textbf{The rate of change of the velocity vector field of light from a source at rest}. main caption.}
+	\label{fig: Rate of change of lights velocity field of rest source}
+\end{figure}
+%███████████
+
+%███
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_x.pdf}
+		\caption{$\|\frac{\partial \underline{\hat{c}}}{\partial x}\|$}
+		\label{fig: Rate of change of lights velocity field subfig_1}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_y.pdf}
+		\caption{$\|\frac{\partial \underline{\hat{c}}}{\partial y}\|$}
+		\label{fig: Rate of change of lights velocity field subfig_2}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_z.pdf}
+		\caption{$\|\frac{\partial \underline{\hat{c}}}{\partial z}\|$}
+		\label{fig: Rate of change of lights velocity field subfig_3}
+	\end{subfigure}
+	\caption{\textbf{The rate of change of the velocity vector field of light from a moving source}. main caption.}
+	\label{fig: Rate of change of lights velocity field}
+\end{figure}
+%███████████
+
+%███
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_t_u_is_0.pdf}
+		\caption{$\|\frac{\partial \underline{\hat{c}}}{\partial t}\|$ Source at Rest}
+		\label{fig: Rate of change of lights velocity field with respect to time subfig_2}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/pdf/Rate_of_change_of_lights_velocity_field_with_respect_to_t.pdf}
+		\caption{$\|\frac{\partial \underline{\hat{c}}}{\partial t}\|$ Source Moving}
+		\label{fig: Rate of change of lights velocity field with respect to time subfig_3}
+	\end{subfigure}
+	\caption{\textbf{The rate of change of the velocity vector field of continuously emitted light from source with respect to time}. main caption.}
+	\label{fig: Rate of change of lights velocity field with respect to time}
+\end{figure}
+%███████████
+
+These diagrams show magnitude of the rate of change of the light's propagation direction with respect to each coordinate.
+
+***
+***
+
+\begin{equation}
+	\underline{\hat{c}} = \frac{1}{ \gamma \left( L - \beta \gamma z \right) }
+		\begin{pmatrix}
+			x \\
+			y \\
+			\gamma \left(\gamma z - \beta L \right)
+		\end{pmatrix}
+\end{equation}
+
+We will use the d'Alembert operator but we will not go into its origins, but instead just note that it is lorentz
+
+
+
+\begin{equation}
+	 \square =  \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + (1-\beta^2) \frac{\partial^2}{\partial z^2}
+\end{equation}
+
+The derivation of this gives a huge amount of terms, that take a long time to cancel down to a simple form, so we will just show the result of this
+
+\begin{equation}
+	  \square \underline{\hat{c}} =
+	  \begin{pmatrix}
+		\square \hat{c}_x \\
+		\square \hat{c}_y \\
+		\square \hat{c}_z
+	  \end{pmatrix}
+	  =
+	  \frac{-2}{\gamma^2\left( 1 - \beta \frac{\gamma z}{L} \right)^2L^2} \cdot \underline{\hat{c}}
+\end{equation}
+
+***
+***
+
+
+We will use these to get the square root of the sum of all partial derivatives of the light's velocity, with a negative for all time derivatives, which is given by
+
+\begin{equation}
+	\sqrt{\sum_{j} \left( \frac{\partial \underline{\hat{c}}_j}{\partial x}^2 + \frac{\partial \underline{\hat{c}}_j}{\partial y}^2 + \frac{\partial \underline{\hat{c}}_j}{\partial z}^2 - \frac{\partial \underline{\hat{c}}_j}{c\partial t}^2 \right) }
+\end{equation}
+
+the reasoning for the $c$ in the time derivative is to give the derivative the same units
+
+
+
+We will now use these differentials to get the outer product of the light's velocity field with the 4 gradient $\boldsymbol{\partial} = \left( -i\frac{\partial}{c \partial t}, \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right)$ which is the extension of the gradient $\nabla=\left( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right)$ to the 4 vector.
+
+
+
+You may ask why there is a $-i$ in front of the time derivative, this is because we are using the 4 gradient in the complex plane, and we want to keep the time derivative real, so we need to add a $-i$ to it.
+
+You can use these differentials to get the Jacobian of the light's velocity field, which is given by
+
+\begin{equation}
+	J =
+	\begin{pmatrix}
+		\frac{\partial c_x}{\partial x} & \frac{\partial c_x}{\partial y} & \frac{\partial c_x}{\partial z} \\
+		\frac{\partial c_y}{\partial x} & \frac{\partial c_y}{\partial y} & \frac{\partial c_y}{\partial z} \\
+		\frac{\partial c_z}{\partial x} & \frac{\partial c_z}{\partial y} & \frac{\partial c_z}{\partial z} \\
+	\end{pmatrix}
+\end{equation}
+
+or if you want to include the time derivative along with the 4 vector $\underline{c}= (0,c_x,c_y,c_z)$
+
+we can take the outer product $\otimes$ of this with the 4 gradient $\boldsymbol{\partial} = \left( \frac{\partial}{c \partial t}, \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right)$ which is the extention of the graient to the 4 vector
+
+*** or argue for $\boldsymbol{\partial} = \left( i \frac{\partial}{c \partial t}, \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right)$
+
+\begin{equation}
+	J =
+	\begin{pmatrix}
+		\frac{\partial c_t}{c\partial t} & \frac{\partial c_t}{\partial x} & \frac{\partial c_t}{\partial y} & \frac{\partial c_t}{\partial z}\\
+		\frac{\partial c_x}{c \partial t} & \frac{\partial c_x}{\partial x} & \frac{\partial c_x}{\partial y} & \frac{\partial c_x}{\partial z} \\
+		\frac{\partial c_y}{c \partial t} & \frac{\partial c_y}{\partial x} & \frac{\partial c_y}{\partial y} & \frac{\partial c_y}{\partial z} \\
+		\frac{\partial c_z}{c \partial t} & \frac{\partial c_z}{\partial x} & \frac{\partial c_z}{\partial y} & \frac{\partial c_z}{\partial z} \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		0                                 & 0                               & 0                               & 0                               \\
+		-\beta\frac{\partial c_x}{\partial z} & \frac{\partial c_x}{\partial x} & \frac{\partial c_x}{\partial y} & \frac{\partial c_x}{\partial z} \\
+		-\beta\frac{\partial c_y}{\partial z} & \frac{\partial c_y}{\partial x} & \frac{\partial c_y}{\partial y} & \frac{\partial c_y}{\partial z} \\
+		-\beta\frac{\partial c_z}{\partial z} & \frac{\partial c_z}{\partial x} & \frac{\partial c_z}{\partial y} & \frac{\partial c_z}{\partial z} \\
+	\end{pmatrix}
+\end{equation}
+
+
+
+when swaping dt with dz, we will introduce $i$ into equation, or introduce into the 4 gradient
+
+taking the squareroot of the sum of the squares of each element in the jacobian we get ...
+
+\begin{equation}
+	\sqrt{ \sum_{i} \sum_{j}  J_{ij}^2 }
+\end{equation}
+
+% jacobian has been thouroughly checked with wolfram alpha
+\begin{equation}
+	\underline{J} =
+	\frac{1}{\gamma  L ( 1 + \frac{u}{c} \frac{\gamma z}{L} )^2}
+	\begin{pmatrix}
+		\frac{y^2}{ L^2} +\left( \frac{u}{c}  + \frac{ \gamma z }{L} \right)   \frac{\gamma z}{ L}  & - \frac{xy}{L^2}  & - \gamma ( \frac{u}{c}  + \frac{ \gamma z }{L} ) \frac{x}{L} \\
+		- \frac{xy}{L^2}  & \frac{x^2}{ L^2} + \left( \frac{u}{c}  + \frac{ \gamma z }{L} \right)   \frac{\gamma z}{ L}  & - \gamma (  \frac{u}{c}  + \frac{\gamma z }{L} ) \frac{y}{L}
+		\\
+		- \frac{xz}{L^2} & - \frac{yz}{L^2} & \frac{ x^2 + y^2 }{ L^2}
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+	\underline{J} =
+	\frac{1}{\gamma  L^3 ( 1 + \frac{u}{c} \frac{\gamma z}{L} )^2}
+	\begin{pmatrix}
+		y^2 +\left( \frac{u}{c} L +  \gamma z \right) \gamma z  & -xy & - \gamma ( \frac{u}{c} L + \gamma z  ) x \\
+		- xy  & x^2 + \left( \frac{u}{c} L  +  \gamma z \right) \gamma z  & - \gamma (  \frac{u}{c}L  + \gamma z  ) y
+		\\
+		- xz & - yz &  x^2 + y^2
+	\end{pmatrix}
+\end{equation}
+
+% checked with wolfram alpha
+\begin{equation}
+	\|\underline{J}\| = \frac{\sqrt{ 2 ( x^2+ y^2 )^2 + (x^2+y^2)(M+z)^2 + 2 z^2 M^2 } }{\gamma  L^3 ( 1 + \frac{u}{c} \frac{\gamma z}{L} )^2 }
+\end{equation}
+
+$M= \gamma (  \frac{u}{c}L  + \gamma z  )$
+
+
+
+%█████████████
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/pdf/jacobian_of_lights_velocity_norm_squared_for_Moving_Source.pdf}
+	\caption{\textbf{Jacobian norm squared}. The squared norm of the Jacobian matrix of the light's velocity field for a moving source.}
+	\label{fig: Jacobian norm squared}
+\end{figure}
+%███████████
+
+
+
+%█████████████
+\subsubsection{Alternative manipulations:}
+
+We will use these to get the square root of the sum of all partial derivatives of the light's velocity, with a negative for all time derivatives, which is given by
+
+\begin{equation}
+	J = \sqrt{\sum_{j} \left( \frac{\partial \underline{\hat{c}}_j}{\partial x}^2 + \frac{\partial \underline{\hat{c}}_j}{\partial y}^2 + \frac{\partial \underline{\hat{c}}_j}{\partial z}^2 - \frac{\partial \underline{\hat{c}}_j}{c\partial t}^2 \right) }
+\end{equation}
+
+the reasoning for the $c$ in the time derivative is to give the derivative the same units
+
+
+\begin{equation}
+	\|\underline{J}\|^2 = \frac{ 2 }{\gamma^2  L^2 ( 1 - \beta \frac{\gamma z}{L} )^2 }
+\end{equation}
+
+\begin{equation}
+	\left\| \nabla \|\underline{J}\| \right\|
+	= - \frac{ \sqrt{2} }{ L^2 ( 1 - \beta \frac{\gamma z}{L}) }
+\end{equation}
+
+\begin{equation}
+	\nabla \|\underline{J}\| \cdot \hat{\underline{c}} =  \frac{ \sqrt{2} }{ L^2 ( 1 - \beta \frac{\gamma z}{L} ) }
+\end{equation}
+
+jacobian with time components, with $m= \gamma (  -\beta L  + \gamma z  )$
+
+\begin{equation}
+	\|\underline{J}_t\| = \frac{ \sqrt{(x^2+y^2)^2 + \frac{L^2}{\gamma^2}(x^2+y^2) +2m^2z^2 + (x^2+y^2)(2mz +\frac{m^2}{\gamma^2}) }}{\gamma  L^3 ( 1 - \beta \frac{\gamma z}{L} )^2 }
+\end{equation}
+
+\begin{equation}
+	m = \gamma (  \gamma z - \beta L ) = L \gamma (T-\beta)
+\end{equation}
+
+$T=\frac{\gamma z}{L}$
+
+lets look at
+
+\begin{equation}
+	\begin{aligned}
+		W &= (x^2+y^2)^2 + \frac{L^2}{\gamma^2}(x^2+y^2) +2m^2z^2 + (x^2+y^2)(2mz +\frac{m^2}{\gamma^2})
+		\\
+		&= (L^2 -\gamma^2z^2)^2 + \frac{L^2}{\gamma^2}(L^2 -\gamma^2z^2) +2 L^2 \gamma^2z^2 (T-\beta)^2 + (L^2 -\gamma^2z^2)(2 L \gamma z (T-\beta) + L^2 (T-\beta)^2) \\
+		&= L^4 \left[ (1-T^2)^2 + (1-\beta^2)(1-T^2) +2T^2 (T-\beta)^2 + (1 - T^2)(2 T (T-\beta) + (T-\beta)^2)  \right]
+		\\
+		& \text{wolfram alpha gives} \\
+		&= 2 L^4 (1- \beta T)^2
+	\end{aligned}
+\end{equation}
+
+then
+
+\begin{equation}
+	\|\underline{J}_t\| = \frac{ \sqrt{ 2 L^4 (1- \beta \frac{\gamma z}{L})^2 }}{\gamma  L^3 ( 1 - \beta \frac{\gamma z}{L} )^2 }
+\end{equation}
+
+\begin{equation}
+	\|\underline{J}_t\| = \frac{ \sqrt{2} }{\gamma  L ( 1 - \beta \frac{\gamma z}{L} ) } = \frac{ \sqrt{2} }{\gamma  ( L - \beta \gamma z ) }
+\end{equation}
+
+\begin{equation}
+	\|\underline{J}_t\|^2 = \frac{ 2 }{\gamma^2  L^2 ( 1 - \beta \frac{\gamma z}{L} )^2 }
+\end{equation}
+
+for gradient:
+
+\begin{equation}
+	\partial_x \|\underline{J}_t\|  = - \frac{ \sqrt{2} x }{\gamma L ( L - \beta \gamma z )^2 }
+\end{equation}
+
+\begin{equation}
+	\partial_y \|\underline{J}_t\|  = - \frac{ \sqrt{2} y }{\gamma L ( L - \beta \gamma z )^2 }
+\end{equation}
+
+\begin{equation}
+	\partial_z \|\underline{J}_t\|  = - \frac{ \sqrt{2} \gamma (\gamma z - \beta L) }{\gamma L ( L - \beta \gamma z )^2 }
+\end{equation}
+
+$- u dt = dz $ so $dt = - \frac{dz}{u}$ giving
+
+\begin{equation}
+	\frac{d}{c dt} \|\underline{J}_t\|  = - \beta \frac{d}{ dz} \|\underline{J}_t\|
+\end{equation}
+
+\begin{equation}
+	\nabla \|\underline{J}_t\| = - \frac{ \sqrt{2} }{\gamma L ( L - \beta \gamma z )^2 }
+	\begin{pmatrix}
+		x \\
+		y \\
+		\gamma (\gamma z - \beta L)
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+	\begin{aligned}
+	\nabla \|\underline{J}_t\| \cdot \hat{\underline{c}} &=  - \frac{ \sqrt{2} }{\gamma L ( L - \beta \gamma z )^2 }
+	\begin{pmatrix}
+		x \\
+		y \\
+		\gamma (\gamma z - \beta L)
+	\end{pmatrix}
+	\cdot
+	\frac{1}{ \gamma \left( L - \beta \gamma z \right) }
+		\begin{pmatrix}
+			x \\
+			y \\
+			\gamma \left(\gamma z - \beta L \right)
+		\end{pmatrix} \\
+	&= \sqrt{2} \frac{ x^2+y^2 + \gamma^4z^2-2\gamma^3\beta Lz + \beta^2\gamma^2L^2}{ L \gamma^2  ( L - \beta \gamma z )^3 } \\
+	&= \sqrt{2} \frac{ L^2 - \gamma^2z^2 + \gamma^4z^2-2\gamma^3\beta Lz + \beta^2\gamma^2 L^2}{ L^4 \gamma^2  ( 1 - \beta \frac{\gamma z }{L} )^3 } \\
+	&= \sqrt{2} \frac{ (\gamma^2-1) \frac{\gamma^2 z^2}{L^2} -2\gamma^2\beta \frac{\gamma z}{L} + (\beta^2\gamma^2 + 1 )}{ L^2 \gamma^2  ( 1 - \beta \frac{\gamma z }{L} )^3 } \\
+	&= \sqrt{2} \frac{ \beta^2\gamma^2 T^2 -2\gamma^2\beta T + \gamma^2 }{ L^2 \gamma^2  ( 1 - \beta T )^3 } \\
+	&= \sqrt{2} \frac{ (\beta\gamma T - \gamma)^2 }{ L^2 \gamma^2  ( 1 - \beta T )^3 } \\
+	&= \sqrt{2} \frac{ \gamma^2(1-\beta T)^2 }{ L^2 \gamma^2  ( 1 - \beta T )^3 } \\
+	&=  \frac{ \sqrt{2} }{ L^2 ( 1 - \beta T ) }
+	\end{aligned}
+\end{equation}
+
+\begin{equation}
+		\gamma^2 = 1+\beta^2\gamma^2,
+\end{equation}
+
+\begin{equation}
+		\gamma^2 - 1 = \beta^2\gamma^2,
+\end{equation}
+
+\begin{equation}
+	\left\| \nabla \|\underline{J}_t\| \right\|
+	= - \frac{ \sqrt{2} }{ L^2 ( 1 - \beta \frac{\gamma z}{L}) }
+\end{equation}
+
+...
+
+diff equals
+
+\begin{equation}
+	\begin{aligned}
+	\partial_x \| J\| &= \frac{(3L-\beta\gamma z)x}{\gamma L^3(\beta\gamma z - L)^3} \cdot \sqrt{ 2 ( x^2+ y^2 )^2 + (x^2+y^2)(M+z)^2 + 2 z^2 M^2 } +  \\
+	& \frac{1}{\gamma L^3 (1-\beta\frac{\gamma z}{L})^2} \cdot
+	\end{aligned}
+\end{equation}
+
+\begin{equation}
+	\begin{aligned}
+	\partial_y \| J\| &= \frac{(3L-\beta\gamma z)y}{\gamma L^3(\beta\gamma z - L)^3} \cdot \sqrt{ 2 ( x^2+ y^2 )^2 + (x^2+y^2)(M+z)^2 + 2 z^2 M^2 } +  \\
+	& \frac{1}{\gamma L^3 (1-\beta\frac{\gamma z}{L})^2} \cdot
+	\end{aligned}
+\end{equation}
+
+\begin{equation}
+	\begin{aligned}
+	\partial_z \| J\| &= \frac{(3L-\beta\gamma z)\gamma z - 2\beta L^2}{ L^3(\beta\gamma z - L)^3} \cdot \sqrt{ 2 ( x^2+ y^2 )^2 + (x^2+y^2)(M+z)^2 + 2 z^2 M^2 } +  \\
+	& \frac{1}{\gamma L^3 (1-\beta\frac{\gamma z}{L})^2} \cdot
+	\end{aligned}
+\end{equation}
+
+$f=\sqrt{u}$
+
+$u=2 ( x^2+ y^2 )^2 + (x^2+y^2)(M+z)^2 + 2 z^2 M^2 $
+
+$\frac{df}{dx}=\frac{df}{du}\cdot \frac{du}{dx}$
+
+\begin{equation}
+	\frac{df}{dx} = \frac{1}{2\sqrt{u}} \cdot \frac{du}{dx}
+\end{equation}
+
+\begin{equation}
+	\frac{du}{dx} = 2x \left( \beta^2 \gamma^2 (\gamma^2z^2 +2r^2) - \beta \gamma \frac{z}{L} \left( 3(\gamma^2+1)(x^2+y^2) + 2(\gamma^2+2)\gamma^2z^2 \right) + (\gamma^2+1)^2z^2 + 4(x^2+y^2) \right)
+\end{equation}
+
+\begin{equation}
+	\frac{du}{dy} = 2y \left( \beta^2 \gamma^2 (\gamma^2z^2 +2r^2) - \beta \gamma \frac{z}{L} \left( 3(\gamma^2+1)(x^2+y^2) + 2(\gamma^2+2)\gamma^2z^2 \right) + (\gamma^2+1)^2z^2 + 4(x^2+y^2) \right)
+\end{equation}
+
+\begin{equation}
+	\frac{du}{dz} = 4\gamma^2 z (\gamma z -\beta L) \left( \gamma z(1-\beta\frac{\gamma z}{L}) + (\gamma z -\beta L) \right) +
+	2(x^2+y^2)(\gamma^2+1-\beta\gamma^3\frac{z}{L})(-\beta\gamma L + (\gamma^2+1)z )
+\end{equation}
+
+
+% we can check do see if we take the dot product of the lights velocity with the rate of change that we get a value of zero, as the two vectors should be perpendicular, which we do:
+
+% \begin{equation}
+% 	\underline{\hat{c}}' \cdot \frac{\partial \underline{\hat{c}}'}{\partial x'} = l_x' (1 - \frac{l_x'^2}{ L^2} + \frac{u}{c}\frac{\gamma l_z'}{L}) + l_y' (- \frac{l_x'}{L} \frac{l_y'}{L}) + (\gamma^2 l_z' + \gamma \frac{u}{c}  L)(- \frac{l_x'}{L} \frac{l_z'}{L})=0
+% \end{equation}
+
+% \begin{equation}
+% 	\underline{\hat{c}}' \cdot \frac{\partial \underline{\hat{c}}'}{\partial z'} = l_x' (( - \frac{u}{c}  - \frac{ \gamma l_z' }{L} ) \frac{l_x'}{L}) + l_y' (( - \frac{u}{c}  - \frac{\gamma l_z' }{L} ) \frac{l_y'}{L}) + (\gamma^2 l_z' + \gamma \frac{u}{c}  L)(\frac{1}{\gamma}\frac{ l_x'^2 + l_y'^2 }{ L^2})=0
+% \end{equation}
+
+The Magnitude of this Jacobian is messy so I will not write it out here, as it would serve no purpose.
+Also unsure wether to include the time derivate into the Jacobian to make it a 4 by 4 tensor like below, using the velocity $( 0 , c_x , c_y , c_z )$ (with the zero representing the derivatives of time), giving
+
+\begin{equation}
+	J =
+	\begin{pmatrix}
+		0                                 & 0                               & 0                               & 0                               \\
+		\frac{\partial c_x}{c \partial t} & \frac{\partial c_x}{\partial x} & \frac{\partial c_x}{\partial y} & \frac{\partial c_x}{\partial z} \\
+		\frac{\partial c_y}{c \partial t} & \frac{\partial c_y}{\partial x} & \frac{\partial c_y}{\partial y} & \frac{\partial c_y}{\partial z} \\
+		\frac{\partial c_z}{c \partial t} & \frac{\partial c_z}{\partial x} & \frac{\partial c_z}{\partial y} & \frac{\partial c_z}{\partial z} \\
+	\end{pmatrix}
+\end{equation}
+
+But instead of going through this, I will end the madness of this chapter here and move on to looking at quantities that do not change when swaping frames, which will lead to the famous energy-mass and energy-momentum equations.
+
+\begin{equation}
+	\big\| \nabla \|\underline{J}\| \big\| = \frac{\sqrt{2}}{r^2}
+\end{equation}
+
+*** also try direction derivative of the Jacobian norm $ \nabla \|\underline{J}\| \cdot \hat{\underline{c}}$
+
+I have however exhausted the different ways that I thought were reasonable avenues to check. apart from a property called the material derivative, given as
+
+\begin{equation}
+	\rho {\frac {\mathrm {D} \underline {u} }{\mathrm {D} t}}=\rho \left({\frac {\partial \underline {u} }{\partial t}}+(\underline {u} \cdot \nabla )\underline {u} \right)
+\end{equation}
+
+which when the normal is taken you get $1/r$, but I shall not got through this here as its a bit too much.
+
+
+% gradient being $( \delta_t , \delta_x , \delta_y , \delta_z )$
+
+
+
+%for norm should above have negative time parts? or make complex?
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\chapter{Force from a Current Carrying Wire}\label{sect: Force from a Current Carrying Wire}
+
+*** i think the electrons will be spread out by a factor of gamma in lab frame but the quantity i will use will make up for the gamma factor
+
+*** these tikz will have errors when using script
+\newcommand{\Nval}{10}
+%█████████████
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\fill [gray!40] (0,-0.5) rectangle (\Nval,0.5);
+			\draw[black, dashed,-] (0,0) -- (\Nval,0);
+			\foreach \x in {0,1,...,\numexpr\Nval-1\relax}{ % Loop from 0 to Nval-1
+					\node at (\x+0.5,0.25){\textcircled{\small{+}}};
+				};
+			\foreach \x in {0,1,...,\numexpr\Nval-1\relax}{ % Loop from 0 to Nval-1
+					\node at (\x+0.5,-0.35){\textcircled{\small{-}}};
+				};
+			\draw[black] (5,0.2) -- (5,0.6) -- (10,0.6) -- (10,0.2);
+			\draw[draw=none] (5,0.6) -- (10,0.8) node[midway,above]{$\lambda_{lab}$};
+			\draw[black] (5,-0.2) -- (5,-0.6) -- (10,-0.6) -- (10,-0.2);
+			\draw[draw=none] (5,-0.6) -- (10,-0.6) node[midway,below]{$-\lambda_{lab}$};
+			\draw[<<->>] (\Nval+0.2,0.3) -- (\Nval+0.8,0.3) node[right]{$v_e$}; % Using Nval here
+			\draw[|-|] (-0.2,0) -- (-0.2,-2) node[midway,right]{$r$};
+			\node at (0.3,-2) {\textcircled{\small{$p$}}};
+			\draw[->>] (0.5,-2) -- (0.9,-2) node[midway,below]{$v_p$};
+		\end{tikzpicture}
+		\caption{lab frame}
+		\label{subfig_1: current in a wire}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		\begin{tikzpicture}
+			\fill [gray!40] (0,-0.5) rectangle (\Nval,0.5);
+			\draw[black, dashed,-] (0,0) -- (\Nval,0);
+			\foreach \x in {0,0.4,...,\Nval}{ % Using Nval for the upper limit
+					\node at (\x+0.5,0.25){\textcircled{\small{+}}};
+				};
+			\foreach \x in {0,0.7,...,\Nval}{ % Using Nval for the upper limit
+					\node at (\x+0.5,-0.35){\textcircled{\small{-}}};
+				};
+			\draw[black] (5,0.2) -- (5,0.6) -- (10,0.6) -- (10,0.2);
+			\draw[draw=none] (5,0.6) -- (10,0.8) node[midway,above]{$\lambda_{lab}$};
+			\draw[black] (5,-0.2) -- (5,-0.6) -- (10,-0.6) -- (10,-0.2);
+			\draw[draw=none] (5,-0.6) -- (10,-0.6) node[midway,below]{$-\lambda_{lab}$};
+			\draw[<<->>] (\Nval+0.2,0.3) -- (\Nval+0.8,0.3) node[right]{$v_{e \langle p \rangle}$}; % Using Nval here
+			\draw[<<-] (\Nval+0.2,-0.3) -- (\Nval+0.8,-0.3) node[right]{$-v_p$}; % Using Nval here
+			\draw[|-|] (-0.2,0) -- (-0.2,-2) node[midway,right]{$r$};
+			\node at (0.3,-2) {\textcircled{\small{$p$}}};
+		\end{tikzpicture}
+		\caption{charge frame}
+		\label{subfig_2: current in a wire}
+	\end{subfigure}
+	\caption{\textbf{current in a wire}. main caption.}
+	\label{fig: current in a wire}
+\end{figure}
+%███████████
+
+
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[>=latex]
+		\fill [gray!40] (-0.1,-0.5) rectangle (0.1,3);
+		\fill [blue!60] (-0.1,1.3) rectangle (0.1,1.7)node[midway, left] {$dl$};
+		\draw[->,thick,dashed,black] (0,1.5) -- (0:4) node[midway, above] {$\vec{r}$};
+		\draw[->,thick,black] (0,0) -- (0:5) node [below] {$Y$};
+		\draw[->,thick,black] (0,0) -- (90:2.5) node [left] {$Z$};
+		\draw[->,dashed,black] (4,0) -- (4,2.5) node [right] {$\vec{v}$};
+		\draw[|-|,black] (-0.6,0) -- (-0.6,1.5) node [midway, left] {$l$};
+		\draw[|-|,black] (0,-0.25) -- (4,-0.25) node [midway,below] {$d$};
+		\draw[-,dashed,black] (0,-0.5) -- (0,3);
+		\fill [blue] (4,0) circle (3pt) node[above right] {$P$};
+		\draw [->,red, dashed,thick ] (0,2.2) arc (90:-20:0.7cm)    node [midway, right] {$\theta$};
+		\draw [thick] (0,0.8) arc (-90:-20:0.7cm) node [midway, below] { \ \ $\pi-\theta$};
+		\draw [thick] (4,0.7) arc (90:160:0.7cm) node [midway, above] {\hspace{-0.5cm}$\pi-\theta$};
+		\node at (8,2) {$\cos{(\pi-\theta)}=-\cos{\theta}$};
+		\node at (8,1) {$\cos{\theta}= \dfrac{-l}{\sqrt{d^2+l^2}}$};
+	\end{tikzpicture}
+	\caption{lab frame}
+\end{figure}
+
+\begin{equation}
+	\vec{r} = \begin{pmatrix}
+		0 \\ d \\ -l
+	\end{pmatrix}
+	= \begin{pmatrix}
+		0 \\ d \\ \dfrac{d}{\tan\theta}
+	\end{pmatrix}
+\end{equation}
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{stationary charge}\label{sect: stationary charge}
+
+\textbf{lab frame:}
+
+$u_e$ is electron's speed
+
+$u_r=0$ is recieving charges speed
+
+$u_i = 0$ is ions speed
+
+charge position $(y,0)$
+
+any particular electrons location given by at $(0,z)$ at time $t=0$
+
+the retarded time of electron is given by
+
+\begin{equation}
+	T_{ret} = - \gamma_{u_e}^2\frac{u_e}{c^2} l_{z} - \frac{\gamma_{u_e}}{c}\sqrt{ l_{y}^2+\gamma_{u_e}^2 l_{z}^2}
+\end{equation}
+
+
+*** $(l_y,l_z)$ is the position of the receiving charge relative to the electron's retarded position, so $(l_y,l_z)= (y,-z)$
+
+relative retarded position from $z$ is $u_e T_{ret}$
+
+\begin{equation}
+z_{ret} - z = \gamma_{u_e}^2\frac{u_e^2}{c^2} z - \gamma_{u_e}\frac{u_e}{c}\sqrt{ y^2+\gamma_{u_e}^2 z^2}
+\end{equation}
+
+actual retarded position is this + z
+
+\begin{equation}
+z_{ret} = (1+\gamma_{u_e}^2\frac{u_e^2}{c^2}) z - \gamma_{u_e}\frac{u_e}{c}\sqrt{ y^2+\gamma_{u_e}^2 z^2}
+\end{equation}
+
+\begin{equation}
+z_{ret} = \gamma_{u_e}^2 z - \gamma_{u_e}\frac{u_e}{c}\sqrt{ y^2+\gamma_{u_e}^2 z^2}
+\end{equation}
+
+\begin{equation}
+z_{ret} = \gamma_{u_e} \left(\frac{\gamma_{u_e} z}{\sqrt{ y^2+\gamma_{u_e}^2 z^2}} - \frac{u_e}{c} \right) \sqrt{ y^2+\gamma_{u_e}^2 z^2}
+\end{equation}
+
+the density of the retarded positions of the charges are given by (from gemini, need to check)
+
+\begin{equation}
+\lambda_{ret} = \left( 1 + \frac{u_e}{c}\frac{z}{\sqrt{ y^2+ z^2}} \right)\lambda
+\end{equation}
+
+*** think this should have a gamma infront of each Z
+
+as should be diferentiating with respect to dz instead of $dz_{ret}$ and change is bigger than change in dz, and we want change in dz i think

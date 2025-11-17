@@ -1665,10 +1665,10 @@ The change of the coordinates between two events are denoted as ${\Delta x}$, ${
 From these we could define a quantity called the space-time interval $\Delta S$ between two \hyperlink{def-event}{event}s in an inertial reference frame as:
 
 \begin{equation}
+	\label{eq: space-time interval}
 	\mhl{
 	\Delta S^2 = (c\Delta t)^2-{\Delta x}^2-{\Delta y}^2-{\Delta z}^2
 	}
-	\label{eq: space-time interval}
 \end{equation}
 
 The reason we created this new quantity, is because it turns out all inertial frames of reference agree on this interval of the two events, it is invariant between frames, $\Delta S = \Delta S{'}$.
@@ -1690,7 +1690,7 @@ This relationship will come in very useful in the later in the energy, mass and 
 \section{D'Alembert operator}\label{sect: D'Alembert operator}
 
 \begin{quote}\centering
-\textit{\small (This can be seen as a bonus section that you may skip and go on to the energy, mass and momentum sections if it does not interest you)}
+\textit{\small (This can be seen as a bonus section that may be skipped, as it is not directly relevant for the understanding of any other sections in this text.)}
 \end{quote}
 
 The d'Alembert operator is a fundamental operator in relativistic wave equations that is invariant in all frames of reference.
@@ -1702,7 +1702,7 @@ It is defined in an initial frame as
 	\square = \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}\right)
 \end{equation}
 
-and in a primed frame it is given as
+and in a primed frame as
 
 \begin{equation}
 	\square' = \frac{1}{c^2} \frac{\partial^2}{\partial t'^2} - \frac{\partial^2}{\partial x'^2} - \frac{\partial^2}{\partial y'^2} - \frac{\partial^2}{\partial z'^2}
@@ -1726,7 +1726,7 @@ In the following derivation we will show it is invariant by transforming the par
 		\end{aligned}
 	\end{equation}
 
-	To express derivatives with respect to the unprimed coordinates in terms of derivatives with respect to the primed coordinates, we use the chain rule.
+	To find the partial derivatives with respect to the unprimed coordinates, in terms the partial derivatives with respect to the primed coordinates, we can use the chain rule.
 	Which for $\frac{\partial}{\partial t}$ is:
 
 	\begin{equation}
@@ -1739,7 +1739,7 @@ In the following derivation we will show it is invariant by transforming the par
 		\frac{\partial}{\partial z} = \frac{\partial t'}{\partial z} \frac{\partial}{\partial t'} + \frac{\partial x'}{\partial z} \frac{\partial}{\partial x'} + \frac{\partial y'}{\partial z} \frac{\partial}{\partial y'} + \frac{\partial z'}{\partial z} \frac{\partial}{\partial z'}
 	\end{equation}
 
-	Substituting these into the chain rule expressions yields:
+	Substituting the partial derivatives from above into these chain rule expressions, yields:
 
 	\begin{equation}
 		\begin{aligned}
@@ -1750,7 +1750,7 @@ In the following derivation we will show it is invariant by transforming the par
 		\end{aligned}
 	\end{equation}
 
-	Now, we can get the second order partial derivatives which is the same as applying the 1st order partial derivative twice, which gives
+	Now, we can get the second order partial derivatives which is the same as applying the first order partial derivative twice, which gives
 
 	\begin{equation}
 		\begin{aligned}
@@ -1766,8 +1766,6 @@ In the following derivation we will show it is invariant by transforming the par
 		\end{aligned}
 	\end{equation}
 
-	The derivatives with respect to $y$ and $z$ are simpler:
-
 	\begin{equation}
 		\begin{aligned}
 			\frac{\partial^2}{\partial x^2} & = \frac{\partial^2}{\partial x'^2} \\
@@ -1775,9 +1773,9 @@ In the following derivation we will show it is invariant by transforming the par
 		\end{aligned}
 	\end{equation}
 
-	we can now substitute these transformed second derivatives into the equation for the d'Alembertian operator's from equation \eqref{eq: d Alembert operator}
+	we can now substitute these transformed second derivatives into equation \eqref{eq: d Alembert operator} to get the d'Alembert operator.
 
-	Let us do this for just the $t$ and $z$ componenets $\frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \frac{\partial^2}{\partial z^2}$ to begin with:
+	Let us first do this for just the $t$ and $z$ components $\left(\frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \frac{\partial^2}{\partial z^2}\right)$:
 
 	\begin{equation}
 		\begin{aligned}
@@ -1789,15 +1787,15 @@ In the following derivation we will show it is invariant by transforming the par
 		\end{aligned}
 	\end{equation}
 
-	now adding in the x and y components, we get
+	now adding in the x and y components, to get the full d'Alembert operator in both frames:
 
 	\begin{equation}
 		\frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \frac{\partial^2}{\partial x^2} - \frac{\partial^2}{\partial y^2} - \frac{\partial^2}{\partial z^2} = \frac{1}{c^2}\frac{\partial^2}{\partial t'^2} - \frac{\partial^2}{\partial x'^2} - \frac{\partial^2}{\partial y'^2} - \frac{\partial^2}{\partial z'^2}
 	\end{equation}
 
-	The left side of the equation is the D'Alembert operator in the initial frames coordinates and the right side is also it, but in the primed frame's coordinates.
+	As can be seen in this equation, the left hand side of the equation is the D'Alembert operator in the initial frames coordinates and the right side is also the D'Alembert operator, but in the primed frame's coordinates.
 
-	So we can conclude that the D'Alembert operator in both frames are equal
+	So we can conclude that the D'Alembert operator in both frames are equal:
 
 	\begin{equation}
 	\square' = \square
@@ -1806,53 +1804,62 @@ In the following derivation we will show it is invariant by transforming the par
 \end{derivation}
 %███████████████
 
-Thus, we have demonstrated that the d'Alembert operator maintains its form under a inertial frame transformation, confirming its invariance.
-The invariance was a direct consequence of the way transformations preserve the spacetime interval.
+Thus, we have demonstrated that the d'Alembert operator maintains its form under an inertial frame transformation, confirming its invariance.
+The invariance of this is a direct consequence of the way transformations preserve the spacetime interval.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Energy-Mass and Momentum Relation} \label{sect: Energy-Mass and Momentum Relation}
 
-When it comes to the energy-mass and the momentum relations, some of the interpretations of the math may not seem like they are well justified, like the quantities that we will later call the total energy and rest mass energy of a particle.
-I will try to give as much reasoning as I can for these choices in the assertions made, but sometimes in physics these small logical jumps need to be made, and then this is when we go to experimental physics to check if the interpretation of the math was correct.
+When it comes to the energy-mass and momentum relations,
+they can not be derived from the 2 postulates of special relativity and first principles alone, some assumptions and interpretations are needed to be made along the way.
+For instance, there are quantities in the equations that we will come across later, that we will refer to as the total energy and rest mass energy of a particle.
+The conclusions made about these mathematical terms, used some jumps in logical reasoning, and needed experimental verification, before they could be taken for granted.
+They do indeed turn out to agree with experiments though \cite{SRtestsWiki,SRtestsUniCR}.
 
-We can see from section (\ref{sect: Space-Time Interval}), that if a particle $p$, is moving in an inertial reference frame, we can define the space-time interval of its coordinates in this frame as
+Now let us move on and begin:
+
+We can see from equation \eqref{eq: space-time interval}, that if a particle $q$, is moving in an inertial reference frame, we can define the space-time interval of its coordinates in this frame as
 
 \begin{equation}
-	\Delta S_p^2 = (c\Delta {t}_p)^2-\Delta x_p^2-{\Delta y_p}^2-{\Delta z_p}^2
+	\Delta S_q^2 = (c\Delta {t}_q)^2-\Delta x_q^2-{\Delta y_q}^2-{\Delta z_q}^2
 \end{equation}
 
-We will not be changing between reference frames throughout these next sections.
-And since we will remain in the same reference frame, we will not need to make use of any primed notation here ($'$).
+We will not be changing between reference frames anywhere in these next sections.
+And since we will remain in the same reference frame, we will not need to make use of any primed notation ($'$) here.
 
-we can divide the space-time interval by the square of the proper time that passes for the particle in this interval ${\Delta\tau}$ (the interval in time that passes in the particles rest frame).
-And by now taking the limit as the change in proper time in the interval goes to zero, we get a derivative that is an abstract invariant quantity that we will call the space-time velocity, which reduces to the following:
+Now we can divide this space-time interval by the square of the proper time that passes for the particle in this interval, ${\Delta\tau}$ (the interval in time that passes in the particles rest frame).
+The proper time is a time that all frames of reference agree on, and keeps the expression invariant.
+Now taking the limit as the change in proper time in the interval goes to zero, we get a derivative that is an abstract invariant quantity that we will call the space-time velocity:
+
+\begin{equation}
+		\left(\frac{dS_q}{d\tau}\right)^2 = \left(c\frac{{{dt}_{p}}}{d\tau}\right)^2-\left(\frac{dx_q}{d\tau}\right)^2-\left(\frac{dy_q}{d\tau}\right)^2-\left(\frac{dz_q}{d\tau}\right)^2
+\end{equation}
+
+From the time dilation equation \eqref{eq: time dilation}, we have $d\tau = dt_q / \gamma_u $ with $\gamma_{u} = \frac{1}{\sqrt{1-\frac{u_q^2}{{c}^2}}}$.
+This allows us to reduce this space-time velocity to the following:
+
 
 \begin{equation}
 	\label{eq: particles space-time interval}
 	\begin{aligned}
-		\left(\frac{dS_p}{d\tau}\right)^2 & = \left(c\frac{{{dt}_{p}}}{d\tau}\right)^2-\left(c\frac{dx_p}{d\tau}\right)^2-\left(\frac{dy_p}{d\tau}\right)^2-\left(\frac{dz_p}{d\tau}\right)^2 \\
-		                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{{{u}_{px}}^2 + {{u}_{py}}^2 + {{u}_{pz}}^2}{{c}^2} \right)                                                         \\
-		                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{u_p^2}{{c}^2} \right)                                                                                              \\
+		\left(\frac{dS_q}{d\tau}\right)^2 & = \gamma_{u}^2\left(c\frac{{{dt}_{p}}}{{{dt}_{p}}}\right)^2-\gamma_{u}^2\left(\frac{dx_q}{{{dt}_{p}}}\right)^2-\gamma_{u}^2\left(\frac{dy_q}{{{dt}_{p}}}\right)^2-\gamma_{u}^2\left(\frac{dz_q}{{{dt}_{p}}}\right)^2 \\
+		                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{{{u}_{px}}^2 + {{u}_{py}}^2 + {{u}_{pz}}^2}{{c}^2} \right) \\
+		                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{u_q^2}{{c}^2} \right) \\
 		                                  & = {c}^2
 	\end{aligned}
 \end{equation}
 
-where we used
-
-\begin{equation}
-	\gamma_{u} = \frac{1}{\sqrt{1-\frac{u_p^2}{{c}^2}}}
-\end{equation}
 
 It can be seen that this space-time velocity is still an invariant quantity as the speed of light is constant in all frames.
 
-Now we could multiply both sides of the third line in from equation \eqref{eq: particles space-time interval} by ${m}^2{c}^2$ where $m$ is the rest mass of the particle, so we get
+Now we could multiply both sides of the third line in equation \eqref{eq: particles space-time interval} by the invariant quantity ${m}^2{c}^2$ where $m$ is the invariant rest mass of the particle, so that we get
 
 \begin{equation}
 	\label{eq: energy-momentum derivation}
 	\begin{aligned}
-		m^2 {c}^2 \left(\frac{dS_p}{d\tau}\right)^2 & = m^2{c}^4\gamma_{u}^2 \left( 1-\frac{u_p^2}{{c}^2} \right) \\
-		({m}{c}^2)^2                                & = \gamma_{u}^2 m^2 c^4-\gamma_{u}^2 m^2 u_p^2 {c}^2
+		m^2 {c}^2 \left(\frac{dS_q}{d\tau}\right)^2 & = m^2{c}^4\gamma_{u}^2 \left( 1-\frac{u_q^2}{{c}^2} \right) \\
+		({m}{c}^2)^2                                & = \gamma_{u}^2 m^2 c^4-\gamma_{u}^2 m^2 u_q^2 {c}^2
 	\end{aligned}
 \end{equation}
 
@@ -1863,65 +1870,68 @@ As the equation is, on the left hand side it shows an invariant quantity with th
 \end{equation}
 
 This could be (and was) taken as a new type of energy all masses have even when at rest, and is consistent with experimental results.
-So from this, for a particle at rest, if it were to decay into photons, we would have the photons emitted from it, be equal to its rest mass energy.
-I agree this does not seem like a very proper way to get this famous equation, or atleast looks like that we have took a shortcut, but we will look at what the other terms represent, to see if we get anything else that may convince us a little more that this is an okay interpretation of this invariant quantity of energy.
 
-So lets rearrange equation \eqref{eq: energy-momentum derivation}, to get
+For example, if an electron and the positron (the electrons anti-particle, which is like an electron but with positive charge) annihilate with each other, they create two photons.
+If the electron and positron were at rest when they annihilated, the energy of both photons would be equal to this rest mass energy of both partcles combined.
+In reality, they would be moving towards each other, so therefor the photon's energy would also need to include their relativistic kinetic energy, which we will talk about soon.
+
+Now, looking at the rest mass energy, it does not seem like a very proper way to get this famous equation, or at least looks like we have taken a shortcut to it.
+But let us continue, and we will look at what the other terms represent in equation \eqref{eq: energy-momentum derivation} to see if we get anything else that may convince us a little more that this is an okay interpretation of this invariant quantity of energy.
+
+So let us rearrange equation \eqref{eq: energy-momentum derivation}, to get
 
 \begin{equation}
 	\label{eq: total relativistic energy}
-	\left( \gamma_{u} m {c}^2 \right)^2 = ({m}{c}^2)^2 + \left( \gamma_{u} {m}{u_p}{c}\right)^2
+	\left( \gamma_{u} m {c}^2 \right)^2 = ({m}{c}^2)^2 + \left( \gamma_{u} {m}{u_q}{c}\right)^2
 \end{equation}
 
 for the energy term in the brackets on the left hand side we can use what is called the Taylor expansion to write $\gamma_{u}$ as a convergent series:
 
 \begin{equation}
-	\gamma_{u} \equiv 1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+	\gamma_{u} \equiv 1 + \frac{1}{2}\frac{u_q^2}{{c}^2} + \frac{3}{8}\frac{u_q^4}{c^4} + ...
 \end{equation}
 
 Giving the energy term on the left hand side as
 
 \begin{equation}
 	\begin{aligned}
-		\gamma_{u} {m}{c}^2 & = {m}{c}^2  \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+		\gamma_{u} {m}{c}^2 & = {m}{c}^2  \left(1 + \frac{1}{2}\frac{u_q^2}{{c}^2} + \frac{3}{8}\frac{u_q^4}{c^4} + ...
 		\right)                                                                                                 \\
-		                & = {m}{c}^2 + \frac{1}{2}{m}{u}^2 + \frac{3}{8}m\frac{u^4}{{c}^2} + ...
+		                & = {m}{c}^2 + \frac{1}{2}{m}{u_q}^2 + \frac{3}{8}m\frac{u_q^4}{{c}^2} + ...
 	\end{aligned}
 \end{equation}
 
 This equation's first quantity is an energy that does not depend on the speed of the particle.
 It is the invariant energy from before, the rest mass energy.
-The second quantity is the classical kinetic energy formula, the rest may be seen as higher-order kinetic energy terms, that are not seen in classical physics because they are very small for ${u}<<{c}$.
-So this seems like it could be a formula for the total energy of a particle (in a vaccum, with no potential energy).
-We will denote this total energy ${E}$, with the rest energy from before denoted as $E_0$ giving equation \eqref{eq: total relativistic energy} to be written as
+The second quantity is the classical kinetic energy formula, the rest may be seen as higher-order kinetic energy terms, that are not seen in classical physics because they are very small for ${u_q}<<{c}$.
+So this seems like it could be a formula for the total energy of a particle (in a vacuum, with no potential energy).
+We will denote this total energy ${E}$, with the rest mass energy from before denoted as $E_0$, allowing us to write equation \eqref{eq: total relativistic energy} as
 
 \begin{equation}
-	E^2 = E_0^2 + (\gamma_{u}{m}{u}{c})^2
+	E^2 = E_0^2 + (\gamma_{u}{m}{u_q}{c})^2
 \end{equation}
-
-this last term is relativistic
 
 Now let us look at this last energy term in the brackets, along with the Taylor expansion of $\gamma_{u}$, giving
 
 \begin{equation}
 	\begin{aligned}
-		\gamma_{u} {c}{m}{u} & = {c}{m}{u} \left(1 + \frac{1}{2}\frac{u^2}{{c}^2} + \frac{3}{8}\frac{u^4}{c^4} + ...
+		\gamma_{u} {c}{m}{u_q} & = {c}{m}{u_q} \left(1 + \frac{1}{2}\frac{u_q^2}{{c}^2} + \frac{3}{8}\frac{u_q^4}{c^4} + ...
 		\right)                                                                                                   \\
-		                 & ={c}\left( {m}{u} + \frac{1}{2}m \frac{u^3}{{c}^2} + \frac{3}{8}m\frac{u^5}{c^4} + ...
+		                 & ={c}\left( {m}{u_q} + \frac{1}{2}m \frac{u_q^3}{{c}^2} + \frac{3}{8}m\frac{u_q^5}{c^4} + ...
 		\right)
 	\end{aligned}
 \end{equation}
 
-at small particle velocities this is approximately $({m}{u}){c}$ with ${m}{u}$ being the classical momentum, we could assert that this whole energy, is the particles momentum times speed of light, but in the relativistic context.
-That is we can think of this as the relativistic momentum:
+At small particle velocities this is approximately $({m}{u_q}){c}$ with ${m}{u_q}$ being the classical momentum, we could assert that this whole energy, is a relativistic version of the particle's momentum, times the speed of light.
+That is, we can think of this as the relativistic momentum of the particle:
 
 \begin{equation}
 	\mhl{
-	p = \gamma_{u} {m}{u}
+	p = \gamma_{u} {m}{u_q}
 	}
 \end{equation}
 
-as it has the same units and it approximates to the classical momentum at small particle speeds.
+as it has the same units, and it approximates to the classical momentum at small particle speeds.
 We will denote the energy as
 
 \begin{equation}
@@ -1941,7 +1951,10 @@ If we take this interpretation of the equations, then we would have the final eq
 
 The reason physicists agree on this to be the correct interpretation of these equations is because it agrees with experiments, so despite the strange way of getting to them, they seem to be correct.
 
-It is also required to be this way for when it comes to photons, as photons do not have mass, but they do have momentum, allowing this equation to be used if we take it that we can substitue the momentum of the photon in for $p$ in the equation.
+It is also required to be this way when it comes to photons, as photons do not have an observable mass, but they do have momentum.
+This allows the equation to be used if we take it that we can substitute the momentum of the photon in for $p$ in the equation.
+Which was also experimentally verified to be true.
+
 
 %███████████████████████████████████████████████████████████████████
 \subsection{Energy-Mass Equivalence} \label{subsect: Energy-Mass Equivalence}
@@ -1952,7 +1965,7 @@ One of the most important concepts from the previous section is the invariant qu
 	E_0 = mc^2
 \end{equation}
 
-This is known as the energy-mass equivalence, and it gives a new type of energy related to its mass that was previously not known about.
+This is known as the energy-mass equivalence, and it gives a new type of energy that corresponds to the mass, that was previously not known about.
 From this we can deduce that if the mass of a system of particles decreases, then the decrease in energy due to the loss in mass needs to be made up for in other forms of energy, to keep the energy of the system conserved.
 For example this can be done by converting the energy that was in the form of mass to energy in the form of light.
 
@@ -2025,9 +2038,7 @@ It also helps explain why stars can produce so much energy, as they convert some
 %  (γ , γβ), then E = ω and E′ = ω′ = γ (ω−β·k) = γ ω(1−βcosθ),whereθ = cos−1 ˆβ· ˆ k . Thus,
 %  ω =γ−1ω′/(1−βcosθ).
 
-% *** start
-
-% *** change this to just 1 photon emitted from rest source and then see this in the primed frame, and then getting a rule for how impulse direction works for moving source
+% ** change this to just 1 photon emitted from rest source and then see this in the primed frame, and then getting a rule for how impulse direction works for moving source
 
 % \textbf{Initial frame:}
 
@@ -2071,7 +2082,7 @@ It also helps explain why stars can produce so much energy, as they convert some
 
 % from momentum we have:
 
-% *** need to make this $\gamma_{u'}$
+% ** need to make this $\gamma_{u'}$
 
 % * $\frac{h \nu'}{c} \hat{P'c}_y  = \gamma m u'_y $
 
@@ -2138,8 +2149,8 @@ It also helps explain why stars can produce so much energy, as they convert some
 
 % % We will have the ball's energy decrease by the amount of energy of the emitted light, meaning it will lose the equivalent of this energy in its mass.
 % % We also have a kinetic energy of the ball to think about in the primed frame.
-% % *** should the kinetic energy of the source be the relativistic kinetic energy from before.
-% % *** lets calculate the momentum of source and light, and calculate the energies as well, and make sure they are conserved.
+% % ** should the kinetic energy of the source be the relativistic kinetic energy from before.
+% % ** lets calculate the momentum of source and light, and calculate the energies as well, and make sure they are conserved.
 
 % % ** could add example of colliding particles, when they stick together and also when they elatically collide
 
@@ -2147,14 +2158,23 @@ It also helps explain why stars can produce so much energy, as they convert some
 %███████████████████████████████████████████████████████████████████
 \section{Summary}\label{sect: Summary chapter 3}
 
-...
+*** start
 
 Next, we will take a look at the delayed view of the world an observer sees, due to the delay in light from their surrounding.
 
+*** It is taken for granted that in particle interactions, energy is conserved and momentum is conserved both independantly
 
 *** there are quantities that are called 4-vectors, that make derivations simpler, but they would be required an extra section to explain, and are an abstraction which does not add any more physical intuition or insight.
 *** they are a tool that is used becuase the math works, not becuase they themselves give any insight.
 *** the understanding comes first then, the mathematical tools that make more complex systems easier to calculate comes next.
+
+*** this chapter is on the boundary between pure special relativity and particles physics; which relied heavily on experimental physics to discover the rules that particles follow.
+
+*** interactions between particles, require a lot more than just conservation of energy and momentum to fully describe them, there is also the conservation of charge, lepton number, baryon number, etc... which disallow many interactions from happening.
+
+*** for instance i meantioned that if an electron was able to decay into a photon, that the energy of the photon would be equal to the rest mass energy of the electron. but this is not actually a possible decay.
+
+*** you can get $e=mc^2$ directly from electromagnetism when taking certain interpretations of the equations of the energy of a photon $E=pc$ and momentum being $p=mc$ with $m$ being the effective mass of the photon due to its energy.
 
 
 %███████████████████████████████████████████████████████████████████
@@ -2172,11 +2192,10 @@ Next, we will take a look at the delayed view of the world an observer sees, due
 
 *** Here we will look into what effects, the consequences of the basic concepts we have just learnt, have on
 
-
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{Observers Delayed Worldview} \label{ch: Observers Delayed Worldview}
+\chapter{An Observer's Delayed Worldview}\label{ch: An Observer's Delayed Worldview}
 
 Light travels extremely fast compared to other everyday speeds we are used to, roughly at 300,000,000 meters per second.
 In the blink of an eye, light could travel around the world twice.
@@ -3846,6 +3865,10 @@ In this chapter we looked a field of light produced by continous emission of lig
 %███████████████████████████████████████████████████████████████████
 \part{Some Simple Applications}
 
+*** another section will eventually be added to talk specifically about kinematics and mechanics of particle interactions
+*** and this will include the some of the laws that particles have to obey, and what interactions are and are not allowed etc.
+
+*** one example is a photon decaying into particle anti particle pair, or the other way around with the pair inihilating into a single photon, as a photon has a momentum in all reference frames, but there is a frame in which the pair of particles have zero net momentum, so momentum would not be conserved in all frames if this interaction were to occur.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -3853,3 +3876,5 @@ In this chapter we looked a field of light produced by continous emission of lig
 \chapter{Thought Experiments}\label{sect: More Thought Experiments}
 
 ...
+
+*** outro is in other file

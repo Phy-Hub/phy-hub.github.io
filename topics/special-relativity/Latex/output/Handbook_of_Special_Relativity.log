@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  17 NOV 2025 20:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  19 NOV 2025 13:43
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1553,8 +1553,8 @@ Package biblatex Info: Setting label 'refsegment:04' on input line 1645.
 
 ] [61] [62] [63] [64] [65] [66] [67] [68] [69] (Tex/Terms/Terms_ch3.tex [70]) [71] [72]
 Chapter 4.
-Package biblatex Info: Reference segment=5 on input line 2198.
-Package biblatex Info: Setting label 'refsegment:05' on input line 2198.
+Package biblatex Info: Reference segment=5 on input line 2217.
+Package biblatex Info: Setting label 'refsegment:05' on input line 2217.
 [73
 
 ]
@@ -1564,18 +1564,18 @@ Package biblatex Info: Setting label 'refsegment:05' on input line 2198.
 <images/pdf/coord_transform_initial_with_retarded_time.pdf, id=30296, 202.15273pt x 281.56392pt>
 File: images/pdf/coord_transform_initial_with_retarded_time.pdf Graphic file (type pdf)
 <use images/pdf/coord_transform_initial_with_retarded_time.pdf>
-Package pdftex.def Info: images/pdf/coord_transform_initial_with_retarded_time.pdf  used on input line 2386.
+Package pdftex.def Info: images/pdf/coord_transform_initial_with_retarded_time.pdf  used on input line 2405.
 (pdftex.def)             Requested size: 102.14029pt x 142.26378pt.
 <images/pdf/coord_transform_primed_retarded.pdf, id=30297, 203.63353pt x 281.56392pt>
 File: images/pdf/coord_transform_primed_retarded.pdf Graphic file (type pdf)
 <use images/pdf/coord_transform_primed_retarded.pdf>
-Package pdftex.def Info: images/pdf/coord_transform_primed_retarded.pdf  used on input line 2392.
+Package pdftex.def Info: images/pdf/coord_transform_primed_retarded.pdf  used on input line 2411.
 (pdftex.def)             Requested size: 102.88847pt x 142.26378pt.
  [77]
 <images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf, id=30313, 365.68321pt x 312.03401pt>
 File: images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf Graphic file (type pdf)
 <use images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf>
-Package pdftex.def Info: images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf  used on input line 2407.
+Package pdftex.def Info: images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf  used on input line 2426.
 (pdftex.def)             Requested size: 166.7209pt x 142.26378pt.
  [78 <./images/pdf/coord_transform_initial_with_retarded_time.pdf> <./images/pdf/coord_transform_primed_retarded.pdf
 
@@ -1595,12 +1595,12 @@ Package biblatex Warning: Split bibliography detected.
 (biblatex)                '\BiblatexSplitbibDefernumbersWarningOff'.
 
 
-LaTeX Warning: Empty bibliography on input line 2571.
+LaTeX Warning: Empty bibliography on input line 2590.
 
 [83]
 Chapter 5.
-Package biblatex Info: Reference segment=6 on input line 2576.
-Package biblatex Info: Setting label 'refsegment:06' on input line 2576.
+Package biblatex Info: Reference segment=6 on input line 2595.
+Package biblatex Info: Setting label 'refsegment:06' on input line 2595.
 [84
 
 ]
@@ -1609,20 +1609,20 @@ Package biblatex Info: Setting label 'refsegment:06' on input line 2576.
 <images/pdf/Aberrated_velocities_restframe.pdf, id=30516, 372.9132pt x 281.56392pt>
 File: images/pdf/Aberrated_velocities_restframe.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_restframe.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities_restframe.pdf  used on input line 2814.
+Package pdftex.def Info: images/pdf/Aberrated_velocities_restframe.pdf  used on input line 2833.
 (pdftex.def)             Requested size: 142.26378pt x 107.41212pt.
 File: images/pdf/Aberrated_velocities.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 2819.
+Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 2838.
 (pdftex.def)             Requested size: 142.26378pt x 102.47137pt.
 <images/pdf/Aberrated_velocities_inwards_restframe.pdf, id=30517, 372.9132pt x 281.56392pt>
 File: images/pdf/Aberrated_velocities_inwards_restframe.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_inwards_restframe.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards_restframe.pdf  used on input line 2834.
+Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards_restframe.pdf  used on input line 2853.
 (pdftex.def)             Requested size: 142.26378pt x 107.41212pt.
 File: images/pdf/Aberrated_velocities_inwards.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_inwards.pdf>
-Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on input line 2839.
+Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on input line 2858.
 (pdftex.def)             Requested size: 142.26378pt x 102.47137pt.
  [88 <./images/pdf/Aberrated_velocities_restframe.pdf>]
 ===== Image './output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame' is up-to-date. ======
@@ -1631,17 +1631,17 @@ Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on in
 <images/pdf/Rest_Pulse.pdf, id=31204, 196.99521pt x 281.56392pt>
 File: images/pdf/Rest_Pulse.pdf Graphic file (type pdf)
 <use images/pdf/Rest_Pulse.pdf>
-Package pdftex.def Info: images/pdf/Rest_Pulse.pdf  used on input line 2951.
+Package pdftex.def Info: images/pdf/Rest_Pulse.pdf  used on input line 2970.
 (pdftex.def)             Requested size: 108.12054pt x 154.5341pt.
 <images/pdf/Prime_Pulse.pdf, id=31205, 196.99521pt x 281.56392pt>
 File: images/pdf/Prime_Pulse.pdf Graphic file (type pdf)
 <use images/pdf/Prime_Pulse.pdf>
-Package pdftex.def Info: images/pdf/Prime_Pulse.pdf  used on input line 2957.
+Package pdftex.def Info: images/pdf/Prime_Pulse.pdf  used on input line 2976.
 (pdftex.def)             Requested size: 108.12054pt x 154.5341pt.
 <images/pdf/Prime_Pulse_Simultaneous.pdf, id=31206, 196.99521pt x 281.56392pt>
 File: images/pdf/Prime_Pulse_Simultaneous.pdf Graphic file (type pdf)
 <use images/pdf/Prime_Pulse_Simultaneous.pdf>
-Package pdftex.def Info: images/pdf/Prime_Pulse_Simultaneous.pdf  used on input line 2963.
+Package pdftex.def Info: images/pdf/Prime_Pulse_Simultaneous.pdf  used on input line 2982.
 (pdftex.def)             Requested size: 108.12054pt x 154.5341pt.
  [91] [92 <./images/pdf/Rest_Pulse.pdf> <./images/pdf/Prime_Pulse.pdf
 
@@ -1655,7 +1655,7 @@ pdfTeX warning: pdflatex (file ./images/pdf/Prime_Pulse_Simultaneous.pdf): PDF i
 ===== Image './output/tikz/Tikz_Light_Pulse_Proper_Frame' is up-to-date. ======
 ===== Image './output/tikz/Tikz_Light_Pulse_Primed_Frame_2' is up-to-date. ======
 [97 <./output/tikz/Tikz_Light_Pulse_Proper_Frame.pdf> <./output/tikz/Tikz_Light_Pulse_Primed_Frame_2.pdf>]
-Package mdframed Info: Not enough space on this page on input line 3323.
+Package mdframed Info: Not enough space on this page on input line 3342.
  [98] [99] (Tex/Terms/Terms_ch5.tex [100])
 
 Package biblatex Warning: Split bibliography detected.
@@ -1668,32 +1668,32 @@ Package biblatex Warning: Split bibliography detected.
 
 [101]
 Chapter 6.
-Package biblatex Info: Reference segment=7 on input line 3380.
-Package biblatex Info: Setting label 'refsegment:07' on input line 3380.
+Package biblatex Info: Reference segment=7 on input line 3399.
+Package biblatex Info: Setting label 'refsegment:07' on input line 3399.
 File: images/pdf/Field_Rest_Frame.pdf Graphic file (type pdf)
 <use images/pdf/Field_Rest_Frame.pdf>
-Package pdftex.def Info: images/pdf/Field_Rest_Frame.pdf  used on input line 3395.
+Package pdftex.def Info: images/pdf/Field_Rest_Frame.pdf  used on input line 3414.
 (pdftex.def)             Requested size: 113.81102pt x 113.80934pt.
 
-Overfull \hbox (1.68707pt too wide) in paragraph at lines 3395--3396
+Overfull \hbox (1.68707pt too wide) in paragraph at lines 3414--3415
  [][] 
  []
 
 File: images/pdf/Field_Moving_Frame_Doppler.pdf Graphic file (type pdf)
 <use images/pdf/Field_Moving_Frame_Doppler.pdf>
-Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler.pdf  used on input line 3401.
+Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler.pdf  used on input line 3420.
 (pdftex.def)             Requested size: 113.81102pt x 113.80934pt.
 
-Overfull \hbox (1.68707pt too wide) in paragraph at lines 3401--3402
+Overfull \hbox (1.68707pt too wide) in paragraph at lines 3420--3421
  [][] 
  []
 
 File: images/pdf/Field_Moving_Frame_Doppler_circles.pdf Graphic file (type pdf)
 <use images/pdf/Field_Moving_Frame_Doppler_circles.pdf>
-Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler_circles.pdf  used on input line 3407.
+Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler_circles.pdf  used on input line 3426.
 (pdftex.def)             Requested size: 113.81102pt x 113.80934pt.
 
-Overfull \hbox (1.68707pt too wide) in paragraph at lines 3407--3408
+Overfull \hbox (1.68707pt too wide) in paragraph at lines 3426--3427
  [][] 
  []
 
@@ -1710,15 +1710,15 @@ Overfull \hbox (1.68707pt too wide) in paragraph at lines 3407--3408
 <images/pdf/Density_of_Light_from_Rest_Source.pdf, id=31730, 364.3304pt x 312.03401pt>
 File: images/pdf/Density_of_Light_from_Rest_Source.pdf Graphic file (type pdf)
 <use images/pdf/Density_of_Light_from_Rest_Source.pdf>
-Package pdftex.def Info: images/pdf/Density_of_Light_from_Rest_Source.pdf  used on input line 3699.
+Package pdftex.def Info: images/pdf/Density_of_Light_from_Rest_Source.pdf  used on input line 3718.
 (pdftex.def)             Requested size: 155.24895pt x 132.96265pt.
 <images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf, id=31731, 364.3304pt x 312.03401pt>
 File: images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf Graphic file (type pdf)
 <use images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf>
-Package pdftex.def Info: images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf  used on input line 3705.
+Package pdftex.def Info: images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf  used on input line 3724.
 (pdftex.def)             Requested size: 155.24895pt x 132.96265pt.
  [107]
-Overfull \hbox (3.94022pt too wide) in paragraph at lines 3744--3744
+Overfull \hbox (3.94022pt too wide) in paragraph at lines 3763--3763
 []\T1/qcs/b/n/14.4 Density in di-rec-tion of prop-a-ga-tion of light 
  []
 
@@ -1728,12 +1728,12 @@ pdfTeX warning: pdflatex (file ./images/pdf/Rate_of_Change_of_Vector_Density_of_
 >]
 File: images/pdf/Density_of_Light_from_Rest_Source.pdf Graphic file (type pdf)
 <use images/pdf/Density_of_Light_from_Rest_Source.pdf>
-Package pdftex.def Info: images/pdf/Density_of_Light_from_Rest_Source.pdf  used on input line 3833.
+Package pdftex.def Info: images/pdf/Density_of_Light_from_Rest_Source.pdf  used on input line 3852.
 (pdftex.def)             Requested size: 155.24895pt x 132.96265pt.
 <images/pdf/Density_of_Light_from_Moving_Source.pdf, id=31774, 364.3304pt x 312.03401pt>
 File: images/pdf/Density_of_Light_from_Moving_Source.pdf Graphic file (type pdf)
 <use images/pdf/Density_of_Light_from_Moving_Source.pdf>
-Package pdftex.def Info: images/pdf/Density_of_Light_from_Moving_Source.pdf  used on input line 3839.
+Package pdftex.def Info: images/pdf/Density_of_Light_from_Moving_Source.pdf  used on input line 3858.
 (pdftex.def)             Requested size: 155.24895pt x 132.96265pt.
  [109] (Tex/Terms/Terms_ch5.tex [110 <./images/pdf/Density_of_Light_from_Moving_Source.pdf>])
 
@@ -1747,8 +1747,8 @@ Package biblatex Warning: Split bibliography detected.
 
 [111] [112]
 Chapter 7.
-Package biblatex Info: Reference segment=8 on input line 3876.
-Package biblatex Info: Setting label 'refsegment:08' on input line 3876.
+Package biblatex Info: Reference segment=8 on input line 3895.
+Package biblatex Info: Setting label 'refsegment:08' on input line 3895.
 ) [113
 
 ]
@@ -1786,7 +1786,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  116i,17n,121p,1302b,1405s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\one_p\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsb.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsr.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsri.pfb>
-Output written on c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.pdf (116 pages, 6660096 bytes).
+Output written on c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.pdf (116 pages, 6660646 bytes).
 PDF statistics:
  32036 PDF objects out of 38293 (max. 8388607)
  392 named destinations out of 1000 (max. 500000)

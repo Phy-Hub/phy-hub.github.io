@@ -42,7 +42,7 @@
 \contentsline {section}{\numberline {3.3}Energy-Mass and Momentum Relation}{64}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Energy-Mass Equivalence}{69}{subsection.3.3.1}%
 \contentsline {section}{\numberline {3.4}Summary}{69}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Variables}{70}{section.3.5}%
+\contentsline {section}{\numberline {3.5}Variables}{71}{section.3.5}%
 \contentsline {part}{III\hspace {1em}Light in Special Relativity}{72}{part.3}%
 \contentsline {chapter}{\numberline {4}An Observer's Delayed Worldview}{73}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Retarded Coordinates}{74}{section.4.1}%

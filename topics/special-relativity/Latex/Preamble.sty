@@ -28,6 +28,7 @@
 %
 \usepackage{multicol}
 \usepackage{mdframed}
+\usepackage[pass]{geometry}
 
 % equation spacing
 \usepackage{mathtools}
@@ -35,7 +36,6 @@
 \setlength{\belowdisplayskip}{1pt}
 \setlength{\abovedisplayshortskip}{0pt}
 \setlength{\belowdisplayshortskip}{0pt}
-
 
 %█████████████████████████████████████████████████████
 %New commands
@@ -66,7 +66,7 @@
 \newcommand{\linesep}{
   \vspace{-0.6\baselineskip}
   \noindent\textcolor{gray}{\rule{\linewidth}{0.4pt}}
-  \vspace{-.4\baselineskip}
+  \vspace{-1.2\baselineskip}
 }
 
 \newcommand{\variable}[2]{
@@ -94,6 +94,15 @@
   \vspace{2cm} % vertical space after part title
 }
 \makeatother
+
+% definitions
+\usepackage{lipsum}
+\newcommand{\term}[3]{
+    \noindent \hypertarget{#2}{\textbf{#1:}}
+    #3
+    \par
+    \linesep
+}
 
 %█████████████████████████████████████████████████████
 % MATH
@@ -132,8 +141,10 @@
 \usetikzlibrary{calc}
 \usetikzlibrary{math}
 \usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathmorphing, patterns, shapes.geometric}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
+
 
 %██████████████████████████████████████████████████████
 % LINKS

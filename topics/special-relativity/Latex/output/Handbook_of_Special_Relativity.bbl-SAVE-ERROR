@@ -103,6 +103,85 @@
       \field{pages}{39\bibrangedash 40}
       \range{pages}{2}
     \endentry
+    \entry{SRtestsUniCR}{online}{}{}
+      \name{author}{2}{}{%
+        {{hash=cac2d7e93fb5b442cc6f8c794b28690f}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+        {{hash=2db9576fc29a68455f70f35a71506a88}{%
+           family={Schleif},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {UC Riverside Department of Mathematics}%
+      }
+      \strng{namehash}{8da820ed44796295742660ad72869819}
+      \strng{fullhash}{8da820ed44796295742660ad72869819}
+      \strng{fullhashraw}{8da820ed44796295742660ad72869819}
+      \strng{bibnamehash}{8da820ed44796295742660ad72869819}
+      \strng{authorbibnamehash}{8da820ed44796295742660ad72869819}
+      \strng{authornamehash}{8da820ed44796295742660ad72869819}
+      \strng{authorfullhash}{8da820ed44796295742660ad72869819}
+      \strng{authorfullhashraw}{8da820ed44796295742660ad72869819}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{3}
+      \field{month}{11}
+      \field{title}{What is the experimental basis of Special Relativity?}
+      \field{urlday}{13}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://math.ucr.edu/home/baez/physics/Relativity/SR/experiments.html
+      \endverb
+      \verb{url}
+      \verb https://math.ucr.edu/home/baez/physics/Relativity/SR/experiments.html
+      \endverb
+    \endentry
+    \entry{SRtestsWiki}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{9}
+      \field{note}{Wikipedia, The Free Encyclopedia}
+      \field{title}{Tests of relativistic energy and momentum}
+      \field{urlday}{13}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/w/index.php?title=Tests_of_relativistic_energy_and_momentum&oldid=1313924927
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/w/index.php?title=Tests_of_relativistic_energy_and_momentum&oldid=1313924927
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

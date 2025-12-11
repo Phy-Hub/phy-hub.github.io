@@ -17,57 +17,56 @@
 \contentsline {section}{\numberline {1.10}Relativistic Beaming}{23}{section.1.10}%
 \contentsline {section}{\numberline {1.11}A Source's Retarded Field of Light}{25}{section.1.11}%
 \contentsline {section}{\numberline {1.12}Velocity}{26}{section.1.12}%
-\contentsline {section}{\numberline {1.13}Perceived vs Actual Speed}{26}{section.1.13}%
+\contentsline {section}{\numberline {1.13}Apparent vs Actual Velocity}{26}{section.1.13}%
 \contentsline {section}{\numberline {1.14}Summary}{27}{section.1.14}%
-\contentsline {section}{\numberline {1.15}Definitions}{29}{section.1.15}%
-\contentsline {subsection}{\numberline {1.15.1}Mathematical Framework}{29}{subsection.1.15.1}%
-\contentsline {subsection}{\numberline {1.15.2}The Mechanics}{31}{subsection.1.15.2}%
-\contentsline {subsection}{\numberline {1.15.3}Definitions for Later}{32}{subsection.1.15.3}%
-\contentsline {part}{II\hspace {1em}The Essential Concepts Derived}{34}{part.2}%
-\contentsline {chapter}{\numberline {2}Position, Time and Velocity}{35}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Classical Relativity}{36}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Postulates of Special Relativity}{40}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Time Dilation}{41}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Length Contraction}{43}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Position and Time Transformation}{47}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Transforms with Small Primed Frame Velocity}{52}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Space and Time Intervals}{53}{subsection.2.5.2}%
-\contentsline {section}{\numberline {2.6}Velocity}{54}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Acceleration}{55}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Summary}{57}{section.2.8}%
-\contentsline {section}{\numberline {2.9}Terms}{58}{section.2.9}%
-\contentsline {chapter}{\numberline {3}Quantities That all Inertial Frames Agree on}{60}{chapter.3}%
-\contentsline {section}{\numberline {3.1}The Space-Time Interval}{61}{section.3.1}%
-\contentsline {section}{\numberline {3.2}D'Alembert operator}{62}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Energy-Mass and Momentum Relation}{64}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Energy-Mass Equivalence}{69}{subsection.3.3.1}%
-\contentsline {section}{\numberline {3.4}Summary}{69}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Variables}{71}{section.3.5}%
-\contentsline {part}{III\hspace {1em}Light in Special Relativity}{72}{part.3}%
-\contentsline {chapter}{\numberline {4}An Observer's Delayed Worldview}{73}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Retarded Coordinates}{74}{section.4.1}%
-\contentsline {section}{\numberline {4.2}The Transformed Retarded Coordinates}{77}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Perceived Velocity}{79}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Summary}{82}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Terms}{83}{section.4.5}%
-\contentsline {chapter}{\numberline {5}A Point Source: Emitting a Pulse of Light}{84}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Spherical Polar Coordinates}{85}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Velocity Transform of Light from a Source}{86}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Aberration in Special Relativity}{88}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Doppler Effect}{89}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Frequency Change from Swaping Frame}{91}{subsection.5.4.1}%
-\contentsline {section}{\numberline {5.5}Relativistic Beaming}{91}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Retarded Propagation of Light in Source's Moving Frame}{93}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Light's Propagation when Swapping from Rest Frame}{96}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Summary}{99}{section.5.8}%
-\contentsline {section}{\numberline {5.9}Terms}{100}{section.5.9}%
-\contentsline {chapter}{\numberline {6}A Point Source: Continuously Emitting Light}{102}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Surface Element on a Sphere and its Solid Angle}{103}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Surface Element's Light Density}{105}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Density in direction of propagation of light}{108}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Coordinates used}{109}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Volume Density of Light}{109}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Summary}{110}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Terms}{110}{section.6.7}%
-\contentsline {part}{IV\hspace {1em}Some Simple Applications}{112}{part.4}%
-\contentsline {chapter}{\numberline {7}Thought Experiments}{113}{chapter.7}%
+\contentsline {section}{\numberline {1.15}Definitions}{30}{section.1.15}%
+\contentsline {part}{II\hspace {1em}The Essential Concepts Derived}{32}{part.2}%
+\contentsline {chapter}{\numberline {2}Position, Time and Velocity}{33}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Classical Relativity}{34}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Postulates of Special Relativity}{38}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Time Dilation}{39}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Length Contraction}{41}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Position and Time Transformation}{45}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Transforms with Small Primed Frame Velocity}{50}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Space and Time Intervals}{51}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Velocity}{52}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Acceleration}{53}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Summary}{55}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Terms}{56}{section.2.9}%
+\contentsline {chapter}{\numberline {3}Quantities That all Inertial Frames Agree on}{58}{chapter.3}%
+\contentsline {section}{\numberline {3.1}The Space-Time Interval}{59}{section.3.1}%
+\contentsline {section}{\numberline {3.2}D'Alembert operator}{60}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Energy-Mass and Momentum Relation}{62}{section.3.3}%
+\contentsline {section}{\numberline {3.4}A Photon's Energy-Momentum Relation}{67}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Exchange of a Photon Between Masses initially at Rest}{68}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Energy-Mass Equivalence}{71}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Summary}{72}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Terms}{73}{section.3.6}%
+\contentsline {part}{III\hspace {1em}Light in Special Relativity}{74}{part.3}%
+\contentsline {chapter}{\numberline {4}An Observer's Delayed Worldview}{75}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Retarded Coordinates}{76}{section.4.1}%
+\contentsline {section}{\numberline {4.2}The Transformed Retarded Coordinates}{79}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Apparent Velocity}{81}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Summary}{84}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Terms}{85}{section.4.5}%
+\contentsline {chapter}{\numberline {5}A Point Source: Emitting a Pulse of Light}{86}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Spherical Polar Coordinates}{87}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Velocity Transform of Light from a Source}{88}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Aberration in Special Relativity}{90}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Doppler Effect}{91}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Frequency Change from Swaping Frame}{93}{subsection.5.4.1}%
+\contentsline {section}{\numberline {5.5}Relativistic Beaming}{93}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Retarded Propagation of Light in Source's Moving Frame}{95}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Light's Propagation when Swapping from Rest Frame}{98}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Summary}{101}{section.5.8}%
+\contentsline {section}{\numberline {5.9}Terms}{102}{section.5.9}%
+\contentsline {chapter}{\numberline {6}A Point Source: Continuously Emitting Light}{104}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Surface Element on a Sphere and its Solid Angle}{105}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Surface Element's Light Density}{107}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Density in direction of propagation of light}{110}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Coordinates used}{111}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Volume Density of Light}{111}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Summary}{112}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Terms}{112}{section.6.7}%
+\contentsline {part}{IV\hspace {1em}Some Simple Applications}{114}{part.4}%
+\contentsline {chapter}{\numberline {7}Thought Experiments}{115}{chapter.7}%

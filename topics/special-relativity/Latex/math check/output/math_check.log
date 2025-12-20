@@ -1,116 +1,116 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.2)  22 JAN 2025 17:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.11)  11 DEC 2025 04:57
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **"c:/Users/one_p/OneDrive/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/math check/math_check.tex"
 (c:/Users/one_p/OneDrive/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/math check/math_check.tex
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-03-14>
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-11-06>
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/standalone\standalone.cls
-Document Class: standalone 2022/10/10 v1.3b Class to compile TeX sub-files standalone
+Document Class: standalone 2025/02/22 v1.5a Class to compile TeX sub-files standalone
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tools\shellesc.sty
 Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
 Package shellesc Info: Unrestricted shell escape enabled on input line 75.
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 )) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
 \XKV@toks=\toks17
 \XKV@tempa@toks=\toks18
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\keyval.tex))
-\XKV@depth=\count188
+\XKV@depth=\count275
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-\sa@internal=\count189
-\c@sapage=\count190
+\sa@internal=\count276
+\c@sapage=\count277
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/standalone\standalone.cfg
-File: standalone.cfg 2022/10/10 v1.3b Default configuration file for 'standalone' class
+File: standalone.cfg 2025/02/22 v1.5a Default configuration file for 'standalone' class
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
-Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
-File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count191
-\c@section=\count192
-\c@subsection=\count193
-\c@subsubsection=\count194
-\c@paragraph=\count195
-\c@subparagraph=\count196
-\c@figure=\count197
-\c@table=\count198
-\abovecaptionskip=\skip48
-\belowcaptionskip=\skip49
-\bibindent=\dimen140
+\c@part=\count278
+\c@section=\count279
+\c@subsection=\count280
+\c@subsubsection=\count281
+\c@paragraph=\count282
+\c@subparagraph=\count283
+\c@figure=\count284
+\c@table=\count285
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/preview\preview.sty
-Package: preview 2024/01/17 13.3 (AUCTeX/preview-latex)
+Package: preview 2024/06/30 14.0.6 (AUCTeX/preview-latex)
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/luatex85\luatex85.sty
 Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/preview\prtightpage.def
-\PreviewBorder=\dimen141
+\PreviewBorder=\dimen149
 )
-\pr@snippet=\count199
-\pr@box=\box51
+\pr@snippet=\count286
+\pr@box=\box53
 \pr@output=\toks19
 )) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox.sty
-Package: adjustbox 2022/10/17 v1.3a Adjusting TeX boxes (trim, clip, ...)
+Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc.sty
 Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\trimclip.sty
-Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+Package: trimclip 2025/02/21 v1.2a Trim and clip general TeX material
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
-Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: pdftex.def on input line 106.
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen142
-\Gin@req@width=\dimen143
+\Gin@req@height=\dimen150
+\Gin@req@width=\dimen151
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/collectbox\collectbox.sty
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
-\collectedbox=\box52
+\collectedbox=\box54
 )
-\tc@llx=\dimen144
-\tc@lly=\dimen145
-\tc@urx=\dimen146
-\tc@ury=\dimen147
+\tc@llx=\dimen152
+\tc@lly=\dimen153
+\tc@urx=\dimen154
+\tc@ury=\dimen155
 Package trimclip Info: Using driver 'tc-pdftex.def'.
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdftex.def
-File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+File: tc-pdftex.def 2025/02/26 v2.3 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen148
-\adjbox@Height=\dimen149
-\adjbox@Depth=\dimen150
-\adjbox@Totalheight=\dimen151
-\adjbox@pwidth=\dimen152
-\adjbox@pheight=\dimen153
-\adjbox@pdepth=\dimen154
-\adjbox@ptotalheight=\dimen155
+\adjbox@Width=\dimen156
+\adjbox@Height=\dimen157
+\adjbox@Depth=\dimen158
+\adjbox@Totalheight=\dimen159
+\adjbox@pwidth=\dimen160
+\adjbox@pheight=\dimen161
+\adjbox@pdepth=\dimen162
+\adjbox@ptotalheight=\dimen163
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count266
+\c@checkoddpage=\count287
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/varwidth\varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box53
-\sift@deathcycles=\count267
-\@vwid@loff=\dimen156
-\@vwid@roff=\dimen157
-)) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-03-14 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count268
-\l__pdf_internal_box=\box54
+\@vwid@box=\box55
+\sift@deathcycles=\count288
+\@vwid@loff=\dimen164
+\@vwid@roff=\dimen165
 )
-No file math_check.aux.
+==> First Aid for varwidth.sty applied!
+) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count289
+) (c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\math check\output\math_check.aux)
 \openout1 = `math_check.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
@@ -127,20 +127,21 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
+
 Preview: Fontsize 10pt
 Preview: PDFoutput 1
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count269
-\scratchdimen=\dimen158
-\scratchbox=\box55
-\nofMPsegments=\count270
-\nofMParguments=\count271
+\scratchcounter=\count290
+\scratchdimen=\dimen166
+\scratchbox=\box56
+\nofMPsegments=\count291
+\nofMParguments=\count292
 \everyMPshowfont=\toks20
-\MPscratchCnt=\count272
-\MPscratchDim=\dimen159
-\MPnumerator=\count273
-\makeMPintoPDFobject=\count274
+\MPscratchCnt=\count293
+\MPscratchDim=\dimen167
+\MPnumerator=\count294
+\makeMPintoPDFobject=\count295
 \everyMPtoPDFconversion=\toks21
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -220,20 +221,20 @@ my insertion and my current dilemma will both disappear.
 Preview: Tightpage 0 0 0 0
 [1{C:/Users/one_p/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\math check\output\math_check.aux)
  ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-03-14>
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-11-06>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 2866 strings out of 474424
- 51893 string characters out of 5741740
- 1929496 words of memory out of 5000000
- 25202 multiletter control sequences out of 15000+600000
- 558069 words of font info for 36 fonts, out of 8000000 for 9000
+ 2924 strings out of 467871
+ 53139 string characters out of 5418375
+ 449850 words of memory out of 5000000
+ 31789 multiletter control sequences out of 15000+600000
+ 627721 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 86i,7n,93p,844b,258s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,7n,93p,873b,257s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on "c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\math check\output\math_check.pdf" (1 page, 45437 bytes).
+Output written on "c:\Users\one_p\OneDrive\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\math check\output\math_check.pdf" (1 page, 45435 bytes).
 PDF statistics:
  31 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

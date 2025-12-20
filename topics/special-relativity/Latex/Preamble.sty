@@ -17,10 +17,12 @@
 \fancyhf{}
 \cfoot{\thepage}
 
-% used in Contents spacing
+% spacing
 \usepackage{setspace}
-
-%
+\usepackage{microtype}
+\usepackage{tocloft}
+\cftsetpnumwidth{2.5em}
+\cftsetrmarg{3.5em}
 \renewcommand{\baselinestretch}{1.5} % line spacing
 \renewcommand{\headrulewidth}{0.8pt} % header line
 \setlength{\parindent}{0pt}
@@ -135,8 +137,8 @@
 \usepackage{asymptote} % \asy enviro
 \usepackage{tikz}
 \usepackage{tikz-3dplot}
-\usetikzlibrary{external}
-\tikzexternalize[prefix=./output/tikz/]% define output directory
+% \usetikzlibrary{external}
+% \tikzexternalize[prefix=./output/tikz/]% define output directory
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
 \usetikzlibrary{math}
@@ -158,5 +160,5 @@
 % BIBLIOGRAPHY
 %█████████████████████████████████████████████████████
 
-\usepackage[backend=biber, refsegment=chapter]{biblatex}
+\usepackage[backend=biber, refsegment=chapter, defernumbers=true]{biblatex}
 \addbibresource{refs.bib}

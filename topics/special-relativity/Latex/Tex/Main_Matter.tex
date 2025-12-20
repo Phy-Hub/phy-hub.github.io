@@ -411,12 +411,12 @@ However, directly in the direction of movement of the source, this is outweighed
 Since the energy of the light is proportional to the frequency, it is also increased in the direction of motion of the source due to the \hyperlink{def-doppler-effect}{Doppler effect}s and decreased in the opposite direction.
 
 %█████████████
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\resizebox{0.9\linewidth}{!}{%
-			\tikzsetnextfilename{circular_waves_from_stationary_source}
+			%%%\tikzsetnextfilename{circular_waves_from_stationary_source}
 			\begin{tikzpicture}[every node/.style={transform shape}]
 				\def\sourcevel{0}
 				\def\numwaves{8}
@@ -435,7 +435,7 @@ Since the energy of the light is proportional to the frequency, it is also incre
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\resizebox{0.95\linewidth}{!}{%
-		\tikzsetnextfilename{circular_waves_doppler_effect}
+		%%%\tikzsetnextfilename{circular_waves_doppler_effect}
 		\begin{tikzpicture}[every node/.style={transform shape}]
 			\def\sourcevel{0.9}
 			\def\numwaves{4}
@@ -525,7 +525,7 @@ This is shown in the following diagram.
 	\centering
 	\begin{subfigure}{0.45\textwidth}
 		\centering
-		\tikzsetnextfilename{earth_recieving_light_suns_frame}
+		%%%\tikzsetnextfilename{earth_recieving_light_suns_frame}
 		\begin{tikzpicture}
 			\draw (0,0) circle (1);
 			\node at (0,0) {Earth};
@@ -545,7 +545,7 @@ This is shown in the following diagram.
 	\end{subfigure}
 	\begin{subfigure}{0.45\textwidth}
 		\centering
-		\tikzsetnextfilename{earth_recieving_light_rest_frame}
+		%%%\tikzsetnextfilename{earth_recieving_light_rest_frame}
 		\begin{tikzpicture}
 			\def\u{0.8}
 			\draw (0,0) circle (1);
@@ -823,7 +823,7 @@ So let us see how the mathematics works for the classical coordinate system tran
 %█████████████
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{Tikz_simple_Galilean_transform_derivation}
+	%%%\tikzsetnextfilename{Tikz_simple_Galilean_transform_derivation}
 	\begin{tikzpicture}[scale = 3]%,tdplot_main_coords]
 		\coordinate (O) at (0,0,0);
 		%
@@ -943,7 +943,7 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 \begin{figure}[H]
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\tikzsetnextfilename{Time_dilation_rest_frame}
+		%%%\tikzsetnextfilename{Time_dilation_rest_frame}
 		\begin{tikzpicture}[scale = 0.65]
 			% Define the coordinates with more space between ellipses
 			\coordinate (A1) at (0, 6);
@@ -971,7 +971,7 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 	\end{subfigure}
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\tikzsetnextfilename{Time_dilation_moving_frame}
+		%%%\tikzsetnextfilename{Time_dilation_moving_frame}
 		\begin{tikzpicture}[scale = 0.65]
 			% Define the coordinates with more space between ellipses
 			\coordinate (A1) at (0, 6);
@@ -1074,7 +1074,7 @@ So there is now light moving perpendicular as well as parallel the primed frame'
 \begin{figure}[H]
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\tikzsetnextfilename{Length_contraction_rest_frame}
+		%%%\tikzsetnextfilename{Length_contraction_rest_frame}
 		\begin{tikzpicture}[scale = 0.55]
 			% Define the coordinates with more space between ellipses
 			\coordinate (A1) at (0, 0);
@@ -1105,7 +1105,7 @@ So there is now light moving perpendicular as well as parallel the primed frame'
 	\end{subfigure}
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\tikzsetnextfilename{Length_contraction_moving_frame}
+		%%%\tikzsetnextfilename{Length_contraction_moving_frame}
 		\begin{tikzpicture}[scale = 0.55]
 			% Define the coordinates with more space between ellipses
 			\coordinate (A1) at (0, 0);
@@ -1226,7 +1226,7 @@ This will allow us to derive the coordinate transformation equations, known as t
 %█████████████
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{Tikz_simple_lorentz_transform_derivation}
+	%%%\tikzsetnextfilename{Tikz_simple_lorentz_transform_derivation}
 	\begin{tikzpicture}[scale = 3]%,tdplot_main_coords]
 		\coordinate (O) at (0,0,0);
 		%
@@ -1389,7 +1389,7 @@ In the primed frame, these points are transformed to the position ${z{'}} = {\ga
 Therefore, to find these points, which represent the coordinates in the initial frame, now in the primed frame at the synchronized time of ${t{'}} = 0$, we must propagate the points to that time, which ends up being ${z{'}} = \frac{{z}}{{\gamma}}$, as shown in figure (\ref{fig: coordinate transform subfig_3}).
 
 This figure is to give you a little bit more intuition on how the coordinates and swapping between frames work.
-We will later see a more natural interpretation of the coordinate transforms when we introduce the notion of retarded time in Chapter (\ref{ch: Observers Delayed Worldview}), which will give us another reason for why the time transformation is the way it is.
+We will later see a more natural interpretation of the coordinate transforms when we introduce the notion of retarded time in Chapter (\ref{ch: An Observer's Delayed Worldview}), which will give us another reason for why the time transformation is the way it is.
 
 %███████████████████████████████████████████████████████████████████
 \subsection{Transforms with Small Primed Frame Velocity} \label{subsect: Transforms with Slow Primed Frame Velocity}
@@ -1412,7 +1412,7 @@ We can see when the $\gamma$-factor's influence starts to become significant fro
 %█████████████
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{Gamma_Factor}
+	%%%\tikzsetnextfilename{Gamma_Factor}
 	\begin{tikzpicture}
 		\begin{axis}[
 				domain=0:0.99,
@@ -1619,7 +1619,7 @@ In this chapter, we derived the mathematics for the transformation of the spatia
 We then introduced the assumptions, known as the postulates of special relativity, which we use to derive how time slows down due to time dilation, and how lengths of moving objects get smaller due to length contraction.
 This introduced us to $\gamma$, which is a factor used throughout relativity to simplify equations.
 From this we had the tools to derive the transformation equations, which in turn allowed us to calculate the velocity and acceleration transforms.
-Later in chapter (\ref{ch: Observers Delayed Worldview}) we will take a look at the delayed view of the world an observer sees, due to the delay in light from their surrounding, and this will help us understand why we need the time transformation to be the way it is.
+Later in chapter (\ref{ch: An Observer's Delayed Worldview}) we will take a look at the delayed view of the world an observer sees, due to the delay in light from their surrounding, and this will help us understand why we need the time transformation to be the way it is.
 
 So we have learnt how to transform from one reference frame into another, in special relativity.
 The outline of steps to transform a system of particles and their properties such as position, time, velocity and acceleration are as follows.
@@ -1812,13 +1812,24 @@ The invariance of this is a direct consequence of the way transformations preser
 %███████████████████████████████████████████████████████████████████
 \section{Energy-Mass and Momentum Relation} \label{sect: Energy-Mass and Momentum Relation}
 
-When it comes to the energy-mass and momentum relations,
-they can not be derived from the 2 postulates of special relativity and first principles alone, some assumptions and interpretations are needed to be made along the way.
-For instance, there are quantities in the equations that we will come across later, that we will refer to as the total energy and rest mass energy of a particle.
-The conclusions made about these mathematical terms, used some jumps in logical reasoning, and needed experimental verification, before they could be taken for granted.
-They do indeed turn out to agree with experiments though \cite{SRtestsWiki,SRtestsUniCR}.
+When it comes to the relationship between energy, mass and momentum, there are a lot of different derivations.
+But, there is no straight forward derivation that does not have downsides, such as hidden assumptions.
+I wanted to avoid a derivation that seems good on the surface just because you dont notice the flaw or just ignore it.
+So I decided to atleast start with a strong foundation, and point out any assumptions as we derive it.
+To do this we will start with a quantity that we know is invariant, and from it get a quantity with the units of energy that is invariant, which we will use to derive the full relationship.
+We will make use of some mathmatical tricks such as the Taylor expansion, and make some reasonable interpretations of each of the terms in the equation.
+For instance, there are quantities in the equations that we will come across later, that we will interpret as the total energy and the inherent energy that a particle at rest has due to its mass.
+These interpretations do indeed turn out to agree with experiments though \cite{SRtestsWiki,SRtestsUniCR}.
 
-Now let us move on and begin:
+So let us begin by deriving the invariant energy quantity.
+
+%███████████████████████████████████████████████████████████████████
+\subsection{The Invariant Energy Quantity}\label{subsect: The Invariant Energy Quantity}
+
+Here we will derive the invariant energy quantity for a particle, starting from the spacetime interval.
+
+%█████████████████
+\begin{derivation}
 
 We can see from equation \eqref{eq: space-time interval}, that if a particle $q$, is moving in an inertial reference frame, we can define the space-time interval of its coordinates in this frame as
 
@@ -1857,27 +1868,60 @@ It can be seen that this space-time velocity is still an invariant quantity as t
 Now we could multiply both sides of the third line in equation \eqref{eq: particles space-time interval} by the invariant quantity ${m}^2{c}^2$ where $m$ is the invariant rest mass of the particle, so that we get
 
 \begin{equation}
-	\label{eq: energy-momentum derivation}
 	\begin{aligned}
 		m^2 {c}^2 \left(\frac{dS_q}{d\tau}\right)^2 & = m^2{c}^4\gamma_{u}^2 \left( 1-\frac{u_q^2}{{c}^2} \right) \\
 		({m}{c}^2)^2                                & = \gamma_{u}^2 m^2 c^4-\gamma_{u}^2 m^2 u_q^2 {c}^2
 	\end{aligned}
 \end{equation}
 
-As the equation is, on the left hand side it shows an invariant quantity with the units of energy squared, this quantity does not depend on the speed of a particle, it is an intrinsic energy that a particle of mass $m$ has, we could call this the rest mass energy of a particle:
+were $\left(\frac{dS_q}{d\tau}\right)^2={c}^2$ was substituted in to get the final equation.
+
+\end{derivation}
+%███████████████
+
+This final equation's terms are all in units of energy squared, with the invariant energy squared term on the left, which we will tidy up so that we can write it as
 
 \begin{equation}
-	E_0=mc^2
+	\label{eq: energy-momentum derivation}
+		(m {c}^2)^2  = (\gamma_{u} m c^2)^2 - (\gamma_{u} m u_q {c})^2
 \end{equation}
 
-This could be (and was) taken as a new type of energy all masses have even when at rest, and is consistent with experimental results.
+This invariant expresion is what we will use as our basis to derive everthing in the following sections.
 
-For example, if an electron and the positron (the electrons anti-particle, which is like an electron but with positive charge) annihilate with each other, they create two photons.
-If the electron and positron were at rest when they annihilated, the energy of both photons would be equal to this rest mass energy of both partcles combined.
-In reality, they would be moving towards each other, so therefor the photon's energy would also need to include their relativistic kinetic energy, which we will talk about soon.
+%███████████████████████████████████████████████████████████████████
+\subsection{Rest Mass-Energy Equivalence}\label{subsect: Rest Mass-Energy Equivalence}
 
-Now, looking at the rest mass energy, it does not seem like a very proper way to get this famous equation, or at least looks like we have taken a shortcut to it.
-But let us continue, and we will look at what the other terms represent in equation \eqref{eq: energy-momentum derivation} to see if we get anything else that may convince us a little more that this is an okay interpretation of this invariant quantity of energy.
+The equation \eqref{eq: energy-momentum derivation}, shows an invariant quantity with the units of energy squared $(m {c}^2)^2$, from this we have the energy term $m {c}^2$ itself being invariant; it is an energy that is the same in all frames of reference.
+
+If we are to interpret this as being not just mathematical, but to have physical meaning, then this would be a new type of energy that is associated with with every particle, that was previously not known about.
+This energy does not depend on the speed of a particle, it is an intrinsic energy all masses have, even when at rest, we call this the rest mass energy, writen as
+
+\begin{equation}
+	\label{eq: rest mass energy}
+	\mhl{
+		E_0=mc^2
+	}
+\end{equation}
+
+From this we can deduce that if the mass of a system of particles decreases, then the decrease in total energy due to the loss in mass needs to be made up for in other forms of energy, to keep the energy of the system conserved.
+For example this can be done by converting the energy that was in the form of mass to energy in the form of light.
+This is consistent with experimental results.
+
+Although this equivalence has been misused to make nuclear bombs, you can thank it for the ability to get energy from decaying radioactive elements in nuclear power plants, and the future possibility that we can get energy output from nuclear fusion plants.
+It also helps explain why stars can produce so much energy, as they convert some of their mass into energy in the form of light, through nuclear fusion reactions.
+
+Now, looking at the rest mass energy equation, it does not seem like a very proper way to get this famous equation, or at least looks like we have taken a shortcut to it.
+But let us continue, and we will look at what the other terms in equation \eqref{eq: energy-momentum derivation} represent, to see if we get anything else that may convince us a little more that this is an okay interpretation of this invariant quantity of energy.
+
+To do this we will first derive the relativistic version of momentum.
+
+%███████████████████████████████████████████████████████████████████
+\subsection{Momentum}\label{subsect: Momentum}
+
+*** start
+
+%█████████████████
+\begin{derivation}
 
 So let us rearrange equation \eqref{eq: energy-momentum derivation}, to get
 
@@ -1909,6 +1953,7 @@ So this seems like it could be a formula for the total energy of a particle (in 
 We will denote this total energy ${E}$, with the rest mass energy from before denoted as $E_0$, allowing us to write equation \eqref{eq: total relativistic energy} as
 
 \begin{equation}
+	\label{eq: energy momentum deriving momentum term}
 	E^2 = E_0^2 + (\gamma_{u}{m}{u_q}{c})^2
 \end{equation}
 
@@ -1923,8 +1968,12 @@ Now let us look at this last energy term in the brackets, along with the Taylor 
 	\end{aligned}
 \end{equation}
 
-At small particle velocities this is approximately $({m}{u_q}){c}$ with ${m}{u_q}$ being the classical momentum, we could assert that this whole energy, is a relativistic version of the particle's momentum, times the speed of light.
-That is, we can think of this as the relativistic momentum of the particle:
+At small particle velocities this last term is approximately $({m}{u_q}){c}$ with ${m}{u_q}$ being the classical momentum, we could assert that this whole energy, is a relativistic version of the particle's momentum, times the speed of light.
+
+\end{derivation}
+%███████████████
+
+So we can think of the last term in equation \eqref{eq: energy momentum deriving momentum term} as the relativistic momentum of the particle:
 
 \begin{equation}
 	\mhl{
@@ -1932,470 +1981,79 @@ That is, we can think of this as the relativistic momentum of the particle:
 	}
 \end{equation}
 
-*** start
+which is approximates to the classical momentum at speeds much less than sped of light.
 
-*giving this relativistic kitnetic energy equal to $p c$
+But what about for light itself, when $\gamma$ is infinitly large, can we still make it work? we shall see in the next section.
 
-* but you may ask why bother abstracting $\gamma_{u}{m}{u_q}{c}$ to $p c$
 
-* the reason this is done is because this form actually works for when we look at light
+
+%███████████████████████████████████████████████████████████████████
+\subsection{Momentum of Light}\label{subsect: Momentum of Light}
+
+*** start with $P=E/c$ from other branches of physics
+
+Now you might wonder how the energy momentum relationship works for light.
+To look at this we will used equation \eqref{eq: energy momentum deriving momentum term}.
+For the speed of light we have $\gamma$ being infinitely large, so if the photon had a non zero rest mass, the second term would be infinite, therefor giving the total energy as infinite, which is not possible.
+So the photon must have zero or infinitesmal rest mass, giving zero the rest mass energy $E_0=0$, leading to the total energy of a photon to be given as
+
+\begin{equation}
+	E_{ph} = \|\gamma_{c}{m_{ph}}{c}{c}\|
+\end{equation}
+
+now if we were to get a finite energy from this, we would require $\gamma_{c}{m_{ph}}$ (which is an infinite value multiplied by and infintesmal) to be finite to be meaningful.
+This has the units of mass, so we could think of this as an effective mass $m_{eff}=\gamma_{c}{m_{ph}}$ that a photon has, and $p_{ph}=m_{eff}{c}$ as the momentum due to this.
+This would give the energy for light due to the momentum as $E_{ph} = {p}{c}$
+
+* *** this is the relation of a photons that can be derived in many different topics of physics such as...
 
 * can explain that light is EM and that was derived to be $E_{ph}=p_{ph} c$
 
-
-* now show using subsection how this works nicely with the thought experiment, and show that if you start with $E=pc$ you get $E_{0}= mc^2$, or you can start vise versa, but the main thing is that these two ideas work out to be compatible with eachother
-
-* then have section giving final energy momentum relation.
-
-
-* maybe introduce the concept of effective mass $m_{eff} = \gamma_{u} {m}$
-
-as it has the same units, and it approximates to the classical momentum at small particle speeds.
-We will denote the energy as
+* This can be derived through electromagnetic theory *ref* 1900, and it was also derived in Brownian motion, which is the motion of atoms/molecules in liquid or gas *ref* 1917/1909.
+Both of which would require learning of topics outside the scope of special relativity.
+So we will instead just look at what the momentum of a photon is and then see if this fits nicely with what we have already looked at, without any contradictions.
 
 \begin{equation}
-	{E_p} = {p} {c}
+\label{eq: momentum of photon}
+p_{ph} = \frac{E_{ph}}{c}
 \end{equation}
 
-* The reason
+It is this momentum that we use in the energy momentum relation, as well as the rest mass of the photon $m_{ph}=0$.
 
-If we take this interpretation of the equations, then we would have the final equation relating the energy and momentum of a particle as
+The reason physicists agree on this to be the correct interpretation of these equations is because it agrees with experiments, so despite the strange way of getting to them, they work.
+
+* they also agree with other derivations of the momentum energy relation of light
+
+
+*** for a photon which is massless this equation reduces to $E=pc$, you may say that we have superficially decided to have $p$ here when we replaced $\gamma m u$ with it when we decided to define this as the relativistic version of momentum. and then decide that this should be true for lights momentum aswell.
+
+*** but in this section we will show that we require $E=pc$ to be true and hence show that our previous intuition works out.
+
+%███████████████████████████████████████████████████████████████████
+\subsection{Energy-Mass-Momentum Relation}\label{subsect: Energy-Mass-Momentum Relation}
+
+This would allow us to give the full energy-momentum relationship from equation \eqref{eq: energy momentum deriving momentum term} as
 
 \begin{equation}
 	\label{eq: energy-momentum relation}
 	\mhl{
 		\begin{aligned}
-			E^2 & = [E_0]^2 + E_p^2    \\
+			E^2 & = E_{0}^2 + E_p^2    \\
 			    & = (mc^2)^2 + (pc)^2
 		\end{aligned}
 	}
 \end{equation}
 
-* This is a major
+with momentum being $p = \gamma_{u} {m}{u_q}$ for a mass and $p=E/c$ for a photon.
 
-The reason physicists agree on this to be the correct interpretation of these equations is because it agrees with experiments, so despite the strange way of getting to them, they work.
-
-*** we will show a reason why it has to be this way when it comes to photons momentum
-
-*** for a photon which is massless this equation reduces to $E=pc$, you may say that we have superficially decided to have $p$ here when we replaced $\gamma m u$ with it when we decided to define this as the relativistic version of momentum. and then decide that this should be true for lights momentum aswell.
-
-*** but in the next section we will show that we require $E=pc$ to be true and hence show that our previous intuition works out.
-
-%███████████████████████████████████████████████████████████████████
-%███████████████████████████████████████████████████████████████████
-\section{A Photon's Energy-Momentum Relation}\label{sect: A Photon's Energy-Momentum Relation}
-
-* The mass of a photon is thought to be zero, so you might ask how this fits into the previous equation that has mass and momentum which classically requires a mass in the equation.
-Well, a photon actually does have momentum, just in a different form, and we will derive it through thought experiments, shown in the next sections.
-
-What about a light, how does it fit into the energy-momentum relation.
-Well fist we need to know what a photon's momentum is.
-This can be derived through electromagnetic theory *ref* 1900, and it was also derived in Brownian motion, which is the motion of atoms/molecules in liquid or gas *ref* 1917/1909.
-Both of which would require learning of topics outside the scope of special relativity.
-So we will instead just look at what the momentum of a photon is and then see if this fits nicely with what we have already looked at, without any contradictions.
-
-The momentum of a photon is given by the equation
-
-* use subscript p instead of ph, as p is used above, just mention this is specifically for photon
-
-\begin{equation}
-\label{eq: momentum of photon}
-P_{p} = \frac{E_{p}}{c}
-\end{equation}
-
-It is this momentum that we use in the energy momentum relation, as well as the rest mass of the photon $m_{ph}=0$.
-
-To show that using this energy-momentum relation for a photon is consistent with conservation of momentum, we will use the following thought experiment.
-
-* This will then allow equation \eqref{eq: energy-momentum relation} to work for situations where we have a system that includes light
-
-%███████████████████████████████████████████████████████████████████
-\subsection{Exchange of a Photon Between Masses initially at Rest}\label{subsect: Exchange of a Photon Between Masses initially at Rest}
-
-*** start
-
-* The center of mass of a closed/isolated system needs to remain constant
-
-* if an isolated system that has its centre of mass at rest and then has it change, then its momentum goes from zero to non zero, a violation of the conservation of momentum
-
-* "If the center of mass were allowed to move or accelerate without any external force, it would imply that an object could "pull itself up by its own bootstraps" and generate speed from nothing. This would violate Newton’s First Law (Inertia) and the Conservation of Momentum.
-
-* maybe do derivation and only substitute in $P=E/c$ to allow for better explanation of need for both $P=E/c$ and $E=mc^2$ together
-
-*** from book:
-
-According to our present beliefs as expressed by special relativity, the speed of light in free space represents an upper limit, not only to the speed of material particles such as electrons, but also to the speed with which an interaction of any kind can be propagated—gravitational, nuclear, electric, etc. Were this not so, it would be possible (as we shall discuss later) to arrive at a paradox involving the interchange of the roles of cause and effect, according to one's point of view (see the discussion of causality near the end of Chapter 4).
-
-One particular consequence of the physical speed limit equal to $c$ is that the classical concept of an ideal rigid body finds no place in special relativity. (And strictly speaking, it cannot be justified in classical mechanics either.) For by a rigid body we mean an object along which physical information can be transmitted in an arbitrarily short time, so that the object is set in motion instantaneously, as a single unit, when a force is applied to any point in it. For any ordinary box the information that one end has been struck is transmitted as an elastic wave, which we know is many orders of magnitude slower than a light signal. Thus the Einstein box argument in its original form cannot be maintained. At the receiving end of the box, the first intimation that anything had happened at the other end would be the arrival of the radiation itself. We can, however, rehabilitate the argument as follows.
-
-Ignore completely any connection between the ends of the box, and regard it as two separate masses, $m_1$ and $m_2$ (Fig. 1-6). Just suppose that one end, of initial mass $m_1$, emits energy $E$ at $t = 0$ and suffers a mass change to $m_1'$. It acquires a velocity $v_1$ given by
-\[
-v_1 = \frac{-E/c}{m_1'}
-\]
-
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[
-        % Define styles
-        mass/.style={draw, fill=gray!30, minimum width=0.5cm, minimum height=1.0cm, font=\small},
-        velarrow/.style={-latex, thin},
-        energyarrow/.style={-latex, thin},
-        dashedline/.style={dashed, thin, gray},
-        labeltext/.style={font=\footnotesize\bfseries, align=left}
-    ]
-
-    % === Parameters ===
-    \def\rowgap{2.2cm}
-    \def\Ldist{4.5cm}
-    \def\shift{0.6cm}   % The recoil distance for the bottom row
-
-    % Base coordinates
-    \coordinate (toprow_y) at (0, \rowgap);
-    \coordinate (botrow_y) at (0, 0);
-
-    % The vertical dashed lines represent x=0 and x=L
-    % Since the boxes are to the left/right of these lines, we offset the nodes by half their width (0.25)
-
-    % ====== TOP ROW: Just after emission (Unshifted) ======
-
-    % Left Mass (m) - Sits to the left of x=0
-    \node[mass] (m_top) at (-0.25, \rowgap) {$m$};
-
-    % Right Mass (m2) - Sits to the right of x=L
-    \node[mass] (m2_top) at (\Ldist + 0.25, \rowgap) {$m_2$};
-
-    % Velocity Arrow v1 (Points LEFT)
-    \draw[velarrow] (m_top.west) -- node[above, font=\small] {$v_1$} ++(-0.6, 0);
-
-    % Energy Arrows (Point RIGHT, leaving m)
-    \coordinate (E_start) at ($(m_top.east) + (0.2,0)$);
-    \foreach \y in {-0.12, -0.04, 0.04, 0.12} {
-        \draw[energyarrow] ($(E_start)+(0,\y)$) -- ++(0.5,0);
-    }
-    \node[right, font=\small] at ($(E_start) + (0.5,0)$) {$E$};
-
-    % Label
-    \node[labeltext, right=0.5cm] at (m2_top.east) {Just after\\emission};
-
-
-    % ====== BOTTOM ROW: Just after absorption (Shifted) ======
-
-    % Left Mass (m1) - Recoiled to the LEFT (Shifted)
-    \node[mass] (m1_bot) at (-0.25 - \shift, 0) {$m_1$};
-
-    % Right Mass (m2) - Recoiled to the RIGHT (Shifted)
-    \node[mass] (m2_bot) at (\Ldist + 0.25 + \shift, 0) {$m_2$};
-
-    % Velocity Arrow v1 (Points LEFT)
-    \draw[velarrow] (m1_bot.west) -- node[above, font=\small] {$v_1$} ++(-0.6, 0);
-
-    % Energy Arrows (Point RIGHT, entering m2)
-    % Note: The energy has traveled distance L, so we draw it arriving at the dashed line L,
-    % or relative to the moved mass. The diagram usually shows it arriving at the mass.
-    \coordinate (E_end) at ($(m2_bot.west) + (-0.2,0)$);
-    \foreach \y in {-0.12, -0.04, 0.04, 0.12} {
-        \draw[energyarrow] ($(E_end)+(-0.5,\y)$) -- ($(E_end)+(0,\y)$);
-    }
-    \node[left, font=\small] at ($(E_end)+(-0.5,0)$) {$E$};
-
-    % Velocity Arrow v2 (Points RIGHT)
-    \draw[velarrow] (m2_bot.east) -- node[above, font=\small] {$v_2$} ++(0.6, 0);
-
-    % Label
-    \node[labeltext, right=0.5cm] at (m2_bot.east) {Just after\\absorption};
-
-
-    % ====== GUIDES ======
-
-    % Left vertical dashed line (at x=0)
-    % Extends from slightly below bottom mass to slightly above top mass
-    \draw[dashedline] (0, -0.6) -- (0, \rowgap + 0.6);
-
-    % Right vertical dashed line (at x=L)
-    \draw[dashedline] (\Ldist, -0.6) -- (\Ldist, \rowgap + 0.6);
-
-    % Dimension L (Between the two dashed lines)
-    \draw[<->, >=latex, thin] (0, 1.1) -- node[fill=white, inner sep=2pt, font=\small] {$L$} (\Ldist, 1.1);
-
-    % Optional: Dashed lines showing the new positions relative to old?
-    % The problem image has dashed lines mainly at x=0 and x=L to show the gap.
-
-    \end{tikzpicture}
-    \caption*{Fig. 1-6 ``Einstein's box unhinged.'' The recoil processes in two unconnected masses in consequence of a burst of radiant energy emitted from one ($m_1$) and absorbed in the other ($m_2$).}
-\end{figure}
-
-If $m_1$ were originally at $x = 0$, its position at any later time is thus given by
-\begin{equation}
-    x_1(t) = - \frac{E}{m_1' c} t \tag{1-30}
-\end{equation}
-
-When the energy arrives at $m_2$ (at $t = L/c$) it causes a recoil and a change of mass so that we have, for the position of $m_2$,
-\begin{equation}
-    x_2(t) = L + \frac{E}{m_2' c} (t - L/c) \tag{1-31}
-\end{equation}
-
-Let the total mass be $M$, and let the position of the center of mass be $\bar{x}$ before the radiation was emitted from $m_1$ and $\bar{x}'$ after it was absorbed in $m_2$. Then
-\begin{equation}
-    M\bar{x} = m_1 \cdot 0 + m_2 \cdot L \tag{1-32}
-\end{equation}
-and
-\[
-M\bar{x}' = m_1'\left( \frac{-E}{m_1' c} t \right) + m_2' \left[ L + \frac{E}{m_2' c} (t - L/c) \right]
-\]
-i.e.,
-\begin{equation}
-    M\bar{x}' = - \frac{E}{c} t + m_2' L + \frac{E}{c} t - \frac{E}{c^2} L \tag{1-33}
-\end{equation}
-
-Hence, if $\bar{x}' = \bar{x}$,
-\begin{equation}
-    \Delta m_2' = m_2' - m_2 = \frac{E}{c^2} = - \Delta m_1' \tag{1-34}
-\end{equation}
-
-Thus the principle of inertia of energy finds a sounder theoretical basis, but by this stage we have seen its real vindication in the experimentally observed behavior of particles.
-
-
-
-
-
-
-
-
-
-
-
-
-% %███████████████████████████████████████████████████████████████████
-% \subsection{A Photon in a Rigid Box}\label{subsect: A Photon in a Rigid Box}
-
-% * let us look at a very simple system of box which is initially at rest, which emits a photon from one side to be absorbed by the opposite side,
-
-% \begin{figure}[htbp]
-%     \centering
-%     \begin{subfigure}[b]{0.32\textwidth}
-%         \centering
-%         \begin{tikzpicture}
-%             \draw[step=0.5, gray!60, thin] (-2,-2) grid (2,2);
-%             \node[draw=black, thick, fill=white, minimum size=3cm] (box) at (0,0) {};
-%             \node[star, star points=7, star point ratio=2, fill=yellow, draw=orange, inner sep=2pt] at (-1.5, 0) {};
-%             \draw[black, dashed, thick] (0,-1.75) -- (0, 1.75);
-%             \node[black, font=\tiny, inner sep=1pt] at (0, -1.9) {COM};
-%         \end{tikzpicture}
-%         \caption{Emission}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.32\textwidth}
-%         \centering
-%         \begin{tikzpicture}
-%             \draw[step=0.5, gray!40, thin] (-2,-2) grid (2,2);
-%             \def\shift{-0.25};
-%             \node[draw=black, thick, fill=white, minimum size=3cm] (box) at (\shift,0) {};
-% 			\node[draw=gray!80, dashed, thick, minimum size=3cm] at (0,0) {};
-
-% 			% Blur loop Right (Vertical lines only)
-%             \foreach \i in {1,...,20} {
-%                 \pgfmathsetmacro{\opacity}{0.25 * (1 - \i/20)}
-%                 \pgfmathsetmacro{\offset}{\i * 0.008}
-%                 % Draw Left vertical line of ghost
-%                 \draw[black, opacity=\opacity] (\shift + \offset - 1.5, -1.5) -- (\shift + \offset - 1.5, 1.5);
-%                 % Draw Right vertical line of ghost
-%                 \draw[black, opacity=\opacity] (\shift + \offset + 1.5, -1.5) -- (\shift + \offset + 1.5, 1.5);
-% }
-
-
-%             \draw[decorate, decoration={snake, amplitude=2pt, segment length=5pt}, ->, yellow!90!black, thick] (\shift-0.5, 0) -- (\shift+0.5, 0);
-%             \node[circle, fill=yellow, inner sep=1.5pt] at (\shift, 0) {};
-
-%             \draw[<<-, black, thick] (\shift+0.85, 0.75) -- (\shift+1.5, 0.75) node[midway, above, black] {$u$};
-%             \draw[black, dashed, thick] (0,-1.75) -- (0, 1.75);
-% 			\node[black, font=\tiny, inner sep=1pt] at (0, -1.9) {COM};
-%         \end{tikzpicture}
-%         \caption{Box Recoils}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.32\textwidth}
-%         \centering
-%         \begin{tikzpicture}
-%             \draw[step=0.5, gray!50, thin] (-2,-2) grid (2,2);
-%             \node[gray, font=\tiny] at (0,0) {Origin};
-%             \def\shift{-0.5}
-%             \node[draw=black, thick, fill=white, minimum size=3cm] (box) at (\shift,0) {};
-% 			\node[draw=gray!80, dashed, thick, minimum size=3cm] at (0,0) {};
-%             \node[star, star points=7, star point ratio=2, fill=yellow, draw=orange, inner sep=2pt] at (\shift+1.5, 0) {};
-%             \draw[black, dashed, thick] (0,-1.75) -- (0, 1.75);
-% 			\node[black, font=\tiny, inner sep=1pt] at (0, -1.9) {COM};
-%         \end{tikzpicture}
-%         \caption{Absorption}
-%     \end{subfigure}
-%     \caption{Einstein's Box Thought Experiment: The Center of Mass (black dashed line) remains at the origin (0,0) throughout the entire process. 1) Photon emission at the left wall. 2) As the photon moves right, the box moves half a grid width to the left. 3) Photon absorption at the right wall stops the box, leaving it displaced by exactly one grid width.}
-%     \label{fig:einstein_box_updated}
-% \end{figure}
-
-% *** this is not actually true as right hand side would not begin to move until signal gets to it
-
-% *** change to a mirrored ball reflecting a photon, with the energy of the photon reducing by the amount of kinetic energy imparted to the ball
-
-% *** This allows the equation to be used if we take it that we can substitute the momentum of the photon in for $p$ in the equation.
-% Which was also experimentally verified to be true.
-
-% * there is a problem with this thought experiment though, as there is no such thing as a rigid box in real life, and the far side of the box would not move instantaneously, and the left hand side would start to move before the right.
-
-% * If we are not satisfied that this thought experiment, we can instead look at the next thought experiment where we have the the walls of the box are not connected, but can still see that we require that momentum of a photon is $p=E/c$
-
-% %███████████████████████████████████████████████████████████████████
-% \subsection{A Photon Between two Disconnected Walls}\label{subsect: Photon between two Disconnected Walls}
-
-%███████████████████████████████████████████████████████████████████
-\subsection{Energy-Mass Equivalence} \label{subsect: Energy-Mass Equivalence}
-
-One of the most important concepts from the previous section is the invariant quantity:
-
-\begin{equation}
-	E_0 = mc^2
-\end{equation}
-
-This is known as the energy-mass equivalence, and it gives a new type of energy that corresponds to the mass, that was previously not known about.
-From this we can deduce that if the mass of a system of particles decreases, then the decrease in energy due to the loss in mass needs to be made up for in other forms of energy, to keep the energy of the system conserved.
-For example this can be done by converting the energy that was in the form of mass to energy in the form of light.
-
-Experiments have confirmed that this energy-mass equivalence is correct, at least to the extremely high accuracy we can measure.
-Although this equivalence has been misused to make nuclear bombs, you can thank it for the ability to get energy from decaying radioactive elements in nuclear power plants, and the future possibility that we can get energy output from nuclear fusion plants.
-It also helps explain why stars can produce so much energy, as they convert some of their mass into energy in the form of light, through nuclear fusion reactions.
 
 ** got to also explain why things from energy momentum relation, leads to things not being able to move to above the speed of light.
 
 * previously we showed that faster than light travel would lead to effects being able happening before the cuase in, but here is another reason that faster than light transport may not be posible
 * the math itself does not say things can't go above speed of light, it just says that a mass of particle going less than speed of light can not be accelerated beyond c, but if particle inherently has speed greater that c, the math still works, we just need to worry about cuase and effect and how it would work with it. and would be against our intuition, to always have a cause always be before and effect no matter the frame
 
-% %███████████████████████████████████████████████████████████████████
-% %███████████████████████████████████████████████████████████████████
-% \section{Momentum of Emmitted Light from Source}\label{sect: Momentum of Emmitted Light from Source}
+*** when looking at particle collisions, we also need to take into account potential energy as they move towards and away from each other, but this would have to take into account acceleration aswell.
 
-% https://courses.physics.ucsd.edu/2019/Winter/physics110b/LECTURES/C19.pdf
-
-% page 29:
-
-% Consider next the emission of a photon of 4-momentum Pµ = ( ω/c, k) from an object with 4-velocity
-%  Vµ, and detected in a frame with 4-velocity Uµ. In the frame of the detector, the photon energy is
-%  E = PµUµ, while in the frame of the emitter its energy is E′ = PµVµ. If Uµ = (1,0,0,0) and Vµ =
-%  (γ , γβ), then E = ω and E′ = ω′ = γ (ω−β·k) = γ ω(1−βcosθ),whereθ = cos−1 ˆβ· ˆ k . Thus,
-%  ω =γ−1ω′/(1−βcosθ).
-
-% ** change this to just 1 photon emitted from rest source and then see this in the primed frame, and then getting a rule for how impulse direction works for moving source
-
-% \textbf{Initial frame:}
-
-% before:
-
-% * no light
-
-% * $\mathbf{u} = (0,0)$
-
-% * $\mathbf{p}_{tot} = (0,0)$
-
-% After:
-
-% * $\mathbf{c} = c (\sin\alpha,\cos\alpha) = c \mathbf{\hat{c}}$
-
-% * $\mathbf{u} = - u \mathbf{\hat{c}}$
-
-% * $\mathbf{p}_{tot} = (0,0) = \frac{h \nu}{c} \mathbf{\hat{c}}  - \gamma m u \mathbf{\hat{c}} $
-
-% ** $ \nu = \frac{\gamma m u c}{h} $
-
-% ** $\lambda = \frac{h}{\gamma m u} $
-
-% \textbf{Primed frame:}
-
-% Before:
-
-% * no light
-
-% * $\mathbf{u} = (0,-v)$
-
-% * $\mathbf{p}_{tot} = (0,- \gamma m v)$
-
-% After:
-
-% * $\mathbf{c'} = c (\sin\alpha',\cos\alpha') = c \mathbf{\hat{c'}} ...$
-
-% * $\underline{u'} = \dfrac{( u_y, {\gamma} \left( u_z - {v} \right) )}{{\gamma}\left(1-\dfrac{v}{{c}^2} {u_z}\right)}$
-
-% * $\mathbf{p}_{tot} = (0,- \gamma m v) = \frac{h \nu'}{c} \mathbf{\hat{Pc'}}  + \gamma m \mathbf{u'} $
-
-% from momentum we have:
-
-% ** need to make this $\gamma_{u'}$
-
-% * $\frac{h \nu'}{c} \hat{P'c}_y  = \gamma m u'_y $
-
-% * $ \frac{h \nu'}{c} \hat{P'c}_z = - \gamma m ( u'_z + v)  $
-
-% doppler shift from swaping frames:
-
-% $\nu' = \frac{m u c}{h} {\gamma}^2 \left(1-\dfrac{v}{c} \cos\alpha \right)  = \frac{1}{h} \frac{m u c}{\left(1+\frac{v}{c} \cos\alpha' \right)}$
-
-% remembering $\cos\alpha'$ is the angle from z-axis
-
-% then from momentum we have:
-
-% * $\frac{u}{\left(1+\frac{v}{c} \cos\alpha' \right)} \hat{P'c}_y  = \gamma  u'_y $
-
-% * $  \frac{u}{\left(1+\frac{v}{c} \cos\alpha' \right)} \hat{P'c}_z =  - \gamma ( u'_z + v)  $
-
-% velocity transform:
-
-% \begin{equation}
-% \underline{u'} = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {u_z}\right)}
-% 			\begin{pmatrix}
-% 				u_y                               \\
-% 				{\gamma} \left( u_z - {v} \right)
-% 			\end{pmatrix}
-% \end{equation}
-
-
-% \begin{equation}
-% \underline{u} = \dfrac{1}{{\gamma}\left(1+\dfrac{v}{{c}^2} {u'_z}\right)}
-% 			\begin{pmatrix}
-% 				u'_y                               \\
-% 				{\gamma} \left( u'_z + {v} \right)
-% 			\end{pmatrix}
-% \end{equation}
-
-% \begin{equation}
-% u = \dfrac{\sqrt{u'^2_y + {\gamma}^2 \left( u'_z + {v} \right)^2}}{{\gamma}\left(1+\dfrac{v}{{c}^2} {u'_z}\right)}
-% \end{equation}
-
-% leading to:
-
-% * $\dfrac{\sqrt{u'^2_y + {\gamma}^2 \left( u'_z + {v} \right)^2}}{{\gamma}\left(1+\dfrac{v}{{c}^2} {u'_z}\right)} \frac{1}{\left(1 +\frac{v}{c} \cos\alpha' \right)} \hat{P'c}_y  = \gamma  u'_y $
-
-% * $ \dfrac{\sqrt{u'^2_y + {\gamma}^2 \left( u'_z + {v} \right)^2}}{{\gamma}\left(1+\dfrac{v}{{c}^2} {u'_z}\right)} \frac{1}{\left(1 +\frac{v}{c} \cos\alpha' \right)} \hat{P'c}_z =  \gamma  ( u'_z + v)  $
-
-% giving:
-
-% \begin{equation}
-% 	 \hat{P'c}  =    \dfrac{1}{\sqrt{u'^2_y + {\gamma}^2  \left( u'_z + {v} \right)^2}} \gamma \left(1 +\frac{v}{c} \cos\alpha' \right) {\gamma}_{u'} \left(1+\dfrac{v}{{c}^2} {u'_z}\right)
-% 	 \begin{pmatrix}
-% 		 u'_y                               \\
-% 		 u'_z + v
-% 	 \end{pmatrix}
-% \end{equation}
-
-
-% % say we have a point or spherical source, that in its rest frame emits light in all directions evenly and at with the same frequency, since this is evenly distributed the momentum kick that each bit of the light produces cancel out, so that the source is still at rest.
-% % But in another primed frame we have that the light is aberrated in the direction of movement meaning there is more light in this direction.
-% % The light is also subject to the Doppler effect that meaning that it has a higher frequency and therefore momentum in the direction of movement.
-
-% % The source in this frame will continue at its constant velocity as it remains at rest in first frame.
-% % Therefor we need it to be that each part of the light imparts a momentum that is in the direction that the light imparts in the sources rest frame, without a change in the momentum kick that depends on the angle its emitted.
-
-% % We will have the ball's energy decrease by the amount of energy of the emitted light, meaning it will lose the equivalent of this energy in its mass.
-% % We also have a kinetic energy of the ball to think about in the primed frame.
-% % ** should the kinetic energy of the source be the relativistic kinetic energy from before.
-% % ** lets calculate the momentum of source and light, and calculate the energies as well, and make sure they are conserved.
-
-% % ** could add example of colliding particles, when they stick together and also when they elatically collide
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -2468,7 +2126,7 @@ If a light signal is emitted from a coordinate to an observer at the origin, it 
 %█████████████
 \begin{figure}[ht]
 	\begin{subfigure}[b]{.49\textwidth}
-		\tikzsetnextfilename{Tikz_Particles_position_in_rest_frame}
+		%%%\tikzsetnextfilename{Tikz_Particles_position_in_rest_frame}
 		\begin{tikzpicture}[scale = 5] %[,tdplot_main_coords]
 			%\usetikzlibrary{arrows.meta}
 			\draw[thick] (0,0) circle (0.025);
@@ -2492,7 +2150,7 @@ If a light signal is emitted from a coordinate to an observer at the origin, it 
 		% \label{fig:sub1}
 	\end{subfigure}
 	\begin{subfigure}[b]{.49\textwidth}
-		\tikzsetnextfilename{Tikz_Particles_position_in_primed_frame_with_delayed_position}
+		%%%\tikzsetnextfilename{Tikz_Particles_position_in_primed_frame_with_delayed_position}
 		\begin{tikzpicture}[scale = 5] %[,tdplot_main_coords]
 			%\usetikzlibrary{arrows.meta}
 			\draw[thick] (0,0) circle (0.025);
@@ -2689,7 +2347,7 @@ to position $\underline{r} + d\underline{r}$, as shown in the Diagram
 %█████████████
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{Tikz_Apparent_Velocity}
+	%%%\tikzsetnextfilename{Tikz_Apparent_Velocity}
 	\begin{tikzpicture}[scale = 5]
 		\draw[black, thick,->] (0,0,0)--(0.4,0,0)  node[anchor = north east] {${y}$};
 		\draw[black, thick,->] (0,0,0)--(0,0.4,0)  node[anchor = north east] {${z}$};
@@ -2754,7 +2412,7 @@ For something moving at the speed of light, we have $ 0.5 c \leq \|\underline{u}
 %█████████████
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{Retarded_Speed_of_Light}
+	%%%\tikzsetnextfilename{Retarded_Speed_of_Light}
 	\begin{tikzpicture}
 		\begin{axis}[
 				domain=-0.8:0.99,
@@ -2858,7 +2516,7 @@ So let us start with how to describe a vector in terms of the spherical polar co
 \begin{figure}[H]
 	\centering
 	\tdplotsetmaincoords{60}{110}
-	\tikzsetnextfilename{Tikz_Spherical_Polar_Coordinates}
+	%%%\tikzsetnextfilename{Tikz_Spherical_Polar_Coordinates}
 	\begin{tikzpicture}[scale = 3,tdplot_main_coords]
 		% variables
 		\def\rvec{.8}
@@ -3117,7 +2775,7 @@ We will describe this effect using the help of the following simple figure of li
 \begin{figure}[H]
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\tikzsetnextfilename{Tikz_Lights_angle_with_particle_in_its_proper_frame}
+		%%%\tikzsetnextfilename{Tikz_Lights_angle_with_particle_in_its_proper_frame}
 		\begin{tikzpicture}[scale = 8]
 			\draw[red,ultra thick,->] (0,0,0)--(0.235,-0.05,0) node[midway,anchor = north]{$\underline{c_0}$};
 			\fill[black] (0,0,0) circle (0.7pt);
@@ -3127,7 +2785,7 @@ We will describe this effect using the help of the following simple figure of li
 	\end{subfigure}
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\tikzsetnextfilename{Tikz_Lights_angle_with_particle_With_particle_moving}
+		%%%\tikzsetnextfilename{Tikz_Lights_angle_with_particle_With_particle_moving}
 		\begin{tikzpicture}[scale = 8]
 			\draw[-] (0,0.07,0) to[bend left = 45] (0.06,0.04,0);
 			\node at (0.05,0.095,0) {$\alpha $};
@@ -3256,7 +2914,7 @@ We can use the following figure to find the retarded position and time the light
 %█████████████
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{Tikz_Light_Pulse_Primed_Frame}
+	%%%\tikzsetnextfilename{Tikz_Light_Pulse_Primed_Frame}
 	\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
 		%\usetikzlibrary{arrows.meta}
 		%node[anchor = north west]{\textcolor{black}{$\underline{P}$}}; %$\underline{P}$}};
@@ -3401,7 +3059,7 @@ To find this we will use the moving frame's velocity of light $\underline{c}$ to
 %█████████████
 \begin{figure}[H]
 	\begin{subfigure}{.49\textwidth}
-		\tikzsetnextfilename{Tikz_Light_Pulse_Proper_Frame}
+		%%%\tikzsetnextfilename{Tikz_Light_Pulse_Proper_Frame}
 		\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
 			%\usetikzlibrary{arrows.meta}
 			\node[blue] at (0.06,-0.06,0) {$s_0$};
@@ -3418,7 +3076,7 @@ To find this we will use the moving frame's velocity of light $\underline{c}$ to
 		\label{fig: proper frame 1}
 	\end{subfigure}
 	\begin{subfigure}{.49\textwidth}
-		\tikzsetnextfilename{Tikz_Light_Pulse_Primed_Frame_2}
+		%%%\tikzsetnextfilename{Tikz_Light_Pulse_Primed_Frame_2}
 		\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
 			%\usetikzlibrary{arrows.meta}
 			%node[anchor = north west]{\textcolor{black}{$\underline{P}{'}$}}; %$\underline{P}{'}$}};
@@ -3647,19 +3305,19 @@ This combination of the relativistic Doppler and aberration effects together, is
 	\centering
 	\begin{subfigure}{.325\textwidth}
 		\centering
-		\includegraphics[width = 4cm]{images/pdf/Field_Rest_Frame.pdf}
+		\includegraphics[width = 3.95cm]{images/pdf/Field_Rest_Frame.pdf}
 		\caption{Rest Source}
 		\label{subfig_1: full field transformation 1}
 	\end{subfigure}
 	\begin{subfigure}{.325\textwidth}
 		\centering
-		\includegraphics[width = 4cm]{images/pdf/Field_Moving_Frame_Doppler.pdf}
+		\includegraphics[width = 3.95cm]{images/pdf/Field_Moving_Frame_Doppler.pdf}
 		\caption{Moving Source}
 		\label{subfig_2: full field transformation Moving Source}
 	\end{subfigure}
 	\begin{subfigure}{.325\textwidth}
 		\centering
-		\includegraphics[width = 4cm]{images/pdf/Field_Moving_Frame_Doppler_circles.pdf}
+		\includegraphics[width = 3.95cm]{images/pdf/Field_Moving_Frame_Doppler_circles.pdf}
 		\caption{Moving Source (rings)}
 		\label{subfig_3: full field transformation Moving Source (rings)}
 	\end{subfigure}
@@ -3694,7 +3352,7 @@ So if we define a sphere with radius $r$ we can find an infinitesimal portion of
 	\pgfmathsetmacro{\phivec}{45}
 	\pgfmathsetmacro{\dphivec}{20}
 	\pgfmathsetmacro{\dthetavec}{20}
-	\pgfmathsetmacro{\drvec}{0}%1.5}
+	\pgfmathsetmacro{\drvec}{0.002}%1.5}
 	%
 	%Layers
 	\pgfdeclarelayer{background}
@@ -3702,7 +3360,7 @@ So if we define a sphere with radius $r$ we can find an infinitesimal portion of
 	%
 	\pgfsetlayers{background, main, foreground}
 	\scalebox{1}{%0.6}{
-		\tikzsetnextfilename{Tikz_Surface_Element}
+		%%%\tikzsetnextfilename{Tikz_Surface_Element}
 		\begin{tikzpicture}[tdplot_main_coords]
 			\shadedraw[tdplot_screen_coords,ball color = gray, opacity = 0.3] (0,0) circle (\rvec);
 			\draw[fill = gray,opacity = 0.3] (0,0) circle (\rvec);

@@ -8,7 +8,9 @@
     - winget install --id Python.Python.3.12.4 -e --source winget --scope user
 
 - miktex
+
 - strawberry perl
+    - winget install StrawberryPerl.StrawberryPerl
 
 - pdf2svg
     - git clone https://github.com/jalios/pdf2svg-windows.git pdf2svg
@@ -17,6 +19,7 @@
 - svgo (makes svg files smaller)
     - git clone https://github.com/svg/svgo.git svgo
     or
+    - winget install OpenJS.NodeJS.LTS
     - npm install -g svgo
 
 

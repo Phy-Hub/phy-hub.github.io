@@ -93,7 +93,7 @@
       .navbar {grid-template-columns: 70px auto 70px;}
       @media (max-width: 700px) {article {min-width: 0px; width: 100vw; margin: 0;}}
     }
-    body {counter-reset: figure-counter chapter-counter;}
+    body {counter-reset: figure-counter chapter-counter; }
     section { counter-increment: chapter-counter; counter-reset: figure-counter; }
     figure { counter-increment: figure-counter;}
 
@@ -118,6 +118,38 @@
     .menu:hover .dropdown-menu {display: block;}
 
   </style>
+
+  <style>
+    @font-face {
+        font-family: 'TG Schola';
+        src: url('../fonts/texgyreschola-regular.woff2') format('woff2'), url('../fonts/texgyreschola-regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'TG Schola';
+        src: url('../fonts/texgyreschola-bold.woff2') format('woff2'), url('../fonts/texgyreschola-bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'TG Schola';
+        src: url('../fonts/texgyreschola-italic.woff2') format('woff2'), url('../fonts/texgyreschola-italic.woff') format('woff');
+        font-weight: normal;
+        font-style: italic;
+    }
+    @font-face {
+        font-family: 'TG Schola';
+        src: url('../fonts/texgyreschola-bolditalic.woff2') format('woff2'), url('../fonts/texgyreschola-bolditalic.woff') format('woff');
+        font-weight: bold;
+        font-style: italic;
+    }
+    body {font-family: 'TG Schola', 'Century Schoolbook', 'New Century Schoolbook', Georgia, serif;}
+  </style>
+
+
+
+
 </head>
 
 <body style="margin: 0; background-color:#ffe4c8; ">
@@ -228,8 +260,8 @@ Special Relativity          </div> </div>
       </header>
 
 \part{The Concepts Explained}
-<section id="ch1_wrap" class="chapter"> 
- <h1 id="ch1_header">1 Overview of Concepts</h1> 
+<section id="ch1_wrap" class="chapter">
+ <h1 id="ch1_header">1 Overview of Concepts</h1>
 <div id="ch1_content">
 <span style="display: hidden">\(\nextSection\)</span>
 To make sense of special relativity, we will first look at the classical understanding of the world.
@@ -697,11 +729,11 @@ Thought I have added some slight
 
 <div class='arrow-nav'>
  <a></a>
-<a onclick="showContent('ch2_wrap'); document.getElementById('ch2_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a> 
+<a onclick="showContent('ch2_wrap'); document.getElementById('ch2_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a>
 </div>
- </section> <!-- close chapter 1 --> 
-<section id="ch2_wrap" class="chapter" style="display: none !important;"> 
-<h1 id="ch2_header">2 Position, Time and Velocity</h1> 
+ </section> <!-- close chapter 1 -->
+<section id="ch2_wrap" class="chapter" style="display: none !important;">
+<h1 id="ch2_header">2 Position, Time and Velocity</h1>
 <div id="ch2_content">
 <span style="display: hidden">\(\nextSection\)</span>
 Now that we have learned about the concepts of special relativity, we can use them and let the mathematics begin.
@@ -1164,11 +1196,11 @@ So, this chapter shows the foundations of special relativity, but there is still
 
 <div class='arrow-nav'>
 <a onclick="showContent('ch1_wrap'); document.getElementById('ch1_details').open = true;" style="font-weight: bold; padding-left: 10px; cursor: pointer;"> < Previous </a>
-<a onclick="showContent('ch3_wrap'); document.getElementById('ch3_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a> 
+<a onclick="showContent('ch3_wrap'); document.getElementById('ch3_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a>
 </div>
- </section> <!-- close chapter 2 --> 
-<section id="ch3_wrap" class="chapter" style="display: none !important;"> 
-<h1 id="ch3_header">3 Quantities That all Inertial Frames Agree on</h1> 
+ </section> <!-- close chapter 2 -->
+<section id="ch3_wrap" class="chapter" style="display: none !important;">
+<h1 id="ch3_header">3 Quantities That all Inertial Frames Agree on</h1>
 <div id="ch3_content">
 <span style="display: hidden">\(\nextSection\)</span>
 *** start here so its a bit refreshing
@@ -1402,11 +1434,11 @@ Next, we will take a look at the delayed view of the world an observer sees, due
 
 <div class='arrow-nav'>
 <a onclick="showContent('ch2_wrap'); document.getElementById('ch2_details').open = true;" style="font-weight: bold; padding-left: 10px; cursor: pointer;"> < Previous </a>
-<a onclick="showContent('ch4_wrap'); document.getElementById('ch4_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a> 
+<a onclick="showContent('ch4_wrap'); document.getElementById('ch4_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a>
 </div>
- </section> <!-- close chapter 3 --> 
-<section id="ch4_wrap" class="chapter" style="display: none !important;"> 
-<h1 id="ch4_header">4 Observers Delayed Worldview</h1> 
+ </section> <!-- close chapter 3 -->
+<section id="ch4_wrap" class="chapter" style="display: none !important;">
+<h1 id="ch4_header">4 Observers Delayed Worldview</h1>
 <div id="ch4_content">
 <span style="display: hidden">\(\nextSection\)</span>
 Light travels extremely fast compared to other everyday speeds we are used to, roughly at 300,000,000 meters per second.
@@ -1588,11 +1620,11 @@ What we have learned here will be used later when transforming light pulses late
 
 <div class='arrow-nav'>
 <a onclick="showContent('ch3_wrap'); document.getElementById('ch3_details').open = true;" style="font-weight: bold; padding-left: 10px; cursor: pointer;"> < Previous </a>
-<a onclick="showContent('ch5_wrap'); document.getElementById('ch5_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a> 
+<a onclick="showContent('ch5_wrap'); document.getElementById('ch5_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a>
 </div>
- </section> <!-- close chapter 4 --> 
-<section id="ch5_wrap" class="chapter" style="display: none !important;"> 
-<h1 id="ch5_header">5 A Point Source: Emitting a Pulse of Light</h1> 
+ </section> <!-- close chapter 4 -->
+<section id="ch5_wrap" class="chapter" style="display: none !important;">
+<h1 id="ch5_header">5 A Point Source: Emitting a Pulse of Light</h1>
 <div id="ch5_content">
 <span style="display: hidden">\(\nextSection\)</span>
 If a light pulse is emitted from a point source in all directions in its rest frame, how will this be effected in a frame where the source is now moving?
@@ -1943,11 +1975,11 @@ This will all come in useful in the next chapter when we look at a source that i
 
 <div class='arrow-nav'>
 <a onclick="showContent('ch4_wrap'); document.getElementById('ch4_details').open = true;" style="font-weight: bold; padding-left: 10px; cursor: pointer;"> < Previous </a>
-<a onclick="showContent('ch6_wrap'); document.getElementById('ch6_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a> 
+<a onclick="showContent('ch6_wrap'); document.getElementById('ch6_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a>
 </div>
- </section> <!-- close chapter 5 --> 
-<section id="ch6_wrap" class="chapter" style="display: none !important;"> 
-<h1 id="ch6_header">6 A Point Source: Continuously Emitting Light</h1> 
+ </section> <!-- close chapter 5 -->
+<section id="ch6_wrap" class="chapter" style="display: none !important;">
+<h1 id="ch6_header">6 A Point Source: Continuously Emitting Light</h1>
 <div id="ch6_content">
 <span style="display: hidden">\(\nextSection\)</span>
 This chapter will look at a source, that in its rest frame; continuously emits evenly distributed pulses of light radially outwards in its rest frame.
@@ -2121,17 +2153,17 @@ In this chapter we looked a field of light produced by continous emission of lig
 
 <div class='arrow-nav'>
 <a onclick="showContent('ch5_wrap'); document.getElementById('ch5_details').open = true;" style="font-weight: bold; padding-left: 10px; cursor: pointer;"> < Previous </a>
-<a onclick="showContent('ch7_wrap'); document.getElementById('ch7_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a> 
+<a onclick="showContent('ch7_wrap'); document.getElementById('ch7_details').open = true;" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a>
 </div>
- </section> <!-- close chapter 6 --> 
-<section id="ch7_wrap" class="chapter" style="display: none !important;"> 
+ </section> <!-- close chapter 6 -->
+<section id="ch7_wrap" class="chapter" style="display: none !important;">
 <h1 id="ch7_header">7 Thought Experiments</h1>
 <div id="ch7_content">
 <span style="display: hidden">\(\nextSection\)</span>
 ...
 
 <div class='arrow-nav'>
- <a onclick="showContent('ch6_wrap'); document.getElementById('ch6_details').open = true;" style="font-weight: bold; cursor: pointer;"> < Previous </a> 
+ <a onclick="showContent('ch6_wrap'); document.getElementById('ch6_details').open = true;" style="font-weight: bold; cursor: pointer;"> < Previous </a>
 </div>
 </section>
       <h3> Bibliography</h3>

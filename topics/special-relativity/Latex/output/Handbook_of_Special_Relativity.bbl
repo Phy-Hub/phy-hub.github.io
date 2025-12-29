@@ -74,6 +74,53 @@
       \field{pages}{891\bibrangedash 921}
       \range{pages}{31}
     \endentry
+    \entry{FeynmanMomentum}{inbook}{}{}
+      \name{author}{3}{}{%
+        {{hash=aac54ccf9c76aa4ba4310ed1334be7d8}{%
+           family={Feynman},
+           familyi={F\bibinitperiod},
+           given={Richard\bibnamedelima P.},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=773368378dd55945d3bd474598026757}{%
+           family={Leighton},
+           familyi={L\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=4f87088a881a2ce53ad4cf6dac2c63fb}{%
+           family={Sands},
+           familyi={S\bibinitperiod},
+           given={Matthew},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{6c2091b1797daa148c03a73977b7dd36}
+      \strng{fullhash}{6c2091b1797daa148c03a73977b7dd36}
+      \strng{fullhashraw}{6c2091b1797daa148c03a73977b7dd36}
+      \strng{bibnamehash}{6c2091b1797daa148c03a73977b7dd36}
+      \strng{authorbibnamehash}{6c2091b1797daa148c03a73977b7dd36}
+      \strng{authornamehash}{6c2091b1797daa148c03a73977b7dd36}
+      \strng{authorfullhash}{6c2091b1797daa148c03a73977b7dd36}
+      \strng{authorfullhashraw}{6c2091b1797daa148c03a73977b7dd36}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{chapter}{34}
+      \field{note}{Section title: The Momentum of Light}
+      \field{title}{The Feynman Lectures on Physics}
+      \field{volume}{1}
+      \field{year}{1963}
+      \field{pages}{Section 34\bibrangedash 9}
+      \range{pages}{-1}
+      \verb{urlraw}
+      \verb https://www.feynmanlectures.caltech.edu/I_34.html#Ch34-S9
+      \endverb
+      \verb{url}
+      \verb https://www.feynmanlectures.caltech.edu/I_34.html#Ch34-S9
+      \endverb
+    \endentry
     \entry{hogg1997special}{article}{}{}
       \name{author}{1}{}{%
         {{hash=a78b8e911ca3f3ee978a4dfb1e7c1c90}{%

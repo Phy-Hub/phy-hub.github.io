@@ -421,10 +421,10 @@ Since the energy of the light is proportional to the frequency, it is also incre
 				\def\sourcevel{0}
 				\def\numwaves{8}
 				\foreach \i in {1,2,...,8} {
-					\pgfmathsetmacro{\emissionx}{(\i - 1) * \sourcevel}
-					\pgfmathsetmacro{\radius}{\numwaves - (\i - 1)}
-					\draw[red] (\emissionx, 0) circle (\radius);
-				}
+						\pgfmathsetmacro{\emissionx}{(\i - 1) * \sourcevel}
+						\pgfmathsetmacro{\radius}{\numwaves - (\i - 1)}
+						\draw[red] (\emissionx, 0) circle (\radius);
+					}
 				\pgfmathsetmacro{\currentx}{\numwaves * \sourcevel}
 				\filldraw[red, draw=black] (\currentx, 0) circle (7pt);
 			\end{tikzpicture}%
@@ -435,20 +435,20 @@ Since the energy of the light is proportional to the frequency, it is also incre
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\resizebox{0.95\linewidth}{!}{%
-		%%%\tikzsetnextfilename{circular_waves_doppler_effect}
-		\begin{tikzpicture}[every node/.style={transform shape}]
-			\def\sourcevel{0.9}
-			\def\numwaves{4}
-			\foreach \i in {1,2,3,4} {
-				\pgfmathsetmacro{\emissionx}{(\i - 1) * \sourcevel}
-				\pgfmathsetmacro{\radius}{\numwaves - (\i - 1)}
-				\draw[red] (\emissionx, 0) circle (\radius);
-				\fill[red!20, draw=black,dash pattern=on 0.5pt off 1pt] (\emissionx, 0) circle (3pt);
-			}
-			\pgfmathsetmacro{\currentx}{\numwaves * \sourcevel}
-			\draw[-{Latex[length=2mm, width=3mm]}, ultra thick] (\currentx, 0) -- ++(0.65, 0);
-			\filldraw[red, draw=black] (\currentx, 0) circle (3pt);
-		\end{tikzpicture}
+			%%%\tikzsetnextfilename{circular_waves_doppler_effect}
+			\begin{tikzpicture}[every node/.style={transform shape}]
+				\def\sourcevel{0.9}
+				\def\numwaves{4}
+				\foreach \i in {1,2,3,4} {
+						\pgfmathsetmacro{\emissionx}{(\i - 1) * \sourcevel}
+						\pgfmathsetmacro{\radius}{\numwaves - (\i - 1)}
+						\draw[red] (\emissionx, 0) circle (\radius);
+						\fill[red!20, draw=black,dash pattern=on 0.5pt off 1pt] (\emissionx, 0) circle (3pt);
+					}
+				\pgfmathsetmacro{\currentx}{\numwaves * \sourcevel}
+				\draw[-{Latex[length=2mm, width=3mm]}, ultra thick] (\currentx, 0) -- ++(0.65, 0);
+				\filldraw[red, draw=black] (\currentx, 0) circle (3pt);
+			\end{tikzpicture}
 		}
 		\caption{moving source}
 		\label{subfig_2: doppler effect intro}
@@ -531,13 +531,13 @@ This is shown in the following diagram.
 			\node at (0,0) {Earth};
 			\draw[-latex, very thick] (-0.3,-0.3) -- ++(0.6cm, 0cm);
 			\foreach \angle in {0, 15, ..., 345} {
-				%\draw[-{Latex[length=1.5mm, width=1.5mm]}, thick]
-				\draw[-stealth, thick] (\angle:1.5) -- (\angle:1);
-			}
+					%\draw[-{Latex[length=1.5mm, width=1.5mm]}, thick]
+					\draw[-stealth, thick] (\angle:1.5) -- (\angle:1);
+				}
 			\foreach \i in {1,...,20} {
-				\pgfmathsetmacro{\opacity}{0.6 * (1 - \i/20)}
-				\draw[black, opacity=\opacity] (-\i*0.06, 0) circle (1);
-			}
+					\pgfmathsetmacro{\opacity}{0.6 * (1 - \i/20)}
+					\draw[black, opacity=\opacity] (-\i*0.06, 0) circle (1);
+				}
 			\draw[black] (0,0) circle (1);
 		\end{tikzpicture}
 		\caption{sun's frame}
@@ -551,17 +551,17 @@ This is shown in the following diagram.
 			\draw (0,0) circle (1);
 			\node at (0,0) {Earth};
 			\foreach \a in {0, 15, ..., 345} {
-				\pgfmathsetmacro{\cosa}{cos(\a)}
-				\pgfmathsetmacro{\sina}{sin(\a)}
-				\pgfmathsetmacro{\cosb}{(\cosa + \u) / (1 + \u * \cosa)}
-				\pgfmathsetmacro{\sinb}{\sina * sqrt(1 - \u*\u) / (1 + \u * \cosa)}
-				\coordinate (H) at (\a:1);
-				%\draw[-{Latex[length=1.5mm, width=1.5mm]}, thick]
-				\draw[-stealth, thick] ($(H) + 0.5*(\cosb, \sinb)$) -- (H);
-			}
+					\pgfmathsetmacro{\cosa}{cos(\a)}
+					\pgfmathsetmacro{\sina}{sin(\a)}
+					\pgfmathsetmacro{\cosb}{(\cosa + \u) / (1 + \u * \cosa)}
+					\pgfmathsetmacro{\sinb}{\sina * sqrt(1 - \u*\u) / (1 + \u * \cosa)}
+					\coordinate (H) at (\a:1);
+					%\draw[-{Latex[length=1.5mm, width=1.5mm]}, thick]
+					\draw[-stealth, thick] ($(H) + 0.5*(\cosb, \sinb)$) -- (H);
+				}
 		\end{tikzpicture}
 		\caption{earth's frame}
-			\label{subfig_2: earths frame}
+		\label{subfig_2: earths frame}
 	\end{subfigure}
 	\caption{\textbf{Aberration of observed star light}. A diagram showing light from distant stars being observed on earth, with the light being recieved in the sun's frame, with the earth moving (left), and the other diagram (right) showing the same light being recieved, but now in the earth's rest frame, with the light's direction now more in the direction opposite to earth's movement compared to the sun's frame. The arrows show the direction of the light from the stars.}
 	\label{fig: title}
@@ -1562,7 +1562,7 @@ To find how the acceleration (known as the 3-acceleration) of a particle transfo
 			{u_x}                              \\
 			{u_y}                              \\
 			{\gamma} \left( {u_z}- {v} \right) \\
-		\end{pmatrix}                                                           \\
+		\end{pmatrix}                                                          \\
 		                  & \color{gray} = ...
 		\\
 		                  & = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {u_z}\right)^2}
@@ -1609,6 +1609,20 @@ Now when it comes to force it is a bit more confusing.
 In classical/galilean physics force can be described as the rate of change of momentum, or equivalently mass times this acceleration.
 But in special relativity we define force specifically as the rate of change of momentum only, as momentum has an additional factor due to relativistic effects compared to the classical version which is explained in the next chapter.
 This extra term leads to a different formula for the force compared to the mass times the acceleration above.
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{No Speed Faster than Light}\label{sect: No Speed Faster than Light}
+
+*** start
+
+** The Tachyonic AntitelephoneThe Scenario:
+
+If one could send signals faster than light (tachyons), one could construct a setup with two moving observers where a signal is sent back to the past.
+
+The Paradox: You could send a message to your grandfather preventing your own birth (causality violation).
+
+The Resolution: This thought experiment serves as a "proof by contradiction" that information cannot travel faster than $c$.
 
 
 %███████████████████████████████████████████████████████████████████
@@ -1691,7 +1705,7 @@ This relationship will come in very useful in the later in the energy, mass and 
 \section{D'Alembert operator}\label{sect: D'Alembert operator}
 
 \begin{quote}\centering
-\textit{\small (This can be seen as a bonus section that may be skipped, as it is not directly relevant for the understanding of any other sections in this text.)}
+	\textit{\small (This can be seen as a bonus section that may be skipped, as it is not directly relevant for the understanding of any other sections in this text.)}
 \end{quote}
 
 The d'Alembert operator is a fundamental operator in relativistic wave equations that is invariant in all frames of reference.
@@ -1763,7 +1777,7 @@ In the following derivation we will show it is invariant by transforming the par
 	\begin{equation}
 		\begin{aligned}
 			\frac{\partial^2}{\partial z^2} & = \left(-\frac{\gamma v}{c^2} \frac{\partial}{\partial t'} + \gamma \frac{\partial}{\partial z'}\right) \left(-\frac{\gamma v}{c^2} \frac{\partial}{\partial t'} + \gamma \frac{\partial}{\partial z'}\right) \\
-			& = \frac{\gamma^2 v^2}{c^4} \frac{\partial^2}{\partial t'^2} - \frac{2\gamma^2 v}{c^2} \frac{\partial^2}{\partial t'\partial z'} + \gamma^2 \frac{\partial^2}{\partial z'^2}
+			                                & = \frac{\gamma^2 v^2}{c^4} \frac{\partial^2}{\partial t'^2} - \frac{2\gamma^2 v}{c^2} \frac{\partial^2}{\partial t'\partial z'} + \gamma^2 \frac{\partial^2}{\partial z'^2}
 		\end{aligned}
 	\end{equation}
 
@@ -1799,7 +1813,7 @@ In the following derivation we will show it is invariant by transforming the par
 	So we can conclude that the D'Alembert operator in both frames are equal:
 
 	\begin{equation}
-	\square' = \square
+		\square' = \square
 	\end{equation}
 
 \end{derivation}
@@ -1831,50 +1845,50 @@ Here we will derive the invariant energy quantity for a particle, starting from 
 %█████████████████
 \begin{derivation}
 
-We can see from equation \eqref{eq: space-time interval}, that if a particle $q$, is moving in an inertial reference frame, we can define the space-time interval of its coordinates in this frame as
+	We can see from equation \eqref{eq: space-time interval}, that if a particle $q$, is moving in an inertial reference frame, we can define the space-time interval of its coordinates in this frame as
 
-\begin{equation}
-	\Delta S_q^2 = (c\Delta {t}_q)^2-\Delta x_q^2-{\Delta y_q}^2-{\Delta z_q}^2
-\end{equation}
+	\begin{equation}
+		\Delta S_q^2 = (c\Delta {t}_q)^2-\Delta x_q^2-{\Delta y_q}^2-{\Delta z_q}^2
+	\end{equation}
 
-We will not be changing between reference frames anywhere in these next sections.
-And since we will remain in the same reference frame, we will not need to make use of any primed notation ($'$) here.
+	We will not be changing between reference frames anywhere in these next sections.
+	And since we will remain in the same reference frame, we will not need to make use of any primed notation ($'$) here.
 
-Now we can divide this space-time interval by the square of the proper time that passes for the particle in this interval, ${\Delta\tau}$ (the interval in time that passes in the particles rest frame).
-The proper time is a time that all frames of reference agree on, and keeps the expression invariant.
-Now taking the limit as the change in proper time in the interval goes to zero, we get a derivative that is an abstract invariant quantity that we will call the space-time velocity:
+	Now we can divide this space-time interval by the square of the proper time that passes for the particle in this interval, ${\Delta\tau}$ (the interval in time that passes in the particles rest frame).
+	The proper time is a time that all frames of reference agree on, and keeps the expression invariant.
+	Now taking the limit as the change in proper time in the interval goes to zero, we get a derivative that is an abstract invariant quantity that we will call the space-time velocity:
 
-\begin{equation}
+	\begin{equation}
 		\left(\frac{dS_q}{d\tau}\right)^2 = \left(c\frac{{{dt}_{q}}}{d\tau}\right)^2-\left(\frac{dx_q}{d\tau}\right)^2-\left(\frac{dy_q}{d\tau}\right)^2-\left(\frac{dz_q}{d\tau}\right)^2
-\end{equation}
+	\end{equation}
 
-From the time dilation equation \eqref{eq: time dilation}, we have $d\tau = dt_q / \gamma_u $ with $\gamma_{u} = \frac{1}{\sqrt{1-\frac{u_q^2}{{c}^2}}}$.
-This allows us to reduce this space-time velocity to the following:
-
-
-\begin{equation}
-	\label{eq: particles space-time interval}
-	\begin{aligned}
-		\left(\frac{dS_q}{d\tau}\right)^2 & = \gamma_{u}^2\left(c\frac{{{dt}_{q}}}{{{dt}_{q}}}\right)^2-\gamma_{u}^2\left(\frac{dx_q}{{{dt}_{q}}}\right)^2-\gamma_{u}^2\left(\frac{dy_q}{{{dt}_{q}}}\right)^2-\gamma_{u}^2\left(\frac{dz_q}{{{dt}_{q}}}\right)^2 \\
-		                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{{{u}_{px}}^2 + {{u}_{py}}^2 + {{u}_{pz}}^2}{{c}^2} \right) \\
-		                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{u_q^2}{{c}^2} \right) \\
-		                                  & = {c}^2
-	\end{aligned}
-\end{equation}
+	From the time dilation equation \eqref{eq: time dilation}, we have $d\tau = dt_q / \gamma_u $ with $\gamma_{u} = \frac{1}{\sqrt{1-\frac{u_q^2}{{c}^2}}}$.
+	This allows us to reduce this space-time velocity to the following:
 
 
-It can be seen that this space-time velocity is still an invariant quantity as the speed of light is constant in all frames.
+	\begin{equation}
+		\label{eq: particles space-time interval}
+		\begin{aligned}
+			\left(\frac{dS_q}{d\tau}\right)^2 & = \gamma_{u}^2\left(c\frac{{{dt}_{q}}}{{{dt}_{q}}}\right)^2-\gamma_{u}^2\left(\frac{dx_q}{{{dt}_{q}}}\right)^2-\gamma_{u}^2\left(\frac{dy_q}{{{dt}_{q}}}\right)^2-\gamma_{u}^2\left(\frac{dz_q}{{{dt}_{q}}}\right)^2 \\
+			                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{{{u}_{px}}^2 + {{u}_{py}}^2 + {{u}_{pz}}^2}{{c}^2} \right)                                                                                                                        \\
+			                                  & = {c}^2\gamma_{u}^2 \left( 1-\frac{u_q^2}{{c}^2} \right)                                                                                                                                                             \\
+			                                  & = {c}^2
+		\end{aligned}
+	\end{equation}
 
-Now we could multiply both sides of the third line in equation \eqref{eq: particles space-time interval} by the invariant quantity ${m}^2{c}^2$ where $m$ is the invariant rest mass of the particle, so that we get
 
-\begin{equation}
-	\begin{aligned}
-		m^2 {c}^2 \left(\frac{dS_q}{d\tau}\right)^2 & = m^2{c}^4\gamma_{u}^2 \left( 1-\frac{u_q^2}{{c}^2} \right) \\
-		({m}{c}^2)^2                                & = \gamma_{u}^2 m^2 c^4-\gamma_{u}^2 m^2 u_q^2 {c}^2
-	\end{aligned}
-\end{equation}
+	It can be seen that this space-time velocity is still an invariant quantity as the speed of light is constant in all frames.
 
-were $\left(\frac{dS_q}{d\tau}\right)^2={c}^2$ was substituted in to get the final equation.
+	Now we could multiply both sides of the third line in equation \eqref{eq: particles space-time interval} by the invariant quantity ${m}^2{c}^2$ where $m$ is the invariant rest mass of the particle, so that we get
+
+	\begin{equation}
+		\begin{aligned}
+			m^2 {c}^2 \left(\frac{dS_q}{d\tau}\right)^2 & = m^2{c}^4\gamma_{u}^2 \left( 1-\frac{u_q^2}{{c}^2} \right) \\
+			({m}{c}^2)^2                                & = \gamma_{u}^2 m^2 c^4-\gamma_{u}^2 m^2 u_q^2 {c}^2
+		\end{aligned}
+	\end{equation}
+
+	were $\left(\frac{dS_q}{d\tau}\right)^2={c}^2$ was substituted in to get the final equation.
 
 \end{derivation}
 %███████████████
@@ -1883,7 +1897,7 @@ This final equation's terms are all in units of energy squared, with the invaria
 
 \begin{equation}
 	\label{eq: energy-momentum derivation}
-		(m {c}^2)^2  = (\gamma_{u} m c^2)^2 - (\gamma_{u} m u_q {c})^2
+	(m {c}^2)^2  = (\gamma_{u} m c^2)^2 - (\gamma_{u} m u_q {c})^2
 \end{equation}
 
 This invariant expresion is what we will use as our basis to derive everthing in the following sections.
@@ -1893,7 +1907,7 @@ This invariant expresion is what we will use as our basis to derive everthing in
 
 The equation \eqref{eq: energy-momentum derivation}, shows an invariant quantity with the units of energy squared $(m {c}^2)^2$, from this we have the energy term $m {c}^2$ itself being invariant; it is an energy that is the same in all frames of reference.
 
-If we are to interpret this as being not just mathematical, but to have physical meaning, then this would be a new type of energy that is associated with with every particle, that was previously not known about.
+If we are to interpret this as being not just mathematical, but to have physical meaning, then this would be a new type of energy that is associated with with every particle, that was previously not known about before special relativity.
 This energy does not depend on the speed of a particle, it is an intrinsic energy all masses have, even when at rest, we call this the rest mass energy, writen as
 
 \begin{equation}
@@ -1916,144 +1930,268 @@ But let us continue, and we will look at what the other terms in equation \eqref
 To do this we will first derive the relativistic version of momentum.
 
 %███████████████████████████████████████████████████████████████████
-\subsection{Momentum}\label{subsect: Momentum}
+\subsection{Relativistic Momentum}\label{subsect: Relativistic Momentum}
 
-*** start
+We will now look at the other two terms in equation \eqref{eq: energy-momentum derivation}, these both have the gamma function in them and we will use the taylor series aproximation to get more information from each of the terms.
 
 %█████████████████
 \begin{derivation}
 
-So let us rearrange equation \eqref{eq: energy-momentum derivation}, to get
+	So let us rearrange equation \eqref{eq: energy-momentum derivation}, to get
 
-\begin{equation}
-	\label{eq: total relativistic energy}
-	\left( \gamma_{u} m {c}^2 \right)^2 = ({m}{c}^2)^2 + \left( \gamma_{u} {m}{u_q}{c}\right)^2
-\end{equation}
+	\begin{equation}
+		\label{eq: total relativistic energy}
+		\left( \gamma_{u} m {c}^2 \right)^2 = ({m}{c}^2)^2 + \left( \gamma_{u} {m}{u_q}{c}\right)^2
+	\end{equation}
 
-for the energy term in the brackets on the left hand side we can use what is called the Taylor expansion to write $\gamma_{u}$ as a convergent series:
+	for the energy term in the brackets on the left hand side we can use what is called the Taylor expansion to write $\gamma_{u}$ as a convergent series:
 
-\begin{equation}
-	\gamma_{u} \equiv 1 + \frac{1}{2}\frac{u_q^2}{{c}^2} + \frac{3}{8}\frac{u_q^4}{c^4} + ...
-\end{equation}
+	\begin{equation}
+		\gamma_{u} \equiv 1 + \frac{1}{2}\frac{u_q^2}{{c}^2} + \frac{3}{8}\frac{u_q^4}{c^4} + ...
+	\end{equation}
 
-Giving the energy term on the left hand side as
+	Giving the energy term on the left hand side as
 
-\begin{equation}
-	\begin{aligned}
-		\gamma_{u} {m}{c}^2 & = {m}{c}^2  \left(1 + \frac{1}{2}\frac{u_q^2}{{c}^2} + \frac{3}{8}\frac{u_q^4}{c^4} + ...
-		\right)                                                                                                 \\
-		                & = {m}{c}^2 + \frac{1}{2}{m}{u_q}^2 + \frac{3}{8}m\frac{u_q^4}{{c}^2} + ...
-	\end{aligned}
-\end{equation}
+	\begin{equation}
+		\begin{aligned}
+			\gamma_{u} {m}{c}^2 & = {m}{c}^2  \left(1 + \frac{1}{2}\frac{u_q^2}{{c}^2} + \frac{3}{8}\frac{u_q^4}{c^4} + ...
+			\right)                                                                                                         \\
+			                    & = {m}{c}^2 + \frac{1}{2}{m}{u_q}^2 + \frac{3}{8}m\frac{u_q^4}{{c}^2} + ...
+		\end{aligned}
+	\end{equation}
 
-This equation's first quantity is an energy that does not depend on the speed of the particle.
-It is the invariant energy from before, the rest mass energy.
-The second quantity is the classical kinetic energy formula, the rest may be seen as higher-order kinetic energy terms, that are not seen in classical physics because they are very small for ${u_q}<<{c}$.
-So this seems like it could be a formula for the total energy of a particle (in a vacuum, with no potential energy).
-We will denote this total energy ${E}$, with the rest mass energy from before denoted as $E_0$, allowing us to write equation \eqref{eq: total relativistic energy} as
+	This equation's first quantity is an energy that does not depend on the speed of the particle.
+	It is the invariant energy from before, the rest mass energy.
+	The second quantity is the classical kinetic energy formula, the rest may be seen as higher-order kinetic energy terms, that are not seen in classical physics because they are very small for ${u_q}<<{c}$.
+	So this seems like it could be a formula for the total energy of a particle (in a vacuum, with no potential energy).
+	We will denote this total energy as
 
-\begin{equation}
-	\label{eq: energy momentum deriving momentum term}
-	E^2 = E_0^2 + (\gamma_{u}{m}{u_q}{c})^2
-\end{equation}
+	\begin{equation}
+		\label{eq: Total Energy Compact Version}
+		{E} = \gamma_{u} {m}{c}^2
+	\end{equation}
 
-Now let us look at this last energy term in the brackets, along with the Taylor expansion of $\gamma_{u}$, giving
+	and the rest mass energy from last section denoted as $E_0$, allowing us to write equation \eqref{eq: total relativistic energy} as
 
-\begin{equation}
-	\begin{aligned}
-		\gamma_{u} {c}{m}{u_q} & = {c}{m}{u_q} \left(1 + \frac{1}{2}\frac{u_q^2}{{c}^2} + \frac{3}{8}\frac{u_q^4}{c^4} + ...
-		\right)                                                                                                   \\
-		                 & ={c}\left( {m}{u_q} + \frac{1}{2}m \frac{u_q^3}{{c}^2} + \frac{3}{8}m\frac{u_q^5}{c^4} + ...
-		\right)
-	\end{aligned}
-\end{equation}
+	\begin{equation}
+		\label{eq: energy momentum deriving momentum term}
+		E^2 = E_0^2 + (\gamma_{u}{m}{u_q}{c})^2
+	\end{equation}
 
-At small particle velocities this last term is approximately $({m}{u_q}){c}$ with ${m}{u_q}$ being the classical momentum, we could assert that this whole energy, is a relativistic version of the particle's momentum, times the speed of light.
+	Now let us look at this last energy term in the brackets, along with the Taylor expansion of $\gamma_{u}$, giving
+
+	\begin{equation}
+		\begin{aligned}
+			\gamma_{u} {c}{m}{u_q} & = {c}{m}{u_q} \left(1 + \frac{1}{2}\frac{u_q^2}{{c}^2} + \frac{3}{8}\frac{u_q^4}{c^4} + ...
+			\right)                                                                                                               \\
+			                       & ={c}\left( {m}{u_q} + \frac{1}{2}m \frac{u_q^3}{{c}^2} + \frac{3}{8}m\frac{u_q^5}{c^4} + ...
+			\right)
+		\end{aligned}
+	\end{equation}
+
+	At small particle velocities this last term is approximately $({m}{u_q}){c}$ with ${m}{u_q}$ being the classical momentum, it seems like this energy, could be the relativistic version of the particle's momentum, times the speed of light.
 
 \end{derivation}
 %███████████████
 
-So we can think of the last term in equation \eqref{eq: energy momentum deriving momentum term} as the relativistic momentum of the particle:
+So we will think of the last term in equation \eqref{eq: energy momentum deriving momentum term} as the relativistic momentum of the particle:
 
 \begin{equation}
+	\label{eq: relativistic momentum}
 	\mhl{
-	p = \gamma_{u} {m}{u_q}
+		p = \gamma_{u} {m}{u_q}
 	}
 \end{equation}
 
-which is approximates to the classical momentum at speeds much less than sped of light.
+which approximates to the classical momentum at speeds much less than speed of light.
 
-But what about for light itself, when $\gamma$ is infinitly large, can we still make it work? we shall see in the next section.
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\subsection{Proof that this relativistic Momentum is Conserved}\label{subsect: Proof that this relativistic Momentum is Conserved}
 
+Classically we have conservation laws for momentum and for energy, that mean that for an isolated system that the momentum and also the energy remains constant.
+For an isolated system of particles the sum of all the particles energy and momentum before an interaction is equal to the sum of each particles energy and momentum after,
 
+\begin{equation}
+	\begin{aligned}
+		\sum p_{after} & = \sum p_{before} \\
+		\sum E_{after} & = \sum E_{before}
+	\end{aligned}
+\end{equation}
+
+In classical physics we only cared about these two quantities because they have these conservation laws, if they did not have these, they would not be of any use.
+
+Hence we would like for there to still be conservation laws in special relativity for the relativistic versions of the quantities.
+And for these conservation laws to hold true, we would need the laws to work in all inertial frames of reference.
+
+So we will show that if the total energy and the relativistic momentum is conserved in one frame, then these are conserved in all reference frames.
+
+%█████████████████
+\begin{derivation}
+
+We will start with the previous definitions for the momentum and total energy, $\mathbf{p} = \gamma_u m \mathbf{u}$ and $E = \gamma_u m c^2$.
+
+%█████████████
+\subsubsection{Transformation Identities}
+
+We choose the primed frame to be moving in the z-direction as usual, giving the velocity transform between frames from equation \eqref{eq: velocity transform}.
+We will also make use of an identity for $\gamma_{u'}$ given by
+
+\begin{equation}
+	\label{eq: gamma u prime}
+	\gamma_{u'} = \gamma_u \gamma_v \left(1 - \frac{u_z v}{c^2}\right)
+\end{equation}
+
+I will let you check this identity yourself, as it is just the substitution of the transform equation of $u'$ into the gamma function with some rearrangment.
+
+%█████████████
+\subsubsection{Y-Component}
+
+Using equation \eqref{eq: velocity transform} and equation \eqref{eq: gamma u prime} on the relativistic momentum's y-component in the primed frame $p'_y = \gamma_{u'} m u'_y$, gives:
+
+\begin{equation}
+	\begin{aligned}
+		p'_y &= \left[ \gamma_u \gamma_v \left(1 - \frac{u_z v}{c^2}\right) \right] m \left[ \frac{u_y}{\gamma_v(1 - \frac{u_z v}{c^2})} \right] \\
+		p'_y &= \gamma_u m u_y  \\
+		p'_y &= p_y
+	\end{aligned}
+\end{equation}
+
+In the y-direction the equation for the momentum is unchanged.
+Therefore if the momentum is conserved before and after an event in initial frame it is still conserved in the primed frame.
+This new relativistic momentum is required to allow for the conservation law to work between different frames for the y-component.
+
+%█████████████
+\subsubsection{Z-Component}
+
+Now doing the same for the z-component $p'_z = \gamma_{u'} m u'_z$, we get:
+
+\begin{equation}
+\begin{aligned}
+	p'_z & = \left[ \gamma_u \gamma_v \left(1 - \frac{u_z v}{c^2}\right) \right] m \left[ \frac{u_z - v}{1 - \frac{u_z v}{c^2}} \right] \\
+	p'_z & = \gamma_u \gamma_v m (u_z - v)                                                                                              \\
+	p'_z & = \gamma_v (\gamma_u m u_z) - \gamma_v v (\gamma_u m)
+\end{aligned}
+\end{equation}
+
+%█████████████
+\subsubsection{Proof of Conservation}
+
+Using the relativistic momentum in the initial frame $p_z = \gamma_u m u_z$ and the equation for the total energy that we described in previous section $E = \gamma_u m c^2$, we obtain:
+
+\begin{equation}
+	p'_z = \gamma_v \left( p_z - \frac{v E}{c^2} \right)
+\end{equation}
+
+now if we do have the total momentum and total energy before and after conserved, we have
+
+\begin{equation}
+	\begin{aligned}
+		\Delta p'_z &= \gamma_v \left( p_{2z} - \frac{v E_2}{c^2} \right) - \gamma_v \left( p_{1z} - \frac{v E_1}{c^2} \right) \\
+		&= \gamma_v \left( \Delta p_{z} - \frac{v \Delta E}{c^2} \right)
+	\end{aligned}
+\end{equation}
+
+This last equation is the transformation of the momentum in the z-driection of each particle, to a primed frame.
+
+In the isolated system in the intial frame we want both the momentum and energy conserved
+
+\begin{equation}
+	\begin{aligned}
+		\Delta p_{z} & =0 \\
+		\Delta E & =0
+	\end{aligned}
+\end{equation}
+
+If these are indeed conserved, then
+
+\begin{equation}
+	\Delta p'_z = 0
+\end{equation}
+
+giving the momentum conserved in the z-direction in the primed frame too.
+
+\end{derivation}
+%███████████████
+
+So the momentum is conserved in all the components in the primed frame.
+This shows that taking the $\gamma_u m u_q$ term as being the relativistic momentum and the term $\gamma_u m c^2$ as the total energy is consistent with special relativity and the laws of the conservation of momentum and energy.
+
+Now what about for light itself, when $\gamma$ is infinitly large, can we still get the energy-momentum relation to work?
 
 %███████████████████████████████████████████████████████████████████
 \subsection{Momentum of Light}\label{subsect: Momentum of Light}
 
-*** start with $P=E/c$ from other branches of physics
+Here, we will show how to get the only reasonable momentum equation of light that we can from the energy-momentum relationship equation.
 
-Now you might wonder how the energy momentum relationship works for light.
-To look at this we will used equation \eqref{eq: energy momentum deriving momentum term}.
-For the speed of light we have $\gamma$ being infinitely large, so if the photon had a non zero rest mass, the second term would be infinite, therefor giving the total energy as infinite, which is not possible.
-So the photon must have zero or infinitesmal rest mass, giving zero the rest mass energy $E_0=0$, leading to the total energy of a photon to be given as
+So let us start by rewriting out the energy-momentum equation \eqref{eq: energy momentum deriving momentum term}.
 
 \begin{equation}
-	E_{ph} = \|\gamma_{c}{m_{ph}}{c}{c}\|
+		E^2 = (mc^2)^2 + (\gamma_{u}{m}{u_q}{c})^2
 \end{equation}
 
-now if we were to get a finite energy from this, we would require $\gamma_{c}{m_{ph}}$ (which is an infinite value multiplied by and infintesmal) to be finite to be meaningful.
-This has the units of mass, so we could think of this as an effective mass $m_{eff}=\gamma_{c}{m_{ph}}$ that a photon has, and $p_{ph}=m_{eff}{c}$ as the momentum due to this.
-This would give the energy for light due to the momentum as $E_{ph} = {p}{c}$
-
-* *** this is the relation of a photons that can be derived in many different topics of physics such as...
-
-* can explain that light is EM and that was derived to be $E_{ph}=p_{ph} c$
-
-* This can be derived through electromagnetic theory *ref* 1900, and it was also derived in Brownian motion, which is the motion of atoms/molecules in liquid or gas *ref* 1917/1909.
-Both of which would require learning of topics outside the scope of special relativity.
-So we will instead just look at what the momentum of a photon is and then see if this fits nicely with what we have already looked at, without any contradictions.
+For the speed of light we have $\gamma_u$ being infinitely large, so if the photon had a non zero rest mass, the second term would be infinite, therefor giving the total energy as infinite, which is not possible.
+So the photon must have zero (or atleast only infinitesmal) rest mass, giving zero for the first term (rest mass energy), reducing the total energy of a photon to;
 
 \begin{equation}
-\label{eq: momentum of photon}
-p_{ph} = \frac{E_{ph}}{c}
+	E_{ph} = (\gamma_{c}{m_{ph}}{c}){c}
 \end{equation}
 
-It is this momentum that we use in the energy momentum relation, as well as the rest mass of the photon $m_{ph}=0$.
+now if we were to get a finite energy from this, we would require $\gamma_{c}{m_{ph}}$ (which is an infinite value multiplied by and infintesmal) to be finite for it to give a meaningful energy of the photon, we previously had the term $p=\gamma_{u}{m}$ being the relativistic momentum of a particle, so we could take this as the momentum of a photon aswell, and we could think of $m_{eff}=\gamma_{c}{m_{ph}}$ as an effective mass that a photon has, and the momentum of the photon as $p_{ph}=m_{eff}{c}$.
+This would give the momentum for light in terms of its energy as
 
-The reason physicists agree on this to be the correct interpretation of these equations is because it agrees with experiments, so despite the strange way of getting to them, they work.
+\begin{equation}
+	\mhl{
+	 {p_{ph}}= \frac{E_{ph}}{c}
+	}
+\end{equation}
 
-* they also agree with other derivations of the momentum energy relation of light
+with $p_{ph}$ and $E_{ph}$ being the momentum and energy of the photon.
 
+This equation for the energy-momentum relationship of light, can also be derived in electromagnetic theory \cite{FeynmanMomentum}.
+Which helps confirm that we were right in our derivation.
 
-*** for a photon which is massless this equation reduces to $E=pc$, you may say that we have superficially decided to have $p$ here when we replaced $\gamma m u$ with it when we decided to define this as the relativistic version of momentum. and then decide that this should be true for lights momentum aswell.
+This can allow us to generalise the last energy term in equation \eqref{eq: energy momentum deriving momentum term}, as the momentum times the speed of light
 
-*** but in this section we will show that we require $E=pc$ to be true and hence show that our previous intuition works out.
+\begin{equation}
+	\label{eq: energy from momentum}
+	\mhl{
+		E_p = p {c}
+	}
+\end{equation}
+
+giving us the final piece of the puzzle.
 
 %███████████████████████████████████████████████████████████████████
 \subsection{Energy-Mass-Momentum Relation}\label{subsect: Energy-Mass-Momentum Relation}
 
-This would allow us to give the full energy-momentum relationship from equation \eqref{eq: energy momentum deriving momentum term} as
+Now that we have confirmed the use of the relativistic momentum from equation \eqref{eq: relativistic momentum}, we can substitute this and equation \eqref{eq: rest mass energy} into \eqref{eq: energy momentum deriving momentum term}, to finally give the famous energy-momentum relationship
 
 \begin{equation}
 	\label{eq: energy-momentum relation}
 	\mhl{
-		\begin{aligned}
-			E^2 & = E_{0}^2 + E_p^2    \\
-			    & = (mc^2)^2 + (pc)^2
-		\end{aligned}
+			E^2  = (mc^2)^2 + (pc)^2
 	}
 \end{equation}
 
-with momentum being $p = \gamma_{u} {m}{u_q}$ for a mass and $p=E/c$ for a photon.
+with momentum being $p = \gamma_{u} {m}{u_q}$ for a particle with mass and writen more meaningfully for a photon as $p=E/c$.
 
 
-** got to also explain why things from energy momentum relation, leads to things not being able to move to above the speed of light.
+*** start
 
-* previously we showed that faster than light travel would lead to effects being able happening before the cuase in, but here is another reason that faster than light transport may not be posible
-* the math itself does not say things can't go above speed of light, it just says that a mass of particle going less than speed of light can not be accelerated beyond c, but if particle inherently has speed greater that c, the math still works, we just need to worry about cuase and effect and how it would work with it. and would be against our intuition, to always have a cause always be before and effect no matter the frame
+Previously we showed that faster than light travel would lead to effects being able happening before their cause \ref{sect: No Speed Faster than Light}, but here is another reason that faster than light transport may not be possible for particles with mass.
 
-*** when looking at particle collisions, we also need to take into account potential energy as they move towards and away from each other, but this would have to take into account acceleration aswell.
+We can see from the compact total energy equation \eqref{eq: Total Energy Compact Version}, that if a particle with a mass, was accelerated to the speed of light its energy would become infinite.
+So we would need infinite energy (which does not exist) to get that particle to the speed of light.
 
+
+* would be against our intuition
+
+If you consider the posibility of a particle moving at speeds faster than light speed, it would lead to $\gamma$ being imaginary (squareroot of a negaive number).
+But we require that the energy is a real quantity to be measurable, and for this we would need the mass to also be imaginary.
+Some Physicists theorised a particle that has this, the tachyon, but this still has the previous problem of the cuase and effect being interchangeable that we explained in \ref{sect: No Speed Faster than Light}.
+
+*** a note here: when looking at particle collisions, we also need to take into account potential energy as they move towards and away from each other, but this would have to take into account acceleration aswell. which is not an easy thing to do.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -2377,9 +2515,9 @@ since $d\underline{r}$ is infinitesmally small we can simplify this expression b
 		\|\underline{r} + d\underline{r}\| & \color{gray} =  \sqrt{(\underline{r} + d\underline{r}) \cdot (\underline{r} + d\underline{r})}                                       \\
 		                                   & \color{gray} = \sqrt{\underline{r} \cdot \underline{r} + 2 \underline{r} \cdot d\underline{r} + d\underline{r} \cdot d\underline{r}} \\
 		                                   & \color{gray} \approx \sqrt{\underline{r} \cdot \underline{r} + 2 \underline{r} \cdot d\underline{r}}                                 \\
-		                                   & \color{gray} \approx \|\underline{r}\| \sqrt{1 + \frac{2 \underline{r} \cdot d\underline{r}}{\underline{r} \cdot \underline{r}}}    \\
-		                                   & \color{gray} \text{using the Taylor expansion $\sqrt{1 + x} \approx 1 + \frac{x}{2} \text{for } x \ll 1$:}                          \\
-		                                   & \color{gray} \approx \|\underline{r}\| \left(1 + \frac{\underline{r} \cdot d\underline{r}}{\|\underline{r}\|^2}\right)              \\
+		                                   & \color{gray} \approx \|\underline{r}\| \sqrt{1 + \frac{2 \underline{r} \cdot d\underline{r}}{\underline{r} \cdot \underline{r}}}     \\
+		                                   & \color{gray} \text{using the Taylor expansion $\sqrt{1 + x} \approx 1 + \frac{x}{2} \text{for } x \ll 1$:}                           \\
+		                                   & \color{gray} \approx \|\underline{r}\| \left(1 + \frac{\underline{r} \cdot d\underline{r}}{\|\underline{r}\|^2}\right)               \\
 		                                   & \color{gray} \approx \|\underline{r}\|  + \frac{\underline{r} \cdot d\underline{r}}{\|\underline{r}\|}                               \\
 		                                   & \approx \|\underline{r}\|  + \underline{\hat{r}} \cdot d\underline{r}
 	\end{aligned}
@@ -2389,8 +2527,8 @@ so for the infinitesimal change we have $\|\underline{r} + d\underline{r}\|= \|\
 
 \begin{equation}
 	\begin{aligned}
-		dt_{ret} & \color{gray} =   dt + \frac{\underline{\hat{r}} \cdot d\underline{r}}{c}     \\
-		         & \color{gray} = dt + \frac{\underline{\hat{r}} \cdot \underline{u} dt}{c}    \\
+		dt_{ret} & \color{gray} =   dt + \frac{\underline{\hat{r}} \cdot d\underline{r}}{c}  \\
+		         & \color{gray} = dt + \frac{\underline{\hat{r}} \cdot \underline{u} dt}{c}  \\
 		         & = \left( 1 + \frac{\underline{u} \cdot \underline{\hat{r}}}{c} \right) dt
 	\end{aligned}
 \end{equation}
@@ -2400,7 +2538,7 @@ Therefore, we can get the apparent velocity as
 
 \begin{equation}
 	\begin{aligned}
-		\underline{u}_{ret} & \color{gray}= \frac{d\underline{r}}{dt_{ret}}                                                                     \\
+		\underline{u}_{ret} & \color{gray}= \frac{d\underline{r}}{dt_{ret}}                                                                \\
 		                    & \color{gray}= \frac{d\underline{r}}{\left( 1 + \frac{\underline{u} \cdot \underline{\hat{r}}}{c} \right) dt} \\
 		                    & = \frac{\underline{u}}{1 + \frac{\underline{u} \cdot \underline{\hat{r}}}{c}}
 	\end{aligned}
@@ -3807,13 +3945,6 @@ The Paradox: From the runner's perspective, the barn is contracted and even smal
 
 The Resolution: Relativity of simultaneity. The runner sees the back door close and reopen before the front door closes. The ladder never fits "all at once" in the runner's frame, but the sequence of door closings allows the ladder to pass through.
 
-** The Tachyonic AntitelephoneThe Scenario:
-
-If one could send signals faster than light (tachyons), one could construct a setup with two moving observers where a signal is sent back to the past.
-
-The Paradox: You could send a message to your grandfather preventing your own birth (causality violation).
-
-The Resolution: This thought experiment serves as a "proof by contradiction" that information cannot travel faster than $c$.
 
 ** Bell's Spaceship Paradox
 The Scenario: Two spaceships are connected by a delicate string. They accelerate simultaneously and identically (from the perspective of a ground observer).

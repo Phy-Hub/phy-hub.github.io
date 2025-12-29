@@ -23,7 +23,11 @@
     "editor.lineHeight": 22,
     "editor.padding.top": 20,
     "editor.wordWrap": "on",
-    "editor.fontSize": 16
+    "editor.fontSize": 16,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.overviewRulerBorder": false,
+    "editor.glyphMargin": false,
+    "editor.scrollBeyondLastColumn": 0,
     },
 
     "workbench.colorTheme": "Solarized Light",

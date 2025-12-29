@@ -48,6 +48,33 @@ for i in range(len(ang)):
     doppler[i]      = SR.Doppler(U_prm[1], C_wave_prm[i,1])
 
 ###############################################################################
+
+### escape velocities
+
+### patch .....
+
+R_escape =  np.empty( ( N_t, N_ang , 2 ) )
+
+plt.figure(4,frameon=False)
+PlotStyle()
+
+u_escape     = # np.empty( ( N_ang, 2 ) ) ############# need u escape
+
+for I_t in range(N_t):
+    R_escape[I_t] = I_t * T_step  * C_wave
+
+    for I_ang in range(N_ang):
+        if R_escape[I_t,I_ang,0]**2 < (lim + 0.3)**2 and Rc[I_t,I_ang,1]**2 < (lim + 0.3)**2:
+                plt.quiver(R_escape[I_t,I_ang,0], R_escape[I_t,I_ang,1], sc * C_wave[I_ang,0], sc * C_wave[I_ang,1],
+                        angles="xy" , zorder=1, pivot="mid", alpha=1,width=0.005, scale=5,
+                        scale_units='inches', color='red') #,headwidth=1)
+
+
+### patch ....
+
+
+
+###############################################################################
 plt.figure(1,frameon=False)
 PlotStyle()
 for I_t in range(N_t):

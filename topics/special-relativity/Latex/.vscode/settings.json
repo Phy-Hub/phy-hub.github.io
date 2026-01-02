@@ -35,10 +35,12 @@
     "highlight.decorations": { "backgroundColor": "#ff9d00" },
     "highlight.regexes": {
         //"(.*\\n\\s*\\n\\s*\\n.*)": [{"backgroundColor": "#000000"}],
+        "( \\\\ref)": [{}],
         "(figure \\\\ref)": [{}],
         "(section \\\\ref)": [{}],
         "(chapter \\\\ref)": [{}],
         "(equation \\\\ref)": [{}],
+        "(\\(\\\\eqref)": [{}],
         "(equation \\(\\\\eqref)": [{}],
         "(equation \\(\\\\ref)": [{}],
         "(?!%)(?:.){240,}": [{}],

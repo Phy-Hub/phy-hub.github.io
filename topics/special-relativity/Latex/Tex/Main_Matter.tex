@@ -8,6 +8,10 @@
 %███████████████████████████████████████████████████████████████████
 \part{The Concepts Explained} % (Intuition Without the Math)}
 
+Here we will give an overview of all the main concepts of special relativity, without needing to derive any of the math.
+This is to show how special relativity works without needing to comprehend the math at the same time, as the math can distract from understanding the concepts themselves.
+
+
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -1455,7 +1459,7 @@ This is a speed unattainable to us, the only thing we can bring up close to this
 
 To get the velocity transform equations we will first need the equations to transform the displacement between two positions and the interval between times, then take them in the limit as the changes go to zero.
 That is, when we have infinitesimal changes of coordinates.
-If we want to know how the displacement between two coordinates ${\vec{R}_1} = (x_1,y_1,z_1)$ and ${\vec{R}_2} = (x_2,y_2,z_2)$ transforms, we can take the difference of the transforms of both the coordinates as follows
+If we want to know how the displacement between two coordinates ${\underline{R}_1} = (x_1,y_1,z_1)$ and ${\underline{R}_2} = (x_2,y_2,z_2)$ transforms, we can take the difference of the transforms of both the coordinates as follows
 
 \begin{equation}
 	\begin{aligned}
@@ -1466,7 +1470,7 @@ If we want to know how the displacement between two coordinates ${\vec{R}_1} = (
 	\end{aligned}
 \end{equation}
 
-rearranging and replacing the difference of the first and second of each coordinate with ${\Delta}{\vec{R}} = ({\Delta}x,{\Delta}y,{\Delta}z) = (x_2-x_1,y_2-y_1,z_2-z_1)$, giving the displacement transform as
+rearranging and replacing the difference of the first and second of each coordinate with ${\Delta}{\underline{R}} = ({\Delta}x,{\Delta}y,{\Delta}z) = (x_2-x_1,y_2-y_1,z_2-z_1)$, giving the displacement transform as
 
 \begin{equation}
 	\label{eq: interval of Coordinates}
@@ -1501,7 +1505,7 @@ For example, the space-time interval and the energy-momentum relationship in Cha
 %███████████████████████████████████████████████████████████████████
 \section{Velocity} \label{sect: Velocity}
 
-The velocity at any instant is the infinitesimal change in position over the infinitesimal change in time $\frac{d\vec{R}}{dt}$.
+The velocity at any instant is the infinitesimal change in position over the infinitesimal change in time $\frac{d\underline{R}}{dt}$.
 So using the infinitesimals from Equation \eqref{eq: infinitesimal interval of Coordinates}, we get the velocity in each direction as
 
 \begin{equation}
@@ -1612,9 +1616,11 @@ This extra term leads to a different formula for the force compared to the mass 
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{No Speed Faster than Light}\label{sect: No Speed Faster than Light}
+\section{No Speeds Faster than Light speed}\label{sect: No Speeds Faster than Light speed}
 
 *** start
+
+
 
 ** The Tachyonic AntitelephoneThe Scenario:
 
@@ -2176,43 +2182,45 @@ Now that we have confirmed the use of the relativistic momentum from equation \e
 
 with momentum being $p = \gamma_{u} {m}{u_q}$ for a particle with mass and writen more meaningfully for a photon as $p=E/c$.
 
+\textbf{Side Note:}
 
-*** start
+When looking at particle collisions, we also need to take into account potential energy as they move towards and away from each other, but this would have to take into account acceleration aswell. which is not an easy thing to do.
 
-Previously we showed that faster than light travel would lead to effects being able happening before their cause \ref{sect: No Speed Faster than Light}, but here is another reason that faster than light transport may not be possible for particles with mass.
+%█████████████
+\subsection{Speed of Light Limit}\label{subsect: Speed of Light Limit}
 
-We can see from the compact total energy equation \eqref{eq: Total Energy Compact Version}, that if a particle with a mass, was accelerated to the speed of light its energy would become infinite.
+Previously we showed that faster than light travel would lead to effects being able happening before their cause, section (\ref{sect: No Speed Faster than Light}), but here is another reason that faster than light transport may not be possible for particles with mass.
+
+We can see from the total energy equation \eqref{eq: Total Energy Compact Version}, that if a particle with a mass, was accelerated to the speed of light its energy would become infinite.
 So we would need infinite energy (which does not exist) to get that particle to the speed of light.
+Therefor it is not possible.
 
-
-* would be against our intuition
-
-If you consider the posibility of a particle moving at speeds faster than light speed, it would lead to $\gamma$ being imaginary (squareroot of a negaive number).
-But we require that the energy is a real quantity to be measurable, and for this we would need the mass to also be imaginary.
-Some Physicists theorised a particle that has this, the tachyon, but this still has the previous problem of the cuase and effect being interchangeable that we explained in \ref{sect: No Speed Faster than Light}.
-
-*** a note here: when looking at particle collisions, we also need to take into account potential energy as they move towards and away from each other, but this would have to take into account acceleration aswell. which is not an easy thing to do.
+If you still want to consider the posibility of a particle moving at speeds faster than light speed, it would lead to $\gamma$ being imaginary (squareroot of a negaive number).
+But we require that energy is a real quantity to be measurable, and for this we would need the mass to also be imaginary.
+Some Physicists theorised a particle that has this imaginary mass, the tachyon, but this still has the previous problem of the cause and effect being interchangeable that we explained in section (\ref{sect: No Speed Faster than Light}).
+It has never been found to exist in any dectors.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Summary}\label{sect: Summary chapter 3}
 
+In this chapter, we looked at the space-time interval which is a very important quantity in special relativity.
+It is the simplest quantity that is invariant when swapping between inertial reference frames (It has the same value in all inertial frames of reference).
+From this we derived The D'Alembert operator, which is an important operator in relativistic wave equations, and we showed that it is also invariant when swapping between inertial reference frames.
 
-* In this chapter, we looked at the space-time interval which is a very important quantity in special relativity, as it is the simplest quantity that is invariant when swapping between inertial reference frames (It has the same value in all inertial frames of reference).
+The space-time interval also allowed us to find an invariant quantity with the units of energy.
+This led us to the concepts of rest mass energy of a particle, the total relativistic energy, and the relativistic momentum.
+From this we showed that these were consistent with the conservation laws for energy and momentum; if they were true in one inertial frame they then hold true in all inertial frames.
+Next we found the relation between energy and momentum when it came to light.
+This finally led us to be able to write the energy-momentum equation in a more meaningful way.
 
-* From this we derived The D'Alembert operator, which is an important operator in relativistic wave equations, and showed that it is also invariant when swapping between inertial reference frames.
+In this chapter we learned that mass and energy are equivalent, particles with mass would require infinite energy to be accelerated to the speed of light, and that our definition of momentum needed to be updated, with light also having momentum.
 
-* The space-time interval also allowed us to derive the energy-mass and momentum relation, leading to the famous equation $E=mc^2$, showing that mass and energy are equivalent.
+What we have learnt here, brings us to on the boundary between pure special relativity and particles physics; which relies heavily on experimental physics to discover the rules that particles follow.
+Interactions between particles to produce other particles, require more than just conservation of energy and momentum to fully describe them, there is also the conservation of charge, lepton number, baryon number, etc... which determined which interactions can and can not happen.
+Hence this is outside the context of this book.
 
-
-
-* this chapter brings us to on the boundary between pure special relativity and particles physics; which relied heavily on experimental physics to discover the rules that particles follow.
-
-* Interactions between particles to produce other particles, require a lot more than just conservation of energy and momentum to fully describe them, there is also the conservation of charge, lepton number, baryon number, etc... which disallow many particle interactions from happening.
-*
-
-* This is outside the context of this book.
-* So we will move on to Part \ref{Part: light in special relativity}, where we will take a close look at how light behaves in special relativity.
+So we will move on to Part (\ref{Part: light in special relativity}), where we will take a close look at how light's propagation behaves in special relativity.
 We will first examine the delayed view of the world an observer sees due to the delay in light's signal from their surroundings, and then move on to how light is effected when emitted from a moving point source, leading to a lot of insights, including the famous Doppler effect.
 
 % * If you have looked into special relativity before you may have come across quantities that are called 4-vectors, that can make derivations shorter, but they would require an extra section to explain them, and they are an abstraction which does not add any more physical intuition or insight.
@@ -2233,9 +2241,10 @@ We will first examine the delayed view of the world an observer sees due to the 
 \part{Light in Special Relativity}
 \label{Part: light in special relativity}
 
-*** here we will talk about the delay in light's signal due to the finite speed of the propagation of light
-
-*** Here we will look into what effects, the consequences of the basic concepts we have just learnt, have on
+Here we will discuss light's propagation and the properties that you get when you look it.
+We will look at the delay in light's signal due to the finite speed of the propagation of light, and the effects that the principles of special relativity have on the emission of light from a moving source.
+A lot of the concepts in the Chapters of this Part are not taught in most resources that you will find on special relativity, even though they can be very insightful.
+The exception to this is the doppler effect on the frequency of light, which is discussed in most resources, and is derived here.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -2461,11 +2470,11 @@ If we are at rest in the initial frame and we see the points as they are shown t
 %███████████████████████████████████████████████████████████████████
 \section{Apparent Velocity} \label{sect: Apparent Velocity}
 
-*** choose between observed vs apparent vs perceived vs retarded for each quantity and also for chapter 1
+% *** choose between observed vs apparent vs perceived vs retarded for each quantity and also for chapter 1
 
-*** do i need to use $r_{ret}$
+% *** do i also need a retarded velocity section, the actual velocity particle had at the retarded time and position
 
-*** do i also need a retarded velocity section, the actual velocity particle had at the retarded time and position
+*** start
 
 From the previous section we have seen that objects are perceived to be at their retarded positions, That would also mean that we also have that the rate of change of the observed positions being different to their actual rate of change.
 That is, the Apparent velocity of an object is different from its actual velocity.
@@ -2481,6 +2490,9 @@ If we have a moving particle positioned at $\underline{r}$, then in a infinitesi
 to position $\underline{r} + d\underline{r}$, as shown in the Diagram
 
 *** r is actually retarded position of particle
+*** do i need to use $r_{ret}$, i.e. what time are we using for this derivation
+
+*** or do we say we are actually looking at the actually positions but look at what these are used at retarded times with respect to the observer at origin instead of actual times, and using $\underline{r}_{ret}=\underline{r}$ and $d\underline{r}_{ret}=d\underline{r}$
 
 %█████████████
 \begin{figure}[H]
@@ -2494,7 +2506,7 @@ to position $\underline{r} + d\underline{r}$, as shown in the Diagram
 		\draw[red, thick, dotted,<-] (0,0,0)--(0.5,0.3,0);
 		\draw[blue, thick,->] (0.4,0.4,0)--(0.49,0.31,0);
 		\fill[blue] (0.4,0.4,0) circle (0.4pt) node[anchor = south] {\text{${\underline{r}}$}};
-		\fill[blue] (0.5,0.3,0) circle (0.4pt) node[anchor = west] {\text{${\underline{r}} + {\underline{dr}}$}};
+		\fill[blue] (0.5,0.3,0) circle (0.4pt) node[anchor = west] {\text{${\underline{r}} + {d\underline{r}}$}};
 	\end{tikzpicture}
 	\caption{\textbf{Apparent velocity.} Diagram showing a particle (blue) moving from $\underline{r}$ by a displacement of $d\underline{r}=\underline{u}dt$ with the paths that light has to travel to get to the origin from both these positions(red). Leading to a different retarded time between the positions than the actual time between them. As to due to the particle moving to a different position, the light may also have to travel a different distance, which also introduces an additional time difference. This gives a different Apparent velocity to the actual velocity.}
 	\label{fig: Apparent velocity}

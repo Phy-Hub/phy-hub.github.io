@@ -12,6 +12,8 @@ import subprocess
 import re
 import os
 import sys
+import urllib.request
+import urllib.error
 
 ### passed variables:
 topic_folder_name = sys.argv[1]
@@ -25,7 +27,7 @@ Topic_Name = sys.argv[3]
 ### from make_page.py ###
 py_to_page_structure = "../SCRIPTS/Structure_Page.html"
 py_to_output_page    = "../../pages/" + topic_folder_name + ".html"
-py_to_main_tex       = "Latex/Tex/Main_Matter.tex"
+py_to_main_tex       = "Latex/Main_Matter.tex"
 #py_to_defs          = "Latex/Tex/Terms/Definitions.tex"
 py_to_terms          = "Latex/Tex/Terms"
 py_to_tikz           = "Latex/output/tikz/"
@@ -37,7 +39,7 @@ py_to_bugs           = "bugs/"
 
 ### from html page ###
 html_to_svgs = "../topics/" + topic_folder_name + "/" + py_to_svgs
-html_to_pdf  = "../topics/" + topic_folder_name + "/Latex/output/" + pdf_name
+html_to_pdfs  = "../topics/" + topic_folder_name + "/Latex/output/" + pdf_name
 html_to_js_diagrams    = "./"
 
 
@@ -62,7 +64,7 @@ def replace_blank_lines(filename):
     with open(filename, 'w', encoding='utf-8') as file:
         for line in lines:
             if line.strip() == '':
-                file.write('<br>')
+                file.write('<br>\n')
             else:
                 file.write(line)
 
@@ -100,10 +102,7 @@ def colorbox_replace(filename):
         file.write(html_content)
 
 ###
-#
-# *** some \chapters{} and sections{} have [] before {} for their alternative name or alternative label, check TOC includes it once fixed
-#
-# *** need to change id's to their labels instead of counters, also make sure they have labels
+# todo *** some \chapters{} and sections{} have [] before {} for their alternative name or alternative label, check TOC includes it once fixed
 
 ###
 import re
@@ -113,6 +112,7 @@ def wrap_content(latex_file):
         lines = file.readlines()
 
     output = []
+    part = 0
     chapter_num = 0
     section_num = 0
     subsection_num = 0
@@ -129,16 +129,16 @@ def wrap_content(latex_file):
 
                 # Close previous sections if any
                 if subsubsection_num > 0:
-                    output.append(f'</div>  <!-- close subsubsection {chapter_num}.{section_num}.{subsection_num}.{subsubsection_num} -->')
+                    output.append(f'</div>  <!-- close subsubsection {chapter_num}_{section_num}_{subsection_num}_{subsubsection_num} -->')
                     subsubsection_num = 0
                 if subsection_num > 0:
-                    output.append(f'</div>  <!-- close subsection {chapter_num}.{section_num}.{subsection_num} -->')
+                    output.append(f'</div>  <!-- close subsection {chapter_num}_{section_num}_{subsection_num} -->')
                     subsection_num = 0
                 if section_num > 0:
-                    output.append(f'</div> <!-- close section {chapter_num}.{section_num} -->')
+                    output.append(f'</div> <!-- close section {chapter_num}_{section_num} -->')
                     section_num = 0
 
-                # Generate navigation links
+                # Generate navigation links at bottom of page
                 if chapter_num == 2:
                     replace_func = (
                         f"\n<div class='arrow-nav'>\n"
@@ -186,17 +186,16 @@ def wrap_content(latex_file):
 
                 # Close previous subsections if any
                 if subsubsection_num > 0:
-                    output.append(f'</div>  <!-- close subsubsection {chapter_num}.{section_num}.{subsection_num}.{subsubsection_num} -->')
+                    output.append(f'</div>  <!-- close subsubsection {chapter_num}_{section_num}_{subsection_num}_{subsubsection_num} -->')
                     subsubsection_num = 0
                 if subsection_num > 0:
-                    output.append(f'</div>  <!-- close subsection {chapter_num}.{section_num}.{subsection_num} -->')
+                    output.append(f'</div>  <!-- close subsection {chapter_num}_{section_num}_{subsection_num} -->')
                     subsection_num = 0
                 if section_num > 1:
-                    output.append(f'</div> <!-- close section {chapter_num}.{section_num - 1} -->')
+                    output.append(f'</div> <!-- close section {chapter_num}_{section_num - 1} -->')
 
                 # Create the HTML header
-                header_id = section_title.replace(' ', '').replace("'", "")
-                line = f'<h2 id="{header_id}_header">{chapter_num}.{section_num} {section_title}</h2>'
+                line = f'<h2 id="ch{chapter_num}_{section_num}_header">{chapter_num}.{section_num} {section_title}</h2>'
                 output.append(line)
                 output.append(f'<div id="ch{chapter_num}_{section_num}_content">')
             else:
@@ -211,14 +210,13 @@ def wrap_content(latex_file):
 
                 # Close previous subsubsections if any
                 if subsubsection_num > 0:
-                    output.append(f'</div>  <!-- close subsubsection {chapter_num}.{section_num}.{subsection_num}.{subsubsection_num} -->')
+                    output.append(f'</div>  <!-- close subsubsection {chapter_num}_{section_num}_{subsection_num}_{subsubsection_num} -->')
                     subsubsection_num = 0
                 if subsection_num > 1:
-                    output.append(f'</div>  <!-- close subsection {chapter_num}.{section_num}.{subsection_num - 1} -->')
+                    output.append(f'</div>  <!-- close subsection {chapter_num}_{section_num}_{subsection_num - 1} -->')
 
                 # Create the HTML header
-                header_id = subsection_title.replace(' ', '').replace("'", "")
-                line = f'<h3 id="{header_id}_header">{chapter_num}.{section_num}.{subsection_num} {subsection_title}</h3>'
+                line = f'<h3 id="ch{chapter_num}_{section_num}_{subsection_num}_header">{chapter_num}.{section_num}.{subsection_num} {subsection_title}</h3>'
                 output.append(line)
                 output.append(f'<div id="ch{chapter_num}_{section_num}_{subsection_num}_content">')
             else:
@@ -232,11 +230,10 @@ def wrap_content(latex_file):
                 subsubsection_title = subsubsection_match.group(1)
 
                 if subsubsection_num > 1:
-                    output.append(f'</div>  <!-- close subsubsection {chapter_num}.{section_num}.{subsection_num}.{subsubsection_num - 1} -->')
+                    output.append(f'</div>  <!-- close subsubsection {chapter_num}_{section_num}_{subsection_num}_{subsubsection_num - 1} -->')
 
                 # Create the HTML header
-                header_id = subsubsection_title.replace(' ', '').replace("'", "")
-                line = f'<h4 id="{header_id}_header">{subsubsection_title}</h4>'
+                line = f'<h4 id="ch{chapter_num}_{section_num}_{subsection_num}_{subsubsection_num}_header">{subsubsection_title}</h4>'
                 output.append(line)
                 output.append(f'<div id="ch{chapter_num}_{section_num}_{subsection_num}_{subsubsection_num}_content">')
             else:
@@ -246,11 +243,11 @@ def wrap_content(latex_file):
 
     # Close any open tags at the end
     if subsubsection_num > 0:
-        output.append(f'</div>  <!-- close subsubsection {chapter_num}.{section_num}.{subsection_num}.{subsubsection_num} -->')
+        output.append(f'</div>  <!-- close subsubsection {chapter_num}_{section_num}_{subsection_num}_{subsubsection_num} -->')
     if subsection_num > 0:
-        output.append(f'</div>  <!-- close subsection {chapter_num}.{section_num}.{subsection_num} -->')
+        output.append(f'</div>  <!-- close subsection {chapter_num}_{section_num}_{subsection_num} -->')
     if section_num > 0:
-        output.append(f'</div> <!-- close section {chapter_num}.{section_num} -->')
+        output.append(f'</div> <!-- close section {chapter_num}_{section_num} -->')
 
     # Close the last chapter
     if chapter_num > 1:
@@ -262,6 +259,11 @@ def wrap_content(latex_file):
         )
     else:
         output.append('</section>')
+
+    ### todo part
+    ### Close the last Part
+    ### find out how part section needs to be closed
+    # output.append('</section>')
 
     # Write the modified content back to the file
     with open(latex_file, 'w', encoding='utf-8') as file:
@@ -305,7 +307,7 @@ def Figures_to_HTML(file):
 
                 replacement = f'<br>\n \t <figure'
                 if label_match:
-                    main_fig_label = find_label_from_key(fig_dict, f"{chapter_num}.{figure_counter}")
+                    main_fig_label = find_label_from_key(fig_dict, f"{chapter_num}_{figure_counter}")
                     replacement += f' id="{main_fig_label}"'  # Add ID to <figure>
                 replacement += '>\n <div style="display: flex; justify-content: space-between;">\n'
 
@@ -316,7 +318,7 @@ def Figures_to_HTML(file):
 
                 replacement += '</div>\n'
 
-                main_caption = find_caption_from_key(fig_dict, f"{chapter_num}.{figure_counter}")
+                main_caption = find_caption_from_key(fig_dict, f"{chapter_num}_{figure_counter}")
 
                 if caption_match:
                     replacement += f'<figcaption>Figure {chapter_num}.{figure_counter}: {main_caption}</figcaption>\n'
@@ -368,8 +370,8 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
         if "\\begin{subfigure}" in figure_env:
             caption = f"{subfig_letter}) {caption_text}"
         else:
-            caption_text = find_caption_from_key(fig_dict, f"{chapter_num}.{figure_counter}")
-            fig_id = find_label_from_key(fig_dict, f"{chapter_num}.{figure_counter}")
+            caption_text = find_caption_from_key(fig_dict, f"{chapter_num}_{figure_counter}")
+            fig_id = find_label_from_key(fig_dict, f"{chapter_num}_{figure_counter}")
             caption = f"Figure {chapter_num}.{figure_counter}: {caption_text}"
 
 
@@ -417,47 +419,47 @@ def insert_JS(filename,js_location):
             else:
                 file.write(line)
 
-
-
-
     return script_lines
 
 ########################################################
 # Page elements ########################################
 ########################################################
 ###
-def create_toc(html_file):
 
-    headers = re.findall(r'<(h[1-2])\s*([^>]*)>(.*?)</\1>', html_file)
-
+def create_toc(data):
     toc = "<h4>Contents</h4>\n"
-    i=0
-    ch_num = 0
-    for tag, attrs, text in headers:
-        header_id = re.search(r'id="(.*?)"', attrs)
-        text = text.strip()
 
-        # Add indentation based on header tag
-        if tag == 'h1':
-            ch_num = ch_num + 1
-            if i==0:
-                toc += f"<details id='ch{ch_num}_details' open>\n"
-            else:
+    # Sort keys by numerical value (1_2 before 1_10)
+    keys = sorted(data.keys(), key=lambda x: [int(k) for k in x.split('_')])
+
+    for key in keys:
+        parts = key.split('_')
+        if len(parts) > 2: continue  # Skip subsections
+
+        # Common variables for both Chapters and Sections
+        h_id = f"ch{key}_header"
+        text = f"{'.'.join(parts)} {data[key]['title']}"
+
+        if len(parts) == 1: # Chapter
+            # If we aren't at the start, close the previous chapter details
+            if toc != "<h4>Contents</h4>\n":
                 toc += "</details>\n"
-                toc += f"<details id='ch{ch_num}_details' >\n"
 
-            style = "style='font-weight: bold;'"
-            toc += f"<summary onclick=\"showContent('ch{ch_num}_wrap')\"><a href='#{header_id.group(1)}' onclick=\"event.stopPropagation(); showContent('ch{ch_num}_wrap'); $(this).parent().parent().attr('open', '');\" {style}>{text}</a></summary>\n"
-            i=1
+            # Check if this is the first chapter to add 'open' attribute
+            is_open = " open" if toc == "<h4>Contents</h4>\n" else ""
 
-        elif tag == 'h2':
-            style = "style='display: block; margin-left: 20px;'"
-            toc += f"<a href='#{header_id.group(1)}' {style}>{text}</a>\n"
-        else:
-            toc += "error\n"
+            toc += f"<details id='ch{parts[0]}_details'{is_open}>\n"
+            toc += (f"<summary onclick=\"showContent('ch{parts[0]}_wrap')\">"
+                    f"<a href='#{h_id}' onclick=\"event.stopPropagation(); "
+                    f"showContent('ch{parts[0]}_wrap'); $(this).parent().parent().attr('open', '');\" "
+                    f"style='font-weight: bold;'>{text}</a></summary>\n")
 
-    toc += "</details>\n"
-    return toc
+        else: # Section
+            toc += f"<a href='#{h_id}' style='display: block; margin-left: 20px;'>{text}</a>\n"
+
+    # Close the final chapter
+    return toc + "</details>\n"
+
 
 ###
 def create_terms(terms_folder):
@@ -494,9 +496,7 @@ def create_terms(terms_folder):
                     state = 'description'
     return output_lines
 
-###
-### *** need to make labels for variables in my latex code
-###
+
 def create_math_terms(folder_path, file_prefix="Terms_ch"):
     variables = {}
 
@@ -588,7 +588,7 @@ def create_math_terms(folder_path, file_prefix="Terms_ch"):
                 new_line = f'<dt style="cursor: pointer;" onclick="document.getElementById(\'{label}\').style.display = document.getElementById(\'{label}\').style.display == \'none\' ? \'inline\' : \'none\';"> \\({variable}\\)<b>:</b> </dt>\n<dd id="{label}" style="display: none;">{definition}</dd>\n'
                 html_string += new_line
 
-                html_string += '<br>'  # after each variable
+                html_string += '<br>\n'  # after each variable
 
 
         html_string += '\n </dl>\n'
@@ -611,8 +611,7 @@ def math_to_HTML(content):
 
     return content
 
-###
-def replace_refs(input_string, fig_dict):
+def replace_refs(input_string):
     # This pattern matches \eqref{} and captures the content inside the brackets
     pattern_ref_eq = r'\\eqref\{(.*?)\}'
     pattern_ref_fig = r'\\ref\{(.*?fig.*?)\}'
@@ -621,24 +620,25 @@ def replace_refs(input_string, fig_dict):
     # This function will be used to replace each match
     def replacer_ref_eq(match):
         id = match.group(1).replace(" ", "_")
-        eq_number = find_key_from_label(eq_dict, id)
+        eq_number =  (find_key_from_label(eq_dict, id) or "").replace("_", ".")
         # Replace with a span element that shows a div with the matched id on hover
         return f'<span class="ref_eq" onmouseover="copyContent(\'{id}\',\'equation_hover\'); " onmouseout="deleteContent(\'equation_hover\');">({eq_number})</span>'
     def replacer_ref_fig(match):
         id = match.group(1).replace(" ", "_")
-        fig_num = find_key_from_label(fig_dict,id)
+        fig_num =  (find_key_from_label(fig_dict, id) or "").replace("_", ".")
         # Replace with a span element that shows a div with the matched id on hover
         return f'<span class="ref_fig" onmouseover="copyContent(\'{id}\',\'fig_hover\');" onmouseout="deleteContent(\'fig_hover\');">{fig_num}</span>'
     def replacer_ref_toc(match):
         id = match.group(1).replace(" ", "_")
-        toc_num = find_key_from_label(toc_dict,id)
+        toc_num = (find_key_from_label(toc_dict, id) or "").replace("_", ".")
         # Replace with a span element that shows a div with the matched id on hover
-        return f'<span class="ref_toc" >{toc_num}</span>'
+        return f'<span class="ref_toc" >{toc_num}</span>' #todo need way for click to load chapter and then point to section
 
     # Use re.sub to replace each match in the input string
     output_string = re.sub(pattern_ref_eq , replacer_ref_eq, input_string)
     output_string = re.sub(pattern_ref_fig, replacer_ref_fig, output_string)
     output_string = re.sub(pattern_ref_toc, replacer_ref_toc, output_string) # must be after fig replacer
+
 
     return output_string
 
@@ -747,6 +747,7 @@ def create_dictionary_of_toc(filepath):
                 short_title = match.group(2).strip() if match.group(2) else None
                 title = match.group(3).strip()
                 label = match.group(4).replace(" ", "_") if match.group(4) else None
+                #todo replace : in label with _ or "",  need to check all replace_refs( and do same for other dictionaries
 
 
                 # Replace title with short_title if short_title exists
@@ -763,14 +764,14 @@ def create_dictionary_of_toc(filepath):
                     counters["section"] += 1
                     counters["subsection"] = 0
                     counters["subsubsection"] = 0
-                    structure_dict[f"{counters['chapter']}.{counters['section']}"] = {"title": title, "label": label}
+                    structure_dict[f"{counters['chapter']}_{counters['section']}"] = {"title": title, "label": label}
                 elif level == "subsection":
                     counters["subsection"] += 1
                     counters["subsubsection"] = 0
-                    structure_dict[f"{counters['chapter']}.{counters['section']}.{counters['subsection']}"] = {"title": title, "label": label}
+                    structure_dict[f"{counters['chapter']}_{counters['section']}_{counters['subsection']}"] = {"title": title, "label": label}
                 elif level == "subsubsection":
                     counters["subsubsection"] += 1
-                    structure_dict[f"{counters['chapter']}.{counters['section']}.{counters['subsection']}.{counters['subsubsection']}"] = {"title": title, "label": label}
+                    structure_dict[f"{counters['chapter']}_{counters['section']}_{counters['subsection']}_{counters['subsubsection']}"] = {"title": title, "label": label}
 
     return structure_dict
 
@@ -835,7 +836,7 @@ def create_dictionary_of_figures(latex_file):
             if label_match:
                 figure_label = label_match.group(1).replace(" ", "_")
 
-            figure_id = f"{chapter_number}.{figure_number}"
+            figure_id = f"{chapter_number}_{figure_number}"
             figure_data[figure_id] = {
                 "title": figure_title,
                 "label": figure_label,
@@ -870,7 +871,7 @@ def create_dictionary_of_figures(latex_file):
                 if label_match:
                     subfigure_label = label_match.group(1).replace(" ", "_")
 
-                subfigure_id = f"{chapter_number}.{figure_number}.{subfigure_letter}"
+                subfigure_id = f"{chapter_number}_{figure_number}_{subfigure_letter}"
                 figure_data[subfigure_id] = {
                     "title": subfigure_title,
                     "label": subfigure_label,
@@ -912,7 +913,7 @@ def create_dictionary_of_equations(latex_file):
             if label_match:
                 equation_label = label_match.group(1).replace(" ", "_")
 
-            equation_id = f"{chapter_number}.{equation_number}"
+            equation_id = f"{chapter_number}_{equation_number}"
             equation_data[equation_id] = {"label": equation_label}  # Store as dictionary
 
     return equation_data
@@ -979,7 +980,7 @@ def make_page(input_file, output_file, toc_file, content_file, Defs_file, Math_T
             elif '[Insert Math Terms]' in line:
                 file.writelines(Math_Terms_lines)
             elif '[Insert PDF Link]' in line:
-                file.write('<a href="' + html_to_pdf + '" style="padding-top: 5px; color: black;"><b>&#11015; PDF</b></a><br>')
+                file.write('<a href="' + html_to_pdfs + '" style="padding-top: 5px; color: black;"><b>&#11015; PDF</b></a><br>\n')
             elif '[Insert Topic Name]' in line:
                 file.write(Topic_Name)
             elif '[Insert Script]' in line:
@@ -1059,6 +1060,32 @@ def check_ids_for_spaces(html_file_path):
             invalid_ids.append(id_value)
     return invalid_ids
 
+########################################################
+# Checks ###############################################
+########################################################
+###
+
+def check_latex_web_links(filename):
+    with open(filename, 'r', encoding='utf-8') as f:
+        # regex to find \href{...} contents
+        urls = re.findall(r'\\href\{([^}]+)\}', f.read())
+
+    # Filter/deduplicate
+    links = set(u for u in urls if u.startswith(('http', 'www')))
+    print(f"Checking {len(links)} links in '{filename}'...\n")
+
+    for url in links:
+        try:
+            # We must fake a User-Agent or many sites (like Wikipedia/Amazon) will block urllib
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=5) as response:
+                print(f"✅ [{response.getcode()}] {url}")
+        except urllib.error.HTTPError as e:
+            # urllib raises an exception for 404s, 403s, etc.
+            print(f"❌ [{e.code}] {url}")
+        except urllib.error.URLError:
+            print(f"🚫 [Connection Error] {url}")
+
 ###################################################################################
 ###################################################################################
 ###################################################################################
@@ -1101,7 +1128,7 @@ replace(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<span onmouseover=\"docum
 replace(Latex_File, r'\\href\{(.*?)\}\{(.*?)\}', "<a style='color: black' href='\\g<1>' target='_blank' rel='noopener noreferrer'>\\g<2></a>")
 replace(Latex_File, r'\\scalebox{0.5}{R}', 'R')
 replace(Latex_File, r'\\AA', "Å") #'Å')
-replace(Latex_File, r'\\newline', '<br>')
+replace(Latex_File, r'\\newline', '<br>\n')
 replace(Latex_File, r'\\mainmatter', '')
 replace(Latex_File,r'\\fi', '')
 replace(Latex_File,r'\\input\{.*?\}', '')
@@ -1109,6 +1136,7 @@ replace(Latex_File,r'\\printbibliography\[.*?\]', '')
 colorbox_replace(Latex_File)
 script_lines = insert_JS(Latex_File, html_to_js_diagrams) #needs to be before reading latex content
 bib_lines = bib_to_html(py_to_bib)
+
 
 wrap_content(Latex_File)
 
@@ -1119,20 +1147,20 @@ with open(Latex_File, 'r', encoding='utf-8') as file:
 # Convert to HTML headings
 main_content = latex_content
 main_content = math_to_HTML(main_content)
-main_content = replace_refs(main_content, fig_dict)
+main_content = replace_refs(main_content)
 main_content += '\n'
 main_content =  re.sub(r'\\label\{.*?\}', '', main_content)
 
 # Call the function with your HTML file
-toc = create_toc(main_content) # needs to take final html
+toc = create_toc(toc_dict) # needs to take final html
 vars = create_math_terms(py_to_terms)
 defs = create_terms(py_to_terms)
-
 
 make_page(py_to_page_structure, py_to_output_page, toc, main_content, defs, vars, script_lines, bib_lines)
 
 checks(py_to_output_page)
 check_ids_for_spaces(py_to_output_page)
+check_latex_web_links(py_to_main_tex)
 
 os.remove(Latex_File)
 

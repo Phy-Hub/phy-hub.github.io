@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.11)  2 JAN 2026 01:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.5)  6 JAN 2026 17:56
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -6,7 +6,7 @@ entering extended mode
 **c:/Users/one_p/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/Handbook_of_Special_Relativity.tex
 (c:/Users/one_p/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/Handbook_of_Special_Relativity.tex
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-11-06>
+L3 programming layer <2025-12-24>
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
 Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/base\bk10.clo
@@ -217,7 +217,7 @@ Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/mdframed\mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xparse.sty (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2025-11-06 L3 programming layer (loader) 
+Package: expl3 2025-12-24 L3 programming layer (loader) 
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count300
@@ -509,7 +509,7 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
-Package: tcolorbox 2025/09/09 version 6.8.0 text color boxes
+Package: tcolorbox 2025/11/28 version 6.9.0 text color boxes
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
 \pgfutil@everybye=\toks29
 \pgfutil@tempdima=\dimen259
@@ -727,13 +727,13 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@temp=\box129
 \tcb@temp=\box130
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbraster.code.tex
-Library (tcolorbox): 'tcbraster.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbraster.code.tex' version '6.9.0'
 \c@tcbrastercolumn=\count362
 \c@tcbrasterrow=\count363
 \c@tcbrasternum=\count364
 \c@tcbraster=\count365
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskins.code.tex
-Library (tcolorbox): 'tcbskins.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbskins.code.tex' version '6.9.0'
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzfill.image.sty
 Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzfill-common.sty
@@ -742,9 +742,9 @@ Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
 File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
 \l__tikzfill_img_box=\box131
 )) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskinsjigsaw.code.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.9.0'
 )) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbbreakable.code.tex
-Library (tcolorbox): 'tcbbreakable.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.9.0'
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/pdfcol\pdfcol.sty
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 )
@@ -753,19 +753,19 @@ Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
 \tcb@totalupperbox=\box133
 \tcb@totallowerbox=\box134
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbhooks.code.tex
-Library (tcolorbox): 'tcbhooks.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.9.0'
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbtheorems.code.tex
-Library (tcolorbox): 'tcbtheorems.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.9.0'
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbfitting.code.tex
-Library (tcolorbox): 'tcbfitting.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.9.0'
 \tcbfitdim=\dimen312
 \tcb@lowerfitdim=\dimen313
 \tcb@upperfitdim=\dimen314
 \tcb@cur@hbadness=\count366
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistingsutf8.code.tex
-Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.9.0'
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistings.code.tex
-Library (tcolorbox): 'tcblistings.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcblistings.code.tex' version '6.9.0'
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
 \lst@mode=\count367
 \lst@gtempboxa=\box135
@@ -798,9 +798,9 @@ Package: listings 2025/11/14 1.11b (Carsten Heinz)
         2025/11/14 1.11b (Carsten Heinz)
     so I'm assuming it got fixed.
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistingscore.code.tex
-Library (tcolorbox): 'tcblistingscore.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcblistingscore.code.tex' version '6.9.0'
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbprocessing.code.tex
-Library (tcolorbox): 'tcbprocessing.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbprocessing.code.tex' version '6.9.0'
 )
 \c@tcblisting=\count375
 )) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/listingsutf8\listingsutf8.sty
@@ -810,17 +810,17 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 )))) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbexternal.code.tex
-Library (tcolorbox): 'tcbexternal.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbexternal.code.tex' version '6.9.0'
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbmagazine.code.tex
-Library (tcolorbox): 'tcbmagazine.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbmagazine.code.tex' version '6.9.0'
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbvignette.code.tex
-Library (tcolorbox): 'tcbvignette.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbvignette.code.tex' version '6.9.0'
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryfadings.code.tex
 File: tikzlibraryfadings.code.tex 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryfadings.code.tex
 File: pgflibraryfadings.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbposter.code.tex
-Library (tcolorbox): 'tcbposter.code.tex' version '6.8.0'
+Library (tcolorbox): 'tcbposter.code.tex' version '6.9.0'
 )) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
@@ -880,7 +880,13 @@ File: tikzlibraryarrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \arrowsize=\dimen328
-))) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
+))) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer/libraries\tikzlibraryexternal.code.tex (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzexternalshared.code.tex))
+\openout3 = `Handbook_of_Special_Relativity.auxlock'.
+
+ (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarymath.code.tex (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryfpu.code.tex (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryfpu.code.tex))
 \tikz@math@for@depth=\count382
@@ -1232,7 +1238,7 @@ File: biblatex.cfg
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Document encoding is UTF8 ....
 Package biblatex Info: ... and expl3
-(biblatex)             2025-11-06 L3 programming layer (loader) 
+(biblatex)             2025-12-24 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
  (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty
@@ -1383,7 +1389,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 \tf@toc=\write8
 \openout8 = `Handbook_of_Special_Relativity.toc'.
 
- [2]) (Tex/Main_Matter.tex
+ [2]) (Main_Matter.tex
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1484,13 +1490,16 @@ File: images/pdf/cars.pdf Graphic file (type pdf)
 <use images/pdf/cars.pdf>
 Package pdftex.def Info: images/pdf/cars.pdf  used on input line 381.
 (pdftex.def)             Requested size: 227.62204pt x 132.00441pt.
- [17 <./images/pdf/Cannon_Balls.pdf>] [18 <./images/pdf/cars.pdf>] [19] [20]
-<images/pdf/Aberrated_lorrys_1.pdf, id=5741, 3312.375pt x 1936.23375pt>
+ [17 <./images/pdf/Cannon_Balls.pdf>] [18 <./images/pdf/cars.pdf>] [19]
+===== Image 'output/tikz/circular_waves_from_stationary_source' is up-to-date. ======
+===== Image 'output/tikz/circular_waves_doppler_effect' is up-to-date. ======
+[20 <./output/tikz/circular_waves_from_stationary_source.pdf> <./output/tikz/circular_waves_doppler_effect.pdf>]
+<images/pdf/Aberrated_lorrys_1.pdf, id=5745, 3312.375pt x 1936.23375pt>
 File: images/pdf/Aberrated_lorrys_1.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_lorrys_1.pdf>
 Package pdftex.def Info: images/pdf/Aberrated_lorrys_1.pdf  used on input line 484.
 (pdftex.def)             Requested size: 167.87108pt x 98.11731pt.
-<images/pdf/Aberrated_lorrys_2.pdf, id=5742, 3312.375pt x 1936.23375pt>
+<images/pdf/Aberrated_lorrys_2.pdf, id=5746, 3312.375pt x 1936.23375pt>
 File: images/pdf/Aberrated_lorrys_2.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_lorrys_2.pdf>
 Package pdftex.def Info: images/pdf/Aberrated_lorrys_2.pdf  used on input line 490.
@@ -1498,24 +1507,27 @@ Package pdftex.def Info: images/pdf/Aberrated_lorrys_2.pdf  used on input line 4
  [21 <./images/pdf/Aberrated_lorrys_1.pdf> <./images/pdf/Aberrated_lorrys_2.pdf
 
 pdfTeX warning: pdflatex (file ./images/pdf/Aberrated_lorrys_2.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [22]
-<images/pdf/Rest_velocities.pdf, id=6237, 350.5095pt x 232.7094pt>
+>]
+===== Image 'output/tikz/earth_recieving_light_suns_frame' is up-to-date. ======
+===== Image 'output/tikz/earth_recieving_light_rest_frame' is up-to-date. ======
+[22]
+<images/pdf/Rest_velocities.pdf, id=6243, 350.5095pt x 232.7094pt>
 File: images/pdf/Rest_velocities.pdf Graphic file (type pdf)
 <use images/pdf/Rest_velocities.pdf>
 Package pdftex.def Info: images/pdf/Rest_velocities.pdf  used on input line 591.
 (pdftex.def)             Requested size: 142.26378pt x 94.45273pt.
-<images/pdf/Aberrated_velocities.pdf, id=6240, 390.89262pt x 281.56392pt>
+<images/pdf/Aberrated_velocities.pdf, id=6246, 390.89262pt x 281.56392pt>
 File: images/pdf/Aberrated_velocities.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities.pdf>
 Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 596.
 (pdftex.def)             Requested size: 142.26378pt x 102.47137pt.
- [23]
-<images/pdf/Rest_velocities_inwards.pdf, id=6248, 350.5095pt x 232.7094pt>
+ [23 <./output/tikz/earth_recieving_light_suns_frame.pdf> <./output/tikz/earth_recieving_light_rest_frame.pdf>]
+<images/pdf/Rest_velocities_inwards.pdf, id=6266, 350.5095pt x 232.7094pt>
 File: images/pdf/Rest_velocities_inwards.pdf Graphic file (type pdf)
 <use images/pdf/Rest_velocities_inwards.pdf>
 Package pdftex.def Info: images/pdf/Rest_velocities_inwards.pdf  used on input line 608.
 (pdftex.def)             Requested size: 142.26378pt x 94.45273pt.
-<images/pdf/Aberrated_velocities_inwards.pdf, id=6251, 390.89262pt x 281.56392pt>
+<images/pdf/Aberrated_velocities_inwards.pdf, id=6269, 390.89262pt x 281.56392pt>
 File: images/pdf/Aberrated_velocities_inwards.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_inwards.pdf>
 Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on input line 613.
@@ -1530,23 +1542,23 @@ pdfTeX warning: pdflatex (file ./images/pdf/Rest_velocities_inwards.pdf): PDF in
 
 pdfTeX warning: pdflatex (file ./images/pdf/Aberrated_velocities_inwards.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<images/pdf/Field_Rest_Frame.pdf, id=7560, 281.56392pt x 281.56392pt>
+<images/pdf/Field_Rest_Frame.pdf, id=7578, 281.56392pt x 281.56392pt>
 File: images/pdf/Field_Rest_Frame.pdf Graphic file (type pdf)
 <use images/pdf/Field_Rest_Frame.pdf>
 Package pdftex.def Info: images/pdf/Field_Rest_Frame.pdf  used on input line 644.
 (pdftex.def)             Requested size: 112.38829pt x 112.38727pt.
-<images/pdf/Field_Moving_Frame_Doppler.pdf, id=7561, 281.56392pt x 281.56392pt>
+<images/pdf/Field_Moving_Frame_Doppler.pdf, id=7579, 281.56392pt x 281.56392pt>
 File: images/pdf/Field_Moving_Frame_Doppler.pdf Graphic file (type pdf)
 <use images/pdf/Field_Moving_Frame_Doppler.pdf>
 Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler.pdf  used on input line 650.
 (pdftex.def)             Requested size: 112.38829pt x 112.38727pt.
-<images/pdf/Field_Moving_Frame_Doppler_circles.pdf, id=7562, 281.56392pt x 281.56392pt>
+<images/pdf/Field_Moving_Frame_Doppler_circles.pdf, id=7580, 281.56392pt x 281.56392pt>
 File: images/pdf/Field_Moving_Frame_Doppler_circles.pdf Graphic file (type pdf)
 <use images/pdf/Field_Moving_Frame_Doppler_circles.pdf>
 Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler_circles.pdf  used on input line 656.
 (pdftex.def)             Requested size: 112.38829pt x 112.38727pt.
  [25 <./images/pdf/Field_Rest_Frame.pdf> <./images/pdf/Field_Moving_Frame_Doppler.pdf> <./images/pdf/Field_Moving_Frame_Doppler_circles.pdf>] [26]
-<images/pdf/Perceived_speed.pdf, id=7582, 3225.04875pt x 1684.79437pt>
+<images/pdf/Perceived_speed.pdf, id=7600, 3225.04875pt x 1684.79437pt>
 File: images/pdf/Perceived_speed.pdf Graphic file (type pdf)
 <use images/pdf/Perceived_speed.pdf>
 Package pdftex.def Info: images/pdf/Perceived_speed.pdf  used on input line 699.
@@ -1603,18 +1615,28 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `qcs' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [34{C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tex-gyre/q-ts1.enc}] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47]
-<images/pdf/coord_transform_initial.pdf, id=7918, 195.38043pt x 281.56392pt>
+ [34{C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
+===== Image 'output/tikz/Tikz_simple_Galilean_transform_derivation' is up-to-date. ======
+[35 <./output/tikz/Tikz_simple_Galilean_transform_derivation.pdf>] [36] [37]
+===== Image 'output/tikz/Time_dilation_rest_frame' is up-to-date. ======
+===== Image 'output/tikz/Time_dilation_moving_frame' is up-to-date. ======
+[38] [39 <./output/tikz/Time_dilation_rest_frame.pdf> <./output/tikz/Time_dilation_moving_frame.pdf>] [40]
+===== Image 'output/tikz/Length_contraction_rest_frame' is up-to-date. ======
+===== Image 'output/tikz/Length_contraction_moving_frame' is up-to-date. ======
+[41 <./output/tikz/Length_contraction_rest_frame.pdf> <./output/tikz/Length_contraction_moving_frame.pdf>] [42] [43]
+===== Image 'output/tikz/Tikz_simple_lorentz_transform_derivation' is up-to-date. ======
+[44 <./output/tikz/Tikz_simple_lorentz_transform_derivation.pdf>] [45] [46] [47]
+<images/pdf/coord_transform_initial.pdf, id=8028, 195.38043pt x 281.56392pt>
 File: images/pdf/coord_transform_initial.pdf Graphic file (type pdf)
 <use images/pdf/coord_transform_initial.pdf>
 Package pdftex.def Info: images/pdf/coord_transform_initial.pdf  used on input line 1370.
 (pdftex.def)             Requested size: 100.04768pt x 144.18pt.
-<images/pdf/coord_transform_primed.pdf, id=7919, 217.72318pt x 281.56392pt>
+<images/pdf/coord_transform_primed.pdf, id=8029, 217.72318pt x 281.56392pt>
 File: images/pdf/coord_transform_primed.pdf Graphic file (type pdf)
 <use images/pdf/coord_transform_primed.pdf>
 Package pdftex.def Info: images/pdf/coord_transform_primed.pdf  used on input line 1376.
 (pdftex.def)             Requested size: 110.40253pt x 142.77509pt.
-<images/pdf/coord_transform_primed_sychronised.pdf, id=7920, 195.86374pt x 281.56392pt>
+<images/pdf/coord_transform_primed_sychronised.pdf, id=8030, 195.86374pt x 281.56392pt>
 File: images/pdf/coord_transform_primed_sychronised.pdf Graphic file (type pdf)
 <use images/pdf/coord_transform_primed_sychronised.pdf>
 Package pdftex.def Info: images/pdf/coord_transform_primed_sychronised.pdf  used on input line 1382.
@@ -1625,7 +1647,9 @@ pdfTeX warning: pdflatex (file ./images/pdf/coord_transform_primed.pdf): PDF inc
 > <./images/pdf/coord_transform_primed_sychronised.pdf
 
 pdfTeX warning: pdflatex (file ./images/pdf/coord_transform_primed_sychronised.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [49] [50] [51] [52] [53] [54] [55] (Tex/Terms/Terms_ch2.tex [56])
+>]
+===== Image 'output/tikz/Gamma_Factor' is up-to-date. ======
+[49] [50 <./output/tikz/Gamma_Factor.pdf>] [51] [52] [53] [54] [55] (Tex/Terms/Terms_ch2.tex [56])
 
 LaTeX Warning: Empty bibliography on input line 1661.
 
@@ -1640,27 +1664,22 @@ Overfull \hbox (1.6725pt too wide) in paragraph at lines 2016--2016
 []\T1/qcs/b/n/12 (-20) Proof that this rel-a-tivis-tic Mo-men-tum is Con-served 
  []
 
-[68] [69] [70] [71]
-
-LaTeX Warning: Reference `sect: No Speed Faster than Light' on page 72 undefined on input line 2192.
-
-[72]
-
-LaTeX Warning: Reference `sect: No Speed Faster than Light' on page 73 undefined on input line 2200.
-
-[73] (Tex/Terms/Terms_ch3.tex [74]) [75] [76]
+[68] [69] [70] [71] [72] [73] (Tex/Terms/Terms_ch3.tex [74]) [75] [76]
 Chapter 4.
 Package biblatex Info: Reference segment=4 on input line 2252.
 Package biblatex Info: Setting label 'refsegment:04' on input line 2252.
 [77
 
-] [78] [79] [80]
-<images/pdf/coord_transform_initial_with_retarded_time.pdf, id=8342, 202.15273pt x 281.56392pt>
+]
+===== Image 'output/tikz/Tikz_Particles_position_in_rest_frame' is up-to-date. ======
+===== Image 'output/tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position' is up-to-date. ======
+[78 <./output/tikz/Tikz_Particles_position_in_rest_frame.pdf> <./output/tikz/Tikz_Particles_position_in_primed_frame_with_delayed_position.pdf>] [79] [80]
+<images/pdf/coord_transform_initial_with_retarded_time.pdf, id=8518, 202.15273pt x 281.56392pt>
 File: images/pdf/coord_transform_initial_with_retarded_time.pdf Graphic file (type pdf)
 <use images/pdf/coord_transform_initial_with_retarded_time.pdf>
 Package pdftex.def Info: images/pdf/coord_transform_initial_with_retarded_time.pdf  used on input line 2440.
 (pdftex.def)             Requested size: 102.14029pt x 142.26378pt.
-<images/pdf/coord_transform_primed_retarded.pdf, id=8343, 203.63353pt x 281.56392pt>
+<images/pdf/coord_transform_primed_retarded.pdf, id=8519, 203.63353pt x 281.56392pt>
 File: images/pdf/coord_transform_primed_retarded.pdf Graphic file (type pdf)
 <use images/pdf/coord_transform_primed_retarded.pdf>
 Package pdftex.def Info: images/pdf/coord_transform_primed_retarded.pdf  used on input line 2446.
@@ -1669,12 +1688,16 @@ Package pdftex.def Info: images/pdf/coord_transform_primed_retarded.pdf  used on
 
 pdfTeX warning: pdflatex (file ./images/pdf/coord_transform_primed_retarded.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf, id=8431, 365.68321pt x 312.03401pt>
+<images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf, id=8607, 365.68321pt x 312.03401pt>
 File: images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf Graphic file (type pdf)
 <use images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf>
 Package pdftex.def Info: images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf  used on input line 2461.
 (pdftex.def)             Requested size: 166.7209pt x 142.26378pt.
- [82 <./images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf>] [83] [84] [85] (Tex/Terms/Terms_ch4.tex)
+ [82 <./images/pdf/coord_transform_Retarded_Coordinate_Density_Transform.pdf>]
+===== Image 'output/tikz/Tikz_Apparent_Velocity' is up-to-date. ======
+[83 <./output/tikz/Tikz_Apparent_Velocity.pdf>] [84]
+===== Image 'output/tikz/Retarded_Speed_of_Light' is up-to-date. ======
+[85 <./output/tikz/Retarded_Speed_of_Light.pdf>] (Tex/Terms/Terms_ch4.tex)
 
 LaTeX Warning: Empty bibliography on input line 2634.
 
@@ -1684,8 +1707,10 @@ Package biblatex Info: Reference segment=5 on input line 2639.
 Package biblatex Info: Setting label 'refsegment:05' on input line 2639.
 [87
 
-] [88] [89] [90]
-<images/pdf/Aberrated_velocities_restframe.pdf, id=8510, 372.9132pt x 281.56392pt>
+]
+===== Image 'output/tikz/Tikz_Spherical_Polar_Coordinates' is up-to-date. ======
+[88 <./output/tikz/Tikz_Spherical_Polar_Coordinates.pdf>] [89] [90]
+<images/pdf/Aberrated_velocities_restframe.pdf, id=8733, 372.9132pt x 281.56392pt>
 File: images/pdf/Aberrated_velocities_restframe.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_restframe.pdf>
 Package pdftex.def Info: images/pdf/Aberrated_velocities_restframe.pdf  used on input line 2877.
@@ -1694,7 +1719,7 @@ File: images/pdf/Aberrated_velocities.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities.pdf>
 Package pdftex.def Info: images/pdf/Aberrated_velocities.pdf  used on input line 2882.
 (pdftex.def)             Requested size: 142.26378pt x 102.47137pt.
-<images/pdf/Aberrated_velocities_inwards_restframe.pdf, id=8511, 372.9132pt x 281.56392pt>
+<images/pdf/Aberrated_velocities_inwards_restframe.pdf, id=8734, 372.9132pt x 281.56392pt>
 File: images/pdf/Aberrated_velocities_inwards_restframe.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_inwards_restframe.pdf>
 Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards_restframe.pdf  used on input line 2897.
@@ -1703,18 +1728,21 @@ File: images/pdf/Aberrated_velocities_inwards.pdf Graphic file (type pdf)
 <use images/pdf/Aberrated_velocities_inwards.pdf>
 Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on input line 2902.
 (pdftex.def)             Requested size: 142.26378pt x 102.47137pt.
- [91 <./images/pdf/Aberrated_velocities_restframe.pdf>] [92 <./images/pdf/Aberrated_velocities_inwards_restframe.pdf>] [93]
-<images/pdf/Rest_Pulse.pdf, id=9181, 196.99521pt x 281.56392pt>
+ [91 <./images/pdf/Aberrated_velocities_restframe.pdf>]
+===== Image 'output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame' is up-to-date. ======
+===== Image 'output/tikz/Tikz_Lights_angle_with_particle_With_particle_moving' is up-to-date. ======
+[92 <./images/pdf/Aberrated_velocities_inwards_restframe.pdf>] [93 <./output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.pdf> <./output/tikz/Tikz_Lights_angle_with_particle_With_particle_moving.pdf>]
+<images/pdf/Rest_Pulse.pdf, id=9420, 196.99521pt x 281.56392pt>
 File: images/pdf/Rest_Pulse.pdf Graphic file (type pdf)
 <use images/pdf/Rest_Pulse.pdf>
 Package pdftex.def Info: images/pdf/Rest_Pulse.pdf  used on input line 3014.
 (pdftex.def)             Requested size: 108.12054pt x 154.5341pt.
-<images/pdf/Prime_Pulse.pdf, id=9182, 196.99521pt x 281.56392pt>
+<images/pdf/Prime_Pulse.pdf, id=9421, 196.99521pt x 281.56392pt>
 File: images/pdf/Prime_Pulse.pdf Graphic file (type pdf)
 <use images/pdf/Prime_Pulse.pdf>
 Package pdftex.def Info: images/pdf/Prime_Pulse.pdf  used on input line 3020.
 (pdftex.def)             Requested size: 108.12054pt x 154.5341pt.
-<images/pdf/Prime_Pulse_Simultaneous.pdf, id=9183, 196.99521pt x 281.56392pt>
+<images/pdf/Prime_Pulse_Simultaneous.pdf, id=9422, 196.99521pt x 281.56392pt>
 File: images/pdf/Prime_Pulse_Simultaneous.pdf Graphic file (type pdf)
 <use images/pdf/Prime_Pulse_Simultaneous.pdf>
 Package pdftex.def Info: images/pdf/Prime_Pulse_Simultaneous.pdf  used on input line 3026.
@@ -1725,7 +1753,12 @@ pdfTeX warning: pdflatex (file ./images/pdf/Prime_Pulse.pdf): PDF inclusion: mul
 > <./images/pdf/Prime_Pulse_Simultaneous.pdf
 
 pdfTeX warning: pdflatex (file ./images/pdf/Prime_Pulse_Simultaneous.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [96] [97] [98] [99] [100]
+>]
+===== Image 'output/tikz/Tikz_Light_Pulse_Primed_Frame' is up-to-date. ======
+[96] [97 <./output/tikz/Tikz_Light_Pulse_Primed_Frame.pdf>] [98] [99]
+===== Image 'output/tikz/Tikz_Light_Pulse_Proper_Frame' is up-to-date. ======
+===== Image 'output/tikz/Tikz_Light_Pulse_Primed_Frame_2' is up-to-date. ======
+[100 <./output/tikz/Tikz_Light_Pulse_Proper_Frame.pdf> <./output/tikz/Tikz_Light_Pulse_Primed_Frame_2.pdf>]
 Package mdframed Info: Not enough space on this page on input line 3386.
  [101] [102] (Tex/Terms/Terms_ch5.tex [103]) [104]
 Chapter 6.
@@ -1750,13 +1783,15 @@ Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler_circles.pdf  used
 \pgf@layerboxsaved@background=\box143
 \pgf@layerbox@foreground=\box144
 \pgf@layerboxsaved@foreground=\box145
- [107] [108] [109]
-<images/pdf/Density_of_Light_from_Rest_Source.pdf, id=9657, 364.3304pt x 312.03401pt>
+
+===== Image 'output/tikz/Tikz_Surface_Element' is up-to-date. ======
+[107 <./output/tikz/Tikz_Surface_Element.pdf>] [108] [109]
+<images/pdf/Density_of_Light_from_Rest_Source.pdf, id=9946, 364.3304pt x 312.03401pt>
 File: images/pdf/Density_of_Light_from_Rest_Source.pdf Graphic file (type pdf)
 <use images/pdf/Density_of_Light_from_Rest_Source.pdf>
 Package pdftex.def Info: images/pdf/Density_of_Light_from_Rest_Source.pdf  used on input line 3762.
 (pdftex.def)             Requested size: 155.24895pt x 132.96265pt.
-<images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf, id=9658, 364.3304pt x 312.03401pt>
+<images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf, id=9947, 364.3304pt x 312.03401pt>
 File: images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf Graphic file (type pdf)
 <use images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf>
 Package pdftex.def Info: images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf  used on input line 3768.
@@ -1769,7 +1804,7 @@ File: images/pdf/Density_of_Light_from_Rest_Source.pdf Graphic file (type pdf)
 <use images/pdf/Density_of_Light_from_Rest_Source.pdf>
 Package pdftex.def Info: images/pdf/Density_of_Light_from_Rest_Source.pdf  used on input line 3896.
 (pdftex.def)             Requested size: 155.24895pt x 132.96265pt.
-<images/pdf/Density_of_Light_from_Moving_Source.pdf, id=9700, 364.3304pt x 312.03401pt>
+<images/pdf/Density_of_Light_from_Moving_Source.pdf, id=9989, 364.3304pt x 312.03401pt>
 File: images/pdf/Density_of_Light_from_Moving_Source.pdf Graphic file (type pdf)
 <use images/pdf/Density_of_Light_from_Moving_Source.pdf>
 Package pdftex.def Info: images/pdf/Density_of_Light_from_Moving_Source.pdf  used on input line 3902.
@@ -1793,12 +1828,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 {C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tex-gyre/q-ec-sc.enc}] (c:\Users\one_p\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.aux)
  ***********
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-11-06>
+L3 programming layer <2025-12-24>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `Handbook_of_Special_Relativity.out' has not changed.
 (rerunfilecheck)             Checksum: A24AC7499F939B43EE0445A15DA83212;10801.
 Package logreq Info: Writing requests to 'Handbook_of_Special_Relativity.run.xml'.
@@ -1806,17 +1837,17 @@ Package logreq Info: Writing requests to 'Handbook_of_Special_Relativity.run.xml
 
  ) 
 Here is how much of TeX's memory you used:
- 56475 strings out of 467871
- 1291382 string characters out of 5418375
- 2361354 words of memory out of 5000000
- 83881 multiletter control sequences out of 15000+600000
+ 55092 strings out of 467871
+ 1269881 string characters out of 5418377
+ 2373826 words of memory out of 5000000
+ 82461 multiletter control sequences out of 15000+600000
  701316 words of font info for 204 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 131i,17n,135p,1294b,2088s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 131i,17n,135p,1294b,1383s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\one_p\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsb.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsr.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsri.pfb>
-Output written on c:\Users\one_p\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.pdf (121 pages, 3552907 bytes).
+Output written on c:\Users\one_p\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.pdf (121 pages, 3648019 bytes).
 PDF statistics:
- 9996 PDF objects out of 10688 (max. 8388607)
+ 10272 PDF objects out of 10688 (max. 8388607)
  426 named destinations out of 1000 (max. 500000)
- 42321 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 42425 words of extra memory for PDF output out of 42996 (max. 10000000)
 

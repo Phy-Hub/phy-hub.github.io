@@ -1,8 +1,8 @@
 ### PROBLEM LaTeX LINES ###
-# Line 230: \part{The Concepts Explained}
-### Line 230: '\part{The Concepts Explained}'
-# Line 692: \part{The Essential Concepts Derived}
-### Line 692: '\part{The Essential Concepts Derived}'
+# Line 258: \part{The Concepts Explained}
+### Line 258: '\part{The Concepts Explained}'
+# Line 725: \part{The Essential Concepts Derived}
+### Line 725: '\part{The Essential Concepts Derived}'
 ######################
 number of lines with bugs: 4 
 ######################

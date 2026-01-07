@@ -104,170 +104,79 @@ def colorbox_replace(filename):
 ###
 # todo *** some \chapters{} and sections{} have [] before {} for their alternative name or alternative label, check TOC includes it once fixed
 
-###
-import re
-
 def wrap_content(latex_file):
-    with open(latex_file, 'r', encoding='utf-8') as file:
-        lines = file.readlines()
+    with open(latex_file, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
 
+    levels = ['chapter', 'section', 'subsection', 'subsubsection']
+    nums = [0, 0, 0, 0]
     output = []
-    part = 0
-    chapter_num = 0
-    section_num = 0
-    subsection_num = 0
-    subsubsection_num = 0
+
+    def close_tags(upto_level):
+        """Closes all open divs/sections from the bottom up to a certain level."""
+        for i in range(3, upto_level - 1, -1):
+            if nums[i] > 0:
+                suffix = "_".join(map(str, nums[:i+1]))
+                output.append(f'</div>')
+                if i > upto_level: nums[i] = 0
 
     for line in lines:
         line = line.strip()
-        # Handle \chapter
-        if line.startswith('\\chapter'):
-            chapter_match = re.search(r'\\chapter(?:\[[^\]]*\])?\{(.+?)\}', line)
-            if chapter_match:
-                chapter_title = chapter_match.group(1)
-                chapter_num += 1
+        found_cmd = False
 
-                # Close previous sections if any
-                if subsubsection_num > 0:
-                    output.append(f'</div>')
-                    subsubsection_num = 0
-                if subsection_num > 0:
-                    output.append(f'</div>')
-                    subsection_num = 0
-                if section_num > 0:
-                    output.append(f'</div>')
-                    section_num = 0
+        for depth, cmd in enumerate(levels):
+            if line.startswith(f'\\{cmd}'):
+                match = re.search(fr'\\{cmd}(?:\[[^\]]*\])?\{{(.+?)\}}', line)
+                if not match: continue
 
-                # Generate navigation links at bottom of page
-                if chapter_num == 2:
-                    replace_func = (
-                        f"\n<div class='arrow-nav'>\n"
-                        f" <a></a>\n"
-                        f"<a onclick=\"showContent('ch{chapter_num}_wrap'); document.getElementById('ch{chapter_num}_details').open = true;\" "
-                        f"style=\"font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;\"> Next > </a> \n"
-                        f"</div>\n </section>\n"
-                        f"<section id=\"ch{chapter_num}_wrap\" class=\"chapter\" style=\"display: none !important;\"> \n"
-                        f"<h1 id=\"ch{chapter_num}_header\">{chapter_num} {chapter_title}</h1>"
-                    )
-                elif chapter_num > 2:
-                    replace_func = (
-                        f"\n<div class='arrow-nav'>\n"
-                        f"<a onclick=\"showContent('ch{chapter_num-2}_wrap'); document.getElementById('ch{chapter_num-2}_details').open = true;\" "
-                        f"style=\"font-weight: bold; padding-left: 10px; cursor: pointer;\"> < Previous </a>\n"
-                        f"<a onclick=\"showContent('ch{chapter_num}_wrap'); document.getElementById('ch{chapter_num}_details').open = true;\" "
-                        f"style=\"font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;\"> Next > </a> \n"
-                        f"</div>\n </section>\n"
-                        f"<section id=\"ch{chapter_num}_wrap\" class=\"chapter\" style=\"display: none !important;\"> \n"
-                        f"<h1 id=\"ch{chapter_num}_header\">{chapter_num} {chapter_title}</h1>"
-                    )
+                title = match.group(1)
+
+                # 1. Close tags for previous sections of same or deeper level
+                close_tags(depth)
+
+                # 2. Handle Chapter Navigation logic (Special case for Level 0)
+                if depth == 0:
+                    nums[0] += 1
+                    if nums[0] > 1:
+                        prev_btn = f"<a onclick=\"showContent('ch{nums[0]-2}_wrap'); document.getElementById('ch{nums[0]-2}_details').open = true;\" style=\"font-weight: bold; padding-left: 10px; cursor: pointer;\"> < Previous </a>\n" if nums[0] > 2 else "<a></a>\n"
+                        next_btn = f"<a onclick=\"showContent('ch{nums[0]}_wrap'); document.getElementById('ch{nums[0]}_details').open = true;\" style=\"font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;\"> Next > </a>\n"
+                        output.append(f"\n<div class='arrow-nav'>\n{prev_btn}{next_btn}</div>\n</section>")
+
+                    display = "" if nums[0] == 1 else ' style="display: none !important;"'
+                    output.append(f'<section id="ch{nums[0]}_wrap" class="chapter"{display}>\n<h1 id="ch{nums[0]}_header">{nums[0]} {title}</h1>')
+                    output.append(f'<div id="ch{nums[0]}_content">\n<span style="display: none">\\(\\nextSection\\)</span>')
+                    nums[1:] = [0, 0, 0]
                 else:
-                    replace_func = (
-                        f'<section id="ch{chapter_num}_wrap" class="chapter"> \n'
-                        f' <h1 id="ch{chapter_num}_header">{chapter_num} {chapter_title}</h1>'
-                    )
+                    # Section/Sub/Subsub logic
+                    nums[depth] += 1
+                    h_val = depth + 1
+                    id_str = "_".join(map(str, nums[:depth+1]))
+                    title_prefix = ".".join(map(str, nums[:depth+1])) if depth < 3 else ""
+                    full_header = f"{title_prefix} {title}".strip()
+                    output.append(f'<h{h_val} id="ch{id_str}_header">{full_header}</h{h_val}>')
+                    output.append(f'<div id="ch{id_str}_content">')
 
-                # Replace the line with HTML structure
-                line = re.sub(r'\\chapter(?:\[[^\]]*\])?\{.+?\}', replace_func, line)
-                output.append(line)
-                output.append(f'<div id="ch{chapter_num}_content">')
-                output.append('<span style="display: none">\\(\\nextSection\\)</span>')
-                section_num = 0
-                subsection_num = 0
-                subsubsection_num = 0
-            else:
-                output.append(line)
+                found_cmd = True
+                break
 
-        # Handle \section
-        elif line.startswith('\\section'):
-            section_match = re.search(r'\\section(?:\[[^\]]*\])?\{(.+?)\}', line)
-            if section_match:
-                section_num += 1
-                section_title = section_match.group(1)
-
-                # Close previous subsections if any
-                if subsubsection_num > 0:
-                    output.append(f'</div>')
-                    subsubsection_num = 0
-                if subsection_num > 0:
-                    output.append(f'</div>')
-                    subsection_num = 0
-                if section_num > 1:
-                    output.append(f'</div>')
-
-                # Create the HTML header
-                line = f'<h2 id="ch{chapter_num}_{section_num}_header">{chapter_num}.{section_num} {section_title}</h2>'
-                output.append(line)
-                output.append(f'<div id="ch{chapter_num}_{section_num}_content">')
-            else:
-                output.append(line)
-
-        # Handle \subsection
-        elif line.startswith('\\subsection'):
-            subsection_match = re.search(r'\\subsection(?:\[[^\]]*\])?\{(.+?)\}', line)
-            if subsection_match:
-                subsection_num += 1
-                subsection_title = subsection_match.group(1)
-
-                # Close previous subsubsections if any
-                if subsubsection_num > 0:
-                    output.append(f'</div>')
-                    subsubsection_num = 0
-                if subsection_num > 1:
-                    output.append(f'</div>')
-
-                # Create the HTML header
-                line = f'<h3 id="ch{chapter_num}_{section_num}_{subsection_num}_header">{chapter_num}.{section_num}.{subsection_num} {subsection_title}</h3>'
-                output.append(line)
-                output.append(f'<div id="ch{chapter_num}_{section_num}_{subsection_num}_content">')
-            else:
-                output.append(line)
-
-        # Handle \subsubsection
-        elif line.startswith('\\subsubsection'):
-            subsubsection_match = re.search(r'\\subsubsection(?:\[[^\]]*\])?\{(.+?)\}', line)
-            if subsubsection_match:
-                subsubsection_num += 1
-                subsubsection_title = subsubsection_match.group(1)
-
-                if subsubsection_num > 1:
-                    output.append(f'</div>')
-
-                # Create the HTML header
-                line = f'<h4 id="ch{chapter_num}_{section_num}_{subsection_num}_{subsubsection_num}_header">{subsubsection_title}</h4>'
-                output.append(line)
-                output.append(f'<div id="ch{chapter_num}_{section_num}_{subsection_num}_{subsubsection_num}_content">')
-            else:
-                output.append(line)
-        else:
+        if not found_cmd:
             output.append(line)
 
-    # Close any open tags at the end
-    if subsubsection_num > 0:
-        output.append(f'</div>')
-    if subsection_num > 0:
-        output.append(f'</div>')
-    if section_num > 0:
-        output.append(f'</div>')
-
-    # Close the last chapter
-    if chapter_num > 1:
+    # Final cleanup: Close everything remaining
+    close_tags(0)
+    if nums[0] > 1:
+        prev_idx = nums[0] - 1
         output.append(
             f"\n<div class='arrow-nav'>\n"
-            f" <a onclick=\"showContent('ch{chapter_num-1}_wrap'); document.getElementById('ch{chapter_num-1}_details').open = true;\" "
-            f"style=\"font-weight: bold; cursor: pointer;\"> < Previous </a> \n"
+            f"<a onclick=\"showContent('ch{prev_idx}_wrap'); document.getElementById('ch{prev_idx}_details').open = true;\" "
+            f"style=\"font-weight: bold; cursor: pointer;\"> < Previous </a>\n"
             f"</div>\n</section>"
         )
     else:
         output.append('</section>')
 
-    ### todo part
-    ### Close the last Part
-    ### find out how part section needs to be closed
-    # output.append('</section>')
-
-    # Write the modified content back to the file
-    with open(latex_file, 'w', encoding='utf-8') as file:
-        file.write('\n'.join(output))
+    with open(latex_file, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(output))
 
 
 ########################################################
@@ -776,7 +685,6 @@ def create_dictionary_of_toc(filepath):
     return structure_dict
 
 ###
-import re
 
 def create_dictionary_of_figures(latex_file):
     with open(latex_file, 'r', encoding='utf-8') as f:
@@ -1035,7 +943,6 @@ def checks(html_file):
         print("number of lines with bugs: ", i)
         print("check latex_still_in_html.txt for details of bugs")
 
-import re
 
 def check_ids_for_spaces(html_file_path):
     try:

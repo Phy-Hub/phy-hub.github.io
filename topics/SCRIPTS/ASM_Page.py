@@ -129,13 +129,13 @@ def wrap_content(latex_file):
 
                 # Close previous sections if any
                 if subsubsection_num > 0:
-                    output.append(f'</div>  <!-- close subsubsection {chapter_num}_{section_num}_{subsection_num}_{subsubsection_num} -->')
+                    output.append(f'</div>')
                     subsubsection_num = 0
                 if subsection_num > 0:
-                    output.append(f'</div>  <!-- close subsection {chapter_num}_{section_num}_{subsection_num} -->')
+                    output.append(f'</div>')
                     subsection_num = 0
                 if section_num > 0:
-                    output.append(f'</div> <!-- close section {chapter_num}_{section_num} -->')
+                    output.append(f'</div>')
                     section_num = 0
 
                 # Generate navigation links at bottom of page
@@ -145,7 +145,7 @@ def wrap_content(latex_file):
                         f" <a></a>\n"
                         f"<a onclick=\"showContent('ch{chapter_num}_wrap'); document.getElementById('ch{chapter_num}_details').open = true;\" "
                         f"style=\"font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;\"> Next > </a> \n"
-                        f"</div>\n </section> <!-- close chapter {chapter_num-1} --> \n"
+                        f"</div>\n </section>\n"
                         f"<section id=\"ch{chapter_num}_wrap\" class=\"chapter\" style=\"display: none !important;\"> \n"
                         f"<h1 id=\"ch{chapter_num}_header\">{chapter_num} {chapter_title}</h1>"
                     )
@@ -156,7 +156,7 @@ def wrap_content(latex_file):
                         f"style=\"font-weight: bold; padding-left: 10px; cursor: pointer;\"> < Previous </a>\n"
                         f"<a onclick=\"showContent('ch{chapter_num}_wrap'); document.getElementById('ch{chapter_num}_details').open = true;\" "
                         f"style=\"font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;\"> Next > </a> \n"
-                        f"</div>\n </section> <!-- close chapter {chapter_num-1} --> \n"
+                        f"</div>\n </section>\n"
                         f"<section id=\"ch{chapter_num}_wrap\" class=\"chapter\" style=\"display: none !important;\"> \n"
                         f"<h1 id=\"ch{chapter_num}_header\">{chapter_num} {chapter_title}</h1>"
                     )
@@ -186,13 +186,13 @@ def wrap_content(latex_file):
 
                 # Close previous subsections if any
                 if subsubsection_num > 0:
-                    output.append(f'</div>  <!-- close subsubsection {chapter_num}_{section_num}_{subsection_num}_{subsubsection_num} -->')
+                    output.append(f'</div>')
                     subsubsection_num = 0
                 if subsection_num > 0:
-                    output.append(f'</div>  <!-- close subsection {chapter_num}_{section_num}_{subsection_num} -->')
+                    output.append(f'</div>')
                     subsection_num = 0
                 if section_num > 1:
-                    output.append(f'</div> <!-- close section {chapter_num}_{section_num - 1} -->')
+                    output.append(f'</div>')
 
                 # Create the HTML header
                 line = f'<h2 id="ch{chapter_num}_{section_num}_header">{chapter_num}.{section_num} {section_title}</h2>'
@@ -210,10 +210,10 @@ def wrap_content(latex_file):
 
                 # Close previous subsubsections if any
                 if subsubsection_num > 0:
-                    output.append(f'</div>  <!-- close subsubsection {chapter_num}_{section_num}_{subsection_num}_{subsubsection_num} -->')
+                    output.append(f'</div>')
                     subsubsection_num = 0
                 if subsection_num > 1:
-                    output.append(f'</div>  <!-- close subsection {chapter_num}_{section_num}_{subsection_num - 1} -->')
+                    output.append(f'</div>')
 
                 # Create the HTML header
                 line = f'<h3 id="ch{chapter_num}_{section_num}_{subsection_num}_header">{chapter_num}.{section_num}.{subsection_num} {subsection_title}</h3>'
@@ -230,7 +230,7 @@ def wrap_content(latex_file):
                 subsubsection_title = subsubsection_match.group(1)
 
                 if subsubsection_num > 1:
-                    output.append(f'</div>  <!-- close subsubsection {chapter_num}_{section_num}_{subsection_num}_{subsubsection_num - 1} -->')
+                    output.append(f'</div>')
 
                 # Create the HTML header
                 line = f'<h4 id="ch{chapter_num}_{section_num}_{subsection_num}_{subsubsection_num}_header">{subsubsection_title}</h4>'
@@ -243,11 +243,11 @@ def wrap_content(latex_file):
 
     # Close any open tags at the end
     if subsubsection_num > 0:
-        output.append(f'</div>  <!-- close subsubsection {chapter_num}_{section_num}_{subsection_num}_{subsubsection_num} -->')
+        output.append(f'</div>')
     if subsection_num > 0:
-        output.append(f'</div>  <!-- close subsection {chapter_num}_{section_num}_{subsection_num} -->')
+        output.append(f'</div>')
     if section_num > 0:
-        output.append(f'</div> <!-- close section {chapter_num}_{section_num} -->')
+        output.append(f'</div>')
 
     # Close the last chapter
     if chapter_num > 1:

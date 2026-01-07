@@ -170,7 +170,7 @@ def wrap_content(latex_file):
                 line = re.sub(r'\\chapter(?:\[[^\]]*\])?\{.+?\}', replace_func, line)
                 output.append(line)
                 output.append(f'<div id="ch{chapter_num}_content">')
-                output.append('<span style="display: hidden">\\(\\nextSection\\)</span>')
+                output.append('<span style="display: none">\\(\\nextSection\\)</span>')
                 section_num = 0
                 subsection_num = 0
                 subsubsection_num = 0

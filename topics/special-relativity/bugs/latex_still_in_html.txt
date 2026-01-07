@@ -1,10 +1,8 @@
 ### PROBLEM LaTeX LINES ###
 # Line 258: \part{The Concepts Explained}
 ### Line 258: '\part{The Concepts Explained}'
-# Line 725: \part{The Essential Concepts Derived}
-### Line 725: '\part{The Essential Concepts Derived}'
 ######################
-number of lines with bugs: 4 
+number of lines with bugs: 2 
 ######################
 commands: 
 \part 

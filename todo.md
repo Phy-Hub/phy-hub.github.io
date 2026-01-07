@@ -1,7 +1,10 @@
-*** in my TOC dictionary it does not remove : for label, replace with _
+*** in my TOC dictionary it does not remove : for label, replace with _ also equations have it eg <div class="math" id="eq:_space-time_interval">
 *** my \function finder check at the end didnt find the <br>\section... line also \derivation environment and probly others
 *** also \begin{quote} environment
 *** clicking on section reference does not load section
+*** create check that all internal links have a source
+*** bibtex needs same format as latex and link clickability
+*** sidenote not on newline this could possible due to blank lines being removed or not registered when rendered, might need \n<br>\n for blank lines
 
 ### newly noticed:
 - clicking on chapter in toc does not load it the first time (can maybe just sort out the addition of parts first, as it might solve it)

@@ -103,57 +103,103 @@ def colorbox_replace(filename):
 
 ###
 # todo *** some \chapters{} and sections{} have [] before {} for their alternative name or alternative label, check TOC includes it once fixed
+#todo choose where style="display: none !important; is used
+
+#todo maybe do the Toc first
+# and do seperate content wrap function for parts or seperate loop specifically for parts inside the function
 
 def wrap_content(latex_file):
     with open(latex_file, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
+    # 1. Pre-count chapters to handle "Next" button logic correctly
+    total_chapters = sum(1 for line in lines if line.strip().startswith(r'\chapter'))
+
     levels = ['chapter', 'section', 'subsection', 'subsubsection']
-    nums = [0, 0, 0, 0]
+    nums = [0, 0, 0, 0]  # [chapter, section, subsection, subsubsection]
     output = []
 
-    def close_tags(upto_level):
-        """Closes all open divs/sections from the bottom up to a certain level."""
-        for i in range(3, upto_level - 1, -1):
+    in_part = False
+    part_count = 0
+
+    def close_inner_layers(target_depth):
+        """
+        Closes nested divs (subsections, sections) down to the target depth.
+        Range(3, target-1, -1) ensures we close the div at 'target_depth' itself.
+        """
+        for i in range(3, target_depth - 1, -1):
             if nums[i] > 0:
-                suffix = "_".join(map(str, nums[:i+1]))
-                output.append(f'</div>')
-                if i > upto_level: nums[i] = 0
+                output.append('</div>')
+                nums[i] = 0
+
+    def close_previous_block():
+        """
+        Closes the container of the previous block (Part or Chapter).
+        Includes logic for Navigation buttons if it was a Chapter.
+        """
+        # First, close any open sections/subsections (Levels 1, 2, 3)
+        close_inner_layers(1)
+
+        if in_part:
+            # If we were in a Part, close the Part content div and wrapper
+            output.append('</div></section>')
+        elif nums[0] > 0:
+            # If we were in a Chapter, close Chapter content div (Level 0)
+            output.append('</div>')
+
+            # Add Navigation Footer
+            current_ch = nums[0]
+            prev_btn = (f"<a onclick=\"showContent('ch{current_ch-1}_wrap'); document.getElementById('ch{current_ch-1}_details').open = true;\" "
+                        f"style=\"font-weight: bold; padding-left: 10px; cursor: pointer;\"> < Previous </a>\n") if current_ch > 1 else "<a></a>\n"
+
+            # Only show 'Next' if this is NOT the last chapter
+            next_btn = (f"<a onclick=\"showContent('ch{current_ch+1}_wrap'); document.getElementById('ch{current_ch+1}_details').open = true;\" "
+                        f"style=\"font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;\"> Next > </a>\n") if current_ch < total_chapters else ""
+
+            output.append(f"\n<div class='arrow-nav'>\n{prev_btn}{next_btn}</div>\n</section>")
 
     for line in lines:
         line = line.strip()
-        found_cmd = False
 
+        # --- Handle \part ---
+        match_part = re.search(r'\\part(?:\[.*?\])?\{(.+?)\}', line)
+        if match_part:
+            close_previous_block()
+            in_part = True
+            part_count += 1
+            output.append(f'<section id="part{part_count}_wrap" class="chapter part-wrapper">')
+            output.append(f'<h1 id="part{part_count}_header">{match_part.group(1)}</h1>')
+            output.append(f'<div id="part{part_count}_content">')
+            continue
+
+        # --- Handle \chapter, \section, etc. ---
+        found_cmd = False
         for depth, cmd in enumerate(levels):
             if line.startswith(f'\\{cmd}'):
-                match = re.search(fr'\\{cmd}(?:\[[^\]]*\])?\{{(.+?)\}}', line)
+                match = re.search(fr'\\{cmd}(?:\[.*?\])?\{{(.+?)\}}', line)
                 if not match: continue
 
                 title = match.group(1)
 
-                # 1. Close tags for previous sections of same or deeper level
-                close_tags(depth)
-
-                # 2. Handle Chapter Navigation logic (Special case for Level 0)
-                if depth == 0:
+                if depth == 0: # Chapter
+                    close_previous_block()
+                    in_part = False # We are now in a chapter
                     nums[0] += 1
-                    if nums[0] > 1:
-                        prev_btn = f"<a onclick=\"showContent('ch{nums[0]-2}_wrap'); document.getElementById('ch{nums[0]-2}_details').open = true;\" style=\"font-weight: bold; padding-left: 10px; cursor: pointer;\"> < Previous </a>\n" if nums[0] > 2 else "<a></a>\n"
-                        next_btn = f"<a onclick=\"showContent('ch{nums[0]}_wrap'); document.getElementById('ch{nums[0]}_details').open = true;\" style=\"font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;\"> Next > </a>\n"
-                        output.append(f"\n<div class='arrow-nav'>\n{prev_btn}{next_btn}</div>\n</section>")
+                    nums[1:] = [0, 0, 0] # Reset lower levels
 
                     display = "" if nums[0] == 1 else ' style="display: none !important;"'
                     output.append(f'<section id="ch{nums[0]}_wrap" class="chapter"{display}>\n<h1 id="ch{nums[0]}_header">{nums[0]} {title}</h1>')
                     output.append(f'<div id="ch{nums[0]}_content">\n<span style="display: none">\\(\\nextSection\\)</span>')
-                    nums[1:] = [0, 0, 0]
-                else:
-                    # Section/Sub/Subsub logic
+                else: # Section/Subsection
+                    # Close deeper levels or siblings
+                    close_inner_layers(depth)
+
                     nums[depth] += 1
-                    h_val = depth + 1
                     id_str = "_".join(map(str, nums[:depth+1]))
+                    # Logic for title numbering prefix (e.g. "1.2.3 Title")
                     title_prefix = ".".join(map(str, nums[:depth+1])) if depth < 3 else ""
-                    full_header = f"{title_prefix} {title}".strip()
-                    output.append(f'<h{h_val} id="ch{id_str}_header">{full_header}</h{h_val}>')
+
+                    output.append(f'<h{depth+1} id="ch{id_str}_header">{title_prefix} {title}</h{depth+1}>')
                     output.append(f'<div id="ch{id_str}_content">')
 
                 found_cmd = True
@@ -162,18 +208,9 @@ def wrap_content(latex_file):
         if not found_cmd:
             output.append(line)
 
-    # Final cleanup: Close everything remaining
-    close_tags(0)
-    if nums[0] > 1:
-        prev_idx = nums[0] - 1
-        output.append(
-            f"\n<div class='arrow-nav'>\n"
-            f"<a onclick=\"showContent('ch{prev_idx}_wrap'); document.getElementById('ch{prev_idx}_details').open = true;\" "
-            f"style=\"font-weight: bold; cursor: pointer;\"> < Previous </a>\n"
-            f"</div>\n</section>"
-        )
-    else:
-        output.append('</section>')
+    # --- Final Cleanup ---
+    # Determine if we ended inside a Part or a Chapter and close accordingly
+    close_previous_block()
 
     with open(latex_file, 'w', encoding='utf-8') as f:
         f.write('\n'.join(output))
@@ -514,11 +551,28 @@ def math_to_HTML(content):
         else:     id = ''
 
         math_env_no_label = re.sub(r'\\label\{.*?\}', '', math_env, flags=re.DOTALL)
-        # Remove newlines within the equation, except those after \\
-        math_env_no_label_no_newlines = re.sub(r'(?<!\\\\)\n', ' ', math_env_no_label)
+        # # Remove newlines within the equation, except those after \\
+        # math_env_no_label_no_newlines = re.sub(r'(?<!\\\\)\n', ' ', math_env_no_label)
+        # content = content.replace(math_env, f'<div class="math"{id}>\n{math_env_no_label_no_newlines}\n</div>')
+        content = content.replace(math_env, f'<div class="math"{id}>\n{math_env_no_label}\n</div>')
+    return content
+
+import re
+
+def math_to_HTML(content):
+    math_envs = re.findall(r'(?<!<div class="math">\n)\\begin{equation}.*?\\end{equation}', content, re.DOTALL)
+
+    for math_env in math_envs:
+        label = re.search(r'\\label\{(?P<label>.*\})', math_env)
+        if label: id = f' id="{label.group("label")[:-1].replace(" ", "_")}"'
+        else:     id = ''
+
+        math_env_no_label = re.sub(r'\\label\{.*?\}', '', math_env, flags=re.DOTALL)
+        math_env_no_label_no_newlines = re.sub(r'(\\begin\{equation\})\s*(.*?)\s*(\\end\{equation\})', lambda m: f"{m.group(1)}\n{re.sub(r'(?<!\\\\)\n', ' ', m.group(2))}\n{m.group(3)}", math_env_no_label, flags=re.DOTALL)
         content = content.replace(math_env, f'<div class="math"{id}>\n{math_env_no_label_no_newlines}\n</div>')
 
     return content
+
 
 def replace_refs(input_string):
     # This pattern matches \eqref{} and captures the content inside the brackets

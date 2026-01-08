@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.5)  5 JAN 2026 20:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.5)  7 JAN 2026 22:13
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1061,7 +1061,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 )
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/asymptote\asymptote.sty
 Package: asymptote 2024/02/26 v1.38 Asymptote style file for LaTeX
-No file output/tikz/Tikz_Light_Pulse_Proper_Frame.pre.
+(output/tikz/Tikz_Light_Pulse_Proper_Frame.pre)
 \ASYbox=\box139
 \ASYdimen=\dimen327
 \c@asy=\count381
@@ -2206,16 +2206,16 @@ LaTeX Warning: Reference `eq: energy momentum deriving momentum term' on page 6
 8 undefined on input line 2174.
 
 
-LaTeX Warning: Reference `sect: No Speed Faster than Light' on page 68 undefine
-d on input line 2192.
+LaTeX Warning: Reference `sect: No Speeds Faster than Light speed' on page 68 u
+ndefined on input line 2192.
 
 
 LaTeX Warning: Reference `eq: Total Energy Compact Version' on page 68 undefine
 d on input line 2194.
 
 
-LaTeX Warning: Reference `sect: No Speed Faster than Light' on page 68 undefine
-d on input line 2200.
+LaTeX Warning: Reference `sect: No Speeds Faster than Light speed' on page 68 u
+ndefined on input line 2200.
 
 
 LaTeX Warning: Reference `Part: light in special relativity' on page 70 undefin
@@ -2499,13 +2499,13 @@ rame.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 54136 strings out of 467871
- 1243410 string characters out of 5418377
- 2100420 words of memory out of 5000000
- 81980 multiletter control sequences out of 15000+600000
+ 54140 strings out of 467871
+ 1243719 string characters out of 5418377
+ 2101466 words of memory out of 5000000
+ 81981 multiletter control sequences out of 15000+600000
  700719 words of font info for 201 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 135i,17n,138p,1218b,1203s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 135i,17n,138p,1225b,1203s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmr7.pfb>

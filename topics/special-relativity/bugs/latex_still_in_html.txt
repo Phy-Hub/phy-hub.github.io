@@ -1,10 +1,42 @@
 ### PROBLEM LaTeX LINES ###
-# Line 258: \part{The Concepts Explained}
-### Line 258: '\part{The Concepts Explained}'
-# Line 725: \part{The Essential Concepts Derived}
-### Line 725: '\part{The Essential Concepts Derived}'
+# Line 1354: \begin{quote}\centering
+### Line 1354: '\begin{quote}\centering'
+# Line 1355: \textit{\small (This can be seen as a bonus section that may be skipped, as it is not directly relevant for the understanding of any other sections in this text.)}
+### Line 1355: '\textit{\small (This can be seen as a bonus section that may be skipped, as it is not directly relevant for the understanding of any other sections in this text.)}'
+# Line 1356: \end{quote}
+### Line 1356: '\end{quote}'
+# Line 1372: \begin{derivation}
+### Line 1372: '\begin{derivation}'
+# Line 1446: \end{derivation}
+### Line 1446: '\end{derivation}'
+# Line 1464: \begin{derivation}
+### Line 1464: '\begin{derivation}'
+# Line 1500: \end{derivation}
+### Line 1500: '\end{derivation}'
+# Line 1531: \begin{derivation}
+### Line 1531: '\begin{derivation}'
+# Line 1575: \end{derivation}
+### Line 1575: '\end{derivation}'
+# Line 1598: \begin{derivation}
+### Line 1598: '\begin{derivation}'
+# Line 1666: \end{derivation}
+### Line 1666: '\end{derivation}'
+# Line 2228: \begin{derivation}
+### Line 2228: '\begin{derivation}'
+# Line 2272: \end{derivation}
+### Line 2272: '\end{derivation}'
+# Line 2324: \begin{derivation}
+### Line 2324: '\begin{derivation}'
+# Line 2366: \end{derivation}
+### Line 2366: '\end{derivation}'
+# Line 2459: \begin{derivation}
+### Line 2459: '\begin{derivation}'
+# Line 2499: \end{derivation}
+### Line 2499: '\end{derivation}'
 ######################
-number of lines with bugs: 4 
+number of lines with bugs: 34 
 ######################
 commands: 
-\part 
+\begin 
+\textit 
+\end 

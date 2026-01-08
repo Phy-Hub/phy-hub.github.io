@@ -105,112 +105,94 @@ def colorbox_replace(filename):
 # todo *** some \chapters{} and sections{} have [] before {} for their alternative name or alternative label, check TOC includes it once fixed
 #todo choose where style="display: none !important; is used
 
-#todo maybe do the Toc first
-# and do seperate content wrap function for parts or seperate loop specifically for parts inside the function
 
 def wrap_content(latex_file):
     with open(latex_file, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
+        content = f.read()
 
-    # 1. Pre-count chapters to handle "Next" button logic correctly
-    total_chapters = sum(1 for line in lines if line.strip().startswith(r'\chapter'))
+    # Pre-count chapters for the "Next" button logic
+    total_chapters = len(re.findall(r'\\chapter', content))
 
-    levels = ['chapter', 'section', 'subsection', 'subsubsection']
-    nums = [0, 0, 0, 0]  # [chapter, section, subsection, subsubsection]
+    # Levels mapping: command -> (depth, html_tag_level)
+    LEVELS = {
+        'chapter': (0, 1),
+        'section': (1, 2),
+        'subsection': (2, 3),
+        'subsubsection': (3, 4)
+    }
+
+    nums = [0, 0, 0, 0]  # [ch, sec, subsec, subsubsec]
     output = []
-
     in_part = False
     part_count = 0
 
-    def close_inner_layers(target_depth):
-        """
-        Closes nested divs (subsections, sections) down to the target depth.
-        Range(3, target-1, -1) ensures we close the div at 'target_depth' itself.
-        """
+    def get_nav_footer(ch_num):
+        """Generates the HTML for the Previous/Next chapter navigation."""
+        prev_btn = (f'<a onclick="showContent(\'ch{ch_num-1}_wrap\'); document.getElementById(\'ch{ch_num-1}_details\').open = true;" '
+                    'style="font-weight: bold; padding-left: 10px; cursor: pointer;"> < Previous </a>\n') if ch_num > 1 else "<a></a>\n"
+
+        next_btn = (f'<a onclick="showContent(\'ch{ch_num+1}_wrap\'); document.getElementById(\'ch{ch_num+1}_details\').open = true;" '
+                    'style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a>\n') if ch_num < total_chapters else ""
+
+        return f"\n<div class='arrow-nav'>\n{prev_btn}{next_btn}</div>\n</section>"
+
+    def close_tags(target_depth):
+        """Closes open divs from the current deepest level up to the target depth."""
         for i in range(3, target_depth - 1, -1):
             if nums[i] > 0:
                 output.append('</div>')
                 nums[i] = 0
 
-    def close_previous_block():
-        """
-        Closes the container of the previous block (Part or Chapter).
-        Includes logic for Navigation buttons if it was a Chapter.
-        """
-        # First, close any open sections/subsections (Levels 1, 2, 3)
-        close_inner_layers(1)
-
+    def close_block():
+        """Handles the special closing logic for Parts and Chapters."""
+        close_tags(1) # Close sections/subsections
         if in_part:
-            # If we were in a Part, close the Part content div and wrapper
             output.append('</div></section>')
         elif nums[0] > 0:
-            # If we were in a Chapter, close Chapter content div (Level 0)
-            output.append('</div>')
+            output.append(f'</div>{get_nav_footer(nums[0])}')
 
-            # Add Navigation Footer
-            current_ch = nums[0]
-            prev_btn = (f"<a onclick=\"showContent('ch{current_ch-1}_wrap'); document.getElementById('ch{current_ch-1}_details').open = true;\" "
-                        f"style=\"font-weight: bold; padding-left: 10px; cursor: pointer;\"> < Previous </a>\n") if current_ch > 1 else "<a></a>\n"
-
-            # Only show 'Next' if this is NOT the last chapter
-            next_btn = (f"<a onclick=\"showContent('ch{current_ch+1}_wrap'); document.getElementById('ch{current_ch+1}_details').open = true;\" "
-                        f"style=\"font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;\"> Next > </a>\n") if current_ch < total_chapters else ""
-
-            output.append(f"\n<div class='arrow-nav'>\n{prev_btn}{next_btn}</div>\n</section>")
-
+    # Main Parsing Loop
+    lines = content.splitlines()
     for line in lines:
         line = line.strip()
 
-        # --- Handle \part ---
-        match_part = re.search(r'\\part(?:\[.*?\])?\{(.+?)\}', line)
-        if match_part:
-            close_previous_block()
-            in_part = True
-            part_count += 1
+        # 1. Handle Parts
+        part_match = re.search(r'\\part(?:\[.*?\])?\{(.+?)\}', line)
+        if part_match:
+            close_block()
+            in_part, part_count = True, part_count + 1
             output.append(f'<section id="part{part_count}_wrap" class="chapter part-wrapper">')
-            output.append(f'<h1 id="part{part_count}_header">{match_part.group(1)}</h1>')
+            output.append(f'<h1 id="part{part_count}_header">Part {"I" * part_count}. {part_match.group(1)}</h1>')
             output.append(f'<div id="part{part_count}_content">')
             continue
 
-        # --- Handle \chapter, \section, etc. ---
-        found_cmd = False
-        for depth, cmd in enumerate(levels):
-            if line.startswith(f'\\{cmd}'):
-                match = re.search(fr'\\{cmd}(?:\[.*?\])?\{{(.+?)\}}', line)
-                if not match: continue
+        # 2. Handle Chapters and Sections
+        # Matches \chapter{...}, \section{...}, etc.
+        cmd_match = re.search(r'\\(chapter|section|subsection|subsubsection)(?:\[.*?\])?\{(.+?)\}', line)
+        if cmd_match:
+            cmd, title = cmd_match.groups()
+            depth, h_lvl = LEVELS[cmd]
 
-                title = match.group(1)
+            if depth == 0: # Chapter
+                close_block()
+                in_part = False
+                nums[0] += 1
+                nums[1:] = [0, 0, 0]
+                display = ' style="display: none !important;"' if nums[0] > 1 else ""
+                output.append(f'<section id="ch{nums[0]}_wrap" class="chapter"{display}>\n<h1 id="ch{nums[0]}_header">{nums[0]} {title}</h1>')
+                output.append(f'<div id="ch{nums[0]}_content">\n<span style="display: none">\\(\\nextSection\\)</span>')
+            else:
+                close_tags(depth)
+                nums[depth] += 1
+                id_str = "_".join(map(str, nums[:depth+1]))
+                prefix = ".".join(map(str, nums[:depth+1])) if depth < 3 else ""
+                output.append(f'<h{h_lvl} id="ch{id_str}_header">{prefix} {title}</h{h_lvl}>\n<div id="ch{id_str}_content">')
+            continue
 
-                if depth == 0: # Chapter
-                    close_previous_block()
-                    in_part = False # We are now in a chapter
-                    nums[0] += 1
-                    nums[1:] = [0, 0, 0] # Reset lower levels
+        # 3. Handle Regular Lines
+        output.append(line)
 
-                    display = "" if nums[0] == 1 else ' style="display: none !important;"'
-                    output.append(f'<section id="ch{nums[0]}_wrap" class="chapter"{display}>\n<h1 id="ch{nums[0]}_header">{nums[0]} {title}</h1>')
-                    output.append(f'<div id="ch{nums[0]}_content">\n<span style="display: none">\\(\\nextSection\\)</span>')
-                else: # Section/Subsection
-                    # Close deeper levels or siblings
-                    close_inner_layers(depth)
-
-                    nums[depth] += 1
-                    id_str = "_".join(map(str, nums[:depth+1]))
-                    # Logic for title numbering prefix (e.g. "1.2.3 Title")
-                    title_prefix = ".".join(map(str, nums[:depth+1])) if depth < 3 else ""
-
-                    output.append(f'<h{depth+1} id="ch{id_str}_header">{title_prefix} {title}</h{depth+1}>')
-                    output.append(f'<div id="ch{id_str}_content">')
-
-                found_cmd = True
-                break
-
-        if not found_cmd:
-            output.append(line)
-
-    # --- Final Cleanup ---
-    # Determine if we ended inside a Part or a Chapter and close accordingly
-    close_previous_block()
+    close_block() # Final cleanup
 
     with open(latex_file, 'w', encoding='utf-8') as f:
         f.write('\n'.join(output))
@@ -371,7 +353,9 @@ def insert_JS(filename,js_location):
 # Page elements ########################################
 ########################################################
 ###
-
+# todo add parts to this
+# change inline logic
+# change script logic if needed
 def create_toc(data):
     toc = "<h4>Contents</h4>\n"
 

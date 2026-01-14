@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.5)  7 JAN 2026 22:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.5)  12 JAN 2026 14:58
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1651,16 +1651,16 @@ pdfTeX warning: pdflatex (file ./images/pdf/coord_transform_primed_sychronised.p
 ===== Image 'output/tikz/Gamma_Factor' is up-to-date. ======
 [49 <./output/tikz/Gamma_Factor.pdf>] [50] [51] [52] [53] [54] (Tex/Terms/Terms_ch2.tex [55] [56])
 
-LaTeX Warning: Empty bibliography on input line 1657.
+LaTeX Warning: Empty bibliography on input line 1658.
 
 [57]
 Chapter 3.
-Package biblatex Info: Reference segment=3 on input line 1662.
-Package biblatex Info: Setting label 'refsegment:03' on input line 1662.
+Package biblatex Info: Reference segment=3 on input line 1663.
+Package biblatex Info: Setting label 'refsegment:03' on input line 1663.
 [58
 
 ] [59] [60] [61] [62] [63] [64] [65] [66] [67]
-Overfull \hbox (1.6725pt too wide) in paragraph at lines 2012--2012
+Overfull \hbox (1.6725pt too wide) in paragraph at lines 2013--2013
 []\T1/qcs/b/n/12 (-20) Proof that this rel-a-tivis-tic Mo-men-tum is Con-served 
  []
 
@@ -1732,17 +1732,17 @@ Package pdftex.def Info: images/pdf/Aberrated_velocities_inwards.pdf  used on in
 ===== Image 'output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame' is up-to-date. ======
 ===== Image 'output/tikz/Tikz_Lights_angle_with_particle_With_particle_moving' is up-to-date. ======
 [92 <./images/pdf/Aberrated_velocities_inwards_restframe.pdf>] [93 <./output/tikz/Tikz_Lights_angle_with_particle_in_its_proper_frame.pdf> <./output/tikz/Tikz_Lights_angle_with_particle_With_particle_moving.pdf>]
-<images/pdf/Rest_Pulse.pdf, id=9420, 196.99521pt x 281.56392pt>
+<images/pdf/Rest_Pulse.pdf, id=9421, 196.99521pt x 281.56392pt>
 File: images/pdf/Rest_Pulse.pdf Graphic file (type pdf)
 <use images/pdf/Rest_Pulse.pdf>
 Package pdftex.def Info: images/pdf/Rest_Pulse.pdf  used on input line 3010.
 (pdftex.def)             Requested size: 108.12054pt x 154.5341pt.
-<images/pdf/Prime_Pulse.pdf, id=9421, 196.99521pt x 281.56392pt>
+<images/pdf/Prime_Pulse.pdf, id=9422, 196.99521pt x 281.56392pt>
 File: images/pdf/Prime_Pulse.pdf Graphic file (type pdf)
 <use images/pdf/Prime_Pulse.pdf>
 Package pdftex.def Info: images/pdf/Prime_Pulse.pdf  used on input line 3016.
 (pdftex.def)             Requested size: 108.12054pt x 154.5341pt.
-<images/pdf/Prime_Pulse_Simultaneous.pdf, id=9422, 196.99521pt x 281.56392pt>
+<images/pdf/Prime_Pulse_Simultaneous.pdf, id=9423, 196.99521pt x 281.56392pt>
 File: images/pdf/Prime_Pulse_Simultaneous.pdf Graphic file (type pdf)
 <use images/pdf/Prime_Pulse_Simultaneous.pdf>
 Package pdftex.def Info: images/pdf/Prime_Pulse_Simultaneous.pdf  used on input line 3022.
@@ -1786,12 +1786,12 @@ Package pdftex.def Info: images/pdf/Field_Moving_Frame_Doppler_circles.pdf  used
 
 ===== Image 'output/tikz/Tikz_Surface_Element' is up-to-date. ======
 [107 <./output/tikz/Tikz_Surface_Element.pdf>] [108] [109]
-<images/pdf/Density_of_Light_from_Rest_Source.pdf, id=9946, 364.3304pt x 312.03401pt>
+<images/pdf/Density_of_Light_from_Rest_Source.pdf, id=9947, 364.3304pt x 312.03401pt>
 File: images/pdf/Density_of_Light_from_Rest_Source.pdf Graphic file (type pdf)
 <use images/pdf/Density_of_Light_from_Rest_Source.pdf>
 Package pdftex.def Info: images/pdf/Density_of_Light_from_Rest_Source.pdf  used on input line 3757.
 (pdftex.def)             Requested size: 155.24895pt x 132.96265pt.
-<images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf, id=9947, 364.3304pt x 312.03401pt>
+<images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf, id=9948, 364.3304pt x 312.03401pt>
 File: images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf Graphic file (type pdf)
 <use images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf>
 Package pdftex.def Info: images/pdf/Rate_of_Change_of_Vector_Density_of_Light_from_Moving_Source.pdf  used on input line 3763.
@@ -1804,7 +1804,7 @@ File: images/pdf/Density_of_Light_from_Rest_Source.pdf Graphic file (type pdf)
 <use images/pdf/Density_of_Light_from_Rest_Source.pdf>
 Package pdftex.def Info: images/pdf/Density_of_Light_from_Rest_Source.pdf  used on input line 3891.
 (pdftex.def)             Requested size: 155.24895pt x 132.96265pt.
-<images/pdf/Density_of_Light_from_Moving_Source.pdf, id=9989, 364.3304pt x 312.03401pt>
+<images/pdf/Density_of_Light_from_Moving_Source.pdf, id=9990, 364.3304pt x 312.03401pt>
 File: images/pdf/Density_of_Light_from_Moving_Source.pdf Graphic file (type pdf)
 <use images/pdf/Density_of_Light_from_Moving_Source.pdf>
 Package pdftex.def Info: images/pdf/Density_of_Light_from_Moving_Source.pdf  used on input line 3897.
@@ -1838,16 +1838,16 @@ Package logreq Info: Writing requests to 'Handbook_of_Special_Relativity.run.xml
  ) 
 Here is how much of TeX's memory you used:
  55093 strings out of 467871
- 1269900 string characters out of 5418377
- 2373864 words of memory out of 5000000
+ 1269898 string characters out of 5418377
+ 2373881 words of memory out of 5000000
  82462 multiletter control sequences out of 15000+600000
  701316 words of font info for 204 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  131i,17n,135p,1297b,1383s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\one_p\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsb.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsr.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsri.pfb>
-Output written on c:\Users\one_p\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.pdf (121 pages, 3647680 bytes).
+Output written on c:\Users\one_p\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.pdf (121 pages, 3647875 bytes).
 PDF statistics:
- 10272 PDF objects out of 10688 (max. 8388607)
+ 10273 PDF objects out of 10688 (max. 8388607)
  426 named destinations out of 1000 (max. 500000)
  42425 words of extra memory for PDF output out of 42996 (max. 10000000)
 

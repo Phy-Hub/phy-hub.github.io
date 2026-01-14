@@ -1,19 +1,10 @@
 ###
-#
-# use similar function to that of replace_refs() to load figures from ref's
-#
-#
-# need to be able to handle sections and that with *'s i.e. \section*{}
-#
-#
-#
-#
 import subprocess
 import re
 import os
 import sys
-import urllib.request
-import urllib.error
+import urllib.request, urllib.error
+from datetime import datetime
 
 ### passed variables:
 topic_folder_name = sys.argv[1]
@@ -102,10 +93,6 @@ def colorbox_replace(filename):
         file.write(html_content)
 
 ###
-# todo *** some \chapters{} and sections{} have [] before {} for their alternative name or alternative label, check TOC includes it once fixed
-#todo choose where style="display: none !important; is used
-
-
 def wrap_content(latex_file):
     with open(latex_file, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -115,10 +102,10 @@ def wrap_content(latex_file):
 
     # Levels mapping: command -> (depth, html_tag_level)
     LEVELS = {
-        'chapter': (0, 1),
-        'section': (1, 2),
-        'subsection': (2, 3),
-        'subsubsection': (3, 4)
+        'chapter': (0, 3),
+        'section': (1, 4),
+        'subsection': (2, 5),
+        'subsubsection': (3, 6)
     }
 
     nums = [0, 0, 0, 0]  # [ch, sec, subsec, subsubsec]
@@ -129,27 +116,36 @@ def wrap_content(latex_file):
     def get_nav_footer(ch_num):
         """Generates the HTML for the Previous/Next chapter navigation."""
         prev_btn = (f'<a onclick="showContent(\'ch{ch_num-1}_wrap\'); document.getElementById(\'ch{ch_num-1}_details\').open = true;" '
-                    'style="font-weight: bold; padding-left: 10px; cursor: pointer;"> < Previous </a>\n') if ch_num > 1 else "<a></a>\n"
+                    'style="font-weight: bold; padding-left: 10px; cursor: pointer;"> &lt; Previous </a>\n') if ch_num > 1 else "<a></a>\n"
 
         next_btn = (f'<a onclick="showContent(\'ch{ch_num+1}_wrap\'); document.getElementById(\'ch{ch_num+1}_details\').open = true;" '
-                    'style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next > </a>\n') if ch_num < total_chapters else ""
+                    'style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next &gt; </a>\n') if ch_num <total_chapters else ""
 
-        return f"\n<div class='arrow-nav'>\n{prev_btn}{next_btn}</div>\n</section>"
+        return f'\n\n<div class="arrow-nav">\n{prev_btn}{next_btn}</div>\n\n</section>\n'
 
-    def close_tags(target_depth):
-        """Closes open divs from the current deepest level up to the target depth."""
+    def close_tags(target_depth, reset_counters=True):
+        """ Closes open divs from the current deepest level up to the target depth.
+        If reset_counters is False, HTML tags are closed but nums are preserved. """
         for i in range(3, target_depth - 1, -1):
             if nums[i] > 0:
-                output.append('</div>')
-                nums[i] = 0
+                if in_part == False:
+                    output.append('</div>')
 
-    def close_block():
+                # reset the counter if this level is deeper than the command we are processing
+                if i > target_depth and reset_counters:
+                    nums[i] = 0
+
+    def close_block(reset_counters=True):
         """Handles the special closing logic for Parts and Chapters."""
-        close_tags(1) # Close sections/subsections
+        # Pass the flag down to close_tags
+        close_tags(1, reset_counters=reset_counters)
+
         if in_part:
-            output.append('</div></section>')
+            output.append('</div>')
+            output.append('</section>\n')
         elif nums[0] > 0:
             output.append(f'</div>{get_nav_footer(nums[0])}')
+
 
     # Main Parsing Loop
     lines = content.splitlines()
@@ -159,10 +155,10 @@ def wrap_content(latex_file):
         # 1. Handle Parts
         part_match = re.search(r'\\part(?:\[.*?\])?\{(.+?)\}', line)
         if part_match:
-            close_block()
+            close_block(reset_counters=False)
             in_part, part_count = True, part_count + 1
             output.append(f'<section id="part{part_count}_wrap" class="chapter part-wrapper">')
-            output.append(f'<h1 id="part{part_count}_header">Part {"I" * part_count}. {part_match.group(1)}</h1>')
+            output.append(f'<h2 id="part{part_count}_header" style="display: flex; justify-content: center; text-align: center;">Part {to_roman(part_count)}.<br>{part_match.group(1)}</h2>')
             output.append(f'<div id="part{part_count}_content">')
             continue
 
@@ -179,7 +175,7 @@ def wrap_content(latex_file):
                 nums[0] += 1
                 nums[1:] = [0, 0, 0]
                 display = ' style="display: none !important;"' if nums[0] > 1 else ""
-                output.append(f'<section id="ch{nums[0]}_wrap" class="chapter"{display}>\n<h1 id="ch{nums[0]}_header">{nums[0]} {title}</h1>')
+                output.append(f'<section id="ch{nums[0]}_wrap" class="chapter"{display}>\n<h3 id="ch{nums[0]}_header" style="display: flex; justify-content: center; text-align: center;">Chapter {nums[0]}. {title}</h3>')
                 output.append(f'<div id="ch{nums[0]}_content">\n<span style="display: none">\\(\\nextSection\\)</span>')
             else:
                 close_tags(depth)
@@ -285,7 +281,12 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
         filename = os.path.splitext(os.path.basename(filename))[0] + '.svg'
         if not os.path.isfile(py_to_svgs + f'{filename}'): print(" # \n # No file: " + py_to_svgs + f"{filename} \n #")
         if label_match:
-            fig_id =  f'{label_match.group("label")[:-1].replace(" ", "_")}'
+            if subfig_letter:
+                fig_id = ' id="' + find_label_from_key(fig_dict, f"{chapter_num}_{figure_counter}_{subfig_letter}") + '"'
+            else:
+               fig_id = ' id="' + find_label_from_key(fig_dict, f"{chapter_num}_{figure_counter}") + '"'
+
+
         else:
             fig_id = ''
 
@@ -299,11 +300,13 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
             caption = f"{subfig_letter}) {caption_text}"
         else:
             caption_text = find_caption_from_key(fig_dict, f"{chapter_num}_{figure_counter}")
-            fig_id = find_label_from_key(fig_dict, f"{chapter_num}_{figure_counter}")
+            if find_label_from_key(fig_dict, f"{chapter_num}_{figure_counter}"):
+                fig_id = ' id="' + find_label_from_key(fig_dict, f"{chapter_num}_{figure_counter}") + '"'
+            else:
+                fig_id = ''
             caption = f"Figure {chapter_num}.{figure_counter}: {caption_text}"
 
-
-        return f'<figure id="' + fig_id +'">\n<img src="' + html_to_svgs + f'{filename}" style="width:100%; height:auto;" loading="lazy">\n<figcaption>{caption}</figcaption>\n</figure>'
+        return f'<figure' + fig_id +'>\n<img src="' + html_to_svgs + f'{filename}" style="width:100%; height:auto;" loading="lazy">\n<figcaption>{caption}</figcaption>\n</figure>'
 
     else:
         return '*** svg figure missing ***'
@@ -353,43 +356,69 @@ def insert_JS(filename,js_location):
 # Page elements ########################################
 ########################################################
 ###
-# todo add parts to this
-# change inline logic
-# change script logic if needed
-def create_toc(data):
-    toc = "<h4>Contents</h4>\n"
 
-    # Sort keys by numerical value (1_2 before 1_10)
-    keys = sorted(data.keys(), key=lambda x: [int(k) for k in x.split('_')])
+def to_roman(n):
+        return {1:'I', 2:'II', 3:'III', 4:'IV', 5:'V', 6:'VI'}.get(int(n), str(n))
 
-    for key in keys:
-        parts = key.split('_')
-        if len(parts) > 2: continue  # Skip subsections
+def create_toc(toc_dic):
+    # --- 1. Helpers & Sorting ---
+    keys = sorted(toc_dic.keys(), key=lambda x: [int(k) for k in x.split('_')])
 
-        # Common variables for both Chapters and Sections
-        h_id = f"ch{key}_header"
-        text = f"{'.'.join(parts)} {data[key]['title']}"
+    # --- 2. Build Data Tree ---
+    tree = []
+    # (We don't need p_ids or c_ids lists anymore)
 
-        if len(parts) == 1: # Chapter
-            # If we aren't at the start, close the previous chapter details
-            if toc != "<h4>Contents</h4>\n":
-                toc += "</details>\n"
+    for k in keys:
+        parts = k.split('_')
+        item = toc_dic[k]
 
-            # Check if this is the first chapter to add 'open' attribute
-            is_open = " open" if toc == "<h4>Contents</h4>\n" else ""
+        if len(parts) == 1: # Part
+            tree.append({'id': parts[0], 'title': item['title'], 'chaps': []})
+        elif len(parts) == 2: # Chapter
+            if tree: # Safety check
+                tree[-1]['chaps'].append({'id': parts[1], 'title': item['title'], 'sects': []})
+        elif len(parts) == 3: # Section
+            if tree and tree[-1]['chaps']:
+                tree[-1]['chaps'][-1]['sects'].append({'id': parts[2], 'title': item['title']})
 
-            toc += f"<details id='ch{parts[0]}_details'{is_open}>\n"
-            toc += (f"<summary onclick=\"showContent('ch{parts[0]}_wrap')\">"
-                    f"<a href='#{h_id}' onclick=\"event.stopPropagation(); "
-                    f"showContent('ch{parts[0]}_wrap'); $(this).parent().parent().attr('open', '');\" "
-                    f"style='font-weight: bold;'>{text}</a></summary>\n")
+    # --- 3. Generate HTML (No JS here) ---
+    html = ['<div id="toc_container"><ul style="list-style:none; padding:0;">']
+    arrow = '<span class="toc-arrow">&#9654;</span>'
 
-        else: # Section
-            toc += f"<a href='#{h_id}' style='display: block; margin-left: 20px;'>{text}</a>\n"
+    for p in tree:
+        # Added class: 'toc-part-link'
+        html.append(f'''<li>
+            <a href="#part{p['id']}_wrap"
+               id="link_part_{p['id']}"
+               class="toc-link toc-part-link"
+               onclick="toggleView('part', '{p['id']}')">
+                {arrow} <b>Part {to_roman(p['id'])}. {p['title']}</b>
+            </a>
+            <ul id="toc_part_{p['id']}" class="toc-sublist toc-part-sublist">''') # Added class
 
-    # Close the final chapter
-    return toc + "</details>\n"
+        for c in p['chaps']:
+            # Added class: 'toc-chapter-link'
+            html.append(f'''<li>
+                <a href="#ch{c['id']}_wrap"
+                   id="link_ch_{c['id']}"
+                   class="toc-link toc-chapter-link"
+                   onclick="toggleView('ch', '{c['id']}')">
+                    {arrow} <b>{c['id']}. {c['title']}</b>
+                </a>
+                <ul id="toc_ch_{c['id']}" class="toc-sublist toc-chapter-sublist">''') # Added class
 
+            for s in c['sects']:
+                html.append(f'''<li>
+                    <a href="#ch{c['id']}_{s['id']}_header" class="toc-link">
+                        {c['id']}.{s['id']} {s['title']}
+                    </a>
+                </li>''')
+            html.append('</ul></li>')
+        html.append('</ul></li>')
+
+    html.append('</ul></div>')
+
+    return "".join(html)
 
 ###
 def create_terms(terms_folder):
@@ -410,7 +439,7 @@ def create_terms(terms_folder):
         if state == 'description':
             description = line.strip()
             description = re.sub(r'\$(.*?)\$', r'\(\g<1>\)', description).replace('<', '\\lt ').replace('>', '\\gt ')
-            new_line = f'<dd id="{label}" style="display: none;"> <b>{term}:</b>  {description}  </dd>\n'
+            new_line = f'<div id="{label}" style="display: none;">\n<dt><b>{term}:</b>  </dt>\n<dd> {description} </dd>\n</div>\n' #todo put {term} in here instead
             output_lines.append(new_line)
             state = None
         else:
@@ -443,16 +472,20 @@ def create_math_terms(folder_path, file_prefix="Terms_ch"):
         return {}
 
     html_string = ''
+    meowch = 0
     for filename in filenames:
+        meowch = meowch + 1
         filepath = os.path.join(folder_path, filename)
         html_string += f'<dl id="{os.path.splitext(os.path.basename(filename))[0]}" style="display: none;">\n'
+
 
         with open(filepath, "r", encoding="utf-8") as file:
             file_content = file.read()
 
+
             # Find all instances of \variable
             start_indices = [m.start() for m in re.finditer(r"\\variable", file_content)]
-
+            meow = 1
             for start_index in start_indices:
 
                 # Find the first opening brace after \variable
@@ -506,7 +539,9 @@ def create_math_terms(folder_path, file_prefix="Terms_ch"):
 
                 ##########
                 ##########
-                label = "none"
+                label = "ch_" + str(meowch) + "_term_" + str(meow)
+                meow = meow + 1
+
 
                 #Crucial:  fixing math and links to definition for html
                 variable = variable.replace('<', '\\lt ').replace('>', '\\gt ')
@@ -518,7 +553,7 @@ def create_math_terms(folder_path, file_prefix="Terms_ch"):
                 new_line = f'<dt style="cursor: pointer;" onclick="document.getElementById(\'{label}\').style.display = document.getElementById(\'{label}\').style.display == \'none\' ? \'inline\' : \'none\';"> \\({variable}\\)<b>:</b> </dt>\n<dd id="{label}" style="display: none;">{definition}</dd>\n'
                 html_string += new_line
 
-                html_string += '<br>\n'  # after each variable
+                html_string += '\n'  # after each variable
 
 
         html_string += '\n </dl>\n'
@@ -531,7 +566,7 @@ def math_to_HTML(content):
 
     for math_env in math_envs:
         label = re.search(r'\\label\{(?P<label>.*\})', math_env)
-        if label: id = f' id="{label.group("label")[:-1].replace(" ", "_")}"'
+        if label: id = f' id="{label.group("label")[:-1].replace(" ", "_").replace(":","").replace("'","_")}"'
         else:     id = ''
 
         math_env_no_label = re.sub(r'\\label\{.*?\}', '', math_env, flags=re.DOTALL)
@@ -548,7 +583,7 @@ def math_to_HTML(content):
 
     for math_env in math_envs:
         label = re.search(r'\\label\{(?P<label>.*\})', math_env)
-        if label: id = f' id="{label.group("label")[:-1].replace(" ", "_")}"'
+        if label: id = f' id="{label.group("label")[:-1].replace(" ", "_").replace(":","").replace("'","_")}"'
         else:     id = ''
 
         math_env_no_label = re.sub(r'\\label\{.*?\}', '', math_env, flags=re.DOTALL)
@@ -557,7 +592,7 @@ def math_to_HTML(content):
 
     return content
 
-
+###
 def replace_refs(input_string):
     # This pattern matches \eqref{} and captures the content inside the brackets
     pattern_ref_eq = r'\\eqref\{(.*?)\}'
@@ -566,20 +601,28 @@ def replace_refs(input_string):
 
     # This function will be used to replace each match
     def replacer_ref_eq(match):
-        id = match.group(1).replace(" ", "_")
+        id = match.group(1).replace(" ", "_").replace(":","").replace("'","_")
         eq_number =  (find_key_from_label(eq_dict, id) or "").replace("_", ".")
         # Replace with a span element that shows a div with the matched id on hover
         return f'<span class="ref_eq" onmouseover="copyContent(\'{id}\',\'equation_hover\'); " onmouseout="deleteContent(\'equation_hover\');">({eq_number})</span>'
     def replacer_ref_fig(match):
-        id = match.group(1).replace(" ", "_")
+        id = match.group(1).replace(" ", "_").replace(":","").replace("'","_")
         fig_num =  (find_key_from_label(fig_dict, id) or "").replace("_", ".")
         # Replace with a span element that shows a div with the matched id on hover
         return f'<span class="ref_fig" onmouseover="copyContent(\'{id}\',\'fig_hover\');" onmouseout="deleteContent(\'fig_hover\');">{fig_num}</span>'
     def replacer_ref_toc(match):
-        id = match.group(1).replace(" ", "_")
+        id = match.group(1).replace(" ", "_").replace(":","").replace("'","_")
         toc_num = (find_key_from_label(toc_dict, id) or "").replace("_", ".")
-        # Replace with a span element that shows a div with the matched id on hover
-        return f'<span class="ref_toc" >{toc_num}</span>' #todo need way for click to load chapter and then point to section
+
+        if '.' not in toc_num: # part
+            return f'<a href="#part{toc_num}_header" class="ref_toc" >{toc_num}</a>'
+        else:
+            # for "Chapter" (e.g., "1.2.3" -> "2.3")
+            toc_num_sep = toc_num.split(".")
+            display_num = ".".join(toc_num_sep[1:])
+            href = display_num.replace(".", "_")
+            return f'<a href="#ch{href}_header" class="ref_toc" >{toc_num}</a>' #todo need way for click to load chapter if ref is to a hidden chapter
+               #todo <a href="#ch{c['id']}_wrap" id="link_ch_{c['id']}" class="toc-link" onclick="toggleView('ch', '{c['id']}')">
 
     # Use re.sub to replace each match in the input string
     output_string = re.sub(pattern_ref_eq , replacer_ref_eq, input_string)
@@ -590,96 +633,101 @@ def replace_refs(input_string):
     return output_string
 
 ###
-def bib_to_html(bib_file):
+def process_bib_and_cites(bib_path, tex_path):
+    # 1. Load Files
+    with open(bib_path) as f: bib_raw = f.read()
+    with open(tex_path) as f: tex_raw = f.read()
 
-    with open(bib_file, 'r', encoding='utf-8') as bibfile:
-        bib_content = bibfile.read()
+    # 2. Parse BibTeX (Unchanged)
+    db = {}
+    for chunk in bib_raw.split('@')[1:]:
+        m_head = re.match(r'(\w+)\s*\{\s*([^,]+),', chunk)
+        if not m_head: continue
+        fields = {k.lower(): (v1 or v2 or v3).strip()
+                  for k, v1, v2, v3 in re.findall(r'(\w+)\s*=\s*(?:\{(.+?)\}|"(.+?)"|(\d+))', chunk, re.DOTALL)}
+        db[m_head.group(2).strip()] = {'type': m_head.group(1).lower(), 'lbl': m_head.group(2).strip(), **fields}
 
-    bib_lines = []  # Initialize the list of formatted lines
+    # 3. Process LaTeX (Updated for Bi-directional Linking)
+    c_map, counter = {}, 1
 
-    entries = bib_content.split('@')[1:]
-    entry_counter = 1
+    def sub_cite(m):
+        nonlocal counter
+        links = []
+        for k in [x.strip() for x in m.group(1).split(',')]:
+            if k in db:
+                if k not in c_map:
+                    c_map[k] = counter
+                    db[k]['cid'] = counter
+                    counter += 1
 
-    for entry in entries:
-        lines = entry.strip().split('\n')
-        entry_type, citekey_rest = lines[0].split('{', 1)
-        citekey = citekey_rest.strip(',')
-
-        fields = {}
-        for line in lines[1:-1]:
-            if '=' in line:
-                key, value = line.strip().split('=', 1)
-                fields[key.strip().lower()] = value.strip(' {},')
-
-        # Custom formatting logic
-        try:
-            author_list = fields.get('author', '').split(' and ')
-            if len(author_list) > 1:
-                authors = f"{author_list[0].split(',')[0]}, et al."
-            elif len(author_list) == 1 and ',' in author_list[0]:
-                authors = author_list[0].split(',')[0]
+                # UPDATE: Added id='cite-...' for the back-link
+                # We point href to '#ref-...' which will be the ID in the bibliography
+                links.append(f'<a href="#ref-{k}" id="cite-{k}" class="citation-link">{c_map[k]}</a>')
             else:
-                authors = author_list[0] if author_list else "Unknown Author"
+                links.append(f"{k}?")
+        return f"[{', '.join(links)}]"
 
-            title = fields.get('title', 'No Title')
-            journal = fields.get('journal', '')
-            volume = fields.get('volume', '')
-            number = fields.get('number', '')
-            year = fields.get('year', '')
-            pages = fields.get('pages', '')
+    with open(tex_path, 'w') as f: f.write(re.sub(r'\\cite\{(.+?)\}', sub_cite, tex_raw))
 
-            if pages:
-                pages_str = f", pp. {pages.replace('--', '\u2013')}"
-            else:
-                pages_str = ""
+    # 4. Generate HTML
+    html = ['<section id="references" aria-labelledby="refs-title">\n<h4 id="refs-title">References</h4>\n<ol class="bibliography-list">\n']
 
-            # Construct the formatted reference string
-            reference_html = (
-                f'<p id="{citekey}" style="font-size: 0.7em;">'
-                f'[{entry_counter}] &nbsp; {authors} "{title}." In: <i>{journal}</i> {volume}{"."+number if number else ""}{" ("+year+")" if year else ""}{pages_str}.'
-                f'</p>\n'
-            )
+    sorted_entries = sorted([x for x in db.values() if 'cid' in x], key=lambda x: x['cid'])
 
-            bib_lines.append(reference_html)  # Add the formatted line to the list
-            entry_counter += 1
+    for e in sorted_entries:
+        # Clean Authors (Remove {} braces)
+        clean_author = e.get('author', 'Unknown').replace('{', '').replace('}', '')
+        aus = [n.split(',')[1].strip() + " " + n.split(',')[0].strip() if ',' in n else n
+               for n in clean_author.split(' and ')]
+        auth = ", ".join(aus).replace('others', 'et al.')
 
-        except Exception as e:
-            print(f"Error processing entry {citekey}: {e}")
-            bib_lines.append(f'<p id="{citekey}">Error processing entry</p>\n')
+        # Format Date
+        d_str = e.get('year', '')
+        if 'date' in e:
+            dt = datetime.strptime(e['date'], '%Y-%m-%d')
+            d_str = f"{dt.strftime('%b.')} {dt.day}, {dt.year}"
 
-    return bib_lines
+        s = f'<li id="ref-{e["lbl"]}">'
 
-###
-def create_dictionary_of_bib(filepath):
-    bib_dict = {}
-    bib_number = 0
-    pattern_cite_bib = r'\\cite\{(.*?)\}'
+        title = e.get('title', '')
 
-    with open(filepath, 'r', encoding='utf-8') as file:
-        lines = file.readlines()
+        if e['type'] == 'article':
+            # Articles: Quotes, No Italics
+            # We remove <cite> here to prevent italics
+            s += f'{auth}. “{title}”.'
+        else:
+            # Books, Misc, Online: Italics, No Quotes
+            # We use <em> (or <cite>) to apply italics
+            s += f'{auth}. <em>{title}</em>.'
+        # -----------------------------------------
 
-    with open(filepath, 'w', encoding='utf-8') as file:
-        for line in lines:
-            match = re.search(pattern_cite_bib, line)
-            if match:
-                bib_label = match.group(1)
+        if e['type'] == 'article':
+            vol = f"{e.get('volume','')}" + (f".{e['number']}" if 'number' in e else "")
+            s += f" In: <em>{e.get('journal','')}</em> {vol} ({d_str})"
+        else:
+            pub = [x for x in [e.get('publisher'), e.get('organization'), d_str] if x]
+            s += f" {', '.join(pub)}."
 
-                if any(entry.get("label") == bib_label for entry in bib_dict.values()):
-                    bib_number = find_key_from_label(bib_dict,bib_label)
-                    html = f"<a>[{bib_number}]</a>"
-                else:
-                    bib_number = bib_number + 1
-                    html = f"<a>[{bib_number}]</a>"
-                    bib_dict[bib_number] = {"title": None, "label": bib_label}
+            if 'url' in e:
+                s += f' <span  style="font-family: monospace; font-size: 0.7rem;">URL:</span> <a href="{e["url"]}" class="bib-url" target="_blank" rel="noopener">{e["url"]}</a>'
+                if 'urldate' in e: s += f" (visited on {e['urldate']})."
 
-                line = line.replace(match.group(0), html)
+        if 'pages' in e: s += f", pp. {e['pages'].replace('--', '–')}."
 
-            file.write(line)
+        s += f' <a href="#cite-{e["lbl"]}" aria-label="Back to citation" style="text-decoration:none">↩</a>'
+        s += "</li>\n"
+        html.append(s)
+
+    html.append("</ol>\n</section>\n")
+    return "".join(html)
+
+
 
 ###
 def create_dictionary_of_toc(filepath):
     structure_dict = {}
     counters = {
+        "part": 0,
         "chapter": 0,
         "section": 0,
         "subsection": 0,
@@ -688,41 +736,45 @@ def create_dictionary_of_toc(filepath):
 
     with open(filepath, 'r', encoding='utf-8') as f:
         for line in f:
-            match = re.match(r"\\(chapter|section|subsection|subsubsection)(?:\[([^\]]*)\])?\s*\{([^}]+)\}\s*(?:\\label\{([^}]+)\})?", line)
+            match = re.match(r"\\(part|chapter|section|subsection|subsubsection)(?:\[([^\]]*)\])?\s*\{([^}]+)\}\s*(?:\\label\{([^}]+)\})?", line)
+
             if match:
                 level = match.group(1)
                 short_title = match.group(2).strip() if match.group(2) else None
                 title = match.group(3).strip()
-                label = match.group(4).replace(" ", "_") if match.group(4) else None
-                #todo replace : in label with _ or "",  need to check all replace_refs( and do same for other dictionaries
-
+                label = match.group(4).replace(" ", "_").replace(":","").replace("'","_") if match.group(4) else None
 
                 # Replace title with short_title if short_title exists
                 if short_title:
                     title = short_title
 
-                if level == "chapter":
+                if level == "part":
+                    counters["part"] += 1
+                    structure_dict[f"{counters['part']}"] = {"title": title, "label": label}
+
+                elif level == "chapter":
                     counters["chapter"] += 1
                     counters["section"] = 0
                     counters["subsection"] = 0
                     counters["subsubsection"] = 0
-                    structure_dict[f"{counters['chapter']}"] = {"title": title, "label": label}
+                    structure_dict[f"{counters['part']}_{counters['chapter']}"] = {"title": title, "label": label}
+
                 elif level == "section":
                     counters["section"] += 1
                     counters["subsection"] = 0
                     counters["subsubsection"] = 0
-                    structure_dict[f"{counters['chapter']}_{counters['section']}"] = {"title": title, "label": label}
+                    structure_dict[f"{counters['part']}_{counters['chapter']}_{counters['section']}"] = {"title": title, "label": label}
+
                 elif level == "subsection":
                     counters["subsection"] += 1
                     counters["subsubsection"] = 0
-                    structure_dict[f"{counters['chapter']}_{counters['section']}_{counters['subsection']}"] = {"title": title, "label": label}
+                    structure_dict[f"{counters['part']}_{counters['chapter']}_{counters['section']}_{counters['subsection']}"] = {"title": title, "label": label}
+
                 elif level == "subsubsection":
                     counters["subsubsection"] += 1
-                    structure_dict[f"{counters['chapter']}_{counters['section']}_{counters['subsection']}_{counters['subsubsection']}"] = {"title": title, "label": label}
+                    structure_dict[f"{counters['part']}_{counters['chapter']}_{counters['section']}_{counters['subsection']}_{counters['subsubsection']}"] = {"title": title, "label": label}
 
     return structure_dict
-
-###
 
 def create_dictionary_of_figures(latex_file):
     with open(latex_file, 'r', encoding='utf-8') as f:
@@ -732,7 +784,7 @@ def create_dictionary_of_figures(latex_file):
     chapter_number = 0
     figure_number = 0
 
-    chapters = re.split(r'\\chapter\{', content)[1:]  # Fix to properly escape the brace
+    chapters = re.split(r'\\chapter\{', content)[1:]
 
     for chapter_content in chapters:
         chapter_number += 1
@@ -780,7 +832,7 @@ def create_dictionary_of_figures(latex_file):
             # Find label in temp_figure_match
             label_match = re.search(r'\\label\{([^}]*?)\}', temp_figure_match)
             if label_match:
-                figure_label = label_match.group(1).replace(" ", "_")
+                figure_label = label_match.group(1).replace(" ", "_").replace(":","").replace("'","_")
 
             figure_id = f"{chapter_number}_{figure_number}"
             figure_data[figure_id] = {
@@ -815,7 +867,7 @@ def create_dictionary_of_figures(latex_file):
                 # Find label in subfigure_match
                 label_match = re.search(r'\\label\{([^}]*?)\}', subfigure_match)
                 if label_match:
-                    subfigure_label = label_match.group(1).replace(" ", "_")
+                    subfigure_label = label_match.group(1).replace(" ", "_").replace(":","").replace("'","_")
 
                 subfigure_id = f"{chapter_number}_{figure_number}_{subfigure_letter}"
                 figure_data[subfigure_id] = {
@@ -857,7 +909,7 @@ def create_dictionary_of_equations(latex_file):
             equation_label = ""
             label_match = re.search(r'\\label{([^}]*?)}', equation_match)
             if label_match:
-                equation_label = label_match.group(1).replace(" ", "_")
+                equation_label = label_match.group(1).replace(" ", "_").replace(":","").replace("'","_")
 
             equation_id = f"{chapter_number}_{equation_number}"
             equation_data[equation_id] = {"label": equation_label}  # Store as dictionary
@@ -938,50 +990,52 @@ def make_page(input_file, output_file, toc_file, content_file, Defs_file, Math_T
             else:
                 file.write(line)
 
+########################################################
+# Checks ###############################################
+########################################################
 ###
-def checks(html_file):
-    eq = 0
-    line_number = 0  # Initialize line number counter
-    with open(py_to_bugs + "latex_still_in_html.txt", 'w', encoding='utf-8') as outfile:
-        outfile.write('### PROBLEM LaTeX LINES ###\n')
-        with open(html_file, 'r', encoding='utf-8') as infile:
-            i = 0
-            Latex_commands = []
-            for line in infile:
-                line_number += 1  # Increment line number for each line
-                if line.startswith('\\begin{equation}'):
-                    eq = 1
-                    continue
-                elif line.startswith('\\end{equation}'):
-                    eq = 0
-                    continue
-                if eq == 0:
-                    part = re.sub(r'\\\(.+?\\\)', '*equation*', line)
-                    latex_matches = re.findall(r"\\(\w+)\{", part)  # Find all matches in the line
-                    for match in latex_matches:
-                        if match not in Latex_commands:  # Check for duplicates before adding
-                            Latex_commands.append(match)
 
-                    if part.startswith('\\'):
-                        i=i+1
-                        outfile.write(f"# Line {line_number}: {part.strip()}\n")  # Include line number
+def find_leftover_latex(html_file):
+    print(f"Scanning {html_file}...")
+    found, bugs = set(), 0
+    stop_marker = None
 
-                    if '\\' in part:
-                        i=i+1
-                        outfile.write(f"### Line {line_number}: '{part.strip()}'\n") # Include line number
+    with open(html_file, 'r', encoding='utf-8') as f, open("latex_still_in_html.txt", 'w', encoding='utf-8') as out:
+        for i, line in enumerate(f, 1):
+            # check for start of block if not in one
+            if not stop_marker:
+                if '<script' in line: stop_marker = '</script>'
+                elif '<style' in line: stop_marker = '</style>'
+                elif r'\begin{equation}' in line: stop_marker = r'\end{equation}'
 
-        outfile.write('######################\n')
-        outfile.write(f'number of lines with bugs: {i} \n')
-        outfile.write('######################\n')
-        outfile.write('commands: \n')
-        for Latex_command in Latex_commands:
-            outfile.write(f'\\{Latex_command} \n')
-            print("### latex function to fix: " + f'\\{Latex_command}')
+            # If we are inside a block, check if it ends here
+            if stop_marker:
+                if stop_marker in line: stop_marker = None
+                continue
 
-        print("number of lines with bugs: ", i)
-        print("check latex_still_in_html.txt for details of bugs")
+            # 2. Clean inline math to avoid false positives
+            clean = re.sub(r'\\\(.*?\\\)', '', line)
 
+            # 3. Find LaTeX commands, Matches \cmd and optional {arg}.
+            matches = re.findall(r"\\([a-zA-Z]+)(\{[^}]*\})?", clean)
+            curr_bugs = [f"\\{c}{a}" if (c in ['begin','end'] and a) else f"\\{c}" for c, a in matches]
 
+            # 4. Find Stray Braces (by removing the valid commands we just found)
+            clean_no_cmds = re.sub(r"\\([a-zA-Z]+)(\{[^}]*\})?", '', clean)
+            if any(b in clean_no_cmds for b in '{}'):
+                curr_bugs.append("STRAY_BRACES")
+
+            # 5. Log if bugs found
+            if curr_bugs:
+                bugs += 1
+                found.update(c for c in curr_bugs if c != "STRAY_BRACES")
+                out.write(f"Line {i}: {line.strip()}\n   >>> Found: {curr_bugs}\n")
+    if bugs == 0:
+        print("- no leftover latex")
+    else:
+        print(f"Lines with bugs: {bugs}\nUnique commands: {sorted(found)}\nSee latex_still_in_html.txt")
+
+###
 def check_ids_for_spaces(html_file_path):
     try:
         with open(html_file_path, 'r', encoding='utf-8') as f:  # Handle potential encoding issues
@@ -1005,31 +1059,41 @@ def check_ids_for_spaces(html_file_path):
             invalid_ids.append(id_value)
     return invalid_ids
 
-########################################################
-# Checks ###############################################
-########################################################
-###
-
-def check_latex_web_links(filename):
+### checks
+def check_latex_href_links(filename):
     with open(filename, 'r', encoding='utf-8') as f:
-        # regex to find \href{...} contents
         urls = re.findall(r'\\href\{([^}]+)\}', f.read())
 
     # Filter/deduplicate
     links = set(u for u in urls if u.startswith(('http', 'www')))
-    print(f"Checking {len(links)} links in '{filename}'...\n")
+    print(f"Checking {len(links)} web links...")
 
-    for url in links:
+    def is_link_working(url):
         try:
-            # We must fake a User-Agent or many sites (like Wikipedia/Amazon) will block urllib
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=5) as response:
-                print(f"✅ [{response.getcode()}] {url}")
-        except urllib.error.HTTPError as e:
-            # urllib raises an exception for 404s, 403s, etc.
-            print(f"❌ [{e.code}] {url}")
-        except urllib.error.URLError:
-            print(f"🚫 [Connection Error] {url}")
+            with urllib.request.urlopen(req, timeout=5):
+                return True
+        except urllib.error.URLError as e:
+            print(f"❌ [{getattr(e, 'code', 'Connection Error')}] {url}")
+            return False
+
+    if all(is_link_working(url) for url in links):
+        print("- all external links work")
+
+###
+from html.parser import HTMLParser
+class Checker(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.ids, self.links = set(), set()
+
+    def handle_starttag(self, tag, attrs):
+        d = dict(attrs)
+        if 'id' in d:
+            self.ids.add(d['id'])
+        if tag == 'a' and d.get('href', '').startswith('#'):
+            target = d['href'][1:]
+            if target: self.links.add(target)
 
 ###################################################################################
 ###################################################################################
@@ -1041,18 +1105,21 @@ with open(py_to_main_tex, 'rb') as src, open(Latex_File, 'wb') as dst:
 
 # to do first to avoid conflicts:
 remove_comments(Latex_File)
+replace(Latex_File,'<<', r'\\ll ')
+replace(Latex_File,'>>', r'\\gg ')
 replace(Latex_File,'<', r'\\lt ')
 replace(Latex_File,'>', r'\\gt ')
 
 # Create dictionaries
 toc_dict = create_dictionary_of_toc(Latex_File)
 fig_dict = create_dictionary_of_figures(Latex_File)
-bib_dict = create_dictionary_of_bib(Latex_File)
 eq_dict  = create_dictionary_of_equations(Latex_File)
 # check for duplicate lables
 check_duplicate_labels(toc_dict)
 check_duplicate_labels(fig_dict)
 check_duplicate_labels(eq_dict)
+
+bib_lines = process_bib_and_cites(py_to_bib, Latex_File)
 
 
 # Call the function with your input and output file paths
@@ -1061,16 +1128,20 @@ tikz2svg(py_to_tikz, py_to_svgs)
 replace_blank_lines(Latex_File)
 replace(Latex_File, r'\$(.*?)\$', r'\(\1\)')
 replace(Latex_File, 'mhl', 'bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]')
-replace(Latex_File, r'\\begin\{mainpoints\}', '<div style="border: 3px solid black; padding-right: 20px; padding-left: 10px; background-color: #f0f0f0; border-radius: 10px;" aria-label="Enumerated List">\n\t<ol>')
+replace(Latex_File, r'\\begin\{mainpoints\}', '<div style="border: 3px solid black; padding-right: 20px; padding-left: 10px; background-color: #f0f0f0; border-radius: 10px;">\n\t<ol>')
 replace(Latex_File, r'\\end\{mainpoints\}', '\t</ol>\n</div>')
 replace(Latex_File, r'\\begin\{itemize\}', '<ul>')
 replace(Latex_File, r'\\end\{itemize\}', '</ul>')
+replace(Latex_File, r'\\begin\{note\}', '<blockquote class="note">')
+replace(Latex_File, r'\\end\{note\}', '</blockquote>')
+replace(Latex_File, r'\\begin\{derivation\}', '<div class="derivation">')
+replace(Latex_File, r'\\end\{derivation\}', '</div>')
 replace(Latex_File, r'\\Vec', r'\\mathbf')
 replace(Latex_File, r'\\noindent', '')
 replace(Latex_File, r'\\protect', '')
 replace(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
 replace(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<span onmouseover=\"document.getElementById('\\g<1>').style.display='block'\" onmouseout=\"document.getElementById('\\g<1>').style.display='none'\">\\g<2></span>")
-replace(Latex_File, r'\\href\{(.*?)\}\{(.*?)\}', "<a style='color: black' href='\\g<1>' target='_blank' rel='noopener noreferrer'>\\g<2></a>")
+replace(Latex_File, r'\\href\{(.*?)\}\{(.*?)\}', '<a style="color: black" href="\\g<1>" target="_blank" rel="noopener noreferrer">\\g<2></a>')
 replace(Latex_File, r'\\scalebox{0.5}{R}', 'R')
 replace(Latex_File, r'\\AA', "Å") #'Å')
 replace(Latex_File, r'\\newline', '<br>\n')
@@ -1080,8 +1151,7 @@ replace(Latex_File,r'\\input\{.*?\}', '')
 replace(Latex_File,r'\\printbibliography\[.*?\]', '')
 colorbox_replace(Latex_File)
 script_lines = insert_JS(Latex_File, html_to_js_diagrams) #needs to be before reading latex content
-bib_lines = bib_to_html(py_to_bib)
-
+########################################################## bib_lines = bib_to_html(py_to_bib)
 
 wrap_content(Latex_File)
 
@@ -1097,16 +1167,21 @@ main_content += '\n'
 main_content =  re.sub(r'\\label\{.*?\}', '', main_content)
 
 # Call the function with your HTML file
-toc = create_toc(toc_dict) # needs to take final html
+toc = create_toc(toc_dict)
 vars = create_math_terms(py_to_terms)
 defs = create_terms(py_to_terms)
 
 make_page(py_to_page_structure, py_to_output_page, toc, main_content, defs, vars, script_lines, bib_lines)
 
-checks(py_to_output_page)
+find_leftover_latex(py_to_output_page)
 check_ids_for_spaces(py_to_output_page)
-check_latex_web_links(py_to_main_tex)
+check_latex_href_links(py_to_main_tex)
+# check internal href links
+parser = Checker()
+with open(py_to_output_page, 'r', encoding='utf-8') as f:
+    parser.feed(f.read())
+
+broken = parser.links - parser.ids  # Set subtraction finds what's in links but NOT in ids
+print(f"Broken links: {broken}" if broken else "All internal links valid!")
 
 os.remove(Latex_File)
-
-# pdflatex -synctex=1 -interaction=nonstopmode --shell-escape Layout.tex

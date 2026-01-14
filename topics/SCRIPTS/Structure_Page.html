@@ -8,7 +8,7 @@
 
   <!--<script> var url = window.location.href; url = url.split('.html')[0]; window.history.replaceState(null, null, url); </script> -->
   <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
-  <script defer type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <script defer src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
   <!--<script defer> window.MathJax = {  tex: { tags: 'ams' }, svg: {fontCache: 'global'} }; </script>-->
   <script> MathJax = {
@@ -39,6 +39,55 @@
   <script src="SR_Aberration.js"></script>
 
   <style>
+    .note {
+        text-align: center;
+        font-style: italic;
+        font-size: 0.9rem;
+        margin: 1em 40px;
+        color: #555;
+    }
+    .derivation {
+        color: gray;
+        border: solid gray;
+        border-width: 0 3px;
+        padding: 10px;
+        margin: 20px 0;
+    }
+    .derivation::before {
+        content: "derivation:";
+        display: block;
+        font-weight: bold;
+        text-decoration: underline;
+        margin-bottom: 10px;
+    }
+
+    /* ### BIB ######################################################## */
+    /* 1. Main Container & Font Settings */
+    .bibliography-list {
+      font: 1rem "Times New Roman", Times, serif;
+      line-height: 1.2;
+      padding-left: 2.5em; /* Space for the numbers */
+    }
+
+    /* 2. List Item Spacing */
+    .bibliography-list li {
+      margin-bottom: 0.5em;
+      padding-left: 0.5em; /* Gap between the number and the text */
+    }
+
+    /* 3. The Numbering (The Modern Way) */
+    .bibliography-list li::marker {
+      content: "[" counter(list-item) "]"; /* Automatically adds brackets */
+      font-weight: bold; /* Optional: makes [1] bold */
+    }
+
+    /* 4. Link & URL Styling (Condensed) */
+    .bibliography-list a { color: inherit; text-decoration: none; }
+    .bib-url { font-family: "Courier New", monospace; word-break: break-all; font-size: 0.9rem;}
+    .bib-url:hover { text-decoration: underline; }
+
+    .citation-link {color: inherit;}
+    /* ############################################################### */
 
     .strongyellow{background-color: #f6da66;}
     .yellow{background-color: #fff8bb;}
@@ -50,11 +99,25 @@
     #dictionary > dd {padding: 10px;}
 
     span:hover {background-color: #ddb400; cursor: pointer;}
+    h1 span:hover, p span:hover {background-color: transparent; cursor: default;}
 
     .navbar {
       display: grid; grid-template-columns: auto 680px auto;
       position: sticky; top: 0; z-index: 1000;
       height: 60px; width: 100%;
+      background-color: grey;
+    }
+
+    #site-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+    }
+    .navbar {
+      display: grid;
+      grid-template-columns: auto 680px auto;
+      height: 60px;
       background-color: grey;
     }
 
@@ -78,16 +141,30 @@
       padding-top: 50px;
     }
 
-    h1 {font-size: 2em;}
-    details a {text-decoration: none; color: black; padding-left: 10px; padding-right: 10px;}
-    a:hover { text-decoration: underline;}
-    #toc a {padding: 0; font-size: 10px; font-family: Arial, sans-serif; line-height: 1.5;}
+    h2 {font-size: 1.7em;}
+    h3 {font-size: 1.5em;}
+    h4 {font-size: 1.2em;}
+    h5 {font-size: 1em;}
+    #toc_container a:hover {text-decoration: underline;}
+    #toc_container a {
+    font-size: 0.8rem;
+    color: black;
+    padding: 0;
+    padding-left: 0px;
+    padding-right: 10px;
+    font-family: Arial, sans-serif;
+    line-height: 1.1;
+    text-decoration: none;
+    display: inline-block;
+    }
+    #toc_container li {line-height: 1.1;}
 
     :target:before {content: ""; display: block; height: 65px; margin-top: -65px; visibility: hidden;}
 
     main {display: grid; grid-template-columns: 1fr 700px 1fr;}
     main > * {padding: 20px;}
     @media (max-width: 900px) {
+      #tocsidebar {display: none;}
       .sidebar {display: none;}
       main { grid-template-columns: 100%;}
       .navbar {grid-template-columns: 70px auto 70px;}
@@ -97,6 +174,7 @@
     section { counter-increment: chapter-counter; counter-reset: figure-counter; }
     figure { counter-increment: figure-counter;}
 
+    #tocsidebar{position: sticky; top: 60px; overflow: hidden; align-self: start; height: auto;  padding-left: 10px;}
     .sidebar{position: sticky; top: 60px; overflow: hidden; align-self: start; height: auto;}
     figcaption {line-height: 1;}
 
@@ -116,6 +194,14 @@
       display: block;}
     .dropdown-menu a:hover {background-color: rgb(90, 90, 90)}
     .menu:hover .dropdown-menu {display: block;}
+  </style>
+
+  <style>
+        .toc-arrow { display:inline-block; margin-right:0px; color:#555; transition: transform 0.2s; }
+        .toc-active .toc-arrow { transform: rotate(90deg); }
+        .toc-link { text-decoration:none; color:inherit; display:block; padding:2px 0; cursor:pointer; }
+        .toc-link:hover { color:#000; }
+        .toc-sublist { display:none; list-style:none; padding-left:10px; }
   </style>
 
   <style>
@@ -145,32 +231,38 @@
     }
     body {font-family: 'TG Schola', 'Century Schoolbook', 'New Century Schoolbook', Georgia, serif;}
   </style>
+
 </head>
 
 <body style="margin: 0; background-color:#ffe4c8; ">
-
-  <!--Navbar-->
-  <div class="navbar">
-    <div style="justify-self: start; width: 70px;"><a href="/index.html"> <img src="Media/Logo/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px" > </a></div>
-    <div id="banner" style="width: 100%; padding-top: 3px; padding-bottom:3px;"> </div>
-    <div class="menu" style="justify-self: end; cursor: pointer; width: 70px;">
-      <div style="font-size: 40px; text-align: right; padding-right: 10px; "> &#x2630; </div>
-      <nav class="dropdown-menu">
-        <a href="/index.html">Home</a>
-        <a href="/pages/topics.html">Topics</a>
-        <a href="/pages/about.html">About</a>
-      </nav>
+  <header id="site-navbar">
+    <!--Navbar-->
+    <div class="navbar">
+      <div style="justify-self: start; width: 70px;"><a href="/index.html"> <img src="Media/Logo/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px" > </a></div>
+      <div id="banner" style="width: 100%; padding-top: 3px; padding-bottom:3px;"> </div>
+      <div class="menu" style="justify-self: end; cursor: pointer; width: 70px;">
+        <div style="font-size: 40px; text-align: right; padding-right: 10px; "> &#x2630; </div>
+        <nav class="dropdown-menu">
+          <a href="/index.html">Home</a>
+          <a href="/pages/topics.html">Topics</a>
+          <a href="/pages/about.html">About</a>
+        </nav>
+      </div>
     </div>
-  </div>
-
-  <div id="equation_hover" style="position: fixed; top: 60px; padding-right: 20px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
-  <div id="fig_hover" style="position: fixed; top: 60px; padding-right: 20px; padding-left: 20px; background-color:#f99830; width: 660px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
-
+  </header>
 
   <!--Page-->
   <main>
+   <div id="equation_hover" style="position: fixed; top: 60px; padding: 0px; padding-right: 20px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
+    <div id="fig_hover" style="position: fixed; top: 60px; padding: 0px; padding-right: 20px; padding-left: 20px; background-color:#f99830; width: 660px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
     <!--Page Navbar-->
-    <nav id="toc" class="sidebar">
+    <nav id="tocsidebar">
+      <p style="font-size: 1.5em; font-weight: normal; margin: 0pt; padding-bottom: 0.5em;  text-align: center;"><span style="font-family: 'Computer Modern', serif; font-style: italic;">Handbook of</span>
+        <span style="font-family: 'Computer Modern', serif;">
+          [Insert Topic Name]
+        </span>
+      </p>
+      <p style="font-weight: bold; font-size: 1.2em; margin: 0pt;">Contents</p>
       [Insert TOC] <!-- needs to be in seperate line for ASM.py --> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p>
       [Insert PDF Link]
       <a href="/pages/about.html" style="position: fixed; left: 10px; bottom: 10px;"> <div> About Phy-Hub</div> </a>
@@ -178,20 +270,34 @@
 
     <!--Main Content-->
     <article style=" line-height: 1.5; font-size: 20px; border-left: 10px solid rgba(128, 128, 128, 0.1); border-right: 10px solid rgba(128, 128, 128, 0.1);">
-      <header style="display: flex; justify-content: center; text-align: center; font-family: 'Computer Modern Serif'; padding-bottom: 50px; padding-top: 30px;">
-        <div>
-          <svg width="450px" viewBox="0 0 1918 568" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><clipPath id="clip0"><rect x="1255" y="133" width="1918" height="568"/></clipPath></defs><g clip-path="url(#clip0)" transform="translate(-1255 -133)"><path d="M1310.6 701 3117.4 701 3117.4 597.727 3173 597.727 3173 529.206 2214 133 1255 529.206 1255 597.727 1310.6 597.727 1310.6 701Z" fill-rule="evenodd"/></g></svg>
-          <div style=" display: flex; flex-direction: column; justify-content: center; align-items: center; height: 180px; "><div style=" font-family: 'Computer Modern', serif; font-style: italic; font-size: 50px;" > Handbook of  </div>  <div style="font-family: 'Computer Modern', serif; font-size: 55px;" >
-            [Insert Topic Name]
-          </div> </div>
-          <svg style="vertical-align: middle;" width="460px" viewBox="0 0 2326 150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><filter id="fx0" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.439216" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="7.63889 7.63889"/></filter><clipPath id="clip1"><rect x="1051" y="1638" width="2326" height="200"/></clipPath></defs><g clip-path="url(#clip1)" transform="translate(-1051 -1638)"><g filter="url(#fx0)" transform="matrix(2 0 0 2 1050 1638)"><g><path d="M23.7399 23.6633 1140.26 23.6633 1140.26 76.7084 23.7399 76.7084Z" fill-rule="evenodd"/></g></g><path d="M1130 1638 3298 1638 3298 1741 1130 1741Z" fill-rule="evenodd"/></g></svg>
-          <svg style="vertical-align: middle;" width="510px" viewBox="0 0 2326 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><filter id="fx0" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.439216" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="7.63889 7.63889"/></filter><clipPath id="clip1"><rect x="1051" y="1638" width="2326" height="200"/></clipPath></defs><g clip-path="url(#clip1)" transform="translate(-1051 -1638)"><g filter="url(#fx0)" transform="matrix(2 0 0 2 1050 1638)"><g><path d="M23.7399 23.6633 1140.26 23.6633 1140.26 76.7084 23.7399 76.7084Z" fill-rule="evenodd"/></g></g><path d="M1130 1638 3298 1638 3298 1741 1130 1741Z" fill-rule="evenodd"/></g></svg>
-
+      <header style="display: flex; justify-content: center; text-align: center; font-family: 'Computer Modern Serif'; padding-top: 10px;">
+        <div style="width: 50%; display: flex; flex-direction: column; align-items: center;">
+            <svg style="width: 70%; height: auto; display: block;" viewBox="0 0 1918 568" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><clipPath id="clip0"><rect x="1255" y="133" width="1918" height="568"/></clipPath></defs><g clip-path="url(#clip0)" transform="translate(-1255 -133)"><path d="M1310.6 701 3117.4 701 3117.4 597.727 3173 597.727 3173 529.206 2214 133 1255 529.206 1255 597.727 1310.6 597.727 1310.6 701Z" fill-rule="evenodd"/></g></svg>
+            <h1 aria-label="Handbook of Special Relativity" style="margin: 0; padding: 0; width: 100%; display: flex; justify-content: center; font-weight: normal;">
+                <svg style="width: 78%; height: auto; display: block; margin: 1% 0;" viewBox="0 0 1000 375" xmlns="http://www.w3.org/2000/svg">
+                    <style>.temple-text { font-family: 'Computer Modern', serif; fill: black; text-anchor: middle; } </style>
+                    <text x="50%" y="35%" class="temple-text" font-style="italic" font-size="100">Handbook of</text>
+                    <text x="50%" y="75%" class="temple-text" font-size="110">
+                        Special Relativity
+                    </text>
+                </svg>
+            </h1>
+            <svg style="width: 72%; height: auto; display: block; margin-top: -1%;" viewBox="0 0 2326 150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"> <defs><filter id="fx0" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.439216" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="7.63889 7.63889"/></filter><clipPath id="clip1"><rect x="1051" y="1638" width="2326" height="200"/></clipPath></defs> <g clip-path="url(#clip1)" transform="translate(-1051 -1638)"><g filter="url(#fx0)" transform="matrix(2 0 0 2 1050 1638)"><g><path d="M23.7399 23.6633 1140.26 23.6633 1140.26 76.7084 23.7399 76.7084Z" fill-rule="evenodd"/></g></g><path d="M1130 1638 3298 1638 3298 1741 1130 1741Z" fill-rule="evenodd"/></g> </svg>
+            <svg style="width: 80%; height: auto; display: block;" viewBox="0 0 2326 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><filter id="fx1" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.439216" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="7.63889 7.63889"/></filter><clipPath id="clip2"><rect x="1051" y="1638" width="2326" height="200"/></clipPath></defs><g clip-path="url(#clip2)" transform="translate(-1051 -1638)"><g filter="url(#fx1)" transform="matrix(2 0 0 2 1050 1638)"><g><path d="M23.7399 23.6633 1140.26 23.6633 1140.26 76.7084 23.7399 76.7084Z" fill-rule="evenodd"/></g></g><path d="M1130 1638 3298 1638 3298 1741 1130 1741Z" fill-rule="evenodd"/></g></svg>
         </div>
+        <!-- <div style="container-type: inline-size; width: 100%; display: flex; flex-direction: column; align-items: center;">
+          <svg style="width: 70%; height: auto; display: block;" viewBox="0 0 1918 568" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><clipPath id="clip0"><rect x="1255" y="133" width="1918" height="568"/></clipPath></defs><g clip-path="url(#clip0)" transform="translate(-1255 -133)"><path d="M1310.6 701 3117.4 701 3117.4 597.727 3173 597.727 3173 529.206 2214 133 1255 529.206 1255 597.727 1310.6 597.727 1310.6 701Z" fill-rule="evenodd"/></g></svg>
+          <h1 style="text-align: center; margin: 5cqw 0; font-weight: normal; line-height: 1.3;">
+            <span style="display: block; font-family: 'Computer Modern', serif; font-style: italic; font-size: 7.8cqw;">Handbook of</span><span style="display: block; font-family: 'Computer Modern', serif; font-size: 8.6cqw;">
+              [Insert Topic Name]
+            </span>
+          </h1>
+          <svg style="width: 72%; height: auto; display: block; margin-top: -2cqw;" viewBox="0 0 2326 150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><filter id="fx0" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.439216" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="7.63889 7.63889"/></filter><clipPath id="clip1"><rect x="1051" y="1638" width="2326" height="200"/></clipPath></defs><g clip-path="url(#clip1)" transform="translate(-1051 -1638)"><g filter="url(#fx0)" transform="matrix(2 0 0 2 1050 1638)"><g><path d="M23.7399 23.6633 1140.26 23.6633 1140.26 76.7084 23.7399 76.7084Z" fill-rule="evenodd"/></g></g><path d="M1130 1638 3298 1638 3298 1741 1130 1741Z" fill-rule="evenodd"/></g></svg>
+          <svg style="width: 80%; height: auto; display: block;" viewBox="0 0 2326 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><filter id="fx1" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.439216" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="7.63889 7.63889"/></filter><clipPath id="clip2"><rect x="1051" y="1638" width="2326" height="200"/></clipPath></defs><g clip-path="url(#clip2)" transform="translate(-1051 -1638)"><g filter="url(#fx1)" transform="matrix(2 0 0 2 1050 1638)"><g><path d="M23.7399 23.6633 1140.26 23.6633 1140.26 76.7084 23.7399 76.7084Z" fill-rule="evenodd"/></g></g><path d="M1130 1638 3298 1638 3298 1741 1130 1741Z" fill-rule="evenodd"/></g></svg>
+        </div> -->
       </header>
       [Insert Content] <!-- needs to be in seperate line for ASM.py --> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p>
-      <h3> Bibliography</h3>
-      <div id="partial_bib"></div>
+      <!-- <div id="partial_bib"></div> -->
       <div id="bibliography">
         [Insert Bib]
       </div>
@@ -199,13 +305,13 @@
 
     <!--Sidebar-->
     <aside class="sidebar" style="overflow-y: auto; max-height: calc(100vh - 100px);">
-      <dl id="vars">
-        <a href="..." style="padding-top: 5px;"> <b> Relativity Playground </b> </a> <br>
-        <a href="..." style="padding-top: 5px;"> <b> Resources </b> </a> <br>
-        <h3 style="cursor: pointer;" onclick="var content = this.nextElementSibling; content.style.display = content.style.display === 'none' ? 'block' : 'none';">Terms ⯆</h3>
+      <!-- <a href="..." style="padding-top: 5px;"> <b> Relativity Playground </b> </a> <br>
+           <a href="..." style="padding-top: 5px;"> <b> Resources </b> </a> <br> -->
+        <div id="vars">
+          <h3 style="cursor: pointer;" onclick="var content = this.nextElementSibling; content.style.display = content.style.display === 'none' ? 'block' : 'none';">Terms ⯆</h3>
         [Insert Math Terms] <dl id="dts_ch2" style="display: none;"><dt style="cursor: pointer;" onclick="document.getElementById('math-E').style.display = document.getElementById('math-E').style.display == 'none' ? 'inline' : 'none';"> \(E\)<b>:</b> </dt><definition id="math-E" style="display: none;">an <dt onmouseover="document.getElementById('event').style.display='block'" onmouseout="document.getElementById('event').style.display='none'">event</dt> *** might be confused with energy later ***</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-v').style.display = document.getElementById('math-v').style.display == 'none' ? 'inline' : 'none';"> \(v\)<b>:</b> </dt><definition id="math-v" style="display: none;">is the velocity of second <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt> relative to the first <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt></definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-c').style.display = document.getElementById('math-c').style.display == 'none' ? 'inline' : 'none';"> \(c\)<b>:</b> </dt><definition id="math-c" style="display: none;">the speed that light travels in empty space when it is not impeded by matter and fields.</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-gamma').style.display = document.getElementById('math-gamma').style.display == 'none' ? 'inline' : 'none';"> \(\gamma\)<b>:</b> </dt><definition id="math-gamma" style="display: none;">a relativistic factor given by \(1/\sqrt{1-v^2/c^2}\) which determines how much of an effect the <dt onmouseover="document.getElementById('transform').style.display='block'" onmouseout="document.getElementById('transform').style.display='none'">transform</dt> of the coordinates deviates from the classical transform. It is only significant at relative frame speeds close to that of light.</definition></dl>
-      </dl>
-      <dl id="dictionary" style="position: fixed; bottom: 0; left: calc(50% + 350px + 10px); background-color: rgb(242, 218, 193); margin-right: 10px; margin-bottom: 10px;">
+      </div>
+      <dl id="dictionary" style="position: fixed; bottom: 0; left: calc(50% + 350px + 10px); background-color: rgb(242, 218, 193); margin-right: 10px;">
         [Insert Definitions]
       </dl>
     </aside>
@@ -217,7 +323,7 @@
   <script>
 
     //##################
-    window.onload = function() {
+    window.addEventListener('load', function() {
       fetch('Media/Logo/DS_Pattern.svg')
         .then(response => response.text())
         .then(data => {
@@ -227,8 +333,8 @@
           var myUses = svgDoc.getElementsByTagName('use');
           var totalItems = myUses.length; // total number of items
           var totalTime = 4; // total time for all animations in seconds
-          var timePerItemSlow = totalTime / 1000; // time per item for first 300 items
-          var timePerItemFast = (totalTime - (timePerItemSlow * 100)) / (totalItems - 100); // time per item for remaining items
+          var timePerItemSlow = totalTime / 2000; // time per item for first 300 items
+          var timePerItemFast = (totalTime - (timePerItemSlow * 200)) / (totalItems - 100); // time per item for remaining items
           for (var i = 0; i < myUses.length; i++) {
             myUses[i].style.opacity = 0;
             if (i < 300) {
@@ -245,9 +351,11 @@
             }
           }, 0);
         });
-    }
+    });
 
     //##################
+    //#todo  change details to ul or li version
+    //#todo check if id's are correct in section refs
     function showContent(divId) {
 
       $(document).ready(function() {
@@ -260,11 +368,6 @@
       $("details").removeAttr("open");
       window.scrollTo(0,0);
     }
-
-    //##################
-    $(document).on('click', 'summary', function() {
-        $(this).closest('summary').attr('open', '');
-    });
 
     //##################
     function resizeSVGImages() {
@@ -320,7 +423,7 @@
       var myDiv = document.getElementById(id);
       myDiv.innerHTML = ''; // Delete the content
     }
-
+    //#todo change details version to ul or li
     //##################
     document.addEventListener("DOMContentLoaded", function () {
       // Get the hash from the URL (e.g., #subsection1)
@@ -347,7 +450,60 @@
       }
     });
 
-  [Insert Script]
+    function toggleView(type, id) {
+        // --- 1. Define Selectors based on Type ---
+        // If type is 'part', we look for part links/lists. If 'ch', we look for chapter ones.
+        const isPart = (type === 'part');
+
+        // Classes added in Python:
+        const linkClass = isPart ? '.toc-part-link' : '.toc-chapter-link';
+        const listClass = isPart ? '.toc-part-sublist' : '.toc-chapter-sublist';
+
+        // Attribute selectors to find content wrappers (e.g., id="part1_wrap")
+        // This finds all divs that start with 'part'/'ch' and end with '_wrap'
+        const wrapSelector = isPart ? '[id^="part"][id$="_wrap"]' : '[id^="ch"][id$="_wrap"]';
+
+        // --- 2. Hide EVERYTHING in this group ---
+        document.querySelectorAll(linkClass).forEach(el => el.classList.remove('toc-active'));
+        document.querySelectorAll(listClass).forEach(el => el.style.display = 'none');
+        document.querySelectorAll(wrapSelector).forEach(el => el.style.display = 'none');
+
+        // --- 3. Show the TARGET ---
+        // Activate Link
+        const activeLink = document.getElementById('link_' + type + '_' + id);
+        if (activeLink) activeLink.classList.add('toc-active');
+
+        // Show TOC Sublist
+        const activeList = document.getElementById('toc_' + type + '_' + id);
+        if (activeList) activeList.style.display = 'block';
+
+        // Show Content Wrapper
+        const activeWrap = document.getElementById(type + id + '_wrap');
+        if (activeWrap) activeWrap.style.display = 'block';
+
+        // --- 4. Auto-Open First Chapter (Logic moved from Python to here) ---
+        if (isPart && activeList) {
+            // Find the first chapter link INSIDE the now-visible part list
+            const firstChapter = activeList.querySelector('.toc-chapter-link');
+            if (firstChapter) {
+                // Extract ID from the link ID (format: link_ch_1)
+                const chId = firstChapter.id.replace('link_ch_', '');
+                toggleView('ch', chId);
+            }
+        }
+    }
+
+    // --- 5. Initialization on Load ---
+    window.addEventListener('DOMContentLoaded', () => {
+        // Find the very first Part link in the HTML and click it
+        const firstPart = document.querySelector('.toc-part-link');
+        if (firstPart) {
+            const pId = firstPart.id.replace('link_part_', '');
+            toggleView('part', pId);
+        }
+    });
+
+    [Insert Script]
 
   </script>
 </body>

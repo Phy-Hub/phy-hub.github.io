@@ -1,38 +1,38 @@
 ### PROBLEM LaTeX LINES ###
-# Line 1352: \begin{quote}\centering
-### Line 1352: '\begin{quote}\centering'
-# Line 1353: \textit{\small (This can be seen as a bonus section that may be skipped, as it is not directly relevant for the understanding of any other sections in this text.)}
-### Line 1353: '\textit{\small (This can be seen as a bonus section that may be skipped, as it is not directly relevant for the understanding of any other sections in this text.)}'
-# Line 1354: \end{quote}
-### Line 1354: '\end{quote}'
-# Line 1370: \begin{derivation}
-### Line 1370: '\begin{derivation}'
-# Line 1444: \end{derivation}
-### Line 1444: '\end{derivation}'
-# Line 1462: \begin{derivation}
-### Line 1462: '\begin{derivation}'
-# Line 1498: \end{derivation}
-### Line 1498: '\end{derivation}'
-# Line 1529: \begin{derivation}
-### Line 1529: '\begin{derivation}'
-# Line 1573: \end{derivation}
-### Line 1573: '\end{derivation}'
-# Line 1596: \begin{derivation}
-### Line 1596: '\begin{derivation}'
-# Line 1664: \end{derivation}
-### Line 1664: '\end{derivation}'
-# Line 2223: \begin{derivation}
-### Line 2223: '\begin{derivation}'
-# Line 2267: \end{derivation}
-### Line 2267: '\end{derivation}'
-# Line 2319: \begin{derivation}
-### Line 2319: '\begin{derivation}'
-# Line 2361: \end{derivation}
-### Line 2361: '\end{derivation}'
-# Line 2453: \begin{derivation}
-### Line 2453: '\begin{derivation}'
-# Line 2493: \end{derivation}
-### Line 2493: '\end{derivation}'
+# Line 1684: \begin{quote}\centering
+### Line 1684: '\begin{quote}\centering'
+# Line 1685: \textit{\small (This can be seen as a bonus section that may be skipped, as it is not directly relevant for the understanding of any other sections in this text.)}
+### Line 1685: '\textit{\small (This can be seen as a bonus section that may be skipped, as it is not directly relevant for the understanding of any other sections in this text.)}'
+# Line 1686: \end{quote}
+### Line 1686: '\end{quote}'
+# Line 1702: \begin{derivation}
+### Line 1702: '\begin{derivation}'
+# Line 1776: \end{derivation}
+### Line 1776: '\end{derivation}'
+# Line 1794: \begin{derivation}
+### Line 1794: '\begin{derivation}'
+# Line 1830: \end{derivation}
+### Line 1830: '\end{derivation}'
+# Line 1861: \begin{derivation}
+### Line 1861: '\begin{derivation}'
+# Line 1905: \end{derivation}
+### Line 1905: '\end{derivation}'
+# Line 1928: \begin{derivation}
+### Line 1928: '\begin{derivation}'
+# Line 1996: \end{derivation}
+### Line 1996: '\end{derivation}'
+# Line 2556: \begin{derivation}
+### Line 2556: '\begin{derivation}'
+# Line 2600: \end{derivation}
+### Line 2600: '\end{derivation}'
+# Line 2652: \begin{derivation}
+### Line 2652: '\begin{derivation}'
+# Line 2694: \end{derivation}
+### Line 2694: '\end{derivation}'
+# Line 2786: \begin{derivation}
+### Line 2786: '\begin{derivation}'
+# Line 2826: \end{derivation}
+### Line 2826: '\end{derivation}'
 ######################
 number of lines with bugs: 34 
 ######################

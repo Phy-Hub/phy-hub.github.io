@@ -1,7 +1,0 @@
-﻿722: <div class='arrow-nav'>
-1190: <div class='arrow-nav'>
-1552: <div class='arrow-nav'>
-1741: <div class='arrow-nav'>
-2103: <div class='arrow-nav'>
-2284: <div class='arrow-nav'>
-2319: <div class='arrow-nav'>

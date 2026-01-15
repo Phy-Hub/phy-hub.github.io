@@ -464,6 +464,9 @@ INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\blx-case-e
 INPUT .\Tex\Terms\Term_dict.tex
 INPUT .\Tex\Terms\Term_dict.tex
 INPUT Tex\Terms\Term_dict.tex
+INPUT .\Tex\Terms\Term_commands.tex
+INPUT .\Tex\Terms\Term_commands.tex
+INPUT Tex\Terms\Term_commands.tex
 INPUT c:\Users\one_p\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.aux
 INPUT c:\Users\one_p\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.aux
 INPUT c:\Users\one_p\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.aux

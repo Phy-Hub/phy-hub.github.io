@@ -1950,3 +1950,431 @@ the density of the retarded positions of the charges are given by (from gemini, 
 *** think this should have a gamma infront of each Z
 
 as should be diferentiating with respect to dz instead of $dz_{ret}$ and change is bigger than change in dz, and we want change in dz i think
+
+%███████████████████████████████████████████████████████████████████
+\subsection{Exchange of a Photon Between Masses initially at Rest}\label{subsect: Exchange of a Photon Between Masses initially at Rest}
+
+*** start do bullet point derivation to start
+
+* The center of mass of a closed/isolated system needs to remain constant
+
+* if an isolated system that has its centre of mass at rest and then has it change, then its momentum goes from zero to non zero, a violation of the conservation of momentum
+
+* "If the center of mass were allowed to move or accelerate without any external force, it would imply that an object could "pull itself up by its own bootstraps" and generate speed from nothing. This would violate Newton’s First Law (Inertia) and the Conservation of Momentum.
+
+* maybe do derivation and only substitute in $P=E/c$ to allow for better explanation of need for both $P=E/c$ and $E=mc^2$ together
+
+*** from book:
+
+If signals could move faster than light, it would lead to the paradox that The order of cuase and effect depends on the observer, meaning that an effect could happen before an event for certain observers.
+
+derivation:
+
+*** start
+
+Ignore completely any connection between the ends of the box, and regard it as two separate masses, $m_1$ and $m_2$ (Fig. 1-6). Just suppose that one end, of initial mass $m_1$, emits energy $E$ at $t = 0$ and suffers a mass change to $m_1'$. It acquires a velocity $v_1$ given by
+\[
+v_1 = \frac{-E/c}{m_1'}
+\]
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        % Define styles
+        mass/.style={draw, fill=gray!30, minimum width=0.5cm, minimum height=1.0cm, font=\small},
+        velarrow/.style={-latex, thin},
+        energyarrow/.style={-latex, thin},
+        dashedline/.style={dashed, thin, gray},
+        labeltext/.style={font=\footnotesize\bfseries, align=left}
+    ]
+
+    % === Parameters ===
+    \def\rowgap{2.2cm}
+    \def\Ldist{4.5cm}
+    \def\shift{0.6cm}   % The recoil distance for the bottom row
+
+    % Base coordinates
+    \coordinate (toprow_y) at (0, \rowgap);
+    \coordinate (botrow_y) at (0, 0);
+
+    % The vertical dashed lines represent x=0 and x=L
+    % Since the boxes are to the left/right of these lines, we offset the nodes by half their width (0.25)
+
+    % ====== TOP ROW: Just after emission (Unshifted) ======
+
+    % Left Mass (m) - Sits to the left of x=0
+    \node[mass] (m_top) at (-0.25, \rowgap) {$m$};
+
+    % Right Mass (m2) - Sits to the right of x=L
+    \node[mass] (m2_top) at (\Ldist + 0.25, \rowgap) {$m_2$};
+
+    % Velocity Arrow v1 (Points LEFT)
+    \draw[velarrow] (m_top.west) -- node[above, font=\small] {$v_1$} ++(-0.6, 0);
+
+    % Energy Arrows (Point RIGHT, leaving m)
+    \coordinate (E_start) at ($(m_top.east) + (0.2,0)$);
+    \foreach \y in {-0.12, -0.04, 0.04, 0.12} {
+        \draw[energyarrow] ($(E_start)+(0,\y)$) -- ++(0.5,0);
+    }
+    \node[right, font=\small] at ($(E_start) + (0.5,0)$) {$E$};
+
+    % Label
+    \node[labeltext, right=0.5cm] at (m2_top.east) {Just after\\emission};
+
+
+    % ====== BOTTOM ROW: Just after absorption (Shifted) ======
+
+    % Left Mass (m1) - Recoiled to the LEFT (Shifted)
+    \node[mass] (m1_bot) at (-0.25 - \shift, 0) {$m_1$};
+
+    % Right Mass (m2) - Recoiled to the RIGHT (Shifted)
+    \node[mass] (m2_bot) at (\Ldist + 0.25 + \shift, 0) {$m_2$};
+
+    % Velocity Arrow v1 (Points LEFT)
+    \draw[velarrow] (m1_bot.west) -- node[above, font=\small] {$v_1$} ++(-0.6, 0);
+
+    % Energy Arrows (Point RIGHT, entering m2)
+    % Note: The energy has traveled distance L, so we draw it arriving at the dashed line L,
+    % or relative to the moved mass. The diagram usually shows it arriving at the mass.
+    \coordinate (E_end) at ($(m2_bot.west) + (-0.2,0)$);
+    \foreach \y in {-0.12, -0.04, 0.04, 0.12} {
+        \draw[energyarrow] ($(E_end)+(-0.5,\y)$) -- ($(E_end)+(0,\y)$);
+    }
+    \node[left, font=\small] at ($(E_end)+(-0.5,0)$) {$E$};
+
+    % Velocity Arrow v2 (Points RIGHT)
+    \draw[velarrow] (m2_bot.east) -- node[above, font=\small] {$v_2$} ++(0.6, 0);
+
+    % Label
+    \node[labeltext, right=0.5cm] at (m2_bot.east) {Just after\\absorption};
+
+
+    % ====== GUIDES ======
+
+    % Left vertical dashed line (at x=0)
+    % Extends from slightly below bottom mass to slightly above top mass
+    \draw[dashedline] (0, -0.6) -- (0, \rowgap + 0.6);
+
+    % Right vertical dashed line (at x=L)
+    \draw[dashedline] (\Ldist, -0.6) -- (\Ldist, \rowgap + 0.6);
+
+    % Dimension L (Between the two dashed lines)
+    \draw[<->, >=latex, thin] (0, 1.1) -- node[fill=white, inner sep=2pt, font=\small] {$L$} (\Ldist, 1.1);
+
+    % Optional: Dashed lines showing the new positions relative to old?
+    % The problem image has dashed lines mainly at x=0 and x=L to show the gap.
+
+    \end{tikzpicture}
+    \caption*{Fig. 1-6 ``Einstein's box unhinged.'' The recoil processes in two unconnected masses in consequence of a burst of radiant energy emitted from one ($m_1$) and absorbed in the other ($m_2$).}
+\end{figure}
+
+If $m_1$ were originally at $x = 0$, its position at any later time is thus given by
+\begin{equation}
+    x_1(t) = - \frac{E}{m_1' c} t \tag{1-30}
+\end{equation}
+
+When the energy arrives at $m_2$ (at $t = L/c$) it causes a recoil and a change of mass so that we have, for the position of $m_2$,
+\begin{equation}
+    x_2(t) = L + \frac{E}{m_2' c} (t - L/c) \tag{1-31}
+\end{equation}
+
+Let the total mass be $M$, and let the position of the center of mass be $\bar{x}$ before the radiation was emitted from $m_1$ and $\bar{x}'$ after it was absorbed in $m_2$. Then
+\begin{equation}
+    M\bar{x} = m_1 \cdot 0 + m_2 \cdot L \tag{1-32}
+\end{equation}
+and
+\[
+M\bar{x}' = m_1'\left( \frac{-E}{m_1' c} t \right) + m_2' \left[ L + \frac{E}{m_2' c} (t - L/c) \right]
+\]
+i.e.,
+\begin{equation}
+    M\bar{x}' = - \frac{E}{c} t + m_2' L + \frac{E}{c} t - \frac{E}{c^2} L \tag{1-33}
+\end{equation}
+
+Hence, if $\bar{x}' = \bar{x}$,
+\begin{equation}
+    \Delta m_2' = m_2' - m_2 = \frac{E}{c^2} = - \Delta m_1' \tag{1-34}
+\end{equation}
+
+Thus the principle of inertia of energy finds a sounder theoretical basis, but by this stage we have seen its real vindication in the experimentally observed behavior of particles.
+
+
+
+* meantion that rigid bodys are not possible in special relativity, as it would lead to faster than light signals, i.e. instantaneous.
+
+
+
+% %███████████████████████████████████████████████████████████████████
+% \subsection{A Photon in a Rigid Box}\label{subsect: A Photon in a Rigid Box}
+
+% * let us look at a very simple system of box which is initially at rest, which emits a photon from one side to be absorbed by the opposite side,
+
+% \begin{figure}[htbp]
+%     \centering
+%     \begin{subfigure}[b]{0.32\textwidth}
+%         \centering
+%         \begin{tikzpicture}
+%             \draw[step=0.5, gray!60, thin] (-2,-2) grid (2,2);
+%             \node[draw=black, thick, fill=white, minimum size=3cm] (box) at (0,0) {};
+%             \node[star, star points=7, star point ratio=2, fill=yellow, draw=orange, inner sep=2pt] at (-1.5, 0) {};
+%             \draw[black, dashed, thick] (0,-1.75) -- (0, 1.75);
+%             \node[black, font=\tiny, inner sep=1pt] at (0, -1.9) {COM};
+%         \end{tikzpicture}
+%         \caption{Emission}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.32\textwidth}
+%         \centering
+%         \begin{tikzpicture}
+%             \draw[step=0.5, gray!40, thin] (-2,-2) grid (2,2);
+%             \def\shift{-0.25};
+%             \node[draw=black, thick, fill=white, minimum size=3cm] (box) at (\shift,0) {};
+% 			\node[draw=gray!80, dashed, thick, minimum size=3cm] at (0,0) {};
+
+% 			% Blur loop Right (Vertical lines only)
+%             \foreach \i in {1,...,20} {
+%                 \pgfmathsetmacro{\opacity}{0.25 * (1 - \i/20)}
+%                 \pgfmathsetmacro{\offset}{\i * 0.008}
+%                 % Draw Left vertical line of ghost
+%                 \draw[black, opacity=\opacity] (\shift + \offset - 1.5, -1.5) -- (\shift + \offset - 1.5, 1.5);
+%                 % Draw Right vertical line of ghost
+%                 \draw[black, opacity=\opacity] (\shift + \offset + 1.5, -1.5) -- (\shift + \offset + 1.5, 1.5);
+% }
+
+
+%             \draw[decorate, decoration={snake, amplitude=2pt, segment length=5pt}, ->, yellow!90!black, thick] (\shift-0.5, 0) -- (\shift+0.5, 0);
+%             \node[circle, fill=yellow, inner sep=1.5pt] at (\shift, 0) {};
+
+%             \draw[<<-, black, thick] (\shift+0.85, 0.75) -- (\shift+1.5, 0.75) node[midway, above, black] {$u$};
+%             \draw[black, dashed, thick] (0,-1.75) -- (0, 1.75);
+% 			\node[black, font=\tiny, inner sep=1pt] at (0, -1.9) {COM};
+%         \end{tikzpicture}
+%         \caption{Box Recoils}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.32\textwidth}
+%         \centering
+%         \begin{tikzpicture}
+%             \draw[step=0.5, gray!50, thin] (-2,-2) grid (2,2);
+%             \node[gray, font=\tiny] at (0,0) {Origin};
+%             \def\shift{-0.5}
+%             \node[draw=black, thick, fill=white, minimum size=3cm] (box) at (\shift,0) {};
+% 			\node[draw=gray!80, dashed, thick, minimum size=3cm] at (0,0) {};
+%             \node[star, star points=7, star point ratio=2, fill=yellow, draw=orange, inner sep=2pt] at (\shift+1.5, 0) {};
+%             \draw[black, dashed, thick] (0,-1.75) -- (0, 1.75);
+% 			\node[black, font=\tiny, inner sep=1pt] at (0, -1.9) {COM};
+%         \end{tikzpicture}
+%         \caption{Absorption}
+%     \end{subfigure}
+%     \caption{Einstein's Box Thought Experiment: The Center of Mass (black dashed line) remains at the origin (0,0) throughout the entire process. 1) Photon emission at the left wall. 2) As the photon moves right, the box moves half a grid width to the left. 3) Photon absorption at the right wall stops the box, leaving it displaced by exactly one grid width.}
+%     \label{fig:einstein_box_updated}
+% \end{figure}
+
+% *** this is not actually true as right hand side would not begin to move until signal gets to it
+
+% *** change to a mirrored ball reflecting a photon, with the energy of the photon reducing by the amount of kinetic energy imparted to the ball
+
+% *** This allows the equation to be used if we take it that we can substitute the momentum of the photon in for $p$ in the equation.
+% Which was also experimentally verified to be true.
+
+% * there is a problem with this thought experiment though, as there is no such thing as a rigid box in real life, and the far side of the box would not move instantaneously, and the left hand side would start to move before the right.
+
+% * If we are not satisfied that this thought experiment, we can instead look at the next thought experiment where we have the the walls of the box are not connected, but can still see that we require that momentum of a photon is $p=E/c$
+
+% %███████████████████████████████████████████████████████████████████
+% \subsection{A Photon Between two Disconnected Walls}\label{subsect: Photon between two Disconnected Walls}
+
+
+* now show using subsection how this works nicely with the thought experiment, and show that if you start with $E=pc$ you get $E_{0}= mc^2$, or you can start vise versa, but the main thing is that these two ideas work out to be compatible with eachother
+
+* then have section giving final energy momentum relation.
+
+* maybe introduce the concept of effective mass $m_{eff} = \gamma_{u} {m}$
+
+as it has the same units, and it approximates to the classical momentum at small particle speeds.
+We will denote the energy as
+
+\begin{equation}
+	{E_p} = {p} {c}
+\end{equation}
+
+* The reason
+
+If we take this interpretation of the equations, then we would have the final equation relating the energy and momentum of a particle as
+
+*** remove:
+
+\begin{equation}
+	\mhl{
+		\begin{aligned}
+			E^2 & = E_{0}^2 + E_p^2    \\
+			    & = (mc^2)^2 + (pc)^2
+		\end{aligned}
+	}
+\end{equation}
+
+* This is a major
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\section{A Photon's Energy-Momentum Relation}\label{sect: A Photon's Energy-Momentum Relation}
+
+*** when photon is put into the energy-mass/momentum relation we have it that it must have zero rest mass, or else its energy would be infinite *** explain from equation.
+
+*** therefore we must take the rest mass as being zero, leading to $E_{ph}= \gamma m_0 c * c$ for this we have gamma being infinite and mass being zero, for the equation to be meaningful we would require $\gamma m_0$ to work out to give a finite value, with units of mass, we can call the effective mass of a photon, with $p_{ph}=\gamma m_0 c$ being the momentum of photon giving the energy momentum relation as $p_{ph}= E_{ph}/c$
+
+
+
+* The mass of a photon is thought to be zero, so you might ask how this fits into the previous equation that has mass and momentum which classically requires a mass in the equation.
+Well, a photon actually does have momentum, just in a different form, and we will derive it through thought experiments, shown in the next sections.
+
+What about a light, how does it fit into the energy-momentum relation.
+Well first we need to know what a photon's momentum is.
+This can be derived through electromagnetic theory *ref* 1900, and it was also derived in Brownian motion, which is the motion of atoms/molecules in liquid or gas *ref* 1917/1909.
+Both of which would require learning of topics outside the scope of special relativity.
+So we will instead just look at what the momentum of a photon is and then see if this fits nicely with what we have already looked at, without any contradictions.
+
+The momentum of a photon is given by the equation
+
+* use subscript p instead of ph, as p is used above, just mention this is specifically for photon
+
+\begin{equation}
+\label{eq: momentum of photon}
+p_{ph} = \frac{E_{ph}}{c}
+\end{equation}
+
+It is this momentum that we use in the energy momentum relation, as well as the rest mass of the photon $m_{ph}=0$.
+
+To show that using this energy-momentum relation for a photon is consistent with conservation of momentum, we will use the following thought experiment.
+
+* This will then allow equation \eqref{eq: energy-momentum relation} to work for situations where we have a system that includes light
+
+% %███████████████████████████████████████████████████████████████████
+% %███████████████████████████████████████████████████████████████████
+% \section{Momentum of Emmitted Light from Source}\label{sect: Momentum of Emmitted Light from Source}
+
+% https://courses.physics.ucsd.edu/2019/Winter/physics110b/LECTURES/C19.pdf
+
+% page 29:
+
+% Consider next the emission of a photon of 4-momentum Pµ = ( ω/c, k) from an object with 4-velocity
+%  Vµ, and detected in a frame with 4-velocity Uµ. In the frame of the detector, the photon energy is
+%  E = PµUµ, while in the frame of the emitter its energy is E′ = PµVµ. If Uµ = (1,0,0,0) and Vµ =
+%  (γ , γβ), then E = ω and E′ = ω′ = γ (ω−β·k) = γ ω(1−βcosθ),whereθ = cos−1 ˆβ· ˆ k . Thus,
+%  ω =γ−1ω′/(1−βcosθ).
+
+% ** change this to just 1 photon emitted from rest source and then see this in the primed frame, and then getting a rule for how impulse direction works for moving source
+
+% \textbf{Initial frame:}
+
+% before:
+
+% * no light
+
+% * $\mathbf{u} = (0,0)$
+
+% * $\mathbf{p}_{tot} = (0,0)$
+
+% After:
+
+% * $\mathbf{c} = c (\sin\alpha,\cos\alpha) = c \mathbf{\hat{c}}$
+
+% * $\mathbf{u} = - u \mathbf{\hat{c}}$
+
+% * $\mathbf{p}_{tot} = (0,0) = \frac{h \nu}{c} \mathbf{\hat{c}}  - \gamma m u \mathbf{\hat{c}} $
+
+% ** $ \nu = \frac{\gamma m u c}{h} $
+
+% ** $\lambda = \frac{h}{\gamma m u} $
+
+% \textbf{Primed frame:}
+
+% Before:
+
+% * no light
+
+% * $\mathbf{u} = (0,-v)$
+
+% * $\mathbf{p}_{tot} = (0,- \gamma m v)$
+
+% After:
+
+% * $\mathbf{c'} = c (\sin\alpha',\cos\alpha') = c \mathbf{\hat{c'}} ...$
+
+% * $\underline{u'} = \dfrac{( u_y, {\gamma} \left( u_z - {v} \right) )}{{\gamma}\left(1-\dfrac{v}{{c}^2} {u_z}\right)}$
+
+% * $\mathbf{p}_{tot} = (0,- \gamma m v) = \frac{h \nu'}{c} \mathbf{\hat{Pc'}}  + \gamma m \mathbf{u'} $
+
+% from momentum we have:
+
+% ** need to make this $\gamma_{u'}$
+
+% * $\frac{h \nu'}{c} \hat{P'c}_y  = \gamma m u'_y $
+
+% * $ \frac{h \nu'}{c} \hat{P'c}_z = - \gamma m ( u'_z + v)  $
+
+% doppler shift from swaping frames:
+
+% $\nu' = \frac{m u c}{h} {\gamma}^2 \left(1-\dfrac{v}{c} \cos\alpha \right)  = \frac{1}{h} \frac{m u c}{\left(1+\frac{v}{c} \cos\alpha' \right)}$
+
+% remembering $\cos\alpha'$ is the angle from z-axis
+
+% then from momentum we have:
+
+% * $\frac{u}{\left(1+\frac{v}{c} \cos\alpha' \right)} \hat{P'c}_y  = \gamma  u'_y $
+
+% * $  \frac{u}{\left(1+\frac{v}{c} \cos\alpha' \right)} \hat{P'c}_z =  - \gamma ( u'_z + v)  $
+
+% velocity transform:
+
+% \begin{equation}
+% \underline{u'} = \dfrac{1}{{\gamma}\left(1-\dfrac{v}{{c}^2} {u_z}\right)}
+% 			\begin{pmatrix}
+% 				u_y                               \\
+% 				{\gamma} \left( u_z - {v} \right)
+% 			\end{pmatrix}
+% \end{equation}
+
+
+% \begin{equation}
+% \underline{u} = \dfrac{1}{{\gamma}\left(1+\dfrac{v}{{c}^2} {u'_z}\right)}
+% 			\begin{pmatrix}
+% 				u'_y                               \\
+% 				{\gamma} \left( u'_z + {v} \right)
+% 			\end{pmatrix}
+% \end{equation}
+
+% \begin{equation}
+% u = \dfrac{\sqrt{u'^2_y + {\gamma}^2 \left( u'_z + {v} \right)^2}}{{\gamma}\left(1+\dfrac{v}{{c}^2} {u'_z}\right)}
+% \end{equation}
+
+% leading to:
+
+% * $\dfrac{\sqrt{u'^2_y + {\gamma}^2 \left( u'_z + {v} \right)^2}}{{\gamma}\left(1+\dfrac{v}{{c}^2} {u'_z}\right)} \frac{1}{\left(1 +\frac{v}{c} \cos\alpha' \right)} \hat{P'c}_y  = \gamma  u'_y $
+
+% * $ \dfrac{\sqrt{u'^2_y + {\gamma}^2 \left( u'_z + {v} \right)^2}}{{\gamma}\left(1+\dfrac{v}{{c}^2} {u'_z}\right)} \frac{1}{\left(1 +\frac{v}{c} \cos\alpha' \right)} \hat{P'c}_z =  \gamma  ( u'_z + v)  $
+
+% giving:
+
+% \begin{equation}
+% 	 \hat{P'c}  =    \dfrac{1}{\sqrt{u'^2_y + {\gamma}^2  \left( u'_z + {v} \right)^2}} \gamma \left(1 +\frac{v}{c} \cos\alpha' \right) {\gamma}_{u'} \left(1+\dfrac{v}{{c}^2} {u'_z}\right)
+% 	 \begin{pmatrix}
+% 		 u'_y                               \\
+% 		 u'_z + v
+% 	 \end{pmatrix}
+% \end{equation}
+
+
+% % say we have a point or spherical source, that in its rest frame emits light in all directions evenly and at with the same frequency, since this is evenly distributed the momentum kick that each bit of the light produces cancel out, so that the source is still at rest.
+% % But in another primed frame we have that the light is aberrated in the direction of movement meaning there is more light in this direction.
+% % The light is also subject to the Doppler effect that meaning that it has a higher frequency and therefore momentum in the direction of movement.
+
+% % The source in this frame will continue at its constant velocity as it remains at rest in first frame.
+% % Therefor we need it to be that each part of the light imparts a momentum that is in the direction that the light imparts in the sources rest frame, without a change in the momentum kick that depends on the angle its emitted.
+
+% % We will have the ball's energy decrease by the amount of energy of the emitted light, meaning it will lose the equivalent of this energy in its mass.
+% % We also have a kinetic energy of the ball to think about in the primed frame.
+% % ** should the kinetic energy of the source be the relativistic kinetic energy from before.
+% % ** lets calculate the momentum of source and light, and calculate the energies as well, and make sure they are conserved.
+
+% % ** could add example of colliding particles, when they stick together and also when they elatically collide

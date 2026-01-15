@@ -71,27 +71,51 @@
   \vspace{-1.2\baselineskip}
 }
 
+
+%###################################################
+%###################################################
+%###################################################
+
+
+%#todo change variable_finder.py to output in this format into Term_commands.tex with default definition of "..."
+%#todo when it is rerun get it to not clear Term_commands.tex just append new terms
+%#todo also get it to add all \command: \commanddef funtions to Term_dict.tex
+%#todo change ASM_page.py to be able to read \variableterm from Term_commands.tex
+%#todo change ASM_page.py to replace \commands with \variableterm math
+\newcommand{\variableterm}[3]{
+  \newcommand{#1}{#2}
+  \expandafter\newcommand\csname\expandafter\@gobble\string#1def\endcsname{#3}
+}
+
+
+%#todo remove this once above \variableterm is done
 \newcommand{\variable}[2]{
   \noindent #1 \textbf{:} #2
 
   \vspace{-0.6\baselineskip}
   \noindent\textcolor{gray}{\rule{\linewidth}{0.4pt}}
   \vspace{-0.4\baselineskip}
-
 }
+
+%#todo change Defintions.tex to use \term
+%#todo change ASM_page.py to read this the new way
+% definitions
+\usepackage{lipsum}
+\newcommand{\term}[3]{
+    \noindent \hypertarget{#2}{\textbf{#1:}}
+    #3
+    \par
+    \linesep
+}
+%###################################################
+%###################################################
+%###################################################
 
 \newenvironment{note}
   {\list{}{\rightmargin\leftmargin}
    \item\relax
    \centering\small\itshape}
   {\endlist}
-
-% *** start
-
-\newcommand{\variableterm}[3]{
-  \newcommand{#1}{#2}
-  \expandafter\newcommand\csname\expandafter\@gobble\string#1def\endcsname{#3}
-}
 
 % creating Part title page
 \makeatletter
@@ -110,14 +134,7 @@
 }
 \makeatother
 
-% definitions
-\usepackage{lipsum}
-\newcommand{\term}[3]{
-    \noindent \hypertarget{#2}{\textbf{#1:}}
-    #3
-    \par
-    \linesep
-}
+
 
 %█████████████████████████████████████████████████████
 % MATH

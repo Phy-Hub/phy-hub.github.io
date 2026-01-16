@@ -461,9 +461,6 @@ INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\biblatex.c
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\biblatex.cfg
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\blx-case-expl3.sty
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\blx-case-expl3.sty
-INPUT .\Tex\Terms\Term_dict.tex
-INPUT .\Tex\Terms\Term_dict.tex
-INPUT Tex\Terms\Term_dict.tex
 INPUT .\Tex\Terms\Term_commands.tex
 INPUT .\Tex\Terms\Term_commands.tex
 INPUT Tex\Terms\Term_commands.tex
@@ -990,6 +987,9 @@ INPUT .\images\pdf\Density_of_Light_from_Moving_Source.pdf
 INPUT .\images\pdf\Density_of_Light_from_Moving_Source.pdf
 INPUT .\images\pdf\Density_of_Light_from_Moving_Source.pdf
 INPUT Tex\Terms\Terms_ch5.tex
+INPUT .\Tex\Terms\Term_dict.tex
+INPUT .\Tex\Terms\Term_dict.tex
+INPUT Tex\Terms\Term_dict.tex
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\fonts\tfm\public\tex-gyre\ec-qcsr-sc.tfm
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt1000.tfm
 INPUT C:\Users\one_p\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\tex-gyre\q-ec-sc.enc

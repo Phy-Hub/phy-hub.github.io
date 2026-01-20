@@ -19,8 +19,9 @@ Topic_Name = sys.argv[3]
 py_to_page_structure = "../SCRIPTS/Structure_Page.html"
 py_to_output_page    = "../../pages/" + topic_folder_name + ".html"
 py_to_main_tex       = "Latex/Main_Matter.tex"
-#py_to_defs          = "Latex/Tex/Terms/Definitions.tex"
+py_to_defs          = "Latex/Tex/Terms/Definitions.tex"
 py_to_terms          = "Latex/Tex/Terms"
+py_to_term_comands   = "Latex/Tex/Terms/Term_commands.tex"
 py_to_tikz           = "Latex/output/tikz/"
 py_to_svgs           = "Latex/images/svg/"
 py_to_pdfs           = "Latex/images/pdf/"
@@ -97,10 +98,25 @@ def wrap_content(latex_file):
     with open(latex_file, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Pre-count chapters for the "Next" button logic
-    total_chapters = len(re.findall(r'\\chapter', content))
+    lines = content.splitlines()
 
-    # Levels mapping: command -> (depth, html_tag_level)
+    # --- 1. PRE-SCAN: Map Chapters to Parts ---
+    # We need this so the "Next" button in Part 1 knows that Chapter 2 is in Part 2.
+    chapter_part_map = {}
+    temp_part_count = 0
+    temp_ch_count = 0
+
+    for line in lines:
+        if re.search(r'\\part(?:\[.*?\])?\{(.+?)\}', line):
+            temp_part_count += 1
+        elif re.search(r'\\chapter(?:\[.*?\])?\{(.+?)\}', line):
+            temp_ch_count += 1
+            # If a chapter appears before any part, it defaults to part 0
+            chapter_part_map[temp_ch_count] = temp_part_count
+
+    total_chapters = temp_ch_count
+
+    # --- 2. SETUP ---
     LEVELS = {
         'chapter': (0, 3),
         'section': (1, 4),
@@ -113,57 +129,67 @@ def wrap_content(latex_file):
     in_part = False
     part_count = 0
 
-    def get_nav_footer(ch_num):
-        """Generates the HTML for the Previous/Next chapter navigation."""
-        prev_btn = (f'<a onclick="showContent(\'ch{ch_num-1}_wrap\'); document.getElementById(\'ch{ch_num-1}_details\').open = true;" '
-                    'style="font-weight: bold; padding-left: 10px; cursor: pointer;"> &lt; Previous </a>\n') if ch_num > 1 else "<a></a>\n"
+    # --- 3. HELPER FUNCTIONS ---
 
-        next_btn = (f'<a onclick="showContent(\'ch{ch_num+1}_wrap\'); document.getElementById(\'ch{ch_num+1}_details\').open = true;" '
-                    'style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next &gt; </a>\n') if ch_num <total_chapters else ""
+    def get_nav_footer(current_ch, current_part):
+        """Generates HTML for Previous/Next with Part-aware IDs."""
+        prev_ch = current_ch - 1
+        next_ch = current_ch + 1
+
+        # Calculate Previous Button
+        if prev_ch >= 1:
+            prev_part = chapter_part_map.get(prev_ch, 0)
+            prev_id = f"part_{prev_part}_ch{prev_ch}"
+            prev_btn = (f'<a onclick="showContent(\'{prev_id}_wrap\'); syncToc(\'{prev_id}_toc\');" '
+                        f'style="font-weight: bold; padding-left: 10px; cursor: pointer;"> &lt; Previous </a>\n')
+        else:
+            prev_btn = "<a></a>\n"
+
+        # Calculate Next Button
+        if next_ch <= total_chapters:
+            next_part = chapter_part_map.get(next_ch, 0)
+            next_id = f"part_{next_part}_ch{next_ch}"
+            next_btn = (f'<a onclick="showContent(\'{next_id}_wrap\'); syncToc(\'{next_id}_toc\');" '
+                        f'style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next &gt; </a>\n')
+        else:
+            next_btn = ""
 
         return f'\n\n<div class="arrow-nav">\n{prev_btn}{next_btn}</div>\n\n</section>\n'
 
     def close_tags(target_depth, reset_counters=True):
-        """ Closes open divs from the current deepest level up to the target depth.
-        If reset_counters is False, HTML tags are closed but nums are preserved. """
         for i in range(3, target_depth - 1, -1):
             if nums[i] > 0:
-                if in_part == False:
+                if not in_part:
                     output.append('</div>')
-
-                # reset the counter if this level is deeper than the command we are processing
                 if i > target_depth and reset_counters:
                     nums[i] = 0
 
     def close_block(reset_counters=True):
-        """Handles the special closing logic for Parts and Chapters."""
-        # Pass the flag down to close_tags
         close_tags(1, reset_counters=reset_counters)
-
         if in_part:
             output.append('</div>')
             output.append('</section>\n')
         elif nums[0] > 0:
-            output.append(f'</div>{get_nav_footer(nums[0])}')
+            # Pass current part_count to footer
+            output.append(f'</div>{get_nav_footer(nums[0], part_count)}')
 
-
-    # Main Parsing Loop
-    lines = content.splitlines()
+    # --- 4. MAIN PARSING LOOP ---
     for line in lines:
         line = line.strip()
 
-        # 1. Handle Parts
+        # Handle Parts
         part_match = re.search(r'\\part(?:\[.*?\])?\{(.+?)\}', line)
         if part_match:
             close_block(reset_counters=False)
-            in_part, part_count = True, part_count + 1
-            output.append(f'<section id="part{part_count}_wrap" class="chapter part-wrapper">')
-            output.append(f'<h2 id="part{part_count}_header" style="display: flex; justify-content: center; text-align: center;">Part {to_roman(part_count)}.<br>{part_match.group(1)}</h2>')
-            output.append(f'<div id="part{part_count}_content">')
+            in_part = True
+            part_count += 1
+            # ID Format: partX_wrap
+            output.append(f'<section id="part_{part_count}_wrap" class="chapter part-wrapper">')
+            output.append(f'<h2 class="part_header" id="part_{part_count}_header" style="display: flex; justify-content: center; text-align: center;">Part {to_roman(part_count)}.<br>{part_match.group(1)}</h2>')
+            output.append(f'<div id="part_{part_count}_content">')
             continue
 
-        # 2. Handle Chapters and Sections
-        # Matches \chapter{...}, \section{...}, etc.
+        # Handle Chapters and Sections
         cmd_match = re.search(r'\\(chapter|section|subsection|subsubsection)(?:\[.*?\])?\{(.+?)\}', line)
         if cmd_match:
             cmd, title = cmd_match.groups()
@@ -174,18 +200,29 @@ def wrap_content(latex_file):
                 in_part = False
                 nums[0] += 1
                 nums[1:] = [0, 0, 0]
+
+                # --- NEW ID GENERATION ---
+                # We prefix with part_{part_count}_
+                current_id_base = f"part_{part_count}_ch{nums[0]}"
+
                 display = ' style="display: none !important;"' if nums[0] > 1 else ""
-                output.append(f'<section id="ch{nums[0]}_wrap" class="chapter"{display}>\n<h3 id="ch{nums[0]}_header" style="display: flex; justify-content: center; text-align: center;">Chapter {nums[0]}. {title}</h3>')
-                output.append(f'<div id="ch{nums[0]}_content">\n<span style="display: none">\\(\\nextSection\\)</span>')
+
+                output.append(f'<section id="{current_id_base}_wrap" class="chapter" {display}>\n'
+                              f'<h3 id="{current_id_base}_header" class="chapter_header" style="display: flex; justify-content: center; text-align: center;">Chapter {nums[0]}. {title}</h3>')
+                output.append(f'<div id="{current_id_base}_content">\n<span style="display: none">\\(\\nextSection\\)</span>')
             else:
                 close_tags(depth)
                 nums[depth] += 1
-                id_str = "_".join(map(str, nums[:depth+1]))
+
+                # Update ID for sub-items to match parent pattern
+                # e.g. part1_ch1_1
+                suffix_str = "_".join(map(str, nums[:depth+1]))
+                id_str = f"part_{part_count}_ch{suffix_str}"
+
                 prefix = ".".join(map(str, nums[:depth+1])) if depth < 3 else ""
-                output.append(f'<h{h_lvl} id="ch{id_str}_header">{prefix} {title}</h{h_lvl}>\n<div id="ch{id_str}_content">')
+                output.append(f'<h{h_lvl} id="{id_str}_header">{prefix} {title}</h{h_lvl}>\n<div id="{id_str}_content">')
             continue
 
-        # 3. Handle Regular Lines
         output.append(line)
 
     close_block() # Final cleanup
@@ -369,17 +406,17 @@ def create_toc(toc_dic):
     # (We don't need p_ids or c_ids lists anymore)
 
     for k in keys:
-        parts = k.split('_')
+        content_levels = k.split('_')
         item = toc_dic[k]
 
-        if len(parts) == 1: # Part
-            tree.append({'id': parts[0], 'title': item['title'], 'chaps': []})
-        elif len(parts) == 2: # Chapter
+        if len(content_levels) == 1: # Part
+            tree.append({'id': content_levels[0], 'title': item['title'], 'chaps': []})
+        elif len(content_levels) == 2: # Chapter
             if tree: # Safety check
-                tree[-1]['chaps'].append({'id': parts[1], 'title': item['title'], 'sects': []})
-        elif len(parts) == 3: # Section
+                tree[-1]['chaps'].append({'id': content_levels[1], 'title': item['title'], 'sects': []})
+        elif len(content_levels) == 3: # Section
             if tree and tree[-1]['chaps']:
-                tree[-1]['chaps'][-1]['sects'].append({'id': parts[2], 'title': item['title']})
+                tree[-1]['chaps'][-1]['sects'].append({'id': content_levels[2], 'title': item['title']})
 
     # --- 3. Generate HTML (No JS here) ---
     html = ['<div id="toc_container"><ul style="list-style:none; padding:0;">']
@@ -388,28 +425,28 @@ def create_toc(toc_dic):
     for p in tree:
         # Added class: 'toc-part-link'
         html.append(f'''<li>
-            <a href="#part{p['id']}_wrap"
+            <a href="#part_{p['id']}_header"
                id="link_part_{p['id']}"
                class="toc-link toc-part-link"
-               onclick="toggleView('part', '{p['id']}')">
+               onclick="toggleView('part_{p['id']}')">
                 {arrow} <b>Part {to_roman(p['id'])}. {p['title']}</b>
             </a>
-            <ul id="toc_part_{p['id']}" class="toc-sublist toc-part-sublist">''') # Added class
+            <ul id="part_{p['id']}_toc" class="toc-sublist toc-part-sublist">''') # Added class
 
         for c in p['chaps']:
             # Added class: 'toc-chapter-link'
             html.append(f'''<li>
-                <a href="#ch{c['id']}_wrap"
+                <a href="#part_{p['id']}_ch{c['id']}_header"
                    id="link_ch_{c['id']}"
                    class="toc-link toc-chapter-link"
-                   onclick="toggleView('ch', '{c['id']}')">
+                   onclick="toggleView('part_{p['id']}_ch{c['id']}')">
                     {arrow} <b>{c['id']}. {c['title']}</b>
                 </a>
-                <ul id="toc_ch_{c['id']}" class="toc-sublist toc-chapter-sublist">''') # Added class
+                <ul id="part_{p['id']}_ch_{c['id']}_toc" class="toc-sublist toc-chapter-sublist">''') # Added class
 
             for s in c['sects']:
                 html.append(f'''<li>
-                    <a href="#ch{c['id']}_{s['id']}_header" class="toc-link">
+                    <a href="#part_{p['id']}_ch{c['id']}_{s['id']}_header" class="toc-link">
                         {c['id']}.{s['id']} {s['title']}
                     </a>
                 </li>''')
@@ -421,176 +458,244 @@ def create_toc(toc_dic):
     return "".join(html)
 
 ###
-def create_terms(terms_folder):
-    # Get the list of all files in directory tree at given path
-    terms = []
-    for (dirpath, dirnames, filenames) in os.walk(terms_folder):
-        for file in filenames:
-            # Open the file and read the lines
-            with open(os.path.join(dirpath, file), 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-                # Append the lines to the list
-                terms.extend(lines)
+def create_terms(file_path):
+    # 1. Read the whole file as a single string
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content = f.read()
 
     output_lines = []
-    state = None
-    label, term, description = None, None, None
-    for line in terms:
-        if state == 'description':
-            description = line.strip()
-            description = re.sub(r'\$(.*?)\$', r'\(\g<1>\)', description).replace('<', '\\lt ').replace('>', '\\gt ')
-            new_line = f'<div id="{label}" style="display: none;">\n<dt><b>{term}:</b>  </dt>\n<dd> {description} </dd>\n</div>\n' #todo put {term} in here instead
-            output_lines.append(new_line)
-            state = None
-        else:
-            match = re.search(r'\\noindent \\hypertarget{(.+?)}{\\textbf{(.+?):}}', line)
-            if match:
-                label, term = match.groups()
-                state = 'description'
-            else:
-                match = re.search(r'\\noindent \$\{(.+?)\}\$', line)
-                if match:
-                    label = 'math_' + match.group(1).replace('<', '_lt').replace('>', '_gt').replace("'", "_prime").replace("\\",'').replace(" ", "_")
-                    term = '\\(' + match.group(1) + '\\)'
-                    state = 'description'
+
+    # 2. Find all occurrences of \term{label}{term}{definition}
+    # re.DOTALL allows the '.' to match newlines, handling multi-line definitions
+    pattern = r'\\term\{(.+?)\}\{(.+?)\}\{(.+?)\}'
+
+    for match in re.finditer(pattern, content, re.DOTALL):
+        label, term, desc = match.groups()
+
+        # 3. Clean and Format the description
+        desc = desc.strip()
+        desc = re.sub(r'\$(.*?)\$', r'\(\g<1>\)', desc).replace('<', '\\lt ').replace('>', '\\gt ')
+
+        new_line = f'<div id="{label}" style="display: none;">\n<dt><b>{term}:</b>  </dt>\n<dd> {desc} </dd>\n</div>\n'
+        output_lines.append(new_line)
+
     return output_lines
 
 
-def create_math_terms(folder_path, file_prefix="Terms_ch"):
-    variables = {}
+###
+def find_matching_brace(text, start_index):
+    brace_count = 0
+    for i in range(start_index, len(text)):
+        if text[i] == '{':
+            brace_count += 1
+        elif text[i] == '}':
+            brace_count -= 1
+            if brace_count == 0:
+                return i
+    return -1
 
-    try:
-        filenames = [
-            f for f in os.listdir(folder_path) if f.startswith(file_prefix) and os.path.isfile(os.path.join(folder_path, f))
-        ]
-    except FileNotFoundError:
-        print(f"Error: Folder not found: {folder_path}")
-        return {}
+def create_dictionary_of_math_terms(file_path):
+    """
+    Parses the .tex file and returns a list of dictionaries containing
+    raw_command, term_content, and definition_content.
+    """
+    if not os.path.exists(file_path):
+        print(f"Error: File not found: {file_path}")
+        return []
 
-    if not filenames:
-        print(f"No files found with prefix '{file_prefix}' in '{folder_path}'")
-        return {}
+    with open(file_path, "r", encoding="utf-8") as file:
+        file_content = file.read()
 
-    html_string = ''
-    meowch = 0
-    for filename in filenames:
-        meowch = meowch + 1
-        filepath = os.path.join(folder_path, filename)
-        html_string += f'<dl id="{os.path.splitext(os.path.basename(filename))[0]}" style="display: none;">\n'
+    entries = []
+    command_iterator = re.finditer(r"\\variableterm", file_content)
 
+    for match in command_iterator:
+        current_index = match.start()
 
-        with open(filepath, "r", encoding="utf-8") as file:
-            file_content = file.read()
+        # 1. Extract Command (ID)
+        start_brace = file_content.find("{", current_index)
+        if start_brace == -1: continue
+        end_brace = find_matching_brace(file_content, start_brace)
+        if end_brace == -1: continue
 
+        raw_command = file_content[start_brace + 1 : end_brace].strip()
+        current_index = end_brace + 1
 
-            # Find all instances of \variable
-            start_indices = [m.start() for m in re.finditer(r"\\variable", file_content)]
-            meow = 1
-            for start_index in start_indices:
+        # 2. Extract Term
+        start_brace = file_content.find("{", current_index)
+        if start_brace == -1: continue
+        end_brace = find_matching_brace(file_content, start_brace)
+        if end_brace == -1: continue
 
-                # Find the first opening brace after \variable
-                first_brace_index = file_content.find("{", start_index + 9)
-                if first_brace_index == -1:
-                    continue  # Skip if no opening brace
+        term_content = file_content[start_brace + 1 : end_brace].strip()
+        current_index = end_brace + 1
 
-                # Extract variable name
-                open_braces = 0
-                variable_start = first_brace_index + 1
-                variable_end = -1
-                for i in range(variable_start, len(file_content)):
-                    if file_content[i] == '{':
-                        open_braces += 1
-                    elif file_content[i] == '}':
-                        if open_braces == 0:
-                            variable_end = i
-                            break
-                        else:
-                            open_braces -= 1
+        # 3. Extract Definition
+        start_brace = file_content.find("{", current_index)
+        if start_brace == -1: continue
+        end_brace = find_matching_brace(file_content, start_brace)
+        if end_brace == -1: continue
 
-                if variable_end == -1:
-                    continue  # Skip if no matching closing brace
+        definition_content = file_content[start_brace + 1 : end_brace].strip()
 
-                variable = file_content[variable_start:variable_end].strip()
+        # Append to list
+        entries.append({
+            "raw_command": raw_command,
+            "term_content": term_content,
+            "definition_content": definition_content
+        })
 
-                # Find the second opening brace (start of definition)
-                second_brace_index = file_content.find("{", variable_end + 1)
-                if second_brace_index == -1:
-                    continue  # Skip if no second opening brace
+    return entries
 
-                # Extract definition
-                open_braces = 0
-                definition_start = second_brace_index + 1
-                definition_end = -1
-                for i in range(definition_start, len(file_content)):
-                    if file_content[i] == '{':
-                        open_braces += 1
-                    elif file_content[i] == '}':
-                        if open_braces == 0:
-                            definition_end = i
-                            break
-                        else:
-                            open_braces -= 1
+def create_html_terms_element(entries):
+    """
+    Takes a list of dictionaries and returns the formatted HTML string.
+    """
+    if not entries:
+        return ""
 
-                if definition_end == -1:
-                    continue # Skip if no matching closing brace.
+    html_string = '<dl id="math-glossary" style="display: none;">\n'
 
-                definition = file_content[definition_start:definition_end].strip()
-                variables[variable] = definition
+    for entry in entries:
+        raw_command = entry['raw_command']
+        term_content = entry['term_content']
+        definition_content = entry['definition_content']
 
-                ##########
-                ##########
-                label = "ch_" + str(meowch) + "_term_" + str(meow)
-                meow = meow + 1
+        # Process ID
+        label_id = "var" + raw_command.replace("\\", "")
 
+        # Process Term Display
+        display_term = f"\\( ({term_content}) \\)"
 
-                #Crucial:  fixing math and links to definition for html
-                variable = variable.replace('<', '\\lt ').replace('>', '\\gt ')
-                variable = re.sub(r'\$(.*?)\$', r'\1', variable) # Properly escape for LaTeX
-                definition = definition.replace('<', '\\lt ').replace('>', '\\gt ')
-                definition = re.sub(r'\\hyperlink\{(.*?)\}\{(.*?)\}', lambda m: f'<span onmouseover="document.getElementById(\'{m.group(1)}\').style.display=\'block\'" onmouseout="document.getElementById(\'{m.group(1)}\').style.display=\'none\'">{m.group(2)}</span>', definition)
-                definition = re.sub(r'\$(.*?)\$', r'\\(\1\\)', definition) # Properly escape for LaTeX
+        # Process Definition content (Latex replacements)
+        definition_content = definition_content.replace('<', '\\lt ').replace('>', '\\gt ')
+        definition_content = re.sub(r'\$(.*?)\$', r'\\(\1\\)', definition_content)
 
-                new_line = f'<dt style="cursor: pointer;" onclick="document.getElementById(\'{label}\').style.display = document.getElementById(\'{label}\').style.display == \'none\' ? \'inline\' : \'none\';"> \\({variable}\\)<b>:</b> </dt>\n<dd id="{label}" style="display: none;">{definition}</dd>\n'
-                html_string += new_line
+        # JS toggles between 'inline' (text-flow) and 'none'
+        js_toggle = f"document.getElementById('{label_id}').style.display = document.getElementById('{label_id}').style.display == 'none' ? 'inline' : 'none';"
 
-                html_string += '\n'  # after each variable
+        html_line = (
+            f'<div>\n'
+            f'  <dt data-term="{label_id}" style="display: inline; cursor: pointer; font-weight: bold;" onclick="{js_toggle}">'
+            f'{display_term} <b>:</b> '
+            f'</dt>\n'
+            f'  <dd id="{label_id}" style="display: none; margin: 0; padding-left: 5px;">'
+            f'{definition_content}'
+            f'</dd>\n'
+            f'</div>\n'
+        )
 
+        html_string += html_line
 
-        html_string += '\n </dl>\n'
-
+    html_string += '</dl>'
     return html_string
 
+def find_matching_brace(text, start_index):
+    open_braces = 0
+    for i in range(start_index, len(text)):
+        if text[i] == '{':
+            open_braces += 1
+        elif text[i] == '}':
+            open_braces -= 1
+            if open_braces == 0:
+                return i
+    return -1
+
+# Example Usage:
+# output = parse_term_commands("Term_commands.tex")
+# print(output)
+
 ###
-def math_to_HTML(content):
-    math_envs = re.findall(r'(?<!<div class="math">\n)\\begin{equation}.*?\\end{equation}', content, re.DOTALL)
+def Eq_env_to_HTML(content, terms_data):
 
-    for math_env in math_envs:
-        label = re.search(r'\\label\{(?P<label>.*\})', math_env)
-        if label: id = f' id="{label.group("label")[:-1].replace(" ", "_").replace(":","").replace("'","_")}"'
-        else:     id = ''
+    # 1. Sort terms by length of raw_command (descending).
+    sorted_terms = sorted(terms_data, key=lambda x: len(x['raw_command']), reverse=True)
 
-        math_env_no_label = re.sub(r'\\label\{.*?\}', '', math_env, flags=re.DOTALL)
-        # # Remove newlines within the equation, except those after \\
-        # math_env_no_label_no_newlines = re.sub(r'(?<!\\\\)\n', ' ', math_env_no_label)
-        # content = content.replace(math_env, f'<div class="math"{id}>\n{math_env_no_label_no_newlines}\n</div>')
-        content = content.replace(math_env, f'<div class="math"{id}>\n{math_env_no_label}\n</div>')
-    return content
+    def process_equation_match(match):
+        math_env = match.group(0)
 
-import re
+        # --- A. Extract Label ---
+        label_match = re.search(r'\\label\{(?P<label>.*\})', math_env)
+        if label_match:
+            raw_label = label_match.group("label")[:-1]
+            clean_id = raw_label.replace(" ", "_").replace(":", "").replace("'", "_")
+            id_attr = f' id="{clean_id}"'
+        else:
+            id_attr = ''
 
-def math_to_HTML(content):
-    math_envs = re.findall(r'(?<!<div class="math">\n)\\begin{equation}.*?\\end{equation}', content, re.DOTALL)
+        # --- B. Clean Environment ---
+        math_body = re.sub(r'\\label\{.*?\}', '', math_env, flags=re.DOTALL)
 
-    for math_env in math_envs:
-        label = re.search(r'\\label\{(?P<label>.*\})', math_env)
-        if label: id = f' id="{label.group("label")[:-1].replace(" ", "_").replace(":","").replace("'","_")}"'
-        else:     id = ''
+        math_body = re.sub(
+            r'(\\begin\{equation\})\s*(.*?)\s*(\\end\{equation\})',
+            lambda m: f"{m.group(1)}\n{re.sub(r'(?<!\\\\)\n', ' ', m.group(2))}\n{m.group(3)}",
+            math_body,
+            flags=re.DOTALL
+        )
 
-        math_env_no_label = re.sub(r'\\label\{.*?\}', '', math_env, flags=re.DOTALL)
-        math_env_no_label_no_newlines = re.sub(r'(\\begin\{equation\})\s*(.*?)\s*(\\end\{equation\})', lambda m: f"{m.group(1)}\n{re.sub(r'(?<!\\\\)\n', ' ', m.group(2))}\n{m.group(3)}", math_env_no_label, flags=re.DOTALL)
-        content = content.replace(math_env, f'<div class="math"{id}>\n{math_env_no_label_no_newlines}\n</div>')
+        # --- C. Process Terms ---
+        found_data_ids = []
 
-    return content
+        for term in sorted_terms:
+            raw_cmd = term['raw_command']
+            replacement = term['term_content']
+
+            cmd_pattern = re.compile(re.escape(raw_cmd) + r'(?![a-zA-Z])')
+
+            if cmd_pattern.search(math_body):
+                data_id = "var" + raw_cmd.replace("\\", "")
+                found_data_ids.append(data_id)
+                math_body = cmd_pattern.sub(lambda m: replacement, math_body)
+
+        # --- D. Construct HTML ---
+        data_terms_attr = ""
+        if found_data_ids:
+            data_terms_attr = f' data-terms="{" ".join(found_data_ids)}"'
+
+        return f'<div class="interactive-equation" class="math"{id_attr}{data_terms_attr}>\n{math_body}\n</div>'
+
+    pattern = r'(?<!<div class="math">\n)\\begin{equation}.*?\\end{equation}'
+
+    return re.sub(pattern, process_equation_match, content, flags=re.DOTALL)
+
+
+###
+def inline_math_replacement(content, terms_data):
+
+    # 1. Sort terms by length of raw_command (descending)
+    sorted_terms = sorted(terms_data, key=lambda x: len(x['raw_command']), reverse=True)
+
+    def process_inline_match(match):
+        # Extract the full match (e.g., "\( \force \)")
+        full_match = match.group(0)
+
+        # Extract the inner content (e.g., " \force ")
+        # We use group(1) from the regex below
+        math_body = match.group(1)
+
+        # 2. Iterate through terms and replace in this specific block
+        for term in sorted_terms:
+            raw_cmd = term['raw_command']
+            replacement = term['term_content']
+
+            # Regex: Match command + lookahead to ensure it ends the word
+            cmd_pattern = re.compile(re.escape(raw_cmd) + r'(?![a-zA-Z])')
+
+            if cmd_pattern.search(math_body):
+                # Use lambda for replacement to avoid 'bad escape' errors
+                math_body = cmd_pattern.sub(lambda m: replacement, math_body)
+
+        # Reconstruct the inline math string
+        return f"\\({math_body}\\)"
+
+    # Regex to find \( ... \)
+    # \\\( matches literal \(
+    # (.*?) matches content lazily (capturing group 1)
+    # \\\) matches literal \)
+    pattern = r'\\\((.*?)\\\)'
+
+    # re.DOTALL allows the dot (.) to match newlines, in case inline math spans lines
+    return re.sub(pattern, process_inline_match, content, flags=re.DOTALL)
 
 ###
 def replace_refs(input_string):
@@ -615,14 +720,15 @@ def replace_refs(input_string):
         toc_num = (find_key_from_label(toc_dict, id) or "").replace("_", ".")
 
         if '.' not in toc_num: # part
-            return f'<a href="#part{toc_num}_header" class="ref_toc" >{toc_num}</a>'
+            return f'<a href="#part_{toc_num}_header" class="ref_toc" >{toc_num}</a>'
         else:
             # for "Chapter" (e.g., "1.2.3" -> "2.3")
             toc_num_sep = toc_num.split(".")
             display_num = ".".join(toc_num_sep[1:])
             href = display_num.replace(".", "_")
-            return f'<a href="#ch{href}_header" class="ref_toc" >{toc_num}</a>' #todo need way for click to load chapter if ref is to a hidden chapter
-               #todo <a href="#ch{c['id']}_wrap" id="link_ch_{c['id']}" class="toc-link" onclick="toggleView('ch', '{c['id']}')">
+            part_num = ".".join(toc_num_sep[:1])
+            return f'<a href="#part_{part_num}_ch{href}_header" class="ref_toc" >{display_num}</a>' #todo need way for click to load chapter if ref is to a hidden chapter
+               #todo <a href="#part_{part_num}_ch{c['id']}_wrap" id="link_ch_{c['id']}" class="toc-link" onclick="toggleView('ch', '{c['id']}')">
 
     # Use re.sub to replace each match in the input string
     output_string = re.sub(pattern_ref_eq , replacer_ref_eq, input_string)
@@ -724,7 +830,7 @@ def process_bib_and_cites(bib_path, tex_path):
 
 
 ###
-def create_dictionary_of_toc(filepath):
+def create_dictionary_of_content(filepath):
     structure_dict = {}
     counters = {
         "part": 0,
@@ -1111,9 +1217,10 @@ replace(Latex_File,'<', r'\\lt ')
 replace(Latex_File,'>', r'\\gt ')
 
 # Create dictionaries
-toc_dict = create_dictionary_of_toc(Latex_File)
+toc_dict = create_dictionary_of_content(Latex_File)
 fig_dict = create_dictionary_of_figures(Latex_File)
 eq_dict  = create_dictionary_of_equations(Latex_File)
+var_dict = create_dictionary_of_math_terms(py_to_term_comands)
 # check for duplicate lables
 check_duplicate_labels(toc_dict)
 check_duplicate_labels(fig_dict)
@@ -1161,15 +1268,16 @@ with open(Latex_File, 'r', encoding='utf-8') as file:
 
 # Convert to HTML headings
 main_content = latex_content
-main_content = math_to_HTML(main_content)
+main_content = Eq_env_to_HTML(main_content,var_dict)
+main_content = inline_math_replacement(main_content,var_dict)
 main_content = replace_refs(main_content)
 main_content += '\n'
 main_content =  re.sub(r'\\label\{.*?\}', '', main_content)
 
 # Call the function with your HTML file
 toc = create_toc(toc_dict)
-vars = create_math_terms(py_to_terms)
-defs = create_terms(py_to_terms)
+vars = create_html_terms_element(var_dict)
+defs = create_terms(py_to_defs)
 
 make_page(py_to_page_structure, py_to_output_page, toc, main_content, defs, vars, script_lines, bib_lines)
 

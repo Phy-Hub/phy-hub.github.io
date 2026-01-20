@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpendicular Mice Simulation</title>
+    <style>
+        :root {
+            --bg-color: #f0f4f8;
+            --accent-color: #3b82f6;
+            --mouse-a-color: #ef4444; /* Red */
+            --mouse-b-color: #10b981; /* Green */
+            --text-color: #334155;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #e2e8f0;
+        }
+
+        /* Main Container */
+        .simulation-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            color: var(--text-color);
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        /* Canvas Wrapper */
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            /* Aspect ratio roughly 16:9 usually looks good */
+            height: 400px;
+            background-color: var(--bg-color);
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+            min-width: 80px;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+
+        .slider-group {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="simulation-card">
+    <h2>Perpendicular Motion Simulation</h2>
+
+    <div class="canvas-container">
+        <canvas id="simCanvas"></canvas>
+    </div>
+
+    <div class="legend">
+        <span><span class="dot" style="background: var(--mouse-a-color);"></span>Mouse A (East)</span>
+        <span><span class="dot" style="background: var(--mouse-b-color);"></span>Mouse B (North)</span>
+    </div>
+
+    <div class="controls">
+        <button id="playBtn">Play</button>
+        <div class="slider-group">
+            <div class="slider-header">
+                <span>Time (t)</span>
+                <span id="timeDisplay">0.00</span>
+            </div>
+            <input type="range" id="timeSlider" min="0" max="1000" value="0">
+        </div>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('simCanvas');
+    const ctx = canvas.getContext('2d');
+    const slider = document.getElementById('timeSlider');
+    const timeDisplay = document.getElementById('timeDisplay');
+    const playBtn = document.getElementById('playBtn');
+
+    // Simulation State
+    let width, height, cx, cy;
+    let isPlaying = false;
+    let animationId;
+
+    // Configuration
+    const CONFIG = {
+        maxTime: 1.0, // Simulation runs from t=0 to t=1
+        steps: 1000,
+        mouseSize: 12,
+        gridSize: 40
+    };
+
+    // Initialize layout
+    function resize() {
+        // Get the CSS pixel width/height
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+
+        width = canvas.width;
+        height = canvas.height;
+        cx = width / 2;
+        cy = height / 2;
+
+        draw();
+    }
+
+    // Helper: Draw a mouse
+    function drawMouse(x, y, color, label, angle) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+
+        // Body
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, CONFIG.mouseSize, CONFIG.mouseSize * 0.6, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Tail
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(-CONFIG.mouseSize + 2, 0);
+        ctx.quadraticCurveTo(-CONFIG.mouseSize * 2, 5, -CONFIG.mouseSize * 2.5, 0);
+        ctx.stroke();
+
+        ctx.restore();
+
+        // Label
+        ctx.fillStyle = '#334155';
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, x + 15, y - 15);
+    }
+
+    // Helper: Draw Grid
+    function drawGrid() {
+        ctx.strokeStyle = '#e2e8f0';
+        ctx.lineWidth = 1;
+
+        // Vertical lines
+        for(let x = cx; x < width; x += CONFIG.gridSize) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke(); }
+        for(let x = cx; x > 0; x -= CONFIG.gridSize) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke(); }
+
+        // Horizontal lines
+        for(let y = cy; y < height; y += CONFIG.gridSize) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke(); }
+        for(let y = cy; y > 0; y -= CONFIG.gridSize) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke(); }
+
+        // Origin Marker
+        ctx.fillStyle = '#334155';
+        ctx.beginPath();
+        ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    // Main Draw Function
+    function draw() {
+        // 1. Clear
+        ctx.clearRect(0, 0, width, height);
+
+        // 2. Background Grid
+        drawGrid();
+
+        // 3. Calculate Math
+        // Slider value 0-1000 maps to 0.0-1.0
+        const t = parseInt(slider.value) / CONFIG.steps;
+
+        // Determine distance multiplier (0 to 1 then back to 0)
+        // If t < 0.5, we go out. If t > 0.5, we come back.
+        let distFactor;
+        let directionMultiplier = 1; // 1 = moving away, -1 = returning
+
+        if (t <= 0.5) {
+            // Map 0.0-0.5 to 0.0-1.0
+            distFactor = t * 2;
+            directionMultiplier = 1;
+        } else {
+            // Map 0.5-1.0 to 1.0-0.0
+            distFactor = 1 - ((t - 0.5) * 2);
+            directionMultiplier = -1;
+        }
+
+        // Define max travel distance (40% of smallest screen dimension)
+        const maxDist = Math.min(width, height) * 0.4;
+        const currentDist = maxDist * distFactor;
+
+        // 4. Coordinates
+        // Mouse A: Moves East (Right)
+        const ax = cx + currentDist;
+        const ay = cy;
+
+        // Mouse B: Moves North (Up) - Canvas Y is inverted, so Up is negative
+        const bx = cx;
+        const by = cy - currentDist;
+
+        // 5. Draw Trails (Optional visual aid)
+        ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + maxDist, cy); // X Axis
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx, cy - maxDist); // Y Axis
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // 6. Draw Mice
+        // Mouse A facing: If moving out (1) face 0 rads, if returning (-1) face PI rads
+        const angleA = directionMultiplier === 1 ? 0 : Math.PI;
+        drawMouse(ax, ay, '#ef4444', 'A', angleA);
+
+        // Mouse B facing: If moving out (1) face -PI/2, if returning (-1) face PI/2
+        const angleB = directionMultiplier === 1 ? -Math.PI / 2 : Math.PI / 2;
+        drawMouse(bx, by, '#10b981', 'B', angleB);
+
+        // Update Text
+        timeDisplay.innerText = t.toFixed(2);
+    }
+
+    // Interaction Logic
+    slider.addEventListener('input', () => {
+        if(isPlaying) stopAnimation();
+        draw();
+    });
+
+    window.addEventListener('resize', resize);
+
+    // Animation Loop
+    function startAnimation() {
+        isPlaying = true;
+        playBtn.innerText = "Pause";
+
+        function loop() {
+            if (!isPlaying) return;
+
+            let val = parseInt(slider.value);
+            if (val >= CONFIG.steps) {
+                val = 0; // Loop back to start
+            } else {
+                val += 5; // Speed of playback
+            }
+
+            slider.value = val;
+            draw();
+            animationId = requestAnimationFrame(loop);
+        }
+        loop();
+    }
+
+    function stopAnimation() {
+        isPlaying = false;
+        playBtn.innerText = "Play";
+        cancelAnimationFrame(animationId);
+    }
+
+    playBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            stopAnimation();
+        } else {
+            startAnimation();
+        }
+    });
+
+    // Initial load
+    resize();
+
+</script>
+
+</body>
+</html>

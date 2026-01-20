@@ -5,8 +5,9 @@ import os
 INPUT_FILE = '../Main_matter.tex'
 OUTPUT_FILE = '../Main_Matter_processed.tex'
 COMMANDS_FILE = '../Tex/Terms/Term_commands.tex'
+DICT_FILE = '../Tex/Terms/Term_dict.tex'
 
-# --- NEW: Number Mapping ---
+# --- Number Mapping ---
 DIGIT_MAP = {
     '0': 'Zero', '1': 'One', '2': 'Two', '3': 'Three', '4': 'Four',
     '5': 'Five', '6': 'Six', '7': 'Seven', '8': 'Eight', '9': 'Nine'
@@ -36,9 +37,7 @@ TEXT_COMMANDS = {
     'input', 'include', 'eqref', 'begin', 'end'
 }
 
-# ... [Keep mask_comments, get_balanced_text, get_math_regions, check_suffix, parse_variables, replace_math_content AS IS] ...
-# (Paste the helper functions here if re-assembling the full file, otherwise just update process_tex below)
-
+# --- HELPER FUNCTIONS ---
 def mask_comments(text):
     lines = text.split('\n')
     masked_lines = []
@@ -132,10 +131,14 @@ def check_suffix(text, base, start_index):
     return current_term, i
 
 def parse_variables(math_str):
-    candidates = set()
+    candidates = []
     i = 0
     n = len(math_str)
     SKIP_CHARS = set("={}()[]+-*/!,.<>|;:?^& \t\n\r")
+
+    def add_candidate(val):
+        if val not in candidates:
+            candidates.append(val)
 
     while i < n:
         char = math_str[i]
@@ -161,34 +164,34 @@ def parse_variables(math_str):
                     _, end_idx = get_balanced_text(math_str, k)
                     base = math_str[i:end_idx]
                     term, new_i = check_suffix(math_str, base, end_idx)
-                    candidates.add(term); i = new_i; continue
+                    add_candidate(term); i = new_i; continue
                 elif k < n:
                     base = math_str[i:k+1]
                     term, new_i = check_suffix(math_str, base, k+1)
-                    candidates.add(term); i = new_i; continue
+                    add_candidate(term); i = new_i; continue
 
             if cmd_name in IGNORE_COMMANDS or cmd_name in TEXT_COMMANDS:
                 if cmd_name in TEXT_COMMANDS:
-                       k = j
-                       while k < n and math_str[k].isspace(): k += 1
-                       if k < n and math_str[k] == '{':
-                         brace_content, end_idx = get_balanced_text(math_str, k)
-                         inner_text = brace_content[1:-1]
-                         inner_math_matches = re.findall(r'(?<!\\)\$(.*?)(?<!\\)\$', inner_text, flags=re.DOTALL)
-                         for m in inner_math_matches:
-                             inner_vars = parse_variables(m)
-                             for iv in inner_vars: candidates.add(iv)
-                         i = end_idx; continue
+                        k = j
+                        while k < n and math_str[k].isspace(): k += 1
+                        if k < n and math_str[k] == '{':
+                          brace_content, end_idx = get_balanced_text(math_str, k)
+                          inner_text = brace_content[1:-1]
+                          inner_math_matches = re.findall(r'(?<!\\)\$(.*?)(?<!\\)\$', inner_text, flags=re.DOTALL)
+                          for m in inner_math_matches:
+                              inner_vars = parse_variables(m)
+                              for iv in inner_vars: add_candidate(iv)
+                          i = end_idx; continue
                 i = j; continue
 
             term, new_i = check_suffix(math_str, full_cmd, j)
-            candidates.add(term); i = new_i; continue
+            add_candidate(term); i = new_i; continue
 
         if char.isalpha():
             term, new_i = check_suffix(math_str, char, i+1)
-            candidates.add(term); i = new_i; continue
+            add_candidate(term); i = new_i; continue
         i += 1
-    return list(candidates)
+    return candidates
 
 def replace_math_content(text, replacements):
     sorted_keys = sorted(replacements.keys(), key=len, reverse=True)
@@ -201,7 +204,7 @@ def replace_math_content(text, replacements):
         for key in sorted_keys:
             if text.startswith(key, i):
                 if key[-1].isalpha() and (i + len(key) < n) and text[i + len(key)].isalpha():
-                      continue
+                        continue
                 result.append(replacements[key] + " ")
                 i += len(key)
                 matched_replacement = True
@@ -249,7 +252,7 @@ def replace_math_content(text, replacements):
 
     return "".join(result)
 
-# --- MODIFIED PROCESS FUNCTION ---
+# --- PROCESS FUNCTION ---
 def process_tex():
     if not os.path.exists(INPUT_FILE):
         print(f"Error: {INPUT_FILE} not found."); return
@@ -261,36 +264,83 @@ def process_tex():
     regions = get_math_regions(masked_text)
 
     print("--- Extracting Variables ---")
-    all_candidates = set()
+
+    candidates_ordered = []
+    seen_candidates = set()
+
     for reg in regions:
         content_masked = masked_text[reg['start']:reg['end']]
-        if content_masked.startswith('$') and content_masked.endswith('$'):
-            search_content = content_masked[1:-1]
-        elif content_masked.startswith(r'\begin'):
-            search_content = content_masked
+        if content_masked.strip().startswith('$'):
+            search_content = content_masked.strip()[1:-1]
         else:
             search_content = content_masked
-        vars_found = parse_variables(search_content)
-        for v in vars_found: all_candidates.add(v)
 
-    sorted_candidates = sorted(list(all_candidates), key=len, reverse=True)
+        vars_found = parse_variables(search_content)
+
+        for v in vars_found:
+            if v not in seen_candidates:
+                seen_candidates.add(v)
+                candidates_ordered.append(v)
+
+    sorted_candidates = candidates_ordered
+
     replacements = {}
     definitions = []
-    used_commands = set()
+    dict_entries = []
+
+    # --- UPDATED LOAD LOGIC ---
+    existing_definitions = {}
+
+    if os.path.exists(COMMANDS_FILE):
+        print(f"Reading existing commands from {COMMANDS_FILE}...")
+        try:
+            with open(COMMANDS_FILE, 'r', encoding='utf-8') as f:
+                existing_content = f.read()
+                existing_matches = re.findall(r'\\variableterm\{(.*?)\}\{(.*?)\}', existing_content)
+                for cmd, val in existing_matches:
+                    existing_definitions[cmd] = val
+
+                print(f" -> Found {len(existing_definitions)} defined commands.")
+        except Exception as e:
+            print(f"Warning: Could not read existing commands: {e}")
 
     print(f"Found {len(sorted_candidates)} potential variables.")
 
+    # Flag to break out of the main loop completely
+    stop_prompting = False
+
     for term in sorted_candidates:
+        if stop_prompting:
+            break
+
         first_collision = False
+        is_reusing_command = False
 
         while True:
+            # Reusing command from existing definitions check logic done below...
+
             print(f"Variable:  {term}")
             prompt_text = f"Replace with (Enter to auto-generate"
             if first_collision:
-                prompt_text += ", or Enter again to SKIP"
-            prompt_text += "): "
+                prompt_text += ", or Enter again to skip this term"
+            # --- UPDATED PROMPT TEXT ---
+            prompt_text += ", 'skip one' to skip this, 'skip' to finish all): "
 
             user_input = input(prompt_text).strip()
+
+            # --- SKIP ONE FUNCTIONALITY (NEW) ---
+            if user_input.lower() == 'skip one':
+                print(f"  [Skipped] Skipping individual term '{term}'.")
+                break # Breaks 'while True', moving to next term in 'for' loop
+            # ------------------------------------
+
+            # --- SKIP ALL FUNCTIONALITY ---
+            if user_input.lower() == 'skip':
+                print("\n>>> Skipping remaining terms. Processing collected replacements...\n")
+                stop_prompting = True
+                break
+            # ------------------------------
+
             command_to_use = ""
 
             # Case 1: Auto-generate
@@ -299,7 +349,6 @@ def process_tex():
                     print(f"  [Skipped] Variable '{term}' will not be replaced.")
                     break
 
-                # --- UPDATED: Process letters, numbers, AND primes ---
                 stripped_term = ""
                 for char in term:
                     if char.isalpha():
@@ -308,30 +357,45 @@ def process_tex():
                         stripped_term += DIGIT_MAP.get(char, "")
                     elif char == "'":
                         stripped_term += "Prime"
-                # -----------------------------------------------------
 
                 if not stripped_term:
                     print("  [Skipped] Term contains no valid characters for auto-generation.")
                     break
 
-                command_to_use = f"\\TT{stripped_term}"
+                command_to_use = f"\\T{stripped_term}"
                 print(f"  -> Generated: {command_to_use}")
 
-            # Case 2: Manual Input
+            # Case 2: Manual Input (UPDATED)
             else:
-                command_to_use = user_input
+                # If user explicitly starts with \, allow it (e.g. \alpha)
+                # Otherwise, prepend \T automatically
+                if user_input.startswith('\\'):
+                    command_to_use = user_input
+                else:
+                    command_to_use = f"\\T{user_input}"
 
-            # Check for Collisions
-            if command_to_use in used_commands:
-                print(f"  [Error] Command '{command_to_use}' is ALREADY used.")
-                if not user_input:
-                    first_collision = True
-                continue
+            # --- COLLISION CHECK ---
+            if command_to_use in existing_definitions:
+                prev_definition = existing_definitions[command_to_use]
 
-            # Valid
+                if prev_definition == term:
+                    print(f"  [Info] Re-using existing command '{command_to_use}' (matches '{term}').")
+                    replacements[term] = command_to_use
+                    is_reusing_command = True
+                    break
+                else:
+                    print(f"  [Error] Command '{command_to_use}' is ALREADY defined for '{prev_definition}'.")
+                    if not user_input:
+                        first_collision = True
+                    continue
+
+            # Valid new command
             replacements[term] = command_to_use
-            definitions.append(f"\\newcommand{{{command_to_use}}}{{{term}}}")
-            used_commands.add(command_to_use)
+
+            definitions.append(f"\\variableterm{{{command_to_use}}}{{{term}}}{{***DEF NEEDED***}}")
+            dict_entries.append(f"$\\left( {command_to_use} \\right)$ \\textbf{{:}} {command_to_use}def \n")
+
+            existing_definitions[command_to_use] = term
             break
 
     print("Applying replacements...")
@@ -366,11 +430,24 @@ def process_tex():
     final_text += original_text[last_idx:]
 
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f: f.write(final_text)
-    with open(COMMANDS_FILE, 'w', encoding='utf-8') as f:
-        f.write("% Auto-generated variable definitions\n")
-        for line in definitions: f.write(line + "\n")
 
-    print(f"Success! Processed file saved to: {OUTPUT_FILE}")
+    if definitions:
+        os.makedirs(os.path.dirname(COMMANDS_FILE), exist_ok=True)
+        with open(COMMANDS_FILE, 'a', encoding='utf-8') as f:
+            f.write("\n% --- New Append Batch ---\n")
+            for line in definitions: f.write(line + "\n")
+        print(f"Success! Appended {len(definitions)} commands to: {COMMANDS_FILE}")
+
+    if dict_entries:
+        os.makedirs(os.path.dirname(DICT_FILE), exist_ok=True)
+        with open(DICT_FILE, 'a', encoding='utf-8') as f:
+            f.write("\n% --- New Append Batch ---\n")
+            for line in dict_entries: f.write(line + "\n")
+        print(f"Success! Appended {len(dict_entries)} entries to: {DICT_FILE}")
+    else:
+        print("No new definitions to append.")
+
+    print(f"Processed file saved to: {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     process_tex()

@@ -1,0 +1,2 @@
+Line 2960: \chapter*{Definitions}
+   >>> Found: ['\\chapter', 'STRAY_BRACES']

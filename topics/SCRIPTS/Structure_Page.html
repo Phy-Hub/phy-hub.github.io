@@ -6,6 +6,13 @@
   <meta name="description" content="..."><!-- #todo -->
   <meta name="author" content="Phy-Hub">
 
+  <link rel="icon" type="image/png" href="../favicons/favicon-96x96.png" sizes="96x96" >
+  <link rel="icon" type="image/svg+xml" href="../favicons/favicon.svg" >
+  <link rel="shortcut icon" href="../favicons/favicon.ico" >
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png" >
+  <meta name="apple-mobile-web-app-title" content="Phy-Hub" >
+  <link rel="manifest" href="../favicons/site.webmanifest" >
+
   <!--<script> var url = window.location.href; url = url.split('.html')[0]; window.history.replaceState(null, null, url); </script> -->
   <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
   <script defer async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
@@ -39,6 +46,7 @@
   <script src="SR_Aberration.js"></script>
 
   <style>
+    :root {--navbar-height: 60px;}
     .note {
         text-align: center;
         font-style: italic;
@@ -94,17 +102,17 @@
     .brown{background-color: #b7a484;}
     .stronger-colour{background-color: #fccb93;}
 
-    dt:hover {background-color: #ffd00094;}
+    dt:hover {background-color: #ddb400;}
     dd {margin-left: 0;}
     #dictionary > dd {padding: 10px;}
 
-    span:hover {background-color: #ddb400; cursor: pointer;}
+    span:hover {background-color: #ddb400; cursor: default;}
     h1 span:hover, p span:hover {background-color: transparent; cursor: default;}
 
     .navbar {
       display: grid; grid-template-columns: auto 680px auto;
       position: sticky; top: 0; z-index: 1000;
-      height: 60px; width: 100%;
+      height: var(--navbar-height); width: 100%;
       background-color: grey;
     }
 
@@ -114,12 +122,7 @@
       z-index: 1000;
       width: 100%;
     }
-    .navbar {
-      display: grid;
-      grid-template-columns: auto 680px auto;
-      height: 60px;
-      background-color: grey;
-    }
+
 
     .math { font-size: smaller; }
     mjx-container:not([display]) {
@@ -158,6 +161,8 @@
     display: inline-block;
     }
     #toc_container li {line-height: 1.1;}
+    section a {color: black; text-decoration: none;}
+    section a:hover {text-decoration: underline; background-color: #ddb400; cursor: pointer;}
 
     :target:before {content: ""; display: block; height: 65px; margin-top: -65px; visibility: hidden;}
 
@@ -174,8 +179,8 @@
     section { counter-increment: chapter-counter; counter-reset: figure-counter; }
     figure { counter-increment: figure-counter;}
 
-    #tocsidebar{position: sticky; top: 60px; overflow: hidden; align-self: start; height: auto;  padding-left: 10px;}
-    .sidebar{position: sticky; top: 60px; overflow: hidden; align-self: start; height: auto;}
+    #tocsidebar{position: sticky; top: var(--navbar-height); overflow: hidden; align-self: start; height: auto;  padding-left: 10px;}
+    .sidebar{position: sticky; top: var(--navbar-height); overflow: hidden; align-self: start; height: auto;}
      figcaption {line-height: 1.2; font-size: 0.85em; margin-top: 10px;}
 
     .dropdown-menu {
@@ -202,6 +207,8 @@
         .toc-link { text-decoration:none; color:inherit; display:block; padding:2px 0; cursor:pointer; }
         .toc-link:hover { color:#000; }
         .toc-sublist { display:none; list-style:none; padding-left:10px; }
+
+        .interactive-equation:hover {background-color: #ddb400; cursor: help;}
   </style>
 
   <style>
@@ -230,6 +237,10 @@
         font-style: italic;
     }
     body {font-family: 'TG Schola', 'Century Schoolbook', 'New Century Schoolbook', Georgia, serif;}
+
+    .chapter_header {scroll-margin-top: var(--navbar-height);}
+    .part_header {scroll-margin-top: var(--navbar-height);}
+
   </style>
 
 </head>
@@ -253,8 +264,8 @@
 
   <!--Page-->
   <main>
-   <div id="equation_hover" style="position: fixed; top: 60px; padding: 0px; padding-right: 20px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
-    <div id="fig_hover" style="position: fixed; top: 60px; padding: 0px; padding-right: 20px; padding-left: 20px; background-color:#f99830; width: 660px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
+   <div id="equation_hover" style="position: fixed; top: var(--navbar-height); padding: 0px; padding-right: 20px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
+    <div id="fig_hover" style="position: fixed; top: var(--navbar-height); padding: 0px; padding-right: 20px; padding-left: 20px; background-color:#f99830; width: 660px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
     <!--Page Navbar-->
     <nav id="tocsidebar">
       <p style="font-size: 1.5em; font-weight: normal; margin: 0pt; padding-bottom: 0.5em;  text-align: center;"><span style="font-family: 'Computer Modern', serif; font-style: italic;">Handbook of</span>
@@ -309,7 +320,10 @@
            <a href="..." style="padding-top: 5px;"> <b> Resources </b> </a> <br> -->
         <div id="vars">
           <h3 style="cursor: pointer;" onclick="var content = this.nextElementSibling; content.style.display = content.style.display === 'none' ? 'block' : 'none';">Terms ⯆</h3>
-        [Insert Math Terms] <dl id="dts_ch2" style="display: none;"><dt style="cursor: pointer;" onclick="document.getElementById('math-E').style.display = document.getElementById('math-E').style.display == 'none' ? 'inline' : 'none';"> \(E\)<b>:</b> </dt><definition id="math-E" style="display: none;">an <dt onmouseover="document.getElementById('event').style.display='block'" onmouseout="document.getElementById('event').style.display='none'">event</dt> *** might be confused with energy later ***</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-v').style.display = document.getElementById('math-v').style.display == 'none' ? 'inline' : 'none';"> \(v\)<b>:</b> </dt><definition id="math-v" style="display: none;">is the velocity of second <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt> relative to the first <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt></definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-c').style.display = document.getElementById('math-c').style.display == 'none' ? 'inline' : 'none';"> \(c\)<b>:</b> </dt><definition id="math-c" style="display: none;">the speed that light travels in empty space when it is not impeded by matter and fields.</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-gamma').style.display = document.getElementById('math-gamma').style.display == 'none' ? 'inline' : 'none';"> \(\gamma\)<b>:</b> </dt><definition id="math-gamma" style="display: none;">a relativistic factor given by \(1/\sqrt{1-v^2/c^2}\) which determines how much of an effect the <dt onmouseover="document.getElementById('transform').style.display='block'" onmouseout="document.getElementById('transform').style.display='none'">transform</dt> of the coordinates deviates from the classical transform. It is only significant at relative frame speeds close to that of light.</definition></dl>
+          <div id="definition-display" class="definition-box" style="color: #555;">
+            *Hover over equations for term info*
+          </div>
+          [Insert Math Terms] <dl id="dts_ch2" style="display: none;"><dt style="cursor: pointer;" onclick="document.getElementById('math-E').style.display = document.getElementById('math-E').style.display == 'none' ? 'inline' : 'none';"> \(E\)<b>:</b> </dt><definition id="math-E" style="display: none;">an <dt onmouseover="document.getElementById('event').style.display='block'" onmouseout="document.getElementById('event').style.display='none'">event</dt> *** might be confused with energy later ***</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-v').style.display = document.getElementById('math-v').style.display == 'none' ? 'inline' : 'none';"> \(v\)<b>:</b> </dt><definition id="math-v" style="display: none;">is the velocity of second <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt> relative to the first <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt></definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-c').style.display = document.getElementById('math-c').style.display == 'none' ? 'inline' : 'none';"> \(c\)<b>:</b> </dt><definition id="math-c" style="display: none;">the speed that light travels in empty space when it is not impeded by matter and fields.</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-gamma').style.display = document.getElementById('math-gamma').style.display == 'none' ? 'inline' : 'none';"> \(\gamma\)<b>:</b> </dt><definition id="math-gamma" style="display: none;">a relativistic factor given by \(1/\sqrt{1-v^2/c^2}\) which determines how much of an effect the <dt onmouseover="document.getElementById('transform').style.display='block'" onmouseout="document.getElementById('transform').style.display='none'">transform</dt> of the coordinates deviates from the classical transform. It is only significant at relative frame speeds close to that of light.</definition></dl>
       </div>
       <dl id="dictionary" style="position: fixed; bottom: 0; left: calc(50% + 350px + 10px); background-color: rgb(242, 218, 193); margin-right: 10px;">
         [Insert Definitions]
@@ -319,192 +333,277 @@
 
 
 
-  <!--scripts-->
-  <script>
+<!--scripts-->
+<script>
 
-    //##################
-    window.addEventListener('load', function() {
-      fetch('Media/Logo/DS_Pattern.svg')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('banner').innerHTML = data;
-          var svgDoc = document.getElementById('banner').getElementsByTagName('svg')[0];
-          svgDoc.style.height = "54px"
-          var myUses = svgDoc.getElementsByTagName('use');
-          var totalItems = myUses.length; // total number of items
-          var totalTime = 4; // total time for all animations in seconds
-          var timePerItemSlow = totalTime / 2000; // time per item for first 300 items
-          var timePerItemFast = (totalTime - (timePerItemSlow * 200)) / (totalItems - 100); // time per item for remaining items
-          for (var i = 0; i < myUses.length; i++) {
-            myUses[i].style.opacity = 0;
-            if (i < 300) {
-              myUses[i].style.transition = `opacity 0s`;
-              myUses[i].style.transitionDelay = `${i * timePerItemSlow}s`; // Set a different delay for each use
-            } else {
-              myUses[i].style.transition = `opacity 0s`;
-              myUses[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`; // Set a different delay for each use
-            }
-          }
-          setTimeout(function() {
-            for (var i = 0; i < myUses.length; i++) {
-              myUses[i].style.opacity = 1;
-            }
-          }, 0);
-        });
+//##################
+window.addEventListener('load', function() {
+  fetch('Media/Logo/DS_Pattern.svg')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('banner').innerHTML = data;
+      var svgDoc = document.getElementById('banner').getElementsByTagName('svg')[0];
+      svgDoc.style.height = "54px"
+      var myUses = svgDoc.getElementsByTagName('use');
+      var totalItems = myUses.length; // total number of items
+      var totalTime = 4; // total time for all animations in seconds
+      var timePerItemSlow = totalTime / 2000; // time per item for first 300 items
+      var timePerItemFast = (totalTime - (timePerItemSlow * 200)) / (totalItems - 100); // time per item for remaining items
+      for (var i = 0; i < myUses.length; i++) {
+        myUses[i].style.opacity = 0;
+        if (i < 300) {
+          myUses[i].style.transition = `opacity 0s`;
+          myUses[i].style.transitionDelay = `${i * timePerItemSlow}s`; // Set a different delay for each use
+        } else {
+          myUses[i].style.transition = `opacity 0s`;
+          myUses[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`; // Set a different delay for each use
+        }
+      }
+      setTimeout(function() {
+        for (var i = 0; i < myUses.length; i++) {
+          myUses[i].style.opacity = 1;
+        }
+      }, 0);
     });
+});
 
-    //##################
-    //#todo  change details to ul or li version
-    //#todo check if id's are correct in section refs
-    function showContent(divId) {
+//##################
+function showContent(divId) {
 
-      $(document).ready(function() {
-        // Hide all divs with class 'chapter'
-        $(".chapter").attr("style", "display: none");
-        // Show the div with id 'divId'
-        $("#" + divId).attr("style", "display: block");
-      });
+  $(document).ready(function() {
+    // Hide all divs with class 'chapter'
+    $(".chapter").attr("style", "display: none");
+    // Show the div with id 'divId'
+    $("#" + divId).attr("style", "display: block");
+  });
 
-      $("details").removeAttr("open");
-      window.scrollTo(0,0);
-    }
+  window.scrollTo(0,0);
+}
 
-    //##################
-    function resizeSVGImages() {
-      var images = document.getElementsByClassName('resizable-svg-img');
-      var resizeFactor = 0.3;
+//##################
+function resizeSVGImages() {
+  var images = document.getElementsByClassName('resizable-svg-img');
+  var resizeFactor = 0.3;
 
-      for (var i = 0; i < images.length; i++) {
-          var img = images[i];
-          var tempImg = new Image();
-          tempImg.src = img.src;
+  for (var i = 0; i < images.length; i++) {
+      var img = images[i];
+      var tempImg = new Image();
+      tempImg.src = img.src;
 
-          tempImg.onload = (function(img) {
-              return function() {
-                  var originalWidth = this.naturalWidth;
-                  var newWidth = originalWidth * resizeFactor;
+      tempImg.onload = (function(img) {
+          return function() {
+              var originalWidth = this.naturalWidth;
+              var newWidth = originalWidth * resizeFactor;
 
-                  img.style.width = '650px';
-              };
-          })(img);
+              img.style.width = '650px';
+          };
+      })(img);
+  }
+}
+
+//##################
+// could replace targetId with 'fig_hover' but would need to change parser
+function copyContent(sourceId, targetId) {
+  var sourceDiv = document.getElementById(sourceId);
+  var targetDiv = document.getElementById(targetId);
+  // Clear the target div first (good practice, in case it had something)
+  targetDiv.innerHTML = '';
+
+  // Create a deep clone of the source div's content.  Crucially important!
+  var clonedContent = sourceDiv.cloneNode(true);
+
+  // Remove the ID from the cloned content to prevent duplicate IDs
+  clonedContent.removeAttribute("id");
+
+  // Style the *images* (or other elements) within the cloned content.
+  var images = clonedContent.getElementsByTagName('img'); // Get all images
+  for (var i = 0; i < images.length; i++) {
+    images[i].style.maxHeight = "40vh";  // Limit height to 100% of container
+    images[i].style.maxWidth = "100%";   // Limit width to 100% of container
+    images[i].style.height = "auto";    // Maintain aspect ratio
+    images[i].style.width = "auto";     // Maintain aspect ratio
+    images[i].style.objectFit = "contain"; // Important: Ensure the entire image is visible
+  }
+
+  // Append the styled, cloned content to the target div.
+  targetDiv.appendChild(clonedContent);
+}
+
+//##################
+function deleteContent(id) {
+  var myDiv = document.getElementById(id);
+  myDiv.innerHTML = ''; // Delete the content
+}
+
+//##################
+// --- Initialization on Page Load ---
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash; // e.g. "#part_2_ch3_header"
+
+  if (hash) {
+    // 1. Find the target element (the header)
+    const targetElement = document.querySelector(hash);
+
+    if (targetElement) {
+      // 2. Find the parent wrapper (e.g. id="part_2_ch3_wrap")
+      const wrapper = targetElement.closest('.chapter');
+
+      if (wrapper) {
+        // 3. Extract the ID needed for toggleView (remove "_wrap")
+        // e.g. "part_2_ch3_wrap" -> "part_2_ch3"
+        const viewId = wrapper.id.replace('_wrap', '');
+
+        // 4. Trigger the view
+        toggleView(viewId);
+
+        // 5. Scroll to the specific header after a slight delay
+        // (to ensure the div is visible first)
+        setTimeout(() => {
+          targetElement.scrollIntoView();
+        }, 10);
+
+        return; // Exit so we don't load the default Part 1
       }
     }
+  }
 
-    //##################
-    // could replace targetId with 'fig_hover' but would need to change parser
-    function copyContent(sourceId, targetId) {
-      var sourceDiv = document.getElementById(sourceId);
-      var targetDiv = document.getElementById(targetId);
-      // Clear the target div first (good practice, in case it had something)
-      targetDiv.innerHTML = '';
+  // Default behavior: If no valid hash, load Part 1
+  const firstPartLink = document.querySelector('.toc-part-link');
+  if (firstPartLink) {
+      const partId = firstPartLink.getAttribute('onclick').match(/'([^']+)'/)[1];
+      toggleView(partId);
+  }
+});
 
-      // Create a deep clone of the source div's content.  Crucially important!
-      var clonedContent = sourceDiv.cloneNode(true);
+function toggleView(id) {
+    // 1. Hide all Content Sections
+    const allWrappers = document.querySelectorAll('[id$="_wrap"]');
+    allWrappers.forEach(el => el.style.display = 'none');
 
-      // Remove the ID from the cloned content to prevent duplicate IDs
-      clonedContent.removeAttribute("id");
+    // 2. Reset TOC Styles
+    // Hide all sublists (TOC dropdowns)
+    const allSublists = document.querySelectorAll('.toc-sublist');
+    allSublists.forEach(el => el.style.display = 'none');
 
-      // Style the *images* (or other elements) within the cloned content.
-      var images = clonedContent.getElementsByTagName('img'); // Get all images
-      for (var i = 0; i < images.length; i++) {
-        images[i].style.maxHeight = "40vh";  // Limit height to 100% of container
-        images[i].style.maxWidth = "100%";   // Limit width to 100% of container
-        images[i].style.height = "auto";    // Maintain aspect ratio
-        images[i].style.width = "auto";     // Maintain aspect ratio
-        images[i].style.objectFit = "contain"; // Important: Ensure the entire image is visible
-      }
+    // Remove active class from all links
+    const allLinks = document.querySelectorAll('.toc-link');
+    allLinks.forEach(el => el.classList.remove('toc-active'));
 
-      // Append the styled, cloned content to the target div.
-      targetDiv.appendChild(clonedContent);
+    // 3. Show the Targeted Content (Initially show what was clicked)
+    const targetWrap = document.getElementById(id + '_wrap');
+    if (targetWrap) {
+        targetWrap.style.display = 'block';
     }
 
-    //##################
-    function deleteContent(id) {
-      var myDiv = document.getElementById(id);
-      myDiv.innerHTML = ''; // Delete the content
-    }
-    //#todo change details version to ul or li
-    //##################
-    document.addEventListener("DOMContentLoaded", function () {
-      // Get the hash from the URL (e.g., #subsection1)
-      var hash = window.location.hash;
+    // 4. Synchronize the TOC
+    const activeLink = document.querySelector(`a[onclick="toggleView('${id}')"]`);
 
-      if (hash) {
-          var subsection = document.querySelector(hash);
+    if (activeLink) {
+        // Mark this link as active
+        activeLink.classList.add('toc-active');
 
-          // Find the chapter
-          var chapter = subsection.closest(".chapter");
-          var chapterId = chapter ? chapter.id : null;
+        // CASE A: It is a Chapter Link (Child)
+        const parentList = activeLink.closest('.toc-part-sublist');
+        if (parentList) {
+            parentList.style.display = 'block'; // Keep parent list open
 
-          $("details").removeAttr("open");
-          // open chapter in TOC
-          $("#" + chapterId.replace(/_wrap$/, "") + "_details").attr("open", true);
+            // Highlight the parent Part link as well
+            const parentLi = parentList.parentElement;
+            const partLink = parentLi.querySelector('.toc-part-link');
+            if (partLink) {
+                partLink.classList.add('toc-active');
+            }
+        }
 
-          // Hide all chapters
-          $(".chapter").attr("style", "display: none");
-          // Show chapter
-          $("#" + chapterId).attr("style", "display: block");
+        // CASE B: It is a Part Link (Parent)
+        const siblingList = activeLink.nextElementSibling;
+        if (siblingList && siblingList.classList.contains('toc-sublist')) {
+            siblingList.style.display = 'block'; // Open the list
 
-          // Optionally scroll to the subsection after it's displayed
-          subsection.scrollIntoView();
-      }
-    });
+            // --- REVISED LOGIC TO AUTO-LOAD FIRST CHAPTER WITHOUT .click() ---
+            if (activeLink.classList.contains('toc-part-link')) {
+                const firstChapter = siblingList.querySelector('.toc-chapter-link');
 
-    function toggleView(type, id) {
-        // --- 1. Define Selectors based on Type ---
-        // If type is 'part', we look for part links/lists. If 'ch', we look for chapter ones.
-        const isPart = (type === 'part');
+                if (firstChapter) {
+                    // 1. Extract the ID from the onclick string: "toggleView('part_1_ch1')"
+                    const onClickStr = firstChapter.getAttribute('onclick');
+                    const match = onClickStr.match(/'([^']+)'/);
 
-        // Classes added in Python:
-        const linkClass = isPart ? '.toc-part-link' : '.toc-chapter-link';
-        const listClass = isPart ? '.toc-part-sublist' : '.toc-chapter-sublist';
+                    if (match && match[1]) {
+                        const chapterId = match[1];
+                        const chapterWrap = document.getElementById(chapterId + '_wrap');
 
-        // Attribute selectors to find content wrappers (e.g., id="part1_wrap")
-        // This finds all divs that start with 'part'/'ch' and end with '_wrap'
-        const wrapSelector = isPart ? '[id^="part"][id$="_wrap"]' : '[id^="ch"][id$="_wrap"]';
+                        if (chapterWrap) {
+                            // Hide the Part wrapper we just showed in Step 3
+                            if (targetWrap) targetWrap.style.display = 'none';
 
-        // --- 2. Hide EVERYTHING in this group ---
-        document.querySelectorAll(linkClass).forEach(el => el.classList.remove('toc-active'));
-        document.querySelectorAll(listClass).forEach(el => el.style.display = 'none');
-        document.querySelectorAll(wrapSelector).forEach(el => el.style.display = 'none');
+                            // Show the Chapter wrapper instead
+                            chapterWrap.style.display = 'block';
 
-        // --- 3. Show the TARGET ---
-        // Activate Link
-        const activeLink = document.getElementById('link_' + type + '_' + id);
-        if (activeLink) activeLink.classList.add('toc-active');
+                            // Highlight the chapter link
+                            firstChapter.classList.add('toc-active');
 
-        // Show TOC Sublist
-        const activeList = document.getElementById('toc_' + type + '_' + id);
-        if (activeList) activeList.style.display = 'block';
-
-        // Show Content Wrapper
-        const activeWrap = document.getElementById(type + id + '_wrap');
-        if (activeWrap) activeWrap.style.display = 'block';
-
-        // --- 4. Auto-Open First Chapter (Logic moved from Python to here) ---
-        if (isPart && activeList) {
-            // Find the first chapter link INSIDE the now-visible part list
-            const firstChapter = activeList.querySelector('.toc-chapter-link');
-            if (firstChapter) {
-                // Extract ID from the link ID (format: link_ch_1)
-                const chId = firstChapter.id.replace('link_ch_', '');
-                toggleView('ch', chId);
+                            // Open the chapter's sublist (sections) if it exists
+                            const chapterSubList = firstChapter.nextElementSibling;
+                            if (chapterSubList && chapterSubList.classList.contains('toc-sublist')) {
+                                chapterSubList.style.display = 'block';
+                            }
+                        }
+                    }
+                }
             }
         }
     }
+    // 5. Scroll to top
+    window.scrollTo(0, 0);
+}
 
-    // --- 5. Initialization on Load ---
-    window.addEventListener('DOMContentLoaded', () => {
-        // Find the very first Part link in the HTML and click it
-        const firstPart = document.querySelector('.toc-part-link');
-        if (firstPart) {
-            const pId = firstPart.id.replace('link_part_', '');
-            toggleView('part', pId);
-        }
+// Helper for syncing TOC from footer nav
+
+function syncToc(tocId) {
+  let targetId = tocId.replace('_toc', '');
+  toggleView(targetId);
+}
+
+//#####
+document.addEventListener('DOMContentLoaded', () => {
+  const displayBox = document.getElementById('definition-display');
+  const glossary = document.getElementById('math-glossary');
+  const equations = document.querySelectorAll('.interactive-equation');
+
+  function getDefinitionItem(termKey) {
+    const dt = glossary.querySelector(`dt[data-term="${termKey}"]`);
+    if (dt && dt.nextElementSibling) {
+      // Return a list item (<li>) for the display list
+      return `<li><strong>${dt.innerHTML}</strong>${dt.nextElementSibling.innerHTML}</li>`;
+    }
+    return '';
+  }
+
+  equations.forEach(eq => {
+    eq.addEventListener('mouseenter', function() {
+      // 1. Get the string "force mass acceleration" and split by space
+      const termKeys = this.getAttribute('data-terms').split(' ');
+
+      // 2. Map keys to HTML list items
+      const listItems = termKeys.map(key => getDefinitionItem(key)).join('');
+
+      // 3. Inject into display box as an unordered list
+      if (listItems) {
+        displayBox.innerHTML = `<ul style="list-style: none; margin: 0; padding: 0;">${listItems}</ul>`;
+        displayBox.classList.add('active');
+      }
     });
 
-    [Insert Script]
+    eq.addEventListener('mouseleave', function() {
+      displayBox.innerHTML = 'Hover over the equation to see all terms defined.';
+      displayBox.classList.remove('active');
+    });
+  });
+});
 
-  </script>
+[Insert Script]
+
+</script>
 </body>
 </html>

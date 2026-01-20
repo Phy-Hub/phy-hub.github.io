@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.5)  15 JAN 2026 21:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.5)  18 JAN 2026 22:09
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1061,7 +1061,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 )
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/asymptote\asymptote.sty
 Package: asymptote 2024/02/26 v1.38 Asymptote style file for LaTeX
-(output/tikz/Time_dilation_moving_frame.pre)
+No file output/tikz/Time_dilation_moving_frame.pre.
 \ASYbox=\box139
 \ASYdimen=\dimen327
 \c@asy=\count381
@@ -1591,28 +1591,28 @@ Package biblatex Info: ... and expl3
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-expl3
 .sty
 Package: blx-case-expl3 2025/07/10 v3.21 expl3 case changing code for biblatex
-))) (Tex/Terms/Term_dict.tex) (Tex/Terms/Term_commands.tex)
+))) (Tex/Terms/Term_commands.tex)
 \@quotelevel=\count528
 \@quotereset=\count529
 No file output/tikz/Time_dilation_moving_frame.aux.
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
 
 (C:\Users\one_p\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -1639,13 +1639,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Redefining \microtypecontext on input line 5.
-Package microtype Info: Applying patch `item' on input line 5.
-Package microtype Info: Applying patch `toc' on input line 5.
-Package microtype Info: Applying patch `eqnum' on input line 5.
-Package microtype Info: Applying patch `footnote' on input line 5.
-Package microtype Info: Applying patch `verbatim' on input line 5.
-LaTeX Info: Redefining \microtypesetup on input line 5.
+LaTeX Info: Redefining \microtypecontext on input line 4.
+Package microtype Info: Applying patch `item' on input line 4.
+Package microtype Info: Applying patch `toc' on input line 4.
+Package microtype Info: Applying patch `eqnum' on input line 4.
+Package microtype Info: Applying patch `footnote' on input line 4.
+Package microtype Info: Applying patch `verbatim' on input line 4.
+LaTeX Info: Redefining \microtypesetup on input line 4.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1701,7 +1701,7 @@ Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.17).
 
 \providecommand\hyper@newdestlabel[2]{}
-Package hyperref Info: Link coloring OFF on input line 5.
+Package hyperref Info: Link coloring OFF on input line 4.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -1716,8 +1716,8 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'output/tikz/Time_dilation_moving_frame.bbl' no
 t found.
 No file output/tikz/Time_dilation_moving_frame.bbl.
-Package biblatex Info: Reference section=0 on input line 5.
-Package biblatex Info: Reference segment=0 on input line 5.
+Package biblatex Info: Reference section=0 on input line 4.
+Package biblatex Info: Reference segment=0 on input line 4.
 (Tex/toc.tex
 No file output/tikz/Time_dilation_moving_frame.toc.
 ) (Main_Matter.tex
@@ -2481,9 +2481,11 @@ LaTeX Warning: Empty bibliography on input line 3915.
 Chapter 7.
 Package biblatex Info: Reference segment=7 on input line 3933.
 Package biblatex Info: Setting label 'refsegment:07' on input line 3933.
-)
+Package biblatex Info: Reference segment=8 on input line 3977.
+Package biblatex Info: Setting label 'refsegment:08' on input line 3977.
+(Tex/Terms/Term_dict.tex))
 
-LaTeX Warning: Empty bibliography on input line 14.
+LaTeX Warning: Empty bibliography on input line 13.
 
  ***********
 LaTeX2e <2025-11-01>
@@ -2503,13 +2505,13 @@ e.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 54218 strings out of 467871
- 1245087 string characters out of 5418377
- 2100490 words of memory out of 5000000
- 82062 multiletter control sequences out of 15000+600000
+ 54538 strings out of 467871
+ 1247146 string characters out of 5418377
+ 2104296 words of memory out of 5000000
+ 82385 multiletter control sequences out of 15000+600000
  697284 words of font info for 197 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 135i,17n,138p,1221b,1203s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 135i,17n,138p,1206b,1203s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmr10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/pu

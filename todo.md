@@ -1,31 +1,45 @@
-### parse vairables and replace with function, then need parser to undo this for html with each variable being relateded to func name and then each equation having ref to each func name included in it, need to later add definitions into all variables
+#todo create animated figures for more figures
+
+#todo animation list:
+- rats
+- doppler effect, source emitting circler pulses of light
+- A retarded Field of Source's Light
+- Apparent faster than light movement
+
+* for truck animations make background same as images (light gray + black blurred ground)
 
 
-*** when hover over actual equation show terms at top or bottom of page * create empty thing to show on hover for now
-*** check for no duplicate id's
-*** onhover of figure ref, have caption show in left sidebar
-*** maybe have title svg and part by itself with a begin > button * bt need to remove references (possibly only have used refs in parts/chapters load, would need to have extra tag/info on bibs)
-*** fix #hash from url loading correct content from .addEventListener("DOMContentLoaded"
+### main content, nagivation + toc:
+* when brought to chapter, would be nice to still have Part #num. (without title) greyed out at top
 
+### sidebar:
+* have Terms triangle in sidebar rotate on click
 
-*** latex sidenotes not on newline this could possible due to blank lines being removed or not registered when rendered, might need \n<br>\n for blank lines
-*** change all javascript pointers from details and summary to ul and li in structure_page.html
-*** place script for toc somewhere else
-
-* use .hide() .show() Instead of manually setting the style attribute with .attr(), in bottom javascript
-* subfigure captions height alinment is off
-* need script to search and replace dictionary words/phrases with hyperlink, if in caption{} will need \protect in front but to work for terms ending * with "s" and "'s"
-* make logo svg ( python script, miniturise, see if gzipping it is possible when being used)
-* use it for favicon
-
-### equations
+### equations + figures:
 - on hover over \eqref{} show equation at top or bottom of page, and all variables as side of page
     - use latex equation label as equation divs id
     - have onmousehover have JS show div of eqution using the label/id at top or bottom of page depending on mouse position
 - see if there is automatic mathjax resizing for equations that overflow
+* when hover over actual equation show terms at top or bottom of page * create empty thing to show on hover for now
+* onhover of figure ref, have caption show in left sidebar
+* get parser to automatically recognise multi line equations ("mini derivations") and only show final variable on LHS (last one due to case were equation is rearranged) and equation after last = on RHS and only show this and have expand button to show derivation, which will load full equation into div when clicked and change to revert button that when clicked again reverts (( or possibly for whole derivation including text, this would require flags in the * latex, whether these are just in code of in shown in pdf as well))
 
-html tips:
+### formating:
+* latex sidenotes not on newline this could possible due to blank lines being removed or not registered when rendered, might need \n<br>\n for blank lines
+* use .hide() .show() Instead of manually setting the style attribute with .attr(), in bottom javascript
+* make logo svg ( python script, miniturise, see if gzipping it is possible when being used)
+* script all text into <p>
 
+### css/style:
+* use same font size as wikipedia
+* maybe have title svg and part by itself with a begin > button * bt need to remove references (possibly only have used refs in parts/chapters load, would need to have extra tag/info on bibs)
+* subfigure captions height alinment is off
+* next/previous button brings up to book title instead of chapter
+
+### checks:
+* check for no duplicate id's
+
+### html tips:
 * use em to size relative to parents font size, or rem which is relative to root font size
 * this can help get rid of need for media quiery
 * can use p { width: clamp(45ch, 50%, 75ch); } to make paragraphs width in content min 45 character length and max 75ch and prefered 50%
@@ -43,25 +57,25 @@ html tips:
 
 
 
-latex:
-
+### latex:
+* need script to search and replace words with hyperlink to definition, if in caption{} will need \protect in front but to work for terms ending * with "s" and "'s"
+* Add variable definitions
 * format image size and captions
-* bibliography
 * miniaturise svgs
 * appendix
-* download button for images and text/latex/pdf options with phy-hub logo
+* download button for images and text/latex/pdf options with phy-hub logo/watermark
 * have a summary page with main equations
-* script all text into <p>
 * express that time slowing and length contraction not being an optical illsuion, or is it ?
 * posiibly use bibtex2html for references
-* get parser to automatically recognise multi line equations ("mini derivations") and only show final variable on LHS (last one due to case were equation is rearranged) and equation after last = on RHS and only show this and have expand button to show derivation, which will load full equation into div when clicked and change to revert button that when clicked again reverts (( or possibly for whole derivation including text, this would require flags in the * latex, whether these are just in code of in shown in pdf as well))
+* \cite{einstein1905electrodynamics} and \cite{SRtestsWiki,SRtestsUniCR} are numbered wrong in latex bibliography
+* correct the firgure (Length contraction between three accelerating cars) to have last image to be when light reaches the front car
 
-
-*** \cite{einstein1905electrodynamics} and \cite{SRtestsWiki,SRtestsUniCR} are numbered wrong in latex bibliography
 
 *************************************************************************
 *************************************************************************
 things to do (MUCH LATER):
+*************************************************************************
+*************************************************************************
 * box for suggested changes to material or site, and to point out errors
 * think of better way for mobile users to get TOC on screen
 * make all images have alt text

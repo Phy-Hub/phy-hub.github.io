@@ -23,6 +23,8 @@
     - npm install -g svgo
 
 
-- GPL ghostscript (not sure if needed)
+- GPL ghostscript (to minify pdfs)
 
 - Inkscape
+    - winget install -e --id Inkscape.Inkscape
+    - add to path C:\Program Files\Inkscape\bin

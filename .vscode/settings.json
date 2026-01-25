@@ -1,3 +1,38 @@
 {
-    "editor.formatOnSave": false
+"editor.formatOnSave": false,
+
+"highlight.regexFlags": "gi",
+"highlight.regexes": {
+"((?:<!-- *)?(?:#|// @|//|./\\*+|<!--|--|\\* @|{!|{{!--|{{!) *note(?:[\\t\\f\\v ]*\\([^\\r\\n)]+\\))?:?)((?!\\w)(?: *-->| *\\*/| *!}| *--}}| *}}|(?= *(?:[^\\r\\n:]//|/\\*+|<!--|@|--|{!|{{!--|{{!))|(?: +[^\\r\\n@]*?)(?= *(?:[^\\r\\n:]//|/\\*+|<!--|@|--(?!>)|{!|{{!--|{{!))|(?: +[^\\r\\n@]+)?))": {
+    "filterFileRegex": ".*(?<!CHANGELOG.md)$",
+    "decorations": [
+    {
+        "overviewRulerColor": "#90EE90",
+        "backgroundColor": "#90EE90",
+        "color": "#1f1f1f",
+        "fontWeight": "bold"
+    },
+    {
+        "backgroundColor": "#90EE90",
+        "color": "#1f1f1f"
+    }
+    ]
+},
+"((?:<!-- *)?(?:#|// @|//|./\\*+|<!--|--|\\* @|{!|{{!--|{{!) *(?:FIXME|FIX|BUG|UGLY|DEBUG|HACK)(?:[\\t\\f\\v ]*\\([^\\r\\n)]+\\))?:?)((?!\\w)(?: *-->| *\\*/| *!}| *--}}| *}}|(?= *(?:[^\\r\\n:]//|/\\*+|<!--|@|--|{!|{{!--|{{!))|(?: +[^\\r\\n@]*?)(?= *(?:[^\\r\\n:]//|/\\*+|<!--|@|--(?!>)|{!|{{!--|{{!))|(?: +[^\\r\\n@]+)?))": {
+    "filterFileRegex": ".*(?<!CHANGELOG.md)$",
+    "decorations": [
+    {
+        "overviewRulerColor": "#FF8C92",
+        "backgroundColor": "#FF8C92",
+        "color": "#1f1f1f",
+        "fontWeight": "bold"
+    },
+    {
+        "backgroundColor": "#FF8C92",
+        "color": "#1f1f1f"
+    }
+    ]
+}
+}
+
 }

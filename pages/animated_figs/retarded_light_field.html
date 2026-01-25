@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relativistic Doppler (Two-Button Frame Toggle)</title>
+    <style>
+        /* 1. Make the page fill the window exactly */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffe4c8;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 2. Flex Container */
+        .diagram-container {
+            width: 100%;
+            height: 100%;
+            background: #ffe4c8;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        /* 3. Canvas */
+        #pulseCanvas {
+            width: 100%;
+            flex-grow: 1;
+            height: 0; /* Essential for flex-grow */
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            cursor: crosshair;
+            border: 1px solid #333;
+            margin-bottom: 10px;
+        }
+
+        /* 4. Controls & Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+            color: #555;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+        .dot { width: 10px; height: 10px; display: inline-block; border-radius: 50%; margin-right: 5px; vertical-align: middle;}
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+            flex-shrink: 0;
+            padding-bottom: 5px;
+        }
+
+        .control-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+
+        /* Inputs */
+        input[type=range] {
+            flex-grow: 1;
+            height: 6px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #00d2ff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #velocitySlider::-webkit-slider-thumb { background: #ff0055; }
+
+        /* Buttons */
+        button {
+            padding: 6px 12px;
+            background-color: #0b1021;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            min-width: 80px;
+            transition: 0.2s;
+            font-size: 0.9em;
+        }
+
+        button:hover {
+            background-color: #1a2540;
+        }
+
+        /* Active Button State (Pink/Red) */
+        button.active {
+            background-color: #ff0055;
+            border-color: #ff0055;
+            color: white;
+            box-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
+        }
+
+        /* Button Group Container */
+        .btn-group {
+            display: flex;
+            gap: 5px;
+            background: #e0cca8;
+            padding: 4px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="diagram-container">
+
+    <canvas id="pulseCanvas"></canvas>
+
+    <div class="legend">
+        <span><span class="dot" style="background:hsl(0, 100%, 50%);"></span>Redshift</span>
+        <span><span class="dot" style="background:hsl(60, 100%, 50%);"></span>Rest</span>
+        <span><span class="dot" style="background:hsl(240, 100%, 50%);"></span>Blueshift</span>
+        <span><span class="dot" style="background:#555;"></span>Emission Point</span>
+    </div>
+
+    <div class="controls">
+        <div class="control-row">
+            <button id="togglePlay">Play</button>
+            <div class="slider-group">
+                <span>Time:</span>
+                <input type="range" id="timeSlider" min="0" value="0" step="0.1">
+            </div>
+        </div>
+
+        <div class="control-row" style="background: #ffe4c8; padding: 10px; border-radius: 8px;">
+
+            <div class="btn-group">
+                <button id="btnRest">Rest Frame</button>
+                <button id="btnMoving" class="active">Moving Frame</button>
+            </div>
+
+            <div class="slider-group">
+                <span>Velocity:</span>
+                <input type="range" id="velocitySlider" min="0" max="0.99" value="0.9" step="0.01">
+                <span id="velVal" style="font-family: monospace; width: 50px;">0.90c</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- Configuration ---
+    const config = {
+        c: 4,
+        baseInterval: 6,
+        arrowCount: 70,
+        arrowLength: 5,
+        arrowHeadLen: 6,
+        arrowHeadWidth: 3,
+        sourceColor: '#ff2222',
+        markerColor: '#555555'
+    };
+
+    // --- State ---
+    let state = {
+        time: 0,
+        beta: 0.9,
+        isMovingFrame: true, // Start in Moving Frame
+        isPlaying: false,
+        maxTime: 1000
+    };
+
+    // --- Elements ---
+    const canvas = document.getElementById('pulseCanvas');
+    const ctx = canvas.getContext('2d');
+    const timeSlider = document.getElementById('timeSlider');
+    const velSlider = document.getElementById('velocitySlider');
+    const displays = { vel: document.getElementById('velVal') };
+    const playBtn = document.getElementById('togglePlay');
+
+    // The two buttons
+    const btnRest = document.getElementById('btnRest');
+    const btnMoving = document.getElementById('btnMoving');
+
+    let animationId;
+    let canvasWidth, canvasHeight;
+
+    // --- Physics Core ---
+
+    function getGamma(beta) {
+        if (beta >= 1) return 50;
+        return 1 / Math.sqrt(1 - beta * beta);
+    }
+
+    function getAberratedAngle(thetaSource, beta) {
+        const ux_s = Math.cos(thetaSource);
+        const uy_s = Math.sin(thetaSource);
+        const gamma = getGamma(beta);
+        const denom = 1 + beta * ux_s;
+
+        const ux_lab = (ux_s + beta) / denom;
+        const uy_lab = uy_s / (gamma * denom);
+
+        return Math.atan2(uy_lab, ux_lab);
+    }
+
+    // --- Color Logic ---
+
+    function getDopplerColor(angleLab, beta) {
+        if (!state.isMovingFrame || beta === 0) return 'hsl(60, 100%, 50%)';
+
+        const cosTheta = Math.cos(angleLab);
+        const dopplerFactor = Math.sqrt(1 - beta*beta) / (1 - beta * cosTheta);
+
+        const logD = Math.log2(dopplerFactor);
+
+        // Clamp shift for visual purposes
+        let shift = logD;
+        if (shift > 2) shift = 2;
+        if (shift < -2) shift = -2;
+
+        let hue;
+        if (shift < 0) {
+            hue = (shift + 2) * 30; // Red to Yellow
+        } else {
+            hue = 60 + (shift * 90); // Yellow to Blue
+        }
+
+        return `hsl(${hue}, 100%, 50%)`;
+    }
+
+    // --- Sizing & Limits ---
+
+    function resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+
+        canvasWidth = rect.width;
+        canvasHeight = rect.height;
+
+        recalclimits();
+        draw();
+    }
+
+    function recalclimits() {
+        const margin = 20;
+        const effectiveWidth = canvasWidth - margin;
+
+        // Calculate max time based on when the source leaves the screen
+        if (state.isMovingFrame && state.beta > 0) {
+            const velocityPixels = state.beta * config.c;
+            state.maxTime = Math.floor(effectiveWidth / velocityPixels);
+        } else {
+            state.maxTime = Math.floor(effectiveWidth / config.c) * 1.2;
+        }
+
+        if (state.maxTime < 100) state.maxTime = 100;
+
+        timeSlider.max = state.maxTime;
+
+        // Ensure time doesn't exceed new bounds
+        if (state.time > state.maxTime) {
+            state.time = state.maxTime;
+            timeSlider.value = state.time;
+        }
+    }
+
+    // --- Drawing ---
+
+    function drawArrow(x, y, angle, color) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+
+        ctx.beginPath();
+        ctx.moveTo(-config.arrowLength, 0);
+        ctx.lineTo(0, 0);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(config.arrowHeadLen, 0);
+        ctx.lineTo(0, config.arrowHeadWidth);
+        ctx.lineTo(0, -config.arrowHeadWidth);
+        ctx.closePath();
+        ctx.fillStyle = color;
+        ctx.fill();
+
+        ctx.restore();
+    }
+
+    function draw() {
+        const beta = state.beta;
+        const gamma = getGamma(beta);
+        const margin = 20;
+
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+        // Determine pulse interval based on frame
+        const timeBetweenPulses = state.isMovingFrame
+            ? config.baseInterval * gamma
+            : config.baseInterval;
+
+        const pulseCount = Math.floor(state.time / timeBetweenPulses);
+
+        for (let i = 0; i <= pulseCount; i++) {
+            const emissionTime = i * timeBetweenPulses;
+            const timeAlive = state.time - emissionTime;
+            const radius = config.c * timeAlive;
+
+            let emissionX = margin;
+            if (state.isMovingFrame) {
+                const emissionDisplacement = (beta * config.c) * emissionTime;
+                emissionX += emissionDisplacement;
+            }
+
+            // Draw emission point marker
+            ctx.beginPath();
+            ctx.arc(emissionX, canvasHeight/2, 2.5, 0, Math.PI*2);
+            ctx.fillStyle = config.markerColor;
+            ctx.fill();
+
+            if (radius <= 0) continue;
+
+            const maxDim = Math.max(canvasWidth, canvasHeight);
+            if (radius > maxDim * 1.5) continue;
+
+            const angleStep = (Math.PI * 2) / config.arrowCount;
+
+            for (let j = 0; j < config.arrowCount; j++) {
+                const thetaSource = j * angleStep;
+                let finalAngle = thetaSource;
+
+                if (state.isMovingFrame) {
+                    finalAngle = getAberratedAngle(thetaSource, beta);
+                }
+
+                const px = emissionX + Math.cos(finalAngle) * radius;
+                const py = (canvasHeight/2) + Math.sin(finalAngle) * radius;
+
+                if (px > -50 && px < canvasWidth + 50 && py > -50 && py < canvasHeight + 50) {
+                    const color = getDopplerColor(finalAngle, beta);
+                    drawArrow(px, py, finalAngle, color);
+                }
+            }
+        }
+
+        // Draw Source
+        let sourceX = margin;
+        if (state.isMovingFrame) {
+            const displacement = (beta * config.c) * state.time;
+            sourceX += displacement;
+        }
+
+        ctx.beginPath();
+        ctx.arc(sourceX, canvasHeight/2, 7, 0, Math.PI * 2);
+        ctx.fillStyle = config.sourceColor;
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+    }
+
+    // --- Event Listeners ---
+
+    window.addEventListener('resize', resizeCanvas);
+
+    playBtn.addEventListener('click', () => {
+        state.isPlaying = !state.isPlaying;
+        playBtn.innerText = state.isPlaying ? "Pause" : "Play";
+        if (state.isPlaying) loop();
+    });
+
+    // Helper to switch frames specifically
+    function setFrame(targetIsMoving) {
+        if (state.isMovingFrame === targetIsMoving) return;
+
+        const gamma = getGamma(state.beta);
+
+        if (targetIsMoving) {
+            // Switch to Moving: Stationary Time / Gamma
+            state.time = state.time / gamma;
+            state.isMovingFrame = true;
+            btnMoving.classList.add('active');
+            btnRest.classList.remove('active');
+        } else {
+            // Switch to Rest: Moving Time * Gamma
+            state.time = state.time * gamma;
+            state.isMovingFrame = false;
+            btnRest.classList.add('active');
+            btnMoving.classList.remove('active');
+        }
+
+        timeSlider.value = state.time;
+        recalclimits();
+        draw();
+    }
+
+    btnRest.addEventListener('click', () => setFrame(false));
+    btnMoving.addEventListener('click', () => setFrame(true));
+
+    timeSlider.addEventListener('input', (e) => {
+        state.time = parseFloat(e.target.value);
+        if(state.isPlaying) {
+            state.isPlaying = false;
+            playBtn.innerText = "Play";
+        }
+        draw();
+    });
+
+    velSlider.addEventListener('input', (e) => {
+        state.beta = parseFloat(e.target.value);
+        // Added "c" to the display string
+        displays.vel.innerText = state.beta.toFixed(2) + "c";
+        recalclimits();
+        draw();
+    });
+
+    function loop() {
+        if (!state.isPlaying) return;
+
+        state.time += 0.2;
+
+        if (state.time > state.maxTime) state.time = 0;
+        timeSlider.value = state.time;
+
+        draw();
+        animationId = requestAnimationFrame(loop);
+    }
+
+    setTimeout(resizeCanvas, 50);
+
+</script>
+
+</body>
+</html>

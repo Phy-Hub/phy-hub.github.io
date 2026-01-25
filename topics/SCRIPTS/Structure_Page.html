@@ -42,214 +42,254 @@
     }
   };
   </script>
-  <script src="SR_Truck.js"></script>
-  <script src="SR_Aberration.js"></script>
 
-  <style>
-    :root {--navbar-height: 60px;}
-    .note {
-        text-align: center;
-        font-style: italic;
-        font-size: 0.9rem;
-        margin: 1em 40px;
-        color: #555;
-    }
-    .derivation {
-        color: gray;
-        border: solid gray;
-        border-width: 0 3px;
-        padding: 10px;
-        margin: 20px 0;
-    }
-    .derivation::before {
-        content: "derivation:";
-        display: block;
-        font-weight: bold;
-        text-decoration: underline;
-        margin-bottom: 10px;
-    }
+<style>
+  :root {--navbar-height: 60px;}
+  .note {
+      text-align: center;
+      font-style: italic;
+      font-size: 0.9rem;
+      margin: 1em 40px;
+      color: #555;
+  }
+  .derivation {
+      color: gray;
+      border: solid gray;
+      border-width: 0 3px;
+      padding: 10px;
+      margin: 20px 0;
+  }
+  .derivation::before {
+      content: "derivation:";
+      display: block;
+      font-weight: bold;
+      text-decoration: underline;
+      margin-bottom: 10px;
+  }
 
-    /* ### BIB ######################################################## */
-    /* 1. Main Container & Font Settings */
-    .bibliography-list {
-      font: 1rem "Times New Roman", Times, serif;
-      line-height: 1.2;
-      padding-left: 2.5em; /* Space for the numbers */
-    }
+  /* ### BIB ######################################################## */
+  /* 1. Main Container & Font Settings */
+  .bibliography-list {
+    font: 1rem "Times New Roman", Times, serif;
+    line-height: 1.2;
+    padding-left: 2.5em; /* Space for the numbers */
+  }
 
-    /* 2. List Item Spacing */
-    .bibliography-list li {
-      margin-bottom: 0.5em;
-      padding-left: 0.5em; /* Gap between the number and the text */
-    }
+  /* 2. List Item Spacing */
+  .bibliography-list li {
+    margin-bottom: 0.5em;
+    padding-left: 0.5em; /* Gap between the number and the text */
+  }
 
-    /* 3. The Numbering (The Modern Way) */
-    .bibliography-list li::marker {
-      content: "[" counter(list-item) "]"; /* Automatically adds brackets */
-      font-weight: bold; /* Optional: makes [1] bold */
-    }
+  /* 3. The Numbering (The Modern Way) */
+  .bibliography-list li::marker {
+    content: "[" counter(list-item) "]"; /* Automatically adds brackets */
+    font-weight: bold; /* Optional: makes [1] bold */
+  }
 
-    /* 4. Link & URL Styling (Condensed) */
-    .bibliography-list a { color: inherit; text-decoration: none; }
-    .bib-url { font-family: "Courier New", monospace; word-break: break-all; font-size: 0.9rem;}
-    .bib-url:hover { text-decoration: underline; }
+  /* 4. Link & URL Styling (Condensed) */
+  .bibliography-list a { color: inherit; text-decoration: none; }
+  .bib-url { font-family: "Courier New", monospace; word-break: break-all; font-size: 0.9rem;}
+  .bib-url:hover { text-decoration: underline; }
 
-    .citation-link {color: inherit;}
-    /* ############################################################### */
+  .citation-link {color: inherit;}
+  /* ############################################################### */
 
-    .strongyellow{background-color: #f6da66;}
-    .yellow{background-color: #fff8bb;}
-    .brown{background-color: #b7a484;}
-    .stronger-colour{background-color: #fccb93;}
+  .strongyellow{background-color: #f6da66;}
+  .yellow{background-color: #fff8bb;}
+  .brown{background-color: #b7a484;}
+  .stronger-colour{background-color: #fccb93;}
 
-    dt:hover {background-color: #ddb400;}
-    dd {margin-left: 0;}
-    #dictionary > dd {padding: 10px;}
+  dt:hover {background-color: #ddb400;}
+  dd {margin-left: 0;}
+  #dictionary > dd {padding: 10px;}
 
-    span:hover {background-color: #ddb400; cursor: default;}
-    h1 span:hover, p span:hover {background-color: transparent; cursor: default;}
+  span:hover {background-color: #ddb400; cursor: default;}
+  h1 span:hover, p span:hover {background-color: transparent; cursor: default;}
 
-    .navbar {
-      display: grid; grid-template-columns: auto 680px auto;
-      position: sticky; top: 0; z-index: 1000;
-      height: var(--navbar-height); width: 100%;
-      background-color: grey;
-    }
+  .navbar {
+    display: grid; grid-template-columns: auto 680px auto;
+    position: sticky; top: 0; z-index: 1000;
+    height: var(--navbar-height); width: 100%;
+    background-color: grey;
+  }
 
-    #site-navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      width: 100%;
-    }
+  #site-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+  }
 
 
-    .math { font-size: smaller; }
-    mjx-container:not([display]) {
-      font-size: smaller !important;
-    }
+  .math { font-size: smaller; }
+  mjx-container:not([display]) {
+    font-size: smaller !important;
+  }
 
-    .js-fig-wrap {
-      width: 90%;
-      background-color: #ffd4a6;
-      margin: 40px auto;
-    }
-    .js-fig {
-      padding-top: 10px;
-    }
+  .arrow-nav {
+    display: grid; grid-template-columns: 50% 50%;
+    width: 100%;
+    padding-top: 50px;
+  }
 
-    .arrow-nav {
-      display: grid; grid-template-columns: 50% 50%;
-      width: 100%;
-      padding-top: 50px;
-    }
+  h2 {font-size: 1.7em;}
+  h3 {font-size: 1.5em;}
+  h4 {font-size: 1.2em;}
+  h5 {font-size: 1em;}
+  #toc_container a:hover {text-decoration: underline;}
+  #toc_container a {
+  font-size: 0.8rem;
+  color: black;
+  padding: 0;
+  padding-left: 0px;
+  padding-right: 10px;
+  font-family: Arial, sans-serif;
+  line-height: 1.1;
+  text-decoration: none;
+  display: inline-block;
+  }
+  #toc_container li {line-height: 1.1;}
+  section a {color: black; text-decoration: none;}
+  section a:hover {text-decoration: underline; background-color: #ddb400; cursor: pointer;}
 
-    h2 {font-size: 1.7em;}
-    h3 {font-size: 1.5em;}
-    h4 {font-size: 1.2em;}
-    h5 {font-size: 1em;}
-    #toc_container a:hover {text-decoration: underline;}
-    #toc_container a {
-    font-size: 0.8rem;
+  :target:before {content: ""; display: block; height: 65px; margin-top: -65px; visibility: hidden;}
+
+  main {display: grid; grid-template-columns: 1fr 700px 1fr;}
+  main > * {padding: 20px;}
+  @media (max-width: 900px) {
+    #tocsidebar {display: none;}
+    .sidebar {display: none;}
+    main { grid-template-columns: 100%;}
+    .navbar {grid-template-columns: 70px auto 70px;}
+    @media (max-width: 700px) {article {min-width: 0px; width: 100vw; margin: 0;}}
+  }
+  body {counter-reset: figure-counter chapter-counter;}
+  section { counter-increment: chapter-counter; counter-reset: figure-counter; }
+
+  #tocsidebar{position: sticky; top: var(--navbar-height); overflow: hidden; align-self: start; height: auto;  padding-left: 10px;}
+  .sidebar{position: sticky; top: var(--navbar-height); overflow: hidden; align-self: start; height: auto;}
+    figcaption {line-height: 1.2; font-size: 0.85em; margin-top: 10px;}
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: grey;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;}
+  .dropdown-menu a {
     color: black;
-    padding: 0;
-    padding-left: 0px;
-    padding-right: 10px;
-    font-family: Arial, sans-serif;
-    line-height: 1.1;
+    padding: 12px 16px;
     text-decoration: none;
-    display: inline-block;
-    }
-    #toc_container li {line-height: 1.1;}
-    section a {color: black; text-decoration: none;}
-    section a:hover {text-decoration: underline; background-color: #ddb400; cursor: pointer;}
+    display: block;}
+  .dropdown-menu a:hover {background-color: rgb(90, 90, 90)}
+  .menu:hover .dropdown-menu {display: block;}
+</style>
 
-    :target:before {content: ""; display: block; height: 65px; margin-top: -65px; visibility: hidden;}
+<style>
+      .toc-arrow { display:inline-block; margin-right:0px; color:#555; transition: transform 0.2s; }
+      .toc-active .toc-arrow { transform: rotate(90deg); }
+      .toc-link { text-decoration:none; color:inherit; display:block; padding:2px 0; cursor:pointer; }
+      .toc-link:hover { color:#000; }
+      .toc-sublist { display:none; list-style:none; padding-left:10px; }
 
-    main {display: grid; grid-template-columns: 1fr 700px 1fr;}
-    main > * {padding: 20px;}
-    @media (max-width: 900px) {
-      #tocsidebar {display: none;}
-      .sidebar {display: none;}
-      main { grid-template-columns: 100%;}
-      .navbar {grid-template-columns: 70px auto 70px;}
-      @media (max-width: 700px) {article {min-width: 0px; width: 100vw; margin: 0;}}
-    }
-    body {counter-reset: figure-counter chapter-counter;}
-    section { counter-increment: chapter-counter; counter-reset: figure-counter; }
-    figure { counter-increment: figure-counter;}
+      .interactive-equation:hover {background-color: #ddb400; cursor: help;}
+</style>
 
-    #tocsidebar{position: sticky; top: var(--navbar-height); overflow: hidden; align-self: start; height: auto;  padding-left: 10px;}
-    .sidebar{position: sticky; top: var(--navbar-height); overflow: hidden; align-self: start; height: auto;}
-     figcaption {line-height: 1.2; font-size: 0.85em; margin-top: 10px;}
+<style>
+  @font-face {
+      font-family: 'TG Schola';
+      src: url('../fonts/texgyreschola-regular.woff2') format('woff2'), url('../fonts/texgyreschola-regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: 'TG Schola';
+      src: url('../fonts/texgyreschola-bold.woff2') format('woff2'), url('../fonts/texgyreschola-bold.woff') format('woff');
+      font-weight: bold;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: 'TG Schola';
+      src: url('../fonts/texgyreschola-italic.woff2') format('woff2'), url('../fonts/texgyreschola-italic.woff') format('woff');
+      font-weight: normal;
+      font-style: italic;
+  }
+  @font-face {
+      font-family: 'TG Schola';
+      src: url('../fonts/texgyreschola-bolditalic.woff2') format('woff2'), url('../fonts/texgyreschola-bolditalic.woff') format('woff');
+      font-weight: bold;
+      font-style: italic;
+  }
+  body {font-family: 'TG Schola', 'Century Schoolbook', 'New Century Schoolbook', Georgia, serif;}
 
-    .dropdown-menu {
-      display: none;
+  .chapter_header {scroll-margin-top: var(--navbar-height);}
+  .part_header {scroll-margin-top: var(--navbar-height);}
+
+  figure {counter-increment: figure-counter; margin-inline: 0;}
+  .singlefigure {width: 80%; margin-inline: auto;}
+  .singlefigure img {display: block; margin-inline: auto; width: 100%; height: auto; max-height: 300px;}
+  .subfigures {width: 95%; margin-inline: auto;}
+  .subfigures div {display: flex; justify-content: space-between; gap: 15px; align-items: flex-end; width: 100%;}
+  .subfigures > div > figure {flex: 1; margin: 0; padding: 0; min-width: 0;}
+  .subfigures img {width: 100%; height: auto; display: block; max-height: 200px; margin-inline: auto;}
+  .subfigures > figcaption {width: 95%; margin-inline: auto;}
+  .subfigure figcaption {text-align: center;}
+
+  /* #note: animated figures #### */
+  dialog#universalModal {
+    width: 75vw;
+    height: 75vh;
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    background: transparent;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+
+  dialog#universalModal::backdrop {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+  }
+
+  dialog#universalModal iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #2a2a2a; /* Generic dark background */
+  }
+
+  .close-btn {
       position: absolute;
-      right: 0;
-      top: 100%;
-      background-color: grey;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;}
-    .dropdown-menu a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;}
-    .dropdown-menu a:hover {background-color: rgb(90, 90, 90)}
-    .menu:hover .dropdown-menu {display: block;}
-  </style>
+      top: 15px;
+      right: 15px;
+      width: 35px;
+      height: 35px;
+      background: #ff2222;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10;
+  }
+  .close-btn:hover { background: #cc0000; }
+  .fig-button {border-radius: 4px; padding: 0px; padding-left: 2px; padding-right: 2px; margin: 0; background-color: #fccb93;}
+  .fig-button:hover {text-decoration: underline; background-color: #ddb400; cursor: pointer;}
 
-  <style>
-        .toc-arrow { display:inline-block; margin-right:0px; color:#555; transition: transform 0.2s; }
-        .toc-active .toc-arrow { transform: rotate(90deg); }
-        .toc-link { text-decoration:none; color:inherit; display:block; padding:2px 0; cursor:pointer; }
-        .toc-link:hover { color:#000; }
-        .toc-sublist { display:none; list-style:none; padding-left:10px; }
-
-        .interactive-equation:hover {background-color: #ddb400; cursor: help;}
-  </style>
-
-  <style>
-    @font-face {
-        font-family: 'TG Schola';
-        src: url('../fonts/texgyreschola-regular.woff2') format('woff2'), url('../fonts/texgyreschola-regular.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: 'TG Schola';
-        src: url('../fonts/texgyreschola-bold.woff2') format('woff2'), url('../fonts/texgyreschola-bold.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: 'TG Schola';
-        src: url('../fonts/texgyreschola-italic.woff2') format('woff2'), url('../fonts/texgyreschola-italic.woff') format('woff');
-        font-weight: normal;
-        font-style: italic;
-    }
-    @font-face {
-        font-family: 'TG Schola';
-        src: url('../fonts/texgyreschola-bolditalic.woff2') format('woff2'), url('../fonts/texgyreschola-bolditalic.woff') format('woff');
-        font-weight: bold;
-        font-style: italic;
-    }
-    body {font-family: 'TG Schola', 'Century Schoolbook', 'New Century Schoolbook', Georgia, serif;}
-
-    .chapter_header {scroll-margin-top: var(--navbar-height);}
-    .part_header {scroll-margin-top: var(--navbar-height);}
-
-  </style>
-
+</style>
 </head>
 
 <body style="margin: 0; background-color:#ffe4c8; ">
   <header id="site-navbar">
     <!--Navbar-->
     <div class="navbar">
-      <div style="justify-self: start; width: 70px;"><a href="/index.html"> <img src="Media/Logo/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px" > </a></div>
+      <div style="justify-self: start; width: 70px;"><a href="/index.html"> <img src="media/Logo/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px" > </a></div>
       <div id="banner" style="width: 100%; padding-top: 3px; padding-bottom:3px;"> </div>
       <div class="menu" style="justify-self: end; cursor: pointer; width: 70px;">
         <div style="font-size: 40px; text-align: right; padding-right: 10px; "> &#x2630; </div>
@@ -281,6 +321,7 @@
 
     <!--Main Content-->
     <article style=" line-height: 1.5; font-size: 20px; border-left: 10px solid rgba(128, 128, 128, 0.1); border-right: 10px solid rgba(128, 128, 128, 0.1);">
+
       <header style="display: flex; justify-content: center; text-align: center; font-family: 'Computer Modern Serif'; padding-top: 10px;">
         <div style="width: 50%; display: flex; flex-direction: column; align-items: center;">
             <svg style="width: 70%; height: auto; display: block;" viewBox="0 0 1918 568" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><clipPath id="clip0"><rect x="1255" y="133" width="1918" height="568"/></clipPath></defs><g clip-path="url(#clip0)" transform="translate(-1255 -133)"><path d="M1310.6 701 3117.4 701 3117.4 597.727 3173 597.727 3173 529.206 2214 133 1255 529.206 1255 597.727 1310.6 597.727 1310.6 701Z" fill-rule="evenodd"/></g></svg>
@@ -307,11 +348,14 @@
           <svg style="width: 80%; height: auto; display: block;" viewBox="0 0 2326 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><filter id="fx1" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="discrete" tableValues="0 0"/><feFuncG type="discrete" tableValues="0 0"/><feFuncB type="discrete" tableValues="0 0"/><feFuncA type="linear" slope="0.439216" intercept="0"/></feComponentTransfer><feGaussianBlur stdDeviation="7.63889 7.63889"/></filter><clipPath id="clip2"><rect x="1051" y="1638" width="2326" height="200"/></clipPath></defs><g clip-path="url(#clip2)" transform="translate(-1051 -1638)"><g filter="url(#fx1)" transform="matrix(2 0 0 2 1050 1638)"><g><path d="M23.7399 23.6633 1140.26 23.6633 1140.26 76.7084 23.7399 76.7084Z" fill-rule="evenodd"/></g></g><path d="M1130 1638 3298 1638 3298 1741 1130 1741Z" fill-rule="evenodd"/></g></svg>
         </div> -->
       </header>
+
       [Insert Content] <!-- needs to be in seperate line for ASM.py --> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed euismod, nunc id lacinia tincidunt, enim nunc aliquam nunc, id tincidunt nunc nunc id nunc.</p>
       <!-- <div id="partial_bib"></div> -->
+
       <div id="bibliography">
         [Insert Bib]
       </div>
+
     </article>
 
     <!--Sidebar-->
@@ -329,16 +373,15 @@
         [Insert Definitions]
       </dl>
     </aside>
+
   </main>
-
-
 
 <!--scripts-->
 <script>
 
 //##################
 window.addEventListener('load', function() {
-  fetch('Media/Logo/DS_Pattern.svg')
+  fetch('media/Logo/DS_Pattern.svg')
     .then(response => response.text())
     .then(data => {
       document.getElementById('banner').innerHTML = data;
@@ -535,7 +578,7 @@ function toggleView(id) {
 
                         if (chapterWrap) {
                             // Hide the Part wrapper we just showed in Step 3
-                            if (targetWrap) targetWrap.style.display = 'none';
+                            //if (targetWrap) targetWrap.style.display = 'none';
 
                             // Show the Chapter wrapper instead
                             chapterWrap.style.display = 'block';
@@ -602,7 +645,57 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-[Insert Script]
+// [Insert Script]
+
+</script>
+
+<!-- ########### -->
+<!-- #note: Fig overlay -->
+<!-- ########### -->
+<dialog id="universalModal">
+    <button id="closeBtn" class="close-btn" aria-label="Close">✕</button>
+    <iframe id="universalFrame" title="Simulation Viewer"></iframe>
+</dialog>
+
+<script>
+
+const dialog = document.getElementById('universalModal');
+const iframe = document.getElementById('universalFrame');
+const closeBtn = document.getElementById('closeBtn');
+
+// 1. Select ALL buttons with the class "fig-button"
+const buttons = document.querySelectorAll('.fig-button');
+
+// 2. Loop through them and add click listeners
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Get the specific file path from the data-src attribute
+        const fileToLoad = button.getAttribute('data-src');
+
+        // Load it into the iframe
+        iframe.src = fileToLoad;
+
+        // Open the modal
+        dialog.showModal();
+    });
+});
+
+// 3. Close Logic
+closeBtn.addEventListener('click', () => {
+    dialog.close();
+    // IMPORTANT: Clear source to stop the simulation loop and save performance
+    iframe.src = '';
+});
+
+// Close when clicking background
+dialog.addEventListener('click', (e) => {
+    const rect = dialog.getBoundingClientRect();
+    if (e.clientX < rect.left || e.clientX > rect.right ||
+        e.clientY < rect.top || e.clientY > rect.bottom) {
+        dialog.close();
+        iframe.src = ''; // Clear source here too
+    }
+});
 
 </script>
 </body>

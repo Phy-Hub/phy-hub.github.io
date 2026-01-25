@@ -24,7 +24,7 @@ py_to_terms          = "Latex/Tex/Terms"
 py_to_term_comands   = "Latex/Tex/Terms/Term_commands.tex"
 py_to_tikz           = "Latex/output/tikz/"
 py_to_svgs           = "Latex/images/svg/"
-py_to_pdfs           = "Latex/images/pdf/"
+#py_to_pdfs           = "Latex/images/pdf/"
 py_to_bib            = "Latex/refs.bib"
 py_to_bugs           = "bugs/"
 
@@ -266,7 +266,7 @@ def Figures_to_HTML(file):
                 caption_match = re.search(r'\\caption\{(?P<caption>.*\})', figure_env)
                 label_match = re.search(r'\\label\{(?P<label>.*\})', figure_env)
 
-                replacement = f'<br>\n \t <figure'
+                replacement = f'<br>\n \t <figure class="subfigures" '
                 if label_match:
                     main_fig_label = find_label_from_key(fig_dict, f"{chapter_num}_{figure_counter}")
                     replacement += f' id="{main_fig_label}"'  # Add ID to <figure>
@@ -283,7 +283,7 @@ def Figures_to_HTML(file):
 
                 if caption_match:
                     replacement += f'<figcaption>Figure {chapter_num}.{figure_counter}: {main_caption}</figcaption>\n'
-                replacement += '</figure>\n'
+                replacement += '</figure>'
 
             else:
                 replacement = process_figure(figure_env, chapter_num, figure_counter, '')
@@ -304,6 +304,7 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
     label_match = re.search(r'\\label\{(?P<label>.*\})', figure_env)
     subfigures = re.findall(r'(\\begin\{subfigure\}.*?\\end\{subfigure\})', figure_env, re.DOTALL)
 
+    # dont need to convert pdfs to svg apart from tikz which is already done
     # if include_graphics_match:
     #     pdfname = include_graphics_match.group('filename')
     #     svgname = os.path.splitext(os.path.basename(pdfname))[0] + '.svg'
@@ -332,8 +333,8 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
         else :
             caption_text = ""
 
-        # Add chapter and figure number to caption if not a subfigure
         if "\\begin{subfigure}" in figure_env:
+            figclass = 'class="subfigure"'
             caption = f"{subfig_letter}) {caption_text}"
         else:
             caption_text = find_caption_from_key(fig_dict, f"{chapter_num}_{figure_counter}")
@@ -341,53 +342,27 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
                 fig_id = ' id="' + find_label_from_key(fig_dict, f"{chapter_num}_{figure_counter}") + '"'
             else:
                 fig_id = ''
+            figclass = 'class="singlefigure"'
             caption = f"Figure {chapter_num}.{figure_counter}: {caption_text}"
-
-        return f'<figure' + fig_id +'>\n<img src="' + html_to_svgs + f'{filename}" style="width:100%; height:auto;" loading="lazy">\n<figcaption>{caption}</figcaption>\n</figure>'
+        return f'<figure ' + figclass + fig_id +'>\n<img src="' + html_to_svgs + f'{filename}" loading="lazy">\n<figcaption>{caption}</figcaption>\n</figure>'
 
     else:
         return '*** svg figure missing ***'
 
 ###
 def tikz2svg(input_directory, output_directory):
-    # Get a list of all pdf files in the input directory
     pdf_files = [f for f in os.listdir(input_directory) if f.endswith('.pdf')]
-
-    # Create the output directory if it doesn't exist
     os.makedirs(output_directory, exist_ok=True)
 
-    # Loop over the pdf files and convert each one to svg
     for pdf_file in pdf_files:
-        svg_file = os.path.join(output_directory, os.path.splitext(pdf_file)[0] + '.svg')
-        subprocess.run(['pdf2svg', os.path.join(input_directory, pdf_file), svg_file])
+        pdf_path = os.path.join(input_directory, pdf_file)
+        svg_path = os.path.join(output_directory, os.path.splitext(pdf_file)[0] + '.svg')
 
-###
-def insert_JS(filename,js_location):
-    # Read all lines into memory
-    with open(filename, 'r', encoding='utf-8') as file:
-        lines = file.readlines()
+        if not os.path.exists(svg_path) or os.path.getmtime(pdf_path) > os.path.getmtime(svg_path):
+            print(f"Converting: {pdf_file}")
+            subprocess.run(['pdf2svg', pdf_path, svg_path], check=True)
+            subprocess.run(['svgo.cmd', svg_path, '--precision=2'], check=True)
 
-    # Perform the replacements and write all lines back to the same file
-    with open(filename, 'w', encoding='utf-8') as file:
-        N_s = 0
-        script_lines = []
-        for line in lines:
-            match = re.search(r'javascript\{createTruckDiagram:(.*)\}', line)
-            match2 = re.search(r'javascript\{createAberrationDiagram(.*)\}', line)
-
-            if match:
-                N_s = N_s + 1
-                script_line = 'createTruckDiagram("TruckFig_'+ str(N_s) + '",' + match.group(1) + ');\n'
-                script_lines.append(script_line)
-                file.write(f'<div class="js-fig-wrap" ><div class="js-fig" id="TruckFig_' + str(N_s) + '"></div>\n</div>\n')
-            elif match2:
-                script_line = 'createAberrationDiagram("AberrationFig");\n'
-                script_lines.append(script_line)
-                file.write(f'<div class="js-fig-wrap" ><div class="js-fig" id="AberrationFig"></div>\n</div>\n')
-            else:
-                file.write(line)
-
-    return script_lines
 
 ########################################################
 # Page elements ########################################
@@ -1069,7 +1044,7 @@ def check_duplicate_labels(data_dict):
 ###
 
 ###
-def make_page(input_file, output_file, toc_file, content_file, Defs_file, Math_Terms_lines,script_lines, bib_lines):
+def make_page(input_file, output_file, toc_file, content_file, Defs_file, Math_Terms_lines, bib_lines):
     with open(input_file, 'r', encoding='utf-8') as file:
         lines = file.readlines()
 
@@ -1087,9 +1062,6 @@ def make_page(input_file, output_file, toc_file, content_file, Defs_file, Math_T
                 file.write('<a href="' + html_to_pdfs + '" style="padding-top: 5px; color: black;"><b>&#11015; PDF</b></a><br>\n')
             elif '[Insert Topic Name]' in line:
                 file.write(Topic_Name)
-            elif '[Insert Script]' in line:
-                for line in script_lines:
-                    file.write(line)
             elif '[Insert Bib]' in line:
                 for line in bib_lines:
                     file.write(line)
@@ -1253,11 +1225,11 @@ replace(Latex_File, r'\\scalebox{0.5}{R}', 'R')
 replace(Latex_File, r'\\AA', "Å") #'Å')
 replace(Latex_File, r'\\newline', '<br>\n')
 replace(Latex_File, r'\\mainmatter', '')
-replace(Latex_File,r'\\fi', '')
 replace(Latex_File,r'\\input\{.*?\}', '')
 replace(Latex_File,r'\\printbibliography\[.*?\]', '')
 colorbox_replace(Latex_File)
-script_lines = insert_JS(Latex_File, html_to_js_diagrams) #needs to be before reading latex content
+replace(Latex_File, r"\\iffalse\s*animated_fig\{(.*?)\}\s*\\fi", '<button class="fig-button" data-src="animated_figs/\\1"><b>View Animated Figure</b></button>')
+replace(Latex_File,r'\\fi', '')
 ########################################################## bib_lines = bib_to_html(py_to_bib)
 
 wrap_content(Latex_File)
@@ -1279,7 +1251,7 @@ toc = create_toc(toc_dict)
 vars = create_html_terms_element(var_dict)
 defs = create_terms(py_to_defs)
 
-make_page(py_to_page_structure, py_to_output_page, toc, main_content, defs, vars, script_lines, bib_lines)
+make_page(py_to_page_structure, py_to_output_page, toc, main_content, defs, vars, bib_lines)
 
 find_leftover_latex(py_to_output_page)
 check_ids_for_spaces(py_to_output_page)

@@ -1,12 +1,3 @@
-#todo create animated figures for more figures
-
-#todo animation list:
-- rats
-- doppler effect, source emitting circler pulses of light
-- A retarded Field of Source's Light
-- Apparent faster than light movement
-
-* for truck animations make background same as images (light gray + black blurred ground)
 
 
 ### main content, nagivation + toc:
@@ -16,6 +7,7 @@
 * have Terms triangle in sidebar rotate on click
 
 ### equations + figures:
+- make transparent box to fit all subfigures into so all of the set of subfigures are same size
 - on hover over \eqref{} show equation at top or bottom of page, and all variables as side of page
     - use latex equation label as equation divs id
     - have onmousehover have JS show div of eqution using the label/id at top or bottom of page depending on mouse position
@@ -58,6 +50,7 @@
 
 
 ### latex:
+* rats on treadmill (perpendicular rat is meant to retun quicker in diagram)
 * need script to search and replace words with hyperlink to definition, if in caption{} will need \protect in front but to work for terms ending * with "s" and "'s"
 * Add variable definitions
 * format image size and captions

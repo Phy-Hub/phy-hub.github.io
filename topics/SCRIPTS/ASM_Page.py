@@ -440,12 +440,12 @@ def create_terms(file_path):
 
     output_lines = []
 
-    # 2. Find all occurrences of \term{label}{term}{definition}
+    # 2. Find all occurrences of \term{label}{term}{synonyms}{definition}
     # re.DOTALL allows the '.' to match newlines, handling multi-line definitions
-    pattern = r'\\term\{(.+?)\}\{(.+?)\}\{(.+?)\}'
+    pattern = r'\\term\{(.+?)\}\{(.+?)\}\{(.+?)\}\{(.+?)\}'
 
     for match in re.finditer(pattern, content, re.DOTALL):
-        label, term, desc = match.groups()
+        label, term, synonyms, desc = match.groups()
 
         # 3. Clean and Format the description
         desc = desc.strip()
@@ -1173,13 +1173,164 @@ class Checker(HTMLParser):
             target = d['href'][1:]
             if target: self.links.add(target)
 
+
+########
+import bisect
+
+def check_for_for_leftover_math_terms(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+    except FileNotFoundError:
+        print(f"Error: File '{file_path}' not found.")
+        return
+
+    # 1. Line Mapping
+    line_starts = [0] + [m.start() + 1 for m in re.finditer(r'\n', content)]
+    def get_line_number(char_index):
+        return bisect.bisect_right(line_starts, char_index)
+
+    # 2. Mask Comments
+    content_no_comments = list(content)
+    for match in re.finditer(r'%.*', content):
+        for i in range(match.start(), match.end()):
+            content_no_comments[i] = ' '
+    content_clean = "".join(content_no_comments)
+
+    # 3. Identify Math Zones
+    math_mask = [False] * len(content)
+
+    # A. Display Environments
+    env_list = r"equation|align|gather|multline|alignat|flalign"
+    env_pattern = re.compile(r'\\begin\{(' + env_list + r')\*?\}(.*?)\\end\{\1\*?\}', re.DOTALL)
+    for match in env_pattern.finditer(content_clean):
+        for i in range(match.start(), match.end()):
+            math_mask[i] = True
+
+    # B. Display Shorthand \[ ... \]
+    display_shorthand = re.compile(r'\\\[(.*?)\\\]', re.DOTALL)
+    for match in display_shorthand.finditer(content_clean):
+        for i in range(match.start(), match.end()):
+            math_mask[i] = True
+
+    # C. Inline Math $ ... $
+    i = 0
+    length = len(content_clean)
+    in_dollar_math = False
+    dollar_start = -1
+    while i < length:
+        char = content_clean[i]
+        if char == '\\' and i + 1 < length and content_clean[i+1] == '$':
+            i += 2
+            continue
+        if char == '$':
+            if not in_dollar_math:
+                in_dollar_math = True
+                dollar_start = i
+            else:
+                in_dollar_math = False
+                for k in range(dollar_start, i + 1):
+                    math_mask[k] = True
+        i += 1
+
+    # 4. Filter Specific Commands (Remove argument blocks)
+    #    e.g., removes \text{...} completely.
+    ignore_cmds = [
+        'text', 'label', 'color', 'mbox', 'tag', 'cite', 'ref', 'eqref',
+        'begin', 'end', 'operatorname', 'mathrm', 'mathbf'
+    ]
+
+    i = 0
+    while i < length:
+        if math_mask[i] and content_clean[i] == '\\':
+            cmd_match = re.match(r'^\\([a-zA-Z]+)', content_clean[i:])
+            if cmd_match:
+                cmd_name = cmd_match.group(1)
+                cmd_len = len(cmd_match.group(0))
+
+                # Case 1: Ignore command AND content (\text{...})
+                if cmd_name in ignore_cmds:
+                    search_pos = i + cmd_len
+                    open_brace_pos = -1
+                    while search_pos < length:
+                        if content_clean[search_pos] == '{':
+                            open_brace_pos = search_pos
+                            break
+                        elif not content_clean[search_pos].isspace():
+                            break
+                        search_pos += 1
+
+                    if open_brace_pos != -1:
+                        balance = 1
+                        close_brace_pos = -1
+                        for k in range(open_brace_pos + 1, length):
+                            if content_clean[k] == '{':
+                                balance += 1
+                            elif content_clean[k] == '}':
+                                balance -= 1
+                                if balance == 0:
+                                    close_brace_pos = k
+                                    break
+                        if close_brace_pos != -1:
+                            for k in range(i, close_brace_pos + 1):
+                                math_mask[k] = False
+                            i = close_brace_pos + 1
+                            continue
+
+                # Case 2: Generic commands (\alpha), ignore name only
+                for k in range(i, i + cmd_len):
+                    math_mask[k] = False
+                i += cmd_len
+                continue
+        i += 1
+
+    # 5. NEW: Filter Specific Custom Tokens like "{g}" or "{f}"
+    #    We scan specifically for these strings inside math zones and unmask them.
+    #    This ensures we don't pick up 'g' when it is inside {g}.
+
+    custom_ignores = ["{g}", "{f}"]
+
+    for pattern in custom_ignores:
+        # Find all occurrences of the pattern (e.g. "{g}")
+        start_search = 0
+        while True:
+            idx = content_clean.find(pattern, start_search)
+            if idx == -1:
+                break
+
+            # Unmask this specific range
+            # We assume the pattern exactly matches the characters to ignore
+            for k in range(idx, idx + len(pattern)):
+                math_mask[k] = False
+
+            start_search = idx + len(pattern)
+
+    # 6. Extract Variables
+    results = []
+    for idx, is_math in enumerate(math_mask):
+        if is_math:
+            char = content_clean[idx]
+            # Check for a-z
+            if 'a' <= char <= 'z':
+                results.append((get_line_number(idx), char))
+
+    # Print results
+    if results:
+        print(f"{'Line':<6} | Var")
+        print("-" * 15)
+        for ln, char in results:
+            print(f"{ln:<6} | {char}")
+    else:
+        print("No variables found.")
+
 ###################################################################################
 ###################################################################################
 ###################################################################################
 Latex_File = 'Latex_content.txt'
-
 with open(py_to_main_tex, 'rb') as src, open(Latex_File, 'wb') as dst:
     dst.write(src.read())
+
+check_for_for_leftover_math_terms('Latex_content.txt')
 
 # to do first to avoid conflicts:
 remove_comments(Latex_File)
@@ -1218,8 +1369,8 @@ replace(Latex_File, r'\\end\{derivation\}', '</div>')
 replace(Latex_File, r'\\Vec', r'\\mathbf')
 replace(Latex_File, r'\\noindent', '')
 replace(Latex_File, r'\\protect', '')
-replace(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
 replace(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<span onmouseover=\"document.getElementById('\\g<1>').style.display='block'\" onmouseout=\"document.getElementById('\\g<1>').style.display='none'\">\\g<2></span>")
+replace(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
 replace(Latex_File, r'\\href\{(.*?)\}\{(.*?)\}', '<a style="color: black" href="\\g<1>" target="_blank" rel="noopener noreferrer">\\g<2></a>')
 replace(Latex_File, r'\\scalebox{0.5}{R}', 'R')
 replace(Latex_File, r'\\AA', "Å") #'Å')

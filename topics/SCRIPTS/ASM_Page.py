@@ -627,7 +627,7 @@ def Eq_env_to_HTML(content, terms_data):
         if found_data_ids:
             data_terms_attr = f' data-terms="{" ".join(found_data_ids)}"'
 
-        return f'<div class="interactive-equation" class="math"{id_attr}{data_terms_attr}>\n{math_body}\n</div>'
+        return f'<div class="math"{id_attr}{data_terms_attr}>\n{math_body}\n</div>'
 
     pattern = r'(?<!<div class="math">\n)\\begin{equation}.*?\\end{equation}'
 

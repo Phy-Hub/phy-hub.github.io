@@ -121,12 +121,6 @@
     width: 100%;
   }
 
-
-  .math { font-size: smaller; }
-  mjx-container:not([display]) {
-    font-size: smaller !important;
-  }
-
   .arrow-nav {
     display: grid; grid-template-columns: 50% 50%;
     width: 100%;
@@ -196,7 +190,9 @@
       .toc-link:hover { color:#000; }
       .toc-sublist { display:none; list-style:none; padding-left:10px; }
 
-      .interactive-equation:hover {background-color: #ddb400; cursor: help;}
+      .math { font-size: smaller; }
+      mjx-container:not([display]) {font-size: smaller !important;}
+      .math:hover {background-color: #ddb400; cursor: help;}
 </style>
 
 <style>
@@ -289,7 +285,7 @@
   <header id="site-navbar">
     <!--Navbar-->
     <div class="navbar">
-      <div style="justify-self: start; width: 70px;"><a href="/index.html">  </a></div>
+      <div style="justify-self: start; width: 70px;"><a href="/index.html"> <img src="media/Logo/Logo_2.png" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px" > </a></div>
       <div id="banner" style="width: 100%; padding-top: 3px; padding-bottom:3px;"> </div>
       <div class="menu" style="justify-self: end; cursor: pointer; width: 70px;">
         <div style="font-size: 40px; text-align: right; padding-right: 10px; "> &#x2630; </div>
@@ -380,7 +376,35 @@
 <script>
 
 //##################
-
+window.addEventListener('load', function() {
+  fetch('media/Logo/DS_Pattern.svg')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('banner').innerHTML = data;
+      var svgDoc = document.getElementById('banner').getElementsByTagName('svg')[0];
+      svgDoc.style.height = "54px"
+      var myUses = svgDoc.getElementsByTagName('use');
+      var totalItems = myUses.length; // total number of items
+      var totalTime = 4; // total time for all animations in seconds
+      var timePerItemSlow = totalTime / 2000; // time per item for first 300 items
+      var timePerItemFast = (totalTime - (timePerItemSlow * 200)) / (totalItems - 100); // time per item for remaining items
+      for (var i = 0; i < myUses.length; i++) {
+        myUses[i].style.opacity = 0;
+        if (i < 300) {
+          myUses[i].style.transition = `opacity 0s`;
+          myUses[i].style.transitionDelay = `${i * timePerItemSlow}s`; // Set a different delay for each use
+        } else {
+          myUses[i].style.transition = `opacity 0s`;
+          myUses[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`; // Set a different delay for each use
+        }
+      }
+      setTimeout(function() {
+        for (var i = 0; i < myUses.length; i++) {
+          myUses[i].style.opacity = 1;
+        }
+      }, 0);
+    });
+});
 
 //##################
 function showContent(divId) {
@@ -584,7 +608,7 @@ function syncToc(tocId) {
 document.addEventListener('DOMContentLoaded', () => {
   const displayBox = document.getElementById('definition-display');
   const glossary = document.getElementById('math-glossary');
-  const equations = document.querySelectorAll('.interactive-equation');
+  const equations = document.querySelectorAll('.math');
 
   function getDefinitionItem(termKey) {
     const dt = glossary.querySelector(`dt[data-term="${termKey}"]`);

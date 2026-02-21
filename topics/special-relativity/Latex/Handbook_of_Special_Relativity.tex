@@ -3,10 +3,10 @@
 \input{Tex/Terms/Term_commands.tex}
 \begin{document}
 
-\def\comp{0}
+\def\comp{3}
 
 % Compile Main only
-\if\comp0
+\ifnum\comp=0
     \pagecolor{Beige}
     \input{Tex/toc}
     \input{Main_Matter}
@@ -14,29 +14,28 @@
 \fi
 
 % Compile Appendix only
-\if\comp1
+\ifnum\comp=1
     \input{Tex/toc}
     \input{Tex/Appendix}
     %\printbibliography
 \fi
 
 % Compile Appendix long only
-\if\comp2
+\ifnum\comp=2
     \input{Tex/toc}
     \input{Tex/Appendix_long}
     %\printbibliography
 \fi
 
 % Compile All
-\if\comp3
+\ifnum\comp=3
     \input{Tex/Cover_front}
-    \pagecolor{Beige}
-    \input{Tex/Epigraph}
+    %\input{Tex/Epigraph}
     \input{Tex/toc}
     \input{Tex/Front_Matter}
     \input{Main_Matter}
     \input{Tex/Back_Matter}
-    \input{Tex/Appendix}
+    %\input{Tex/Appendix}
     \printbibliography
     \input{Tex/Cover_back}
 \fi

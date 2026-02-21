@@ -1,31 +1,35 @@
 %#todo group \TDelta and other differential forms to their terms
-%#todo add definitions
+
 %#todo find way to group proper and primed variables together, also vectors with their componenents
+% make sure not to have {} in a comment avter \variableterm{}{} or it will be used
+
+% \variable{$' $}{This apostrophe on a quantity represents the corresponding quantity in a second primed reference frame.}
 
 \variableterm{\Tg}{\gamma}
-{$1/\sqrt{1-\frac{v^2}{c^2}}$}
+{the gamma factor, a relativistic factor used to simplfy equations, it is given by ${1/\sqrt{1-v^2/c^2}}$ which determines how much of an effect the transform of the coordinates deviates from the classical transform. It is only significant at relative frame speeds, $v$, close to that of light, $c$.}
 
 \variableterm{\Tx}{x}
-{x coordinate}
+{the x-coordinate}
 \variableterm{\Tz}{z}
-{z coordinate}
+{the z-coordinate}
 \variableterm{\Ty}{y}
-{y coordinate}
+{the y-coordinate}
 \variableterm{\TxPRM}{x'}
-{x coordinate in the primed frame}
+{the corresponding x-coordinate in the primed frame}
 \variableterm{\TzPRM}{z'}
-{z coordinate in the primed frame}
+{the corresponding z-coordinate in the primed frame}
 \variableterm{\TyPRM}{y'}
-{y coordinate in the primed frame}
+{the corresponding y-coordinate in the primed frame}
 \variableterm{\TVecr}{\underline{r}}
-{the coordinate vector $(x,y,z)$}
+{the position vector, $\underline{r}=(x,y,z)$, of an event in the current inertial reference frame.}
 \variableterm{\TVecrPRM}{\underline{r}'}
-{the primed frames coordinate vector $(x',y',z')$}
+{the position vector, $\underline{r}'=(x',y',z')$, of an event in another inertial reference frame, referred to as the primed frame, and denoted with an apostrophy $'$. This position vector cooresponds to the position vector of the event in the initial reference frame.}
+
 
 \variableterm{\Tv}{v}
-{speed of a frame relative to the proper/initial frame}
+{The speed of the second reference frame, primed frame, relative to the first reference frame.}
 \variableterm{\Tc}{c}
-{the speed of light in a vaccum}
+{The speed that light travels in empty space when it is not impeded by matter and fields.}
 
 \variableterm{\TVecOOPRM}{\vec{oo'}}
 {the position of the primed axis' origin relative to the proper axis' origin, (given in the proper frame)}
@@ -37,345 +41,381 @@
 {the position of the primed axis' origin, given by the set of spatial and time coordinates.}
 
 \variableterm{\TVece}{\underline{e}}
-{An event in the proper frame, given by the set of spatial and time coordinates $(x,y,z,t)$.}
+{An event in the proper frame, given by the set of spatial and time coordinates $\underline{e}=(x,y,z,t)$.}
 \variableterm{\TVecePRM}{\underline{e}'}
-{An event in the primed frame, given by the set of spatial and time coordinates $(x',y',z',t')$.}
+{An event in the primed frame, given by the set of spatial and time coordinates $\underline{e}'=(x',y',z',t')$.}
 
 \variableterm{\Tt}{t}
-{time coordinate in current frame}
+{the time coordinate in current frame}
 \variableterm{\TtPRM}{t'}
-{time coordinate in primed frame}
-\variableterm{\Ttau}{\tau}
-{time coordinate in the rest frame}
-
-
+{the time coordinate in primed frame}
+\variableterm{\Ttau}{\tau} % *** \variable{${\Delta \tau} $}{The time between events in the rest frame of object.}
+{the time coordinate specifically in the rest frame of observer or object we want to measure}
 
 
 \variableterm{\TDelta}{\Delta}
-{the change}
-\variableterm{\TL}{L} % may be different Ls
-{***DEF NEEDED***}
+{The interval in the corresponding variable}
+
+
+\variableterm{\Tdm}{d_{m}}
+{the distance between mirrors}
+
 
 \variableterm{\Tu}{u}
-{speed of object in current frame}
+{the speed of object in current frame, which in this book we will sometimes specifically choose to be in the z-direction}
+
+
+%#todo add \delta to next, and add \deta t' and \deta t
+\variableterm{\TZ}{Z}
+{the distance between light bulb and front mirror, in rest frame}
+\variableterm{\TZPRM}{Z'}
+{the distance between light bulb and front mirror, in moving frame}
+\variableterm{\Tzf}{z_f}
+{The path the light took from light bulb to the front mirror, in rest frame}
+\variableterm{\Tzb}{z_b}
+{The path the light took from the mirror back to the light bulb, in rest frame}
+\variableterm{\TzfPRM}{z'_f}
+{The path the light took from light bulb to the front mirror, in moving frame}
+\variableterm{\TzbPRM}{z'_b}
+{The path the light took from the mirror back to the light bulb, in moving frame}
+\variableterm{\Ttf}{t_f}
+{the time it took light to travel from the light bulb to the front mirror, in the rest frame (equal to the return time in rest frame $t_f=t_b$)}
+\variableterm{\Ttb}{t_b}
+{the time it took light to travel from the light bulb to the front mirror, in the rest frame (equal to the return time in rest frame $t_f=t_b$)}
+\variableterm{\TtfPRM}{t'_f}
+{the time it took light to travel from the light bulb to the front mirror, in the moving frame}
+\variableterm{\TtbPRM}{t'_b}
+{the time it took light to travel from the light bulb to the front mirror, in the moving frame}
+
+
+
+
+\variableterm{\TDeltaVecR}{\Delta\underline{r}}
+{The difference in position of two events}
+\variableterm{\TdiffVecRdifft}{\frac{\mathrm{d}\underline{r}}{\mathrm{d}t}}
+{the infintesmal change in position over infinitesmal change in time of a particle}
+
+\variableterm{\Tdiff}{\mathrm{d}}
+{the infinitesimal change in the corresponding variable}
 
 
 \variableterm{\Tzone}{z_1}
-{The paths the light took to the front mirror}
+{the z-coordinate of first event, in intitial frame}
 \variableterm{\Tztwo}{z_2}
-{The paths the light took to the back mirror}
-\variableterm{\TZ}{Z}
-{***DEF NEEDED***}
+{the z-coordinate of second event, in initial frame}
 \variableterm{\TzonePRM}{z'_1}
-{***DEF NEEDED***}
+{the z-coordinate of first event, in primed frame}
 \variableterm{\TztwoPRM}{z'_2}
-{***DEF NEEDED***}
-\variableterm{\TZPRM}{Z'}
-{***DEF NEEDED***}
-\variableterm{\TtonePRM}{t'_1}
-{***DEF NEEDED***}
-\variableterm{\TttwoPRM}{t'_2}
-{***DEF NEEDED***}
-\variableterm{\TVecRone}{\underline{R}_1}
-{***DEF NEEDED***}
-\variableterm{\Txone}{x_1}
-{***DEF NEEDED***}
-\variableterm{\Tyone}{y_1}
-{***DEF NEEDED***}
-\variableterm{\TVecRtwo}{\underline{R}_2}
-{***DEF NEEDED***}
-\variableterm{\Txtwo}{x_2}
-{***DEF NEEDED***}
-\variableterm{\Tytwo}{y_2}
-{***DEF NEEDED***}
-\variableterm{\TxtwoPRM}{x'_2}
-{***DEF NEEDED***}
-\variableterm{\TxonePRM}{x'_1}
-{***DEF NEEDED***}
-\variableterm{\TytwoPRM}{y'_2}
-{***DEF NEEDED***}
-\variableterm{\TyonePRM}{y'_1}
-{***DEF NEEDED***}
-\variableterm{\Tttwo}{t_2}
-{***DEF NEEDED***}
+{the z-coordinate of first event, in primed frame}
 \variableterm{\Ttone}{t_1}
-{***DEF NEEDED***}
+{the time coordinate of first event, in initial frame}
+\variableterm{\Tttwo}{t_2}
+{the time coordinate of second event, in initial frame}
+\variableterm{\TtonePRM}{t'_1}
+{the time coordinate of first event, in primed frame}
+\variableterm{\TttwoPRM}{t'_2}
+{the time coordinate of second event, in primed frame}
 
-\variableterm{\TVecR}{\underline{R}}
-{***DEF NEEDED***}
+\variableterm{\Txone}{x_1}
+{the x-coordinate of first event, in intitial frame}
+\variableterm{\Tyone}{y_1}
+{the y-coordinate of first event, in intitial frame}
+\variableterm{\Txtwo}{x_2}
+{the x-coordinate of second event, in intitial frame}
+\variableterm{\Tytwo}{y_2}
+{the y-coordinate of second event, in intitial frame}
+\variableterm{\TxtwoPRM}{x'_2}
+{the x-coordinate of second event, in primed frame}
+\variableterm{\TxonePRM}{x'_1}
+{the x-coordinate of first event, in primed frame}
+\variableterm{\TytwoPRM}{y'_2}
+{the y-coordinate of second event, in primed frame}
+\variableterm{\TyonePRM}{y'_1}
+{the y-coordinate of first event, in primed frame}
 
-\variableterm{\Tdiff}{\mathrm{d}}
-{differential}
 
 \variableterm{\Tuz}{u_z}
-{speed of object in z-direction, in current frame}
+{the speed of object in z-direction, in current frame}
 \variableterm{\Tux}{u_x}
-{speed of object in x-direction, in current frame}
+{the speed of object in x-direction, in current frame}
 \variableterm{\Tuy}{u_y}
-{speed of object in y-direction, in current frame}
+{the speed of object in y-direction, in current frame}
 \variableterm{\TVecu}{\underline{u}}
-{velocity vector of object in current frame $(u_x,u_z,u_z)$}
+{the velocity vector of object in current frame $(u_x,u_z,u_z)$}
 \variableterm{\TuxPRM}{u'_x}
-{speed of object in z-direction, in primed frame}
+{the speed of object in z-direction, in primed frame}
 \variableterm{\TuyPRM}{u'_y}
-{speed of object in z-direction, in primed frame}
+{the speed of object in z-direction, in primed frame}
 \variableterm{\TuzPRM}{u'_z}
-{speed of object in z-direction, in primed frame}
+{the speed of object in z-direction, in primed frame}
 \variableterm{\TVecuPRM}{\underline{u}'}
-{velocity vector of object in primed frame $(u_x',u_z',u_z')$}
+{the velocity vector of object in primed frame $(u_x',u_z',u_z')$}
 
 \variableterm{\TVecv}{\underline{v}}
-{velocity of a frame relative to the proper/initial frame}
+{The velocity of the second reference frame, primed frame, relative to the first reference frame, with ${v}$ being the speed and ${\mathbf{\hat{v}}}$ the directional unit vector, ${\mathbf{v}}={v} \cdot {\mathbf{\hat{v}}}$.
+}
 \variableterm{\THatv}{\hat{\underline{v} }}
-{unit vector of the velocity of the frame relative to the proper/initial frame}
+{the unit vector of the velocity of the frame relative to the proper/initial frame}
 
 \variableterm{\TVecaPRM}{\underline{a}'}
-{acceleration vector in primed frame}
+{the acceleration vector in primed frame}
 \variableterm{\Tax}{a_x}
-{acceleration in x direction, in primed frame}
+{the acceleration in x direction, in primed frame}
 \variableterm{\Taz}{a_z}
-{acceleration in z direction, in primed frame}
+{the acceleration in z direction, in primed frame}
 \variableterm{\Tay}{a_y}
-{acceleration in y direction, in primed frame}
+{the acceleration in y direction, in primed frame}
 \variableterm{\TVeca}{\underline{a}}
-{acceleration vector in initial frame}
+{the acceleration vector in initial frame}
+
+\variableterm{\Tus}{u_s}
+{the speed of the signal, in the initial frame}
+\variableterm{\Ttr}{t_r}
+{the time the signal is received, in the initial frame}
+\variableterm{\Tzr}{z_r}
+{the position of particle b were the signal is received, in the initial frame}
+\variableterm{\TtrPRM}{t_r'}
+{the position of particle b were the signal is received, in the primed frame}
 
 
 \variableterm{\TcPRM}{c'}
-{speed of light in primed frame, equal to c, the speed of light in any frame}
+{the speed of light in primed frame, equal to c, the speed of light in any frame}
 \variableterm{\TVeccPRM}{\underline{c}'}
-{velocity of light in primed frame}
+{the velocity of light in primed frame}
 
+%$\variable{${dS}$}{... surface element might be confusing to have as an S due to next chapter}$
 \variableterm{\TS}{S}
-{space-time coordinate, in initial frame}
+{the space-time coordinate, in initial frame}
+%${\Delta S_p}=({\delta x_p},{\delta y_p},{\delta z_p},{\delta t_p})$
 \variableterm{\TSPRM}{S'}
-{space-time coordinate in primed frame}% needs \delta to be spacetime interval
+{the space-time coordinate in primed frame}
+% needs \delta to be spacetime interval
 
 \variableterm{\TdAlembert}{\square}
-{d'Alembert operator in inital frame}
+{the d'Alembert operator in inital frame}
 \variableterm{\TdAlembertPRM}{\square'}
-{d'Alembert operator in primed frame}
+{the d'Alembert operator in primed frame}
 
 \variableterm{\TParticleq}{q}
-{represents a particle q}
+{This represents a particle q}
 \variableterm{\TSq}{S_q}
-{***DEF NEEDED***}
+{The spacetime coordinate of particle q}
 \variableterm{\Ttq}{t_q}
-{***DEF NEEDED***}
+{The time coordinate of particle q}
 \variableterm{\Txq}{x_q}
-{***DEF NEEDED***}
+{The x-coordinate of particle q}
 \variableterm{\Tyq}{y_q}
-{***DEF NEEDED***}
+{The y-coordinate of particle q}
 \variableterm{\Tzq}{z_q}
-{***DEF NEEDED***}
+{The z-coordinate of particle q}
 
 \variableterm{\Tgu}{\gamma_{u}}
-{***DEF NEEDED***}
+{The gamma factor $\gamma$ between the current frame and particles rest frame, given by ${1/\sqrt{1-u_q^2/c^2}}$. It is only significant at relative particle speeds, $u_q$, close to that of light, $c$.}
 
 \variableterm{\Tuq}{u_q}
-{***DEF NEEDED***}
-\variableterm{\Tupx}{u_{px}} %%%%% p or q????
-{***DEF NEEDED***}
-\variableterm{\Tupy}{u_{py}}
-{***DEF NEEDED***}
-\variableterm{\Tupz}{u_{pz}}
-{***DEF NEEDED***}
+{the speed of particle q}
+\variableterm{\Tuqx}{u_{qx}}
+{the speed of particle q in the x-direction}
+\variableterm{\Tuqy}{u_{qy}}
+{the speed of particle q in the y-direction}
+\variableterm{\Tuqz}{u_{qz}}
+{the speed of particle q in the z-direction}
 
 \variableterm{\Tm}{m}
-{***DEF NEEDED***}
+{the mass of a particle}
 \variableterm{\TE}{E}
-{***DEF NEEDED***}
+{the total energy of a particle}
 \variableterm{\TEzero}{E_0}
-{***DEF NEEDED***}
+{The energy a particle has at rest, corresponding to the mass has}
 \variableterm{\Tp}{p}
-{***DEF NEEDED***}
+{the momentum of a particle}
 
 \variableterm{\Tpafter}{p_{after}}
-{***DEF NEEDED***}
+{the momentum after a certain amount of time}
 \variableterm{\Tpbefore}{p_{before}}
-{***DEF NEEDED***}
+{the initial momentum}
 \variableterm{\TEafter}{E_{after}}
-{***DEF NEEDED***}
+{the energy after a certain amount of time}
 \variableterm{\TEbefore}{E_{before}}
-{***DEF NEEDED***}
+{the initial energy}
 
 \variableterm{\TVecp}{\underline{p}}
-{***DEF NEEDED***}
+{momentum vector $(p_x,p_y,p_z)$ }
 
 \variableterm{\TguPRM}{\gamma_{u'}}
-{***DEF NEEDED***}
-\variableterm{\Tgv}{\gamma_v}
-{***DEF NEEDED***}
+{The gamma factor $\gamma$ between the primed frame and the particles rest frame, given by ${1/\sqrt{1-u_q'^2/c^2}}$. It is only significant at relative particle speeds, $u_q'$, close to that of light, $c$.}
 
 \variableterm{\TuPRM}{u'}
-{***DEF NEEDED***}
+{the speed of the object in the primed frame}
 
 \variableterm{\TpyPRM}{p'_y}
-{***DEF NEEDED***}
+{the momentum in the y-direction, in the primed frame}
 \variableterm{\Tpy}{p_y}
-{***DEF NEEDED***}
+{the momentum in the y-direction, in the initial frame}
 \variableterm{\TpzPRM}{p'_z}
-{***DEF NEEDED***}
+{the momentum in the z-direction, in the primed frame}
 \variableterm{\Tpz}{p_z}
-{***DEF NEEDED***}
+{the momentum in the z-direction, in the initial frame}
 
-\variableterm{\Tptwoz}{p_{2z}}
-{***DEF NEEDED***}
-\variableterm{\TEtwo}{E_2}
-{***DEF NEEDED***}
-\variableterm{\Tponez}{p_{1z}}
-{***DEF NEEDED***}
-\variableterm{\TEone}{E_1}
-{***DEF NEEDED***}
+\variableterm{\Tpza}{p_{zafter}}
+{the momentum in the z-direction after}
+\variableterm{\TEa}{E_{after}}
+{the energy after}
+\variableterm{\Tpzb}{p_{zbefore}}
+{the momentum in the z-direction before}
+\variableterm{\TEb}{E_{before}}
+{the energy before}
 
 \variableterm{\TEphoton}{E_{ph}}
-{***DEF NEEDED***}
+{the total energy of a photon}
 
 \variableterm{\Tgc}{\gamma_{c}}
-{***DEF NEEDED***}
+{the gamma factor with $v=c$ making it an infinitly large number}
 
 \variableterm{\Tmphoton}{m_{ph}}
-{***DEF NEEDED***}
+{the rest mass of a photon, it is shown that the mass must be zero}
 \variableterm{\Tmeff}{m_{eff}}
-{***DEF NEEDED***}
+{a hypothetical effective mass a photon has, given by $p_{ph}/c$ }
 \variableterm{\Tpphoton}{p_{ph}}
-{***DEF NEEDED***}
+{the momentum of a photon}
 \variableterm{\TEmom}{E_p}
-{***DEF NEEDED***}
+{the energy corresponding to the momentum of a particle}
+
+
 
 \variableterm{\TthetaRet}{\theta_{ret}}
-{***DEF NEEDED***}
+{the angle between the z-axis and the retarded position, in the initial frame}
 \variableterm{\TVecrRet}{\underline{r}_{ret}}
-{***DEF NEEDED***}
+{the retarded position of an object in the initial frame, it is the position the object was when it emitted the light signal that the observer at the origin is now recieving}
 \variableterm{\Talpha}{\alpha}
-{***DEF NEEDED***}
+{the angle between the z-direction and the direction the light is propagating, in the initial frame}
 \variableterm{\TVecrRetPRM}{\underline{r}'_{ret}}
-{***DEF NEEDED***}
+{the retarded position of an object in the primed frame, it is the position the object was when it emitted the light signal that the observer at the origin is now recieving}
 \variableterm{\TvecrtPRMzeroPRM}{\underline{r}'_{t' = 0}}
-{***DEF NEEDED***}
+{the position of an object in the primed frame at the current time of the origin $t'=0$}
 \variableterm{\TthetaRetPRM}{\theta'_{ret}}
-{***DEF NEEDED***}
+{the angle between the z-axis and the retarded position, in the primed frame}
 \variableterm{\TtRet}{t_{ret}}
-{***DEF NEEDED***}
+{the retarded time, the time the object was at its retarded position, in the initial frame}
 
 \variableterm{\TVecc}{\underline{c}}
-{***DEF NEEDED***}
+{the velocity vector of light, it has a magnitude of $c$}
 \variableterm{\THatc}{\underline{\hat{c}}}
-{***DEF NEEDED***}
+{the unit directional velocity vector of light, it has a magnitude of $1$}
 
 \variableterm{\TtRetPRM}{t'_{ret}}
-{***DEF NEEDED***}
+{the retarded time, the time the object was at its retarded position, in the primed frame}
 
 \variableterm{\Tpi}{\pi}
 {a constant equal to 3.14159...}
 
-\variableterm{\TrRet}{r_{ret}}
-{***DEF NEEDED***}
-
-\variableterm{\THatr}{\underline{\hat{r} }}
-{***DEF NEEDED***}
-
+\variableterm{\THatrRet}{\underline{\hat{r}_{ret} }}
+{the unit directional vector for $\underline{r}$}
+\variableterm{\TVecuapp}{\underline{u}_{app}}
+{the apparent velocity particle due to the delay in the light signal from different points in its path}
+\variableterm{\TVeccapp}{\underline{c}_{app}}
+{the apparent velocity of light depending on its direction relative to observer, due to the delay in the signal from different points in its path}
 \variableterm{\TVecuRet}{\underline{u}_{ret}}
-{***DEF NEEDED***}
-\variableterm{\TVeccRet}{\underline{c}_{ret}}
-{***DEF NEEDED***}
+{the velocity of the particle at the retarded time}
+\variableterm{\TN}{N}
+{a negligiblly small term}
 
 \variableterm{\Tr}{r}
-{***DEF NEEDED***}
+{the spherical polar coordinate corresponding to the magnitude of the vector}
 
 \variableterm{\Tphi}{\phi}
-{***DEF NEEDED***}
+{the spherical polar coordinate corresponding to the angle from the x-axis to the vector, in the x-y plane}
 \variableterm{\Ttheta}{\theta}
-{***DEF NEEDED***}
+{the spherical polar coordinate corresponding to the angle from the z-axis to the vector}
+
 \variableterm{\Talphazero}{\alpha_0}
-{***DEF NEEDED***}
+{the angle between the z-direction and the direction the light is propagating, in the rest frame of the source}
 \variableterm{\Tvarphizero}{\varphi_0}
-{***DEF NEEDED***}
+{the angle in the x-y plane between the x-axis and the direction the light is propagating, in the rest frame of the source}
 \variableterm{\TVecczero}{\underline{c}_0}
-{***DEF NEEDED***}
+{the velocity vector of the emitted light in the rest frame of its source, it has a magnitude of $c$}
 \variableterm{\THatczero}{\underline{\hat{c}}_0}
-{***DEF NEEDED***}
+{the directional velocity vector of the emitted light in the rest frame of its source, it has a magnitude of $1$}
 \variableterm{\Tvarphi}{\varphi}
-{***DEF NEEDED***}
+{the angle in the x-y plane between the x-axis and the direction the light is propagating, in the current frame with source moving}
 
 \variableterm{\Ttzero}{t_0}
-{***DEF NEEDED***}
+{the time in the rest frame of the source}
 
 \variableterm{\Tlambdazero}{\lambda_0}
-{***DEF NEEDED***}
+{length the light wave has traveled from the source in the the time $t_0$, in the source's rest frame}
 \variableterm{\Tlambda}{\lambda}
-{***DEF NEEDED***}
+{the distance of the light wave from the source's current position at time $t_0$, in the current frame with the source moving}
 
 \variableterm{\Tnu}{\nu}
-{***DEF NEEDED***}
+{the frequency of light, in the current frame with the source moving}
 \variableterm{\Tnuzero}{\nu_0}
-{***DEF NEEDED***}
+{the frequency of light, in the source's rest frame}
 \variableterm{\TnuPRM}{\nu'}
-{***DEF NEEDED***}
+{the frequency of light, in a primed frame}
 \variableterm{\TalphaPRM}{\alpha'}
-{***DEF NEEDED***}
+{the angle between the z-direction and the direction the light is propagating, in the primed frame}
 
 \variableterm{\TVecl}{\underline{l}}
-{***DEF NEEDED***}
+{the light's position vector, in the current frame with source moving $(l_x,l_y,l_z)$}
 
 \variableterm{\TTRet}{T_{ret}}
-{***DEF NEEDED***}
+{The retarded time, when the light was emitted from the source}
 \variableterm{\TTp}{T_p}
-{***DEF NEEDED***}
-
-\variableterm{\Tlx}{l_x}
-{***DEF NEEDED***}
-\variableterm{\Tly}{l_y}
-{***DEF NEEDED***}
-\variableterm{\Tlz}{l_z}
-{***DEF NEEDED***}
+{the time the object and the light took to propagate from this retarded position to where they currently are, equal to the negative of the retarded time $T_p=-T_{ret}$}
 \variableterm{\TLp}{L_p}
-{***DEF NEEDED***}
+{the distance light has propagated in the the propagation time $T_p=-T_{ret}$}
+\variableterm{\Tlx}{l_x}
+{the light's x-coordinate, in the current frame with source moving}
+\variableterm{\Tly}{l_y}
+{the light's y-coordinate, in the current frame with source moving}
+\variableterm{\Tlz}{l_z}
+{the light's z-coordinate, in the current frame with source moving}
+% may be different Ls
+\variableterm{\TL}{L}
+{a factor used to simplfy equations $ \TL =\sqrt{\Tlx ^2+\Tly ^2+\Tg ^2 \Tlz ^2}$}
+
 
 \variableterm{\TVecrzero}{\underline{r}_0}
-{***DEF NEEDED***}
-\variableterm{\Tszero}{s_0}
-{***DEF NEEDED***}
+{a position in the rest frame of the source where the light is at time $t_0=0$, giving $\underline{r}_0= \underline{l}_0$ }
 \variableterm{\Tyzero}{y_0}
-{***DEF NEEDED***}
+{a position's y-coordinate in the source's rest frame}
 \variableterm{\Tzzero}{z_0}
-{***DEF NEEDED***}
+{a position's z-coordinate in the source's rest frame}
 \variableterm{\Txzero}{x_0}
-{***DEF NEEDED***}
+{a position's x-coordinate in the source's rest frame}
 
-\variableterm{\TsRet}{s_{ret}}
-{***DEF NEEDED***}
+
 \variableterm{\Ts}{s}
-{***DEF NEEDED***}
+{the letter represents a source}
 \variableterm{\TVecsRet}{\underline{s}_{ret}}
-{***DEF NEEDED***}
+{the source's retarded position in the current frame with the source moving, it is the position the source was when it emitted the light}
 
 \variableterm{\TVeclzero}{\underline{l}_0}
-{***DEF NEEDED***}
+{the position of light at time $t_0=0$ in the rest frame of the source $\underline{l}_0=(l_{0x},l_{0y},l_{0z})$ }
 \variableterm{\Tlzerox}{l_{0x}}
-{***DEF NEEDED***}
+{the x-coordinate of light at time $t_0=0$ in the rest frame of the source}
 \variableterm{\Tlzeroy}{l_{0y}}
-{***DEF NEEDED***}
+{the y-coordinate of light at time $t_0=0$ in the rest frame of the source}
 \variableterm{\Tlzeroz}{l_{0z}}
-{***DEF NEEDED***}
+{the z-coordinate of light at time $t_0=0$ in the rest frame of the source}
 
 \variableterm{\TOmega}{\Omega}
-{***DEF NEEDED***}
+{the solid angle in the current frame, it is a measure of the amount of the field of view}
 \variableterm{\Tquantofwaveront}{Q}
-{***DEF NEEDED***}
+{a quantity of the emitted light's wavefront that is encompassed in the infinitesimal solid angle, in the rest frame of the source}
 \variableterm{\TOmegazero}{\Omega_0}
-{***DEF NEEDED***}
+{the solid angle in the sources rest frame, it is a measure of the amount of the field of view}
 \variableterm{\TDsigma}{D_{\sigma}}
-{***DEF NEEDED***}
+{the ratio of the density in the solid angle element in the moving frame relative to the rest frame}
 \variableterm{\Tksigma}{k_{\sigma}}
-{***DEF NEEDED***}
+{a proportionality constant}
 \variableterm{\TDc}{D_{c}}
-{***DEF NEEDED***}
+{the density of light in its direction of propagation, in the current frame}
 \variableterm{\Tkc}{k_{c}}
-{***DEF NEEDED***}
+{a proportionality constant}
 \variableterm{\TVolDensity}{D}
-{***DEF NEEDED***}
-
+{the volume density of light, in the current frame}
 
 \variableterm{\Tsurface}{A}
-{***DEF NEEDED***}
+{surface area on the sphere corresponding to the given solid angle}

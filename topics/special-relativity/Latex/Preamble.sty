@@ -10,12 +10,14 @@
 % Page Colour
 \usepackage{xcolor}
 \definecolor{Beige}{HTML}{ffe4c8}
+\definecolor{covercolour}{HTML}{800f25}
 
 % Page Headers and Footers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \cfoot{\thepage}
+\usepackage[absolute,overlay]{textpos}
 
 % spacing
 \usepackage{setspace}
@@ -118,7 +120,12 @@
 }
 \makeatother
 
-
+%██████████████████████████████████████████████████████
+% LINKS
+%█████████████████████████████████████████████████████
+%\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
 
 %█████████████████████████████████████████████████████
 % MATH
@@ -153,6 +160,7 @@
 \usepackage{tikz-3dplot}
 \usetikzlibrary{external}
 \tikzexternalize[prefix=output/tikz/]
+\tikzifexternalizing{\hypersetup{pdfauthor={Phy-Hub}, pdfsubject={A figure created by Phy-Hub, for The Handbook of Special Relativity}}}{\hypersetup{pdfauthor={Phy-Hub},pdftitle={The Handbook of Special Relativity}}}
 \tikzset{external/optimize command away=\derivation}
 \tikzset{external/optimize command away=\endderivation}
 \usetikzlibrary{positioning}
@@ -166,13 +174,7 @@
 \tcbset{shield externalize}
 
 
-%██████████████████████████████████████████████████████
-% LINKS
-%█████████████████████████████████████████████████████
 
-%\usepackage{url}
-\usepackage{hyperref}
-\hypersetup{hidelinks}
 
 %█████████████████████████████████████████████████████
 % BIBLIOGRAPHY

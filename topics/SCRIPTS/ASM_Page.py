@@ -140,7 +140,7 @@ def wrap_content(latex_file):
         if prev_ch >= 1:
             prev_part = chapter_part_map.get(prev_ch, 0)
             prev_id = f"part_{prev_part}_ch{prev_ch}"
-            prev_btn = (f'<a onclick="showContent(\'{prev_id}_wrap\'); syncToc(\'{prev_id}_toc\');" '
+            prev_btn = (f'<a href="#{prev_id}_wrap" onclick="syncToc(\'{prev_id}_toc\');" '
                         f'style="font-weight: bold; padding-left: 10px; cursor: pointer;"> &lt; Previous </a>\n')
         else:
             prev_btn = "<a></a>\n"
@@ -149,7 +149,7 @@ def wrap_content(latex_file):
         if next_ch <= total_chapters:
             next_part = chapter_part_map.get(next_ch, 0)
             next_id = f"part_{next_part}_ch{next_ch}"
-            next_btn = (f'<a onclick="showContent(\'{next_id}_wrap\'); syncToc(\'{next_id}_toc\');" '
+            next_btn = (f'<a href="#{next_id}_wrap" onclick="syncToc(\'{next_id}_toc\');" '
                         f'style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next &gt; </a>\n')
         else:
             next_btn = ""
@@ -354,6 +354,8 @@ def tikz2svg(input_directory, output_directory):
     pdf_files = [f for f in os.listdir(input_directory) if f.endswith('.pdf')]
     os.makedirs(output_directory, exist_ok=True)
 
+    desc_content = "<desc>A figure created by Phy-Hub, for The Handbook of Special Relativity</desc>"
+
     for pdf_file in pdf_files:
         pdf_path = os.path.join(input_directory, pdf_file)
         svg_path = os.path.join(output_directory, os.path.splitext(pdf_file)[0] + '.svg')
@@ -362,6 +364,19 @@ def tikz2svg(input_directory, output_directory):
             print(f"Converting: {pdf_file}")
             subprocess.run(['pdf2svg', pdf_path, svg_path], check=True)
             subprocess.run(['svgo.cmd', svg_path, '--precision=2'], check=True)
+
+            try:
+                with open(svg_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                if desc_content not in content:
+                    print(f"  -> Adding description to {svg_path}...") # Optional log
+                    new_content = re.sub(r'(<svg[^>]*>)', r'\1' + desc_content, content, count=1)
+                    with open(svg_path, 'w', encoding='utf-8') as f:
+                        f.write(new_content)
+                else:
+                    print(f"  -> Description already present in {svg_path}.")
+            except Exception as e:
+                print(f"Error processing {svg_path}: {e}")
 
 
 ########################################################
@@ -399,36 +414,21 @@ def create_toc(toc_dic):
 
     for p in tree:
         # Added class: 'toc-part-link'
-        html.append(f'''<li>
-            <a href="#part_{p['id']}_header"
-               id="link_part_{p['id']}"
-               class="toc-link toc-part-link"
-               onclick="toggleView('part_{p['id']}')">
-                {arrow} <b>Part {to_roman(p['id'])}. {p['title']}</b>
-            </a>
-            <ul id="part_{p['id']}_toc" class="toc-sublist toc-part-sublist">''') # Added class
+        html.append(f'''<li> <a href="#part_{p['id']}_header" id="link_part_{p['id']}" class="toc-link toc-part-link" onclick="toggleView('part_{p['id']}')"> {arrow} <b>Part {to_roman(p['id'])}. {p['title']}</b> </a> <ul id="part_{p['id']}_toc" class="toc-sublist toc-part-sublist">
+        ''') # Added class
 
         for c in p['chaps']:
             # Added class: 'toc-chapter-link'
-            html.append(f'''<li>
-                <a href="#part_{p['id']}_ch{c['id']}_header"
-                   id="link_ch_{c['id']}"
-                   class="toc-link toc-chapter-link"
-                   onclick="toggleView('part_{p['id']}_ch{c['id']}')">
-                    {arrow} <b>{c['id']}. {c['title']}</b>
-                </a>
-                <ul id="part_{p['id']}_ch_{c['id']}_toc" class="toc-sublist toc-chapter-sublist">''') # Added class
+            html.append(f'''\n\t<li> <a href="#part_{p['id']}_ch{c['id']}_header" id="link_ch_{c['id']}" class="toc-link toc-chapter-link" onclick="toggleView('part_{p['id']}_ch{c['id']}')"> {arrow} <b>{c['id']}. {c['title']} </b> </a> <ul id="part_{p['id']}_ch_{c['id']}_toc" class="toc-sublist toc-chapter-sublist">
+            ''') # Added class
 
             for s in c['sects']:
-                html.append(f'''<li>
-                    <a href="#part_{p['id']}_ch{c['id']}_{s['id']}_header" class="toc-link">
-                        {c['id']}.{s['id']} {s['title']}
-                    </a>
-                </li>''')
+                html.append(f'''<li> <a href="#part_{p['id']}_ch{c['id']}_{s['id']}_header" class="toc-link"> {c['id']}.{s['id']} {s['title']} </a> </li>
+                ''' )
             html.append('</ul></li>')
         html.append('</ul></li>')
 
-    html.append('</ul></div>')
+    html.append('</ul></div>\n\t')
 
     return "".join(html)
 
@@ -451,7 +451,7 @@ def create_terms(file_path):
         desc = desc.strip()
         desc = re.sub(r'\$(.*?)\$', r'\(\g<1>\)', desc).replace('<', '\\lt ').replace('>', '\\gt ')
 
-        new_line = f'<div id="{label}" style="display: none;">\n<dt><b>{term}:</b>  </dt>\n<dd> {desc} </dd>\n</div>\n'
+        new_line = f'           <div id="{label}"> <dt><b>{term}:</b>  </dt> <dd> {desc} </dd></div>\n'
         output_lines.append(new_line)
 
     return output_lines
@@ -469,11 +469,34 @@ def find_matching_brace(text, start_index):
                 return i
     return -1
 
+import re
+import os
+
+def find_matching_brace(text, start_index):
+    """
+    Finds the index of the closing brace '}' corresponding to the
+    opening brace '{' found at start_index.
+    """
+    if text[start_index] != '{':
+        return -1
+
+    brace_count = 0
+
+    for i in range(start_index, len(text)):
+        char = text[i]
+
+        if char == '{':
+            brace_count += 1
+        elif char == '}':
+            brace_count -= 1
+
+        if brace_count == 0:
+            return i
+
+    return -1
+
 def create_dictionary_of_math_terms(file_path):
-    """
-    Parses the .tex file and returns a list of dictionaries containing
-    raw_command, term_content, and definition_content.
-    """
+
     if not os.path.exists(file_path):
         print(f"Error: File not found: {file_path}")
         return []
@@ -481,7 +504,13 @@ def create_dictionary_of_math_terms(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
         file_content = file.read()
 
+    # --- STEP 0: Clean Comments ---
+    # This removes any % and the text following it,
+    # UNLESS the % is escaped (preceded by a backslash, like 50\%).
+    file_content = re.sub(r'%.*', '', file_content)
+
     entries = []
+
     command_iterator = re.finditer(r"\\variableterm", file_content)
 
     for match in command_iterator:
@@ -529,7 +558,7 @@ def create_html_terms_element(entries):
     if not entries:
         return ""
 
-    html_string = '<dl id="math-glossary" style="display: none;">\n'
+    html_string = '          <dl id="math-glossary" style="display: none;">\n'
 
     for entry in entries:
         raw_command = entry['raw_command']
@@ -546,17 +575,14 @@ def create_html_terms_element(entries):
         definition_content = definition_content.replace('<', '\\lt ').replace('>', '\\gt ')
         definition_content = re.sub(r'\$(.*?)\$', r'\\(\1\\)', definition_content)
 
-        # JS toggles between 'inline' (text-flow) and 'none'
-        js_toggle = f"document.getElementById('{label_id}').style.display = document.getElementById('{label_id}').style.display == 'none' ? 'inline' : 'none';"
-
         html_line = (
-            f'<div>\n'
-            f'  <dt data-term="{label_id}" style="display: inline; cursor: pointer; font-weight: bold;" onclick="{js_toggle}">'
+            f'          <div>'
+            f'  <dt data-term="{label_id}">'
             f'{display_term} <b>:</b> '
-            f'</dt>\n'
-            f'  <dd id="{label_id}" style="display: none; margin: 0; padding-left: 5px;">'
+            f'</dt>'
+            f'  <dd id="{label_id}">'
             f'{definition_content}'
-            f'</dd>\n'
+            f'</dd>'
             f'</div>\n'
         )
 
@@ -684,12 +710,12 @@ def replace_refs(input_string):
         id = match.group(1).replace(" ", "_").replace(":","").replace("'","_")
         eq_number =  (find_key_from_label(eq_dict, id) or "").replace("_", ".")
         # Replace with a span element that shows a div with the matched id on hover
-        return f'<span class="ref_eq" onmouseover="copyContent(\'{id}\',\'equation_hover\'); " onmouseout="deleteContent(\'equation_hover\');">({eq_number})</span>'
+        return f'<span class="ref_eq" onmouseover="copyContent(\'{id}\',\'equation_hover\',this); " onmouseout="deleteContent(\'equation_hover\');">({eq_number})</span>'
     def replacer_ref_fig(match):
         id = match.group(1).replace(" ", "_").replace(":","").replace("'","_")
         fig_num =  (find_key_from_label(fig_dict, id) or "").replace("_", ".")
         # Replace with a span element that shows a div with the matched id on hover
-        return f'<span class="ref_fig" onmouseover="copyContent(\'{id}\',\'fig_hover\');" onmouseout="deleteContent(\'fig_hover\');">{fig_num}</span>'
+        return f'<span class="ref_fig" onmouseover="copyContent(\'{id}\',\'fig_hover\',this);" onmouseout="deleteContent(\'fig_hover\');">{fig_num}</span>'
     def replacer_ref_toc(match):
         id = match.group(1).replace(" ", "_").replace(":","").replace("'","_")
         toc_num = (find_key_from_label(toc_dict, id) or "").replace("_", ".")
@@ -702,7 +728,8 @@ def replace_refs(input_string):
             display_num = ".".join(toc_num_sep[1:])
             href = display_num.replace(".", "_")
             part_num = ".".join(toc_num_sep[:1])
-            return f'<a href="#part_{part_num}_ch{href}_header" class="ref_toc" >{display_num}</a>' #todo need way for click to load chapter if ref is to a hidden chapter
+            return f'<a href="#part_{part_num}_ch{href}_header" class="ref_toc" >{display_num}</a>'
+               #todo need way for click to load chapter if ref is to a hidden chapter
                #todo <a href="#part_{part_num}_ch{c['id']}_wrap" id="link_ch_{c['id']}" class="toc-link" onclick="toggleView('ch', '{c['id']}')">
 
     # Use re.sub to replace each match in the input string
@@ -1078,7 +1105,7 @@ def find_leftover_latex(html_file):
     found, bugs = set(), 0
     stop_marker = None
 
-    with open(html_file, 'r', encoding='utf-8') as f, open("latex_still_in_html.txt", 'w', encoding='utf-8') as out:
+    with open(html_file, 'r', encoding='utf-8') as f, open("bugs/latex_still_in_html.txt", 'w', encoding='utf-8') as out:
         for i, line in enumerate(f, 1):
             # check for start of block if not in one
             if not stop_marker:
@@ -1369,7 +1396,7 @@ replace(Latex_File, r'\\end\{derivation\}', '</div>')
 replace(Latex_File, r'\\Vec', r'\\mathbf')
 replace(Latex_File, r'\\noindent', '')
 replace(Latex_File, r'\\protect', '')
-replace(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', "<span onmouseover=\"document.getElementById('\\g<1>').style.display='block'\" onmouseout=\"document.getElementById('\\g<1>').style.display='none'\">\\g<2></span>")
+replace(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', '<span data-target="\\g<1>">\\g<2></span>')
 replace(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
 replace(Latex_File, r'\\href\{(.*?)\}\{(.*?)\}', '<a style="color: black" href="\\g<1>" target="_blank" rel="noopener noreferrer">\\g<2></a>')
 replace(Latex_File, r'\\scalebox{0.5}{R}', 'R')

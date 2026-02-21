@@ -939,7 +939,7 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 			\draw[red, dashed, thick arrows] (6, 6.15)--(0, 6.15) node[midway, above] {$\frac{1}{2}{\Tc }{\TDelta  \Tt }$};
 
 			% Draw the distance labels
-			\draw[<->, thick] (0, 4.7)--(6, 4.7) node[midway, above] {${\TL }$};
+			\draw[<->, thick] (0, 4.7)--(6, 4.7) node[midway, above] {${\Tdm }$};
 
 			\draw[] (0,-1.25);
 
@@ -978,13 +978,13 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 			\draw[black, thick,->, line width = 1.5pt] (3, 6)-- +  + (0, 0.5) node[midway, right] {${\Tu }$};
 
 			% Draw the distance labels
-			\draw[<->, thick] (0,-1.3)--(6,-1.3) node[midway, above] {${\TL }$};
+			\draw[<->, thick] (0,-1.3)--(6,-1.3) node[midway, above] {${\Tdm }$};
 			\draw[->, thick] (-1, 0)--(-1, 6) node[midway, left] {${\Tu }{\TDelta  \TtPRM  }$};
 
 		\end{tikzpicture}
 		\caption{\protect\hyperlink{def-Moving-Frame}{Moving frame}}
 	\end{subfigure}
-	\caption{\textbf{Light clock showing \protect\hyperlink{def-time-dilation}{time dilation}.} The light clock keeps time by counting each time the light makes a return journey when bouncing between two mirrors with length ${\TL }=\frac{1}{2}{\Tc }{\TDelta  \Ttau }$ between them, were ${\TDelta \Ttau }$ is the time for the return journey in the \protect\hyperlink{def-proper-frame}{rest frame}, the diagram shows the mirror's \protect\hyperlink{def-proper-frame}{rest frame} (left) and a frame with them moving at speed ${\Tu }=-{\Tv }$ (right). In this second frame, there is a distance ${\Tu }{\TDelta  \TtPRM  }$ between where the light was initially reflected by the left mirror and where it returned to it. For this, the light had to travel a total diagonal distance of ${\Tc }{\TDelta  \TtPRM  }$ to return, were ${\TDelta \Ttau }$ is the time for the return journey in the \protect\hyperlink{def-Primed-Frame}{primed frame}.}
+	\caption{\textbf{Light clock showing \protect\hyperlink{def-time-dilation}{time dilation}.} The light clock keeps time by counting each time the light makes a return journey when bouncing between two mirrors with distance ${\Tdm }=\frac{1}{2}{\Tc }{\TDelta  \Ttau }$ between them, were ${\TDelta \Ttau }$ is the time for the return journey in the \protect\hyperlink{def-proper-frame}{rest frame}, the diagram shows the mirror's \protect\hyperlink{def-proper-frame}{rest frame} (left) and a frame with them moving at speed ${\Tu }=-{\Tv }$ (right). In this second frame, there is a distance ${\Tu }{\TDelta  \TtPRM  }$ between where the light was initially reflected by the left mirror and where it returned to it. For this, the light had to travel a total diagonal distance of ${\Tc }{\TDelta  \TtPRM  }$ to return, were ${\TDelta \Ttau }$ is the time for the return journey in the \protect\hyperlink{def-Primed-Frame}{primed frame}.}
 	\label{fig: light clock}
 \end{figure}
 %███████████
@@ -993,7 +993,7 @@ The light in the clock, takes a time ${\TDelta \Ttau }$ in the clock's \hyperlin
 We can see from Figure (\ref{fig: light clock rest frame}) that in the \hyperlink{def-proper-frame}{rest frame}, the distance the light travels to the mirror and back in this time is
 
 \begin{equation}
-	2{\TL } = {\Tc }{\TDelta \Ttau }.
+	2{\Tdm } = {\Tc }{\TDelta \Ttau }.
 \end{equation}
 
 The distance the mirrors move during this return journey in the \hyperlink{def-Moving-Frame}{moving frame} is
@@ -1010,7 +1010,7 @@ The distance light travels in this time is
 	{\Tc }{\TDelta  \TtPRM  }
 \end{equation}
 
-This is the hypotenuse of a right-angled triangle formed by ${\Tu }{\TDelta  \TtPRM  }=-{\Tv }{\TDelta  \TtPRM  }$ and $2{\TL }$, so we have the square of the hypotenuse equal to the square of the other two lengths:
+This is the hypotenuse of a right-angled triangle formed by ${\Tu }{\TDelta  \TtPRM  }=-{\Tv }{\TDelta  \TtPRM  }$ and $2{\Tdm }$, so we have the square of the hypotenuse equal to the square of the other two lengths:
 
 \begin{equation}
 	\Tc ^2 \TDelta  \TtPRM ^2 = \Tv ^2 \TDelta  \TtPRM ^2 + \Tc ^2 \TDelta \Ttau ^2
@@ -1070,8 +1070,8 @@ So there is now light moving perpendicular as well as parallel the \hyperlink{de
 			% Draw the dashed arrowed lines with custom thick arrowheads
 			\draw[red, dashed, thick arrows] (0, -0.15)--(6, -0.15);
 			\draw[red, dashed, thick arrows] (6, 0.15)--(0, 0.15);
-			\draw[red, dashed, thick arrows] (-0.15, 0)--(-0.15, 6) node[midway, left] {${\Tzone }$};
-			\draw[red, dashed, thick arrows] (0.15, 6)--(0.15, 0) node[midway, right] {${\Tztwo }$};
+			\draw[red, dashed, thick arrows] (-0.15, 0)--(-0.15, 6) node[midway, left] {${\Tzf }$};
+			\draw[red, dashed, thick arrows] (0.15, 6)--(0.15, 0) node[midway, right] {${\Tzb }$};
 
 			% Draw the distance labels
 			\draw[<->, thick] (-1.5, 0)--(-1.5, 6) node[midway, left] {${\TDelta  \TZ }$};
@@ -1105,8 +1105,8 @@ So there is now light moving perpendicular as well as parallel the \hyperlink{de
 			\tikzset{thick arrows/.style = {-stealth, thick, line width = 1.5pt} }
 
 			% Draw the dashed arrowed lines with custom thick arrowheads
-			\draw[red, dashed, thick arrows] ($(P1)+(-0.15,0)$)--($(P3)+(-0.15,0)$) node[midway, left] {${\TzonePRM }$};
-			\draw[red, dashed, thick arrows] ($(P3)+(0.15,0)$)--($(A1)+(0.15,0)$) node[midway, right] {${\TztwoPRM }$};
+			\draw[red, dashed, thick arrows] ($(P1)+(-0.15,0)$)--($(P3)+(-0.15,0)$) node[midway, left] {${\TzfPRM }$};
+			\draw[red, dashed, thick arrows] ($(P3)+(0.15,0)$)--($(A1)+(0.15,0)$) node[midway, right] {${\TzbPRM }$};
 			\draw[red, dashed, thick arrows] (P1)--(P2);
 			\draw[red, dashed, thick arrows] (P2)--(A1);
 
@@ -1116,7 +1116,7 @@ So there is now light moving perpendicular as well as parallel the \hyperlink{de
 		\end{tikzpicture}
 		\caption{\protect\hyperlink{def-Moving-Frame}{Moving frame}}
 	\end{subfigure}
-	\caption{\textbf{Light paths showing the need for \protect\hyperlink{def-length-contraction}{length contraction}.} A central orange bulb emits light in two directions, with all light being reflected by the mirrors back to reach the central bulb \protect\hyperlink{def-simultaneity}{simultaneously}. This is shown at rest, fig (a), and in another inertial frame with the system now moving at speed ${\Tu }$, fig (b), with its length now having to be contracted in the direction of movement to allow for the \protect\hyperlink{def-simultaneity}{simultaneous} return of light to the bulb. The length between the bulb and front mirror is shown as ${\TDelta  \TZ }$ and ${\TDelta  \TZPRM }$ in each frame. The paths the light took to the front mirror ${\Tzone }$ and back ${\Tztwo }$ are shown in the \protect\hyperlink{def-proper-frame}{rest frame} with the corresponding paths ${\TzonePRM }$ and ${\TztwoPRM }$ in the \protect\hyperlink{def-Moving-Frame}{moving frame}.}
+	\caption{\textbf{Light paths showing the need for \protect\hyperlink{def-length-contraction}{length contraction}.} A central orange bulb emits light in two directions, with all light being reflected by the mirrors back to reach the central bulb \protect\hyperlink{def-simultaneity}{simultaneously}. This is shown at rest, fig (a), and in another inertial frame with the system now moving at speed ${\Tu }$, fig (b), with its length now having to be contracted in the direction of movement to allow for the \protect\hyperlink{def-simultaneity}{simultaneous} return of light to the bulb. The length between the bulb and front mirror is shown as ${\TDelta  \TZ }$ and ${\TDelta  \TZPRM }$ in each frame. The paths the light took to the front mirror ${\Tzf }$ and back ${\Tzb }$ are shown in the \protect\hyperlink{def-proper-frame}{rest frame} with the corresponding paths ${\TzfPRM }$ and ${\TzbPRM }$ in the \protect\hyperlink{def-Moving-Frame}{moving frame}.}
 	\label{fig: length contraction math}
 \end{figure}
 
@@ -1126,7 +1126,7 @@ Multiple \hyperlink{def-event}{events} that happen at a single point \hyperlink{
 This is to allow for the second \hyperlink{def-postulates}{postulate} to hold true.
 The time between the light being emitted and absorbed will be the dilated time that we worked out in the previous section.
 This can be seen as the sideways light path in this and the light clock's setup from previous section is the same path.
-In the \hyperlink{def-Moving-Frame}{moving frame}, to achieve this \hyperlink{def-simultaneity}{simultaneity} in the return of the light to the bulb, the length of the full path of light from the central bulb to the front mirror and back ($2 {\TDelta  \TZPRM } = {\TzonePRM } + {\TztwoPRM }$) must be the same as the perpendicular path, due to the speed of light being the same for both paths.
+In the \hyperlink{def-Moving-Frame}{moving frame}, to achieve this \hyperlink{def-simultaneity}{simultaneity} in the return of the light to the bulb, the length of the full path of light from the central bulb to the front mirror and back ($2 {\TDelta  \TZPRM } = {\TzfPRM } + {\TzbPRM }$) must be the same as the perpendicular path, due to the speed of light being the same for both paths.
 We can work out the length of the sideways paths from the \hyperlink{def-time-dilation}{time dilation} section, ${\Tc }{\TDelta  \TtPRM }$, and this is the length the total path needs to be in the forward directions as well.
 We will find that the paths can only have this length, if the distance between the bulb and the front mirror is contracted in the direction of movement.
 Note that there can not be a contraction in the perpendicular direction to the movement due to the paradox explained in Figure (\ref{fig: width contraction}).
@@ -1135,28 +1135,28 @@ In the \hyperlink{def-Moving-Frame}{moving frame}, the pulse sent forward has a 
 Which is also equal to the \hyperlink{def-Primed-Frame}{primed frame}'s distance between the bulb and mirror plus the distance the mirror has moved away from the point it was emitted in this time, that is
 
 \begin{equation}
-	{\TzonePRM } = {\Tc }{\TDelta  \TtonePRM } = {\TDelta   \TZPRM } + {\Tu } {\TDelta  \TtonePRM }
+	{\TzfPRM } = {\Tc }{\TDelta  \TtfPRM } = {\TDelta   \TZPRM } + {\Tu } {\TDelta  \TtfPRM }
 \end{equation}
 
-where ${\Tu }$ is the speed that the front mirror is moving away from the point it was emitted, ${\TDelta  \TtonePRM }$ is the time taken to get to the mirror, and ${\TDelta   \TZPRM }$ is the distance between the bulb and the mirror in front in the \hyperlink{def-Primed-Frame}{primed frame}.
+where ${\Tu }$ is the speed that the front mirror is moving away from the point it was emitted, ${\TDelta  \TtfPRM }$ is the time taken to get to the mirror, and ${\TDelta   \TZPRM }$ is the distance between the bulb and the mirror in front in the \hyperlink{def-Primed-Frame}{primed frame}.
 After reaching the mirror, the light then must travel back to the bulb a distance
 
 \begin{equation}
-	{\TztwoPRM } = {\Tc } {\TDelta  \TttwoPRM } = {\TDelta   \TZPRM } - {\Tu } {\TDelta  \TttwoPRM }.
+	{\TzbPRM } = {\Tc } {\TDelta  \TtbPRM } = {\TDelta   \TZPRM } - {\Tu } {\TDelta  \TtbPRM }.
 \end{equation}
 
-Where ${\TDelta  \TttwoPRM }$ is the time taken to return to the bulb from the front mirror, with the source moving towards the reflected light.
+Where ${\TDelta  \TtbPRM }$ is the time taken to return to the bulb from the front mirror, with the source moving towards the reflected light.
 
 Both of these give the two times as
 
 \begin{equation}
-	{\TDelta  \TtonePRM } = \frac{\TDelta   \TZPRM }{ \Tc  - \Tu  }
+	{\TDelta  \TtfPRM } = \frac{\TDelta   \TZPRM }{ \Tc  - \Tu  }
 \end{equation}
 
 and
 
 \begin{equation}
-	{\TDelta  \TttwoPRM } = \frac{ \TDelta   \TZPRM  }{ \Tc  + \Tu  }.
+	{\TDelta  \TtbPRM } = \frac{ \TDelta   \TZPRM  }{ \Tc  + \Tu  }.
 \end{equation}
 
 Adding both these times together gives the total dilated time of return as
@@ -1431,7 +1431,7 @@ This is a speed unattainable to us, the only thing we can bring up close to this
 
 To get the velocity \hyperlink{def-transform}{transform} equations we will first need the equations to \hyperlink{def-transform}{transform} the displacement between two positions and the interval between times, then take them in the limit as the changes go to zero.
 That is, when we have infinitesimal changes of coordinates.
-If we want to know how the displacement between two coordinates ${\TVecRone } = (\Txone ,\Tyone ,\Tzone )$ and ${\TVecRtwo } = (\Txtwo ,\Tytwo ,\Tztwo )$ \hyperlink{def-transform}{transforms}, we can take the difference of the \hyperlink{def-transform}{transforms} of both the coordinates as follows
+If we want to know how the displacement between two coordinates $(\Txone ,\Tyone ,\Tzone )$ and $(\Txtwo ,\Tytwo ,\Tztwo )$ \hyperlink{def-transform}{transforms}, we can take the difference of the \hyperlink{def-transform}{transforms} of both the coordinates as follows
 
 \begin{equation}
 	\begin{aligned}
@@ -1442,7 +1442,7 @@ If we want to know how the displacement between two coordinates ${\TVecRone } = 
 	\end{aligned}
 \end{equation}
 
-rearranging and replacing the difference of the first and second of each coordinate with ${\TDelta }{\TVecR  } = ({\TDelta }\Tx ,{\TDelta }\Ty ,{\TDelta }\Tz ) = (\Txtwo -\Txone ,\Tytwo -\Tyone ,\Tztwo -\Tzone )$, giving the displacement \hyperlink{def-transform}{transform} as
+rearranging and replacing the difference of the first and second of each coordinate with ${\TDeltaVecR  } = ({\TDelta }\Tx ,{\TDelta }\Ty ,{\TDelta }\Tz ) = (\Txtwo -\Txone ,\Tytwo -\Tyone ,\Tztwo -\Tzone )$, giving the displacement \hyperlink{def-transform}{transform} as
 
 \begin{equation}
 	\label{eq: interval of Coordinates}
@@ -1477,7 +1477,7 @@ For example, the space-time interval and the energy-momentum relationship in Cha
 %███████████████████████████████████████████████████████████████████
 \section{Velocity} \label{sect: Velocity}
 
-The velocity at any instant is the infinitesimal change in position over the infinitesimal change in time $\frac{\Tdiff \TVecR  }{\Tdiff \Tt }$.
+The velocity at any instant is the infinitesimal change in position over the infinitesimal change in time $\TVecu = \TdiffVecRdifft$.
 So using the infinitesimals from Equation \eqref{eq: infinitesimal interval of Coordinates}, we get the velocity in each direction as
 
 \begin{equation}
@@ -1507,7 +1507,7 @@ now dividing the top and bottom of the fraction on the right hand side by ${\Tdi
 \end{equation}
 
 This is used to find the velocity of anything in another frame at the corresponding primed position and time.
-We will put this equation to work in a later section when we look at how the light emitted from a source particle has its velocity direction changed/\hyperlink{def-aberration}{aberrated} and the effect this has on its intensity in all directions. Next, we will use this to get the acceleration \hyperlink{def-transform}{transform}.
+We will put this equation to work in a later section when we look at how the light emitted from a emitting particle has its velocity direction changed/\hyperlink{def-aberration}{aberrated} and the effect this has on its intensity in all directions. Next, we will use this to get the acceleration \hyperlink{def-transform}{transform}.
 
 \textbf{Side note:}
 
@@ -1588,20 +1588,29 @@ This extra term leads to a different formula for the force compared to the mass 
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\section{No Speeds Faster than Light speed}\label{sect: No Speeds Faster than Light speed}
+\section{The Paradox of Faster than Light Signals}\label{sect: The Paradox of Faster than Light Signals}
 
-*** start
+Here we will look at sending signals faster than the speed of light, but we will see that this leads to the paradox that the time of events can change the order in which they happen in different reference frames.
+The thought experiment that looks at this is called the Tachyonic Antitelephone, and is as follows.
 
+Consider two particles at rest in an initial reference frame, an emitting particle and a recieving particle, with the emitting particle located at the origin, and the recieving particle located on the positive z-axis at $\Tzr$.
 
+At time $0$, the emitting particle at the origin emits a signal at a speed $\Tus$ which is received at by the recieving particle at position $\Tzr$ at time $\Ttr=\Tzr/\Tus$, In this rest frame of the particles.
 
-** The Tachyonic AntitelephoneThe Scenario:
+Now, consider a primed frame moving at speed $\Tv$ relative to the first.
+To find the emission and received times in the primed frame, we use the time transformation from equations \eqref{eq: Lorentz transformation}.
+Giving the emission time as $\TtPRM=0$ and the time it was recieved as
 
-If one could send signals faster than light (tachyons), one could construct a setup with two moving \hyperlink{def-observer}{observers} where a signal is sent back to the past.
+\begin{equation}
+\TtrPRM= \Tg  \bigg( \Ttr -\frac{ {\Tv }{\Tzr } }{ \Tc ^2}\bigg) = \Tg  \bigg(1  -\frac{ {\Tv }{\Tus } }{ \Tc ^2}\bigg) \Ttr
+\end{equation}
 
-The Paradox: You could send a message to your grandfather preventing your own birth (causality violation).
+since $\Tg$ and $\Ttr$ are positive we have that if ${\Tv }{\Tus }>\Tc^2$ which is possible if $\Tus>\Tc$, then the time signal was recieved in the primed frame can actually end up being negative (i.e. before time of emission), meaning that you could have the recieving particle receive the signal before the emitting particle has sent it.
 
-The Resolution: This thought experiment serves as a "proof by contradiction" that information cannot travel faster than $\Tc $.
+This thought experiment by itself does not totally rule out faster than the speed of light, and the mathematics does allow for it, but the possibly of the order of a cause and effect being interchangable would contradict our intuition, even if the math itself stays consistent in all reference frames.
 
+From this, many conclude that it should be impossible to send a signal faster that the speed of light.
+On top of this, there is also a restriction on particles with mass that leads to another barrier to speeds faster than light, which we will see later in section (\ref{subsect: Speed of Light Limit}) which discusses specifically why particles with mass can not reach the speed of light, due to them requiring infinite energy to get to that speed.
 
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
@@ -1848,7 +1857,7 @@ Here we will derive the \hyperlink{def-lorentz-invariant}{invariant} energy quan
 		\label{eq: particles space-time interval}
 		\begin{aligned}
 			\left(\frac{\Tdiff \TSq }{\Tdiff \Ttau }\right)^2 & = \Tgu ^2\left(\Tc \frac{ { \Tdiff \Ttq  } }{ { \Tdiff \Ttq  } }\right)^2-\Tgu ^2\left(\frac{\Tdiff \Txq }{ { \Tdiff \Ttq  } }\right)^2-\Tgu ^2\left(\frac{\Tdiff \Tyq }{ { \Tdiff \Ttq  } }\right)^2-\Tgu ^2\left(\frac{\Tdiff \Tzq }{ { \Tdiff \Ttq  } }\right)^2 \\
-			                                  & = \Tc ^2\Tgu ^2 \left( 1-\frac{ \Tupx ^2 + \Tupy ^2 + \Tupz ^2}{ \Tc ^2} \right)                                                                                                                        \\
+			                                  & = \Tc ^2\Tgu ^2 \left( 1-\frac{ \Tuqx ^2 + \Tuqy ^2 + \Tuqz ^2}{ \Tc ^2} \right)                                                                                                                        \\
 			                                  & = \Tc ^2\Tgu ^2 \left( 1-\frac{\Tuq ^2}{ \Tc ^2} \right)                                                                                                                                                             \\
 			                                  & = \Tc ^2
 		\end{aligned}
@@ -1940,7 +1949,7 @@ We will now look at the other two terms in equation \eqref{eq: energy-momentum d
 
 	This equation's first quantity is an energy that does not depend on the speed of the particle.
 	It is the \hyperlink{def-lorentz-invariant}{invariant} energy from before, the \hyperlink{def-rest-mass-energy}{rest mass energy}.
-	The second quantity is the classical kinetic energy formula, the rest may be seen as higher-order kinetic energy terms, that are not seen in classical physics because they are very small for ${\Tuq }<<{\Tc }$.
+	The second quantity is the classical kinetic energy formula, the rest may be seen as higher-order kinetic energy terms, that are not seen in classical physics because they are very small for ${\Tuq } \ll {\Tc }$.
 	So this seems like it could be a formula for the total energy of a particle (in a \hyperlink{def-vacuum}{vacuum}, with no potential energy).
 	We will denote this total energy as
 
@@ -2017,7 +2026,7 @@ We will also make use of an identity for $\TguPRM $ given by
 
 \begin{equation}
 	\label{eq: gamma u prime}
-	\TguPRM  = \Tgu  \Tgv  \left(1 - \frac{\Tuz  \Tv }{\Tc ^2}\right)
+	\TguPRM  = \Tgu  \Tg  \left(1 - \frac{\Tuz  \Tv }{\Tc ^2}\right)
 \end{equation}
 
 I will let you check this identity yourself, as it is just the substitution of the \hyperlink{def-transform}{transform} equation of $\TuPRM $ into the gamma function with some rearrangment.
@@ -2029,7 +2038,7 @@ Using equation \eqref{eq: velocity transform} and equation \eqref{eq: gamma u pr
 
 \begin{equation}
 	\begin{aligned}
-		\TpyPRM  &= \left[ \Tgu  \Tgv  \left(1 - \frac{\Tuz  \Tv }{\Tc ^2}\right) \right] \Tm  \left[ \frac{\Tuy }{\Tgv (1 - \frac{\Tuz  \Tv }{\Tc ^2})} \right] \\
+		\TpyPRM  &= \left[ \Tgu  \Tg  \left(1 - \frac{\Tuz  \Tv }{\Tc ^2}\right) \right] \Tm  \left[ \frac{\Tuy }{\Tg (1 - \frac{\Tuz  \Tv }{\Tc ^2})} \right] \\
 		\TpyPRM  &= \Tgu  \Tm  \Tuy   \\
 		\TpyPRM  &= \Tpy
 	\end{aligned}
@@ -2046,9 +2055,9 @@ Now doing the same for the z-component $\TpzPRM  = \TguPRM  \Tm  \TuzPRM $, we g
 
 \begin{equation}
 \begin{aligned}
-	\TpzPRM  & = \left[ \Tgu  \Tgv  \left(1 - \frac{\Tuz  \Tv }{\Tc ^2}\right) \right] \Tm  \left[ \frac{\Tuz  - \Tv }{1 - \frac{\Tuz  \Tv }{\Tc ^2} } \right] \\
-	\TpzPRM  & = \Tgu  \Tgv  \Tm  (\Tuz  - \Tv )                                                                                              \\
-	\TpzPRM  & = \Tgv  (\Tgu  \Tm  \Tuz ) - \Tgv  \Tv  (\Tgu  \Tm )
+	\TpzPRM  & = \left[ \Tgu  \Tg  \left(1 - \frac{\Tuz  \Tv }{\Tc ^2}\right) \right] \Tm  \left[ \frac{\Tuz  - \Tv }{1 - \frac{\Tuz  \Tv }{\Tc ^2} } \right] \\
+	\TpzPRM  & = \Tgu  \Tg  \Tm  (\Tuz  - \Tv )                                                                                              \\
+	\TpzPRM  & = \Tg  (\Tgu  \Tm  \Tuz ) - \Tg  \Tv  (\Tgu  \Tm )
 \end{aligned}
 \end{equation}
 
@@ -2058,15 +2067,15 @@ Now doing the same for the z-component $\TpzPRM  = \TguPRM  \Tm  \TuzPRM $, we g
 Using the relativistic momentum in the \hyperlink{def-initial-Frame}{initial frame} $\Tpz  = \Tgu  \Tm  \Tuz $ and the equation for the total energy that we described in previous section $\TE  = \Tgu  \Tm  \Tc ^2$, we obtain:
 
 \begin{equation}
-	\TpzPRM  = \Tgv  \left( \Tpz  - \frac{\Tv  \TE }{\Tc ^2} \right)
+	\TpzPRM  = \Tg  \left( \Tpz  - \frac{\Tv  \TE }{\Tc ^2} \right)
 \end{equation}
 
 now if we do have the total momentum and total energy before and after conserved, we have
 
 \begin{equation}
 	\begin{aligned}
-		\TDelta  \TpzPRM  &= \Tgv  \left( \Tptwoz  - \frac{\Tv  \TEtwo }{\Tc ^2} \right) - \Tgv  \left( \Tponez  - \frac{\Tv  \TEone }{\Tc ^2} \right) \\
-		&= \Tgv  \left( \TDelta  \Tpz  - \frac{\Tv  \TDelta  \TE }{\Tc ^2} \right)
+		\TDelta  \TpzPRM  &= \Tg  \left( \Tpza  - \frac{\Tv  \TEa }{\Tc ^2} \right) - \Tg  \left( \Tpzb  - \frac{\Tv  \TEb }{\Tc ^2} \right) \\
+		&= \Tg  \left( \TDelta  \Tpz  - \frac{\Tv  \TDelta  \TE }{\Tc ^2} \right)
 	\end{aligned}
 \end{equation}
 
@@ -2161,7 +2170,7 @@ When looking at particle collisions, we also need to take into account potential
 %█████████████
 \subsection{Speed of Light Limit}\label{subsect: Speed of Light Limit}
 
-Previously we showed that faster than light travel would lead to effects being able happening before their cause, section (\ref{sect: No Speeds Faster than Light speed}), but here is another reason that faster than light transport may not be possible for particles with mass.
+Previously we showed that faster than light travel would lead to effects being able happening before their cause, section (\ref{sect: The Paradox of Faster than Light Signals}), but here is another reason that faster than light transport may not be possible for particles with mass.
 
 We can see from the total energy equation \eqref{eq: Total Energy Compact Version}, that if a particle with a mass, was accelerated to the speed of light its energy would become infinite.
 So we would need infinite energy (which does not exist) to get that particle to the speed of light.
@@ -2169,7 +2178,7 @@ Therefor it is not possible.
 
 If you still want to consider the posibility of a particle moving at speeds faster than light speed, it would lead to $\Tg $ being imaginary (squareroot of a negaive number).
 But we require that energy is a real quantity to be measurable, and for this we would need the mass to also be imaginary.
-Some Physicists theorised a particle that has this imaginary mass, the tachyon, but this still has the previous problem of the cause and effect being interchangeable that we explained in section (\ref{sect: No Speeds Faster than Light speed}).
+Some Physicists theorised a particle that has this imaginary mass, the tachyon, but this still has the previous problem of the cause and effect being interchangeable that we explained in section (\ref{sect: The Paradox of Faster than Light Signals}).
 It has never been found to exist in any dectors.
 
 %███████████████████████████████████████████████████████████████████
@@ -2305,14 +2314,14 @@ If a light signal is emitted from a coordinate to an \hyperlink{def-observer}{ob
 \end{figure}
 %███████████
 
-As shown in the diagram, if we take the \hyperlink{def-proper-frame}{rest frame} of an \hyperlink{def-observer}{observer} and a source that emits a pulse of light from its position at ${\TVecr  }$ so that it is received by the \hyperlink{def-observer}{observer} at the origin, at time ${\Tt } = 0$.
+As shown in the diagram, if we take the \hyperlink{def-proper-frame}{rest frame} of an \hyperlink{def-observer}{observer} and a source that emits a pulse of light from its position at ${\TVecr =\TVecrRet }$ so that it is received by the \hyperlink{def-observer}{observer} at the origin, at time ${\Tt } = 0$.
 The retarded time the pulse of light was emitted is
 
 \begin{equation}
-	{ \TtRet  } =-\frac{\|\TVecr \|}{\Tc },
+	{ \TtRet  } =-\frac{\|\TVecrRet \|}{\Tc },
 \end{equation}
 
-which is the negative of the time it took for light to propagate along ${\TVecr  }$ to the origin.
+which is the negative of the time it took for light to propagate along ${\TVecrRet }$ to the origin.
 The velocity of the light that propagated to the origin is
 
 \begin{equation}
@@ -2328,7 +2337,7 @@ Were ${\Talpha }$ is the direction of propagation.
 This and the retarded time (which is negative) gives the \hyperlink{def-retarded-position}{retarded position} the light was emitted from as
 
 \begin{equation}
-	\TVecrRet  = -\|\TVecr \|\THatc  ={\Tc }{ { \TtRet  } }
+	\TVecrRet  = -\|\TVecrRet \|\THatc  ={\Tc }{ { \TtRet  } }
 	\begin{pmatrix}
 		0            \\
 		\sin{\Talpha } \\
@@ -2441,29 +2450,15 @@ If we are at rest in the \hyperlink{def-initial-Frame}{initial frame} and we see
 %███████████████████████████████████████████████████████████████████
 \section{Apparent Velocity} \label{sect: Apparent Velocity}
 
-% *** choose between observed vs apparent vs perceived vs retarded for each quantity and also for chapter 1
+%  choose between observed vs apparent vs perceived vs retarded for each quantity and also for chapter 1
 
-% *** do i also need a retarded velocity section, the actual velocity particle had at the retarded time and position
-
-*** start
-
-From the previous section we have seen that objects are perceived to be at their \hyperlink{def-retarded-position}{retarded positions}, That would also mean that we also have that the rate of change of the observed positions being different to their actual rate of change.
-That is, the \hyperlink{def-apparent-velocity}{Apparent velocity} of an object is different from its actual velocity.
+From the previous section we have seen that objects are perceived to be at their \hyperlink{def-retarded-position}{retarded positions} due to the delay in the light signal from them.
+That would also mean that we also have that the rate of change of the observed positions being different to their actual rate of change.
+That is, the \hyperlink{def-apparent-velocity}{apparent velocity} of an object is different from its actual velocity.
 This was demonstrated in section (\ref{subsect: Apparent vs Actual velocity}), where we have seen that objects can be perceived to be going faster than light even if they are not actually doing so.
 Here we will show how to find the \hyperlink{def-apparent-velocity}{Apparent velocity} of objects.
 
-If we have a moving particle positioned at $\TVecr $, then in a infinitesimal time ${\Tdiff \Tt }$ it will move
-
-\begin{equation}
-	\Tdiff \TVecr = \TVecu  {\Tdiff \Tt }
-\end{equation}
-
-to position $\TVecr  + \Tdiff \TVecr $, as shown in the Diagram
-
-*** r is actually \hyperlink{def-retarded-position}{retarded position} of particle
-*** do i need to use $\TrRet $, i.e. what time are we using for this derivation
-
-*** or do we say we are actually looking at the actually positions but look at what these are used at retarded times with respect to the \hyperlink{def-observer}{observer} at origin instead of actual times, and using $\TVecrRet =\TVecr $ and $\Tdiff \TVecrRet =\Tdiff \TVecr $
+If we have a moving particle at its retarded position $\TVecrRet $, then in a infinitesimal time ${\Tdiff \Tt }$ it will move by a displacement of $\TVecuRet  {\Tdiff \Tt }$ to position $\TVecrRet  + \TVecuRet  {\Tdiff \Tt } $, as shown in the Diagram below (where $\TVecuRet$ is the velocity of the particle at the retarded time).
 
 %█████████████
 \begin{figure}[H]
@@ -2476,59 +2471,59 @@ to position $\TVecr  + \Tdiff \TVecr $, as shown in the Diagram
 		\draw[red, thick, dotted,<-] (0,0,0)--(0.4,0.4,0);
 		\draw[red, thick, dotted,<-] (0,0,0)--(0.5,0.3,0);
 		\draw[blue, thick,->] (0.4,0.4,0)--(0.49,0.31,0);
-		\fill[blue] (0.4,0.4,0) circle (0.4pt) node[anchor = south] {\text{${\TVecr  }$} };
-		\fill[blue] (0.5,0.3,0) circle (0.4pt) node[anchor = west] {\text{${\TVecr  } + {\Tdiff \TVecr  }$} };
+		\fill[blue] (0.4,0.4,0) circle (0.4pt) node[anchor = south] {\text{${\TVecrRet  }$} };
+		\fill[blue] (0.5,0.3,0) circle (0.4pt) node[anchor = west] {\text{${\TVecrRet  } + { \TVecuRet \Tdiff \Tt  }$} };
 	\end{tikzpicture}
-	\caption{\textbf{\protect\hyperlink{def-apparent-velocity}{Apparent velocity}.} Diagram showing a particle (blue) moving from $\TVecr $ by a displacement of $\Tdiff \TVecr =\TVecu \Tdiff \Tt $ with the paths that light has to travel to get to the origin from both these positions(red). Leading to a different retarded time between the positions than the actual time between them. As to due to the particle moving to a different position, the light may also have to travel a different distance, which also introduces an additional time difference. This gives a different \protect\hyperlink{def-apparent-velocity}{Apparent velocity} to the actual velocity.}
+	\caption{\textbf{\protect\hyperlink{def-apparent-velocity}{Apparent velocity}.} Diagram showing a particle (blue) moving from a retarded position $\TVecrRet $ by a displacement of $\TVecuRet \Tdiff \Tt $ (with $\TVecuRet$ being the velocity of the particle at the retarded time, and $\Tdiff \Tt$ being an infinitesimal change in time), the paths that light has to travel to get to the origin from both these positions is shown (red). Leading to a different retarded time between the positions than the actual time between them. This is due to the particle moving to a different position, requiring the light to travel a different distance, which introduces an additional time difference. This gives a different \protect\hyperlink{def-apparent-velocity}{Apparent velocity} to the actual velocity.}
 	\label{fig: Apparent velocity}
 \end{figure}
 %███████████
 
-The difference between the retarded times of light from each position reaching the origin, is the time that light takes to get from position  $\TVecr  + \Tdiff \TVecr $ minus the time it takes to get from position $\TVecr $, plus the time it takes for the particle to move to the new position $\Tdiff \Tt $. Which is
-
+The difference between the retarded times of light from each position reaching the origin, is the time that light takes to get from position  $\TVecrRet  + \TVecuRet  {\Tdiff \Tt } $ minus the time it takes to get from position $\TVecrRet $, plus the time it takes for the particle to move to the new position, $\Tdiff \Tt $. Which is
 
 \begin{equation}
-	\Tdiff \TtRet  =   \frac{\|\TVecr  + \Tdiff \TVecr \|}{\Tc } -  \frac{\|\TVecr \|}{\Tc } + \Tdiff \Tt
+	\label{eq: change in retarded time}
+	\Tdiff \TtRet  =   \frac{\|\TVecr  + \TVecuRet  {\Tdiff \Tt } \|}{\Tc } -  \frac{\|\TVecr \|}{\Tc } + \Tdiff \Tt
 \end{equation}
 
-since $\Tdiff \TVecr $ is infinitesmally small we can simplify this expression by using some approximations as shown in the following
+since $\TVecuRet  {\Tdiff \Tt } $ is infinitesmally small we can simplify this expression by using some approximations as shown in the following derivation
 
 \begin{equation}
 	\begin{aligned}
-		\|\TVecr  + \Tdiff \TVecr \| & \color{gray} =  \sqrt{(\TVecr  + \Tdiff \TVecr ) \cdot (\TVecr  + \Tdiff \TVecr )}                                       \\
-		                                   & \color{gray} = \sqrt{\TVecr  \cdot \TVecr  + 2 \TVecr  \cdot \Tdiff \TVecr  + \Tdiff \TVecr  \cdot \Tdiff \TVecr  } \\
-		                                   & \color{gray} \approx \sqrt{\TVecr  \cdot \TVecr  + 2 \TVecr  \cdot \Tdiff \TVecr  }                                 \\
-		                                   & \color{gray} \approx \|\TVecr \| \sqrt{1 + \frac{2 \TVecr  \cdot \Tdiff \TVecr  }{\TVecr  \cdot \TVecr  } }     \\
-		                                   & \color{gray} \text{using the Taylor expansion $\sqrt{1 + \Tx } \approx 1 + \frac{\Tx }{2} \text{for } \Tx  \ll 1$:}                           \\
-		                                   & \color{gray} \approx \|\TVecr \| \left(1 + \frac{\TVecr  \cdot \Tdiff \TVecr  }{\|\TVecr \|^2}\right)               \\
-		                                   & \color{gray} \approx \|\TVecr \|  + \frac{\TVecr  \cdot \Tdiff \TVecr  }{\|\TVecr \|}                               \\
-		                                   & \approx \|\TVecr \|  + \THatr  \cdot \Tdiff \TVecr
+		\|\TVecrRet  + \TVecuRet  {\Tdiff \Tt } \| & \color{gray} =  \sqrt{(\TVecrRet  + \TVecuRet  {\Tdiff \Tt } ) \cdot (\TVecrRet  + \TVecuRet  {\Tdiff \Tt } )}                                       \\
+		                                   & \color{gray} = \sqrt{\TVecrRet  \cdot \TVecrRet  + 2 \TVecrRet  \cdot \TVecuRet  {\Tdiff \Tt }  + \TVecuRet^2  {\Tdiff \Tt }^2  } \\
+		                                   & \color{gray} \approx \sqrt{\TVecrRet  \cdot \TVecrRet  + 2 \TVecrRet  \cdot \TVecuRet  {\Tdiff \Tt }  }                                 \\
+		                                   & \color{gray} \approx \|\TVecrRet \| \sqrt{1 + \frac{2 \TVecrRet  \cdot \TVecuRet  {\Tdiff \Tt }  }{\TVecrRet  \cdot \TVecrRet  } }     \\
+		                                   & \color{gray} \text{using the Taylor expansion $\sqrt{1 + \TN } \approx 1 + \frac{\TN }{2} \text{for } \TN  \ll 1$:}                           \\
+		                                   & \color{gray} \approx \|\TVecrRet \| \left(1 + \frac{\TVecrRet  \cdot \TVecuRet  {\Tdiff \Tt }  }{\|\TVecrRet \|^2}\right)               \\
+		                                   & \color{gray} \approx \|\TVecrRet \|  + \frac{\TVecrRet  \cdot \TVecuRet  {\Tdiff \Tt }  }{\|\TVecrRet \|}                               \\
+		                                   & \approx \|\TVecrRet \|  + \THatrRet   \cdot \TVecuRet  {\Tdiff \Tt }
 	\end{aligned}
 \end{equation}
 
-so for the infinitesimal change we have $\|\TVecr  + \Tdiff \TVecr \|= \|\TVecr \|   + \THatr  \cdot \Tdiff \TVecr $, and we have the perceived time that has passed at the origin as
+so for the infinitesimal change in retarded positions we have $\|\TVecrRet  + \TVecuRet  {\Tdiff \Tt } \|= \|\TVecrRet \|   + \THatrRet   \cdot \TVecuRet  {\Tdiff \Tt } $, which we can substitute into equation \eqref{eq: change in retarded time} to get the time that has passed between the two positions as observed from the origin i.e. the perceived retarded time that has passed at the origin, given as
 
 \begin{equation}
 	\begin{aligned}
-		\Tdiff \TtRet  & \color{gray} =   \Tdiff \Tt  + \frac{\THatr  \cdot \Tdiff \TVecr  }{\Tc }  \\
-		         & \color{gray} = \Tdiff \Tt  + \frac{\THatr  \cdot \TVecu  \Tdiff \Tt }{\Tc }  \\
-		         & = \left( 1 + \frac{\TVecu  \cdot \THatr  }{\Tc } \right) \Tdiff \Tt
+		\Tdiff \TtRet  & \color{gray} =   \Tdiff \Tt  + \frac{\THatrRet   \cdot \TVecuRet  {\Tdiff \Tt }  }{\Tc }  \\
+		         & \color{gray} = \Tdiff \Tt  + \frac{\THatrRet   \cdot \TVecuRet  \Tdiff \Tt }{\Tc }  \\
+		         & = \left( 1 + \frac{\TVecuRet  \cdot \THatrRet   }{\Tc } \right) \Tdiff \Tt
 	\end{aligned}
 \end{equation}
 
-The distances between the points is the same to the \hyperlink{def-observer}{observer} as the true distance between them, it is just the perceived times that are different.
-Therefore, we can get the \hyperlink{def-apparent-velocity}{apparent velocity} as
+The distances between the points is the same to the \hyperlink{def-observer}{observer} as the true distance between them, it is just the perceived retarded times that are different.
+Therefore, we can get this \hyperlink{def-apparent-velocity}{apparent velocity} as
 
 \begin{equation}
 	\begin{aligned}
-		\TVecuRet  & \color{gray}= \frac{\Tdiff \TVecr  }{\Tdiff \TtRet  }                                                                \\
-		                    & \color{gray}= \frac{\Tdiff \TVecr  }{\left( 1 + \frac{\TVecu  \cdot \THatr  }{\Tc } \right) \Tdiff \Tt } \\
-		                    & = \frac{\TVecu  }{1 + \frac{\TVecu  \cdot \THatr  }{\Tc } }
+		\TVecuapp  & \color{gray}= \frac{\TVecuRet  {\Tdiff \Tt }  }{\Tdiff \TtRet  }                                                                \\
+		                    & \color{gray}= \frac{\TVecuRet  {\Tdiff \Tt }  }{\left( 1 + \frac{\TVecuRet  \cdot \THatrRet   }{\Tc } \right) \Tdiff \Tt } \\
+		                    & = \frac{\TVecuRet  }{1 + \frac{\TVecuRet  \cdot \THatrRet   }{\Tc } }
 	\end{aligned}
 \end{equation}
 
 This equation shows that the \hyperlink{def-apparent-velocity}{apparent velocity} can be much smaller or larger depending on which direction the object is moving.
-For something moving at the speed of light, we have $ 0.5 \Tc  \leq \|\TVecuRet \| \leq \infty $ depending on the direction it is moving.
+For something moving at the speed of light, we have the apparent velocity being between $ 0.5 \Tc  \leq \|\TVecuapp \| \leq \infty $ depending on the direction it is moving.
 
 %█████████████
 \begin{figure}[H]
@@ -2538,8 +2533,8 @@ For something moving at the speed of light, we have $ 0.5 \Tc  \leq \|\TVecuRet 
 		\begin{axis}[
 				domain=-0.8:0.99,
 				samples=100,
-				xlabel={$\TVecc \cdot\THatr $},
-				ylabel={$\|\TVeccRet \|$},
+				xlabel={$\TVecc \cdot\THatrRet  $},
+				ylabel={$\| \TVeccapp \|$},
 				grid=major,
 				grid style={dashed, gray!30},
 				axis lines=middle,
@@ -2563,12 +2558,12 @@ For something moving at the speed of light, we have $ 0.5 \Tc  \leq \|\TVecuRet 
 			\addplot[thick] {1/(1+x)};
 		\end{axis}
 	\end{tikzpicture}
-	\caption{\textbf{Apparent speed of light.} A diagram, showing the magnitude of the \protect\hyperlink{def-apparent-velocity}{apparent velocity} of light $\|\TVeccRet \|$ depending on the direction of light relative to the radial direction from the \protect\hyperlink{def-observer}{observer}, that is $-1 \leq \TVecc \cdot\THatr  \leq 1$.}
+	\caption{\textbf{Apparent speed of light.} A diagram, showing the magnitude of the \protect\hyperlink{def-apparent-velocity}{apparent velocity} of light $\|\TVeccapp \|$ depending on the direction of light relative to the radial direction from the \protect\hyperlink{def-observer}{observer}, that is $-1 \leq \TVecc \cdot\THatrRet   \leq 1$.}
 	\label{fig: apparent speed of light}
 \end{figure}
 %███████████
 
-This section is just to highlight an interesting concept, that needs to be taken into account when making some experimental observations.
+This section is just to highlight an interesting concept, that needs to be taken into account when making some experimental observations, such as the movement of stars, planets and galaxies in astrophysics.
 
 
 % %███████████████████████████████████████████████████████████████████
@@ -2589,6 +2584,8 @@ This section is just to highlight an interesting concept, that needs to be taken
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 \section{Summary}\label{sect: Summary chapter 4}
+
+*** start
 
 In this chapter we introduced \hyperlink{def-retarded-position}{retarded positions} which are the positions an \hyperlink{def-observer}{observer} perceives objects to be at due to the delay in the light signal from the object to the \hyperlink{def-observer}{observer}, with their associated retarded time, which is the time light takes to travel from the \hyperlink{def-retarded-position}{retarded position} to the \hyperlink{def-observer}{observer}.
 We also derived how to \hyperlink{def-transform}{transform} these retarded coordinates to the \hyperlink{def-Primed-Frame}{prime frames} retarded coordinates.
@@ -3183,7 +3180,7 @@ To find this we will use the \hyperlink{def-Moving-Frame}{moving frame}'s veloci
 		\tikzsetnextfilename{Tikz_Light_Pulse_Proper_Frame}
 		\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
 			%\usetikzlibrary{arrows.meta}
-			\node[blue] at (0.06,-0.06,0) {$\Tszero $};
+			\node[blue] at (0.06,-0.06,0) {$\Ts $};
 			\draw[blue, thick,->] (0,0,0)--(0.4,0,0) node[anchor = north east]{${\Tyzero }$};
 			\draw[blue, thick,->] (0,0,0)--(0,0.4,0) node[anchor = north east]{${\Tzzero }$};
 			\draw[blue, thick,->] (0,0,0)--(0,0,0.55) node[anchor = south east] {${\Txzero }$};
@@ -3201,7 +3198,7 @@ To find this we will use the \hyperlink{def-Moving-Frame}{moving frame}'s veloci
 		\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
 			%\usetikzlibrary{arrows.meta}
 			%node[anchor = north west]{\textcolor{black}{$\underline{P}'$} }; %$\underline{P}'$} };
-			\node[gray] at (0.08,-0.06,0) {$\TsRet $};
+			\node[gray] at (0.08,-0.06,0) {$\TVecsRet $};
 			\draw[gray!40,fill = gray!40] (0,0,0) circle (1pt);
 			\fill[red!40] (0.68*0.883,0.9*0.85,0) circle (0.4pt);
 			\draw[black, thick,->] (0,0.7,0)--(0.29,0.7,0) node[anchor = north east]{ {\color{blue} ${\Tyzero }$},${\Ty }$};
@@ -3950,5 +3947,5 @@ The Resolution: There is a "hidden momentum" or energy flow within the system. T
 ...
 *** outro is in other file
 
-\chapter*{Definitions}
+\chapter{Math Terms Dictionary}
 \input{Tex/Terms/Term_dict.tex}

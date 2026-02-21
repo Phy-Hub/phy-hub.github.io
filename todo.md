@@ -3,18 +3,22 @@
 ### main content, nagivation + toc:
 * when brought to chapter, would be nice to still have Part #num. (without title) greyed out at top
 
-### sidebar:
-* have Terms triangle in sidebar rotate on click
-
 ### equations + figures:
-- make transparent box to fit all subfigures into so all of the set of subfigures are same size
-- on hover over \eqref{} show equation at top or bottom of page, and all variables as side of page
-    - use latex equation label as equation divs id
-    - have onmousehover have JS show div of eqution using the label/id at top or bottom of page depending on mouse position
+- make transparent box to fit all subfigures into so all of the set of subfigures are same size, do i mean in html or latex?
+- on hover over \eqref{} need it to show variable terms show on side of page
+* on equation hover, for vectors or vector components, just show 1 term def i.e just r def for x,y, or z
 - see if there is automatic mathjax resizing for equations that overflow
-* when hover over actual equation show terms at top or bottom of page * create empty thing to show on hover for now
-* onhover of figure ref, have caption show in left sidebar
+* onhover of figure ref, have caption show in left sidebar if needed (as some figure dont fit into overlaybox when hover over ref)
 * get parser to automatically recognise multi line equations ("mini derivations") and only show final variable on LHS (last one due to case were equation is rearranged) and equation after last = on RHS and only show this and have expand button to show derivation, which will load full equation into div when clicked and change to revert button that when clicked again reverts (( or possibly for whole derivation including text, this would require flags in the * latex, whether these are just in code of in shown in pdf as well))
+* get whole of Figure ()/ equation () to have hover over
+* reserve space for lazy loaded images i.e this <img src="..." loading="lazy"> to <img src="..." loading="lazy" width="800" height="400" style="aspect-ratio: 2/1">
+* add figure title data or aria- labels to <img src="...svg" loading="lazy"> maybe from fig_dict caption bold part (removing <spans>, math, ect. if needed) (but for subfigures i would need subcaption and caption title), <title>figure name...</title>
+
+
+
+### links and hrefs
+* section references outside of current loaded chapter do not load correct chapter and find section
+
 
 ### formating:
 * latex sidenotes not on newline this could possible due to blank lines being removed or not registered when rendered, might need \n<br>\n for blank lines
@@ -26,33 +30,28 @@
 * use same font size as wikipedia
 * maybe have title svg and part by itself with a begin > button * bt need to remove references (possibly only have used refs in parts/chapters load, would need to have extra tag/info on bibs)
 * subfigure captions height alinment is off
-* next/previous button brings up to book title instead of chapter
+* next/previous button brings up to book title instead of chapter, also they never load parts
 
+### sidebars:
 ### checks:
-* check for no duplicate id's
 
 ### html tips:
-* use em to size relative to parents font size, or rem which is relative to root font size
-* this can help get rid of need for media quiery
+* use em to size relative to parents font size, or rem which is relative to root font size, this can help get rid of need for media quiery
 * can use p { width: clamp(45ch, 50%, 75ch); } to make paragraphs width in content min 45 character length and max 75ch and prefered 50%
-* try changing rgb to hls instead for easier clour choices
 * create variables for things such as navbar hieght and padding, you set the variable as global with :root { --VarName: value; } and call it using for example height: var(--VarName);
-* center divs inside a tag vertically using .ClassName {display: flex; align-items: centre; justify-content: center; } or do it using .ClassName { * display: grid; place-items: center; }
-* change scrollbar using ::-webkit-scrollbar (make sure webkit is not just for chrome
+
+* change scrollbar using ::-webkit-scrollbar (make sure webkit is not just for chrome)
 * use PostCSS to to make sure css is same throughout different browsers
+
 * use float property instead of grid or flexgrid
 * margin: auto centres element blocks vertically and horizontally
 * for text, text-align: center;
-* put figure counter-reset in the :root { } css and increment it in figure { }
-* use <strong instead of <b> for SEO
+* center divs inside a tag vertically using .ClassName {display: flex; align-items: centre; justify-content: center; } or do it using .ClassName { * display: grid; place-items: center; }
 
 
 
 
 ### latex:
-* rats on treadmill (perpendicular rat is meant to retun quicker in diagram)
-* need script to search and replace words with hyperlink to definition, if in caption{} will need \protect in front but to work for terms ending * with "s" and "'s"
-* Add variable definitions
 * format image size and captions
 * miniaturise svgs
 * appendix
@@ -106,3 +105,7 @@ pages:
 * historical journey
 * merchandise
 * physics overview page
+
+
+html to continue doing:
+* keep using hls instead or rgb for easier colour choices

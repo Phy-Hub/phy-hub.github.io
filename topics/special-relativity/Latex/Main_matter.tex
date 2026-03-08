@@ -406,16 +406,19 @@ Since the energy of the light is proportional to the frequency, it is also incre
 		\resizebox{0.9\linewidth}{!}{%
 			\tikzsetnextfilename{circular_waves_from_stationary_source}
 			\begin{tikzpicture}[every node/.style={transform shape}]
-				\def\sourcevel{0}
-				\def\numwaves{8}
-				\foreach \i in {1,2,...,8} {
-						\pgfmathsetmacro{\emissionx}{(\i - 1) * \sourcevel}
-						\pgfmathsetmacro{\radius}{\numwaves - (\i - 1)}
-						\draw[red] (\emissionx, 0) circle (\radius);
-					}
-				\pgfmathsetmacro{\currentx}{\numwaves * \sourcevel}
-				\filldraw[red, draw=black] (\currentx, 0) circle (7pt);
-			\end{tikzpicture}%
+			% Invisible square border matching the largest shape
+			\useasboundingbox (-8, -8) rectangle (8, 8);
+
+			\def\sourcevel{0}
+			\def\numwaves{8}
+			\foreach \i in {1,2,...,8} {
+					\pgfmathsetmacro{\emissionx}{(\i - 1) * \sourcevel}
+					\pgfmathsetmacro{\radius}{\numwaves - (\i - 1)}
+					\draw[red] (\emissionx, 0) circle (\radius);
+				}
+			\pgfmathsetmacro{\currentx}{\numwaves * \sourcevel}
+			\filldraw[red, draw=black] (\currentx, 0) circle (7pt);
+		\end{tikzpicture}%
 		}
 		\caption{still source}
 		\label{subfig_1: doppler effect intro}
@@ -425,6 +428,9 @@ Since the energy of the light is proportional to the frequency, it is also incre
 		\resizebox{0.95\linewidth}{!}{%
 			\tikzsetnextfilename{circular_waves_doppler_effect}
 			\begin{tikzpicture}[every node/.style={transform shape}]
+				% Invisible square border forcing it to match the first image's size
+				\useasboundingbox (-8, -8) rectangle (8, 8);
+
 				\def\sourcevel{0.9}
 				\def\numwaves{4}
 				\foreach \i in {1,2,3,4} {
@@ -508,45 +514,51 @@ This is shown in the following diagram.
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\tikzsetnextfilename{earth_recieving_light_suns_frame}
-		\begin{tikzpicture}
-			\draw (0,0) circle (1);
-			\node at (0,0) {Earth};
-			\draw[-latex, very thick] (-0.3,-0.3) -- ++(0.6cm, 0cm);
-			\foreach \angle in {0, 15, ..., 345} {
-					%\draw[-{Latex[length=1.5mm, width=1.5mm]}, thick]
-					\draw[-stealth, thick] (\angle:1.5) -- (\angle:1);
-				}
-			\foreach \i in {1,...,20} {
-					\pgfmathsetmacro{\opacity}{0.6 * (1 - \i/20)}
-					\draw[black, opacity=\opacity] (-\i*0.06, 0) circle (1);
-				}
-			\draw[black] (0,0) circle (1);
-		\end{tikzpicture}
-		\caption{sun's frame}
-		\label{subfig_1: suns frame}
-	\end{subfigure}
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\tikzsetnextfilename{earth_recieving_light_rest_frame}
-		\begin{tikzpicture}
-			\def\u{0.8}
-			\draw (0,0) circle (1);
-			\node at (0,0) {Earth};
-			\foreach \a in {0, 15, ..., 345} {
-					\pgfmathsetmacro{\cosa}{cos(\a)}
-					\pgfmathsetmacro{\sina}{sin(\a)}
-					\pgfmathsetmacro{\cosb}{(\cosa + \u) / (1 + \u * \cosa)}
-					\pgfmathsetmacro{\sinb}{\sina * sqrt(1 - \u*\u) / (1 + \u * \cosa)}
-					\coordinate (H) at (\a:1);
-					%\draw[-{Latex[length=1.5mm, width=1.5mm]}, thick]
-					\draw[-stealth, thick] ($(H) + 0.5*(\cosb, \sinb)$) -- (H);
-				}
-		\end{tikzpicture}
-		\caption{earth's frame}
-		\label{subfig_2: earths frame}
-	\end{subfigure}
+    \centering
+    \tikzsetnextfilename{earth_recieving_light_suns_frame}
+    \begin{tikzpicture}
+        % Tight rectangular bounding box covering the max width and height
+        \useasboundingbox (-2.2, -1.5) rectangle (1.5, 1.5);
+
+        \draw (0,0) circle (1);
+        \node at (0,0) {Earth};
+        \draw[-latex, very thick] (-0.3,-0.3) -- ++(0.6cm, 0cm);
+        \foreach \angle in {0, 15, ..., 345} {
+                %\draw[-{Latex[length=1.5mm, width=1.5mm]}, thick]
+                \draw[-stealth, thick] (\angle:1.5) -- (\angle:1);
+            }
+        \foreach \i in {1,...,20} {
+                \pgfmathsetmacro{\opacity}{0.6 * (1 - \i/20)}
+                \draw[black, opacity=\opacity] (-\i*0.06, 0) circle (1);
+            }
+        \draw[black] (0,0) circle (1);
+    \end{tikzpicture}
+    \caption{sun's frame}
+    \label{subfig_1: suns frame}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+    \centering
+    \tikzsetnextfilename{earth_recieving_light_rest_frame}
+    \begin{tikzpicture}
+        % Identical bounding box ensures they align perfectly
+        \useasboundingbox (-2.2, -1.5) rectangle (1.5, 1.5);
+
+        \def\u{0.8}
+        \draw (0,0) circle (1);
+        \node at (0,0) {Earth};
+        \foreach \a in {0, 15, ..., 345} {
+                \pgfmathsetmacro{\cosa}{cos(\a)}
+                \pgfmathsetmacro{\sina}{sin(\a)}
+                \pgfmathsetmacro{\cosb}{(\cosa + \u) / (1 + \u * \cosa)}
+                \pgfmathsetmacro{\sinb}{\sina * sqrt(1 - \u*\u) / (1 + \u * \cosa)}
+                \coordinate (H) at (\a:1);
+                %\draw[-{Latex[length=1.5mm, width=1.5mm]}, thick]
+                \draw[-stealth, thick] ($(H) + 0.5*(\cosb, \sinb)$) -- (H);
+            }
+    \end{tikzpicture}
+    \caption{earth's frame}
+    \label{subfig_2: earths frame}
+\end{subfigure}
 	\caption{\textbf{\protect\hyperlink{def-aberration}{Aberration} of observed star light}. A diagram showing light from distant stars being observed on earth, with the light being recieved in the sun's frame, with the earth moving (left), and the other diagram (right) showing the same light being recieved, but now in the earth's \protect\hyperlink{def-proper-frame}{rest frame}, with the light's direction now more in the direction opposite to earth's movement compared to the sun's frame. The arrows show the direction of the light from the stars.}
 	\label{fig: title}
 \end{figure}
@@ -737,8 +749,7 @@ We will derive everything step by step, starting with the \hyperlink{def-transfo
 
 %███████████████████████████████████████████████████████████████████
 \printbibliography[segment=\therefsegment, heading=subbibliography] % , resetnumbers=true]
-%███████████████████████████████████████████████████████████████████
-\input{Tex/Terms/Definitions.tex}
+
 
 %** I could add a section about Skewing and Terrell Rotation in Special Relativity
 
@@ -923,6 +934,9 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 		\centering
 		\tikzsetnextfilename{Time_dilation_rest_frame}
 		\begin{tikzpicture}[scale = 0.65]
+			% Define a fixed invisible bounding box based on the largest figure
+			\useasboundingbox (-0.6, -1.1) rectangle (6.6, 7.1);
+
 			% Define the coordinates with more space between ellipses
 			\coordinate (A1) at (0, 6);
 			\coordinate (B1) at (6, 6);
@@ -936,21 +950,22 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 
 			% Draw the dashed arrowed lines with custom thick arrowheads
 			\draw[red, dashed, thick arrows] (0, 5.85)--(6, 5.85);
-			\draw[red, dashed, thick arrows] (6, 6.15)--(0, 6.15) node[midway, above] {$\frac{1}{2}{\Tc }{\TDelta  \Tt }$};
+			\draw[red, dashed, thick arrows] (6, 6.15)--(0, 6.15) node[midway, above] {$\frac{1}{2}{\Tc }{\TDelta \Tt }$};
 
 			% Draw the distance labels
 			\draw[<->, thick] (0, 4.7)--(6, 4.7) node[midway, above] {${\Tdm }$};
 
-			\draw[] (0,-1.25);
-
 		\end{tikzpicture}
-		\caption{\hyperlink{def-proper-frame}{rest frame} }
+		\caption{\hyperlink{def-proper-frame}{rest frame}}
 		\label{fig: light clock rest frame}
 	\end{subfigure}
 	\begin{subfigure}{.49\textwidth}
 		\centering
 		\tikzsetnextfilename{Time_dilation_moving_frame}
 		\begin{tikzpicture}[scale = 0.65]
+			% Define the exact same invisible bounding box here
+			\useasboundingbox (-0.6, -1.1) rectangle (6.6, 7.1);
+
 			% Define the coordinates with more space between ellipses
 			\coordinate (A1) at (0, 6);
 			\coordinate (A2) at (0, 3);
@@ -971,16 +986,15 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 			\tikzset{thick arrows/.style = {-stealth, thick, line width = 1.5pt} }
 
 			% Draw the dashed arrowed lines with custom thick arrowheads
-			\draw[red, dashed, thick arrows] (A3)--($(B2)!0.02!(A3)$) node[midway, below] {$\frac{1}{2}{\Tc }{\TDelta  \TtPRM  }$};
-			\draw[red, dashed, thick arrows] (B2)--(A1) node[midway, below] {$\frac{1}{2}{\Tc }{\TDelta  \TtPRM  }$};
+			\draw[red, dashed, thick arrows] (A3)--($(B2)!0.02!(A3)$) node[midway, below] {$\frac{1}{2}{\Tc }{\TDelta \TtPRM }$};
+			\draw[red, dashed, thick arrows] (B2)--(A1) node[midway, below] {$\frac{1}{2}{\Tc }{\TDelta \TtPRM }$};
 
 			% Draw the velocity arrow
-			\draw[black, thick,->, line width = 1.5pt] (3, 6)-- +  + (0, 0.5) node[midway, right] {${\Tu }$};
+			\draw[black, thick,->, line width = 1.5pt] (3, 6)-- + (0, 0.5) node[midway, right] {${\Tu }$};
 
 			% Draw the distance labels
-			\draw[<->, thick] (0,-1.3)--(6,-1.3) node[midway, above] {${\Tdm }$};
-			\draw[->, thick] (-1, 0)--(-1, 6) node[midway, left] {${\Tu }{\TDelta  \TtPRM  }$};
-
+			\draw[<->, thick] (0,-0.7)--(6,-0.7) node[midway, above] {${\Tdm }$};
+			\draw[->, thick] (0, 0)--(0, 6) node[midway, right] {${\Tu }{\TDelta \TtPRM }$};
 		\end{tikzpicture}
 		\caption{\protect\hyperlink{def-Moving-Frame}{Moving frame}}
 	\end{subfigure}
@@ -1051,71 +1065,82 @@ So there is now light moving perpendicular as well as parallel the \hyperlink{de
 %█████████████
 \begin{figure}[H]
 	\begin{subfigure}{.49\textwidth}
-		\centering
-		\tikzsetnextfilename{Length_contraction_rest_frame}
-		\begin{tikzpicture}[scale = 0.55]
-			% Define the coordinates with more space between ellipses
-			\coordinate (A1) at (0, 0);
-			\coordinate (B1) at (6, 0);
-			\coordinate (C1) at (0, 6);
+        \centering
+        \tikzsetnextfilename{Length_contraction_rest_frame}
+        \begin{tikzpicture}[scale = 0.55]
+            % Define the coordinates with more space between ellipses
+            \coordinate (A1) at (0, 0);
+            \coordinate (B1) at (6, 0);
+            \coordinate (C1) at (0, 6);
 
-			% Draw the ellipses
-			\draw[fill = orange] (A1) ellipse (0.5 and 0.5);
-			\draw[fill = gray] (B1) ellipse (0.5 and 1);
-			\draw[fill = gray] (C1) ellipse (1 and 0.5);
+            % Draw the ellipses
+            \draw[fill = orange] (A1) ellipse (0.5 and 0.5);
+            \draw[fill = gray] (B1) ellipse (0.5 and 1);
+            \draw[fill = gray] (C1) ellipse (1 and 0.5);
 
-			% Custom arrowhead style with thicker arrowheads
-			\tikzset{thick arrows/.style = {-stealth, thick, line width = 1.5pt} }
+            % Custom arrowhead style with thicker arrowheads
+            \tikzset{thick arrows/.style = {-stealth, thick, line width = 1.5pt} }
 
-			% Draw the dashed arrowed lines with custom thick arrowheads
-			\draw[red, dashed, thick arrows] (0, -0.15)--(6, -0.15);
-			\draw[red, dashed, thick arrows] (6, 0.15)--(0, 0.15);
-			\draw[red, dashed, thick arrows] (-0.15, 0)--(-0.15, 6) node[midway, left] {${\Tzf }$};
-			\draw[red, dashed, thick arrows] (0.15, 6)--(0.15, 0) node[midway, right] {${\Tzb }$};
+            % Draw the dashed arrowed lines with custom thick arrowheads
+            \draw[red, dashed, thick arrows] (0, -0.15)--(6, -0.15);
+            \draw[red, dashed, thick arrows] (6, 0.15)--(0, 0.15);
+            \draw[red, dashed, thick arrows] (-0.15, 0)--(-0.15, 6) node[midway, left] {${\Tzf }$};
+            \draw[red, dashed, thick arrows] (0.15, 6)--(0.15, 0) node[midway, right] {${\Tzb }$};
 
-			% Draw the distance labels
-			\draw[<->, thick] (-1.5, 0)--(-1.5, 6) node[midway, left] {${\TDelta  \TZ }$};
-			\draw[draw=none, fill opacity = 0] (0,-7) circle (0.5);
+            % Draw the distance labels
+            \draw[<->, thick] (-1.5, 0)--(-1.5, 6) node[midway, left] {${\TDelta  \TZ }$};
 
-		\end{tikzpicture}
-		\caption{\hyperlink{def-proper-frame}{Rest frame} }
-		\label{fig: light clock length contraction rest frame}
-	\end{subfigure}
-	\begin{subfigure}{.49\textwidth}
-		\centering
-		\tikzsetnextfilename{Length_contraction_moving_frame}
-		\begin{tikzpicture}[scale = 0.55]
-			% Define the coordinates with more space between ellipses
-			\coordinate (A1) at (0, 0);
-			\coordinate (B1) at (6, 0);
-			\coordinate (C1) at (0, 4.5);
-			\coordinate (P1) at (0, -7);
-			\coordinate (P2) at (6, -3.5);
-			\coordinate (P3) at (0, 3);
+            % --- INVISIBLE BOUNDING BOX SYNCHRONIZERS ---
+            % Ghost element from moving frame for bottom border
+            \draw[draw=none, fill opacity = 0] (0,-7) circle (0.5);
+            % Ghost element from moving frame for left border (ensures width matches if \TDelta \TZPRM is wider)
+            \path (-1.5, 0)--(-1.5, 4.5) node[midway, left, opacity=0] {${\TDelta \TZPRM }$};
 
-			% Draw the ellipses
-			\draw[fill = orange] (A1) ellipse (0.5 and 0.5);
-			\draw[fill = gray] (B1) ellipse (0.5 and 1);
-			\draw[fill = gray] (C1) ellipse (1 and 0.5);
-			\draw[fill = orange, fill opacity = 0.1, draw = gray, dashed] (P1) ellipse (0.5 and 0.5);
-			\draw[fill = gray, fill opacity = 0.1, draw = gray, dashed] (P2) ellipse (0.5 and 1);
-			\draw[fill = gray, fill opacity = 0.1, draw = gray, dashed] (P3) ellipse (1 and 0.5);
+        \end{tikzpicture}
+        \caption{\hyperlink{def-proper-frame}{Rest frame} }
+        \label{fig: light clock length contraction rest frame}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \tikzsetnextfilename{Length_contraction_moving_frame}
+        \begin{tikzpicture}[scale = 0.55]
+            % Define the coordinates with more space between ellipses
+            \coordinate (A1) at (0, 0);
+            \coordinate (B1) at (6, 0);
+            \coordinate (C1) at (0, 4.5);
+            \coordinate (P1) at (0, -7);
+            \coordinate (P2) at (6, -3.5);
+            \coordinate (P3) at (0, 3);
 
-			% Custom arrowhead style with thicker arrowheads
-			\tikzset{thick arrows/.style = {-stealth, thick, line width = 1.5pt} }
+            % Draw the ellipses
+            \draw[fill = orange] (A1) ellipse (0.5 and 0.5);
+            \draw[fill = gray] (B1) ellipse (0.5 and 1);
+            \draw[fill = gray] (C1) ellipse (1 and 0.5);
+            \draw[fill = orange, fill opacity = 0.1, draw = gray, dashed] (P1) ellipse (0.5 and 0.5);
+            \draw[fill = gray, fill opacity = 0.1, draw = gray, dashed] (P2) ellipse (0.5 and 1);
+            \draw[fill = gray, fill opacity = 0.1, draw = gray, dashed] (P3) ellipse (1 and 0.5);
 
-			% Draw the dashed arrowed lines with custom thick arrowheads
-			\draw[red, dashed, thick arrows] ($(P1)+(-0.15,0)$)--($(P3)+(-0.15,0)$) node[midway, left] {${\TzfPRM }$};
-			\draw[red, dashed, thick arrows] ($(P3)+(0.15,0)$)--($(A1)+(0.15,0)$) node[midway, right] {${\TzbPRM }$};
-			\draw[red, dashed, thick arrows] (P1)--(P2);
-			\draw[red, dashed, thick arrows] (P2)--(A1);
+            % Custom arrowhead style with thicker arrowheads
+            \tikzset{thick arrows/.style = {-stealth, thick, line width = 1.5pt} }
 
-			\draw[<->, thick] ($(A1)+(-1.5,0)$)--($(C1)+(-1.5,0)$) node[midway, left] {${\TDelta  \TZPRM }$};
+            % Draw the dashed arrowed lines with custom thick arrowheads
+            \draw[red, dashed, thick arrows] ($(P1)+(-0.15,0)$)--($(P3)+(-0.15,0)$) node[midway, left] {${\TzfPRM }$};
+            \draw[red, dashed, thick arrows] ($(P3)+(0.15,0)$)--($(A1)+(0.15,0)$) node[midway, right] {${\TzbPRM }$};
+            \draw[red, dashed, thick arrows] (P1)--(P2);
+            \draw[red, dashed, thick arrows] (P2)--(A1);
 
-			\draw[black, thick arrows, line width = 1.5pt] (3, 4)-- +  + (0, 0.9) node[midway, right] {${\Tu }$};
-		\end{tikzpicture}
-		\caption{\protect\hyperlink{def-Moving-Frame}{Moving frame}}
-	\end{subfigure}
+            \draw[<->, thick] ($(A1)+(-1.5,0)$)--($(C1)+(-1.5,0)$) node[midway, left] {${\TDelta  \TZPRM }$};
+
+            % Fixed syntax: changed "+  +" to "++"
+            \draw[black, thick arrows, line width = 1.5pt] (3, 4)-- ++(0, 0.9) node[midway, right] {${\Tu }$};
+
+            % --- INVISIBLE BOUNDING BOX SYNCHRONIZERS ---
+            % Ghost elements from rest frame for top border and left border text width
+            \path (0, 6) ellipse (1 and 0.5);
+            \path (-1.5, 0)--(-1.5, 6) node[midway, left, opacity=0] {${\TDelta \TZ }$};
+        \end{tikzpicture}
+        \caption{\protect\hyperlink{def-Moving-Frame}{Moving frame}}
+    \end{subfigure}
 	\caption{\textbf{Light paths showing the need for \protect\hyperlink{def-length-contraction}{length contraction}.} A central orange bulb emits light in two directions, with all light being reflected by the mirrors back to reach the central bulb \protect\hyperlink{def-simultaneity}{simultaneously}. This is shown at rest, fig (a), and in another inertial frame with the system now moving at speed ${\Tu }$, fig (b), with its length now having to be contracted in the direction of movement to allow for the \protect\hyperlink{def-simultaneity}{simultaneous} return of light to the bulb. The length between the bulb and front mirror is shown as ${\TDelta  \TZ }$ and ${\TDelta  \TZPRM }$ in each frame. The paths the light took to the front mirror ${\Tzf }$ and back ${\Tzb }$ are shown in the \protect\hyperlink{def-proper-frame}{rest frame} with the corresponding paths ${\TzfPRM }$ and ${\TzbPRM }$ in the \protect\hyperlink{def-Moving-Frame}{moving frame}.}
 	\label{fig: length contraction math}
 \end{figure}
@@ -2253,62 +2278,86 @@ If a light signal is emitted from a coordinate to an \hyperlink{def-observer}{ob
 %█████████████
 \begin{figure}[ht]
 	\begin{subfigure}[b]{.49\textwidth}
-		\tikzsetnextfilename{Tikz_Particles_position_in_rest_frame}
-		\begin{tikzpicture}[scale = 5] %[,tdplot_main_coords]
-			%\usetikzlibrary{arrows.meta}
-			\draw[thick] (0,0) circle (0.025);
-			\draw[black, thick,->] (0,0,0)--(0.4,0,0) node[anchor = north east]{${\Ty }$};
-			\draw[black, thick,->] (0,0,0)--(0,0.4,0) node[anchor = north east]{${\Tz }$};
-			\draw[black, thick,->] (0,0,0)--(0,0,0.55) node[anchor = south east] {${\Tx }$};
-			\draw[gray,dashed, thick,->] (0,0,0)--(0.2,0,0) node[anchor = north east]{${\TyPRM  }$};
-			\draw[gray,dashed, thick,->] (0,0,0)--(0,0.2,0) node[anchor = north east]{${\TzPRM  }$};
-			\draw[gray,dashed, thick,->] (0,0,0)--(0,0,0.35) node[anchor = south] {${\TxPRM  }$};
-			\draw[gray, thick,,->>] (-0.15,0,0)--(-0.15,0.1,0) node[anchor = north east]{${\Tv }$};
-			\draw[->] (0,0.25/2,0) to[bend left = 45] (0.19/2,0.18/2,0);
-			\node at (0.08,0.17,0) {${\TthetaRet  }$};
-			\draw[red, thick, dotted,<-] (0.02,0.02,0)--(0.47,0.46,0); % Reduced by 0.02
-			\fill[blue] (0.49,0.48,0) circle (0.4pt);
-			\node[blue] at (0.67,0.48,0) {\text{${\TVecrRet  }$} }; % Reduced by 0.02
-			\draw[gray,dashed] (0.49,0.48,0)--(0.49,0.65,0); % Reduced by 0.02
-			\draw[red,->] (0.49,0.58,0) arc (90:-135:0.1);
-			\node[red] at (0.54,0.47,0) {${\Talpha } $};
-		\end{tikzpicture}
-		\caption{Source and \hyperlink{def-observer}{observer}'s \hyperlink{def-proper-frame}{rest frame} }
-		% \label{fig:sub1}
-	\end{subfigure}
-	\begin{subfigure}[b]{.49\textwidth}
-		\tikzsetnextfilename{Tikz_Particles_position_in_primed_frame_with_delayed_position}
-		\begin{tikzpicture}[scale = 5] %[,tdplot_main_coords]
-			%\usetikzlibrary{arrows.meta}
-			\draw[thick] (0,0) circle (0.025);
-			\draw[gray,	thick, dashed] (0,0.7,0) circle (0.03);
-			\draw[blue,thick,dotted,->] (0.47,0.9,0)--(0.47,0.22,0); %node[midway,left]{\textcolor{black}{$\underline{P}'$} }; %$\underline{P}'$} }; % Reduced by 0.02
-			\draw[gray,dashed, thick,->] (0,0.7,0)--(0.2,0.7,0) node[anchor = north east]{${\Ty }$};
-			\draw[gray,dashed, thick,->] (0,0.7,0)--(0,0.9,0) node[anchor = north east]{${\Tz }$};
-			\draw[gray,dashed, thick,->] (0,0.7,0)--(0,0.7,0.35) node[anchor = south] {${\Tx }$};
-			\draw[gray,dashed, thick,->] (0,0,0)--(0.2,0,0) node[anchor = north east]{${\Ty }$};
-			\draw[gray,dashed, thick,->] (0,0,0)--(0,0.2,0) node[anchor = north east]{${\Tz }$};
-			\draw[gray,dashed, thick,->] (0,0,0)--(0,0,0.35) node[anchor = south] {${\Tx }$};
-			\draw[thick,->] (0,0,0)--(0.4,0,0) node[anchor = north east]{${\TyPRM  }$}; % Reduced by 0.02
-			\draw[thick,->] (0,0,0)--(0,0.4,0) node[anchor = north east]{${\TzPRM  }$};
-			\draw[thick,->] (0,0,0)--(0,0,0.55) node[anchor = south east] {${\TxPRM  }$};
-			%\draw[gray,->] (0,0.25,0) to[bend left = 40] (0.15,0.2,0);
-			\draw[red, thick, dotted,<-] (0.02,0.02,0)--(0.45,0.88,0); % Reduced by 0.02
-			\draw[gray, thick, dotted,->] (0,0.7,0)--(0,0.02,0);
-			\fill[gray] (0.47,0.9,0) circle (0.4pt) node[right] {\text{${\TVecrRetPRM  }$} }; % Reduced by 0.02
-			\fill[blue] (0.47,0.2,0) circle (0.4pt) node[right] {\text{${\TvecrtPRMzeroPRM  }$} }; % Reduced by 0.02
-			\draw[gray, thick,->>] (0,0.58,0)--(0,0.49,0) node[midway,right]{$-{\Tv }$};
-			\draw[blue, thick,->>] (0.47,0.58,0)--(0.47,0.49,0) node[midway,right]{$-{\Tv }$}; % Reduced by 0.02
-			%\draw[gray,dashed] (0.47,0.9,0)--(0.47,1.07,0); % Reduced by 0.02
-			%\draw[red,->] (0.47,1,0) arc (90:-120:0.1); % Reduced by 0.02
-			%\node[red] at (0.52,0.91,0) {${\alpha}$}; % Reduced by 0.02
-			\draw[->] (0,0.23,0) to[bend left = 25] (0.11,0.2,0);
-			\node at (0.065,0.29,0) {${\TthetaRetPRM  }$};
-			%\node[gray] at (0.67,0.91,0) {${\underline{r}'_{ret} }$}; % Reduced by 0.02
-		\end{tikzpicture}
-		\caption{\hyperlink{def-Primed-Frame}{primed frame} }
-		% \label{fig:sub2}
-	\end{subfigure}
+    \tikzsetnextfilename{Tikz_Particles_position_in_rest_frame}
+    \begin{tikzpicture}[scale = 5]
+
+        % --- Bounding Box Synchronization ---
+        % This invisible block contains the outermost elements of BOTH figures.
+        % It forces TikZ to calculate the exact same bounding box for each,
+        % sized to the union of both figures with zero extra padding.
+        \begin{scope}[opacity=0, text opacity=0]
+            % Extremes from Figure 1
+            \draw (-0.15,0,0)--(-0.15,0.1,0) node[anchor = north east]{${\Tv }$};
+            \node at (0.67,0.48,0) {\text{${\TVecrRet  }$} };
+            % Extremes from Figure 2
+            \draw (0,0.7,0)--(0,0.9,0) node[anchor = north east]{${\Tz }$};
+            \fill (0.47,0.9,0) circle (0.4pt) node[right] {\text{${\TVecrRetPRM  }$} };
+            \draw (0,0,0)--(0,0,0.55) node[anchor = south east] {${\TxPRM  }$};
+        \end{scope}
+        % ------------------------------------
+
+        %\usetikzlibrary{arrows.meta}
+        \draw[thick] (0,0) circle (0.025);
+        \draw[black, thick,->] (0,0,0)--(0.4,0,0) node[anchor = north east]{${\Ty }$};
+        \draw[black, thick,->] (0,0,0)--(0,0.4,0) node[anchor = north east]{${\Tz }$};
+        \draw[black, thick,->] (0,0,0)--(0,0,0.55) node[anchor = south east] {${\Tx }$};
+        \draw[gray,dashed, thick,->] (0,0,0)--(0.2,0,0) node[anchor = north east]{${\TyPRM  }$};
+        \draw[gray,dashed, thick,->] (0,0,0)--(0,0.2,0) node[anchor = north east]{${\TzPRM  }$};
+        \draw[gray,dashed, thick,->] (0,0,0)--(0,0,0.35) node[anchor = south] {${\TxPRM  }$};
+        \draw[gray, thick,,->>] (-0.15,0,0)--(-0.15,0.1,0) node[anchor = north east]{${\Tv }$};
+        \draw[->] (0,0.25/2,0) to[bend left = 45] (0.19/2,0.18/2,0);
+        \node at (0.08,0.17,0) {${\TthetaRet  }$};
+        \draw[red, thick, dotted,<-] (0.02,0.02,0)--(0.47,0.46,0);
+        \fill[blue] (0.49,0.48,0) circle (0.4pt);
+        \node[blue] at (0.67,0.48,0) {\text{${\TVecrRet  }$} };
+        \draw[gray,dashed] (0.49,0.48,0)--(0.49,0.65,0);
+        \draw[red,->] (0.49,0.58,0) arc (90:-135:0.1);
+        \node[red] at (0.54,0.47,0) {${\Talpha } $};
+    \end{tikzpicture}
+    \caption{Source and \hyperlink{def-observer}{observer}'s \hyperlink{def-proper-frame}{rest frame} }
+    % \label{fig:sub1}
+\end{subfigure}
+\begin{subfigure}[b]{.49\textwidth}
+    \tikzsetnextfilename{Tikz_Particles_position_in_primed_frame_with_delayed_position}
+    \begin{tikzpicture}[scale = 5]
+
+        % --- Bounding Box Synchronization ---
+        \begin{scope}[opacity=0, text opacity=0]
+            % Extremes from Figure 1
+            \draw (-0.15,0,0)--(-0.15,0.1,0) node[anchor = north east]{${\Tv }$};
+            \node at (0.67,0.48,0) {\text{${\TVecrRet  }$} };
+            % Extremes from Figure 2
+            \draw (0,0.7,0)--(0,0.9,0) node[anchor = north east]{${\Tz }$};
+            \fill (0.47,0.9,0) circle (0.4pt) node[right] {\text{${\TVecrRetPRM  }$} };
+            \draw (0,0,0)--(0,0,0.55) node[anchor = south east] {${\TxPRM  }$};
+        \end{scope}
+        % ------------------------------------
+
+        %\usetikzlibrary{arrows.meta}
+        \draw[thick] (0,0) circle (0.025);
+        \draw[gray,	thick, dashed] (0,0.7,0) circle (0.03);
+        \draw[blue,thick,dotted,->] (0.47,0.9,0)--(0.47,0.22,0);
+        \draw[gray,dashed, thick,->] (0,0.7,0)--(0.2,0.7,0) node[anchor = north east]{${\Ty }$};
+        \draw[gray,dashed, thick,->] (0,0.7,0)--(0,0.9,0) node[anchor = north east]{${\Tz }$};
+        \draw[gray,dashed, thick,->] (0,0.7,0)--(0,0.7,0.35) node[anchor = south] {${\Tx }$};
+        \draw[gray,dashed, thick,->] (0,0,0)--(0.2,0,0) node[anchor = north east]{${\Ty }$};
+        \draw[gray,dashed, thick,->] (0,0,0)--(0,0.2,0) node[anchor = north east]{${\Tz }$};
+        \draw[gray,dashed, thick,->] (0,0,0)--(0,0,0.35) node[anchor = south] {${\Tx }$};
+        \draw[thick,->] (0,0,0)--(0.4,0,0) node[anchor = north east]{${\TyPRM  }$};
+        \draw[thick,->] (0,0,0)--(0,0.4,0) node[anchor = north east]{${\TzPRM  }$};
+        \draw[thick,->] (0,0,0)--(0,0,0.55) node[anchor = south east] {${\TxPRM  }$};
+        \draw[red, thick, dotted,<-] (0.02,0.02,0)--(0.45,0.88,0);
+        \draw[gray, thick, dotted,->] (0,0.7,0)--(0,0.02,0);
+        \fill[gray] (0.47,0.9,0) circle (0.4pt) node[right] {\text{${\TVecrRetPRM  }$} };
+        \fill[blue] (0.47,0.2,0) circle (0.4pt) node[right] {\text{${\TvecrtPRMzeroPRM  }$} };
+        \draw[gray, thick,->>] (0,0.58,0)--(0,0.49,0) node[midway,right]{$-{\Tv }$};
+        \draw[blue, thick,->>] (0.47,0.58,0)--(0.47,0.49,0) node[midway,right]{$-{\Tv }$};
+        \draw[->] (0,0.23,0) to[bend left = 25] (0.11,0.2,0);
+        \node at (0.065,0.29,0) {${\TthetaRetPRM  }$};
+    \end{tikzpicture}
+    \caption{\hyperlink{def-Primed-Frame}{primed frame} }
+    % \label{fig:sub2}
+\end{subfigure}
 	\caption{\textbf{Retarded coordinates.} Diagrams of a source of light that represents, in the source's \protect\hyperlink{def-proper-frame}{rest frame}, the coordinate ${\TVecr  } = {\TVecrRet  }$ (blue) emitting light (red) at an angle ${\Talpha }$ towards the origin, which is received by an \protect\hyperlink{def-observer}{observer} positioned at the origin at time ${\Tt } = \TtPRM  = 0$ with the \protect\hyperlink{def-observer}{observer} and source at rest in the first inertial frame (left) and then shown moving in a \protect\hyperlink{def-Primed-Frame}{primed frame} at speed $-{\Tv }$ in the z-direction (right). In the \protect\hyperlink{def-Primed-Frame}{primed frame}, the past, \protect\hyperlink{def-retarded-position}{retarded position} of the \protect\hyperlink{def-proper-frame}{rest frame} and also the source's coordinate ${\TVecrRetPRM  }$ at its retarded time are shown in gray, with the source's current position $\TvecrtPRMzeroPRM $ at time $\TtPRM =0$ shown in blue. The path light takes is shown in red. The corresponding axis in each frame is also shown in black. The angle of the \protect\hyperlink{def-retarded-position}{retarded position} from the origin is ${\TthetaRet  }$ and ${\TthetaRetPRM  }$ respectively.}
 	\label{fig: Retarded field}
 \end{figure}
@@ -2892,28 +2941,34 @@ We will describe this effect using the help of the following simple figure of li
 %█████████████
 \begin{figure}[H]
 	\begin{subfigure}{.49\textwidth}
-		\centering
-		\tikzsetnextfilename{Tikz_Lights_angle_with_particle_in_its_proper_frame}
-		\begin{tikzpicture}[scale = 8]
-			\draw[red,ultra thick,->] (0,0,0)--(0.235,-0.05,0) node[midway,anchor = north]{$\TVecczero $};
-			\fill[black] (0,0,0) circle (0.7pt);
-		\end{tikzpicture}
-		\caption{\protect\hyperlink{def-proper-frame}{rest frame}}
-		% \label{fig:sub2}
-	\end{subfigure}
-	\begin{subfigure}{.49\textwidth}
-		\centering
-		\tikzsetnextfilename{Tikz_Lights_angle_with_particle_With_particle_moving}
-		\begin{tikzpicture}[scale = 8]
-			\draw[-] (0,0.07,0) to[bend left = 45] (0.06,0.04,0);
-			\node at (0.05,0.095,0) {$\Talpha  $};
-			\draw[cyan,ultra thick,->] (0,0,0)--(0.21,0.13,0) node[midway,anchor = north]{$\TVecc $};
-			\draw[ultra thick,->] (0,0,0)--(0,0.15,0)node[midway,anchor = east]{$\TVecu $};
-			\fill[black] (0,0,0) circle (0.7pt);
-		\end{tikzpicture}
-		\caption{\protect\hyperlink{def-Moving-Frame}{moving frame}}
-		% \label{fig:sub1}
-	\end{subfigure}
+    \centering
+    \tikzsetnextfilename{Tikz_Lights_angle_with_particle_in_its_proper_frame}
+    \begin{tikzpicture}[scale = 8]
+        % Invisible bounding box matching the largest dimensions of both figures
+        \useasboundingbox (-0.05, -0.08, 0) rectangle (0.25, 0.17, 0);
+
+        \draw[red,ultra thick,->] (0,0,0)--(0.235,-0.05,0) node[midway,anchor = north]{$\TVecczero $};
+        \fill[black] (0,0,0) circle (0.7pt);
+    \end{tikzpicture}
+    \caption{\protect\hyperlink{def-proper-frame}{rest frame}}
+    % \label{fig:sub2}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+    \centering
+    \tikzsetnextfilename{Tikz_Lights_angle_with_particle_With_particle_moving}
+    \begin{tikzpicture}[scale = 8]
+        % Invisible bounding box matching the largest dimensions of both figures
+        \useasboundingbox (-0.05, -0.08, 0) rectangle (0.25, 0.17, 0);
+
+        \draw[-] (0,0.07,0) to[bend left = 45] (0.06,0.04,0);
+        \node at (0.05,0.095,0) {$\Talpha  $};
+        \draw[cyan,ultra thick,->] (0,0,0)--(0.21,0.13,0) node[midway,anchor = north]{$\TVecc $};
+        \draw[ultra thick,->] (0,0,0)--(0,0.15,0)node[midway,anchor = east]{$\TVecu $};
+        \fill[black] (0,0,0) circle (0.7pt);
+    \end{tikzpicture}
+    \caption{\protect\hyperlink{def-Moving-Frame}{moving frame}}
+    % \label{fig:sub1}
+\end{subfigure}
 	\caption{\textbf{The \protect\hyperlink{def-doppler-effect}{Doppler effect}.} Diagrams showing a source emitting light at a velocity $\TVecczero $ in the source's \protect\hyperlink{def-proper-frame}{rest frame} (left) and a second frame where the source is now moving at velocity $\TVecu $ with the light now being emitted at an angle ${\Talpha }$ giving the light's velocity as ${\TVecc  }$. The different color of light in each frame is showing the effect on the lights frequency and hence color, due to the \protect\hyperlink{def-doppler-effect}{Doppler effect}.}
 	\label{fig: Doppler effect}
 \end{figure}
@@ -3176,9 +3231,26 @@ To find this we will use the \hyperlink{def-Moving-Frame}{moving frame}'s veloci
 
 %█████████████
 \begin{figure}[H]
-	\begin{subfigure}{.49\textwidth}
+\begin{subfigure}{.49\textwidth}
 		\tikzsetnextfilename{Tikz_Light_Pulse_Proper_Frame}
 		\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
+
+			% --- Invisible bounding box alignment block ---
+			\begin{scope}[opacity=0, text opacity=0]
+				% Extremes from Rest Frame
+				\draw[thick,->] (0,0,0)--(0,0,0.55) node[anchor = south east] {${\Txzero }$};
+				\draw[thick,->] (0,0,0)--(0.4,0,0) node[anchor = north east]{${\Tyzero }$};
+				\fill (0.71,0.48,0) circle (0.4pt) node[above left] {\text{$ \TVecrzero $} };
+				\node at (0.06,-0.06,0) {$\Ts $};
+				% Extremes from Moving Frame
+				\draw[thick,->] (0,0.7,0)--(0,1,0) node[anchor = east]{ {\color{blue} ${\Tzzero }$},${\Tz }$};
+				\draw[->] (0,0.7,0)--(0.68,0.9,0) node[midway,above] {\text{$\TVecr $} };
+				\draw[thick,->] (0,0.7,0)--(0.29,0.7,0) node[anchor = north east]{ {\color{blue} ${\Tyzero }$},${\Ty }$};
+				\node at (0.08,-0.06,0) {$\TVecsRet $};
+				\fill (0.7,0.9,0) circle (0.4pt);
+			\end{scope}
+			% ----------------------------------------------
+
 			%\usetikzlibrary{arrows.meta}
 			\node[blue] at (0.06,-0.06,0) {$\Ts $};
 			\draw[blue, thick,->] (0,0,0)--(0.4,0,0) node[anchor = north east]{${\Tyzero }$};
@@ -3196,6 +3268,23 @@ To find this we will use the \hyperlink{def-Moving-Frame}{moving frame}'s veloci
 	\begin{subfigure}{.49\textwidth}
 		\tikzsetnextfilename{Tikz_Light_Pulse_Primed_Frame_2}
 		\begin{tikzpicture}[scale = 4.9] %[,tdplot_main_coords]
+
+			% --- Invisible bounding box alignment block ---
+			\begin{scope}[opacity=0, text opacity=0]
+				% Extremes from Rest Frame
+				\draw[thick,->] (0,0,0)--(0,0,0.55) node[anchor = south east] {${\Txzero }$};
+				\draw[thick,->] (0,0,0)--(0.4,0,0) node[anchor = north east]{${\Tyzero }$};
+				\fill (0.71,0.48,0) circle (0.4pt) node[above left] {\text{$ \TVecrzero $} };
+				\node at (0.06,-0.06,0) {$\Ts $};
+				% Extremes from Moving Frame
+				\draw[thick,->] (0,0.7,0)--(0,1,0) node[anchor = east]{ {\color{blue} ${\Tzzero }$},${\Tz }$};
+				\draw[->] (0,0.7,0)--(0.68,0.9,0) node[midway,above] {\text{$\TVecr $} };
+				\draw[thick,->] (0,0.7,0)--(0.29,0.7,0) node[anchor = north east]{ {\color{blue} ${\Tyzero }$},${\Ty }$};
+				\node at (0.08,-0.06,0) {$\TVecsRet $};
+				\fill (0.7,0.9,0) circle (0.4pt);
+			\end{scope}
+			% ----------------------------------------------
+
 			%\usetikzlibrary{arrows.meta}
 			%node[anchor = north west]{\textcolor{black}{$\underline{P}'$} }; %$\underline{P}'$} };
 			\node[gray] at (0.08,-0.06,0) {$\TVecsRet $};
@@ -3887,13 +3976,19 @@ In this chapter we looked a \hyperlink{def-field}{field} of light produced by co
 %███████████████████████████████████████████████████████████████████
 \printbibliography[segment=\therefsegment, heading=subbibliography]
 
+
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\part{Some Simple Applications}
+\part{Further Topics and Conclusion}
+
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\chapter{Some Simple Applications and Further Topics}\label{sect: Some Simple Applications}
 
 ** another section might be eventually be added to talk specifically about kinematics and mechanics of particle interactions
 *** and this will include some of the laws that particles have to obey, and what interactions are and are not allowed etc.
@@ -3903,7 +3998,7 @@ In this chapter we looked a \hyperlink{def-field}{field} of light produced by co
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
 %███████████████████████████████████████████████████████████████████
-\chapter{Thought Experiments}\label{sect: More Thought Experiments}
+\chapter{Thought Experiments}\label{ch: More Thought Experiments}
 
 ** The Twin Paradox:
 The Scenario: One twin stays on Earth; the other travels to a star at near-light speed and returns. The traveling twin is younger than the stay-at-home twin.
@@ -3947,5 +4042,23 @@ The Resolution: There is a "hidden momentum" or energy flow within the system. T
 ...
 *** outro is in other file
 
-\chapter{Math Terms Dictionary}
-\input{Tex/Terms/Term_dict.tex}
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+%███████████████████████████████████████████████████████████████████
+\chapter{Outro}
+
+meaningful conclusion:
+
+- [ ] summarise the key points that were discussed in the book
+- [ ] discuss implications and applications of these points
+- [ ] propose areas of expansion for this topic/ future research
+- [ ] what the reader can do next to expand knowledge (i.e. internal and external resources)
+
+*** this was meant as an introduction to physical concepts and mathematical tools
+*** What was left out of this book
+*** Things still to be added to this book
+*** Questions you may have
+*** General confusions
+***
+
+*** there is no such thing as an inertial reference frame in the real world, only reference frames that are approximately inertial frames... continue to explain.

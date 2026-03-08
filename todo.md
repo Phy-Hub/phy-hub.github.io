@@ -1,24 +1,16 @@
-
-
 ### main content, nagivation + toc:
-* when brought to chapter, would be nice to still have Part #num. (without title) greyed out at top
-
 ### equations + figures:
-- make transparent box to fit all subfigures into so all of the set of subfigures are same size, do i mean in html or latex?
 - on hover over \eqref{} need it to show variable terms show on side of page
 * on equation hover, for vectors or vector components, just show 1 term def i.e just r def for x,y, or z
 - see if there is automatic mathjax resizing for equations that overflow
-* onhover of figure ref, have caption show in left sidebar if needed (as some figure dont fit into overlaybox when hover over ref)
-* get parser to automatically recognise multi line equations ("mini derivations") and only show final variable on LHS (last one due to case were equation is rearranged) and equation after last = on RHS and only show this and have expand button to show derivation, which will load full equation into div when clicked and change to revert button that when clicked again reverts (( or possibly for whole derivation including text, this would require flags in the * latex, whether these are just in code of in shown in pdf as well))
+* onhover of figure ref, have fig resize such that fig and caption both fit in halfscreen, make sure it takes up navbar area too
 * get whole of Figure ()/ equation () to have hover over
 * reserve space for lazy loaded images i.e this <img src="..." loading="lazy"> to <img src="..." loading="lazy" width="800" height="400" style="aspect-ratio: 2/1">
 * add figure title data or aria- labels to <img src="...svg" loading="lazy"> maybe from fig_dict caption bold part (removing <spans>, math, ect. if needed) (but for subfigures i would need subcaption and caption title), <title>figure name...</title>
 
-
-
 ### links and hrefs
 * section references outside of current loaded chapter do not load correct chapter and find section
-
+* load in resources and dictionary section and add to toc, and to logic for toc and #href url
 
 ### formating:
 * latex sidenotes not on newline this could possible due to blank lines being removed or not registered when rendered, might need \n<br>\n for blank lines
@@ -47,8 +39,6 @@
 * margin: auto centres element blocks vertically and horizontally
 * for text, text-align: center;
 * center divs inside a tag vertically using .ClassName {display: flex; align-items: centre; justify-content: center; } or do it using .ClassName { * display: grid; place-items: center; }
-
-
 
 
 ### latex:

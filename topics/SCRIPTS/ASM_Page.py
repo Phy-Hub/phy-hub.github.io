@@ -11,15 +11,16 @@ topic_folder_name = sys.argv[1]
 pdf_name = sys.argv[2]
 Topic_Name = sys.argv[3]
 
-########################################################
-# Paths ################################################
-########################################################
+#sep#######################################################
+#sep Paths ################################################
+#sep#######################################################
 
 ### from make_page.py ###
 py_to_page_structure = "../SCRIPTS/Structure_Page.html"
 py_to_output_page    = "../../pages/" + topic_folder_name + ".html"
 py_to_main_tex       = "Latex/Main_Matter.tex"
-py_to_defs          = "Latex/Tex/Terms/Definitions.tex"
+py_to_defs           = "Latex/Tex/Terms/Definitions.tex"
+py_to_resources      = "Latex/Tex/Resources.tex"
 py_to_terms          = "Latex/Tex/Terms"
 py_to_term_comands   = "Latex/Tex/Terms/Term_commands.tex"
 py_to_tikz           = "Latex/output/tikz/"
@@ -35,9 +36,9 @@ html_to_pdfs  = "../topics/" + topic_folder_name + "/Latex/output/" + pdf_name
 html_to_js_diagrams    = "./"
 
 
-########################################################
-# Formatting ###########################################
-########################################################
+#sep#######################################################
+#sep Formatting ###########################################
+#sep#######################################################
 ###
 def replace(filename, pattern, replacement):
     with open(filename, 'r', encoding='utf-8') as file:
@@ -101,7 +102,6 @@ def wrap_content(latex_file):
     lines = content.splitlines()
 
     # --- 1. PRE-SCAN: Map Chapters to Parts ---
-    # We need this so the "Next" button in Part 1 knows that Chapter 2 is in Part 2.
     chapter_part_map = {}
     temp_part_count = 0
     temp_ch_count = 0
@@ -111,7 +111,6 @@ def wrap_content(latex_file):
             temp_part_count += 1
         elif re.search(r'\\chapter(?:\[.*?\])?\{(.+?)\}', line):
             temp_ch_count += 1
-            # If a chapter appears before any part, it defaults to part 0
             chapter_part_map[temp_ch_count] = temp_part_count
 
     total_chapters = temp_ch_count
@@ -129,14 +128,14 @@ def wrap_content(latex_file):
     in_part = False
     part_count = 0
 
-    # --- 3. HELPER FUNCTIONS ---
+    # NEW: Flag to track if we've hit the Outro (or beyond)
+    outro_reached = False
 
+    # --- 3. HELPER FUNCTIONS ---
     def get_nav_footer(current_ch, current_part):
-        """Generates HTML for Previous/Next with Part-aware IDs."""
         prev_ch = current_ch - 1
         next_ch = current_ch + 1
 
-        # Calculate Previous Button
         if prev_ch >= 1:
             prev_part = chapter_part_map.get(prev_ch, 0)
             prev_id = f"part_{prev_part}_ch{prev_ch}"
@@ -145,7 +144,6 @@ def wrap_content(latex_file):
         else:
             prev_btn = "<a></a>\n"
 
-        # Calculate Next Button
         if next_ch <= total_chapters:
             next_part = chapter_part_map.get(next_ch, 0)
             next_id = f"part_{next_part}_ch{next_ch}"
@@ -170,7 +168,6 @@ def wrap_content(latex_file):
             output.append('</div>')
             output.append('</section>\n')
         elif nums[0] > 0:
-            # Pass current part_count to footer
             output.append(f'</div>{get_nav_footer(nums[0], part_count)}')
 
     # --- 4. MAIN PARSING LOOP ---
@@ -183,8 +180,8 @@ def wrap_content(latex_file):
             close_block(reset_counters=False)
             in_part = True
             part_count += 1
-            # ID Format: partX_wrap
             output.append(f'<section id="part_{part_count}_wrap" class="chapter part-wrapper">')
+            # Assuming you have a to_roman function defined elsewhere in your code!
             output.append(f'<h2 class="part_header" id="part_{part_count}_header" style="display: flex; justify-content: center; text-align: center;">Part {to_roman(part_count)}.<br>{part_match.group(1)}</h2>')
             output.append(f'<div id="part_{part_count}_content">')
             continue
@@ -201,21 +198,27 @@ def wrap_content(latex_file):
                 nums[0] += 1
                 nums[1:] = [0, 0, 0]
 
-                # --- NEW ID GENERATION ---
-                # We prefix with part_{part_count}_
-                current_id_base = f"part_{part_count}_ch{nums[0]}"
+                # NEW: Check if this chapter is the Outro
+                if title.strip().lower() == 'outro':
+                    outro_reached = True
 
+                # --- NEW ID GENERATION ---
+                current_id_base = f"part_{part_count}_ch{nums[0]}"
                 display = ' style="display: none !important;"' if nums[0] > 1 else ""
 
+                # NEW: Determine the header text based on the outro flag
+                if outro_reached:
+                    header_text = title
+                else:
+                    header_text = f"Chapter {nums[0]}. {title}"
+
                 output.append(f'<section id="{current_id_base}_wrap" class="chapter" {display}>\n'
-                              f'<h3 id="{current_id_base}_header" class="chapter_header" style="display: flex; justify-content: center; text-align: center;">Chapter {nums[0]}. {title}</h3>')
+                              f'<h3 id="{current_id_base}_header" class="chapter_header" style="display: flex; justify-content: center; text-align: center;">{header_text}</h3>')
                 output.append(f'<div id="{current_id_base}_content">\n<span style="display: none">\\(\\nextSection\\)</span>')
             else:
                 close_tags(depth)
                 nums[depth] += 1
 
-                # Update ID for sub-items to match parent pattern
-                # e.g. part1_ch1_1
                 suffix_str = "_".join(map(str, nums[:depth+1]))
                 id_str = f"part_{part_count}_ch{suffix_str}"
 
@@ -231,10 +234,10 @@ def wrap_content(latex_file):
         f.write('\n'.join(output))
 
 
-########################################################
-# Graphics #############################################
-########################################################
-###
+#sep#######################################################
+#sep Graphics #############################################
+#sep#######################################################
+
 def Figures_to_HTML(file):
     with open(file, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -379,10 +382,9 @@ def tikz2svg(input_directory, output_directory):
                 print(f"Error processing {svg_path}: {e}")
 
 
-########################################################
-# Page elements ########################################
-########################################################
-###
+#sep#######################################################
+#sep Page elements ########################################
+#sep#######################################################
 
 def to_roman(n):
         return {1:'I', 2:'II', 3:'III', 4:'IV', 5:'V', 6:'VI'}.get(int(n), str(n))
@@ -412,14 +414,27 @@ def create_toc(toc_dic):
     html = ['<div id="toc_container"><ul style="list-style:none; padding:0;">']
     arrow = '<span class="toc-arrow">&#9654;</span>'
 
+    # NEW: Flag to track if we've hit the Outro
+    outro_reached = False
+
     for p in tree:
         # Added class: 'toc-part-link'
         html.append(f'''<li> <a href="#part_{p['id']}_header" id="link_part_{p['id']}" class="toc-link toc-part-link" onclick="toggleView('part_{p['id']}')"> {arrow} <b>Part {to_roman(p['id'])}. {p['title']}</b> </a> <ul id="part_{p['id']}_toc" class="toc-sublist toc-part-sublist">
         ''') # Added class
 
         for c in p['chaps']:
+            # NEW: Check if this chapter is the Outro
+            if c['title'].strip().lower() == 'outro':
+                outro_reached = True
+
+            # NEW: Determine the display text for the chapter
+            if outro_reached:
+                chapter_display = f"{c['title']}"
+            else:
+                chapter_display = f"{c['id']}. {c['title']}"
+
             # Added class: 'toc-chapter-link'
-            html.append(f'''\n\t<li> <a href="#part_{p['id']}_ch{c['id']}_header" id="link_ch_{c['id']}" class="toc-link toc-chapter-link" onclick="toggleView('part_{p['id']}_ch{c['id']}')"> {arrow} <b>{c['id']}. {c['title']} </b> </a> <ul id="part_{p['id']}_ch_{c['id']}_toc" class="toc-sublist toc-chapter-sublist">
+            html.append(f'''\n\t<li> <a href="#part_{p['id']}_ch{c['id']}_header" id="link_ch_{c['id']}" class="toc-link toc-chapter-link" onclick="toggleView('part_{p['id']}_ch{c['id']}')"> {arrow} <b>{chapter_display} </b> </a> <ul id="part_{p['id']}_ch_{c['id']}_toc" class="toc-sublist toc-chapter-sublist">
             ''') # Added class
 
             for s in c['sects']:
@@ -1065,9 +1080,55 @@ def check_duplicate_labels(data_dict):
         if len(keys) > 1:
             print(f"Duplicate label found: '{label}' in {keys}")
 
-########################################################
-# Make page ############################################
-########################################################
+###
+def add_latex_definitions(input_file, output_file):
+    try:
+        with open(input_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+    except FileNotFoundError:
+        return "Error: Input file not found."
+
+    # 1. Remove geometry and headwidth settings
+    content = re.sub(r'\\newgeometry\{.*?\}', '', content)
+    content = re.sub(r'\\setlength\{\\headwidth\}\{\\textwidth\}', '', content)
+    content = re.sub(r'\\restoregeometry', '', content)
+
+    # 2. Remove multicols environment
+    content = re.sub(r'\\begin\{multicols\}\{\d+\}', '', content)
+    content = re.sub(r'\\end\{multicols\}', '', content)
+
+    # 3. Swap \section* for \chapter and \subsection* for \textbf
+    content = re.sub(r'\\section\*\{(.*?)\}', r'\\chapter{\1}', content)
+    content = re.sub(r'\\subsection\*', r'\\h5', content)
+
+    # 4. Transform \term{id}{Title}{aliases}{Description}
+    # Pattern explanation: matches \term, then 4 sets of balanced curly braces
+    # Using [^{}]* for simple cases or a non-greedy dot with DOTALL
+    term_pattern = r'\\term\{(?P<id>.*?)\}\{(?P<title>.*?)\}\{(?P<aliases>.*?)\}\{(?P<desc>.*?)\}'
+
+    def term_replacer(match):
+        title = match.group('title').strip()
+        desc = match.group('desc').strip()
+        # Formatting as "Title: Description" followed by a newline
+        return f"\\noindent \\textbf{{{title}:}} {desc}\n\\newline"
+
+    content = re.sub(term_pattern, term_replacer, content, flags=re.DOTALL)
+
+    # 5. Clean up excessive whitespace/newlines left behind
+    content = re.sub(r'\n{3,}', '\n\n', content)
+
+    # Append to the output file
+    with open(output_file, 'a', encoding='utf-8') as f:
+        f.write("\n" + "="*40 + "\n") # Optional separator
+        f.write(content.strip())
+        f.write("\n")
+
+    return f"Processing complete. Content appended to {output_file}."
+
+
+#sep#######################################################
+#sep Make page ############################################
+#sep#######################################################
 ###
 
 ###
@@ -1095,10 +1156,9 @@ def make_page(input_file, output_file, toc_file, content_file, Defs_file, Math_T
             else:
                 file.write(line)
 
-########################################################
-# Checks ###############################################
-########################################################
-###
+#sep#######################################################
+#sep Checks ###############################################
+#sep#######################################################
 
 def find_leftover_latex(html_file):
     print(f"Scanning {html_file}...")
@@ -1350,12 +1410,17 @@ def check_for_for_leftover_math_terms(file_path):
     else:
         print("No variables found.")
 
-###################################################################################
-###################################################################################
-###################################################################################
+#SEP###############################################################################
+#SEP###############################################################################
+#SEP###############################################################################
 Latex_File = 'Latex_content.txt'
-with open(py_to_main_tex, 'rb') as src, open(Latex_File, 'wb') as dst:
-    dst.write(src.read())
+with open(Latex_File, 'wb') as dst:
+    for f in [py_to_main_tex, py_to_resources]:
+        with open(f, 'rb') as src:
+            dst.write(src.read() + b'\n')
+
+add_latex_definitions(py_to_defs, Latex_File)
+
 
 check_for_for_leftover_math_terms('Latex_content.txt')
 
@@ -1397,7 +1462,10 @@ replace(Latex_File, r'\\Vec', r'\\mathbf')
 replace(Latex_File, r'\\noindent', '')
 replace(Latex_File, r'\\protect', '')
 replace(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', '<span data-target="\\g<1>">\\g<2></span>')
+replace(Latex_File, r'\\url\{(.*?)\}', '<a href="\\g<1>">\\g<1></a>')
 replace(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
+replace(Latex_File, r'\\underline\{(.*?)\}', r'<span style="text-decoration: underline;">\1</span>')
+replace(Latex_File, r'\\h5\{(.*?)\}', r'<h5>\1</h5>')
 replace(Latex_File, r'\\href\{(.*?)\}\{(.*?)\}', '<a style="color: black" href="\\g<1>" target="_blank" rel="noopener noreferrer">\\g<2></a>')
 replace(Latex_File, r'\\scalebox{0.5}{R}', 'R')
 replace(Latex_File, r'\\AA', "Å") #'Å')

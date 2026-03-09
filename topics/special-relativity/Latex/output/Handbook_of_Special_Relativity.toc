@@ -80,6 +80,6 @@
 \contentsline {part}{IV\hspace {1em}Further Topics and Conclusion}{114}{part.4}%
 \contentsline {chapter}{\numberline {7}Some Simple Applications and Further Topics}{115}{chapter.7}%
 \contentsline {chapter}{\numberline {8}Thought Experiments}{116}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Outro}{119}{chapter.9}%
-\contentsline {chapter}{Resources}{120}{chapter*.52}%
-\contentsline {chapter}{Dictionary}{122}{chapter*.53}%
+\contentsline {chapter}{Outro}{119}{chapter*.52}%
+\contentsline {chapter}{Resources}{120}{chapter*.53}%
+\contentsline {chapter}{Dictionary}{122}{chapter*.54}%

@@ -1,6 +1,13 @@
 {
 "editor.formatOnSave": false,
 
+"workbench.colorCustomizations": {
+    "editorGutter.background": "#00000033"
+},
+
+"editor.folding": false,
+"editor.glyphMargin": false,
+
 "highlight.regexFlags": "gi",
 "highlight.regexes": {
 "((?:<!-- *)?(?:#|// @|//|./\\*+|<!--|--|\\* @|{!|{{!--|{{!) *note(?:[\\t\\f\\v ]*\\([^\\r\\n)]+\\))?:?)((?!\\w)(?: *-->| *\\*/| *!}| *--}}| *}}|(?= *(?:[^\\r\\n:]//|/\\*+|<!--|@|--|{!|{{!--|{{!))|(?: +[^\\r\\n@]*?)(?= *(?:[^\\r\\n:]//|/\\*+|<!--|@|--(?!>)|{!|{{!--|{{!))|(?: +[^\\r\\n@]+)?))": {
@@ -36,5 +43,7 @@
     ]
 }
 }
+
+
 
 }

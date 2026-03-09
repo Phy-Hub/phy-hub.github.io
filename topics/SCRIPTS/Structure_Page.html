@@ -92,7 +92,8 @@
   .dropdown-menu a:hover {background-color: hsl(0, 0%, 35%)}
   .menu:hover .dropdown-menu {display: block;}
 
-  .math {font-size: smaller;}
+  mjx-table {margin: 0 !important;}
+  .math {font-size: 80%;}
   mjx-container:not([display]) {font-size: smaller !important;}
   .math:hover {background-color: #ddb400;  box-shadow: 0 0 0 10px #ddb400;}
 
@@ -444,20 +445,49 @@ document.addEventListener('DOMContentLoaded', () => {
     return '';
   }
 
-  equations.forEach(eq => {
-    eq.addEventListener('mouseenter', function() {
-      const termKeys = this.getAttribute('data-terms').split(' ');
+  // Helper function to update the sidebar based on an element's data-terms
+  function updateSidebarWithTerms(targetElement) {
+    if (targetElement && targetElement.hasAttribute('data-terms')) {
+      const termKeys = targetElement.getAttribute('data-terms').split(' ');
       const listItems = termKeys.map(key => getDefinitionItem(key)).join('');
       if (listItems) {
         displayBox.innerHTML = `<ul style="list-style: none; margin: 0; padding: 0;">${listItems}</ul>`;
         displayBox.classList.add('active');
       }
+    }
+  }
+
+  // Helper function to reset the sidebar
+  function resetSidebar() {
+    displayBox.innerHTML = '<div style="text-align: center;"> &ast;Hover over equations for term info&ast; </div>';
+    displayBox.classList.remove('active');
+  }
+
+  // 1. Existing logic for hovering directly over the equations
+  equations.forEach(eq => {
+    eq.addEventListener('mouseenter', function() {
+      updateSidebarWithTerms(this);
+    });
+    eq.addEventListener('mouseleave', resetSidebar);
+  });
+
+  // 2. New logic for hovering over the equation references in the text
+  const refEqs = document.querySelectorAll('.ref_eq');
+  refEqs.forEach(ref => {
+    ref.addEventListener('mouseenter', function() {
+      // Extract the target equation ID from the onmouseover attribute
+      const onMouseOverStr = this.getAttribute('onmouseover');
+      if (onMouseOverStr) {
+        // Regex to match the first argument of copyContent('ID', ...)
+        const match = onMouseOverStr.match(/copyContent\('([^']+)'/);
+        if (match && match[1]) {
+          const targetEq = document.getElementById(match[1]);
+          updateSidebarWithTerms(targetEq);
+        }
+      }
     });
 
-    eq.addEventListener('mouseleave', function() {
-      displayBox.innerHTML = 'Hover over the equation to see all terms defined.';
-      displayBox.classList.remove('active');
-    });
+    ref.addEventListener('mouseleave', resetSidebar);
   });
 });
 

@@ -21,6 +21,7 @@ py_to_output_page    = "../../pages/" + topic_folder_name + ".html"
 py_to_main_tex       = "Latex/Main_Matter.tex"
 py_to_defs           = "Latex/Tex/Terms/Definitions.tex"
 py_to_resources      = "Latex/Tex/Resources.tex"
+py_to_outro          = "Latex/Tex/Outro.tex"
 py_to_terms          = "Latex/Tex/Terms"
 py_to_term_comands   = "Latex/Tex/Terms/Term_commands.tex"
 py_to_tikz           = "Latex/output/tikz/"
@@ -725,6 +726,7 @@ def replace_refs(input_string):
         id = match.group(1).replace(" ", "_").replace(":","").replace("'","_")
         eq_number =  (find_key_from_label(eq_dict, id) or "").replace("_", ".")
         # Replace with a span element that shows a div with the matched id on hover
+        #todo need to show variable term defs on RHS
         return f'<span class="ref_eq" onmouseover="copyContent(\'{id}\',\'equation_hover\',this); " onmouseout="deleteContent(\'equation_hover\');">({eq_number})</span>'
     def replacer_ref_fig(match):
         id = match.group(1).replace(" ", "_").replace(":","").replace("'","_")
@@ -1415,7 +1417,7 @@ def check_for_for_leftover_math_terms(file_path):
 #SEP###############################################################################
 Latex_File = 'Latex_content.txt'
 with open(Latex_File, 'wb') as dst:
-    for f in [py_to_main_tex, py_to_resources]:
+    for f in [py_to_main_tex, py_to_outro, py_to_resources]:
         with open(f, 'rb') as src:
             dst.write(src.read() + b'\n')
 

@@ -18,6 +18,16 @@
         }
     ],
 
+    "workbench.colorCustomizations": {
+    "editorLineNumber.foreground": "#d6d5d5",
+    "editorLineNumber.activeForeground": "#bdbdbd"
+},
+    "editor.folding": false,
+    "editor.glyphMargin": false,
+
+    "editor.lineDecorationsWidth": 10,
+
+
     "[latex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.lineHeight": 22,
@@ -26,8 +36,8 @@
     "editor.fontSize": 16,
     "editor.scrollbar.horizontal": "hidden",
     "editor.overviewRulerBorder": false,
-    "editor.glyphMargin": false,
     "editor.scrollBeyondLastColumn": 0,
+    "editor.lineNumbersMinChars": 6,
     },
 
     "workbench.colorTheme": "Solarized Light",

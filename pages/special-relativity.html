@@ -17,6 +17,7 @@
 <script defer src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
 <script> MathJax = { loader:  {load:  ['[tex]/tagformat']}, section:  0, tex:  {tags:  'ams', packages:  {'[+]':  ['tagformat', 'sections']}, tagformat:  { number:  (n) => MathJax.config.section + '.' + n }}, startup: {ready() {const Configuration = MathJax._.input.tex.Configuration.Configuration; const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap; new CommandMap('sections', { nextSection:  'NextSection' }, {NextSection(parser, name) {MathJax.config.section++; parser.tags.counter = parser.tags.allCounter = 0;}}); Configuration.create( 'sections', {handler:  {macro:  ['sections']}}); MathJax.startup.defaultReady();}}};</script>
 
+<!--- CSS -->
 <style>
   :root {--navbar-height: 60px;}
 
@@ -80,7 +81,7 @@
     .navbar {grid-template-columns: 70px auto 70px;}
     @media (max-width: 700px) {article {min-width: 0px; width: 100vw; margin: 0;}}
   }
-  .sidebar{position: sticky; top: var(--navbar-height); overflow: hidden; align-self: start; height: auto;}
+  .sidebar { position: sticky; top: var(--navbar-height); height: calc(100vh - var(--navbar-height)); display: flex; flex-direction: column; overflow: hidden; align-self: start; box-sizing: border-box; text-align: center; padding: 0; }
   .toc-arrow { display:inline-block; margin-right:0px; color:#555; transition: transform 0.2s; }
   .toc-active .toc-arrow { transform: rotate(90deg); }
   .toc-link { text-decoration:none; color:inherit; display:block; padding:2px 0; cursor:pointer; }
@@ -94,7 +95,6 @@
 
   mjx-table {margin: 0 !important;}
   .math {font-size: 80%;}
-  mjx-container:not([display]) {font-size: smaller !important;}
   .math:hover {background-color: #ddb400;  box-shadow: 0 0 0 10px #ddb400;}
 
   @font-face { font-family: 'TG Schola'; src: url('../fonts/texgyreschola-regular.woff2') format('woff2'), url('../fonts/texgyreschola-regular.woff') format('woff'); font-weight: normal; font-style: normal; }
@@ -135,7 +135,6 @@
   /* Display the chapter when its ID matches the URL hash */
   .chapter:target {
       display: block;
-      animation: fadeIn 0.5s; /* Optional: adds a nice fade effect */
   }
 
   /* Helper to ensure the first chapter is visible if no ID is in URL
@@ -156,6 +155,7 @@
 </style>
 </head>
 
+<!--- body -->
 <body style="margin: 0; background-color:#ffe4c8; ">
 <header id="site-navbar">
   <!--Navbar-->
@@ -173,10 +173,11 @@
   </div>
 </header>
 
+<!--- Main -->
 <main>
-  <div id="equation_hover" style="position: fixed; top: var(--navbar-height); padding: 0px; padding-right: 20px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
-  <div id="fig_hover" style="display: none; position: fixed; box-sizing: border-box; padding: 20px; background-color:#f99830; width: 660px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
-  <!--Page Navbar-->
+  <div id="equation_hover" style="position: fixed; top: 0px; padding: 0px; padding-right: 20px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
+  <div id="fig_hover" style="display: none; position: fixed; box-sizing: border-box; padding: 10px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
+  <!--- Page Navbar-->
   <nav id="tocsidebar">
     <div>
     <p style="font-size: 1.5em; font-weight: normal; margin: 0pt; padding-bottom: 0.5em;  text-align: center;"><span style="font-family: 'Computer Modern', serif; font-style: italic;">Handbook of</span>
@@ -184,78 +185,84 @@
 Special Relativity      </span>
     </p>
     <p style="font-weight: bold; font-size: 1.2em; margin: 0pt;">Contents</p>
-<div id="toc_container"><ul style="list-style:none; padding:0;"><li> <a href="#part_1_header" id="link_part_1" class="toc-link toc-part-link" onclick="toggleView('part_1')"> <span class="toc-arrow">&#9654;</span> <b>Part I. The Concepts Explained</b> </a> <ul id="part_1_toc" class="toc-sublist toc-part-sublist">
-        
+<div id="toc_container"><ul style="list-style:none; padding:0;">
+<li> <a href="#intro_wrap" id="link_intro" class="toc-link toc-part-link" onclick="toggleView('intro')"> <span class="toc-arrow">&#9654;</span> <b>Introduction</b> </a> </li>
+
+<li> <a href="#part_1_header" id="link_part_1" class="toc-link toc-part-link" onclick="toggleView('part_1')"> <span class="toc-arrow">&#9654;</span> <b>Part I. The Concepts Explained</b> </a> <ul id="part_1_toc" class="toc-sublist toc-part-sublist">
+
 	<li> <a href="#part_1_ch1_header" id="link_ch_1" class="toc-link toc-chapter-link" onclick="toggleView('part_1_ch1')"> <span class="toc-arrow">&#9654;</span> <b>1. Overview of Concepts </b> </a> <ul id="part_1_ch_1_toc" class="toc-sublist toc-chapter-sublist">
-            <li> <a href="#part_1_ch1_1_header" class="toc-link"> 1.1 Classical Addition of Velocities </a> </li>
-                <li> <a href="#part_1_ch1_2_header" class="toc-link"> 1.2 Inertial Reference Frame </a> </li>
-                <li> <a href="#part_1_ch1_3_header" class="toc-link"> 1.3 Classical Inertial Reference Frames </a> </li>
-                <li> <a href="#part_1_ch1_4_header" class="toc-link"> 1.4 The Aether </a> </li>
-                <li> <a href="#part_1_ch1_5_header" class="toc-link"> 1.5 Speed of Light </a> </li>
-                <li> <a href="#part_1_ch1_6_header" class="toc-link"> 1.6 Position and Time </a> </li>
-                <li> <a href="#part_1_ch1_7_header" class="toc-link"> 1.7 Doppler Effect </a> </li>
-                <li> <a href="#part_1_ch1_8_header" class="toc-link"> 1.8 Aberration </a> </li>
-                <li> <a href="#part_1_ch1_9_header" class="toc-link"> 1.9 Aberration When Observing the Stars </a> </li>
-                <li> <a href="#part_1_ch1_10_header" class="toc-link"> 1.10 Relativistic Beaming </a> </li>
-                <li> <a href="#part_1_ch1_11_header" class="toc-link"> 1.11 A Source's Retarded Field of Light </a> </li>
-                <li> <a href="#part_1_ch1_12_header" class="toc-link"> 1.12 Velocity </a> </li>
-                <li> <a href="#part_1_ch1_13_header" class="toc-link"> 1.13 Apparent vs Actual Velocity </a> </li>
-                <li> <a href="#part_1_ch1_14_header" class="toc-link"> 1.14 Summary </a> </li>
-                </ul></li></ul></li><li> <a href="#part_2_header" id="link_part_2" class="toc-link toc-part-link" onclick="toggleView('part_2')"> <span class="toc-arrow">&#9654;</span> <b>Part II. The Essential Concepts Derived</b> </a> <ul id="part_2_toc" class="toc-sublist toc-part-sublist">
-        
+<li> <a href="#part_1_ch1_1_header" class="toc-link"> 1.1 Classical Addition of Velocities </a> </li>
+<li> <a href="#part_1_ch1_2_header" class="toc-link"> 1.2 Inertial Reference Frame </a> </li>
+<li> <a href="#part_1_ch1_3_header" class="toc-link"> 1.3 Classical Inertial Reference Frames </a> </li>
+<li> <a href="#part_1_ch1_4_header" class="toc-link"> 1.4 The Aether </a> </li>
+<li> <a href="#part_1_ch1_5_header" class="toc-link"> 1.5 Speed of Light </a> </li>
+<li> <a href="#part_1_ch1_6_header" class="toc-link"> 1.6 Position and Time </a> </li>
+<li> <a href="#part_1_ch1_7_header" class="toc-link"> 1.7 Doppler Effect </a> </li>
+<li> <a href="#part_1_ch1_8_header" class="toc-link"> 1.8 Aberration </a> </li>
+<li> <a href="#part_1_ch1_9_header" class="toc-link"> 1.9 Aberration When Observing the Stars </a> </li>
+<li> <a href="#part_1_ch1_10_header" class="toc-link"> 1.10 Relativistic Beaming </a> </li>
+<li> <a href="#part_1_ch1_11_header" class="toc-link"> 1.11 A Source's Retarded Field of Light </a> </li>
+<li> <a href="#part_1_ch1_12_header" class="toc-link"> 1.12 Velocity </a> </li>
+<li> <a href="#part_1_ch1_13_header" class="toc-link"> 1.13 Apparent vs Actual Velocity </a> </li>
+<li> <a href="#part_1_ch1_14_header" class="toc-link"> 1.14 Summary </a> </li>
+</ul></li></ul></li>
+<li> <a href="#part_2_header" id="link_part_2" class="toc-link toc-part-link" onclick="toggleView('part_2')"> <span class="toc-arrow">&#9654;</span> <b>Part II. The Essential Concepts Derived</b> </a> <ul id="part_2_toc" class="toc-sublist toc-part-sublist">
+
 	<li> <a href="#part_2_ch2_header" id="link_ch_2" class="toc-link toc-chapter-link" onclick="toggleView('part_2_ch2')"> <span class="toc-arrow">&#9654;</span> <b>2. Position, Time and Velocity </b> </a> <ul id="part_2_ch_2_toc" class="toc-sublist toc-chapter-sublist">
-            <li> <a href="#part_2_ch2_1_header" class="toc-link"> 2.1 Classical Relativity </a> </li>
-                <li> <a href="#part_2_ch2_2_header" class="toc-link"> 2.2 Postulates of Special Relativity </a> </li>
-                <li> <a href="#part_2_ch2_3_header" class="toc-link"> 2.3 Time Dilation </a> </li>
-                <li> <a href="#part_2_ch2_4_header" class="toc-link"> 2.4 Length Contraction </a> </li>
-                <li> <a href="#part_2_ch2_5_header" class="toc-link"> 2.5 Position and Time Transformation </a> </li>
-                <li> <a href="#part_2_ch2_6_header" class="toc-link"> 2.6 Velocity </a> </li>
-                <li> <a href="#part_2_ch2_7_header" class="toc-link"> 2.7 Acceleration </a> </li>
-                <li> <a href="#part_2_ch2_8_header" class="toc-link"> 2.8 The Paradox of Faster than Light Signals </a> </li>
-                <li> <a href="#part_2_ch2_9_header" class="toc-link"> 2.9 Summary </a> </li>
-                </ul></li>
+<li> <a href="#part_2_ch2_1_header" class="toc-link"> 2.1 Classical Relativity </a> </li>
+<li> <a href="#part_2_ch2_2_header" class="toc-link"> 2.2 Postulates of Special Relativity </a> </li>
+<li> <a href="#part_2_ch2_3_header" class="toc-link"> 2.3 Time Dilation </a> </li>
+<li> <a href="#part_2_ch2_4_header" class="toc-link"> 2.4 Length Contraction </a> </li>
+<li> <a href="#part_2_ch2_5_header" class="toc-link"> 2.5 Position and Time Transformation </a> </li>
+<li> <a href="#part_2_ch2_6_header" class="toc-link"> 2.6 Velocity </a> </li>
+<li> <a href="#part_2_ch2_7_header" class="toc-link"> 2.7 Acceleration </a> </li>
+<li> <a href="#part_2_ch2_8_header" class="toc-link"> 2.8 The Paradox of Faster than Light Signals </a> </li>
+<li> <a href="#part_2_ch2_9_header" class="toc-link"> 2.9 Summary </a> </li>
+</ul></li>
 	<li> <a href="#part_2_ch3_header" id="link_ch_3" class="toc-link toc-chapter-link" onclick="toggleView('part_2_ch3')"> <span class="toc-arrow">&#9654;</span> <b>3. Quantities That all Inertial Frames Agree on </b> </a> <ul id="part_2_ch_3_toc" class="toc-sublist toc-chapter-sublist">
-            <li> <a href="#part_2_ch3_1_header" class="toc-link"> 3.1 The Space-Time Interval </a> </li>
-                <li> <a href="#part_2_ch3_2_header" class="toc-link"> 3.2 D'Alembert operator </a> </li>
-                <li> <a href="#part_2_ch3_3_header" class="toc-link"> 3.3 Energy-Mass and Momentum Relation </a> </li>
-                <li> <a href="#part_2_ch3_4_header" class="toc-link"> 3.4 Summary </a> </li>
-                </ul></li></ul></li><li> <a href="#part_3_header" id="link_part_3" class="toc-link toc-part-link" onclick="toggleView('part_3')"> <span class="toc-arrow">&#9654;</span> <b>Part III. Light in Special Relativity</b> </a> <ul id="part_3_toc" class="toc-sublist toc-part-sublist">
-        
+<li> <a href="#part_2_ch3_1_header" class="toc-link"> 3.1 The Space-Time Interval </a> </li>
+<li> <a href="#part_2_ch3_2_header" class="toc-link"> 3.2 D'Alembert operator </a> </li>
+<li> <a href="#part_2_ch3_3_header" class="toc-link"> 3.3 Energy-Mass and Momentum Relation </a> </li>
+<li> <a href="#part_2_ch3_4_header" class="toc-link"> 3.4 Summary </a> </li>
+</ul></li></ul></li>
+<li> <a href="#part_3_header" id="link_part_3" class="toc-link toc-part-link" onclick="toggleView('part_3')"> <span class="toc-arrow">&#9654;</span> <b>Part III. Light in Special Relativity</b> </a> <ul id="part_3_toc" class="toc-sublist toc-part-sublist">
+
 	<li> <a href="#part_3_ch4_header" id="link_ch_4" class="toc-link toc-chapter-link" onclick="toggleView('part_3_ch4')"> <span class="toc-arrow">&#9654;</span> <b>4. An Observer's Delayed Worldview </b> </a> <ul id="part_3_ch_4_toc" class="toc-sublist toc-chapter-sublist">
-            <li> <a href="#part_3_ch4_1_header" class="toc-link"> 4.1 Retarded Coordinates </a> </li>
-                <li> <a href="#part_3_ch4_2_header" class="toc-link"> 4.2 The Transformed Retarded Coordinates </a> </li>
-                <li> <a href="#part_3_ch4_3_header" class="toc-link"> 4.3 Apparent Velocity </a> </li>
-                <li> <a href="#part_3_ch4_4_header" class="toc-link"> 4.4 Summary </a> </li>
-                </ul></li>
+<li> <a href="#part_3_ch4_1_header" class="toc-link"> 4.1 Retarded Coordinates </a> </li>
+<li> <a href="#part_3_ch4_2_header" class="toc-link"> 4.2 The Transformed Retarded Coordinates </a> </li>
+<li> <a href="#part_3_ch4_3_header" class="toc-link"> 4.3 Apparent Velocity </a> </li>
+<li> <a href="#part_3_ch4_4_header" class="toc-link"> 4.4 Summary </a> </li>
+</ul></li>
 	<li> <a href="#part_3_ch5_header" id="link_ch_5" class="toc-link toc-chapter-link" onclick="toggleView('part_3_ch5')"> <span class="toc-arrow">&#9654;</span> <b>5. A Point Source: Emitting a Pulse of Light </b> </a> <ul id="part_3_ch_5_toc" class="toc-sublist toc-chapter-sublist">
-            <li> <a href="#part_3_ch5_1_header" class="toc-link"> 5.1 Spherical Polar Coordinates </a> </li>
-                <li> <a href="#part_3_ch5_2_header" class="toc-link"> 5.2 Velocity Transform of Light from a Source </a> </li>
-                <li> <a href="#part_3_ch5_3_header" class="toc-link"> 5.3 Aberration in Special Relativity </a> </li>
-                <li> <a href="#part_3_ch5_4_header" class="toc-link"> 5.4 Doppler Effect </a> </li>
-                <li> <a href="#part_3_ch5_5_header" class="toc-link"> 5.5 Relativistic Beaming </a> </li>
-                <li> <a href="#part_3_ch5_6_header" class="toc-link"> 5.6 Retarded Propagation of Light in Source's Moving Frame </a> </li>
-                <li> <a href="#part_3_ch5_7_header" class="toc-link"> 5.7 Light's Propagation when Swapping from Rest Frame </a> </li>
-                <li> <a href="#part_3_ch5_8_header" class="toc-link"> 5.8 Summary </a> </li>
-                </ul></li>
+<li> <a href="#part_3_ch5_1_header" class="toc-link"> 5.1 Spherical Polar Coordinates </a> </li>
+<li> <a href="#part_3_ch5_2_header" class="toc-link"> 5.2 Velocity Transform of Light from a Source </a> </li>
+<li> <a href="#part_3_ch5_3_header" class="toc-link"> 5.3 Aberration in Special Relativity </a> </li>
+<li> <a href="#part_3_ch5_4_header" class="toc-link"> 5.4 Doppler Effect </a> </li>
+<li> <a href="#part_3_ch5_5_header" class="toc-link"> 5.5 Relativistic Beaming </a> </li>
+<li> <a href="#part_3_ch5_6_header" class="toc-link"> 5.6 Retarded Propagation of Light in Source's Moving Frame </a> </li>
+<li> <a href="#part_3_ch5_7_header" class="toc-link"> 5.7 Light's Propagation when Swapping from Rest Frame </a> </li>
+<li> <a href="#part_3_ch5_8_header" class="toc-link"> 5.8 Summary </a> </li>
+</ul></li>
 	<li> <a href="#part_3_ch6_header" id="link_ch_6" class="toc-link toc-chapter-link" onclick="toggleView('part_3_ch6')"> <span class="toc-arrow">&#9654;</span> <b>6. A Point Source: Continuously Emitting Light </b> </a> <ul id="part_3_ch_6_toc" class="toc-sublist toc-chapter-sublist">
-            <li> <a href="#part_3_ch6_1_header" class="toc-link"> 6.1 Surface Element on a Sphere and its Solid Angle </a> </li>
-                <li> <a href="#part_3_ch6_2_header" class="toc-link"> 6.2 Surface Element's Light Density </a> </li>
-                <li> <a href="#part_3_ch6_3_header" class="toc-link"> 6.3 Density in direction of propagation of light </a> </li>
-                <li> <a href="#part_3_ch6_4_header" class="toc-link"> 6.4 Coordinates used </a> </li>
-                <li> <a href="#part_3_ch6_5_header" class="toc-link"> 6.5 Volume Density of Light </a> </li>
-                <li> <a href="#part_3_ch6_6_header" class="toc-link"> 6.6 Summary </a> </li>
-                </ul></li></ul></li><li> <a href="#part_4_header" id="link_part_4" class="toc-link toc-part-link" onclick="toggleView('part_4')"> <span class="toc-arrow">&#9654;</span> <b>Part IV. Further Topics and Conclusion</b> </a> <ul id="part_4_toc" class="toc-sublist toc-part-sublist">
-        
+<li> <a href="#part_3_ch6_1_header" class="toc-link"> 6.1 Surface Element on a Sphere and its Solid Angle </a> </li>
+<li> <a href="#part_3_ch6_2_header" class="toc-link"> 6.2 Surface Element's Light Density </a> </li>
+<li> <a href="#part_3_ch6_3_header" class="toc-link"> 6.3 Density in direction of propagation of light </a> </li>
+<li> <a href="#part_3_ch6_4_header" class="toc-link"> 6.4 Coordinates used </a> </li>
+<li> <a href="#part_3_ch6_5_header" class="toc-link"> 6.5 Volume Density of Light </a> </li>
+<li> <a href="#part_3_ch6_6_header" class="toc-link"> 6.6 Summary </a> </li>
+</ul></li></ul></li>
+<li> <a href="#part_4_header" id="link_part_4" class="toc-link toc-part-link" onclick="toggleView('part_4')"> <span class="toc-arrow">&#9654;</span> <b>Part IV. Further Topics and Conclusion</b> </a> <ul id="part_4_toc" class="toc-sublist toc-part-sublist">
+
 	<li> <a href="#part_4_ch7_header" id="link_ch_7" class="toc-link toc-chapter-link" onclick="toggleView('part_4_ch7')"> <span class="toc-arrow">&#9654;</span> <b>7. Some Simple Applications and Further Topics </b> </a> <ul id="part_4_ch_7_toc" class="toc-sublist toc-chapter-sublist">
-            </ul></li>
+</ul></li>
 	<li> <a href="#part_4_ch8_header" id="link_ch_8" class="toc-link toc-chapter-link" onclick="toggleView('part_4_ch8')"> <span class="toc-arrow">&#9654;</span> <b>8. Thought Experiments </b> </a> <ul id="part_4_ch_8_toc" class="toc-sublist toc-chapter-sublist">
-            </ul></li>
+</ul></li>
 	<li> <a href="#part_4_ch9_header" id="link_ch_9" class="toc-link toc-chapter-link" onclick="toggleView('part_4_ch9')"> <span class="toc-arrow">&#9654;</span> <b>Outro </b> </a> <ul id="part_4_ch_9_toc" class="toc-sublist toc-chapter-sublist">
-            </ul></li>
+</ul></li>
 	<li> <a href="#part_4_ch10_header" id="link_ch_10" class="toc-link toc-chapter-link" onclick="toggleView('part_4_ch10')"> <span class="toc-arrow">&#9654;</span> <b>Resources </b> </a> <ul id="part_4_ch_10_toc" class="toc-sublist toc-chapter-sublist">
-            </ul></li>
+</ul></li>
 	<li> <a href="#part_4_ch11_header" id="link_ch_11" class="toc-link toc-chapter-link" onclick="toggleView('part_4_ch11')"> <span class="toc-arrow">&#9654;</span> <b>Definitions </b> </a> <ul id="part_4_ch_11_toc" class="toc-sublist toc-chapter-sublist">
-            </ul></li></ul></li></ul></div>
+</ul></li></ul></li></ul></div>
 	<a href="../topics/special-relativity/Latex/output/Handbook_of_Special_Relativity.pdf" style="padding-top: 5px; color: black;"><b>&#11015; PDF</b></a><br>
     </div>
     <div>
@@ -263,7 +270,7 @@ Special Relativity      </span>
     </div>
   </nav>
 
-  <!--Main Content-->
+  <!--- Main Content-->
   <article style=" line-height: 1.5; font-size: 20px; border-left: 10px solid hsla(0, 0%, 50%, 0.1); border-right: 10px solid hsla(0, 0%, 50%, 0.1);">
     <header style="display: flex; justify-content: center; text-align: center; font-family: 'Computer Modern Serif'; padding-top: 10px;">
       <div style="width: 50%; display: flex; flex-direction: column; align-items: center;">
@@ -282,6 +289,43 @@ Special Relativity      </span>
       </div>
     </header>
 
+
+<section id="intro_wrap" class="chapter part-wrapper">
+<h2 class="part_header" id="intro_header" style="display: flex; justify-content: center; text-align: center;">Introduction</h2>
+<div id="intro_content">
+Classical physics accurately predicts the movement of objects in our everyday world.
+However, there are effects that it does not account for, and as objects approach the speed of light, these effects that are negligible at low speeds become increasingly significant.
+This leads to two observers moving at high speeds relative to each other becoming unable to agree on the lengths of objects and the times in which events occur.
+Crucially though, one thing remains constant: the speed of light relative to each observer is the same, regardless of their movement.
+We must redefine our classical understanding of time and space to find out how this can be.
+This is where special relativity comes into play.
+Special relativity is vital in particle physics, nuclear physics, and astrophysics, used for calculating nuclear reaction output power and measuring galaxy speeds.
+It is also needed for precision timekeeping on fast-moving GPS satellites to calculate positions accurately.
+Despite its importance, special relativity continues to confuse even those well-versed in physics and mathematics.
+It can be as confusing to visualize and understand as quantum mechanics is.
+The theory requires letting go of some deeply held intuitions about the absolute nature of space and time that differ from our usual everyday experience of the physical world.
+This handbook is meant to offer an intuitive, visual, and comprehensive overview of special relativity.
+The aim is to maintain simplicity and avoid unnecessary abstraction in explanations.
+For example, time in diagrams is shown either using animations or multiple diagrams given one after another in a timeline.
+This approach avoids the use of unnecessary space-time diagrams, which represent time on one of the axes and make special relativity more abstract and confusing to visualize.
+The first chapter is readable even for those without a math or physics background.
+It provides a non-mathematical, visual overview of the concepts.
+This chapter builds an intuitive understanding of the core ideas step-by-step, providing a solid foundation for developing the essential mathematical framework in later sections.
+The mathematical portion will begin with deriving how space and time coordinates function in special relativity.
+This will be followed by velocity addition, the Doppler effect, and the energy-momentum relationship.
+In addition to these topics, we will also explore some interesting subjects not typically covered in standard resources.
+These include how a source's emitted light is concentrated in the direction of its movement, aberration, and how a delay in light signals to an observer means they are currently viewing sources of light in thier past positions.
+These topics will probably not mean much to you yet, but they will give interesting insights.
+Now, let us begin!
+
+
+</div>
+
+<div class="arrow-nav">
+<a></a>
+<a href="#part_1_ch1_wrap" onclick="syncToc('part_1_ch1_toc');" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next &gt; </a>
+</div>
+</section>
 
 <section id="part_1_wrap" class="chapter part-wrapper">
 <h2 class="part_header" id="part_1_header" style="display: flex; justify-content: center; text-align: center;">Part I.<br>The Concepts Explained</h2>
@@ -737,7 +781,7 @@ We will derive everything step by step, starting with the <span data-target="def
 </div>
 
 <div class="arrow-nav">
-<a></a>
+<a href="#intro_wrap" onclick="toggleView('intro');" style="font-weight: bold; padding-left: 10px; cursor: pointer;"> &lt; Previous </a>
 <a href="#part_2_ch2_wrap" onclick="syncToc('part_2_ch2_toc');" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next &gt; </a>
 </div>
 
@@ -789,38 +833,38 @@ So let us see how the mathematics works for the classical coordinate system <spa
 <figcaption>Figure 2.1: <b>An <span data-target="def-event">event</span> in <span data-target="def-initial-Frame">initial frame</span> with a <span data-target="def-Primed-Frame">primed frame</span>'s axis moving relative to its axis.</b>	This shows an <span data-target="def-initial-Frame">initial frame</span> with its associated \(x ,y ,z \)-coordinate system at rest in this frame, with origin \({\underline{o} }\). There is also an \(x' ,y' ,z' \)-coordinate system with origin \({\underline{o}' }\) associated with the "primed" frame, at position \({\vec{oo'}  }=(0,0,{v }{t })\) in the <span data-target="def-initial-Frame">initial frame</span>, where \({v }\) is the speed of the <span data-target="def-Primed-Frame">primed frame</span> in the z-direction relative to the <span data-target="def-initial-Frame">initial frame</span>, and \({t }\) is the time in the <span data-target="def-initial-Frame">initial frames</span>. An <span data-target="def-event">event</span> \({\underline{e}  }\) in this <span data-target="def-initial-Frame">initial frame</span> is described by a set of spatial and time coordinates \({\underline{r}  } = ({x },{y },{z })\) and \({t }\). We choose the time to be zero in both frames when both axes overlapped, so that \({t }\) is also the time from when they overlapped. We also show \({\vec{o'e} }\) which represents the vector from the primed axis origin to the <span data-target="def-event">event</span> in the <span data-target="def-initial-Frame">initial frame</span>.</figcaption>
 </figure>
 As shown in the diagram, we are in the <span data-target="def-initial-Frame">initial frame</span> with origin \({\underline{o} }\) defined by coordinates \((0,0,0)\) and the <span data-target="def-Primed-Frame">primed frame</span> is moving in the z-direction at velocity \({v }\) such that the position of the primed origin relative to the <span data-target="def-initial-Frame">initial frame</span>'s axis is
-<div class="math" data-terms="varTVecOOPRM varTv varTt">
+<div class="math" data-terms="varTVecOOPRM varTt varTv">
 \begin{equation}
 \vec{oo'}  = (0,0,{v }{t })
 \end{equation}
 </div>
 at time \({t }\) from when the origins overlapped.
 If there is an <span data-target="def-event">event</span> at position
-<div class="math" data-terms="varTVecr varTx varTz varTy">
+<div class="math" data-terms="varTVecr">
 \begin{equation}
 \underline{r}  = ({x },{y },{z })
 \end{equation}
 </div>
 the <span data-target="def-event">event</span> is described by
-<div class="math" data-terms="varTVece varTx varTz varTy varTt">
+<div class="math" data-terms="varTt varTVecr varTVece">
 \begin{equation}
 \underline{e}  = ({x },{y },{z },{t })
 \end{equation}
 </div>
 then in the <span data-target="def-Primed-Frame">primed frame</span>, we will have the <span data-target="def-event">event</span> described by the primed coordinates that we want to <span data-target="def-transform">transform</span> into, as
-<div class="math" data-terms="varTVecePRM varTxPRM varTzPRM varTyPRM varTtPRM">
+<div class="math" data-terms="varTtPRM varTVecePRM varTVecrPRM">
 \begin{equation}
 \underline{e}'  = ({x'  },{y'  },{z'  },t' )
 \end{equation}
 </div>
 To swap into the <span data-target="def-Primed-Frame">primed frame</span>'s coordinates, we need to recall from the previous assumptions that distances and times are conserved, and therefore the length and directions of all the vectors between \({\underline{o} }\), \({\underline{o}' }\) and \({\underline{e}}\) are the same in each frame, and time flows at the same rate (\(t'  = t \)), from this knowledge and Figure (<span class="ref_fig" onmouseover="copyContent('fig_simple_Galilean_transform_derivation','fig_hover',this);" onmouseout="deleteContent('fig_hover');">2.1</span>) we have the <span data-target="def-event">event</span>'s coordinates described in the <span data-target="def-Primed-Frame">primed frame</span> by its coordinate axis as
-<div class="math" id="eq_classical_event" data-terms="varTVecOOPRM varTVecrPRM varTxPRM varTzPRM varTyPRM varTVecr varTx varTz varTy varTv varTt">
+<div class="math" id="eq_classical_event" data-terms="varTVecOOPRM varTVecrPRM varTv varTt varTVecr">
 \begin{equation}
 {\underline{r}'  } = ({x'  },{y'  },{z'  }) = \underline{r} -\vec{oo'}  = ({x },{y },{z }-{v }{t })
 \end{equation}
 </div>
 This gives us the full description of the position and time <span data-target="def-transform">transform</span> for an <span data-target="def-event">event</span> as
-<div class="math" id="eq_Galilean_transformation" data-terms="varTxPRM varTzPRM varTyPRM varTtPRM varTx varTz varTy varTv varTt">
+<div class="math" id="eq_Galilean_transformation" data-terms="varTtPRM varTVecrPRM varTv varTt varTVecr">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ \begin{aligned} & {x'  } = {x }        \\
 & {y'  } = {y }        \\
@@ -830,7 +874,7 @@ This gives us the full description of the position and time <span data-target="d
 </div>
 These are the equations that define classical relativity, we can compare this to the equations of the coordinate <span data-target="def-transform">transforms</span> in special relativity later. They define the <span data-target="def-event">event</span>'s position relative to whichever frame that we are in's axis. The special relativistic equations later will look similar to these, but with an extra factor in the z-component and with the time will no longer be consistent in both frames.
 We can also write the <span data-target="def-initial-Frame">initial frame</span>'s <span data-target="def-event">event</span> coordinates in terms of the primed coordinates, by rearranging the <span data-target="def-transform">transformation</span> equations giving the inverse <span data-target="def-transform">transform</span> as
-<div class="math" id="eq_Inverse_Galilean_transformation" data-terms="varTxPRM varTzPRM varTyPRM varTtPRM varTx varTz varTy varTv varTt">
+<div class="math" id="eq_Inverse_Galilean_transformation" data-terms="varTtPRM varTVecrPRM varTv varTt varTVecr">
 \begin{equation}
 \begin{aligned} & {x } = {x'  }             \\
 & {y } = {y'  }             \\
@@ -877,45 +921,45 @@ It keeps time by measuring when light returns to the first mirror, counting it a
 </figure>
 The light in the clock, takes a time \({\Delta \tau }\) in the clock's <span data-target="def-proper-frame">rest frame</span> to make the return journey.
 We can see from Figure (<span class="ref_fig" onmouseover="copyContent('fig_light_clock_rest_frame','fig_hover',this);" onmouseout="deleteContent('fig_hover');">2.2.a</span>) that in the <span data-target="def-proper-frame">rest frame</span>, the distance the light travels to the mirror and back in this time is
-<div class="math" data-terms="varTDelta varTtau varTdm varTc">
+<div class="math" data-terms="varTdm varTtau varTc varTDelta">
 \begin{equation}
 2{d_{m} } = {c }{\Delta \tau }.
 \end{equation}
 </div>
 The distance the mirrors move during this return journey in the <span data-target="def-Moving-Frame">moving frame</span> is
-<div class="math" data-terms="varTDelta varTtPRM varTv varTu">
+<div class="math" data-terms="varTv varTtPRM varTu varTDelta">
 \begin{equation}
 {u }{\Delta  t'  } =-{v } {\Delta  t'  },
 \end{equation}
 </div>
 where \({\Delta  t'  }\) is the time it took light to return in the <span data-target="def-Moving-Frame">moving frame</span> and \({u }\) is the speed of the light clock, which is in the opposite direction of the movement of the <span data-target="def-Primed-Frame">primed frame</span> relative to the <span data-target="def-proper-frame">rest frame</span>, that is \({u } =-{v }\).
 The distance light travels in this time is
-<div class="math" data-terms="varTDelta varTtPRM varTc">
+<div class="math" data-terms="varTtPRM varTc varTDelta">
 \begin{equation}
 {c }{\Delta  t'  }
 \end{equation}
 </div>
 This is the hypotenuse of a right-angled triangle formed by \({u }{\Delta  t'  }=-{v }{\Delta  t'  }\) and \(2{d_{m} }\), so we have the square of the hypotenuse equal to the square of the other two lengths:
-<div class="math" data-terms="varTDelta varTtPRM varTtau varTv varTc">
+<div class="math" data-terms="varTc varTtPRM varTv varTDelta varTtau">
 \begin{equation}
 c ^2 \Delta  t' ^2 = v ^2 \Delta  t' ^2 + c ^2 \Delta \tau ^2
 \end{equation}
 </div>
 rearranging to find the time it took in the <span data-target="def-Primed-Frame">primed frame</span> relative to the <span data-target="def-proper-frame">rest frame</span>, we find
-<div class="math" id="eq_time_dilation" data-terms="varTDelta varTtPRM varTtau varTg">
+<div class="math" id="eq_time_dilation" data-terms="varTtPRM varTtau varTg varTDelta">
 \begin{equation}
 \Delta  t'  = \gamma  \Delta \tau
 \end{equation}
 </div>
 with
-<div class="math" data-terms="varTg varTv varTc">
+<div class="math" data-terms="varTv varTg varTc">
 \begin{equation}
 \gamma  = \frac{1}{\sqrt{1-\frac{ v ^2}{ c ^2} } }.
 \end{equation}
 </div>
 This factor, \({\gamma }\), is used throughout special relativity to simplify equations.
 We can see from the diagram and the equations, that the time for the return journey in the frame with the clock moving is longer relative to its <span data-target="def-proper-frame">rest frame</span>,
-<div class="math" data-terms="varTDelta varTtPRM varTtau">
+<div class="math" data-terms="varTtPRM varTtau varTDelta">
 \begin{equation}
 {\Delta  t'  } \geq {\Delta \tau }
 \end{equation}
@@ -955,33 +999,33 @@ We will find that the paths can only have this length, if the distance between t
 Note that there can not be a contraction in the perpendicular direction to the movement due to the paradox explained in Figure (<span class="ref_fig" onmouseover="copyContent('fig_width_contraction','fig_hover',this);" onmouseout="deleteContent('fig_hover');">1.12</span>).
 In the <span data-target="def-Moving-Frame">moving frame</span>, the pulse sent forward has a path length equal to the speed of light times the time taken for the path.
 Which is also equal to the <span data-target="def-Primed-Frame">primed frame</span>'s distance between the bulb and mirror plus the distance the mirror has moved away from the point it was emitted in this time, that is
-<div class="math" data-terms="varTDelta varTzfPRM varTtfPRM varTZPRM varTc varTu">
+<div class="math" data-terms="varTZPRM varTtfPRM varTc varTzfPRM varTu varTDelta">
 \begin{equation}
 {z'_f } = {c }{\Delta  t'_f } = {\Delta   Z' } + {u } {\Delta  t'_f }
 \end{equation}
 </div>
 where \({u }\) is the speed that the front mirror is moving away from the point it was emitted, \({\Delta  t'_f }\) is the time taken to get to the mirror, and \({\Delta   Z' }\) is the distance between the bulb and the mirror in front in the <span data-target="def-Primed-Frame">primed frame</span>.
 After reaching the mirror, the light then must travel back to the bulb a distance
-<div class="math" data-terms="varTDelta varTzbPRM varTtbPRM varTZPRM varTc varTu">
+<div class="math" data-terms="varTZPRM varTc varTzbPRM varTu varTDelta varTtbPRM">
 \begin{equation}
 {z'_b } = {c } {\Delta  t'_b } = {\Delta   Z' } - {u } {\Delta  t'_b }.
 \end{equation}
 </div>
 Where \({\Delta  t'_b }\) is the time taken to return to the bulb from the front mirror, with the source moving towards the reflected light.
 Both of these give the two times as
-<div class="math" data-terms="varTDelta varTtfPRM varTZPRM varTc varTu">
+<div class="math" data-terms="varTZPRM varTtfPRM varTc varTu varTDelta">
 \begin{equation}
 {\Delta  t'_f } = \frac{\Delta   Z' }{ c  - u  }
 \end{equation}
 </div>
 and
-<div class="math" data-terms="varTDelta varTtbPRM varTZPRM varTc varTu">
+<div class="math" data-terms="varTZPRM varTc varTu varTDelta varTtbPRM">
 \begin{equation}
 {\Delta  t'_b } = \frac{ \Delta   Z'  }{ c  + u  }.
 \end{equation}
 </div>
 Adding both these times together gives the total dilated time of return as
-<div class="math" data-terms="varTDelta varTtPRM varTZPRM varTg varTc varTu">
+<div class="math" data-terms="varTZPRM varTg varTc varTtPRM varTu varTDelta">
 \begin{equation}
 \begin{aligned} {\Delta  t'  } & \color{gray} = {\Delta   Z' }(\frac{1}{ c  + u  } + \frac{1}{ c  - u  }) \\
 & \color{gray} = \frac{\Delta   Z' }{c }\frac{2}{1- u ^2/c ^2}            \\
@@ -990,19 +1034,19 @@ Adding both these times together gives the total dilated time of return as
 </div>
 where we used \({u }=-{v }\) and then the \({\gamma }\) factor to simplfy equation.
 Now from this and using the <span data-target="def-time-dilation">time dilation</span> equation, we have
-<div class="math" data-terms="varTDelta varTtPRM varTZPRM varTg varTc varTt varTZ">
+<div class="math" data-terms="varTZPRM varTg varTc varTtPRM varTZ varTt varTDelta">
 \begin{equation}
 c {\Delta  t'  } = {c }{\gamma } {\Delta  t } = 2{\gamma } {\Delta  Z } = 2{\gamma }^2 {\Delta   Z' }
 \end{equation}
 </div>
 Finally, this leads to the length from the bulb to the front mirror in the <span data-target="def-Primed-Frame">primed frame</span> to be
-<div class="math" data-terms="varTDelta varTZPRM varTg varTZ">
+<div class="math" data-terms="varTZPRM varTg varTZ varTDelta">
 \begin{equation}
 {\Delta   Z' } = \frac{1}{ \gamma  }{\Delta   Z }.
 \end{equation}
 </div>
 This means that for a system moving relative to an <span data-target="def-observer">observer</span>, the distances for the system in the direction of movement are contracted compared to the <span data-target="def-proper-frame">rest frame</span> of the object, that is
-<div class="math" data-terms="varTDelta varTZPRM varTZ">
+<div class="math" data-terms="varTZPRM varTZ varTDelta">
 \begin{equation}
 {\Delta   Z' } \leq {\Delta   Z }.
 \end{equation}
@@ -1021,89 +1065,89 @@ This will allow us to derive the coordinate <span data-target="def-transform">tr
 <figcaption>Figure 2.4: <b>An <span data-target="def-event">event</span> in <span data-target="def-initial-Frame">initial frame</span> with a <span data-target="def-Primed-Frame">primed frame</span>'s axis moving relative to it.</b> This shows an <span data-target="def-initial-Frame">initial frame</span> with its associated \(x ,y ,z \)-coordinate system at rest in this frame, with origin \({\underline{o} }\). There is also an \(x' ,y' ,z' \)-coordinate system with origin \({\underline{o}' }\) associated with the "primed" frame, at position \({\vec{oo'}  }=(0,0,{v }{t })\) in the <span data-target="def-initial-Frame">initial frame</span>, where \({v }\) is the speed of the <span data-target="def-Primed-Frame">primed frame</span> in the z-direction relative to the <span data-target="def-initial-Frame">initial frame</span>, and \({t }\) is the time in the <span data-target="def-initial-Frame">initial frames</span>. An <span data-target="def-event">event</span> \({\underline{e}  }\) in this <span data-target="def-initial-Frame">initial frame</span> is described by a set of spatial and time coordinates \({\underline{r}  } = ({x },{y },{z })\) and \({t }\). We choose the time to be zero in both frames when both axes overlapped, so that \({t }\) is also the time from when they overlapped. We also show \({\vec{o'e} }\) which represents the vector from the primed origin to the <span data-target="def-event">event</span> in the <span data-target="def-initial-Frame">initial frame</span>.</figcaption>
 </figure>
 As shown in the diagram, we are in the <span data-target="def-initial-Frame">initial frame</span> with origin \({\underline{o} }\) defined by coordinates \((0,0,0)\) and the <span data-target="def-Primed-Frame">primed frame</span> is moving in the z-direction at velocity \({v }\) such that the position of the primed origin in the <span data-target="def-initial-Frame">initial frame</span> is
-<div class="math" data-terms="varTVecOOPRM varTv varTt">
+<div class="math" data-terms="varTVecOOPRM varTt varTv">
 \begin{equation}
 \vec{oo'}  = (0,0,{v }{t })
 \end{equation}
 </div>
 at time \({t }\) from when the origins overlapped.
 If there is an <span data-target="def-event">event</span> described by
-<div class="math" data-terms="varTVece varTx varTz varTy varTt">
+<div class="math" data-terms="varTt varTVecr varTVece">
 \begin{equation}
 \underline{e}  = ({x },{y },{z },{t })
 \end{equation}
 </div>
 Then the displacement between the <span data-target="def-initial-Frame">initial frame</span>'s origin and the <span data-target="def-event">event</span>'s position in the <span data-target="def-initial-Frame">initial frame</span> is
-<div class="math" data-terms="varTVecr varTx varTz varTy">
+<div class="math" data-terms="varTVecr">
 \begin{equation}
 \underline{r}  = ({x },{y },{z })
 \end{equation}
 </div>
 and displacement between the <span data-target="def-Primed-Frame">primed frame</span>'s origin and the <span data-target="def-event">event</span>'s coordinates in the <span data-target="def-initial-Frame">initial frame</span> is
-<div class="math" data-terms="varTVecOPRMe varTx varTz varTy varTv varTt">
+<div class="math" data-terms="varTv varTt varTVecOPRMe varTVecr">
 \begin{equation}
 \vec{o'e} = ({x },{y },{z }-{v }{t })
 \end{equation}
 </div>
 In the <span data-target="def-Primed-Frame">primed frame</span>, we will have the <span data-target="def-event">event</span> described by the primed coordinates that we want to <span data-target="def-transform">transform</span> into, as
-<div class="math" data-terms="varTVecePRM varTxPRM varTzPRM varTyPRM varTtPRM">
+<div class="math" data-terms="varTtPRM varTVecePRM varTVecrPRM">
 \begin{equation}
 \underline{e}'  = ({x'  },{y'  },{z'  },t' )
 \end{equation}
 </div>
 with the displacement between the <span data-target="def-Primed-Frame">primed frame</span>'s origin and the <span data-target="def-event">event</span>'s position in the <span data-target="def-Primed-Frame">primed frame</span> given as
-<div class="math" data-terms="varTVecrPRM varTxPRM varTzPRM varTyPRM">
+<div class="math" data-terms="varTVecrPRM">
 \begin{equation}
 {\underline{r}'  } = ({x'  },{y'  },{z'  })
 \end{equation}
 </div>
 These are just the position coordinates of the <span data-target="def-event">event</span> in the <span data-target="def-Primed-Frame">primed frame</span>.
 The <span data-target="def-Primed-Frame">primed frame</span>'s axis and coordinates are moving relative to the <span data-target="def-initial-Frame">initial frame</span>, so from the previous <span data-target="def-length-contraction">length contraction</span> section we would have the displacement between the primed axis origin and the <span data-target="def-event">event</span> in the <span data-target="def-initial-Frame">initial frame</span> \(\vec{o'e}\), length contracted, in the \(z \)-direction, compared to the primed position coordinates in the <span data-target="def-Primed-Frame">primed frame</span> \({\underline{r}'  }\), that is
-<div class="math" data-terms="varTVecOPRMe varTxPRM varTzPRM varTyPRM varTg varTx varTz varTy varTv varTt">
+<div class="math" data-terms="varTg varTVecrPRM varTv varTt varTVecOPRMe varTVecr">
 \begin{equation}
 \vec{o'e} = ({x },{y },{z }-{v }{t }) = ({x'  },{y'  },\frac{z'  }{\gamma })
 \end{equation}
 </div>
 The \(x \) and \(y \)-components are unaffected, with the paradox of it they were effected, explained in Figure (<span class="ref_fig" onmouseover="copyContent('fig_width_contraction','fig_hover',this);" onmouseout="deleteContent('fig_hover');">1.12</span>).
 Rearranging for the \(z \)-component, we have
-<div class="math" data-terms="varTVecrPRM varTxPRM varTzPRM varTyPRM varTg varTx varTz varTy varTv varTt">
+<div class="math" data-terms="varTg varTVecrPRM varTv varTt varTVecr">
 \begin{equation}
 ({x'  },{y'  },{z'  }) = {\underline{r}'  } = ({x },{y },{\gamma }({z }-{v }{t }) )
 \end{equation}
 </div>
 There is a symmetry between the frames because if we were originally in the <span data-target="def-Primed-Frame">primed frame</span> we would have the <span data-target="def-initial-Frame">initial frame</span> moving instead at -\({v }\) in the z-direction relative to the <span data-target="def-Primed-Frame">primed frame</span>, and we could follow the above steps starting with this and the primed coordinate instead, and find the inverse <span data-target="def-transform">transformation</span> is the same apart from it replaces each frame's coordinates with the other and has the negative of the previous <span data-target="def-frame-velocity">frame velocity</span> instead.
 That is
-<div class="math" data-terms="varTxPRM varTzPRM varTyPRM varTVecr varTtPRM varTg varTx varTz varTy varTv">
+<div class="math" data-terms="varTg varTtPRM varTVecrPRM varTv varTVecr">
 \begin{equation}
 ({x },{y },{z }) = {\underline{r}  } = ({x'  },{y'  },{\gamma }({z'  }+{v }t' ) )
 \end{equation}
 </div>
 We can substitute both \(z \)-coordinate <span data-target="def-transform">transforms</span> into each other to find the time <span data-target="def-transform">transform</span>
-<div class="math" data-terms="varTtPRM varTg varTz varTv varTt">
+<div class="math" data-terms="varTg varTtPRM varTv varTt varTVecr">
 \begin{equation}
 {z } = \gamma  ( \gamma  ({z }-{v }{t }) + {v } t' )
 \end{equation}
 </div>
 and rearranging gives
-<div class="math" data-terms="varTtPRM varTg varTz varTv varTt">
+<div class="math" data-terms="varTg varTtPRM varTv varTt varTVecr">
 \begin{equation}
 t'  = \gamma  \left( \left( \dfrac{1}{\gamma ^2} -1 \right)\frac{z }{v } + t  \right)
 \end{equation}
 </div>
 with \(1/{\gamma }^2 = 1-{v }^2/{c }^2\) leading to the <span data-target="def-Primed-Frame">primed frames</span> time for the <span data-target="def-event">event</span> given in <span data-target="def-initial-Frame">initial frames</span> coordinates as
-<div class="math" data-terms="varTtPRM varTg varTz varTv varTc varTt">
+<div class="math" data-terms="varTg varTc varTtPRM varTv varTt varTVecr">
 \begin{equation}
 t'  = \gamma  \left( t -\dfrac{v  z }{c ^2} \right)
 \end{equation}
 </div>
 again if we want the inverse <span data-target="def-transform">transform</span> from primed to <span data-target="def-initial-Frame">initial frame</span> we can swap the primed and <span data-target="def-initial-Frame">initial frame</span> coordinates and put an extra minus in front of the <span data-target="def-frame-velocity">frame velocity</span>.
-<div class="math" data-terms="varTzPRM varTtPRM varTg varTv varTc varTt">
+<div class="math" data-terms="varTg varTc varTtPRM varTVecrPRM varTv varTt">
 \begin{equation}
 {t } = \gamma  \left( t' +\dfrac{v  z' }{c ^2} \right)
 \end{equation}
 </div>
 We now have the full description of the <span data-target="def-transform">transformation</span> of the position and time of an <span data-target="def-event">event</span> as
-<div class="math" id="eq_Lorentz_transformation" data-terms="varTxPRM varTzPRM varTyPRM varTtPRM varTg varTx varTz varTy varTv varTc varTt">
+<div class="math" id="eq_Lorentz_transformation" data-terms="varTg varTc varTtPRM varTVecrPRM varTv varTt varTVecr">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ \begin{aligned} & {x'  } = x                                            \\
 & {y'  } = y                                            \\
@@ -1144,12 +1188,12 @@ We will later see a more natural interpretation of the coordinate <span data-tar
 <div id="part_2_ch2_5_1_content">
 If we have the primed <span data-target="def-frame-velocity">frame velocity</span> much smaller than the speed of light, (\(v  \ll c \)), then we have \({v }/{c }\approx 0\) and therefore \(\gamma  \approx 1\).
 Hence, we get back the previous <span data-target="def-galilean-transform">classical transform</span> equations
-<div class="math" data-terms="varTtPRM varTt">
+<div class="math" data-terms="varTt varTtPRM">
 \begin{equation}
 t'  \approx t
 \end{equation}
 </div>
-<div class="math" data-terms="varTzPRM varTz varTv varTt">
+<div class="math" data-terms="varTv varTt varTVecr varTVecrPRM">
 \begin{equation}
 z'  \approx {z }-{v }{t }
 \end{equation}
@@ -1169,7 +1213,7 @@ This is a speed unattainable to us, the only thing we can bring up close to this
 To get the velocity <span data-target="def-transform">transform</span> equations we will first need the equations to <span data-target="def-transform">transform</span> the displacement between two positions and the interval between times, then take them in the limit as the changes go to zero.
 That is, when we have infinitesimal changes of coordinates.
 If we want to know how the displacement between two coordinates \((x_1 ,y_1 ,z_1 )\) and \((x_2 ,y_2 ,z_2 )\) <span data-target="def-transform">transforms</span>, we can take the difference of the <span data-target="def-transform">transforms</span> of both the coordinates as follows
-<div class="math" data-terms="varTzonePRM varTztwoPRM varTtonePRM varTttwoPRM varTxtwoPRM varTxonePRM varTytwoPRM varTyonePRM varTzone varTztwo varTtone varTttwo varTxone varTyone varTxtwo varTytwo varTg varTv varTc">
+<div class="math" data-terms="varTyonePRM varTzonePRM varTxtwoPRM varTxonePRM varTytwo varTtonePRM varTztwoPRM varTytwoPRM varTxone varTttwoPRM varTzone varTg varTc varTtone varTxtwo varTttwo varTztwo varTyone varTv">
 \begin{equation}
 \begin{aligned} & x'_2 -x'_1  = x_2 -x_1                                                                                          \\
 & y'_2 -y'_1  = y_2 -y_1                                                                                          \\
@@ -1178,7 +1222,7 @@ If we want to know how the displacement between two coordinates \((x_1 ,y_1 ,z_1
 \end{equation}
 </div>
 rearranging and replacing the difference of the first and second of each coordinate with \({\Delta\underline{r}  } = ({\Delta }x ,{\Delta }y ,{\Delta }z ) = (x_2 -x_1 ,y_2 -y_1 ,z_2 -z_1 )\), giving the displacement <span data-target="def-transform">transform</span> as
-<div class="math" id="eq_interval_of_Coordinates" data-terms="varTDelta varTxPRM varTzPRM varTyPRM varTtPRM varTg varTx varTz varTy varTv varTc varTt">
+<div class="math" id="eq_interval_of_Coordinates" data-terms="varTg varTc varTtPRM varTVecrPRM varTv varTt varTVecr varTDelta">
 \begin{equation}
 \begin{aligned} & \Delta  x'  = {\Delta  x }                                                   \\
 & \Delta  {y'  } = {\Delta  y }                                                 \\
@@ -1188,7 +1232,7 @@ rearranging and replacing the difference of the first and second of each coordin
 </div>
 This is the same form as the original coordinate <span data-target="def-transform">transform</span> equations.
 From these equations, we can also get the differential quantities when we take infinitesimal changes, which give the same form again, as
-<div class="math" id="eq_infinitesimal_interval_of_Coordinates" data-terms="varTxPRM varTzPRM varTyPRM varTtPRM varTdiff varTg varTx varTz varTy varTv varTc varTt">
+<div class="math" id="eq_infinitesimal_interval_of_Coordinates" data-terms="varTg varTc varTtPRM varTVecrPRM varTv varTt varTVecr varTdiff">
 \begin{equation}
 \begin{aligned} & {\mathrm{d} x'  } = {\mathrm{d} x }                                        \\
 & {\mathrm{d} y'  } = {\mathrm{d} y }                                        \\
@@ -1206,7 +1250,7 @@ For example, the space-time interval and the energy-momentum relationship in Cha
 <div id="part_2_ch2_6_content">
 The velocity at any instant is the infinitesimal change in position over the infinitesimal change in time \(\underline{u} = \frac{\mathrm{d}\underline{r}}{\mathrm{d}t}\).
 So using the infinitesimals from Equation <span class="ref_eq" onmouseover="copyContent('eq_infinitesimal_interval_of_Coordinates','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.41)</span>, we get the velocity in each direction as
-<div class="math" data-terms="varTuxPRM varTuyPRM varTuzPRM varTxPRM varTzPRM varTyPRM varTtPRM varTdiff varTg varTx varTz varTy varTv varTc varTt">
+<div class="math" data-terms="varTg varTc varTtPRM varTVecrPRM varTv varTt varTVecr varTdiff varTVecuPRM">
 \begin{equation}
 \begin{aligned} & u'_x  = \frac{\mathrm{d} x'  }{\mathrm{d} t'  } = \frac{\mathrm{d} x }{ \gamma  \bigg(\mathrm{d} t -\frac{v \mathrm{d} z }{ c ^2}\bigg)}                    \\
 & u'_y  = \frac{\mathrm{d} y'  }{\mathrm{d} t'  } = \frac{\mathrm{d} y }{ \gamma  \bigg(\mathrm{d} t -\frac{v \mathrm{d} z }{ c ^2}\bigg)}                    \\
@@ -1214,7 +1258,7 @@ So using the infinitesimals from Equation <span class="ref_eq" onmouseover="copy
 \end{equation}
 </div>
 now dividing the top and bottom of the fraction on the right hand side by \({\mathrm{d} t }\) we can give the equations in their vector form as
-<div class="math" id="eq_velocity_transform" data-terms="varTVecrPRM varTVecuPRM varTtPRM varTuz varTux varTuy varTg varTv varTc">
+<div class="math" id="eq_velocity_transform" data-terms="varTg varTVecu varTc varTtPRM varTVecrPRM varTv varTVecuPRM">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ \begin{aligned} & \underline{u}'  = \dfrac{1}{ {\gamma }\left(1-\dfrac{v }{ c ^2} {u_z }\right)} \begin{pmatrix} u_x                                \\
 u_y                                \\
@@ -1225,9 +1269,9 @@ u_y                                \\
 </div>
 This is used to find the velocity of anything in another frame at the corresponding primed position and time.
 We will put this equation to work in a later section when we look at how the light emitted from a emitting particle has its velocity direction changed/<span data-target="def-aberration">aberrated</span> and the effect this has on its intensity in all directions. Next, we will use this to get the acceleration <span data-target="def-transform">transform</span>.
-<b>Side note:</b>
+<p style="margin-top: 30px; margin-bottom: 15px;"><b>Side Note:</b></p>
 For those interested; The generalized velocity <span data-target="def-transform">transform</span> (which we will not derive here) for a <span data-target="def-frame-velocity">frame velocity</span> in any direction and not just the z-direction is
-<div class="math" data-terms="varTVecuPRM varTVecu varTVecv varTg varTc">
+<div class="math" data-terms="varTg varTVecu varTc varTVecv varTVecuPRM">
 \begin{equation}
 \underline{u}'  = \dfrac{1}{ \gamma  } \dfrac{\underline{u}  + \Big[\dfrac{ {\gamma }-1}{\|\underline{v} \|^2}(\underline{u} \cdot \underline{v} )-{\gamma } \Big] \underline{v}  }{1-\dfrac{\underline{u} \cdot\underline{v}  }{ c ^2} }
 \end{equation}
@@ -1237,7 +1281,7 @@ with \({\underline{v}  }\) being the frame's velocity in any generalized directi
 <h4 id="part_2_ch2_7_header">2.7 Acceleration</h4>
 <div id="part_2_ch2_7_content">
 To find how the acceleration (known as the 3-acceleration) of a particle <span data-target="def-transform">transforms</span> for <span data-target="def-observer">observer</span>s in two different frames, we take the differential of the velocity <span data-target="def-transform">transform</span> in equation <span class="ref_eq" onmouseover="copyContent('eq_velocity_transform','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.43)</span> and use the differentiation rules for two generic functions \({f}\) and \({g}\): \({\mathrm{d} ({g}{f})} = {f} {\mathrm{d} {g}} + {g} {\mathrm{d} {f}}\), and \({\mathrm{d} [{ {f}({g}(x ))}]} = { {\mathrm{d} {g}}(x )} * {\mathrm{d} {f}({ {g}(x )})}\)
-<div class="math" data-terms="varTVecuPRM varTdiff varTuz varTux varTuy varTg varTv varTc">
+<div class="math" data-terms="varTg varTVecu varTc varTv varTdiff varTVecuPRM">
 \begin{equation}
 \begin{aligned} \mathrm{d} \underline{u}'  & \color{gray} = \dfrac{1}{ {\gamma }\left(1-\dfrac{v }{ c ^2} {u_z }\right)} \begin{pmatrix} \mathrm{d} {u_x }          \\
 \mathrm{d} {u_y }          \\
@@ -1254,7 +1298,7 @@ To find how the acceleration (known as the 3-acceleration) of a particle <span d
 \end{equation}
 </div>
 Now, divide by \({\mathrm{d} t'  }\) as we did for the velocity in the previous section, and we get the acceleration <span data-target="def-transform">transform</span> as
-<div class="math" id="eq_acceleration_transform" data-terms="varTVecrPRM varTVecaPRM varTtPRM varTuz varTux varTuy varTax varTaz varTay varTg varTv varTc">
+<div class="math" id="eq_acceleration_transform" data-terms="varTg varTVecu varTc varTtPRM varTVecrPRM varTVeca varTv varTVecaPRM">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ \begin{aligned} & \underline{a}'  = \dfrac{1}{ {\gamma }^2\left(1-\dfrac{v }{ c ^2} {u_z }\right)^3} \begin{pmatrix} a_x  + \frac{v }{ c ^2}({u_x } {  a_z  }-{u_z } {  a_x  }) \\
 a_y  + \frac{v }{ c ^2}({u_y } {  a_z  }-{u_z } {  a_y  }) \\
@@ -1263,9 +1307,9 @@ a_y  + \frac{v }{ c ^2}({u_y } {  a_z  }-{u_z } {  a_y  }) \\
 \end{equation}
 </div>
 So if we know how a particle accelerates in one frame we will know its corresponding acceleration in another frame at the corresponding primed time and position.
-<b>Side note:</b>
+<p style="margin-top: 30px; margin-bottom: 15px;"><b>Side Note:</b></p>
 Again for those interested; The generalized acceleration <span data-target="def-transform">transform</span> (which we will not derive here) for a <span data-target="def-frame-velocity">frame velocity</span> in any direction and not just the z-direction is
-<div class="math" data-terms="varTVecaPRM varTVecu varTVecv varTHatv varTVeca varTg varTc">
+<div class="math" data-terms="varTHatv varTVecu varTg varTc varTVecv varTVeca varTVecaPRM">
 \begin{equation}
 \underline{a}'  = \frac{1}{ \gamma  ^3 \left(1-\frac{(\underline{u} \cdot \underline{v} )}{ c ^2}\right)^3}\left[ \gamma  \left(1-\frac{(\underline{u} \cdot\underline{v} )}{ c ^2}\right)\underline{a}  + \frac{ \gamma  (\underline{a} \cdot\underline{v} )}{ c ^2}\underline{u}  + (1-{\gamma } ) (\underline{a} \cdot\hat{\underline{v} } ) \cdot\hat{\underline{v} } \right]
 \end{equation}
@@ -1286,7 +1330,7 @@ At time \(0\), the emitting particle at the origin emits a signal at a speed \(u
 Now, consider a primed frame moving at speed \(v\) relative to the first.
 To find the emission and received times in the primed frame, we use the time transformation from equations <span class="ref_eq" onmouseover="copyContent('eq_Lorentz_transformation','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.36)</span>.
 Giving the emission time as \(t'=0\) and the time it was recieved as
-<div class="math" data-terms="varTtrPRM varTus varTtr varTzr varTg varTv varTc">
+<div class="math" data-terms="varTtr varTtrPRM varTg varTc varTzr varTv varTus">
 \begin{equation}
 t_r'= \gamma  \bigg( t_r -\frac{ {v }{z_r } }{ c ^2}\bigg) = \gamma  \bigg(1  -\frac{ {v }{u_s } }{ c ^2}\bigg) t_r
 \end{equation}
@@ -1313,7 +1357,6 @@ These particles have these <span data-target="def-Primed-Frame">primed frame</sp
 To <span data-target="def-transform">transform</span> the velocities and acceleration of these particles at their <span data-target="def-Primed-Frame">primed frame</span> positions at the corresponding primed times in the <span data-target="def-Primed-Frame">primed frame</span>, you can use equations <span class="ref_eq" onmouseover="copyContent('eq_acceleration_transform','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.46)</span> and <span class="ref_eq" onmouseover="copyContent('eq_velocity_transform','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.43)</span>.
 And this is all the steps that are needed, but an easy mistake to make is to forget that \({t }\) and \(t' \) are the times from the overlap of the frame origins, in their respective frames.
 So, this chapter shows the foundations of special relativity, but there is still more to come.
-
 
 </div>
 </div>
@@ -1342,14 +1385,14 @@ The reason we care about the concept of energy is that it has this conservation 
 An <span data-target="def-event">event</span> in special relativity is defined by its spacial and time coordinates \(x \), \(y \), \(z \), and \(t \). This is called its space-time coordinates.
 The change of the coordinates between two <span data-target="def-event">events</span> are denoted as \({\Delta  x }\), \({\Delta  y }\), \({\Delta  z }\), and \({\Delta  t }\).
 From these we could define a quantity called the space-time interval \(\Delta  S \) between two <span data-target="def-event">event</span>s in an <span data-target="def-Inertial-reference-frame">inertial reference frame</span> as:
-<div class="math" id="eq_space-time_interval" data-terms="varTDelta varTx varTz varTy varTc varTt varTS">
+<div class="math" id="eq_space-time_interval" data-terms="varTc varTS varTt varTVecr varTDelta">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ \Delta  S ^2 = (c \Delta  t )^2-{\Delta  x }^2-{\Delta  y }^2-{\Delta  z }^2 }
 \end{equation}
 </div>
 The reason we created this new quantity, is because it turns out all inertial frames of reference agree on this interval of the two <span data-target="def-event">events</span>, it is <span data-target="def-lorentz-invariant">invariant</span> between frames, \(\Delta  S  = \Delta  S' \).
 This can be shown when we sub the coordinate <span data-target="def-transform">transforms</span> from equation <span class="ref_eq" onmouseover="copyContent('eq_interval_of_Coordinates','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.40)</span> into the primed version of this last equation:
-<div class="math" data-terms="varTDelta varTxPRM varTzPRM varTyPRM varTtPRM varTSPRM varTg varTx varTz varTy varTv varTc varTt varTS">
+<div class="math" data-terms="varTg varTc varTtPRM varTS varTVecrPRM varTv varTt varTVecr varTDelta varTSPRM">
 \begin{equation}
 \begin{aligned} \Delta  S' ^2 & = (c {\Delta  t'  })^2-\Delta  x' ^2-{\Delta  y'  }^2-{\Delta  z'  }^2                                                                                          \\
 & \color{gray} = c ^2{\gamma } \bigg( \Delta  t -\frac{v }{ c ^2} {\Delta  z } \bigg)^2-{\Delta  x }^2-{\Delta  y }^2-\Delta  ({\gamma } ( {\Delta  z }- v  \Delta  t ) )^2 \\
@@ -1367,13 +1410,13 @@ This relationship will come in very useful in the later in the energy, mass and 
 The d'Alembert operator is a fundamental operator in relativistic wave equations that is <span data-target="def-lorentz-invariant">invariant</span> in all frames of reference.
 It is denoted as \(\square \), and consists of the second order partial derivatives with respect to each coordinate.
 It is defined in an <span data-target="def-initial-Frame">initial frame</span> as
-<div class="math" id="eq_d_Alembert_operator" data-terms="varTdAlembert varTx varTz varTy varTc varTt">
+<div class="math" id="eq_d_Alembert_operator" data-terms="varTt varTVecr varTc varTdAlembert">
 \begin{equation}
 \square  = \frac{1}{c ^2}\frac{\partial^2}{\partial t ^2} - \left(\frac{\partial^2}{\partial x ^2} + \frac{\partial^2}{\partial y ^2} + \frac{\partial^2}{\partial z ^2}\right)
 \end{equation}
 </div>
 and in a <span data-target="def-Primed-Frame">primed frame</span> as
-<div class="math" data-terms="varTdAlembertPRM varTxPRM varTzPRM varTyPRM varTtPRM varTc">
+<div class="math" data-terms="varTtPRM varTc varTVecrPRM varTdAlembertPRM">
 \begin{equation}
 \square'  = \frac{1}{c ^2} \frac{\partial^2}{\partial t' ^2} - \frac{\partial^2}{\partial x' ^2} - \frac{\partial^2}{\partial y' ^2} - \frac{\partial^2}{\partial z' ^2}
 \end{equation}
@@ -1381,7 +1424,7 @@ and in a <span data-target="def-Primed-Frame">primed frame</span> as
 In the following derivation we will show it is <span data-target="def-lorentz-invariant">invariant</span> by transforming the partial derivatives between <span data-target="def-Reference-frame">reference frames</span> and showing that the operator retains its form and that \(\square' =\square \).
 <div class="derivation">
 From the <span data-target="def-transform">transformation</span> equations <span class="ref_eq" onmouseover="copyContent('eq_Lorentz_transformation','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.36)</span>, we can get all partial derivatives which we will use to <span data-target="def-transform">transform</span> the equations between frames:
-<div class="math" data-terms="varTxPRM varTzPRM varTyPRM varTtPRM varTg varTx varTz varTy varTv varTc varTt">
+<div class="math" data-terms="varTg varTc varTtPRM varTVecrPRM varTv varTt varTVecr">
 \begin{equation}
 \begin{aligned} \frac{\partial x' }{\partial x } & = 1 & \frac{\partial y' }{\partial x } & = 0 & \frac{\partial z' }{\partial x } & = 0         & \frac{\partial t' }{\partial x } & = 0                     \\
 \frac{\partial x' }{\partial y } & = 0 & \frac{\partial y' }{\partial y } & = 1 & \frac{\partial z' }{\partial y } & = 0         & \frac{\partial t' }{\partial y } & = 0                     \\
@@ -1391,19 +1434,19 @@ From the <span data-target="def-transform">transformation</span> equations <span
 </div>
 To find the partial derivatives with respect to the unprimed coordinates, in terms the partial derivatives with respect to the primed coordinates, we can use the chain rule.
 Which for \(\frac{\partial}{\partial t }\) is:
-<div class="math" data-terms="varTxPRM varTzPRM varTyPRM varTtPRM varTt">
+<div class="math" data-terms="varTt varTtPRM varTVecrPRM">
 \begin{equation}
 \frac{\partial}{\partial t } = \frac{\partial t' }{\partial t }\frac{\partial}{\partial t' } + \frac{\partial x' }{\partial t }\frac{\partial}{\partial x' } + \frac{\partial y' }{\partial t }\frac{\partial}{\partial y' } + \frac{\partial z' }{\partial t }\frac{\partial}{\partial z' }
 \end{equation}
 </div>
 and for \(\frac{\partial}{\partial z }\):
-<div class="math" data-terms="varTxPRM varTzPRM varTyPRM varTtPRM varTz">
+<div class="math" data-terms="varTtPRM varTVecrPRM varTVecr">
 \begin{equation}
 \frac{\partial}{\partial z } = \frac{\partial t' }{\partial z } \frac{\partial}{\partial t' } + \frac{\partial x' }{\partial z } \frac{\partial}{\partial x' } + \frac{\partial y' }{\partial z } \frac{\partial}{\partial y' } + \frac{\partial z' }{\partial z } \frac{\partial}{\partial z' }
 \end{equation}
 </div>
 Substituting the partial derivatives from above into these chain rule expressions, yields:
-<div class="math" data-terms="varTxPRM varTzPRM varTyPRM varTtPRM varTg varTx varTz varTy varTv varTc varTt">
+<div class="math" data-terms="varTg varTc varTtPRM varTVecrPRM varTv varTt varTVecr">
 \begin{equation}
 \begin{aligned} \frac{\partial}{\partial x } & = \frac{\partial}{\partial x' }                                                             \\
 \frac{\partial}{\partial y } & = \frac{\partial}{\partial y' }                                                             \\
@@ -1412,19 +1455,19 @@ Substituting the partial derivatives from above into these chain rule expression
 \end{equation}
 </div>
 Now, we can get the second order partial derivatives which is the same as applying the first order partial derivative twice, which gives
-<div class="math" data-terms="varTzPRM varTtPRM varTg varTv varTt">
+<div class="math" data-terms="varTg varTtPRM varTVecrPRM varTv varTt">
 \begin{equation}
 \begin{aligned} \frac{\partial^2}{\partial t ^2} = \frac{\partial}{\partial t } \cdot \frac{\partial}{\partial t } & = \left(\gamma  \frac{\partial}{\partial t' } - \gamma  v  \frac{\partial}{\partial z' }\right) \left(\gamma  \frac{\partial}{\partial t' } - \gamma  v  \frac{\partial}{\partial z' }\right) \\
 & = \gamma ^2 \frac{\partial^2}{\partial t' ^2} - 2\gamma ^2 v  \frac{\partial^2}{\partial t' \partial z' } + \gamma ^2 v ^2 \frac{\partial^2}{\partial z' ^2} \end{aligned}
 \end{equation}
 </div>
-<div class="math" data-terms="varTzPRM varTtPRM varTg varTz varTv varTc">
+<div class="math" data-terms="varTg varTc varTtPRM varTVecrPRM varTv varTVecr">
 \begin{equation}
 \begin{aligned} \frac{\partial^2}{\partial z ^2} & = \left(-\frac{\gamma  v }{c ^2} \frac{\partial}{\partial t' } + \gamma  \frac{\partial}{\partial z' }\right) \left(-\frac{\gamma  v }{c ^2} \frac{\partial}{\partial t' } + \gamma  \frac{\partial}{\partial z' }\right) \\
 & = \frac{\gamma ^2 v ^2}{c ^4} \frac{\partial^2}{\partial t' ^2} - \frac{2\gamma ^2 v }{c ^2} \frac{\partial^2}{\partial t' \partial z' } + \gamma ^2 \frac{\partial^2}{\partial z' ^2} \end{aligned}
 \end{equation}
 </div>
-<div class="math" data-terms="varTxPRM varTyPRM varTx varTy">
+<div class="math" data-terms="varTVecr varTVecrPRM">
 \begin{equation}
 \begin{aligned} \frac{\partial^2}{\partial x ^2} & = \frac{\partial^2}{\partial x' ^2} \\
 \frac{\partial^2}{\partial y ^2} & = \frac{\partial^2}{\partial y' ^2} \end{aligned}
@@ -1432,7 +1475,7 @@ Now, we can get the second order partial derivatives which is the same as applyi
 </div>
 we can now substitute these transformed second derivatives into equation <span class="ref_eq" onmouseover="copyContent('eq_d_Alembert_operator','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.3)</span> to get the d'Alembert operator.
 Let us first do this for just the \(t \) and \(z \) components \(\left(\frac{1}{c ^2}\frac{\partial^2}{\partial t ^2} - \frac{\partial^2}{\partial z ^2}\right)\):
-<div class="math" data-terms="varTzPRM varTtPRM varTg varTz varTv varTc varTt">
+<div class="math" data-terms="varTg varTc varTtPRM varTVecrPRM varTv varTt varTVecr">
 \begin{equation}
 \begin{aligned} \frac{1}{c ^2}\frac{\partial^2}{\partial t ^2} - \frac{\partial^2}{\partial z ^2} & = \frac{1}{c ^2}\left(\gamma ^2 \frac{\partial^2}{\partial t' ^2} - 2\gamma ^2 v  \frac{\partial^2}{\partial t' \partial z' } + \gamma ^2 v ^2 \frac{\partial^2}{\partial z' ^2}\right)                                                              \\
 & \quad - \left(\frac{\gamma ^2 v ^2}{c ^4} \frac{\partial^2}{\partial t' ^2} - \frac{2\gamma ^2 v }{c ^2} \frac{\partial^2}{\partial t' \partial z' } + \gamma ^2 \frac{\partial^2}{\partial z' ^2}\right)                                             \\
@@ -1441,14 +1484,14 @@ Let us first do this for just the \(t \) and \(z \) components \(\left(\frac{1}{
 \end{equation}
 </div>
 now adding in the x and y components, to get the full d'Alembert operator in both frames:
-<div class="math" data-terms="varTxPRM varTzPRM varTyPRM varTtPRM varTx varTz varTy varTc varTt">
+<div class="math" data-terms="varTc varTtPRM varTVecrPRM varTt varTVecr">
 \begin{equation}
 \frac{1}{c ^2}\frac{\partial^2}{\partial t ^2} - \frac{\partial^2}{\partial x ^2} - \frac{\partial^2}{\partial y ^2} - \frac{\partial^2}{\partial z ^2} = \frac{1}{c ^2}\frac{\partial^2}{\partial t' ^2} - \frac{\partial^2}{\partial x' ^2} - \frac{\partial^2}{\partial y' ^2} - \frac{\partial^2}{\partial z' ^2}
 \end{equation}
 </div>
 As can be seen in this equation, the left hand side of the equation is the D'Alembert operator in the <span data-target="def-initial-Frame">initial frames</span> coordinates and the right side is also the D'Alembert operator, but in the <span data-target="def-Primed-Frame">primed frame</span>'s coordinates.
 So we can conclude that the D'Alembert operator in both frames are equal:
-<div class="math" data-terms="varTdAlembertPRM varTdAlembert">
+<div class="math" data-terms="varTdAlembert varTdAlembertPRM">
 \begin{equation}
 \square'  = \square
 \end{equation}
@@ -1473,7 +1516,7 @@ So let us begin by deriving the <span data-target="def-lorentz-invariant">invari
 Here we will derive the <span data-target="def-lorentz-invariant">invariant</span> energy quantity for a particle, starting from the spacetime interval.
 <div class="derivation">
 We can see from equation <span class="ref_eq" onmouseover="copyContent('eq_space-time_interval','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.1)</span>, that if a particle \(q \), is moving in an <span data-target="def-Inertial-reference-frame">inertial reference frame</span>, we can define the space-time interval of its coordinates in this frame as
-<div class="math" data-terms="varTDelta varTSq varTtq varTxq varTyq varTzq varTc">
+<div class="math" data-terms="varTtq varTyq varTSq varTzq varTc varTDelta varTxq">
 \begin{equation}
 \Delta  S_q ^2 = c ^2\Delta  t_q ^2 - \Delta  x_q ^2 - \Delta  y_q ^2- \Delta  z_q ^2
 \end{equation}
@@ -1483,14 +1526,14 @@ And since we will remain in the same <span data-target="def-Reference-frame">ref
 Now we can divide this space-time interval by the square of the proper time that passes for the particle in this interval, \({\Delta \tau }\) (the interval in time that passes in the particles <span data-target="def-proper-frame">rest frame</span>).
 The proper time is a time that all frames of reference agree on, and keeps the expression <span data-target="def-lorentz-invariant">invariant</span>.
 Now taking the limit as the change in proper time in the interval goes to zero, we get a derivative that is an abstract <span data-target="def-lorentz-invariant">invariant</span> quantity that we will call the space-time velocity:
-<div class="math" data-terms="varTdiff varTtau varTSq varTtq varTxq varTyq varTzq varTc">
+<div class="math" data-terms="varTtq varTyq varTSq varTzq varTc varTdiff varTtau varTxq">
 \begin{equation}
 \left(\frac{\mathrm{d} S_q }{\mathrm{d} \tau }\right)^2 = \left(c \frac{ { \mathrm{d} t_q  } }{\mathrm{d} \tau }\right)^2-\left(\frac{\mathrm{d} x_q }{\mathrm{d} \tau }\right)^2-\left(\frac{\mathrm{d} y_q }{\mathrm{d} \tau }\right)^2-\left(\frac{\mathrm{d} z_q }{\mathrm{d} \tau }\right)^2
 \end{equation}
 </div>
 From the <span data-target="def-time-dilation">time dilation</span> equation <span class="ref_eq" onmouseover="copyContent('eq_time_dilation','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.12)</span>, we have \(\mathrm{d} \tau  = \mathrm{d} t_q  / \gamma_{u}  \) with \(\gamma_{u}  = \frac{1}{\sqrt{1-\frac{u_q ^2}{ c ^2} } }\).
 This allows us to reduce this space-time velocity to the following:
-<div class="math" id="eq_particles_space-time_interval" data-terms="varTdiff varTtau varTuqx varTuqy varTuqz varTSq varTtq varTxq varTyq varTzq varTgu varTuq varTc">
+<div class="math" id="eq_particles_space-time_interval" data-terms="varTtq varTyq varTSq varTzq varTc varTuq varTVecuq varTgu varTdiff varTtau varTxq">
 \begin{equation}
 \begin{aligned} \left(\frac{\mathrm{d} S_q }{\mathrm{d} \tau }\right)^2 & = \gamma_{u} ^2\left(c \frac{ { \mathrm{d} t_q  } }{ { \mathrm{d} t_q  } }\right)^2-\gamma_{u} ^2\left(\frac{\mathrm{d} x_q }{ { \mathrm{d} t_q  } }\right)^2-\gamma_{u} ^2\left(\frac{\mathrm{d} y_q }{ { \mathrm{d} t_q  } }\right)^2-\gamma_{u} ^2\left(\frac{\mathrm{d} z_q }{ { \mathrm{d} t_q  } }\right)^2 \\
 & = c ^2\gamma_{u} ^2 \left( 1-\frac{ u_{qx} ^2 + u_{qy} ^2 + u_{qz} ^2}{ c ^2} \right)                                                                                                                        \\
@@ -1500,7 +1543,7 @@ This allows us to reduce this space-time velocity to the following:
 </div>
 It can be seen that this space-time velocity is still an <span data-target="def-lorentz-invariant">invariant</span> quantity as the speed of light is constant in all frames.
 Now we could multiply both sides of the third line in equation <span class="ref_eq" onmouseover="copyContent('eq_particles_space-time_interval','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.17)</span> by the <span data-target="def-lorentz-invariant">invariant</span> quantity \(m ^2 c ^2\) where \(m \) is the <span data-target="def-lorentz-invariant">invariant</span> <span data-target="def-rest-mass">rest mass</span> of the particle, so that we get
-<div class="math" data-terms="varTdiff varTtau varTSq varTgu varTuq varTc varTm">
+<div class="math" data-terms="varTSq varTc varTuq varTm varTgu varTdiff varTtau">
 \begin{equation}
 \begin{aligned} m ^2 c ^2 \left(\frac{\mathrm{d} S_q }{\mathrm{d} \tau }\right)^2 & = m ^2 c ^4 \gamma_{u} ^2 \left( 1-\frac{u_q ^2}{ c ^2} \right) \\
 ( m  c ^2)^2                                & = \gamma_{u} ^2 m ^2 c ^4-\gamma_{u} ^2 m ^2 u_q ^2 c ^2 \end{aligned}
@@ -1509,7 +1552,7 @@ Now we could multiply both sides of the third line in equation <span class="ref_
 were \(\left(\frac{\mathrm{d} S_q }{\mathrm{d} \tau }\right)^2= c ^2\) was substituted in to get the final equation.
 </div>
 This final equation's terms are all in units of energy squared, with the <span data-target="def-lorentz-invariant">invariant</span> energy squared term on the left, which we will tidy up so that we can write it as
-<div class="math" id="eq_energy-momentum_derivation" data-terms="varTgu varTuq varTc varTm">
+<div class="math" id="eq_energy-momentum_derivation" data-terms="varTc varTuq varTgu varTm">
 \begin{equation}
 (m  c ^2)^2  = (\gamma_{u}  m  c ^2)^2 - (\gamma_{u}  m  u_q  {c })^2
 \end{equation}
@@ -1521,7 +1564,7 @@ This <span data-target="def-lorentz-invariant">invariant</span> expresion is wha
 The equation <span class="ref_eq" onmouseover="copyContent('eq_energy-momentum_derivation','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.19)</span>, shows an <span data-target="def-lorentz-invariant">invariant</span> quantity with the units of energy squared \((m  c ^2)^2\), from this we have the energy term \(m  c ^2\) itself being <span data-target="def-lorentz-invariant">invariant</span>; it is an energy that is the same in all frames of reference.
 If we are to interpret this as being not just mathematical, but to have physical meaning, then this would be a new type of energy that is associated with with every particle, that was previously not known about before special relativity.
 This energy does not depend on the speed of a particle, it is an intrinsic energy all masses have, even when at rest, we call this the <span data-target="def-rest-mass-energy">rest mass energy</span>, writen as
-<div class="math" id="eq_rest_mass_energy" data-terms="varTEzero varTc varTm">
+<div class="math" id="eq_rest_mass_energy" data-terms="varTc varTEzero varTm">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ E_0 =m c ^2 }
 \end{equation}
@@ -1540,19 +1583,19 @@ To do this we will first derive the relativistic version of momentum.
 We will now look at the other two terms in equation <span class="ref_eq" onmouseover="copyContent('eq_energy-momentum_derivation','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.19)</span>, these both have the gamma function in them and we will use the taylor series aproximation to get more information from each of the terms.
 <div class="derivation">
 So let us rearrange equation <span class="ref_eq" onmouseover="copyContent('eq_energy-momentum_derivation','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.19)</span>, to get
-<div class="math" id="eq_total_relativistic_energy" data-terms="varTgu varTuq varTc varTm">
+<div class="math" id="eq_total_relativistic_energy" data-terms="varTc varTuq varTgu varTm">
 \begin{equation}
 \left( \gamma_{u}  m  c ^2 \right)^2 = (m  c ^2)^2 + \left( \gamma_{u}  {m }{u_q }{c }\right)^2
 \end{equation}
 </div>
 for the energy term in the brackets on the left hand side we can use what is called the Taylor expansion to write \(\gamma_{u} \) as a convergent series:
-<div class="math" data-terms="varTgu varTuq varTc">
+<div class="math" data-terms="varTc varTuq varTgu">
 \begin{equation}
 \gamma_{u}  \equiv 1 + \frac{1}{2}\frac{u_q ^2}{ c ^2} + \frac{3}{8}\frac{u_q ^4}{c ^4} + ...
 \end{equation}
 </div>
 Giving the energy term on the left hand side as
-<div class="math" data-terms="varTgu varTuq varTc varTm">
+<div class="math" data-terms="varTc varTuq varTgu varTm">
 \begin{equation}
 \begin{aligned} \gamma_{u}  m  c ^2 & = m  c ^2  \left(1 + \frac{1}{2}\frac{u_q ^2}{ c ^2} + \frac{3}{8}\frac{u_q ^4}{c ^4} + ... \right)                                                                                                         \\
 & = m  c ^2 + \frac{1}{2} m  u_q ^2 + \frac{3}{8} m  \frac{u_q ^4}{ c ^2} + ... \end{aligned}
@@ -1563,19 +1606,19 @@ It is the <span data-target="def-lorentz-invariant">invariant</span> energy from
 The second quantity is the classical kinetic energy formula, the rest may be seen as higher-order kinetic energy terms, that are not seen in classical physics because they are very small for \({u_q } \ll {c }\).
 So this seems like it could be a formula for the total energy of a particle (in a <span data-target="def-vacuum">vacuum</span>, with no potential energy).
 We will denote this total energy as
-<div class="math" id="eq_Total_Energy_Compact_Version" data-terms="varTgu varTc varTm varTE">
+<div class="math" id="eq_Total_Energy_Compact_Version" data-terms="varTE varTc varTgu varTm">
 \begin{equation}
 {E } = \gamma_{u}  m  c ^2
 \end{equation}
 </div>
 and the <span data-target="def-rest-mass-energy">rest mass energy</span> from last section denoted as \(E_0 \), allowing us to write equation <span class="ref_eq" onmouseover="copyContent('eq_total_relativistic_energy','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.21)</span> as
-<div class="math" id="eq_energy_momentum_deriving_momentum_term" data-terms="varTEzero varTgu varTuq varTc varTm varTE">
+<div class="math" id="eq_energy_momentum_deriving_momentum_term" data-terms="varTc varTuq varTm varTgu varTEzero varTE">
 \begin{equation}
 E ^2 = E_0 ^2 + (\gamma_{u} {m }{u_q }{c })^2
 \end{equation}
 </div>
 Now let us look at this last energy term in the brackets, along with the Taylor expansion of \(\gamma_{u} \), giving
-<div class="math" data-terms="varTgu varTuq varTc varTm">
+<div class="math" data-terms="varTc varTuq varTgu varTm">
 \begin{equation}
 \begin{aligned} \gamma_{u}  {c }{m }{u_q } & = {c }{m }{u_q } \left(1 + \frac{1}{2}\frac{u_q ^2}{ c ^2} + \frac{3}{8}\frac{u_q ^4}{c ^4} + ... \right)                                                                                                               \\
 & ={c }\left( {m }{u_q } + \frac{1}{2}m  \frac{u_q ^3}{ c ^2} + \frac{3}{8}m \frac{u_q ^5}{c ^4} + ... \right) \end{aligned}
@@ -1584,7 +1627,7 @@ Now let us look at this last energy term in the brackets, along with the Taylor 
 At small particle velocities this last term is approximately \(({m }{u_q }){c }\) with \({m }{u_q }\) being the classical momentum, it seems like this energy, could be the relativistic version of the particle's momentum, times the speed of light.
 </div>
 So we will think of the last term in equation <span class="ref_eq" onmouseover="copyContent('eq_energy_momentum_deriving_momentum_term','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.25)</span> as the relativistic momentum of the particle:
-<div class="math" id="eq_relativistic_momentum" data-terms="varTgu varTuq varTm varTp">
+<div class="math" id="eq_relativistic_momentum" data-terms="varTp varTuq varTgu varTm">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ p  = \gamma_{u}  {m }{u_q } }
 \end{equation}
@@ -1595,7 +1638,7 @@ which approximates to the classical momentum at speeds much less than speed of l
 <div id="part_2_ch3_3_4_content">
 Classically we have conservation laws for momentum and for energy, that mean that for an isolated system that the momentum and also the energy remains constant.
 For an isolated system of particles the sum of all the particles energy and momentum before an interaction is equal to the sum of each particles energy and momentum after,
-<div class="math" data-terms="varTpbefore varTEbefore varTpafter varTEafter">
+<div class="math" data-terms="varTEafter varTpafter varTEbefore varTpbefore">
 \begin{equation}
 \begin{aligned} \sum p_{after}  & = \sum p_{before}  \\
 \sum E_{after}  & = \sum E_{before} \end{aligned}
@@ -1611,7 +1654,7 @@ We will start with the previous definitions for the momentum and total energy, \
 <div id="part_2_ch3_3_4_1_content">
 We choose the <span data-target="def-Primed-Frame">primed frame</span> to be moving in the z-direction as usual, giving the velocity <span data-target="def-transform">transform</span> between frames from equation <span class="ref_eq" onmouseover="copyContent('eq_velocity_transform','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.43)</span>.
 We will also make use of an identity for \(\gamma_{u'} \) given by
-<div class="math" id="eq_gamma_u_prime" data-terms="varTguPRM varTuz varTgu varTg varTv varTc">
+<div class="math" id="eq_gamma_u_prime" data-terms="varTg varTVecu varTc varTv varTgu varTguPRM">
 \begin{equation}
 \gamma_{u'}  = \gamma_{u}  \gamma  \left(1 - \frac{u_z  v }{c ^2}\right)
 \end{equation}
@@ -1621,7 +1664,7 @@ I will let you check this identity yourself, as it is just the substitution of t
 <h6 id="part_2_ch3_3_4_2_header"> Y-Component</h6>
 <div id="part_2_ch3_3_4_2_content">
 Using equation <span class="ref_eq" onmouseover="copyContent('eq_velocity_transform','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.43)</span> and equation <span class="ref_eq" onmouseover="copyContent('eq_gamma_u_prime','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.29)</span> on the relativistic momentum's y-component in the <span data-target="def-Primed-Frame">primed frame</span> \(p'_y  = \gamma_{u'}  m  u'_y \), gives:
-<div class="math" data-terms="varTpyPRM varTuz varTuy varTgu varTpy varTg varTv varTc varTm">
+<div class="math" data-terms="varTVecpPRM varTg varTVecu varTc varTVecp varTm varTv varTgu">
 \begin{equation}
 \begin{aligned} p'_y  &= \left[ \gamma_{u}  \gamma  \left(1 - \frac{u_z  v }{c ^2}\right) \right] m  \left[ \frac{u_y }{\gamma (1 - \frac{u_z  v }{c ^2})} \right] \\
 p'_y  &= \gamma_{u}  m  u_y   \\
@@ -1635,7 +1678,7 @@ This new relativistic momentum is required to allow for the conservation law to 
 <h6 id="part_2_ch3_3_4_3_header"> Z-Component</h6>
 <div id="part_2_ch3_3_4_3_content">
 Now doing the same for the z-component \(p'_z  = \gamma_{u'}  m  u'_z \), we get:
-<div class="math" data-terms="varTpzPRM varTuz varTgu varTg varTv varTc varTm">
+<div class="math" data-terms="varTVecpPRM varTg varTVecu varTc varTm varTv varTgu">
 \begin{equation}
 \begin{aligned} p'_z  & = \left[ \gamma_{u}  \gamma  \left(1 - \frac{u_z  v }{c ^2}\right) \right] m  \left[ \frac{u_z  - v }{1 - \frac{u_z  v }{c ^2} } \right] \\
 p'_z  & = \gamma_{u}  \gamma  m  (u_z  - v )                                                                                              \\
@@ -1646,13 +1689,13 @@ p'_z  & = \gamma  (\gamma_{u}  m  u_z ) - \gamma  v  (\gamma_{u}  m ) \end{align
 <h6 id="part_2_ch3_3_4_4_header"> Proof of Conservation</h6>
 <div id="part_2_ch3_3_4_4_content">
 Using the relativistic momentum in the <span data-target="def-initial-Frame">initial frame</span> \(p_z  = \gamma_{u}  m  u_z \) and the equation for the total energy that we described in previous section \(E  = \gamma_{u}  m  c ^2\), we obtain:
-<div class="math" data-terms="varTpzPRM varTpz varTg varTv varTc varTE">
+<div class="math" data-terms="varTVecpPRM varTg varTc varTVecp varTv varTE">
 \begin{equation}
 p'_z  = \gamma  \left( p_z  - \frac{v  E }{c ^2} \right)
 \end{equation}
 </div>
 now if we do have the total momentum and total energy before and after conserved, we have
-<div class="math" data-terms="varTDelta varTpzPRM varTpza varTpzb varTpz varTEa varTEb varTg varTv varTc varTE">
+<div class="math" data-terms="varTVecpPRM varTg varTc varTEa varTVecp varTpzb varTv varTDelta varTEb varTpza varTE">
 \begin{equation}
 \begin{aligned} \Delta  p'_z  &= \gamma  \left( p_{zafter}  - \frac{v  E_{after} }{c ^2} \right) - \gamma  \left( p_{zbefore}  - \frac{v  E_{before} }{c ^2} \right) \\
 &= \gamma  \left( \Delta  p_z  - \frac{v  \Delta  E }{c ^2} \right) \end{aligned}
@@ -1660,14 +1703,14 @@ now if we do have the total momentum and total energy before and after conserved
 </div>
 This last equation is the <span data-target="def-transform">transformation</span> of the momentum in the z-driection of each particle, to a <span data-target="def-Primed-Frame">primed frame</span>.
 In the isolated system in the intial frame we want both the momentum and energy conserved
-<div class="math" data-terms="varTDelta varTpz varTE">
+<div class="math" data-terms="varTVecp varTDelta varTE">
 \begin{equation}
 \begin{aligned} \Delta  p_z  & =0 \\
 \Delta  E  & =0 \end{aligned}
 \end{equation}
 </div>
 If these are indeed conserved, then
-<div class="math" data-terms="varTDelta varTpzPRM">
+<div class="math" data-terms="varTVecpPRM varTDelta">
 \begin{equation}
 \Delta  p'_z  = 0
 \end{equation}
@@ -1683,21 +1726,21 @@ Now what about for light itself, when \(\gamma \) is infinitly large, can we sti
 <div id="part_2_ch3_3_5_content">
 Here, we will show how to get the only reasonable momentum equation of light that we can from the energy-momentum relationship equation.
 So let us start by rewriting out the energy-momentum equation <span class="ref_eq" onmouseover="copyContent('eq_energy_momentum_deriving_momentum_term','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.25)</span>.
-<div class="math" data-terms="varTgu varTuq varTc varTm varTE">
+<div class="math" data-terms="varTc varTuq varTm varTgu varTE">
 \begin{equation}
 E ^2 = (m c ^2)^2 + (\gamma_{u} {m }{u_q }{c })^2
 \end{equation}
 </div>
 For the speed of light we have \(\gamma_{u} \) being infinitely large, so if the photon had a non zero <span data-target="def-rest-mass">rest mass</span>, the second term would be infinite, therefor giving the total energy as infinite, which is not possible.
 So the photon must have zero (or atleast only infinitesmal) <span data-target="def-rest-mass">rest mass</span>, giving zero for the first term (<span data-target="def-rest-mass-energy">rest mass energy</span>), reducing the total energy of a photon to;
-<div class="math" data-terms="varTEphoton varTmphoton varTgc varTc">
+<div class="math" data-terms="varTc varTEphoton varTgc varTmphoton">
 \begin{equation}
 E_{ph}  = (\gamma_{c} {m_{ph}  }{c }){c }
 \end{equation}
 </div>
 now if we were to get a finite energy from this, we would require \(\gamma_{c} {m_{ph}  }\) (which is an infinite value multiplied by and infintesmal) to be finite for it to give a meaningful energy of the photon, we previously had the term \(p =\gamma_{u} {m }\) being the relativistic momentum of a particle, so we could take this as the momentum of a photon aswell, and we could think of \(m_{eff} =\gamma_{c} {m_{ph}  }\) as an effective mass that a photon has, and the momentum of the photon as \(p_{ph} =m_{eff} {c }\).
 This would give the momentum for light in terms of its energy as
-<div class="math" data-terms="varTEphoton varTpphoton varTc">
+<div class="math" data-terms="varTpphoton varTEphoton varTc">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ {p_{ph}  }= \frac{E_{ph}  }{c } }
 \end{equation}
@@ -1706,7 +1749,7 @@ with \(p_{ph} \) and \(E_{ph} \) being the momentum and energy of the photon.
 This equation for the energy-momentum relationship of light, can also be derived in electromagnetic theory [<a href="#ref-FeynmanMomentum" id="cite-FeynmanMomentum" class="citation-link">4</a>].
 Which helps confirm that we were right in our derivation.
 This can allow us to generalise the last energy term in equation <span class="ref_eq" onmouseover="copyContent('eq_energy_momentum_deriving_momentum_term','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.25)</span>, as the momentum times the speed of light
-<div class="math" id="eq_energy_from_momentum" data-terms="varTEmom varTc varTp">
+<div class="math" id="eq_energy_from_momentum" data-terms="varTp varTEmom varTc">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ E_p  = p  {c } }
 \end{equation}
@@ -1716,13 +1759,13 @@ giving us the final piece of the puzzle.
 <h5 id="part_2_ch3_3_6_header">3.3.6 Energy-Mass-Momentum Relation</h5>
 <div id="part_2_ch3_3_6_content">
 Now that we have confirmed the use of the relativistic momentum from equation <span class="ref_eq" onmouseover="copyContent('eq_relativistic_momentum','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.27)</span>, we can substitute this and equation <span class="ref_eq" onmouseover="copyContent('eq_rest_mass_energy','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.20)</span> into <span class="ref_eq" onmouseover="copyContent('eq_energy_momentum_deriving_momentum_term','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(3.25)</span>, to finally give the famous energy-momentum relationship
-<div class="math" id="eq_energy-momentum_relation" data-terms="varTc varTm varTE varTp">
+<div class="math" id="eq_energy-momentum_relation" data-terms="varTp varTc varTE varTm">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ E ^2  = (m c ^2)^2 + (p c )^2 }
 \end{equation}
 </div>
 with momentum being \(p  = \gamma_{u}  {m }{u_q }\) for a particle with mass and writen more meaningfully for a photon as \(p =E /c \).
-<b>Side Note:</b>
+<p style="margin-top: 30px; margin-bottom: 15px;"><b>Side Note:</b></p>
 When looking at particle collisions, we also need to take into account potential energy as they move towards and away from each other, but this would have to take into account acceleration aswell. which is not an easy thing to do.
 </div>
 <h5 id="part_2_ch3_3_7_header">3.3.7 Speed of Light Limit</h5>
@@ -1753,7 +1796,6 @@ Interactions between particles to produce other particles, require more than jus
 Hence this is outside the context of this book.
 So we will move on to Part (<a href="#part_3_header" class="ref_toc" >3</a>), where we will take a close look at how light's propagation behaves in special relativity.
 We will first examine the delayed view of the world an <span data-target="def-observer">observer</span> sees due to the delay in light's signal from their surroundings, and then move on to how light is effected when emitted from a moving point source, leading to a lot of insights, including the famous <span data-target="def-doppler-effect">Doppler effect</span>.
-
 </div>
 </div>
 
@@ -1807,14 +1849,14 @@ If a light signal is emitted from a coordinate to an <span data-target="def-obse
 </figure>
 As shown in the diagram, if we take the <span data-target="def-proper-frame">rest frame</span> of an <span data-target="def-observer">observer</span> and a source that emits a pulse of light from its position at \({\underline{r} =\underline{r}_{ret} }\) so that it is received by the <span data-target="def-observer">observer</span> at the origin, at time \({t } = 0\).
 The retarded time the pulse of light was emitted is
-<div class="math" data-terms="varTVecrRet varTtRet varTc">
+<div class="math" data-terms="varTVecrRet varTc varTtRet">
 \begin{equation}
 { t_{ret}  } =-\frac{\|\underline{r}_{ret} \|}{c },
 \end{equation}
 </div>
 which is the negative of the time it took for light to propagate along \({\underline{r}_{ret} }\) to the origin.
 The velocity of the light that propagated to the origin is
-<div class="math" data-terms="varTalpha varTVecc varTc">
+<div class="math" data-terms="varTVecc varTc varTalpha">
 \begin{equation}
 \underline{c}  = {c } \begin{pmatrix} 0            \\
 \sin{\alpha } \\
@@ -1824,7 +1866,7 @@ The velocity of the light that propagated to the origin is
 </div>
 Were \({\alpha }\) is the direction of propagation.
 This and the retarded time (which is negative) gives the <span data-target="def-retarded-position">retarded position</span> the light was emitted from as
-<div class="math" data-terms="varTVecrRet varTalpha varTtRet varTHatc varTc">
+<div class="math" data-terms="varTtRet varTc varTVecrRet varTHatc varTalpha">
 \begin{equation}
 \underline{r}_{ret}  = -\|\underline{r}_{ret} \|\underline{\hat{c}}  ={c }{ { t_{ret}  } } \begin{pmatrix} 0            \\
 \sin{\alpha } \\
@@ -1835,7 +1877,7 @@ This and the retarded time (which is negative) gives the <span data-target="def-
 The source's position and <span data-target="def-retarded-position">retarded position</span> are the same in the <span data-target="def-proper-frame">rest frame</span> as the source is not moving.
 Also, the position vector and light's velocity vector are in opposite directions, The emitted time being negative flips the direction of the velocity vector here.
 Now inputting this <span data-target="def-retarded-position">retarded position</span> and time into the coordinate <span data-target="def-transform">transform</span> we get the <span data-target="def-retarded-position">retarded position</span> and time in the <span data-target="def-Primed-Frame">primed frame</span> as
-<div class="math" data-terms="varTVecrRetPRM varTtRetPRM varTalpha varTtRet varTg varTz varTy varTv varTc">
+<div class="math" data-terms="varTtRet varTg varTc varTalpha varTv varTVecrRetPRM varTVecr varTtRetPRM">
 \begin{equation}
 \begin{aligned} \underline{r}'_{ret}      & = {c }{ t_{ret}  } \begin{pmatrix} 0                                                \\
 \sin{\alpha }                                     \\
@@ -1848,7 +1890,7 @@ Now inputting this <span data-target="def-retarded-position">retarded position</
 \end{equation}
 </div>
 If instead we use the angle of the retarded coordinate from the z-axis, \(\theta_{ret}  = \alpha  - \pi \), we have that \(\cos{\alpha }=\cos{(\theta_{ret} +\pi )}=-\cos{\theta_{ret}  }\) and therefor the retarded time can be given as
-<div class="math" data-terms="varTthetaRet varTtRetPRM varTtRet varTg varTv varTc">
+<div class="math" data-terms="varTtRet varTg varTc varTthetaRet varTv varTtRetPRM">
 \begin{equation}
 \\ { t'_{ret}  } = \gamma  \left(1 + \frac{v }{c } \cos{\theta_{ret}  } \right) { { t_{ret}  } }
 \end{equation}
@@ -1860,13 +1902,13 @@ We can use this factor to simplify equations like we did with \(\gamma \) previo
 We will call \(\text{Å}\) the aberrational factor, but it is also referred to as the relativistic Doppler factor.
 When swapping to the <span data-target="def-Primed-Frame">primed frame</span>, the angle that the light is being emitted and the angle it is being received at has changed, this is called the relativistic <span data-target="def-aberration">aberration</span> of light.
 This <span data-target="def-aberration">aberration</span> will be described fully in the next chapter.
-<b>Side Note:</b>
+<p style="margin-top: 30px; margin-bottom: 15px;"><b>Side Note:</b></p>
 This <span data-target="def-retarded-position">retarded position</span> of the source is at its retarded time.
 If you wanted to find the position of where the source is at the same time as the <span data-target="def-observer">observer</span>, \(t' =0\), we need to propagate this from its <span data-target="def-retarded-position">retarded position</span> and time, to this time of zero.
 So we need to take into account that the source is moving at \(u  = -v \) and the retarded time is the negative of the time that we want to pass, for the source to move to its current position.
 These negatives cancel out.
 This gives the current position, with a bit of working out, as
-<div class="math" id="eq_primed_position_with_synced_times" data-terms="varTvecrtPRMzeroPRM varTVecrRetPRM varTtRetPRM varTalpha varTVecv varTtRet varTg varTc">
+<div class="math" id="eq_primed_position_with_synced_times" data-terms="varTtRet varTg varTc varTVecv varTalpha varTVecrtPRMzeroPRM varTVecrRetPRM varTtRetPRM">
 \begin{equation}
 \underline{r}'_{t' = 0}  = \underline{r}'_{ret}  + \underline{v} t'_{ret}  = {c }{ t_{ret}  } \begin{pmatrix} 0                               \\
 \sin{\alpha }                    \\
@@ -1915,13 +1957,13 @@ If we have a moving particle at its retarded position \(\underline{r}_{ret} \), 
 <figcaption>Figure 4.4: <b><span data-target="def-apparent-velocity">Apparent velocity</span>.</b> Diagram showing a particle (blue) moving from a retarded position \(\underline{r}_{ret} \) by a displacement of \(\underline{u}_{ret} \mathrm{d} t \) (with \(\underline{u}_{ret}\) being the velocity of the particle at the retarded time, and \(\mathrm{d} t\) being an infinitesimal change in time), the paths that light has to travel to get to the origin from both these positions is shown (red). Leading to a different retarded time between the positions than the actual time between them. This is due to the particle moving to a different position, requiring the light to travel a different distance, which introduces an additional time difference. This gives a different <span data-target="def-apparent-velocity">Apparent velocity</span> to the actual velocity.</figcaption>
 </figure>
 The difference between the retarded times of light from each position reaching the origin, is the time that light takes to get from position  \(\underline{r}_{ret}  + \underline{u}_{ret}  {\mathrm{d} t } \) minus the time it takes to get from position \(\underline{r}_{ret} \), plus the time it takes for the particle to move to the new position, \(\mathrm{d} t \). Which is
-<div class="math" id="eq_change_in_retarded_time" data-terms="varTVecuRet varTVecr varTdiff varTtRet varTc varTt">
+<div class="math" id="eq_change_in_retarded_time" data-terms="varTtRet varTc varTt varTVecr varTVecuRet varTdiff">
 \begin{equation}
 \mathrm{d} t_{ret}  =   \frac{\|\underline{r}  + \underline{u}_{ret}  {\mathrm{d} t } \|}{c } -  \frac{\|\underline{r} \|}{c } + \mathrm{d} t
 \end{equation}
 </div>
 since \(\underline{u}_{ret}  {\mathrm{d} t } \) is infinitesmally small we can simplify this expression by using some approximations as shown in the following derivation
-<div class="math" data-terms="varTVecrRet varTHatrRet varTVecuRet varTdiff varTt varTN">
+<div class="math" data-terms="varTVecrRet varTHatrRet varTt varTVecuRet varTdiff varTN">
 \begin{equation}
 \begin{aligned} \|\underline{r}_{ret}  + \underline{u}_{ret}  {\mathrm{d} t } \| & \color{gray} =  \sqrt{(\underline{r}_{ret}  + \underline{u}_{ret}  {\mathrm{d} t } ) \cdot (\underline{r}_{ret}  + \underline{u}_{ret}  {\mathrm{d} t } )}                                       \\
 & \color{gray} = \sqrt{\underline{r}_{ret}  \cdot \underline{r}_{ret}  + 2 \underline{r}_{ret}  \cdot \underline{u}_{ret}  {\mathrm{d} t }  + \underline{u}_{ret}^2  {\mathrm{d} t }^2  } \\
@@ -1934,7 +1976,7 @@ since \(\underline{u}_{ret}  {\mathrm{d} t } \) is infinitesmally small we can s
 \end{equation}
 </div>
 so for the infinitesimal change in retarded positions we have \(\|\underline{r}_{ret}  + \underline{u}_{ret}  {\mathrm{d} t } \|= \|\underline{r}_{ret} \|   + \underline{\hat{r}_{ret} }   \cdot \underline{u}_{ret}  {\mathrm{d} t } \), which we can substitute into equation <span class="ref_eq" onmouseover="copyContent('eq_change_in_retarded_time','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(4.7)</span> to get the time that has passed between the two positions as observed from the origin i.e. the perceived retarded time that has passed at the origin, given as
-<div class="math" data-terms="varTHatrRet varTVecuRet varTdiff varTtRet varTc varTt">
+<div class="math" data-terms="varTtRet varTc varTHatrRet varTt varTVecuRet varTdiff">
 \begin{equation}
 \begin{aligned} \mathrm{d} t_{ret}  & \color{gray} =   \mathrm{d} t  + \frac{\underline{\hat{r}_{ret} }   \cdot \underline{u}_{ret}  {\mathrm{d} t }  }{c }  \\
 & \color{gray} = \mathrm{d} t  + \frac{\underline{\hat{r}_{ret} }   \cdot \underline{u}_{ret}  \mathrm{d} t }{c }  \\
@@ -1943,7 +1985,7 @@ so for the infinitesimal change in retarded positions we have \(\|\underline{r}_
 </div>
 The distances between the points is the same to the <span data-target="def-observer">observer</span> as the true distance between them, it is just the perceived retarded times that are different.
 Therefore, we can get this <span data-target="def-apparent-velocity">apparent velocity</span> as
-<div class="math" data-terms="varTHatrRet varTVecuapp varTVecuRet varTdiff varTtRet varTc varTt">
+<div class="math" data-terms="varTtRet varTc varTVecuapp varTHatrRet varTt varTVecuRet varTdiff">
 \begin{equation}
 \begin{aligned} \underline{u}_{app}  & \color{gray}= \frac{\underline{u}_{ret}  {\mathrm{d} t }  }{\mathrm{d} t_{ret}  }                                                                \\
 & \color{gray}= \frac{\underline{u}_{ret}  {\mathrm{d} t }  }{\left( 1 + \frac{\underline{u}_{ret}  \cdot \underline{\hat{r}_{ret} }   }{c } \right) \mathrm{d} t } \\
@@ -1968,7 +2010,6 @@ We then derived the <span data-target="def-apparent-velocity">apparent velocity<
 You could go one step further and find the apparent acceleration if you wanted to, but we will leave that for now.
 This differs to the actual speed the object is moving.
 What we have learned here will be used later when transforming light pulses later.
-
 
 </div>
 </div>
@@ -2004,7 +2045,7 @@ So let us start with how to describe a vector in terms of the spherical polar co
 The figure shows, for a given position \(\underline{r} \) we have the Cartesian coordinates \(({x },{y },{z })\), but we can also write this position in terms of spherical polar coordinates \((r ,\theta ,\phi )\).
 Where the angles from the Z-Axis and X-axis are \(\theta \) (between 0 and \(\pi \)) and \(\phi \) (between 0 and \(2\pi \)) respectively, and \({r }\) is the displacement to the position from the origin.
 The position can be written using either coordinate system as follows
-<div class="math" id="eq_cartesian_to_spherical_polar_coordinates" data-terms="varTtheta varTVecr varTphi varTx varTz varTy varTr">
+<div class="math" id="eq_cartesian_to_spherical_polar_coordinates" data-terms="varTphi varTtheta varTVecr varTr">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ \underline{r}  = \begin{pmatrix} x  \\
 y  \\
@@ -2016,7 +2057,7 @@ z  \\
 \end{equation}
 </div>
 with
-<div class="math" data-terms="varTtheta varTVecr varTphi varTx varTz varTy varTr">
+<div class="math" data-terms="varTphi varTtheta varTVecr varTr">
 \begin{equation}
 \begin{aligned} r  = \|\underline{r} \| & =\sqrt{x ^2 + y ^2 + z ^2}      \\
 \cos\theta             & = \frac{z }{r }                \\
@@ -2034,7 +2075,7 @@ Think of it as the frame with the source moving being the current frame, with th
 Now lets get back to it.
 The speed of light remains the same after transforming between frames, but the velocity does not, as the direction it propagates changes.
 Light emitted at a speed \(c \) from a source at rest, at an angle \(\alpha_0 \) from the z-axis and \(\varphi_0 \) from the x-axis, has the velocity written in spherical polar coordinates as
-<div class="math" data-terms="varTvarphizero varTalphazero varTVecczero varTHatczero varTc">
+<div class="math" data-terms="varTvarphizero varTc varTVecczero varTHatczero varTalphazero">
 \begin{equation}
 \underline{c}_0   = {c } \cdot {\underline{\hat{c}}_0  }= {c } \begin{pmatrix} \cos{\varphi_0 }\sin{\alpha_0 } \\
 \sin{\varphi_0 }\sin{\alpha_0 } \\
@@ -2044,7 +2085,7 @@ Light emitted at a speed \(c \) from a source at rest, at an angle \(\alpha_0 \)
 </div>
 then for the frame with the source moving at speed \(u \) in the z-direction, we have this frame moving at \(v =-u \) relative to the <span data-target="def-proper-frame">rest frame</span>.
 So using the velocity <span data-target="def-transform">transform</span> from equation <span class="ref_eq" onmouseover="copyContent('eq_velocity_transform','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.43)</span> we get this frame light's velocity as
-<div class="math" id="eq_velocity_transform_for_light" data-terms="varTvarphizero varTalphazero varTvarphi varTalpha varTVecc varTg varTc varTu">
+<div class="math" id="eq_velocity_transform_for_light" data-terms="varTvarphizero varTg varTc varTVecc varTvarphi varTalpha varTu varTalphazero">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ \underline{c}  = c \begin{pmatrix} \cos\varphi \sin\alpha  \\
 \sin\varphi \sin\alpha  \\
@@ -2058,14 +2099,14 @@ So using the velocity <span data-target="def-transform">transform</span> from eq
 Using a bit of trigonometry to find the z-components in terms of sines instead of cosines, and substituting them into the other two components, you can find that \(\varphi =\varphi_0 \).
 This frames velocity still has the same speed of light, which can be shown by taking the magnitude of the velocity vector.
 However, the angle of propagation from the z-axis has changed, the change in this angle is described from the z-components of the equation above, as
-<div class="math" id="eq_cosine_transform" data-terms="varTalphazero varTalpha varTc varTu">
+<div class="math" id="eq_cosine_transform" data-terms="varTalphazero varTu varTc varTalpha">
 \begin{equation}
 \cos\alpha  = \dfrac{\left( \cos\alpha_0 +\frac{u }{c } \right)}{\left(1+\frac{u }{c } \cos\alpha_0 \right)}
 \end{equation}
 </div>
 This is the relativistic <span data-target="def-aberration">aberration</span> formula [<a href="#ref-einstein1905electrodynamics" id="cite-einstein1905electrodynamics" class="citation-link">5</a>], it shows how the light's propagation direction <span data-target="def-transform">transforms</span>, shown in Figure (<span class="ref_fig" onmouseover="copyContent('fig_aberrated_emitted_light','fig_hover',this);" onmouseout="deleteContent('fig_hover');">5.2</span>).
 Rearranging this equation can give us the coordinate conversion in the opposite direction
-<div class="math" id="eq_inverse_cosine_transform" data-terms="varTalphazero varTalpha varTc varTu">
+<div class="math" id="eq_inverse_cosine_transform" data-terms="varTalphazero varTu varTc varTalpha">
 \begin{equation}
 \cos\alpha_0  = \dfrac{\left( \cos\alpha  - \frac{u }{c } \right)}{\left(1 - \frac{u }{c } \cos\alpha \right)}
 \end{equation}
@@ -2135,14 +2176,14 @@ We will describe this effect using the help of the following simple figure of li
 <figcaption>Figure 5.4: <b>The <span data-target="def-doppler-effect">Doppler effect</span>.</b> Diagrams showing a source emitting light at a velocity \(\underline{c}_0 \) in the source's <span data-target="def-proper-frame">rest frame</span> (left) and a second frame where the source is now moving at velocity \(\underline{u} \) with the light now being emitted at an angle \({\alpha }\) giving the light's velocity as \({\underline{c}  }\). The different color of light in each frame is showing the effect on the lights frequency and hence color, due to the <span data-target="def-doppler-effect">Doppler effect</span>.</figcaption>
 </figure>
 In the <span data-target="def-proper-frame">rest frame</span> of the source, if it emits a wave at the speed of light in any direction, we have the length the wave has traveled from the source in the infinitesimal time \({\mathrm{d} t_0 }\) as being
-<div class="math" data-terms="varTlambdazero varTtzero varTdiff varTc">
+<div class="math" data-terms="varTtzero varTlambdazero varTc varTdiff">
 \begin{equation}
 {\mathrm{d} \lambda_0 } = {c }{\mathrm{d} t_0 }
 \end{equation}
 </div>
 If we change to a frame where the source is moving at velocity \({\underline{u}  }\) in the z-direction, we have the wave emitted at an angle \(\alpha \) from the z-axis, traveling a distance \({c }{\mathrm{d} t }\) in a time \({\mathrm{d} t }\), with the source moving a distance \( u  {\mathrm{d} t } \cos\alpha  \) in the direction of this emitted wave.
 It leads to a bunching up of the wave in the direction of the movement of the source, as the same amount of the wave has been emitted in this frame's corresponding time, but the distance it has traveled from the source is
-<div class="math" data-terms="varTlambda varTalpha varTtzero varTdiff varTg varTc varTt varTu">
+<div class="math" data-terms="varTg varTc varTalpha varTt varTu varTdiff varTtzero varTlambda">
 \begin{equation}
 \begin{aligned} {\mathrm{d} \lambda } & \color{gray}= {c }{\mathrm{d} t }-{u } \cos\alpha  {\mathrm{d} t }   \\
 & \color{gray}=  (1-\frac{u }{c }\cos\alpha )c \mathrm{d} t  \\
@@ -2152,13 +2193,13 @@ It leads to a bunching up of the wave in the direction of the movement of the so
 </div>
 With \({\mathrm{d} t } = \gamma  {\mathrm{d} t_0 }\) being used in the last step, due to <span data-target="def-time-dilation">time dilation</span>, from equation <span class="ref_eq" onmouseover="copyContent('eq_time_dilation','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.12)</span>.
 The ratio of displacement the wave is taking up compared to in the <span data-target="def-proper-frame">rest frame</span> is
-<div class="math" data-terms="varTlambdazero varTlambda varTalpha varTdiff varTg varTc varTu">
+<div class="math" data-terms="varTg varTc varTlambdazero varTalpha varTu varTdiff varTlambda">
 \begin{equation}
 \frac{\mathrm{d} \lambda }{\mathrm{d} \lambda_0 } = \gamma  \left(1-\dfrac{u }{c } \cos\alpha  \right)
 \end{equation}
 </div>
 Wavelength is inversely proportional to the frequency, and this bunching up at the front will proportionally decrease the wavelength, the frequency ratio \(\nu /\nu_0 \) is then
-<div class="math" id="eq_Doppler_Effect" data-terms="varTlambdazero varTlambda varTnuzero varTalpha varTdiff varTnu varTg varTc varTu">
+<div class="math" id="eq_Doppler_Effect" data-terms="varTg varTc varTnuzero varTnu varTlambdazero varTalpha varTu varTdiff varTlambda">
 \begin{equation}
 \frac{\nu }{\nu_0 } = \frac{\mathrm{d} \lambda_0 }{\mathrm{d} \lambda } = \frac{1}{ \gamma  \left(1-\dfrac{u }{c } \cos\alpha  \right)}
 \end{equation}
@@ -2170,7 +2211,7 @@ But for those who are interested, there are two videos explaining how we work su
 <h5 id="part_3_ch5_4_1_header">5.4.1 Frequency Change from Swaping Frame</h5>
 <div id="part_3_ch5_4_1_content">
 i.e. just in terms of \(v \) and not a sources velocity
-<div class="math" data-terms="varTalphaPRM varTalpha varTnuPRM varTnu varTg varTv varTc">
+<div class="math" data-terms="varTg varTc varTnu varTnuPRM varTalpha varTv varTalphaPRM">
 \begin{equation}
 \frac{\nu' }{\nu } = \gamma  \left(1-\dfrac{v }{c } \cos\alpha  \right)  = \frac{1}{ \gamma  \left(1+\dfrac{v }{c } \cos\alpha'  \right)}
 \end{equation}
@@ -2205,7 +2246,7 @@ First by applying the <span data-target="def-lorentz-transform">Lorentz transfor
 The pulse positions in the <span data-target="def-Moving-Frame">moving frame</span> with the time synced with the source at the origin are shown in figure (<span class="ref_fig" onmouseover="copyContent('fig_Relativistic_beaming_3','fig_hover',this);" onmouseout="deleteContent('fig_hover');">5.5.c</span>).
 They can be found from the Lorentz transformed <span data-target="def-proper-frame">rest frame</span> coordinates shown in figure (<span class="ref_fig" onmouseover="copyContent('fig_Relativistic_beaming_2','fig_hover',this);" onmouseout="deleteContent('fig_hover');">5.5.b</span>) by propagating the light, from these transformed coordinates, forward or backwards in time to be synced with the origin's time of zero.
 So the light's position in the <span data-target="def-Moving-Frame">moving frame</span> at the time of zero is
-<div class="math" id="eq_synced_time_light" data-terms="varTVecr varTVecc varTVecl varTt">
+<div class="math" id="eq_synced_time_light" data-terms="varTt varTVecr varTVecl varTVecc">
 \begin{equation}
 \underline{l}  = \underline{r}  - \underline{c}  t
 \end{equation}
@@ -2228,13 +2269,13 @@ To find the propagated distance of the light, we first have to derive the propag
 You can skip past this derivation if you would like, as it does not add much to the understanding.
 <div class="derivation">
 The triangle that the three vectors make in the diagram above, allows us to get the equation for the velocity of the light as
-<div class="math" data-terms="varTVecu varTVecc varTVecl varTTp">
+<div class="math" data-terms="varTTp varTVecc varTVecu varTVecl">
 \begin{equation}
 \underline{c}  T_p  = \underline{u}  T_p  + \underline{l}
 \end{equation}
 </div>
 with \(\underline{l} =(l_x ,l_y ,l_z )\), writing out the vectors and rearranging to get the velocity vector for the light, gives
-<div class="math" id="eq_retarded_light_velocity_vector" data-terms="varTVecc varTTp varTlx varTly varTlz varTu">
+<div class="math" id="eq_retarded_light_velocity_vector" data-terms="varTTp varTVecc varTu varTVecl">
 \begin{equation}
 \underline{c}  = \frac{1}{T_p } \begin{pmatrix} l_x  \\
 l_y  \\
@@ -2242,27 +2283,27 @@ l_z  + u  T_p \end{pmatrix}
 \end{equation}
 </div>
 The magnitude of the light's displacement is equal to the distance the light travels in the corresponding propagation time \( c  T_p  = \|\underline{c}  T_p \|\). The square of this gives
-<div class="math" data-terms="varTVecc varTTp varTlx varTly varTlz varTc varTu">
+<div class="math" data-terms="varTc varTVecc varTVecl varTu varTTp">
 \begin{equation}
 \begin{aligned} \left( c  T_p \right)^2 & = \|\underline{c}  T_p \|^2                                     \\
 & = (l_x ^2 + l_y ^2 + l_z ^2) + u ^2 T_p ^2 + 2u  T_p  l_z , \end{aligned}
 \end{equation}
 </div>
 rearranging this, we get the quadratic
-<div class="math" data-terms="varTTp varTlx varTly varTlz varTg varTc varTu">
+<div class="math" data-terms="varTg varTc varTVecl varTu varTTp">
 \begin{equation}
 T_p ^2 - \left(2\gamma ^2\frac{u }{c ^2} l_z \right)T_p  - \frac{\gamma ^2}{c ^2}(l_x ^2 + l_y ^2 + l_z ^2) = 0,
 \end{equation}
 </div>
 where \(\gamma  = 1/ \sqrt{1 - u ^2/c ^2}\).
 Now taking the positive solution to this, which corresponds to the past time, and making use of the identity
-<div class="math" data-terms="varTg varTc varTu">
+<div class="math" data-terms="varTu varTg varTc">
 \begin{equation}
 \gamma ^2 = 1+\gamma ^2\frac{u ^2}{c ^2},
 \end{equation}
 </div>
 we get the result
-<div class="math" data-terms="varTTp varTlx varTly varTlz varTg varTc varTu">
+<div class="math" data-terms="varTg varTc varTVecl varTu varTTp">
 \begin{equation}
 \begin{aligned} T_p  & = \gamma ^2\frac{u }{c ^2} l_z  + \sqrt{\left(-\gamma ^2\frac{u }{c ^2} l_z  \right)^2+\frac{\gamma ^2}{c ^2}(l_x ^2 + l_y ^2+ l_z ^2)} \\
 & = \gamma ^2\frac{u }{c ^2} l_z  + \frac{\gamma }{c }\sqrt{l_x ^2+ l_y ^2+\left(1+\gamma ^2\frac{u ^2}{c ^2}\right) l_z ^2}               \\
@@ -2272,7 +2313,7 @@ we get the result
 This is the time it has taken to propagate the light from where the source was when it was emitted to the current position.
 </div>
 The propagated distance of the light can then be found from the derived propagation time, as
-<div class="math" id="eq_propagation_distance" data-terms="varTTp varTLp varTlz varTg varTc varTu varTL">
+<div class="math" id="eq_propagation_distance" data-terms="varTg varTc varTVecl varTLp varTL varTu varTTp">
 \begin{equation}
 \begin{aligned} L_p  & \color{gray} = c  T_p                                              \\
 & \color{gray} = \gamma ^2 \frac{u }{c } l_z  + \gamma   L             \\
@@ -2281,7 +2322,7 @@ The propagated distance of the light can then be found from the derived propagat
 </div>
 With \( L =\sqrt{l_x ^2+l_y ^2+\gamma ^2 l_z ^2}\).
 Substituting this into equation <span class="ref_eq" onmouseover="copyContent('eq_retarded_light_velocity_vector','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(5.14)</span> we can find the light's velocity at \(\underline{l} \) to be
-<div class="math" id="eq_direction_of_light_from_moving_source" data-terms="varTVecc varTlx varTly varTlz varTg varTc varTu varTL">
+<div class="math" id="eq_direction_of_light_from_moving_source" data-terms="varTg varTc varTVecc varTVecl varTL varTu">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ \underline{c}  = \frac{c }{\gamma  \left( 1 + \frac{u }{c } \frac{\gamma  l_z  }{L } \right)} \begin{pmatrix} \frac{l_x  }{L } \\
 \frac{l_y  }{L } \\
@@ -2289,7 +2330,7 @@ Substituting this into equation <span class="ref_eq" onmouseover="copyContent('e
 \end{equation}
 </div>
 If we remove the speed of light from this light's velocity, we have its unit vector, with its z-component being the cosine of the angle from the z-axis, in this frame with the source moving, giving an equation that will come in useful next chapter
-<div class="math" id="eq_cos_alpha_prime_in_terms_of_l" data-terms="varTalpha varTlz varTg varTc varTu varTL">
+<div class="math" id="eq_cos_alpha_prime_in_terms_of_l" data-terms="varTg varTc varTVecl varTalpha varTL varTu">
 \begin{equation}
 \cos{\alpha } = \frac{\frac{\gamma  l_z  }{L } + \frac{u }{c } }{1 + \frac{u }{c } \frac{\gamma  l_z  }{L } }
 \end{equation}
@@ -2325,7 +2366,7 @@ Now to derive the lights position at time of zero in the <span data-target="def-
 As visualized in the above in figure (<span class="ref_fig" onmouseover="copyContent('fig_appendix_Retarded_field_outward_field_transform','fig_hover',this);" onmouseout="deleteContent('fig_hover');">5.7</span>).
 If we have a source in its <span data-target="def-proper-frame">rest frame</span>, that had emitted light from the origin and propagated to its current position \(\underline{r}_0 \) at time \({t_0 } = 0\).
 Then using the coordinate <span data-target="def-transform">transform</span> from equation <span class="ref_eq" onmouseover="copyContent('eq_Lorentz_transformation','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(2.36)</span> on position \(\underline{r}_0 =\underline{l}_0 =(l_{0x} ,l_{0y} ,l_{0z} )\) with time \({t_0 } = 0\), we get
-<div class="math" id="eq_displacement_transform" data-terms="varTlzerox varTlzeroy varTlzeroz varTVecr varTg varTv varTc varTt varTu">
+<div class="math" id="eq_displacement_transform" data-terms="varTg varTc varTv varTt varTVecr varTu varTVeclzero">
 \begin{equation}
 \begin{aligned} &\underline{r}   = \begin{pmatrix} l_{0x}           \\
 l_{0y}           \\
@@ -2336,7 +2377,7 @@ l_{0y}           \\
 \end{equation}
 </div>
 The light's velocity in the <span data-target="def-Moving-Frame">moving frame</span> can be found by using the velocity <span data-target="def-transform">transform</span> from equation <span class="ref_eq" onmouseover="copyContent('eq_velocity_transform_for_light','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(5.4)</span> and converting the spherical polar coordinate to Cartesian using equation <span class="ref_eq" onmouseover="copyContent('eq_cartesian_to_spherical_polar_coordinates','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(5.1)</span>, giving
-<div class="math" id="eq_light_pulse_velocity_transform" data-terms="varTVeclzero varTlzerox varTlzeroy varTlzeroz varTVecc varTg varTc varTu">
+<div class="math" id="eq_light_pulse_velocity_transform" data-terms="varTg varTc varTVecc varTu varTVeclzero">
 \begin{equation}
 \underline{c}  = \dfrac{c }{\gamma  \left(1 + \dfrac{u }{c } \dfrac{l_{0z}  }{\|\underline{l}_0 \|} \right)} \begin{pmatrix} \frac{l_{0x}  }{\|\underline{l}_0 \|}                                      \\
 \frac{l_{0y}  }{\|\underline{l}_0 \|}                                      \\
@@ -2347,7 +2388,7 @@ The light's velocity in the <span data-target="def-Moving-Frame">moving frame</s
 Now we have enough to find position \(\underline{l} \) where the light is positioned when its time is synchronized with the source.
 We could use the triangle formed in figure (<span class="ref_fig" onmouseover="copyContent('fig_primed_frame_1','fig_hover',this);" onmouseout="deleteContent('fig_hover');">5.7.b</span>), which gives \(\underline{l}  = \underline{c}  T_p  -\underline{u}  T_p \) like we did in the previous section.
 But it is easier to use the Lorentz transformed position and time, and just propagate the light back to the time of zero, which is what we did previously in equation <span class="ref_eq" onmouseover="copyContent('eq_synced_time_light','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(5.12)</span>.
-<div class="math" data-terms="varTVeclzero varTlzerox varTlzeroy varTlzeroz varTVecr varTVecc varTVecl varTg varTc varTt varTu">
+<div class="math" data-terms="varTg varTc varTVecc varTVecl varTt varTVecr varTu varTVeclzero">
 \begin{equation}
 \begin{aligned} \underline{l} & \color{gray} = \underline{r}  - \underline{c}  t \\
 & \color{gray} = \begin{pmatrix} l_{0x}           \\
@@ -2365,7 +2406,7 @@ l_{0y}  + \frac{u }{c } \frac{l_{0z}  }{\|\underline{l}_0 \|} l_{0y}  - \frac{u 
 </div>
 </div>
 finally we can cancel out terms and simplify to get
-<div class="math" id="eq_time_synced_transform" data-terms="varTVeclzero varTlzerox varTlzeroy varTlzeroz varTVecl varTg varTc varTt varTu">
+<div class="math" id="eq_time_synced_transform" data-terms="varTg varTc varTVecl varTt varTu varTVeclzero">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ \begin{aligned} & \underline{l}  = \dfrac{1}{1 + \dfrac{u }{c } \dfrac{l_{0z}  }{\|\underline{l}_0 \|} } \begin{pmatrix} l_{0x}                     \\
 l_{0y}                     \\
@@ -2384,7 +2425,6 @@ We also showed that the frequency is increased in the direction of motion relati
 Together these two effects are called <span data-target="def-relativistic-beaming">relativistic beaming</span>.
 After this we looked at emitted light at time \(t_0 =0\) in the sources <span data-target="def-proper-frame">rest frame</span>, and how to <span data-target="def-transform">transform</span> it to a frame where the source is moving, to a time \(t =0\).
 This will all come in useful in the next chapter when we look at a source that is continuously emitting light in all directions, and how this <span data-target="def-field">field</span> of light <span data-target="def-transform">transforms</span> to a frame where the source is moving.
-
 
 </div>
 </div>
@@ -2437,14 +2477,14 @@ So if we define a sphere with radius \(r \) we can find an infinitesimal portion
 <figcaption>Figure 6.2: <b>Differential surface element on a sphere</b> This shows an infinitesimal surface element on a sphere of radius \(r \) that spans from \(\theta \) to \(\theta  + \mathrm{d} \theta \) and \(\phi \) to \(\phi  + \mathrm{d} \phi \) in spherical polar coordinates, the infinitesimal surface element is equivalent to a rectangle with sides \(r  \mathrm{d} \theta \) and \({r }\sin\theta  {\mathrm{d} \phi }\), giving the infinitesimal surface area of \(r ^2 \sin\theta  \,\mathrm{d} \theta  \,\mathrm{d} \phi \).</figcaption>
 </figure>
 The surface element of a sphere at a constant radius \({r }\), spanning from \(\theta \) to \(\theta  + \mathrm{d} \theta \) and \(\phi \) to \(\phi  + \mathrm{d} \phi \), is equivalent to a rectangle with sides \({r }{\mathrm{d} r }\) and \({r }\sin\theta  {\mathrm{d} \phi }\) giving the surface area as
-<div class="math" data-terms="varTsurface varTtheta varTdiff varTphi varTr">
+<div class="math" data-terms="varTtheta varTphi varTr varTsurface varTdiff">
 \begin{equation}
 \mathrm{d} A  =  r ^2 \sin\theta  \,\mathrm{d} \theta  \,\mathrm{d} \phi
 \end{equation}
 </div>
 This surface element's size depends on the angle from the z-axis and the distance from the origin, but if we want a quantity that only depends on the angle, we can divide the surface element by \(r ^2\), this gives what is called the solid angle.
 The solid angle element \(\mathrm{d} \Omega \) is a measure of the amount of the <span data-target="def-field">field</span> of view, from the origin, that the surface element covers. For the differential surface element shown in the figure we have the differential solid angle
-<div class="math" id="eq_solid_angle" data-terms="varTsurface varTtheta varTOmega varTdiff varTphi varTr">
+<div class="math" id="eq_solid_angle" data-terms="varTtheta varTOmega varTphi varTr varTsurface varTdiff">
 \begin{equation}
 \mathrm{d} \Omega  = \frac{\mathrm{d} A }{r ^2} = \sin\theta  \,\mathrm{d} \theta  \,\mathrm{d} \phi
 \end{equation}
@@ -2459,38 +2499,38 @@ We will do this by first finding the density of light in the solid angle element
 With the factor being the inverse square of the propagated distance of the light from where it was emitted.
 <div class="derivation">
 If we have a source at rest emitting light in all directions we can say at certain angles given by the spherical polar coordinates \(\theta  = \alpha_0 \) and \(\phi = \varphi_0 \) we have a quantity \(\mathrm{d} Q \) of the emitted light's wavefront that is encompassed in the infinitesimal solid angle
-<div class="math" data-terms="varTvarphizero varTalphazero varTOmegazero varTdiff">
+<div class="math" data-terms="varTalphazero varTvarphizero varTdiff varTOmegazero">
 \begin{equation}
 \mathrm{d} \Omega_0  = \sin{\alpha_0 } \mathrm{d} \alpha_0  \mathrm{d} \varphi_0 ,
 \end{equation}
 </div>
 this is the same amount of the light's wavefront that is encompassed by the coinciding solid angle in the <span data-target="def-Moving-Frame">moving frame</span>
-<div class="math" data-terms="varTvarphi varTalpha varTOmega varTdiff">
+<div class="math" data-terms="varTOmega varTvarphi varTalpha varTdiff">
 \begin{equation}
 \mathrm{d} \Omega  = \sin{\alpha } \mathrm{d} \alpha  \mathrm{d} \varphi .
 \end{equation}
 </div>
 We can calculate this element by differentiating both sides of equation
 <span class="ref_eq" onmouseover="copyContent('eq_cosine_transform','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(5.5)</span> with respect to \(\alpha_0 \) [<a href="#ref-hogg1997special" id="cite-hogg1997special" class="citation-link">6</a>], which after doing so, gives
-<div class="math" data-terms="varTalphazero varTalpha varTdiff varTg varTc varTu">
+<div class="math" data-terms="varTg varTc varTalpha varTu varTdiff varTalphazero">
 \begin{equation}
 \sin{\alpha } \mathrm{d} \alpha  = \dfrac{1}{ \gamma ^2 \left(1 + \dfrac{u }{c }\cos{\alpha_0 }\right)^2} \sin{\alpha_0 } \mathrm{d} \alpha_0
 \end{equation}
 </div>
 now using this and \({\mathrm{d} \varphi } = {\mathrm{d} \varphi_0 }\) (as the angle \({\varphi_0 }\) is always perpendicular to the motion of the particle and unaffected by the <span data-target="def-transform">transformation</span>) we have the solid angle in the <span data-target="def-Moving-Frame">moving frame</span> given as
-<div class="math" data-terms="varTvarphizero varTalphazero varTOmega varTdiff varTg varTc varTu">
+<div class="math" data-terms="varTvarphizero varTg varTc varTOmega varTu varTdiff varTalphazero">
 \begin{equation}
 \mathrm{d} \Omega  = \dfrac{1}{ \gamma ^2 \left(1 + \dfrac{u }{c }\cos{\alpha_0 }\right)^2} \sin{\alpha_0 } \mathrm{d} \alpha_0  \mathrm{d} \varphi_0 .
 \end{equation}
 </div>
 If there is the same quantity of light \(\mathrm{d} Q \) in the solid angle element in both frames, then the density of light in the solid angle in each frame is \(\mathrm{d} Q /\mathrm{d} \Omega_0 \) and \(\mathrm{d} Q /\mathrm{d} \Omega \) respectively, giving the ratio of the density in the solid angle element in the <span data-target="def-Moving-Frame">moving frame</span> relative to the <span data-target="def-proper-frame">rest frame</span> as
-<div class="math" data-terms="varTalphazero varTOmegazero varTDsigma varTOmega varTdiff varTg varTc varTu">
+<div class="math" data-terms="varTOmegazero varTg varTc varTOmega varTDsigma varTu varTdiff varTalphazero">
 \begin{equation}
 D_{\sigma}  = \frac{\mathrm{d} \Omega_0 }{\mathrm{d} \Omega } = \gamma ^2\left(1 + \dfrac{u }{c }\cos{\alpha_0 }\right)^2.
 \end{equation}
 </div>
 By substituting equation <span class="ref_eq" onmouseover="copyContent('eq_cos_alpha_prime_in_terms_of_l','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(5.21)</span> into equation <span class="ref_eq" onmouseover="copyContent('eq_inverse_cosine_transform','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(5.6)</span> we get \(\cos\alpha_0 =\frac{\gamma  l_z  }{L }\), it allows us to get this in terms of the light's position in its <span data-target="def-Moving-Frame">moving frame</span>
-<div class="math" data-terms="varTDsigma varTlz varTg varTc varTu varTL">
+<div class="math" data-terms="varTg varTc varTDsigma varTVecl varTL varTu">
 \begin{equation}
 D_{\sigma}  = \gamma ^2 \left(1 + \dfrac{u }{c }\frac{\gamma  l_z  }{L }\right)^2.
 \end{equation}
@@ -2500,13 +2540,13 @@ with \(L  = \sqrt{l_x ^2 + l_y ^2 + \gamma ^2 l_z ^2}\).
 </div>
 At position \((l_x ,l_y ,l_z )\), light has propagated a distance \(L_p \) from where it was emitted, given in equation <span class="ref_eq" onmouseover="copyContent('eq_propagation_distance','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(5.19)</span>,
 Its surface area element grows by a factor of the \(L_p ^2\) and the light's density in a surface elements area dissipates by the inverse of this
-<div class="math" data-terms="varTLp varTlz varTg varTc varTu varTL">
+<div class="math" data-terms="varTg varTc varTVecl varTLp varTL varTu">
 \begin{equation}
 \frac{1}{L_p ^2} = \frac{1}{\gamma ^2 \left( 1 + \frac{u }{c } \frac{\gamma  l_z }{L } \right)^2 L ^2}
 \end{equation}
 </div>
 Multiplying this by the density of light in the solid angle element relative the rest source, \(D_{\sigma} /L_p ^2\), we get the density of light in the surface element given as
-<div class="math" id="eq_denisty_of_light_in_surface_element" data-terms="varTDsigma varTksigma varTlx varTly varTlz varTg varTL">
+<div class="math" id="eq_denisty_of_light_in_surface_element" data-terms="varTksigma varTg varTDsigma varTVecl varTL">
 \begin{equation}
 \bbox[#fff9cf, 10px, border-radius: 10px; border: 3px solid black]{ \begin{aligned} D_{\sigma}  = \frac{k_{\sigma}  }{L ^2}                                                     \\
 \color{gray} \text{with } L  & \color{gray}= \sqrt{l_x ^2 + l_y ^2 + \gamma ^2 l_z ^2} \end{aligned} }
@@ -2514,7 +2554,7 @@ Multiplying this by the density of light in the solid angle element relative the
 </div>
 Where \(k_{\sigma} \) is the proportionality constant.
 For a source at rest \(u =0\) we have \(\gamma  = 1\) and this then just gives the inverse square of the distance from the rest source, the inverse square law of the distance from the source
-<div class="math" data-terms="varTDsigma varTksigma varTlx varTly varTlz">
+<div class="math" data-terms="varTksigma varTDsigma varTVecl">
 \begin{equation}
 D_{\sigma}  = \frac{k_{\sigma}  }{l_x ^2 + l_y ^2 + l_z ^2}
 \end{equation}
@@ -2544,7 +2584,7 @@ The <span data-target="def-doppler-effect">Doppler effect</span> gives the frequ
 The change in density of light in its propagation direction is inversely proportional to this change in this frequency,
 Since this density is constant for the case of a stationary source.
 Then we have this density for a moving source proportional to the <span data-target="def-doppler-effect">Doppler effect</span> from equation <span class="ref_eq" onmouseover="copyContent('eq_Doppler_Effect','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(5.10)</span>, which we can get in our current frames coordinates by substituting in equation <span class="ref_eq" onmouseover="copyContent('eq_cos_alpha_prime_in_terms_of_l','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(5.21)</span>, giving this density for a moving source to be
-<div class="math" id="eq_denisty_of_light_parallel_to_propagation" data-terms="varTlz varTDc varTkc varTg varTc varTu varTL">
+<div class="math" id="eq_denisty_of_light_parallel_to_propagation" data-terms="varTkc varTg varTc varTVecl varTDc varTL varTu">
 \begin{equation}
 D_{c}  = {\gamma }\left(1 + \dfrac{u }{c }\frac{\gamma  l_z }{L }\right) k_{c}
 \end{equation}
@@ -2559,7 +2599,7 @@ The speed will be set to zero, \(u =0\), to look at the case of a source at rest
 But we will remain in the same frame, its just that the sources velocity is different.
 We will therefore use the same notation for coordinates throughout this chapter, \((x ,y ,z )\).
 We will be substituting these coordinates into equations from previous sections, for the position of light in the <span data-target="def-Moving-Frame">moving frame</span>
-<div class="math" id="eq_position_of_light" data-terms="varTVecl varTlx varTly varTlz varTx varTz varTy">
+<div class="math" id="eq_position_of_light" data-terms="varTVecr varTVecl">
 \begin{equation}
 \underline{l}  = (l_x ,l_y ,l_z ) = (x ,y ,z )
 \end{equation}
@@ -2571,7 +2611,7 @@ I hope this will not lead to confusion, since we had previously used separate no
 Here we will see what the volume density of light is for a moving source.
 We have the density of light in the direction of its propagation \(D_{c} \) and in the plane perpendicular to it \(D_{\sigma} \), given in equations <span class="ref_eq" onmouseover="copyContent('eq_denisty_of_light_in_surface_element','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(6.10)</span> and <span class="ref_eq" onmouseover="copyContent('eq_denisty_of_light_parallel_to_propagation','equation_hover',this); " onmouseout="deleteContent('equation_hover');">(6.12)</span>.
 Giving the volume density to be
-<div class="math" data-terms="varTVolDensity varTDsigma varTksigma varTDc varTkc varTg varTz varTc varTu varTL">
+<div class="math" data-terms="varTksigma varTkc varTg varTc varTVolDensity varTDsigma varTDc varTVecr varTu varTL">
 \begin{equation}
 \begin{aligned} D  & \color{gray} = D_{\sigma}  D_{c}                                                          \\
 & = {\gamma }\left(1 + \dfrac{u }{c }\dfrac{\gamma  z }{L }\right) \frac{k_{\sigma}  k_{c}  }{L ^2} \end{aligned}
@@ -2596,7 +2636,6 @@ This density of light for a moving source at any point can be seen in the follow
 <h4 id="part_3_ch6_6_header">6.6 Summary</h4>
 <div id="part_3_ch6_6_content">
 In this chapter we looked a <span data-target="def-field">field</span> of light produced by continous emission of light from a moving source.
-
 
 </div>
 </div>
@@ -2740,7 +2779,7 @@ So you just need to swap the x and z coordinates in transformation equations to 
 <h3 id="part_4_ch11_header" class="chapter_header" style="display: flex; justify-content: center; text-align: center;">Definitions</h3>
 <div id="part_4_ch11_content">
 <span style="display: none">\(\nextSection\)</span>
-<h5><span style="text-decoration: underline;">Mathematical Framework</span></h5>
+<h4><span style="text-decoration: underline;">Mathematical Framework</span></h4>
 <b>Reference frame:</b> An abstract coordinate system, consisting of three spatial and one time axis. The origin, orientation, and scale of its axis are specified by a set of points in space. The purpose of it is to provide a standardized means of defining the position and orientation of objects at any instant in time.
 <br>
 
@@ -2783,7 +2822,7 @@ So you just need to swap the x and z coordinates in transformation equations to 
 <b>Retarded position:</b> The previous position of a source, that an observer currently sees it at, due to the time delay between when a moving source emitting the signal and when the observer detects it.
 <br>
 
-<h5><span style="text-decoration: underline;">The Mechanics</span></h5>
+<h4><span style="text-decoration: underline;">The Mechanics</span></h4>
 <b>Aether:</b> A proposed medium that filled the vacuum of space that light propagated through.
 <br>
 
@@ -2814,7 +2853,7 @@ So you just need to swap the x and z coordinates in transformation equations to 
 <b>Light year:</b> The distance light travels in one year (in a vacuum).
 <br>
 
-<h5><span style="text-decoration: underline;">Definitions for Later Chapters</span></h5>
+<h4><span style="text-decoration: underline;">Definitions for Later Chapters</span></h4>
 <b>Lorentz Invariant/Frame independent:</b> A quantity or law of physics is Lorentz Invariant/Frame independent, if it remains unchanged when transforming coordinates and other quantities to any other inertial reference frame.
 <br>
 
@@ -2857,30 +2896,32 @@ So you just need to swap the x and z coordinates in transformation equations to 
     </div>
   </article>
 
-  <!--Sidebar-->
-  <aside class="sidebar" style="overflow-y: auto; max-height: calc(100vh - 100px);">
-      <div id="vars">
-        <div id="definition-display" class="definition-box" style="color: #555; text-align: left;">
-          <div style="text-align: center;"> &ast;Hover over equations for term info&ast; </div>
-        </div>
+  <!--- Sidebar -->
+  <aside class="sidebar">
+    <div style="flex: 1; overflow-y: auto; padding: 10px;">
+        <div id="vars">
+            <div id="definition-display" class="definition-box" style="color: #555; text-align: left;">
+                <div style="text-align: center;"> &ast;Hover over equations for term info&ast; </div>
+            </div>
           <dl id="math-glossary" style="display: none;">
           <div>  <dt data-term="varTg">\( (\gamma) \) <b>:</b> </dt>  <dd id="varTg">the gamma factor, a relativistic factor used to simplfy equations, it is given by \({1/\sqrt{1-v^2/c^2}}\) which determines how much of an effect the transform of the coordinates deviates from the classical transform. It is only significant at relative frame speeds, \(v\), close to that of light, \(c\).</dd></div>
+          <div>  <dt data-term="varTprime">\( (') \) <b>:</b> </dt>  <dd id="varTprime">This apostrophe on a quantity represents the corresponding quantity in a second primed reference frame.</dd></div>
           <div>  <dt data-term="varTx">\( (x) \) <b>:</b> </dt>  <dd id="varTx">the x-coordinate</dd></div>
           <div>  <dt data-term="varTz">\( (z) \) <b>:</b> </dt>  <dd id="varTz">the z-coordinate</dd></div>
           <div>  <dt data-term="varTy">\( (y) \) <b>:</b> </dt>  <dd id="varTy">the y-coordinate</dd></div>
           <div>  <dt data-term="varTxPRM">\( (x') \) <b>:</b> </dt>  <dd id="varTxPRM">the corresponding x-coordinate in the primed frame</dd></div>
           <div>  <dt data-term="varTzPRM">\( (z') \) <b>:</b> </dt>  <dd id="varTzPRM">the corresponding z-coordinate in the primed frame</dd></div>
           <div>  <dt data-term="varTyPRM">\( (y') \) <b>:</b> </dt>  <dd id="varTyPRM">the corresponding y-coordinate in the primed frame</dd></div>
-          <div>  <dt data-term="varTVecr">\( (\underline{r}) \) <b>:</b> </dt>  <dd id="varTVecr">the position vector, \(\underline{r}=(x,y,z)\), of an event in the current inertial reference frame.</dd></div>
-          <div>  <dt data-term="varTVecrPRM">\( (\underline{r}') \) <b>:</b> </dt>  <dd id="varTVecrPRM">the position vector, \(\underline{r}'=(x',y',z')\), of an event in another inertial reference frame, referred to as the primed frame, and denoted with an apostrophy \('\). This position vector cooresponds to the position vector of the event in the initial reference frame.</dd></div>
+          <div>  <dt data-term="varTVecr">\( (\underline{r}) \) <b>:</b> </dt>  <dd id="varTVecr">\(\underline{r}=(x,y,z)\), the position vector coordinates of an event in the current inertial reference frame.</dd></div>
+          <div>  <dt data-term="varTVecrPRM">\( (\underline{r}') \) <b>:</b> </dt>  <dd id="varTVecrPRM">\(\underline{r}'=(x',y',z')\), the position vector coordinates of an event in another inertial reference frame, referred to as the primed frame, and denoted with an apostrophy \('\). This position vector cooresponds to the position vector of the event in the initial reference frame.</dd></div>
           <div>  <dt data-term="varTv">\( (v) \) <b>:</b> </dt>  <dd id="varTv">The speed of the second reference frame, primed frame, relative to the first reference frame.</dd></div>
           <div>  <dt data-term="varTc">\( (c) \) <b>:</b> </dt>  <dd id="varTc">The speed that light travels in empty space when it is not impeded by matter and fields.</dd></div>
           <div>  <dt data-term="varTVecOOPRM">\( (\vec{oo'}) \) <b>:</b> </dt>  <dd id="varTVecOOPRM">the position of the primed axis' origin relative to the proper axis' origin, (given in the proper frame)</dd></div>
           <div>  <dt data-term="varTVecOPRMe">\( (\vec{o'e}) \) <b>:</b> </dt>  <dd id="varTVecOPRMe">the position of the event relative to the primed frames origin (in proper frame)</dd></div>
           <div>  <dt data-term="varTO">\( (\underline{o}) \) <b>:</b> </dt>  <dd id="varTO">the position of the proper axis' origin, given by the set of spatial and time coordinates.</dd></div>
           <div>  <dt data-term="varTOPRM">\( (\underline{o}') \) <b>:</b> </dt>  <dd id="varTOPRM">the position of the primed axis' origin, given by the set of spatial and time coordinates.</dd></div>
-          <div>  <dt data-term="varTVece">\( (\underline{e}) \) <b>:</b> </dt>  <dd id="varTVece">An event in the proper frame, given by the set of spatial and time coordinates \(\underline{e}=(x,y,z,t)\).</dd></div>
-          <div>  <dt data-term="varTVecePRM">\( (\underline{e}') \) <b>:</b> </dt>  <dd id="varTVecePRM">An event in the primed frame, given by the set of spatial and time coordinates \(\underline{e}'=(x',y',z',t')\).</dd></div>
+          <div>  <dt data-term="varTVece">\( (\underline{e}) \) <b>:</b> </dt>  <dd id="varTVece">\(\underline{e}=(x,y,z,t)\), an event in the proper frame, given by the set of spatial and time coordinates.</dd></div>
+          <div>  <dt data-term="varTVecePRM">\( (\underline{e}') \) <b>:</b> </dt>  <dd id="varTVecePRM">\(\underline{e}'=(x',y',z',t')\), an event in the primed frame, given by the set of spatial and time coordinates.</dd></div>
           <div>  <dt data-term="varTt">\( (t) \) <b>:</b> </dt>  <dd id="varTt">the time coordinate in current frame</dd></div>
           <div>  <dt data-term="varTtPRM">\( (t') \) <b>:</b> </dt>  <dd id="varTtPRM">the time coordinate in primed frame</dd></div>
           <div>  <dt data-term="varTtau">\( (\tau) \) <b>:</b> </dt>  <dd id="varTtau">the time coordinate specifically in the rest frame of observer or object we want to measure</dd></div>
@@ -2919,18 +2960,18 @@ So you just need to swap the x and z coordinates in transformation equations to 
           <div>  <dt data-term="varTuz">\( (u_z) \) <b>:</b> </dt>  <dd id="varTuz">the speed of object in z-direction, in current frame</dd></div>
           <div>  <dt data-term="varTux">\( (u_x) \) <b>:</b> </dt>  <dd id="varTux">the speed of object in x-direction, in current frame</dd></div>
           <div>  <dt data-term="varTuy">\( (u_y) \) <b>:</b> </dt>  <dd id="varTuy">the speed of object in y-direction, in current frame</dd></div>
-          <div>  <dt data-term="varTVecu">\( (\underline{u}) \) <b>:</b> </dt>  <dd id="varTVecu">the velocity vector of object in current frame \((u_x,u_z,u_z)\)</dd></div>
+          <div>  <dt data-term="varTVecu">\( (\underline{u}) \) <b>:</b> </dt>  <dd id="varTVecu">\(\underline{u}=(u_x,u_y,u_z)\), the velocity vector of object in current frame</dd></div>
           <div>  <dt data-term="varTuxPRM">\( (u'_x) \) <b>:</b> </dt>  <dd id="varTuxPRM">the speed of object in z-direction, in primed frame</dd></div>
           <div>  <dt data-term="varTuyPRM">\( (u'_y) \) <b>:</b> </dt>  <dd id="varTuyPRM">the speed of object in z-direction, in primed frame</dd></div>
           <div>  <dt data-term="varTuzPRM">\( (u'_z) \) <b>:</b> </dt>  <dd id="varTuzPRM">the speed of object in z-direction, in primed frame</dd></div>
-          <div>  <dt data-term="varTVecuPRM">\( (\underline{u}') \) <b>:</b> </dt>  <dd id="varTVecuPRM">the velocity vector of object in primed frame \((u_x',u_z',u_z')\)</dd></div>
+          <div>  <dt data-term="varTVecuPRM">\( (\underline{u}') \) <b>:</b> </dt>  <dd id="varTVecuPRM">\(\underline{u}'=(u'_x,u'_y,u'_z)\),the velocity vector of object in primed frame</dd></div>
           <div>  <dt data-term="varTVecv">\( (\underline{v}) \) <b>:</b> </dt>  <dd id="varTVecv">The velocity of the second reference frame, primed frame, relative to the first reference frame, with \({v}\) being the speed and \({\mathbf{\hat{v}}}\) the directional unit vector, \({\mathbf{v}}={v} \cdot {\mathbf{\hat{v}}}\).</dd></div>
           <div>  <dt data-term="varTHatv">\( (\hat{\underline{v} }) \) <b>:</b> </dt>  <dd id="varTHatv">the unit vector of the velocity of the frame relative to the proper/initial frame</dd></div>
           <div>  <dt data-term="varTVecaPRM">\( (\underline{a}') \) <b>:</b> </dt>  <dd id="varTVecaPRM">the acceleration vector in primed frame</dd></div>
           <div>  <dt data-term="varTax">\( (a_x) \) <b>:</b> </dt>  <dd id="varTax">the acceleration in x direction, in primed frame</dd></div>
           <div>  <dt data-term="varTaz">\( (a_z) \) <b>:</b> </dt>  <dd id="varTaz">the acceleration in z direction, in primed frame</dd></div>
           <div>  <dt data-term="varTay">\( (a_y) \) <b>:</b> </dt>  <dd id="varTay">the acceleration in y direction, in primed frame</dd></div>
-          <div>  <dt data-term="varTVeca">\( (\underline{a}) \) <b>:</b> </dt>  <dd id="varTVeca">the acceleration vector in initial frame</dd></div>
+          <div>  <dt data-term="varTVeca">\( (\underline{a}) \) <b>:</b> </dt>  <dd id="varTVeca">\(\underline{a}=(a_x,a_y,a_z)\), the acceleration vector in initial frame</dd></div>
           <div>  <dt data-term="varTus">\( (u_s) \) <b>:</b> </dt>  <dd id="varTus">the speed of the signal, in the initial frame</dd></div>
           <div>  <dt data-term="varTtr">\( (t_r) \) <b>:</b> </dt>  <dd id="varTtr">the time the signal is received, in the initial frame</dd></div>
           <div>  <dt data-term="varTzr">\( (z_r) \) <b>:</b> </dt>  <dd id="varTzr">the position of particle b were the signal is received, in the initial frame</dd></div>
@@ -2952,6 +2993,7 @@ So you just need to swap the x and z coordinates in transformation equations to 
           <div>  <dt data-term="varTuqx">\( (u_{qx}) \) <b>:</b> </dt>  <dd id="varTuqx">the speed of particle q in the x-direction</dd></div>
           <div>  <dt data-term="varTuqy">\( (u_{qy}) \) <b>:</b> </dt>  <dd id="varTuqy">the speed of particle q in the y-direction</dd></div>
           <div>  <dt data-term="varTuqz">\( (u_{qz}) \) <b>:</b> </dt>  <dd id="varTuqz">the speed of particle q in the z-direction</dd></div>
+          <div>  <dt data-term="varTVecuq">\( (\underline{u}_{q}) \) <b>:</b> </dt>  <dd id="varTVecuq">\(\underline{u}_{q}=(u_{qx},u_{qy},u_{qz})\) the velocity of particle q</dd></div>
           <div>  <dt data-term="varTm">\( (m) \) <b>:</b> </dt>  <dd id="varTm">the mass of a particle</dd></div>
           <div>  <dt data-term="varTE">\( (E) \) <b>:</b> </dt>  <dd id="varTE">the total energy of a particle</dd></div>
           <div>  <dt data-term="varTEzero">\( (E_0) \) <b>:</b> </dt>  <dd id="varTEzero">The energy a particle has at rest, corresponding to the mass has</dd></div>
@@ -2960,13 +3002,14 @@ So you just need to swap the x and z coordinates in transformation equations to 
           <div>  <dt data-term="varTpbefore">\( (p_{before}) \) <b>:</b> </dt>  <dd id="varTpbefore">the initial momentum</dd></div>
           <div>  <dt data-term="varTEafter">\( (E_{after}) \) <b>:</b> </dt>  <dd id="varTEafter">the energy after a certain amount of time</dd></div>
           <div>  <dt data-term="varTEbefore">\( (E_{before}) \) <b>:</b> </dt>  <dd id="varTEbefore">the initial energy</dd></div>
-          <div>  <dt data-term="varTVecp">\( (\underline{p}) \) <b>:</b> </dt>  <dd id="varTVecp">momentum vector \((p_x,p_y,p_z)\)</dd></div>
           <div>  <dt data-term="varTguPRM">\( (\gamma_{u'}) \) <b>:</b> </dt>  <dd id="varTguPRM">The gamma factor \(\gamma\) between the primed frame and the particles rest frame, given by \({1/\sqrt{1-u_q'^2/c^2}}\). It is only significant at relative particle speeds, \(u_q'\), close to that of light, \(c\).</dd></div>
           <div>  <dt data-term="varTuPRM">\( (u') \) <b>:</b> </dt>  <dd id="varTuPRM">the speed of the object in the primed frame</dd></div>
           <div>  <dt data-term="varTpyPRM">\( (p'_y) \) <b>:</b> </dt>  <dd id="varTpyPRM">the momentum in the y-direction, in the primed frame</dd></div>
           <div>  <dt data-term="varTpy">\( (p_y) \) <b>:</b> </dt>  <dd id="varTpy">the momentum in the y-direction, in the initial frame</dd></div>
           <div>  <dt data-term="varTpzPRM">\( (p'_z) \) <b>:</b> </dt>  <dd id="varTpzPRM">the momentum in the z-direction, in the primed frame</dd></div>
           <div>  <dt data-term="varTpz">\( (p_z) \) <b>:</b> </dt>  <dd id="varTpz">the momentum in the z-direction, in the initial frame</dd></div>
+          <div>  <dt data-term="varTVecp">\( (\underline{p}) \) <b>:</b> </dt>  <dd id="varTVecp">\(\underline{p}=(p_x,p_y,p_z)\), the momentum vector, in the initial frame</dd></div>
+          <div>  <dt data-term="varTVecpPRM">\( (\underline{p}') \) <b>:</b> </dt>  <dd id="varTVecpPRM">\(\underline{p}'=(p_x,p'_y,p'_z)\), the momentum vector, in the primed frame</dd></div>
           <div>  <dt data-term="varTpza">\( (p_{zafter}) \) <b>:</b> </dt>  <dd id="varTpza">the momentum in the z-direction after</dd></div>
           <div>  <dt data-term="varTEa">\( (E_{after}) \) <b>:</b> </dt>  <dd id="varTEa">the energy after</dd></div>
           <div>  <dt data-term="varTpzb">\( (p_{zbefore}) \) <b>:</b> </dt>  <dd id="varTpzb">the momentum in the z-direction before</dd></div>
@@ -2981,7 +3024,7 @@ So you just need to swap the x and z coordinates in transformation equations to 
           <div>  <dt data-term="varTVecrRet">\( (\underline{r}_{ret}) \) <b>:</b> </dt>  <dd id="varTVecrRet">the retarded position of an object in the initial frame, it is the position the object was when it emitted the light signal that the observer at the origin is now recieving</dd></div>
           <div>  <dt data-term="varTalpha">\( (\alpha) \) <b>:</b> </dt>  <dd id="varTalpha">the angle between the z-direction and the direction the light is propagating, in the initial frame</dd></div>
           <div>  <dt data-term="varTVecrRetPRM">\( (\underline{r}'_{ret}) \) <b>:</b> </dt>  <dd id="varTVecrRetPRM">the retarded position of an object in the primed frame, it is the position the object was when it emitted the light signal that the observer at the origin is now recieving</dd></div>
-          <div>  <dt data-term="varTvecrtPRMzeroPRM">\( (\underline{r}'_{t' = 0}) \) <b>:</b> </dt>  <dd id="varTvecrtPRMzeroPRM">the position of an object in the primed frame at the current time of the origin \(t'=0\)</dd></div>
+          <div>  <dt data-term="varTVecrtPRMzeroPRM">\( (\underline{r}'_{t' = 0}) \) <b>:</b> </dt>  <dd id="varTVecrtPRMzeroPRM">the position of an object in the primed frame at the current time of the origin \(t'=0\)</dd></div>
           <div>  <dt data-term="varTthetaRetPRM">\( (\theta'_{ret}) \) <b>:</b> </dt>  <dd id="varTthetaRetPRM">the angle between the z-axis and the retarded position, in the primed frame</dd></div>
           <div>  <dt data-term="varTtRet">\( (t_{ret}) \) <b>:</b> </dt>  <dd id="varTtRet">the retarded time, the time the object was at its retarded position, in the initial frame</dd></div>
           <div>  <dt data-term="varTVecc">\( (\underline{c}) \) <b>:</b> </dt>  <dd id="varTVecc">the velocity vector of light, it has a magnitude of \(c\)</dd></div>
@@ -2993,7 +3036,7 @@ So you just need to swap the x and z coordinates in transformation equations to 
           <div>  <dt data-term="varTVeccapp">\( (\underline{c}_{app}) \) <b>:</b> </dt>  <dd id="varTVeccapp">the apparent velocity of light depending on its direction relative to observer, due to the delay in the signal from different points in its path</dd></div>
           <div>  <dt data-term="varTVecuRet">\( (\underline{u}_{ret}) \) <b>:</b> </dt>  <dd id="varTVecuRet">the velocity of the particle at the retarded time</dd></div>
           <div>  <dt data-term="varTN">\( (N) \) <b>:</b> </dt>  <dd id="varTN">a negligiblly small term</dd></div>
-          <div>  <dt data-term="varTr">\( (r) \) <b>:</b> </dt>  <dd id="varTr">the spherical polar coordinate corresponding to the magnitude of the vector</dd></div>
+          <div>  <dt data-term="varTr">\( (r) \) <b>:</b> </dt>  <dd id="varTr">\(r=\|\underline{r}\|\), the spherical polar coordinate corresponding to the magnitude of the vector</dd></div>
           <div>  <dt data-term="varTphi">\( (\phi) \) <b>:</b> </dt>  <dd id="varTphi">the spherical polar coordinate corresponding to the angle from the x-axis to the vector, in the x-y plane</dd></div>
           <div>  <dt data-term="varTtheta">\( (\theta) \) <b>:</b> </dt>  <dd id="varTtheta">the spherical polar coordinate corresponding to the angle from the z-axis to the vector</dd></div>
           <div>  <dt data-term="varTalphazero">\( (\alpha_0) \) <b>:</b> </dt>  <dd id="varTalphazero">the angle between the z-direction and the direction the light is propagating, in the rest frame of the source</dd></div>
@@ -3008,24 +3051,24 @@ So you just need to swap the x and z coordinates in transformation equations to 
           <div>  <dt data-term="varTnuzero">\( (\nu_0) \) <b>:</b> </dt>  <dd id="varTnuzero">the frequency of light, in the source's rest frame</dd></div>
           <div>  <dt data-term="varTnuPRM">\( (\nu') \) <b>:</b> </dt>  <dd id="varTnuPRM">the frequency of light, in a primed frame</dd></div>
           <div>  <dt data-term="varTalphaPRM">\( (\alpha') \) <b>:</b> </dt>  <dd id="varTalphaPRM">the angle between the z-direction and the direction the light is propagating, in the primed frame</dd></div>
-          <div>  <dt data-term="varTVecl">\( (\underline{l}) \) <b>:</b> </dt>  <dd id="varTVecl">the light's position vector, in the current frame with source moving \((l_x,l_y,l_z)\)</dd></div>
           <div>  <dt data-term="varTTRet">\( (T_{ret}) \) <b>:</b> </dt>  <dd id="varTTRet">The retarded time, when the light was emitted from the source</dd></div>
           <div>  <dt data-term="varTTp">\( (T_p) \) <b>:</b> </dt>  <dd id="varTTp">the time the object and the light took to propagate from this retarded position to where they currently are, equal to the negative of the retarded time \(T_p=-T_{ret}\)</dd></div>
           <div>  <dt data-term="varTLp">\( (L_p) \) <b>:</b> </dt>  <dd id="varTLp">the distance light has propagated in the the propagation time \(T_p=-T_{ret}\)</dd></div>
           <div>  <dt data-term="varTlx">\( (l_x) \) <b>:</b> </dt>  <dd id="varTlx">the light's x-coordinate, in the current frame with source moving</dd></div>
           <div>  <dt data-term="varTly">\( (l_y) \) <b>:</b> </dt>  <dd id="varTly">the light's y-coordinate, in the current frame with source moving</dd></div>
           <div>  <dt data-term="varTlz">\( (l_z) \) <b>:</b> </dt>  <dd id="varTlz">the light's z-coordinate, in the current frame with source moving</dd></div>
-          <div>  <dt data-term="varTL">\( (L) \) <b>:</b> </dt>  <dd id="varTL">a factor used to simplfy equations \( \TL =\sqrt{\Tlx ^2+\Tly ^2+\Tg ^2 \Tlz ^2}\)</dd></div>
-          <div>  <dt data-term="varTVecrzero">\( (\underline{r}_0) \) <b>:</b> </dt>  <dd id="varTVecrzero">a position in the rest frame of the source where the light is at time \(t_0=0\), giving \(\underline{r}_0= \underline{l}_0\)</dd></div>
-          <div>  <dt data-term="varTyzero">\( (y_0) \) <b>:</b> </dt>  <dd id="varTyzero">a position's y-coordinate in the source's rest frame</dd></div>
-          <div>  <dt data-term="varTzzero">\( (z_0) \) <b>:</b> </dt>  <dd id="varTzzero">a position's z-coordinate in the source's rest frame</dd></div>
-          <div>  <dt data-term="varTxzero">\( (x_0) \) <b>:</b> </dt>  <dd id="varTxzero">a position's x-coordinate in the source's rest frame</dd></div>
+          <div>  <dt data-term="varTVecl">\( (\underline{l}) \) <b>:</b> </dt>  <dd id="varTVecl">\((l_x,l_y,l_z)\), the light's position vector, in the current frame with source moving</dd></div>
+          <div>  <dt data-term="varTL">\( (L) \) <b>:</b> </dt>  <dd id="varTL">a factor used to simplfy equations \( \TL =\sqrt{l_x ^2+l_y ^2+\gamma ^2 l_z ^2}\)</dd></div>
+          <div>  <dt data-term="varTyzero">\( (y_0) \) <b>:</b> </dt>  <dd id="varTyzero">a position's y-coordinate in the source's rest frame, where the light is at time \(t_0=0\), giving \(\underline{r}_0= \underline{l}_0\)</dd></div>
+          <div>  <dt data-term="varTzzero">\( (z_0) \) <b>:</b> </dt>  <dd id="varTzzero">a position's z-coordinate in the source's rest frame, where the light is at time \(t_0=0\), giving \(\underline{r}_0= \underline{l}_0\)</dd></div>
+          <div>  <dt data-term="varTxzero">\( (x_0) \) <b>:</b> </dt>  <dd id="varTxzero">a position's x-coordinate in the source's rest frame, where the light is at time \(t_0=0\), giving \(\underline{r}_0= \underline{l}_0\)</dd></div>
+          <div>  <dt data-term="varTVecrzero">\( (\underline{r}_0) \) <b>:</b> </dt>  <dd id="varTVecrzero">\(\underline{r}_0=(x_0,y_0,z_0)\) a position in the rest frame of the source where the light is at time \(t_0=0\), giving \(\underline{r}_0= \underline{l}_0\)</dd></div>
           <div>  <dt data-term="varTs">\( (s) \) <b>:</b> </dt>  <dd id="varTs">the letter represents a source</dd></div>
           <div>  <dt data-term="varTVecsRet">\( (\underline{s}_{ret}) \) <b>:</b> </dt>  <dd id="varTVecsRet">the source's retarded position in the current frame with the source moving, it is the position the source was when it emitted the light</dd></div>
-          <div>  <dt data-term="varTVeclzero">\( (\underline{l}_0) \) <b>:</b> </dt>  <dd id="varTVeclzero">the position of light at time \(t_0=0\) in the rest frame of the source \(\underline{l}_0=(l_{0x},l_{0y},l_{0z})\)</dd></div>
           <div>  <dt data-term="varTlzerox">\( (l_{0x}) \) <b>:</b> </dt>  <dd id="varTlzerox">the x-coordinate of light at time \(t_0=0\) in the rest frame of the source</dd></div>
           <div>  <dt data-term="varTlzeroy">\( (l_{0y}) \) <b>:</b> </dt>  <dd id="varTlzeroy">the y-coordinate of light at time \(t_0=0\) in the rest frame of the source</dd></div>
           <div>  <dt data-term="varTlzeroz">\( (l_{0z}) \) <b>:</b> </dt>  <dd id="varTlzeroz">the z-coordinate of light at time \(t_0=0\) in the rest frame of the source</dd></div>
+          <div>  <dt data-term="varTVeclzero">\( (\underline{l}_0) \) <b>:</b> </dt>  <dd id="varTVeclzero">\(\underline{l}_0=(l_{0x},l_{0y},l_{0z})\), the position of light at time \(t_0=0\) in the rest frame of the source</dd></div>
           <div>  <dt data-term="varTOmega">\( (\Omega) \) <b>:</b> </dt>  <dd id="varTOmega">the solid angle in the current frame, it is a measure of the amount of the field of view</dd></div>
           <div>  <dt data-term="varTquantofwaveront">\( (Q) \) <b>:</b> </dt>  <dd id="varTquantofwaveront">a quantity of the emitted light's wavefront that is encompassed in the infinitesimal solid angle, in the rest frame of the source</dd></div>
           <div>  <dt data-term="varTOmegazero">\( (\Omega_0) \) <b>:</b> </dt>  <dd id="varTOmegazero">the solid angle in the sources rest frame, it is a measure of the amount of the field of view</dd></div>
@@ -3035,8 +3078,10 @@ So you just need to swap the x and z coordinates in transformation equations to 
           <div>  <dt data-term="varTkc">\( (k_{c}) \) <b>:</b> </dt>  <dd id="varTkc">a proportionality constant</dd></div>
           <div>  <dt data-term="varTVolDensity">\( (D) \) <b>:</b> </dt>  <dd id="varTVolDensity">the volume density of light, in the current frame</dd></div>
           <div>  <dt data-term="varTsurface">\( (A) \) <b>:</b> </dt>  <dd id="varTsurface">surface area on the sphere corresponding to the given solid angle</dd></div>
-</dl>    </div>
-    <dl id="dictionary" style="position: fixed; bottom: 0; left: calc(50% + 350px + 10px); background-color: hsl(31, 65%, 85%); margin-right: 10px;">
+</dl>        </div>
+    </div>
+
+    <dl id="dictionary" style="position: fixed; bottom: 0; left: calc(50% + 350px + 10px); background-color: hsl(31, 65%, 85%); margin-right: 10px; margin-bottom: 10px; z-index: 1000; text-align: left;">
            <div id="def-Reference-frame"> <dt><b>Reference frame:</b>  </dt> <dd> An abstract coordinate system, consisting of three spatial and one time axis. The origin, orientation, and scale of its axis are specified by a set of points in space. The purpose of it is to provide a standardized means of defining the position and orientation of objects at any instant in time. </dd></div>
            <div id="def-Inertial-reference-frame"> <dt><b>Inertial reference frame:</b>  </dt> <dd> A reference frame that is not undergoing any acceleration. An observer's reference frame is inertial if they do not feel a force acting on them. </dd></div>
            <div id="def-proper-frame"> <dt><b>Proper/Rest frame:</b>  </dt> <dd> This is the reference frame of the observer or object itself. </dd></div>
@@ -3068,9 +3113,23 @@ So you just need to swap the x and z coordinates in transformation equations to 
            <div id="def-rest-mass"> <dt><b>Rest mass:</b>  </dt> <dd> The mass of a particle in its own rest frame </dd></div>
            <div id="def-rest-mass-energy"> <dt><b>Rest mass energy:</b>  </dt> <dd> The energy a particle has due to its rest mass (given by its rest mass times speed of light squared) </dd></div>
     </dl>
-  </aside>
+
+    <div id="suggestion-wrapper" style="text-align: right; flex: 0 0 auto; width: 100%; box-sizing: border-box; padding: 10px;">
+        <span id="suggestion-trigger" style=" cursor: pointer; font-size: 0.9rem; text-decoration: underline; color: #555;">
+            Send Suggestions
+        </span>
+        <form id="suggestion-form" action="https://formspree.io/f/mvzwavap" method="POST" style="display: none; margin-top: 10px;">
+            <input type="hidden" name="_subject" value="suggestion box">
+            <textarea name="message" required style="width: 100%; height: 80px; box-sizing: border-box; border-radius: 4px; border: 1px solid #b7a484; padding: 5px; font-family: inherit; font-size: 0.8rem;" placeholder="Type here..."></textarea>
+            <button type="submit" style="margin-top: 5px; width: 100%; background-color: #f99830; border: none; padding: 5px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.8rem;">
+                Send
+            </button>
+        </form>
+    </div>
+</aside>
 </main>
 
+<!--- scripts -->
 <script>
 window.addEventListener('load', function() {
   fetch('media/Logo/DS_Pattern.svg')
@@ -3115,12 +3174,10 @@ function copyContent(sourceId, targetId, triggerElement) {
   targetDiv.style.justifyContent = 'center';
   targetDiv.style.alignItems = 'center';
 
-  var navHeightStr = getComputedStyle(document.documentElement).getPropertyValue('--navbar-height');
-  var navHeight = parseInt(navHeightStr) || 60;
   var windowHeight = window.innerHeight;
-  var articleHeight = windowHeight - navHeight;
+  var articleHeight = windowHeight;
   var halfArticleHeight = articleHeight / 2;
-  var midPoint = navHeight + halfArticleHeight;
+  var midPoint = halfArticleHeight;
 
   targetDiv.style.height = halfArticleHeight + "px";
   targetDiv.style.overflow = "hidden";
@@ -3158,14 +3215,14 @@ function copyContent(sourceId, targetId, triggerElement) {
 
   var rect = triggerElement.getBoundingClientRect();
 
-  if (rect.top < midPoint) {
+  if ((rect.top + rect.bottom) / 2 < midPoint) {
       targetDiv.style.top = "";
       targetDiv.style.bottom = "0px";
       targetDiv.style.borderTop = "2px solid #ccc";
       targetDiv.style.borderBottom = "";
   } else {
       targetDiv.style.bottom = "";
-      targetDiv.style.top = navHeight + "px";
+      targetDiv.style.top = "0px";
       targetDiv.style.borderBottom = "2px solid #ccc";
       targetDiv.style.borderTop = "";
   }
@@ -3180,6 +3237,36 @@ function deleteContent(targetId) {
     targetDiv.style.bottom = '';
   }
 }
+
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash;
+
+    if (hash) {
+        // Find the element the link is pointing to
+        const targetElement = document.querySelector(hash);
+
+        if (targetElement) {
+            // Find the parent chapter wrapper
+            const wrapper = targetElement.closest('.chapter');
+
+            if (wrapper) {
+                // Extract the base ID to feed into your existing toggleView function
+                // e.g., 'part_2_ch2_wrap' becomes 'part_2_ch2'
+                const viewId = wrapper.id.replace('_wrap', '');
+
+                // Open the chapter and update the TOC
+                toggleView(viewId);
+
+                // Scroll to the specific element. A slight delay ensures the DOM
+                // has fully rendered the 'display: block' change before scrolling.
+                setTimeout(() => {
+                    // Using smooth scrolling makes the jump less jarring
+                    targetElement.scrollIntoView();
+                }, 50);
+            }
+        }
+    }
+});
 
 window.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash;
@@ -3262,7 +3349,6 @@ function toggleView(id) {
             }
         }
     }
-    window.scrollTo(0, 0);
 }
 
 function syncToc(tocId) {
@@ -3376,6 +3462,66 @@ document.querySelectorAll('span[data-target]').forEach(term => {
     // Optional: Add a pointer cursor so users know it's interactive
     term.style.cursor = 'help';
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Select all the headers that represent your sections/subsections
+    const headers = document.querySelectorAll('h2[id], h3[id], h4[id], h5[id], h6[id]');
+
+    // 2. Configure the Intersection Observer
+    const observerOptions = {
+        root: null, // Uses the browser viewport
+        // The rootMargin creates a horizontal trigger band near the top of the screen.
+        // '-65px' accounts for your fixed navbar height so it triggers just below it.
+        // '-80% 0px' means it ignores the bottom 80% of the screen.
+        rootMargin: '-65px 0px -80% 0px',
+        threshold: 0
+    };
+
+    // 3. Create the observer
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // When a header enters our trigger band near the top of the screen
+            if (entry.isIntersecting) {
+                // Update the URL hash silently (replaces current history state)
+                history.replaceState(null, null, '#' + entry.target.id);
+            }
+        });
+    }, observerOptions);
+
+    // 4. Start observing each header
+    headers.forEach(header => {
+        scrollObserver.observe(header);
+    });
+});
+
+// 1. Keeps your form opening and closing
+document.getElementById('suggestion-trigger').addEventListener('click', function() {
+    // Stop it from reopening if they already sent a suggestion
+    if (this.innerText === 'Suggestion sent!') return;
+
+    var form = document.getElementById('suggestion-form');
+    form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+});
+
+// 2. The submit listener with an inline message
+document.getElementById('suggestion-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Stop the redirect
+
+    // Send the data in the background
+    fetch(this.action, {
+        method: this.method,
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+    }).then(() => {
+        this.style.display = 'none'; // Hide the form box
+
+        // Change the trigger text to a success message
+        var trigger = document.getElementById('suggestion-trigger');
+        trigger.innerText = 'Suggestion sent!';
+        trigger.style.textDecoration = 'none'; // Remove the underline
+        trigger.style.cursor = 'default'; // Change cursor back to normal
+    });
 });
 
 </script>

@@ -8,22 +8,27 @@
 \variableterm{\Tg}{\gamma}
 {the gamma factor, a relativistic factor used to simplfy equations, it is given by ${1/\sqrt{1-v^2/c^2}}$ which determines how much of an effect the transform of the coordinates deviates from the classical transform. It is only significant at relative frame speeds, $v$, close to that of light, $c$.}
 
+
+
+\variableterm{\Tprime}{'}
+{This apostrophe on a quantity represents the corresponding quantity in a second primed reference frame.}
+
 \variableterm{\Tx}{x}
 {the x-coordinate}
 \variableterm{\Tz}{z}
 {the z-coordinate}
 \variableterm{\Ty}{y}
 {the y-coordinate}
-\variableterm{\TxPRM}{x'}
+\variableterm{\TxPRM}{\Tx\Tprime}
 {the corresponding x-coordinate in the primed frame}
-\variableterm{\TzPRM}{z'}
+\variableterm{\TzPRM}{\Tz\Tprime}
 {the corresponding z-coordinate in the primed frame}
-\variableterm{\TyPRM}{y'}
+\variableterm{\TyPRM}{\Ty\Tprime}
 {the corresponding y-coordinate in the primed frame}
 \variableterm{\TVecr}{\underline{r}}
-{the position vector, $\underline{r}=(x,y,z)$, of an event in the current inertial reference frame.}
-\variableterm{\TVecrPRM}{\underline{r}'}
-{the position vector, $\underline{r}'=(x',y',z')$, of an event in another inertial reference frame, referred to as the primed frame, and denoted with an apostrophy $'$. This position vector cooresponds to the position vector of the event in the initial reference frame.}
+{$\underline{r}=(\Tx,\Ty,\Tz)$, the position vector coordinates of an event in the current inertial reference frame.}
+\variableterm{\TVecrPRM}{\TVecr\Tprime}
+{$\underline{r}'=(\TxPRM,\TyPRM,\TzPRM)$, the position vector coordinates of an event in another inertial reference frame, referred to as the primed frame, and denoted with an apostrophy $'$. This position vector cooresponds to the position vector of the event in the initial reference frame.}
 
 
 \variableterm{\Tv}{v}
@@ -41,9 +46,9 @@
 {the position of the primed axis' origin, given by the set of spatial and time coordinates.}
 
 \variableterm{\TVece}{\underline{e}}
-{An event in the proper frame, given by the set of spatial and time coordinates $\underline{e}=(x,y,z,t)$.}
+{$\underline{e}=(x,y,z,t)$, an event in the proper frame, given by the set of spatial and time coordinates.}
 \variableterm{\TVecePRM}{\underline{e}'}
-{An event in the primed frame, given by the set of spatial and time coordinates $\underline{e}'=(x',y',z',t')$.}
+{$\underline{e}'=(x',y',z',t')$, an event in the primed frame, given by the set of spatial and time coordinates.}
 
 \variableterm{\Tt}{t}
 {the time coordinate in current frame}
@@ -141,7 +146,7 @@
 \variableterm{\Tuy}{u_y}
 {the speed of object in y-direction, in current frame}
 \variableterm{\TVecu}{\underline{u}}
-{the velocity vector of object in current frame $(u_x,u_z,u_z)$}
+{$\underline{u}=(\Tux,\Tuy,\Tuz)$, the velocity vector of object in current frame}
 \variableterm{\TuxPRM}{u'_x}
 {the speed of object in z-direction, in primed frame}
 \variableterm{\TuyPRM}{u'_y}
@@ -149,7 +154,7 @@
 \variableterm{\TuzPRM}{u'_z}
 {the speed of object in z-direction, in primed frame}
 \variableterm{\TVecuPRM}{\underline{u}'}
-{the velocity vector of object in primed frame $(u_x',u_z',u_z')$}
+{$\underline{u}'=(\TuxPRM,\TuyPRM,\TuzPRM)$,the velocity vector of object in primed frame}
 
 \variableterm{\TVecv}{\underline{v}}
 {The velocity of the second reference frame, primed frame, relative to the first reference frame, with ${v}$ being the speed and ${\mathbf{\hat{v}}}$ the directional unit vector, ${\mathbf{v}}={v} \cdot {\mathbf{\hat{v}}}$.
@@ -166,7 +171,7 @@
 \variableterm{\Tay}{a_y}
 {the acceleration in y direction, in primed frame}
 \variableterm{\TVeca}{\underline{a}}
-{the acceleration vector in initial frame}
+{$\underline{a}=(\Tax,\Tay,\Taz)$, the acceleration vector in initial frame}
 
 \variableterm{\Tus}{u_s}
 {the speed of the signal, in the initial frame}
@@ -220,6 +225,8 @@
 {the speed of particle q in the y-direction}
 \variableterm{\Tuqz}{u_{qz}}
 {the speed of particle q in the z-direction}
+\variableterm{\TVecuq}{\underline{u}_{q}}
+{$\underline{u}_{q}=(\Tuqx,\Tuqy,\Tuqz)$ the velocity of particle q}
 
 \variableterm{\Tm}{m}
 {the mass of a particle}
@@ -239,8 +246,7 @@
 \variableterm{\TEbefore}{E_{before}}
 {the initial energy}
 
-\variableterm{\TVecp}{\underline{p}}
-{momentum vector $(p_x,p_y,p_z)$ }
+
 
 \variableterm{\TguPRM}{\gamma_{u'}}
 {The gamma factor $\gamma$ between the primed frame and the particles rest frame, given by ${1/\sqrt{1-u_q'^2/c^2}}$. It is only significant at relative particle speeds, $u_q'$, close to that of light, $c$.}
@@ -256,6 +262,10 @@
 {the momentum in the z-direction, in the primed frame}
 \variableterm{\Tpz}{p_z}
 {the momentum in the z-direction, in the initial frame}
+\variableterm{\TVecp}{\underline{p}}
+{$\underline{p}=(p_x,\Tpy,\Tpz)$, the momentum vector, in the initial frame}
+\variableterm{\TVecpPRM}{\underline{p}'}
+{$\underline{p}'=(p_x,\TpyPRM,\TpzPRM)$, the momentum vector, in the primed frame}
 
 \variableterm{\Tpza}{p_{zafter}}
 {the momentum in the z-direction after}
@@ -291,7 +301,7 @@
 {the angle between the z-direction and the direction the light is propagating, in the initial frame}
 \variableterm{\TVecrRetPRM}{\underline{r}'_{ret}}
 {the retarded position of an object in the primed frame, it is the position the object was when it emitted the light signal that the observer at the origin is now recieving}
-\variableterm{\TvecrtPRMzeroPRM}{\underline{r}'_{t' = 0}}
+\variableterm{\TVecrtPRMzeroPRM}{\underline{r}'_{t' = 0}}
 {the position of an object in the primed frame at the current time of the origin $t'=0$}
 \variableterm{\TthetaRetPRM}{\theta'_{ret}}
 {the angle between the z-axis and the retarded position, in the primed frame}
@@ -321,7 +331,7 @@
 {a negligiblly small term}
 
 \variableterm{\Tr}{r}
-{the spherical polar coordinate corresponding to the magnitude of the vector}
+{$r=\|\underline{r}\|$, the spherical polar coordinate corresponding to the magnitude of the vector}
 
 \variableterm{\Tphi}{\phi}
 {the spherical polar coordinate corresponding to the angle from the x-axis to the vector, in the x-y plane}
@@ -356,9 +366,6 @@
 \variableterm{\TalphaPRM}{\alpha'}
 {the angle between the z-direction and the direction the light is propagating, in the primed frame}
 
-\variableterm{\TVecl}{\underline{l}}
-{the light's position vector, in the current frame with source moving $(l_x,l_y,l_z)$}
-
 \variableterm{\TTRet}{T_{ret}}
 {The retarded time, when the light was emitted from the source}
 \variableterm{\TTp}{T_p}
@@ -371,19 +378,21 @@
 {the light's y-coordinate, in the current frame with source moving}
 \variableterm{\Tlz}{l_z}
 {the light's z-coordinate, in the current frame with source moving}
+\variableterm{\TVecl}{\underline{l}}
+{$(\Tlx,\Tly,\Tlz)$, the light's position vector, in the current frame with source moving}
 % may be different Ls
 \variableterm{\TL}{L}
-{a factor used to simplfy equations $ \TL =\sqrt{\Tlx ^2+\Tly ^2+\Tg ^2 \Tlz ^2}$}
+{a factor used to simplfy equations $ \TL =\sqrt{l_x ^2+l_y ^2+\gamma ^2 l_z ^2}$}
 
 
-\variableterm{\TVecrzero}{\underline{r}_0}
-{a position in the rest frame of the source where the light is at time $t_0=0$, giving $\underline{r}_0= \underline{l}_0$ }
 \variableterm{\Tyzero}{y_0}
-{a position's y-coordinate in the source's rest frame}
+{a position's y-coordinate in the source's rest frame, where the light is at time $t_0=0$, giving $\underline{r}_0= \underline{l}_0$}
 \variableterm{\Tzzero}{z_0}
-{a position's z-coordinate in the source's rest frame}
+{a position's z-coordinate in the source's rest frame, where the light is at time $t_0=0$, giving $\underline{r}_0= \underline{l}_0$}
 \variableterm{\Txzero}{x_0}
-{a position's x-coordinate in the source's rest frame}
+{a position's x-coordinate in the source's rest frame, where the light is at time $t_0=0$, giving $\underline{r}_0= \underline{l}_0$}
+\variableterm{\TVecrzero}{\underline{r}_0}
+{$\underline{r}_0=(\Txzero,\Tyzero,\Tzzero)$ a position in the rest frame of the source where the light is at time $t_0=0$, giving $\underline{r}_0= \underline{l}_0$}
 
 
 \variableterm{\Ts}{s}
@@ -391,14 +400,14 @@
 \variableterm{\TVecsRet}{\underline{s}_{ret}}
 {the source's retarded position in the current frame with the source moving, it is the position the source was when it emitted the light}
 
-\variableterm{\TVeclzero}{\underline{l}_0}
-{the position of light at time $t_0=0$ in the rest frame of the source $\underline{l}_0=(l_{0x},l_{0y},l_{0z})$ }
 \variableterm{\Tlzerox}{l_{0x}}
 {the x-coordinate of light at time $t_0=0$ in the rest frame of the source}
 \variableterm{\Tlzeroy}{l_{0y}}
 {the y-coordinate of light at time $t_0=0$ in the rest frame of the source}
 \variableterm{\Tlzeroz}{l_{0z}}
 {the z-coordinate of light at time $t_0=0$ in the rest frame of the source}
+\variableterm{\TVeclzero}{\underline{l}_0}
+{$\underline{l}_0=(\Tlzerox,\Tlzeroy,\Tlzeroz)$, the position of light at time $t_0=0$ in the rest frame of the source}
 
 \variableterm{\TOmega}{\Omega}
 {the solid angle in the current frame, it is a measure of the amount of the field of view}

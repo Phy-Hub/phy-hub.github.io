@@ -21,6 +21,7 @@ py_to_output_page    = "../../pages/" + topic_folder_name + ".html"
 py_to_main_tex       = "Latex/Main_Matter.tex"
 py_to_defs           = "Latex/Tex/Terms/Definitions.tex"
 py_to_resources      = "Latex/Tex/Resources.tex"
+py_to_intro          = "Latex/Tex/Front_Matter.tex"
 py_to_outro          = "Latex/Tex/Outro.tex"
 py_to_terms          = "Latex/Tex/Terms"
 py_to_term_comands   = "Latex/Tex/Terms/Term_commands.tex"
@@ -102,21 +103,23 @@ def wrap_content(latex_file):
 
     lines = content.splitlines()
 
-    # --- 1. PRE-SCAN: Map Chapters to Parts ---
+    # 1. PRE-SCAN: Map Chapters to Parts
     chapter_part_map = {}
     temp_part_count = 0
     temp_ch_count = 0
 
     for line in lines:
         if re.search(r'\\part(?:\[.*?\])?\{(.+?)\}', line):
-            temp_part_count += 1
+            # Ignore the "Intro" when counting parts
+            if not re.search(r'\{Intro\}|\{Introduction\}', line, re.IGNORECASE):
+                temp_part_count += 1
         elif re.search(r'\\chapter(?:\[.*?\])?\{(.+?)\}', line):
             temp_ch_count += 1
             chapter_part_map[temp_ch_count] = temp_part_count
 
     total_chapters = temp_ch_count
 
-    # --- 2. SETUP ---
+    # 2. SETUP
     LEVELS = {
         'chapter': (0, 3),
         'section': (1, 4),
@@ -127,12 +130,11 @@ def wrap_content(latex_file):
     nums = [0, 0, 0, 0]  # [ch, sec, subsec, subsubsec]
     output = []
     in_part = False
+    in_intro = False  # NEW TRACKER
     part_count = 0
-
-    # NEW: Flag to track if we've hit the Outro (or beyond)
     outro_reached = False
 
-    # --- 3. HELPER FUNCTIONS ---
+    # 3. HELPER FUNCTIONS
     def get_nav_footer(current_ch, current_part):
         prev_ch = current_ch - 1
         next_ch = current_ch + 1
@@ -143,7 +145,8 @@ def wrap_content(latex_file):
             prev_btn = (f'<a href="#{prev_id}_wrap" onclick="syncToc(\'{prev_id}_toc\');" '
                         f'style="font-weight: bold; padding-left: 10px; cursor: pointer;"> &lt; Previous </a>\n')
         else:
-            prev_btn = "<a></a>\n"
+            # --- NEW LOGIC: Point first chapter back to intro ---
+            prev_btn = '<a href="#intro_wrap" onclick="toggleView(\'intro\');" style="font-weight: bold; padding-left: 10px; cursor: pointer;"> &lt; Previous </a>\n'
 
         if next_ch <= total_chapters:
             next_part = chapter_part_map.get(next_ch, 0)
@@ -158,33 +161,47 @@ def wrap_content(latex_file):
     def close_tags(target_depth, reset_counters=True):
         for i in range(3, target_depth - 1, -1):
             if nums[i] > 0:
-                if not in_part:
+                if not in_part and not in_intro:
                     output.append('</div>')
                 if i > target_depth and reset_counters:
                     nums[i] = 0
 
     def close_block(reset_counters=True):
         close_tags(1, reset_counters=reset_counters)
-        if in_part:
+        # --- NEW LOGIC: Append nav arrows specifically for the Intro ---
+        if in_intro:
+            output.append('</div>')
+            output.append('\n<div class="arrow-nav">\n<a></a>\n<a href="#part_1_ch1_wrap" onclick="syncToc(\'part_1_ch1_toc\');" style="font-weight: bold; text-align: right; padding-right: 10px; cursor: pointer;"> Next &gt; </a>\n</div>\n</section>\n')
+        elif in_part:
             output.append('</div>')
             output.append('</section>\n')
         elif nums[0] > 0:
             output.append(f'</div>{get_nav_footer(nums[0], part_count)}')
 
-    # --- 4. MAIN PARSING LOOP ---
+    #  4. MAIN PARSING LOOP
     for line in lines:
         line = line.strip()
 
         # Handle Parts
         part_match = re.search(r'\\part(?:\[.*?\])?\{(.+?)\}', line)
         if part_match:
+            title = part_match.group(1).strip()
             close_block(reset_counters=False)
-            in_part = True
-            part_count += 1
-            output.append(f'<section id="part_{part_count}_wrap" class="chapter part-wrapper">')
-            # Assuming you have a to_roman function defined elsewhere in your code!
-            output.append(f'<h2 class="part_header" id="part_{part_count}_header" style="display: flex; justify-content: center; text-align: center;">Part {to_roman(part_count)}.<br>{part_match.group(1)}</h2>')
-            output.append(f'<div id="part_{part_count}_content">')
+
+            # --- NEW LOGIC: Fork between Intro and normal Part ---
+            if title.lower() in ['intro', 'introduction']:
+                in_intro = True
+                in_part = False
+                output.append(f'<section id="intro_wrap" class="chapter part-wrapper">')
+                output.append(f'<h2 class="part_header" id="intro_header" style="display: flex; justify-content: center; text-align: center;">Introduction</h2>')
+                output.append(f'<div id="intro_content">')
+            else:
+                in_intro = False
+                in_part = True
+                part_count += 1
+                output.append(f'<section id="part_{part_count}_wrap" class="chapter part-wrapper">')
+                output.append(f'<h2 class="part_header" id="part_{part_count}_header" style="display: flex; justify-content: center; text-align: center;">Part {to_roman(part_count)}.<br>{title}</h2>')
+                output.append(f'<div id="part_{part_count}_content">')
             continue
 
         # Handle Chapters and Sections
@@ -196,18 +213,16 @@ def wrap_content(latex_file):
             if depth == 0: # Chapter
                 close_block()
                 in_part = False
+                in_intro = False
                 nums[0] += 1
                 nums[1:] = [0, 0, 0]
 
-                # NEW: Check if this chapter is the Outro
                 if title.strip().lower() == 'outro':
                     outro_reached = True
 
-                # --- NEW ID GENERATION ---
                 current_id_base = f"part_{part_count}_ch{nums[0]}"
                 display = ' style="display: none !important;"' if nums[0] > 1 else ""
 
-                # NEW: Determine the header text based on the outro flag
                 if outro_reached:
                     header_text = title
                 else:
@@ -391,10 +406,14 @@ def to_roman(n):
         return {1:'I', 2:'II', 3:'III', 4:'IV', 5:'V', 6:'VI'}.get(int(n), str(n))
 
 def create_toc(toc_dic):
-    # --- 1. Helpers & Sorting ---
-    keys = sorted(toc_dic.keys(), key=lambda x: [int(k) for k in x.split('_')])
+    # 1. Helpers & Sorting
+    def sort_key(x):
+        if x == 'intro': return [-1]
+        return [int(k) for k in x.split('_')]
 
-    # --- 2. Build Data Tree ---
+    keys = sorted(toc_dic.keys(), key=sort_key)
+
+    #  2. Build Data Tree
     tree = []
     # (We don't need p_ids or c_ids lists anymore)
 
@@ -411,7 +430,7 @@ def create_toc(toc_dic):
             if tree and tree[-1]['chaps']:
                 tree[-1]['chaps'][-1]['sects'].append({'id': content_levels[2], 'title': item['title']})
 
-    # --- 3. Generate HTML (No JS here) ---
+    # 3. Generate HTML (No JS here)
     html = ['<div id="toc_container"><ul style="list-style:none; padding:0;">']
     arrow = '<span class="toc-arrow">&#9654;</span>'
 
@@ -419,28 +438,25 @@ def create_toc(toc_dic):
     outro_reached = False
 
     for p in tree:
-        # Added class: 'toc-part-link'
-        html.append(f'''<li> <a href="#part_{p['id']}_header" id="link_part_{p['id']}" class="toc-link toc-part-link" onclick="toggleView('part_{p['id']}')"> {arrow} <b>Part {to_roman(p['id'])}. {p['title']}</b> </a> <ul id="part_{p['id']}_toc" class="toc-sublist toc-part-sublist">
-        ''') # Added class
+        if p['id'] == 'intro':
+            html.append(f'''\n<li> <a href="#intro_wrap" id="link_intro" class="toc-link toc-part-link" onclick="toggleView('intro')"> {arrow} <b>{p['title']}</b> </a> </li>\n''')
+            continue
+
+        html.append(f'''\n<li> <a href="#part_{p['id']}_header" id="link_part_{p['id']}" class="toc-link toc-part-link" onclick="toggleView('part_{p['id']}')"> {arrow} <b>Part {to_roman(p['id'])}. {p['title']}</b> </a> <ul id="part_{p['id']}_toc" class="toc-sublist toc-part-sublist">\n''')
 
         for c in p['chaps']:
-            # NEW: Check if this chapter is the Outro
             if c['title'].strip().lower() == 'outro':
                 outro_reached = True
 
-            # NEW: Determine the display text for the chapter
             if outro_reached:
                 chapter_display = f"{c['title']}"
             else:
                 chapter_display = f"{c['id']}. {c['title']}"
 
-            # Added class: 'toc-chapter-link'
-            html.append(f'''\n\t<li> <a href="#part_{p['id']}_ch{c['id']}_header" id="link_ch_{c['id']}" class="toc-link toc-chapter-link" onclick="toggleView('part_{p['id']}_ch{c['id']}')"> {arrow} <b>{chapter_display} </b> </a> <ul id="part_{p['id']}_ch_{c['id']}_toc" class="toc-sublist toc-chapter-sublist">
-            ''') # Added class
+            html.append(f'''\n\t<li> <a href="#part_{p['id']}_ch{c['id']}_header" id="link_ch_{c['id']}" class="toc-link toc-chapter-link" onclick="toggleView('part_{p['id']}_ch{c['id']}')"> {arrow} <b>{chapter_display} </b> </a> <ul id="part_{p['id']}_ch_{c['id']}_toc" class="toc-sublist toc-chapter-sublist">\n''')
 
             for s in c['sects']:
-                html.append(f'''<li> <a href="#part_{p['id']}_ch{c['id']}_{s['id']}_header" class="toc-link"> {c['id']}.{s['id']} {s['title']} </a> </li>
-                ''' )
+                html.append(f'''<li> <a href="#part_{p['id']}_ch{c['id']}_{s['id']}_header" class="toc-link"> {c['id']}.{s['id']} {s['title']} </a> </li>\n''' )
             html.append('</ul></li>')
         html.append('</ul></li>')
 
@@ -511,6 +527,7 @@ def find_matching_brace(text, start_index):
 
     return -1
 
+
 def create_dictionary_of_math_terms(file_path):
 
     if not os.path.exists(file_path):
@@ -520,12 +537,10 @@ def create_dictionary_of_math_terms(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
         file_content = file.read()
 
-    # --- STEP 0: Clean Comments ---
-    # This removes any % and the text following it,
-    # UNLESS the % is escaped (preceded by a backslash, like 50\%).
     file_content = re.sub(r'%.*', '', file_content)
 
     entries = []
+    term_map = {}
 
     command_iterator = re.finditer(r"\\variableterm", file_content)
 
@@ -558,12 +573,42 @@ def create_dictionary_of_math_terms(file_path):
 
         definition_content = file_content[start_brace + 1 : end_brace].strip()
 
+        # --- UPDATED LOGIC: Forward Dependency Tracking & Substitution ---
+
+        sorted_known_commands = sorted(term_map.keys(), key=len, reverse=True)
+
+        for known_cmd in sorted_known_commands:
+            # Check if an older command exists in the current term or definition
+            if known_cmd in definition_content:
+
+                # 1. Find the older command in the entries list and update its "used_in" list
+                for entry in entries:
+                    if entry["raw_command"] == known_cmd:
+                        if r"\TVec" in raw_command and raw_command not in entry["used_in"]:
+                            entry["used_in"].append(raw_command)
+                        break # Found and updated the older entry, break the inner loop
+
+                definition_content = definition_content.replace(known_cmd, term_map[known_cmd])
+
+            # 2. Substitute the raw command with its evaluated mathematical term
+            if known_cmd in term_content:
+                term_content = term_content.replace(known_cmd, term_map[known_cmd])
+
+
+        # Store the fully evaluated term so future variables can use it
+        term_map[raw_command] = term_content
+
         # Append to list
         entries.append({
             "raw_command": raw_command,
             "term_content": term_content,
-            "definition_content": definition_content
+            "definition_content": definition_content,
+            "used_in": [] # Starts empty, will be updated by future terms if referenced
         })
+
+    for entry in entries:
+        if len(entry["used_in"]) > 1:
+            print(entry["raw_command"], " used in more than one terms definitions: i.e used in ", entry["used_in"])
 
     return entries
 
@@ -651,22 +696,33 @@ def Eq_env_to_HTML(content, terms_data):
         )
 
         # --- C. Process Terms ---
-        found_data_ids = []
+        found_data_ids = set() # Changed to a set to prevent duplicate IDs
 
         for term in sorted_terms:
             raw_cmd = term['raw_command']
             replacement = term['term_content']
+            used_in = term.get('used_in', []) # Safely get the list
 
             cmd_pattern = re.compile(re.escape(raw_cmd) + r'(?![a-zA-Z])')
 
             if cmd_pattern.search(math_body):
-                data_id = "var" + raw_cmd.replace("\\", "")
-                found_data_ids.append(data_id)
+
+                # Check if it's used exactly once
+                if len(used_in) == 1:
+                    # Note: Assuming 'used_in' contains the raw_command of the parent.
+                    # If it already contains the exact ID string, just use: data_id = used_in[0]
+                    parent_cmd = used_in[0]
+                    data_id = "var" + parent_cmd.replace("\\", "")
+                else:
+                    data_id = "var" + raw_cmd.replace("\\", "")
+
+                found_data_ids.add(data_id)
                 math_body = cmd_pattern.sub(lambda m: replacement, math_body)
 
         # --- D. Construct HTML ---
         data_terms_attr = ""
         if found_data_ids:
+            # Join the set into a space-separated string
             data_terms_attr = f' data-terms="{" ".join(found_data_ids)}"'
 
         return f'<div class="math"{id_attr}{data_terms_attr}>\n{math_body}\n</div>'
@@ -874,8 +930,11 @@ def create_dictionary_of_content(filepath):
                     title = short_title
 
                 if level == "part":
-                    counters["part"] += 1
-                    structure_dict[f"{counters['part']}"] = {"title": title, "label": label}
+                    if title.lower() in ['intro', 'introduction']:
+                        structure_dict["intro"] = {"title": "Introduction", "label": label}
+                    else:
+                        counters["part"] += 1
+                        structure_dict[f"{counters['part']}"] = {"title": title, "label": label}
 
                 elif level == "chapter":
                     counters["chapter"] += 1
@@ -1101,7 +1160,7 @@ def add_latex_definitions(input_file, output_file):
 
     # 3. Swap \section* for \chapter and \subsection* for \textbf
     content = re.sub(r'\\section\*\{(.*?)\}', r'\\chapter{\1}', content)
-    content = re.sub(r'\\subsection\*', r'\\h5', content)
+    content = re.sub(r'\\subsection\*', r'\\h4', content)
 
     # 4. Transform \term{id}{Title}{aliases}{Description}
     # Pattern explanation: matches \term, then 4 sets of balanced curly braces
@@ -1416,22 +1475,24 @@ def check_for_for_leftover_math_terms(file_path):
 #SEP###############################################################################
 #SEP###############################################################################
 Latex_File = 'Latex_content.txt'
+
 with open(Latex_File, 'wb') as dst:
-    for f in [py_to_main_tex, py_to_outro, py_to_resources]:
+    for f in [py_to_intro, py_to_main_tex, py_to_outro, py_to_resources]:
         with open(f, 'rb') as src:
             dst.write(src.read() + b'\n')
 
 add_latex_definitions(py_to_defs, Latex_File)
 
 
-check_for_for_leftover_math_terms('Latex_content.txt')
-
 # to do first to avoid conflicts:
 remove_comments(Latex_File)
+replace(Latex_File,r'\\chapter\{Intro\}', r'\\part{Intro}')
 replace(Latex_File,'<<', r'\\ll ')
 replace(Latex_File,'>>', r'\\gg ')
 replace(Latex_File,'<', r'\\lt ')
 replace(Latex_File,'>', r'\\gt ')
+
+check_for_for_leftover_math_terms('Latex_content.txt')
 
 # Create dictionaries
 toc_dict = create_dictionary_of_content(Latex_File)
@@ -1467,17 +1528,20 @@ replace(Latex_File, r'\\hyperlink\{(.*?)\}\{(.*?)\}', '<span data-target="\\g<1>
 replace(Latex_File, r'\\url\{(.*?)\}', '<a href="\\g<1>">\\g<1></a>')
 replace(Latex_File, r'\\textbf\{(.*?)\}', r'<b>\1</b>')
 replace(Latex_File, r'\\underline\{(.*?)\}', r'<span style="text-decoration: underline;">\1</span>')
-replace(Latex_File, r'\\h5\{(.*?)\}', r'<h5>\1</h5>')
+replace(Latex_File, r'\\h4\{(.*?)\}', r'<h4>\1</h4>')
 replace(Latex_File, r'\\href\{(.*?)\}\{(.*?)\}', '<a style="color: black" href="\\g<1>" target="_blank" rel="noopener noreferrer">\\g<2></a>')
 replace(Latex_File, r'\\scalebox{0.5}{R}', 'R')
 replace(Latex_File, r'\\AA', "Å") #'Å')
 replace(Latex_File, r'\\newline', '<br>\n')
 replace(Latex_File, r'\\mainmatter', '')
+replace(Latex_File, r'\\newpage', '')
+replace(Latex_File, r'\\frontmatter', '')
 replace(Latex_File,r'\\input\{.*?\}', '')
 replace(Latex_File,r'\\printbibliography\[.*?\]', '')
 colorbox_replace(Latex_File)
 replace(Latex_File, r"\\iffalse\s*animated_fig\{(.*?)\}\s*\\fi", '<button class="fig-button" data-src="animated_figs/\\1"><b>View Animated Figure</b></button>')
 replace(Latex_File,r'\\fi', '')
+replace(Latex_File, r'\\sidenote', '<p style="margin-top: 30px; margin-bottom: 15px;"><b>Side Note:</b></p>')
 ########################################################## bib_lines = bib_to_html(py_to_bib)
 
 wrap_content(Latex_File)

@@ -33,53 +33,48 @@
 \contentsline {section}{\numberline {2.7}Acceleration}{50}{section.2.7}%
 \contentsline {section}{\numberline {2.8}The Paradox of Faster than Light Signals}{52}{section.2.8}%
 \contentsline {section}{\numberline {2.9}Summary}{53}{section.2.9}%
-\contentsline {section}{\numberline {2.10}Terms}{54}{section.2.10}%
-\contentsline {chapter}{\numberline {3}Quantities That all Inertial Frames Agree on}{56}{chapter.3}%
-\contentsline {section}{\numberline {3.1}The Space-Time Interval}{57}{section.3.1}%
-\contentsline {section}{\numberline {3.2}D'Alembert operator}{57}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Energy-Mass and Momentum Relation}{60}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}The Invariant Energy Quantity}{61}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Rest Mass-Energy Equivalence}{63}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Relativistic Momentum}{64}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Proof that this relativistic Momentum is Conserved}{66}{subsection.3.3.4}%
-\contentsline {subsubsection}{Transformation Identities}{66}{section*.30}%
-\contentsline {subsubsection}{Y-Component}{67}{section*.31}%
-\contentsline {subsubsection}{Z-Component}{67}{section*.32}%
-\contentsline {subsubsection}{Proof of Conservation}{68}{section*.33}%
-\contentsline {subsection}{\numberline {3.3.5}Momentum of Light}{69}{subsection.3.3.5}%
-\contentsline {subsection}{\numberline {3.3.6}Energy-Mass-Momentum Relation}{70}{subsection.3.3.6}%
-\contentsline {subsection}{\numberline {3.3.7}Speed of Light Limit}{70}{subsection.3.3.7}%
-\contentsline {section}{\numberline {3.4}Summary}{71}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Terms}{72}{section.3.5}%
-\contentsline {part}{III\hspace {1em}Light in Special Relativity}{74}{part.3}%
-\contentsline {chapter}{\numberline {4}An Observer's Delayed Worldview}{75}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Retarded Coordinates}{76}{section.4.1}%
-\contentsline {section}{\numberline {4.2}The Transformed Retarded Coordinates}{79}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Apparent Velocity}{80}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Summary}{83}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Terms}{84}{section.4.5}%
-\contentsline {chapter}{\numberline {5}A Point Source: Emitting a Pulse of Light}{86}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Spherical Polar Coordinates}{87}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Velocity Transform of Light from a Source}{88}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Aberration in Special Relativity}{90}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Doppler Effect}{91}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Frequency Change from Swaping Frame}{93}{subsection.5.4.1}%
-\contentsline {section}{\numberline {5.5}Relativistic Beaming}{93}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Retarded Propagation of Light in Source's Moving Frame}{95}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Light's Propagation when Swapping from Rest Frame}{98}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Summary}{101}{section.5.8}%
-\contentsline {section}{\numberline {5.9}Terms}{102}{section.5.9}%
-\contentsline {chapter}{\numberline {6}A Point Source: Continuously Emitting Light}{104}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Surface Element on a Sphere and its Solid Angle}{105}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Surface Element's Light Density}{107}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Density in direction of propagation of light}{110}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Coordinates used}{111}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Volume Density of Light}{111}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Summary}{112}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Terms}{112}{section.6.7}%
-\contentsline {part}{IV\hspace {1em}Further Topics and Conclusion}{114}{part.4}%
-\contentsline {chapter}{\numberline {7}Some Simple Applications and Further Topics}{115}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Thought Experiments}{116}{chapter.8}%
-\contentsline {chapter}{Outro}{119}{chapter*.52}%
-\contentsline {chapter}{Resources}{120}{chapter*.53}%
-\contentsline {chapter}{Dictionary}{122}{chapter*.54}%
+\contentsline {chapter}{\numberline {3}Quantities That all Inertial Frames Agree on}{55}{chapter.3}%
+\contentsline {section}{\numberline {3.1}The Space-Time Interval}{56}{section.3.1}%
+\contentsline {section}{\numberline {3.2}D'Alembert operator}{56}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Energy-Mass and Momentum Relation}{59}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}The Invariant Energy Quantity}{60}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Rest Mass-Energy Equivalence}{62}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Relativistic Momentum}{63}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Proof that this relativistic Momentum is Conserved}{65}{subsection.3.3.4}%
+\contentsline {subsubsection}{Transformation Identities}{65}{section*.30}%
+\contentsline {subsubsection}{Y-Component}{66}{section*.31}%
+\contentsline {subsubsection}{Z-Component}{66}{section*.32}%
+\contentsline {subsubsection}{Proof of Conservation}{67}{section*.33}%
+\contentsline {subsection}{\numberline {3.3.5}Momentum of Light}{68}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}Energy-Mass-Momentum Relation}{69}{subsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.3.7}Speed of Light Limit}{69}{subsection.3.3.7}%
+\contentsline {section}{\numberline {3.4}Summary}{70}{section.3.4}%
+\contentsline {part}{III\hspace {1em}Light in Special Relativity}{72}{part.3}%
+\contentsline {chapter}{\numberline {4}An Observer's Delayed Worldview}{73}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Retarded Coordinates}{74}{section.4.1}%
+\contentsline {section}{\numberline {4.2}The Transformed Retarded Coordinates}{77}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Apparent Velocity}{78}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Summary}{81}{section.4.4}%
+\contentsline {chapter}{\numberline {5}A Point Source: Emitting a Pulse of Light}{83}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Spherical Polar Coordinates}{84}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Velocity Transform of Light from a Source}{85}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Aberration in Special Relativity}{87}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Doppler Effect}{88}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Frequency Change from Swaping Frame}{90}{subsection.5.4.1}%
+\contentsline {section}{\numberline {5.5}Relativistic Beaming}{90}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Retarded Propagation of Light in Source's Moving Frame}{92}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Light's Propagation when Swapping from Rest Frame}{95}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Summary}{98}{section.5.8}%
+\contentsline {chapter}{\numberline {6}A Point Source: Continuously Emitting Light}{100}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Surface Element on a Sphere and its Solid Angle}{101}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Surface Element's Light Density}{103}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Density in direction of propagation of light}{106}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Coordinates used}{107}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Volume Density of Light}{107}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Summary}{108}{section.6.6}%
+\contentsline {part}{IV\hspace {1em}Further Topics and Conclusion}{109}{part.4}%
+\contentsline {chapter}{\numberline {7}Some Simple Applications and Further Topics}{110}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Thought Experiments}{111}{chapter.8}%
+\contentsline {chapter}{Outro}{114}{chapter*.52}%
+\contentsline {chapter}{Resources}{115}{chapter*.53}%
+\contentsline {chapter}{Dictionary}{117}{chapter*.54}%

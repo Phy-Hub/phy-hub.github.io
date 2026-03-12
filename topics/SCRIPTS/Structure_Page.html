@@ -17,6 +17,7 @@
 <script defer src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
 <script> MathJax = { loader:  {load:  ['[tex]/tagformat']}, section:  0, tex:  {tags:  'ams', packages:  {'[+]':  ['tagformat', 'sections']}, tagformat:  { number:  (n) => MathJax.config.section + '.' + n }}, startup: {ready() {const Configuration = MathJax._.input.tex.Configuration.Configuration; const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap; new CommandMap('sections', { nextSection:  'NextSection' }, {NextSection(parser, name) {MathJax.config.section++; parser.tags.counter = parser.tags.allCounter = 0;}}); Configuration.create( 'sections', {handler:  {macro:  ['sections']}}); MathJax.startup.defaultReady();}}};</script>
 
+<!--- CSS -->
 <style>
   :root {--navbar-height: 60px;}
 
@@ -80,7 +81,7 @@
     .navbar {grid-template-columns: 70px auto 70px;}
     @media (max-width: 700px) {article {min-width: 0px; width: 100vw; margin: 0;}}
   }
-  .sidebar{position: sticky; top: var(--navbar-height); overflow: hidden; align-self: start; height: auto;}
+  .sidebar { position: sticky; top: var(--navbar-height); height: calc(100vh - var(--navbar-height)); display: flex; flex-direction: column; overflow: hidden; align-self: start; box-sizing: border-box; text-align: center; padding: 0; }
   .toc-arrow { display:inline-block; margin-right:0px; color:#555; transition: transform 0.2s; }
   .toc-active .toc-arrow { transform: rotate(90deg); }
   .toc-link { text-decoration:none; color:inherit; display:block; padding:2px 0; cursor:pointer; }
@@ -94,7 +95,6 @@
 
   mjx-table {margin: 0 !important;}
   .math {font-size: 80%;}
-  mjx-container:not([display]) {font-size: smaller !important;}
   .math:hover {background-color: #ddb400;  box-shadow: 0 0 0 10px #ddb400;}
 
   @font-face { font-family: 'TG Schola'; src: url('../fonts/texgyreschola-regular.woff2') format('woff2'), url('../fonts/texgyreschola-regular.woff') format('woff'); font-weight: normal; font-style: normal; }
@@ -135,7 +135,6 @@
   /* Display the chapter when its ID matches the URL hash */
   .chapter:target {
       display: block;
-      animation: fadeIn 0.5s; /* Optional: adds a nice fade effect */
   }
 
   /* Helper to ensure the first chapter is visible if no ID is in URL
@@ -156,6 +155,7 @@
 </style>
 </head>
 
+<!--- body -->
 <body style="margin: 0; background-color:#ffe4c8; ">
 <header id="site-navbar">
   <!--Navbar-->
@@ -173,10 +173,11 @@
   </div>
 </header>
 
+<!--- Main -->
 <main>
-  <div id="equation_hover" style="position: fixed; top: var(--navbar-height); padding: 0px; padding-right: 20px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
-  <div id="fig_hover" style="display: none; position: fixed; box-sizing: border-box; padding: 20px; background-color:#f99830; width: 660px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
-  <!--Page Navbar-->
+  <div id="equation_hover" style="position: fixed; top: 0px; padding: 0px; padding-right: 20px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
+  <div id="fig_hover" style="display: none; position: fixed; box-sizing: border-box; padding: 10px; background-color:#f99830; width: 680px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
+  <!--- Page Navbar-->
   <nav id="tocsidebar">
     <div>
     <p style="font-size: 1.5em; font-weight: normal; margin: 0pt; padding-bottom: 0.5em;  text-align: center;"><span style="font-family: 'Computer Modern', serif; font-style: italic;">Handbook of</span>
@@ -193,7 +194,7 @@
     </div>
   </nav>
 
-  <!--Main Content-->
+  <!--- Main Content-->
   <article style=" line-height: 1.5; font-size: 20px; border-left: 10px solid hsla(0, 0%, 50%, 0.1); border-right: 10px solid hsla(0, 0%, 50%, 0.1);">
     <header style="display: flex; justify-content: center; text-align: center; font-family: 'Computer Modern Serif'; padding-top: 10px;">
       <div style="width: 50%; display: flex; flex-direction: column; align-items: center;">
@@ -219,20 +220,37 @@
     </div>
   </article>
 
-  <!--Sidebar-->
-  <aside class="sidebar" style="overflow-y: auto; max-height: calc(100vh - 100px);">
-      <div id="vars">
-        <div id="definition-display" class="definition-box" style="color: #555; text-align: left;">
-          <div style="text-align: center;"> &ast;Hover over equations for term info&ast; </div>
+  <!--- Sidebar -->
+  <aside class="sidebar">
+    <div style="flex: 1; overflow-y: auto; padding: 10px;">
+        <div id="vars">
+            <div id="definition-display" class="definition-box" style="color: #555; text-align: left;">
+                <div style="text-align: center;"> &ast;Hover over equations for term info&ast; </div>
+            </div>
+            [Insert Math Terms]
         </div>
-        [Insert Math Terms] <dl id="dts_ch2" style="display: none;"><dt style="cursor: pointer;" onclick="document.getElementById('math-E').style.display = document.getElementById('math-E').style.display == 'none' ? 'inline' : 'none';"> \(E\)<b>:</b> </dt><definition id="math-E" style="display: none;">an <dt onmouseover="document.getElementById('event').style.display='block'" onmouseout="document.getElementById('event').style.display='none'">event</dt> *** might be confused with energy later ***</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-v').style.display = document.getElementById('math-v').style.display == 'none' ? 'inline' : 'none';"> \(v\)<b>:</b> </dt><definition id="math-v" style="display: none;">is the velocity of second <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt> relative to the first <dt onmouseover="document.getElementById('Reference-frame').style.display='block'" onmouseout="document.getElementById('Reference-frame').style.display='none'">reference frame</dt></definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-c').style.display = document.getElementById('math-c').style.display == 'none' ? 'inline' : 'none';"> \(c\)<b>:</b> </dt><definition id="math-c" style="display: none;">the speed that light travels in empty space when it is not impeded by matter and fields.</definition><br><dt style="cursor: pointer;" onclick="document.getElementById('math-gamma').style.display = document.getElementById('math-gamma').style.display == 'none' ? 'inline' : 'none';"> \(\gamma\)<b>:</b> </dt><definition id="math-gamma" style="display: none;">a relativistic factor given by \(1/\sqrt{1-v^2/c^2}\) which determines how much of an effect the <dt onmouseover="document.getElementById('transform').style.display='block'" onmouseout="document.getElementById('transform').style.display='none'">transform</dt> of the coordinates deviates from the classical transform. It is only significant at relative frame speeds close to that of light.</definition></dl>
     </div>
-    <dl id="dictionary" style="position: fixed; bottom: 0; left: calc(50% + 350px + 10px); background-color: hsl(31, 65%, 85%); margin-right: 10px;">
-      [Insert Definitions]
+
+    <dl id="dictionary" style="position: fixed; bottom: 0; left: calc(50% + 350px + 10px); background-color: hsl(31, 65%, 85%); margin-right: 10px; margin-bottom: 10px; z-index: 1000; text-align: left;">
+        [Insert Definitions]
     </dl>
-  </aside>
+
+    <div id="suggestion-wrapper" style="text-align: right; flex: 0 0 auto; width: 100%; box-sizing: border-box; padding: 10px;">
+        <span id="suggestion-trigger" style=" cursor: pointer; font-size: 0.9rem; text-decoration: underline; color: #555;">
+            Send Suggestions
+        </span>
+        <form id="suggestion-form" action="https://formspree.io/f/mvzwavap" method="POST" style="display: none; margin-top: 10px;">
+            <input type="hidden" name="_subject" value="suggestion box">
+            <textarea name="message" required style="width: 100%; height: 80px; box-sizing: border-box; border-radius: 4px; border: 1px solid #b7a484; padding: 5px; font-family: inherit; font-size: 0.8rem;" placeholder="Type here..."></textarea>
+            <button type="submit" style="margin-top: 5px; width: 100%; background-color: #f99830; border: none; padding: 5px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.8rem;">
+                Send
+            </button>
+        </form>
+    </div>
+</aside>
 </main>
 
+<!--- scripts -->
 <script>
 window.addEventListener('load', function() {
   fetch('media/Logo/DS_Pattern.svg')
@@ -277,12 +295,10 @@ function copyContent(sourceId, targetId, triggerElement) {
   targetDiv.style.justifyContent = 'center';
   targetDiv.style.alignItems = 'center';
 
-  var navHeightStr = getComputedStyle(document.documentElement).getPropertyValue('--navbar-height');
-  var navHeight = parseInt(navHeightStr) || 60;
   var windowHeight = window.innerHeight;
-  var articleHeight = windowHeight - navHeight;
+  var articleHeight = windowHeight;
   var halfArticleHeight = articleHeight / 2;
-  var midPoint = navHeight + halfArticleHeight;
+  var midPoint = halfArticleHeight;
 
   targetDiv.style.height = halfArticleHeight + "px";
   targetDiv.style.overflow = "hidden";
@@ -320,14 +336,14 @@ function copyContent(sourceId, targetId, triggerElement) {
 
   var rect = triggerElement.getBoundingClientRect();
 
-  if (rect.top < midPoint) {
+  if ((rect.top + rect.bottom) / 2 < midPoint) {
       targetDiv.style.top = "";
       targetDiv.style.bottom = "0px";
       targetDiv.style.borderTop = "2px solid #ccc";
       targetDiv.style.borderBottom = "";
   } else {
       targetDiv.style.bottom = "";
-      targetDiv.style.top = navHeight + "px";
+      targetDiv.style.top = "0px";
       targetDiv.style.borderBottom = "2px solid #ccc";
       targetDiv.style.borderTop = "";
   }
@@ -342,6 +358,36 @@ function deleteContent(targetId) {
     targetDiv.style.bottom = '';
   }
 }
+
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash;
+
+    if (hash) {
+        // Find the element the link is pointing to
+        const targetElement = document.querySelector(hash);
+
+        if (targetElement) {
+            // Find the parent chapter wrapper
+            const wrapper = targetElement.closest('.chapter');
+
+            if (wrapper) {
+                // Extract the base ID to feed into your existing toggleView function
+                // e.g., 'part_2_ch2_wrap' becomes 'part_2_ch2'
+                const viewId = wrapper.id.replace('_wrap', '');
+
+                // Open the chapter and update the TOC
+                toggleView(viewId);
+
+                // Scroll to the specific element. A slight delay ensures the DOM
+                // has fully rendered the 'display: block' change before scrolling.
+                setTimeout(() => {
+                    // Using smooth scrolling makes the jump less jarring
+                    targetElement.scrollIntoView();
+                }, 50);
+            }
+        }
+    }
+});
 
 window.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash;
@@ -424,7 +470,6 @@ function toggleView(id) {
             }
         }
     }
-    window.scrollTo(0, 0);
 }
 
 function syncToc(tocId) {
@@ -538,6 +583,66 @@ document.querySelectorAll('span[data-target]').forEach(term => {
     // Optional: Add a pointer cursor so users know it's interactive
     term.style.cursor = 'help';
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Select all the headers that represent your sections/subsections
+    const headers = document.querySelectorAll('h2[id], h3[id], h4[id], h5[id], h6[id]');
+
+    // 2. Configure the Intersection Observer
+    const observerOptions = {
+        root: null, // Uses the browser viewport
+        // The rootMargin creates a horizontal trigger band near the top of the screen.
+        // '-65px' accounts for your fixed navbar height so it triggers just below it.
+        // '-80% 0px' means it ignores the bottom 80% of the screen.
+        rootMargin: '-65px 0px -80% 0px',
+        threshold: 0
+    };
+
+    // 3. Create the observer
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // When a header enters our trigger band near the top of the screen
+            if (entry.isIntersecting) {
+                // Update the URL hash silently (replaces current history state)
+                history.replaceState(null, null, '#' + entry.target.id);
+            }
+        });
+    }, observerOptions);
+
+    // 4. Start observing each header
+    headers.forEach(header => {
+        scrollObserver.observe(header);
+    });
+});
+
+// 1. Keeps your form opening and closing
+document.getElementById('suggestion-trigger').addEventListener('click', function() {
+    // Stop it from reopening if they already sent a suggestion
+    if (this.innerText === 'Suggestion sent!') return;
+
+    var form = document.getElementById('suggestion-form');
+    form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+});
+
+// 2. The submit listener with an inline message
+document.getElementById('suggestion-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Stop the redirect
+
+    // Send the data in the background
+    fetch(this.action, {
+        method: this.method,
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+    }).then(() => {
+        this.style.display = 'none'; // Hide the form box
+
+        // Change the trigger text to a success message
+        var trigger = document.getElementById('suggestion-trigger');
+        trigger.innerText = 'Suggestion sent!';
+        trigger.style.textDecoration = 'none'; // Remove the underline
+        trigger.style.cursor = 'default'; // Change cursor back to normal
+    });
 });
 
 </script>

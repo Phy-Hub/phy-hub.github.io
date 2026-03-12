@@ -1,18 +1,18 @@
-### main content, nagivation + toc:
-### equations + figures:
-- see if there is automatic mathjax resizing for equations that overflow
-* onhover of figure ref, have fig resize such that fig and caption both fit in halfscreen, make sure it takes up navbar area too
-* get whole of Figure ()/ equation () to have hover over
-* reserve space for lazy loaded images i.e this <img src="..." loading="lazy"> to <img src="..." loading="lazy" width="800" height="400" style="aspect-ratio: 2/1">
-* add figure title data or aria- labels to <img src="...svg" loading="lazy"> maybe from fig_dict caption bold part (removing <spans>, math, ect. if needed) (but for subfigures i would need subcaption and caption title), <title>figure name...</title>
-* on equation hover, for vectors or vector components, just show 1 term def i.e just r def for x,y, or z
+#####
+#####
+* include intro in html before parts in toc and have it as the initial page loaded
+* clicking on toc section flickers fitst instead of loading directly to section
+#####
+#####
 
+### main content, nagivation + toc:
+* maybe have toc arrows change to black when sellected and not rotate
+### equations + figures:
+* add figure title data or aria- labels to <img src="...svg" loading="lazy"> maybe from fig_dict caption bold part (removing <spans>, math, ect. if needed) (but for subfigures i would need subcaption and caption title), <title>figure name...</title>
 
 ### links and hrefs
-* section references outside of current loaded chapter do not load correct chapter and find section
-
 ### formating:
-* latex sidenotes not on newline this could possible due to blank lines being removed or not registered when rendered, might need \n<br>\n for blank lines
+
 * use .hide() .show() Instead of manually setting the style attribute with .attr(), in bottom javascript
 * make logo svg ( python script, miniturise, see if gzipping it is possible when being used)
 * script all text into <p>
@@ -20,11 +20,11 @@
 ### css/style:
 * use same font size as wikipedia
 * maybe have title svg and part by itself with a begin > button * bt need to remove references (possibly only have used refs in parts/chapters load, would need to have extra tag/info on bibs)
-* subfigure captions height alinment is off
 * next/previous button brings up to book title instead of chapter, also they never load parts
 
 ### sidebars:
 ### checks:
+* some equations have too many terms in sidebar, can create additional \variableterm in term_commands.tex that explains multiple terms, and if it uses the term commands from previous terms in its definition, this new definition will show in sidebar instead
 
 ### html tips:
 * use em to size relative to parents font size, or rem which is relative to root font size, this can help get rid of need for media quiery
@@ -39,6 +39,8 @@
 * for text, text-align: center;
 * center divs inside a tag vertically using .ClassName {display: flex; align-items: centre; justify-content: center; } or do it using .ClassName { * display: grid; place-items: center; }
 
+### mobile version:
+* ...
 
 ### latex:
 * format image size and captions
@@ -49,7 +51,6 @@
 * express that time slowing and length contraction not being an optical illsuion, or is it ?
 * posiibly use bibtex2html for references
 * \cite{einstein1905electrodynamics} and \cite{SRtestsWiki,SRtestsUniCR} are numbered wrong in latex bibliography
-* correct the firgure (Length contraction between three accelerating cars) to have last image to be when light reaches the front car
 
 
 *************************************************************************
@@ -98,3 +99,6 @@ pages:
 
 html to continue doing:
 * keep using hls instead or rgb for easier colour choices
+
+### after published
+* reserve space for lazy loaded images i.e this <img src="..." loading="lazy"> to <img src="..." loading="lazy" width="800" height="400" style="aspect-ratio: 2/1">

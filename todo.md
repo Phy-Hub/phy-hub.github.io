@@ -1,7 +1,9 @@
 #####
 #####
-* include intro in html before parts in toc and have it as the initial page loaded
-* clicking on toc section flickers fitst instead of loading directly to section
+* clicking on toc section flickers first instead of loading directly to section
+* find better way than having padding at bottom of article to stop flickering
+* TOC justs up and down a little on page load from url
+* create about us page
 #####
 #####
 

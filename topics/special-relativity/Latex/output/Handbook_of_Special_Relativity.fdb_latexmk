@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber output/Handbook_of_Special_Relativity"] 1773226656.64883 "output/Handbook_of_Special_Relativity.bcf" "output/Handbook_of_Special_Relativity.bbl" "output/Handbook_of_Special_Relativity" 1773242869.45051 0
-  "output/Handbook_of_Special_Relativity.bcf" 1773242868 108970 2abaa2607127f472816836400d4b4701 "pdflatex"
+["biber output/Handbook_of_Special_Relativity"] 1773226656.64883 "output/Handbook_of_Special_Relativity.bcf" "output/Handbook_of_Special_Relativity.bbl" "output/Handbook_of_Special_Relativity" 1773346622.32636 0
+  "output/Handbook_of_Special_Relativity.bcf" 1773346621 108970 2abaa2607127f472816836400d4b4701 "pdflatex"
   "refs.bib" 1771780180 2030 56a7a70de619d8142fe3300f9d74f308 ""
   (generated)
   "output/Handbook_of_Special_Relativity.bbl"
   "output/Handbook_of_Special_Relativity.blg"
   (rewritten before read)
-["pdflatex"] 1773242861.43718 "c:/Users/one_p/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/Handbook_of_Special_Relativity.tex" "output/Handbook_of_Special_Relativity.pdf" "Handbook_of_Special_Relativity" 1773242869.45182 0
+["pdflatex"] 1773346614.57184 "c:/Users/one_p/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/Handbook_of_Special_Relativity.tex" "output/Handbook_of_Special_Relativity.pdf" "Handbook_of_Special_Relativity" 1773346622.3274 0
   "C:/Users/one_p/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1771691341 121421 986c656c18d5dae14116b93751df729f ""
   "C:/Users/one_p/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk" 1765421629 20028 e54e65ff1ebf94755116c0b0fd310c2a ""
   "C:/Users/one_p/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1767640299 13333486 151ae8508ef9cc82733cea82d26404fe ""
@@ -334,14 +334,14 @@
   "C:/Users/one_p/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1750428951 20785 198a9cb2e04238d92c320d0d9edbd76a ""
   "Handbook_of_Special_Relativity.tex" 1772986422 896 71bf89cb710b3b4bb0a9790da5e8dd66 ""
   "Main_Matter.tex" 1773242860 316733 ef3fbd531a427a97bb45718563a4ad96 ""
-  "Preamble.sty" 1773242736 6250 818881e1708f1ed2bb9c719fe06177d7 ""
+  "Preamble.sty" 1773242985 6250 818881e1708f1ed2bb9c719fe06177d7 ""
   "Tex/Cover_back.tex" 1771695593 152 1b20f4dd19c4e5c84da99bc03c8d94aa ""
   "Tex/Cover_front.tex" 1771695074 668 aac9906089a50c4c24469fe6d02f97a7 ""
   "Tex/Front_Matter.tex" 1771950692 5661 9dd03b294fa13723dc7ba408dc1edf78 ""
   "Tex/Outro.tex" 1772986194 1326 0d8906de5a80072b98ce7f50eb84a9e6 ""
   "Tex/Resources.tex" 1772976345 2812 f6d9808dff52492df7305c710236f31c ""
   "Tex/Terms/Definitions.tex" 1772968942 8075 094a5183a3daf3c1df5ce50b43763cee ""
-  "Tex/Terms/Term_commands.tex" 1773238531 19857 48c473f58321e7c2e24c648d325f3463 ""
+  "Tex/Terms/Term_commands.tex" 1773346613 19855 e88923b2ba07de67939475ed42607b4b ""
   "Tex/Terms/Term_dict.tex" 1773234117 6222 26baa27119e4bfa017814cbb327cc08c ""
   "Tex/toc.tex" 1714910414 247 d419c243cf95967a9459db2ff4f329c0 ""
   "c:/Users/one_p/Desktop/Phy-Hub/Website/topics/special-relativity/Latex/Handbook_of_Special_Relativity.tex" 1772986422 896 71bf89cb710b3b4bb0a9790da5e8dd66 ""
@@ -382,12 +382,12 @@
   "images/pdf/rats_moving.pdf" 1769024850 4861 cae5bdc053a76a89153ded4bb6ba7815 ""
   "images/pdf/rats_platform_frame.pdf" 1769024852 245443 6c34e9f83e644e3ac7c38545fce12c2a ""
   "images/png/PhyHub_Logo.png" 1771694461 725863 38f836ed9e716c92f33b6b2759c8bd14 ""
-  "output/Handbook_of_Special_Relativity.aux" 1773242868 87482 2d82b13152d4a2b29432c835ca34bc6b "pdflatex"
+  "output/Handbook_of_Special_Relativity.aux" 1773346621 87482 2d82b13152d4a2b29432c835ca34bc6b "pdflatex"
   "output/Handbook_of_Special_Relativity.bbl" 1773226670 9571 363dd8266ff7457174e9ae729e6b5652 "biber output/Handbook_of_Special_Relativity"
-  "output/Handbook_of_Special_Relativity.out" 1773242868 10981 f775db22647cdcb306ab1ac4b713d2db "pdflatex"
-  "output/Handbook_of_Special_Relativity.pre" 1773242863 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "output/Handbook_of_Special_Relativity.run.xml" 1773242868 2481 d66e984cb2532d166baa2a277f2cae38 "pdflatex"
-  "output/Handbook_of_Special_Relativity.toc" 1773242868 6689 19a5872cf3ffb92b4d1ed42d56a44709 "pdflatex"
+  "output/Handbook_of_Special_Relativity.out" 1773346621 10981 f775db22647cdcb306ab1ac4b713d2db "pdflatex"
+  "output/Handbook_of_Special_Relativity.pre" 1773346616 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "output/Handbook_of_Special_Relativity.run.xml" 1773346621 2481 d66e984cb2532d166baa2a277f2cae38 "pdflatex"
+  "output/Handbook_of_Special_Relativity.toc" 1773346621 6689 19a5872cf3ffb92b4d1ed42d56a44709 "pdflatex"
   "output/output/tikz/Gamma_Factor.md5" 1771948901 62 6a90a6ad58b0a7e9dd6d4af136359cbe ""
   "output/output/tikz/Length_contraction_moving_frame.md5" 1772237381 62 3803cc4fb7383f9141d1a1f0550e199d ""
   "output/output/tikz/Length_contraction_rest_frame.md5" 1772237377 62 63dcb82249495d75f215a90bccb56e45 ""

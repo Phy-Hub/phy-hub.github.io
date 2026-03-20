@@ -2,8 +2,10 @@
 "editor.formatOnSave": false,
 
 "workbench.colorCustomizations": {
-    "editorGutter.background": "#00000033"
-},
+    "[Default Dark Modern]": {
+        "editorGutter.background": "#00000033"
+    }
+}
 
 "editor.folding": false,
 "editor.glyphMargin": false,

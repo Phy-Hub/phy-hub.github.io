@@ -17,7 +17,7 @@ Topic_Name = sys.argv[3]
 
 ### from make_page.py ###
 py_to_page_structure = "../SCRIPTS/Structure_Page.html"
-py_to_output_page    = "../../pages/" + topic_folder_name + ".html"
+py_to_output_page    = "../../" + topic_folder_name + ".html"
 py_to_main_tex       = "Latex/Main_Matter.tex"
 py_to_defs           = "Latex/Tex/Terms/Definitions.tex"
 py_to_resources      = "Latex/Tex/Resources.tex"
@@ -33,9 +33,10 @@ py_to_bugs           = "bugs/"
 
 
 ### from html page ###
-html_to_svgs = "../topics/" + topic_folder_name + "/" + py_to_svgs
-html_to_pdfs  = "../topics/" + topic_folder_name + "/Latex/output/" + pdf_name
-html_to_js_diagrams    = "./"
+html_to_svgs         = "./topics/" + topic_folder_name + "/" + py_to_svgs
+html_to_pdfs         = "./topics/" + topic_folder_name + "/Latex/output/" + pdf_name
+html_to_js_diagrams  = "./"
+html_to_anim_figs    = "./media/animated_figs/"
 
 
 #sep#######################################################
@@ -1539,7 +1540,7 @@ replace(Latex_File, r'\\frontmatter', '')
 replace(Latex_File,r'\\input\{.*?\}', '')
 replace(Latex_File,r'\\printbibliography\[.*?\]', '')
 colorbox_replace(Latex_File)
-replace(Latex_File, r"\\iffalse\s*animated_fig\{(.*?)\}\s*\\fi", '<button class="fig-button" data-src="animated_figs/\\1"><b>View Animated Figure</b></button>')
+replace(Latex_File, r"\\iffalse\s*animated_fig\{(.*?)\}\s*\\fi", f'<button class="fig-button" data-src="{html_to_anim_figs}\\1"><b>View Animated Figure</b></button>')
 replace(Latex_File,r'\\fi', '')
 replace(Latex_File, r'\\sidenote', '<p style="margin-top: 30px; margin-bottom: 15px;"><b>Side Note:</b></p>')
 ########################################################## bib_lines = bib_to_html(py_to_bib)

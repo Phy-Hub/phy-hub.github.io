@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galilean Transform Simulation</title>
+    <style>
+        :root {
+            /* Palette */
+            --main-bg: #ffe4c8;
+            --card-bg: #ffe4c8;
+            --canvas-bg: #f1f5f9;
+            --btn-idle: #0b1021;
+            --btn-active: #ff0055;
+            --slider-thumb: #00d2ff;
+            --text-color: #555555;
+            --control-bg: #fff0e0;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--main-bg);
+        }
+
+        .simulation-card {
+            background: var(--card-bg);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            padding: 16px;
+            gap: 10px;
+        }
+
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            flex-grow: 1;
+            height: 0;
+            min-height: 0;
+            background-color: var(--canvas-bg);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Controls --- */
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            background: #e0cca8;
+            padding: 4px;
+            border-radius: 8px;
+            width: fit-content;
+            margin: 0 auto;
+            gap: 5px;
+            flex-shrink: 0;
+        }
+
+        .toggle-btn {
+            padding: 6px 16px;
+            border: 1px solid transparent;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #444;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .toggle-btn.active {
+            background: var(--btn-active);
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 12px;
+            background: var(--control-bg);
+            border-radius: 8px;
+            border: 1px solid #e0cca8;
+            flex-shrink: 0;
+        }
+
+        .control-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .left-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-grow: 1;
+            min-width: 200px;
+        }
+
+        button.play-btn {
+            background-color: var(--btn-idle);
+            color: white;
+            border: 1px solid #444;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            min-width: 70px;
+            transition: 0.2s;
+        }
+
+        button.play-btn:hover { background-color: #1a2540; }
+
+        .slider-group {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 2px;
+        }
+
+        input[type=range] {
+            width: 100%;
+            height: 6px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+            margin: 5px 0;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--slider-thumb);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .speed-toggles {
+            display: flex;
+            gap: 4px;
+            background: #e0cca8;
+            padding: 3px;
+            border-radius: 6px;
+        }
+
+        .speed-btn {
+            padding: 6px 10px;
+            border: none;
+            background: transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #444;
+            white-space: nowrap;
+        }
+
+        .speed-btn.active {
+            background: var(--btn-active);
+            color: white;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="simulation-card">
+
+    <div class="view-toggle">
+        <button class="toggle-btn active" id="btnLab">Lab Frame</button>
+        <button class="toggle-btn" id="btnGrid">Grid Rest Frame</button>
+    </div>
+
+    <div class="canvas-container">
+        <canvas id="simCanvas"></canvas>
+    </div>
+
+    <div class="controls">
+        <div class="control-row">
+            <div class="left-controls">
+                <button class="play-btn" id="playBtn">Play</button>
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <span>Time</span>
+                    </div>
+                    <input type="range" id="timeSlider" min="0" max="1000" value="0">
+                </div>
+            </div>
+
+            <div class="speed-toggles">
+                <button class="speed-btn" id="btnRest">Grid at Rest</button>
+                <button class="speed-btn active" id="btnFlow">Grid Flowing</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('simCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // UI Elements
+    const timeSlider = document.getElementById('timeSlider');
+    const playBtn = document.getElementById('playBtn');
+    const btnLab = document.getElementById('btnLab');
+    const btnGrid = document.getElementById('btnGrid');
+    const btnRest = document.getElementById('btnRest');
+    const btnFlow = document.getElementById('btnFlow');
+
+    // State
+    let width, height, cx, cy;
+    let isPlaying = false;
+    let animationId;
+    let viewMode = 'LAB';
+    let gridSpeedPct = 0.7;
+
+    const MOUSE_SPEED = 200;
+
+    // --- Dynamic Sizing Variables ---
+    let GRID_SIZE = 40;
+    const PATH_LENGTH_UNITS = 4; // Length of arm in grid squares
+    let PATH_LENGTH_PX = PATH_LENGTH_UNITS * GRID_SIZE;
+
+    // COLORS
+    const RAT_COLOR_1 = '#333333'; // Dark Charcoal
+    const RAT_COLOR_2 = '#c55a11'; // Burnt Orange
+
+    // --- SCALE LOGIC ---
+    function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        width = canvas.width;
+        height = canvas.height;
+
+        const maxVelocityRatio = 0.7;
+        const stretchFactor = 1 / (1 - maxVelocityRatio);
+        const totalUnitsNeeded = 1 + (PATH_LENGTH_UNITS * stretchFactor) + 3;
+
+        GRID_SIZE = width / totalUnitsNeeded;
+        PATH_LENGTH_PX = PATH_LENGTH_UNITS * GRID_SIZE;
+
+        cx = GRID_SIZE;
+        let centerY = Math.round((height / 2) / GRID_SIZE) * GRID_SIZE;
+        cy = centerY + (2 * GRID_SIZE);
+
+        draw();
+    }
+
+    /**
+     * UPDATED Rat Drawing Function
+     * - Shortened tail (2/3 length)
+     * - Removed back legs and ears
+     * - IMPROVED WHISKERS: 3 short ones on each side
+     */
+    function drawRat(x, y, mainColor, angle) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+
+        // Scale geometry to fit grid
+        const scale = GRID_SIZE / 50;
+        ctx.scale(scale, scale);
+
+        const isDarkRat = (mainColor === RAT_COLOR_1);
+        const eyeColor = isDarkRat ? 'rgba(255,255,255,0.9)' : '#111';
+        const tailColor = mainColor;
+
+        // 1. TAIL (Sinuous curve, shortened)
+        ctx.strokeStyle = tailColor;
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(-15, 0);
+        ctx.bezierCurveTo(-22, 4, -28, -4, -35, 0);
+        ctx.stroke();
+
+        // 2. PAWS (Front only)
+        ctx.fillStyle = mainColor;
+        // Front Left
+        ctx.beginPath(); ctx.ellipse(8, -8, 3, 2, Math.PI/3, 0, Math.PI*2); ctx.fill();
+        // Front Right
+        ctx.beginPath(); ctx.ellipse(8, 8, 3, 2, -Math.PI/3, 0, Math.PI*2); ctx.fill();
+
+        // 3. BODY (Teardrop shape)
+        ctx.fillStyle = mainColor;
+        ctx.beginPath();
+        // Start at Nose (22, 0)
+        ctx.moveTo(22, 0);
+        // Curve top side to back
+        ctx.bezierCurveTo(10, -13, -20, -11, -18, 0);
+        // Curve bottom side to back
+        ctx.bezierCurveTo(-20, 11, 10, 13, 22, 0);
+        ctx.fill();
+
+        // 4. EYES (Small shiny beads)
+        ctx.fillStyle = eyeColor;
+        ctx.beginPath(); ctx.arc(12, -4, 1.5, 0, Math.PI*2); ctx.fill(); // Left
+        ctx.beginPath(); ctx.arc(12, 4, 1.5, 0, Math.PI*2); ctx.fill();  // Right
+
+        ctx.restore();
+    }
+
+    function drawPath(startX, startY, turnX, turnY, endX, endY, pathState, color) {
+        ctx.save();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.setLineDash([6, 6]);
+        ctx.globalAlpha = 0.6;
+
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+
+        if (pathState === 0) {
+            ctx.lineTo(endX, endY);
+        } else if (pathState === 1) {
+            ctx.lineTo(turnX, turnY);
+            ctx.lineTo(endX, endY);
+        } else {
+            ctx.lineTo(turnX, turnY);
+            ctx.lineTo(endX, endY);
+        }
+
+        ctx.stroke();
+        ctx.restore();
+    }
+
+    function drawGrid(offsetX) {
+        ctx.strokeStyle = '#cbd5e1';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([]);
+
+        const startX = (offsetX % GRID_SIZE) - GRID_SIZE;
+        for (let x = startX; x < width + GRID_SIZE; x += GRID_SIZE) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
+
+        for (let y = cy % GRID_SIZE; y < height; y += GRID_SIZE) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
+        for (let y = cy % GRID_SIZE; y > -GRID_SIZE; y -= GRID_SIZE) {
+             ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        const progress = parseInt(timeSlider.value);
+        const v = MOUSE_SPEED * gridSpeedPct;
+        const c = MOUSE_SPEED;
+
+        const L = PATH_LENGTH_PX;
+        const t_out_red = L / (c - v);
+        const t_in_red = L / (c + v);
+        const total_time_red = t_out_red + t_in_red;
+
+        const c_perp = Math.sqrt(c*c - v*v);
+        const t_one_way_green = L / c_perp;
+        const total_time_green = t_one_way_green * 2;
+
+        const simTime = (progress / 1000) * (total_time_red * 1.1);
+
+        // --- Frame Logic ---
+        let gridOffsetX, originX, originY;
+
+        if (viewMode === 'LAB') {
+            gridOffsetX = cx - (v * simTime);
+            originX = cx;
+            originY = cy;
+        } else {
+            gridOffsetX = cx;
+            originX = cx + (v * simTime);
+            originY = cy;
+        }
+
+        drawGrid(gridOffsetX);
+
+        // Draw Source Base
+        ctx.fillStyle = '#475569';
+        ctx.beginPath();
+        ctx.arc(originX, originY, 4 * (GRID_SIZE/40), 0, Math.PI * 2);
+        ctx.fill();
+
+        // --- Turning Point Mirrors ---
+        let tp_red_x = originX + L;
+        let tp_red_y = originY;
+        let tp_green_x = originX;
+        let tp_green_y = originY - L;
+
+        ctx.fillStyle = '#64748b';
+        ctx.beginPath(); ctx.arc(tp_red_x, tp_red_y, 4 * (GRID_SIZE/40), 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(tp_green_x, tp_green_y, 4 * (GRID_SIZE/40), 0, Math.PI * 2); ctx.fill();
+
+        // ==========================================
+        // RAT 1 (Parallel - Dark Grey)
+        // ==========================================
+        let r_turn_x_screen;
+        if (viewMode === 'LAB') {
+            r_turn_x_screen = cx + (c - v) * t_out_red;
+        } else {
+            r_turn_x_screen = cx + (c * t_out_red);
+        }
+        let r_turn_y_screen = cy;
+
+        let rx_screen, ry_screen, r_angle, r_state;
+        let rx_path_end, ry_path_end;
+
+        if (simTime <= t_out_red) {
+            r_state = 0;
+            let abs_rx = cx + (c - v) * simTime;
+            let shift = (viewMode === 'GRID') ? (v * simTime) : 0;
+            rx_screen = abs_rx + shift;
+            r_angle = 0;
+            rx_path_end = rx_screen;
+            ry_path_end = cy;
+        } else if (simTime <= total_time_red) {
+            r_state = 1;
+            let timeIn = simTime - t_out_red;
+            let distFromL = (c + v) * timeIn;
+            let currentPosLab = ((c - v) * t_out_red) - distFromL;
+            let abs_rx = cx + currentPosLab;
+            let shift = (viewMode === 'GRID') ? (v * simTime) : 0;
+            rx_screen = abs_rx + shift;
+            r_angle = Math.PI;
+            rx_path_end = rx_screen;
+            ry_path_end = cy;
+        } else {
+            r_state = 2;
+            rx_screen = originX;
+            r_angle = Math.PI;
+            let abs_arrival = cx;
+            let arrival_shift = (viewMode === 'GRID') ? (v * total_time_red) : 0;
+            rx_path_end = abs_arrival + arrival_shift;
+            ry_path_end = cy;
+        }
+        ry_screen = originY;
+        drawPath(cx, cy, r_turn_x_screen, r_turn_y_screen, rx_path_end, ry_path_end, r_state, RAT_COLOR_1);
+        drawRat(rx_screen, ry_screen, RAT_COLOR_1, r_angle);
+
+
+        // ==========================================
+        // RAT 2 (Perpendicular - Orange)
+        // ==========================================
+        let g_turn_x_screen;
+        if (viewMode === 'LAB') {
+            g_turn_x_screen = cx;
+        } else {
+            g_turn_x_screen = cx + (v * t_one_way_green);
+        }
+        let g_turn_y_screen = cy - L;
+
+        let gx_screen, gy_screen, g_angle, g_state;
+        let gx_path_end, gy_path_end;
+
+        if (simTime <= t_one_way_green) {
+            g_state = 0;
+            let dist = c_perp * simTime;
+            let abs_gx = cx;
+            let abs_gy = cy - dist;
+            g_angle = Math.atan2(-c_perp, v);
+            let shift = (viewMode === 'GRID') ? (v * simTime) : 0;
+            gx_screen = abs_gx + shift;
+            gy_screen = abs_gy;
+            gx_path_end = gx_screen;
+            gy_path_end = gy_screen;
+        } else if (simTime <= total_time_green) {
+            g_state = 1;
+            let timeIn = simTime - t_one_way_green;
+            let dist = L - (c_perp * timeIn);
+            if (dist < 0) dist = 0;
+            let abs_gx = cx;
+            let abs_gy = cy - dist;
+            g_angle = Math.atan2(c_perp, v);
+            let shift = (viewMode === 'GRID') ? (v * simTime) : 0;
+            gx_screen = abs_gx + shift;
+            gy_screen = abs_gy;
+            gx_path_end = gx_screen;
+            gy_path_end = gy_screen;
+        } else {
+            g_state = 2;
+            let abs_gx = cx;
+            let abs_gy = cy;
+            g_angle = Math.PI/2;
+            let mouse_shift = (viewMode === 'GRID') ? (v * simTime) : 0;
+            gx_screen = abs_gx + mouse_shift;
+            gy_screen = abs_gy;
+            let path_shift = (viewMode === 'GRID') ? (v * total_time_green) : 0;
+            gx_path_end = cx + path_shift;
+            gy_path_end = cy;
+        }
+
+        drawPath(cx, cy, g_turn_x_screen, g_turn_y_screen, gx_path_end, gy_path_end, g_state, RAT_COLOR_2);
+        drawRat(gx_screen, gy_screen, RAT_COLOR_2, g_angle);
+    }
+
+    // Interaction
+    timeSlider.addEventListener('input', () => { if(isPlaying) stopAnimation(); draw(); });
+
+    btnLab.addEventListener('click', () => {
+        viewMode = 'LAB';
+        btnLab.classList.add('active');
+        btnGrid.classList.remove('active');
+        draw();
+    });
+
+    btnGrid.addEventListener('click', () => {
+        viewMode = 'GRID';
+        btnGrid.classList.add('active');
+        btnLab.classList.remove('active');
+        draw();
+    });
+
+    btnRest.addEventListener('click', () => {
+        gridSpeedPct = 0.0;
+        btnRest.classList.add('active');
+        btnFlow.classList.remove('active');
+        draw();
+    });
+
+    btnFlow.addEventListener('click', () => {
+        gridSpeedPct = 0.7;
+        btnFlow.classList.add('active');
+        btnRest.classList.remove('active');
+        draw();
+    });
+
+    window.addEventListener('resize', resize);
+
+    function startAnimation() {
+        isPlaying = true;
+        playBtn.innerText = "Pause";
+        function loop() {
+            if (!isPlaying) return;
+            let val = parseInt(timeSlider.value);
+            if (val >= 1000) val = 0;
+            else val += 5;
+            timeSlider.value = val;
+            draw();
+            animationId = requestAnimationFrame(loop);
+        }
+        loop();
+    }
+
+    function stopAnimation() {
+        isPlaying = false;
+        playBtn.innerText = "Play";
+        cancelAnimationFrame(animationId);
+    }
+
+    playBtn.addEventListener('click', () => {
+        if (isPlaying) stopAnimation();
+        else startAnimation();
+    });
+
+    resize();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aberration (Safe Mode)</title>
+    <style>
+    /* 1. Layout: Flexbox Column to fill viewport */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #ffe4c8;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .js-fig-wrap {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    #AberrationFig {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Canvas grows to fill empty space */
+    canvas {
+        flex-grow: 1;
+        width: 100%;
+        height: 0;
+        background-color: #ffd4a6;
+        border-radius: 8px;
+        border: 1px solid #d4b496;
+    }
+
+    /* Controls container */
+    .controls-container {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        margin-top: 10px;
+        font-size: 0.9rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .control-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Slider specific styling */
+    input[type=range] {
+        vertical-align: middle;
+        flex-grow: 0;
+        width: 50%; /* Half Width */
+        cursor: pointer;
+    }
+
+    label {
+        cursor: pointer;
+        user-select: none;
+        font-weight: bold;
+        min-width: 50px; /* Reduced slightly */
+        text-align: right;
+    }
+
+    /* New style for the value on the right */
+    .value-readout {
+        font-weight: bold;
+        min-width: 60px; /* Fixed width prevents jitter */
+        text-align: left;
+        user-select: none;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="js-fig-wrap">
+    <div class="js-fig" id="AberrationFig"></div>
+</div>
+
+<script>
+function createAberrationDiagram(containerId) {
+    const container = document.getElementById(containerId);
+
+    // --- 1. Create Canvas ---
+    const canvas = document.createElement('canvas');
+    canvas.id = containerId + '_canvas';
+    container.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+
+    // --- 2. Create Controls ---
+    const controlsDiv = document.createElement('div');
+    controlsDiv.className = 'controls-container';
+
+    const sliderGroup = document.createElement('div');
+    sliderGroup.className = 'control-group';
+
+    // A. Label (Left side)
+    const label = document.createElement('label');
+    label.htmlFor = 'bSlider';
+    label.textContent = "speed"; // Only the word speed here
+
+    // B. Slider (Middle)
+    const slider = document.createElement('input');
+    slider.type = 'range';
+    slider.id = 'bSlider';
+    slider.min = '0.0001';
+    slider.max = '0.9999999';
+    slider.step = '0.0000001';
+    slider.value = '0';
+
+    // C. Value (Right side)
+    const valueContainer = document.createElement('span');
+    valueContainer.className = 'value-readout';
+    valueContainer.innerHTML = "<span id='valDisplay'>0.000</span>c";
+
+    // Append in order: Label -> Slider -> Value
+    sliderGroup.appendChild(label);
+    sliderGroup.appendChild(slider);
+    sliderGroup.appendChild(valueContainer);
+
+    controlsDiv.appendChild(sliderGroup);
+    container.appendChild(controlsDiv);
+
+    // References for updates
+    const valueSpan = document.getElementById('valDisplay');
+
+    // --- 3. Resize Logic ---
+    function resize() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        draw();
+    }
+
+    // --- 4. Drawing Logic ---
+    function drawArrow(ctx, x1, y1, x2, y2, scale, centerHead = false) {
+        const headLen = scale * 0.05;
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const angle = Math.atan2(dy, dx);
+
+        let tipX, tipY;
+
+        if (centerHead) {
+            // Pushes the tip out so the CENTER of the head is at x2,y2
+            tipX = x2 + (headLen * 0.5) * Math.cos(angle);
+            tipY = y2 + (headLen * 0.5) * Math.sin(angle);
+        } else {
+            // Standard behavior (Tip at x2,y2)
+            tipX = x2;
+            tipY = y2;
+        }
+
+        // Calculate geometry for the connection point
+        const baseX = tipX - headLen * Math.cos(angle);
+        const baseY = tipY - headLen * Math.sin(angle);
+
+        // Overlap factor to ensure no gap between line and head
+        const penetration = headLen * 0.2;
+        const lineEndX = baseX + penetration * Math.cos(angle);
+        const lineEndY = baseY + penetration * Math.sin(angle);
+
+        // Draw Shaft
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(lineEndX, lineEndY);
+        ctx.stroke();
+
+        // Draw Arrowhead
+        ctx.beginPath();
+        ctx.moveTo(tipX, tipY);
+        ctx.lineTo(tipX - headLen * Math.cos(angle - Math.PI / 6),
+                   tipY - headLen * Math.sin(angle - Math.PI / 6));
+        ctx.lineTo(tipX - headLen * Math.cos(angle + Math.PI / 6),
+                   tipY - headLen * Math.sin(angle + Math.PI / 6));
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    function draw() {
+        const w = canvas.width;
+        const h = canvas.height;
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, w, h);
+
+        ctx.translate(w / 2, h / 2);
+        ctx.scale(1, -1);
+
+        const b = parseFloat(slider.value);
+        valueSpan.textContent = b.toFixed(3);
+        const gamma = 1 / Math.sqrt(1 - b * b);
+
+        const N = 50;
+        const shift = Math.PI / N;
+        const minDim = Math.min(w, h);
+        const L = minDim * 0.45;
+
+        // Draw Black Arrows (Field)
+        for (let i = 0; i < N; i++) {
+            const alpha = (2 * Math.PI * i) / N + shift;
+
+            const denom = 1 + b * Math.cos(alpha);
+            const n_x = Math.sin(alpha) / (gamma * denom);
+            const n_y = (Math.cos(alpha) + b) / denom;
+
+            let theta = Math.atan2(n_x, n_y);
+            if (b >= 0.999) theta = 0;
+
+            const x = L * Math.sin(theta);
+            const y = L * Math.cos(theta);
+
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "black";
+            ctx.lineWidth = Math.max(1, L * 0.015);
+
+            // UPDATED: Now passing true to center the head
+            drawArrow(ctx, 0, 0, x, y, L, true);
+        }
+
+        // Draw Red Arrow (Velocity)
+        const L_red = L * b;
+        ctx.strokeStyle = "red";
+        ctx.fillStyle = "red";
+        ctx.lineWidth = Math.max(2, L * 0.03);
+        drawArrow(ctx, 0, 0, 0, L_red, L, true);
+
+        // Draw Red Dot (Origin)
+        ctx.beginPath();
+        ctx.arc(0, 0, L * 0.035, 0, 2 * Math.PI);
+        ctx.fillStyle = "red";
+        ctx.fill();
+    }
+
+    window.addEventListener('resize', resize);
+    slider.addEventListener('input', draw);
+
+    resize();
+}
+
+createAberrationDiagram("AberrationFig");
+
+</script>
+</body>
+</html>

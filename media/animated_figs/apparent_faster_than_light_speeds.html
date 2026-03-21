@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Relativistic Ball Simulation - Seamless</title>
+    <style>
+        /* 1. Layout Structure: Full Screen, No Scroll */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffe4c8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 2. Scene: Flex-grow to fill available space */
+        #scene-container {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* 3. Controls: Fixed height at bottom */
+        #controls {
+            flex-shrink: 0;
+            height: 80px;
+            width: 100%;
+            background-color: #ffe4c8; /* Same background as body */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            box-sizing: border-box;
+            z-index: 100;
+            border: none;
+        }
+
+        input[type=range] {
+            width: 90%;
+            max-width: 600px;
+            margin-bottom: 5px; /* Added spacing below slider */
+            cursor: pointer;
+        }
+
+        .info-panel {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* --- Text Styling --- */
+
+        .dimension-text {
+            font-size: 18px;
+            fill: #444;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+
+        .velocity-text {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+        }
+
+        .event-text {
+            font-size: 20px;
+            fill: #666;
+            font-family: monospace;
+            font-weight: normal;
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .event-text.visible-light {
+            opacity: 1;
+            fill: #d90000;
+            font-weight: bold;
+        }
+
+        .event-text.visible-ball {
+            opacity: 1;
+            fill: #222;
+            font-weight: bold;
+        }
+
+        .result-text {
+            font-size: 22px;
+            fill: #333;
+            font-family: monospace;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .result-text.visible {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="scene-container">
+        <svg viewBox="0 0 1000 550" preserveAspectRatio="xMidYMid meet">
+
+            <defs>
+                <marker id="arrow-double-black-tight" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L5,3 z M3,0 L3,6 L8,3 z" fill="#333" />
+                </marker>
+
+                <marker id="arrow-double-red-tight" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L5,3 z M3,0 L3,6 L8,3 z" fill="#d90000" />
+                </marker>
+
+                <marker id="arrow-right" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+                </marker>
+                <marker id="arrow-left" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M9,0 L9,6 L0,3 z" fill="#333" />
+                </marker>
+            </defs>
+
+            <line x1="100" y1="120" x2="100" y2="380" stroke="#aaa" stroke-width="1.5" stroke-dasharray="6,6" />
+            <line x1="900" y1="120" x2="900" y2="380" stroke="#aaa" stroke-width="1.5" stroke-dasharray="6,6" />
+
+            <line x1="110" y1="360" x2="890" y2="360" stroke="#333" stroke-width="2" stroke-dasharray="10,10" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)" />
+            <text x="500" y="340" text-anchor="middle" class="dimension-text">Distance = 1 Light Year</text>
+
+            <g id="person" transform="translate(900, 250)">
+                <circle id="person-head" cx="0" cy="-50" r="20" fill="white" stroke="black" stroke-width="3"/>
+                <line x1="0" y1="-30" x2="0" y2="40" stroke="black" stroke-width="4" stroke-linecap="round"/>
+                <line x1="0" y1="-20" x2="-25" y2="10" stroke="black" stroke-width="4" stroke-linecap="round"/>
+                <line x1="0" y1="-20" x2="25" y2="10" stroke="black" stroke-width="4" stroke-linecap="round"/>
+                <line x1="0" y1="40" x2="-20" y2="90" stroke="black" stroke-width="4" stroke-linecap="round"/>
+                <line x1="0" y1="40" x2="20" y2="90" stroke="black" stroke-width="4" stroke-linecap="round"/>
+            </g>
+
+            <g id="ball-group">
+                <line id="ball-trail" x1="100" y1="200" x2="100" y2="200" stroke="#999" stroke-width="2" stroke-dasharray="8,8" />
+                <circle id="ball" cx="100" cy="200" r="30" fill="#777" stroke="black" stroke-width="2" />
+            </g>
+
+            <g id="photon-group">
+                <line id="photon-trail" x1="100" y1="200" x2="100" y2="200" stroke="red" stroke-width="3" stroke-opacity="0.6" stroke-dasharray="5,5" />
+                <circle id="photon" cx="100" cy="200" r="8" fill="red" stroke="orange" stroke-width="2" />
+            </g>
+
+            <g id="ball-arrow-grp" transform="translate(100, 135)">
+                <line x1="-10" y1="10" x2="0" y2="10" stroke="#333" stroke-width="3" marker-end="url(#arrow-double-black-tight)" />
+                <text x="0" y="-2" text-anchor="middle" class="velocity-text" fill="#333">3/4 c</text>
+            </g>
+
+            <g id="light-arrow-grp" transform="translate(100, 165)">
+                <line x1="-10" y1="10" x2="0" y2="10" stroke="#d90000" stroke-width="3" marker-end="url(#arrow-double-red-tight)" />
+                <text x="0" y="-2" text-anchor="middle" class="velocity-text" fill="#d90000">c</text>
+            </g>
+
+            <g transform="translate(50, 430)">
+                <text id="evt-light" x="0" y="0" text-anchor="start" class="event-text">t = 1 yrs (Observer sees ball 1 light year away)</text>
+                <text id="evt-ball" x="0" y="30" text-anchor="start" class="event-text">t = 4/3 yrs (Ball arrives)</text>
+
+                <line x1="0" y1="50" x2="900" y2="50" stroke="#ccc" stroke-width="1" />
+
+                <text id="evt-diff" x="0" y="80" text-anchor="start" class="result-text">Perceived travel time: 1/3 yrs</text>
+                <text id="evt-speed" x="0" y="110" text-anchor="start" class="result-text">Perceived speed of ball: 3c</text>
+            </g>
+
+        </svg>
+    </div>
+
+    <div id="controls">
+        <input type="range" id="timeSlider" min="0" max="134" value="0" step="1">
+        <div class="info-panel">
+            <span id="time-display">Time: 0.00 yrs</span>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById('timeSlider');
+        const timeDisplay = document.getElementById('time-display');
+        const ball = document.getElementById('ball');
+        const ballTrail = document.getElementById('ball-trail');
+        const ballArrowGrp = document.getElementById('ball-arrow-grp');
+        const photon = document.getElementById('photon');
+        const photonTrail = document.getElementById('photon-trail');
+        const lightArrowGrp = document.getElementById('light-arrow-grp');
+        const personHead = document.getElementById('person-head');
+
+        const txtEvtLight = document.getElementById('evt-light');
+        const txtEvtBall = document.getElementById('evt-ball');
+        const txtEvtDiff = document.getElementById('evt-diff');
+        const txtEvtSpeed = document.getElementById('evt-speed');
+
+        const startX = 100;
+        const endX = 900;
+        const distance = endX - startX;
+        const c = distance;
+        const v = distance * 0.75;
+
+        function update() {
+            let t = parseFloat(slider.value) / 100;
+            timeDisplay.textContent = `Time: ${t.toFixed(2)} yrs`;
+
+            let distLight = c * t;
+            let distBall = v * t;
+
+            if(distLight > distance) distLight = distance;
+            if(distBall > distance) distBall = distance;
+
+            // Update Light
+            const photonX = startX + distLight;
+            photon.setAttribute('cx', photonX);
+            photonTrail.setAttribute('x2', photonX);
+            lightArrowGrp.setAttribute('transform', `translate(${photonX}, 165)`);
+
+            // Visibility Logic Updated
+            if (t === 0) {
+                // Completely hidden at t=0
+                photon.setAttribute('opacity', 0);
+                photonTrail.setAttribute('opacity', 0);
+                lightArrowGrp.setAttribute('opacity', 0);
+            } else if (distLight >= distance) {
+                // Reached destination
+                photon.setAttribute('opacity', 0);
+                photonTrail.setAttribute('opacity', 1);
+                lightArrowGrp.setAttribute('opacity', 0);
+            } else {
+                // Moving
+                photon.setAttribute('opacity', 1);
+                photonTrail.setAttribute('opacity', 1);
+                lightArrowGrp.setAttribute('opacity', 1);
+            }
+
+            // Update Ball
+            const ballX = startX + distBall;
+            ball.setAttribute('cx', ballX);
+            ballTrail.setAttribute('x2', ballX);
+            ballArrowGrp.setAttribute('transform', `translate(${ballX}, 135)`);
+
+            // Events
+            if (t >= 1.0) {
+                personHead.setAttribute('fill', '#ff4444');
+                personHead.setAttribute('stroke', 'red');
+                txtEvtLight.classList.add('visible-light');
+            } else {
+                personHead.setAttribute('fill', '#ffe4c8');
+                personHead.setAttribute('stroke', 'black');
+                txtEvtLight.classList.remove('visible-light');
+            }
+
+            if (t >= 1.33) {
+                txtEvtBall.classList.add('visible-ball');
+                txtEvtDiff.classList.add('visible');
+                txtEvtSpeed.classList.add('visible');
+            } else {
+                txtEvtBall.classList.remove('visible-ball');
+                txtEvtDiff.classList.remove('visible');
+                txtEvtSpeed.classList.remove('visible');
+            }
+        }
+
+        slider.addEventListener('input', update);
+        update();
+    </script>
+</body>
+</html>

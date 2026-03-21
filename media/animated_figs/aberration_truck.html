@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Clock (Safe Mode)</title>
+    <style>
+    /* 1. Layout: Flexbox Column to fill viewport */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #ffe4c8;
+        margin: 0;
+        padding: 0;
+        height: 100vh; /* Fill viewport height */
+        width: 100vw;  /* Fill viewport width */
+        overflow: hidden; /* Disable scrolling */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .js-fig-wrap {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    /* 2. Container takes available space */
+    #TruckFig_2 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* 3. Canvas grows to fill empty space, but height is managed by Flex */
+    canvas {
+        flex-grow: 1;
+        width: 100%;
+        height: 0; /* Important: allows flex to shrink it if needed */
+        background-color: #ffd4a6;
+        border-radius: 8px;
+        border: 1px solid #d4b496;
+    }
+
+    /* 4. Controls styled nicely at the bottom */
+    .controls-container {
+        flex-shrink: 0; /* Don't shrink controls */
+        display: flex;
+        flex-direction: row; /* Ensure row layout */
+        flex-wrap: nowrap;   /* Prevent wrapping so slider stays on same line */
+        justify-content: flex-start;
+        align-items: center;
+        gap: 15px;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        margin-top: 10px;
+        font-size: 0.9rem;
+    }
+
+    .control-group {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap; /* Keep labels on one line */
+    }
+
+    input[type=range] { vertical-align: middle; cursor: pointer; }
+    label { cursor: pointer; user-select: none; }
+
+</style>
+</head>
+<body>
+
+<div class="js-fig-wrap">
+    <div class="js-fig" id="TruckFig_2"></div>
+</div>
+
+<script>
+function createTruckDiagram(containerId, N_ang = 33, angleOffset = 0) {
+    const instance = {
+        canvas: null,
+        ctx: null,
+        slider: null,
+        checkboxRest: null,
+        checkboxMoving: null,
+        _U: 0,
+        _Beta: 0.8,
+        _Gamma: null,
+        _t: 0,
+        _T_tot: null,
+        _N_ang: N_ang,
+        _ang: [],
+        _paths: [],
+        _showPaths: true, // Always true now
+    };
+
+    instance._Gamma = 1 / Math.sqrt(1 - Math.pow(instance._Beta, 2));
+    instance._ang = Array.from({ length: instance._N_ang }, (_, i) => (2 * Math.PI) * i / instance._N_ang + angleOffset);
+    instance._paths = Array.from({ length: instance._N_ang }, () => []);
+
+    // --- Create Elements ---
+    const container = document.getElementById(containerId);
+
+    // 1. Canvas
+    instance.canvas = document.createElement('canvas');
+    instance.canvas.id = containerId + '_canvas';
+    container.appendChild(instance.canvas);
+
+    // 2. Controls Wrapper
+    const controlsDiv = document.createElement('div');
+    controlsDiv.className = 'controls-container';
+
+    // --- Frame Checkboxes (MOVED TO FIRST POSITION) ---
+    const frameGroup = document.createElement('div');
+    frameGroup.className = 'control-group';
+    frameGroup.textContent = 'Frame: ';
+
+    instance.checkboxRest = document.createElement('input');
+    instance.checkboxRest.type = 'checkbox';
+    instance.checkboxRest.checked = true;
+    const lblRest = document.createElement('label');
+    lblRest.textContent = ' Rest ';
+    lblRest.prepend(instance.checkboxRest);
+
+    instance.checkboxMoving = document.createElement('input');
+    instance.checkboxMoving.type = 'checkbox';
+    const lblMove = document.createElement('label');
+    lblMove.textContent = ' Moving (0.8c) ';
+    lblMove.prepend(instance.checkboxMoving);
+
+    frameGroup.appendChild(lblRest);
+    frameGroup.appendChild(lblMove);
+    controlsDiv.appendChild(frameGroup);
+
+    // --- Time Slider (MOVED TO SECOND POSITION & EXPANDED) ---
+    const timeGroup = document.createElement('div');
+    timeGroup.className = 'control-group';
+
+    // Style adjustments to make it take up remaining width (approx half or more)
+    timeGroup.style.flexGrow = '1';
+    timeGroup.style.justifyContent = 'center';
+
+    const timeLabel = document.createElement('label');
+    timeLabel.textContent = 'Time: ';
+    instance.slider = document.createElement('input');
+    instance.slider.type = 'range';
+    instance.slider.min = 0;
+    instance.slider.value = 0;
+
+    // Make slider fill the group width
+    instance.slider.style.width = '70%';
+
+    timeGroup.appendChild(timeLabel);
+    timeGroup.appendChild(instance.slider);
+    controlsDiv.appendChild(timeGroup);
+
+    // (Path Toggle removed)
+
+    container.appendChild(controlsDiv);
+    instance.ctx = instance.canvas.getContext('2d');
+
+    // --- Logic ---
+
+    function setup() {
+        resize(); // Initial sizing
+    }
+
+    function resize() {
+        // 1. Get the actual pixel size the browser gave the canvas (thanks to Flexbox)
+        const rect = instance.canvas.getBoundingClientRect();
+        instance.canvas.width = rect.width;
+        instance.canvas.height = rect.height;
+
+        // 2. Calculate _T_tot based on limits
+        // Original Formula for Width: width = _T_tot * factor / 2
+        // So: _T_tot_width_limit = 2 * width / factor
+
+        let divWidth = instance.canvas.width;
+        let factor = (2 * instance._Gamma * instance._Beta + 1 / instance._Gamma + 1);
+        let T_tot_based_on_width = 2 * divWidth / factor;
+
+        // Height Check: Ensure the truck fits vertically
+        // The drawing uses about (_T_tot + padding) height
+        let availableHeight = instance.canvas.height;
+        let T_tot_based_on_height = availableHeight * 0.85; // Leave 15% margin
+
+        // Use the smaller limit to ensure it fits both ways
+        instance._T_tot = Math.min(T_tot_based_on_width, T_tot_based_on_height);
+
+        // Update slider
+        instance.slider.max = instance._T_tot;
+        if(parseFloat(instance.slider.value) > instance._T_tot) {
+            instance.slider.value = 0;
+            instance._t = 0;
+            resetPaths();
+        }
+
+        draw();
+    }
+
+    function resetPaths() {
+        instance._paths = Array.from({ length: instance._N_ang }, () => []);
+    }
+
+    // --- Events ---
+    instance.checkboxRest.addEventListener('change', () => {
+        if (instance.checkboxRest.checked) {
+            instance._U = 0;
+            instance.checkboxMoving.checked = false;
+            resetPaths();
+            draw();
+        } else if (!instance.checkboxMoving.checked) instance.checkboxRest.checked = true;
+    });
+
+    instance.checkboxMoving.addEventListener('change', () => {
+        if (instance.checkboxMoving.checked) {
+            instance._U = 0.8;
+            instance.checkboxRest.checked = false;
+            resetPaths();
+            draw();
+        } else if (!instance.checkboxRest.checked) instance.checkboxMoving.checked = true;
+    });
+
+    instance.slider.addEventListener('input', () => {
+        instance._t = parseFloat(instance.slider.value);
+        draw();
+    });
+
+    window.addEventListener('resize', resize);
+
+    // --- EXACT ORIGINAL DRAWING LOGIC ---
+    // (Only 'Width_of_div' is dynamically updated by resize logic above)
+    function draw() {
+        instance._t = parseFloat(instance.slider.value);
+        let V = [0, -instance._U];
+        instance._Gamma = 1 / Math.sqrt(1 - Math.pow(instance._U, 2));
+
+        // Use the current canvas width for centering calculations
+        let Width_of_div = instance.canvas.width;
+
+        let R_emit_x = - Width_of_div / 2 + instance._T_tot / 2;
+        let R_source = [R_emit_x + instance._U * instance._Gamma * instance._t, -0.5 * instance._T_tot / 10];
+        let t_PRM = instance._Gamma * instance._t;
+        let Rc_PRM = [];
+        let C = [];
+        let R_initial = [R_emit_x, -0.5 * instance._T_tot / 10];
+
+        for (let I_a = 0; I_a < instance._N_ang; I_a++) {
+            let C_PRM = [instance._Gamma * (Math.cos(instance._ang[I_a]) - V[1]), Math.sin(instance._ang[I_a])].map(x => x / (instance._Gamma * (1 - V[1] * Math.cos(instance._ang[I_a]))));
+            let Cr_PRM = [instance._Gamma * (-Math.cos(instance._ang[I_a]) - V[1]), -Math.sin(instance._ang[I_a])].map(x => x / (instance._Gamma * (1 - V[1] * -Math.cos(instance._ang[I_a]))));
+            let T_reflect_PRM = instance._Gamma * (1 - (V[1] * Math.cos(instance._ang[I_a]))) * instance._T_tot / 2;
+
+            if (t_PRM < T_reflect_PRM) {
+                Rc_PRM.push(C_PRM.map(x => x * t_PRM));
+                C.push(C_PRM);
+                instance._paths[I_a] = [[R_initial[0], R_initial[1]]];
+                instance._paths[I_a].push([R_initial[0] + Rc_PRM[I_a][0], R_initial[1] + Rc_PRM[I_a][1]]);
+            } else {
+                let reflectionPoint = C_PRM.map(x => x * T_reflect_PRM);
+                instance._paths[I_a] = [[R_initial[0], R_initial[1]]];
+                instance._paths[I_a].push([R_initial[0] + reflectionPoint[0], R_initial[1] + reflectionPoint[1]]);
+                let currentPos = C_PRM.map((x, i) => x * T_reflect_PRM + (t_PRM - T_reflect_PRM) * Cr_PRM[i]);
+                Rc_PRM.push(currentPos);
+                C.push(Cr_PRM);
+                instance._paths[I_a].push([R_initial[0] + currentPos[0], R_initial[1] + currentPos[1]]);
+            }
+        }
+
+        instance.ctx.clearRect(0, 0, instance.canvas.width, instance.canvas.height);
+
+        instance.ctx.save();
+        // Keep original translation to center
+        instance.ctx.translate(instance.canvas.width / 2, instance.canvas.height / 2);
+        instance.ctx.fillStyle = "#fff";
+        instance.ctx.strokeStyle = "#000";
+        instance.ctx.lineWidth = 2;
+
+        let Rs_x = R_source[0];
+        let Rs_y = R_source[1];
+        let w = instance._T_tot / instance._Gamma;
+        let h = instance._T_tot;
+
+        let offsetX = w / 5;
+        let bottomY = Rs_y + h / 2;
+        let leftX = Rs_x - (w / 2) + offsetX;
+        let rightX = Rs_x + (w / 2) - offsetX;
+
+        instance.ctx.fillStyle = "#000";
+        drawEllipse(instance.ctx, leftX - w / 10 / instance._Gamma, bottomY - h / 10, w / 5 / instance._Gamma, h / 5);
+        drawEllipse(instance.ctx, rightX - w / 10 / instance._Gamma, bottomY - h / 10, w / 5 / instance._Gamma, h / 5);
+
+        instance.ctx.fillStyle = "#646464";
+        instance.ctx.fillRect(Rs_x - w / 2, Rs_y - h / 2, w, h);
+        instance.ctx.lineWidth = 2;
+        instance.ctx.strokeRect(Rs_x - w / 2, Rs_y - h / 2, w, h);
+
+        instance.ctx.fillStyle = "#fff";
+        drawEllipse(instance.ctx, Rs_x - w / 2, Rs_y - h / 2, w, h);
+
+        for (let i = 0; i < Rc_PRM.length; i++) {
+            let pos = Rc_PRM[i];
+            let dir = C[i];
+            let C_mag = Math.sqrt(dir[0] * dir[0] + dir[1] * dir[1]);
+            dir[0] /= C_mag;
+            dir[1] /= C_mag;
+            dir[0] *= 20;
+            dir[1] *= 20;
+
+            if (instance._showPaths) {
+                instance.ctx.strokeStyle = "#000";
+                instance.ctx.lineWidth = 1.5;
+                instance.ctx.setLineDash([7, 2]);
+                instance.ctx.beginPath();
+                instance.ctx.moveTo(instance._paths[i][0][0], instance._paths[i][0][1]);
+                for (let j = 1; j < instance._paths[i].length; j++) {
+                    instance.ctx.lineTo(instance._paths[i][j][0], instance._paths[i][j][1]);
+                }
+                instance.ctx.stroke();
+                instance.ctx.setLineDash([]);
+            }
+
+            instance.ctx.save();
+            instance.ctx.fillStyle = "#f00";
+            instance.ctx.translate(instance._paths[i][instance._paths[i].length - 1][0], instance._paths[i][instance._paths[i].length - 1][1]);
+            instance.ctx.rotate(Math.atan2(dir[1], dir[0]));
+            let arrowSize = 10;
+            instance.ctx.beginPath();
+            instance.ctx.moveTo(C_mag - arrowSize / 2, arrowSize / 2);
+            instance.ctx.lineTo(C_mag - arrowSize / 2, -arrowSize / 2);
+            instance.ctx.lineTo(C_mag - arrowSize / 2 + arrowSize, 0);
+            instance.ctx.closePath();
+            instance.ctx.fill();
+            instance.ctx.restore();
+        }
+
+        instance.ctx.save();
+        instance.ctx.fillStyle = 'red';
+        instance.ctx.beginPath();
+        instance.ctx.arc(R_source[0], R_source[1], 5, 0, 2 * Math.PI);
+        instance.ctx.fill();
+        instance.ctx.restore();
+
+        instance.ctx.restore();
+    }
+
+    function drawEllipse(ctx, x, y, w, h) {
+        ctx.beginPath();
+        ctx.ellipse(x + w / 2, y + h / 2, w / 2, h / 2, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+    }
+
+    setup();
+}
+
+// Start
+createTruckDiagram("TruckFig_2", 33);
+
+</script>
+</body>
+</html>

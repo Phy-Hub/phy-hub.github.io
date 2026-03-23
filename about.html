@@ -7,12 +7,12 @@
 
 <script defer async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-<link rel="icon" type="image/png" href="./media/favicons/favicon-96x96.png" sizes="96x96" >
-<link rel="icon" type="image/svg+xml" href="./media/favicons/favicon.svg" >
-<link rel="shortcut icon" href="./media/favicons/favicon.ico" >
-<link rel="apple-touch-icon" sizes="180x180" href="./media/favicons/apple-touch-icon.png" >
+<link rel="icon" type="image/png" href="/media/favicons/favicon-96x96.png" sizes="96x96" >
+<link rel="icon" type="image/svg+xml" href="/media/favicons/favicon.svg" >
+<link rel="shortcut icon" href="/media/favicons/favicon.ico" >
+<link rel="apple-touch-icon" sizes="180x180" href="/media/favicons/apple-touch-icon.png" >
 <meta name="apple-mobile-web-app-title" content="Phy-Hub" >
-<link rel="manifest" href="./media/favicons/site.webmanifest" >
+<link rel="manifest" href="/media/favicons/site.webmanifest" >
 
 <style>
   /* Importing fonts from your new design */
@@ -60,6 +60,7 @@
     width: 100%;
     background-color: grey;
     align-items: center;
+    border-radius: 3px;
   }
 
   .dropdown-menu {
@@ -92,6 +93,8 @@
 
   /* PAGE CONTENT STYLING */
   .content-wrapper {
+
+    border-radius: 3px;
 
     overflow-x: hidden;
 
@@ -164,7 +167,7 @@
 <header id="site-navbar">
   <div class="navbar">
     <div style="justify-self: start; width: 70px;">
-      <a href="/index.html" aria-label="Phy-Hub Home">
+      <a href="/" aria-label="Phy-Hub Home">
         <img src="/media/Logo/Logo_2.png" alt="Phy-Hub Logo" style="height: 50px; padding-top: 6px; padding-left: 10px">
       </a>
     </div>
@@ -174,9 +177,9 @@
     <div class="menu" style="justify-self: end; cursor: pointer; width: 70px;">
       <div style="font-size: 40px; text-align: right; padding-right: 10px;"> &#x2630; </div>
       <nav class="dropdown-menu">
-        <a href="/index.html">Home</a>
-        <!-- <a href="./topics.html">Topics</a> -->
-        <!-- <a href="./about.html">About</a> -->
+        <a href="/">Home</a>
+        <!-- <a href="/topics">Topics</a> -->
+        <!-- <a href="/about">About</a> -->
       </nav>
     </div>
   </div>
@@ -208,7 +211,7 @@
   <section>
     <header><h2>About Phy-Hub:</h2></header>
 
-    <p>This site aims to provide an intuitive, visual, and comprehensive overview of physics topics, starting with the <a href="./special-relativity.html"><i>Handbook of Special Relativity</i></a> for now, with more to be added later.</p>
+    <p>This site aims to provide an intuitive, visual, and comprehensive overview of physics topics, starting with the <a href="/special-relativity"><i>Handbook of Special Relativity</i></a> for now, with more to be added later.</p>
 
     <p>I went down a lot of rabbit holes and invested a lot of time digging through resources—including some very obscure books—to find the clearest explanations for every concept. I also added some of my own way of explaining and deriving the topics to make things less abstract and more approachable. I got intrigued enough in certain parts that I did some extra research of my own, and I’ve included the most interesting bits in their own sections.</p>
 

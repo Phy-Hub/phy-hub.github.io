@@ -33,10 +33,10 @@ py_to_bugs           = "bugs/"
 
 
 ### from html page ###
-html_to_svgs         = "./topics/" + topic_folder_name + "/" + py_to_svgs
-html_to_pdfs         = "./topics/" + topic_folder_name + "/Latex/output/" + pdf_name
-html_to_js_diagrams  = "./"
-html_to_anim_figs    = "./media/animated_figs/"
+html_to_svgs         = "/topics/" + topic_folder_name + "/" + py_to_svgs
+html_to_pdfs         = "/topics/" + topic_folder_name + "/Latex/output/" + pdf_name
+#html_to_js_diagrams  = "/"
+html_to_anim_figs    = "/media/animated_figs/"
 
 
 #sep#######################################################
@@ -1223,7 +1223,7 @@ def make_page(input_file, output_file, toc_file, content_file, Defs_file, Math_T
 #sep#######################################################
 
 def find_leftover_latex(html_file):
-    print(f"Scanning {html_file}...")
+    print(f"... Scanning {html_file}")
     found, bugs = set(), 0
     stop_marker = None
 
@@ -1258,9 +1258,9 @@ def find_leftover_latex(html_file):
                 found.update(c for c in curr_bugs if c != "STRAY_BRACES")
                 out.write(f"Line {i}: {line.strip()}\n   >>> Found: {curr_bugs}\n")
     if bugs == 0:
-        print("- no leftover latex")
+        print("\033[1;32m\u2714\033[0m no leftover latex")
     else:
-        print(f"Lines with bugs: {bugs}\nUnique commands: {sorted(found)}\nSee latex_still_in_html.txt")
+        print(f"\033[1;31m\u2718\033[0m Lines with bugs: {bugs}\nUnique commands: {sorted(found)}\nSee latex_still_in_html.txt")
 
 ###
 def check_ids_for_spaces(html_file_path):
@@ -1293,7 +1293,7 @@ def check_latex_href_links(filename):
 
     # Filter/deduplicate
     links = set(u for u in urls if u.startswith(('http', 'www')))
-    print(f"Checking {len(links)} web links...")
+    print(f"... Checking {len(links)} web links")
 
     def is_link_working(url):
         try:
@@ -1301,11 +1301,11 @@ def check_latex_href_links(filename):
             with urllib.request.urlopen(req, timeout=5):
                 return True
         except urllib.error.URLError as e:
-            print(f"❌ [{getattr(e, 'code', 'Connection Error')}] {url}")
+            print(f"\033[1;31m\u2718\033[0m [{getattr(e, 'code', 'Connection Error')}] {url}")
             return False
 
     if all(is_link_working(url) for url in links):
-        print("- all external links work")
+        print("\033[1;32m\u2714\033[0m all external links work")
 
 ###
 from html.parser import HTMLParser
@@ -1465,12 +1465,13 @@ def check_for_for_leftover_math_terms(file_path):
 
     # Print results
     if results:
+        print("\033[1;31m\u2718\033[0m")
         print(f"{'Line':<6} | Var")
         print("-" * 15)
         for ln, char in results:
             print(f"{ln:<6} | {char}")
     else:
-        print("No variables found.")
+        print("\033[1;32m\u2714\033[0m No variables found.")
 
 #SEP###############################################################################
 #SEP###############################################################################
@@ -1575,6 +1576,6 @@ with open(py_to_output_page, 'r', encoding='utf-8') as f:
     parser.feed(f.read())
 
 broken = parser.links - parser.ids  # Set subtraction finds what's in links but NOT in ids
-print(f"Broken links: {broken}" if broken else "All internal links valid!")
+print(f"\033[1;31m\u2718\033[0m Broken links: {broken}" if broken else "\033[1;32m\u2714\033[0m All internal links valid!")
 
 os.remove(Latex_File)

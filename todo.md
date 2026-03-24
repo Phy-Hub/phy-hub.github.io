@@ -1,9 +1,6 @@
 #####
 #####
-* clicking on toc section flickers first instead of loading directly to section
-* find better way than having padding at bottom of article to stop flickering
-* TOC justs up and down a little on page load from url
-* create about us page
+
 #####
 #####
 

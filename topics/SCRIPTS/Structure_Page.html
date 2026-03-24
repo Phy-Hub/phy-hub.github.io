@@ -48,7 +48,7 @@
   .brown{background-color: #b7a484;}
   .stronger-colour{background-color: #fccb93;}
 
-  .navbar {display: grid; grid-template-columns: auto 680px auto; position: sticky; top: 0; z-index: 1000; height: var(--navbar-height); width: 100%; background-color: grey; border-radius: 3px;}
+  .navbar {display: grid; grid-template-columns: auto 680px auto; position: sticky; top: 0; z-index: 1000; height: var(--navbar-height); width: 100%; background-color: grey; border-radius: 0 0 3px 3px;}
   #site-navbar {position: sticky; top: 0; z-index: 1000; width: 100%;}
   .arrow-nav {display: grid; grid-template-columns: 50% 50%; width: 100%; padding-top: 50px;}
 
@@ -62,7 +62,8 @@
   section a {color: black; text-decoration: none; content-visibility: auto;}
   section a:hover {text-decoration: underline; background-color: #ddb400; cursor: pointer;}
 
-  :target:before {content: ""; display: block; height: 65px; margin-top: -65px; visibility: hidden;}
+  /* :target:before {content: ""; display: block; height: 65px; margin-top: -65px; visibility: hidden;} */
+  [id] { scroll-margin-top: calc(var(--navbar-height) ); }
 
   main {display: grid; grid-template-columns: 1fr 700px 1fr;}
   main > * {padding: 20px;}
@@ -154,6 +155,8 @@
       to { opacity: 1; }
   }
 
+  .initial-load > *, #tocsidebar { animation: fadeIn 0.3s ease-out 0.2s backwards; }
+
 </style>
 </head>
 
@@ -197,7 +200,7 @@
   </nav>
 
   <!--- Main Content-->
-  <article style="padding-bottom: 150vh; line-height: 1.5; font-size: 20px; border-left: 10px solid hsla(0, 0%, 50%, 0.1); border-right: 10px solid hsla(0, 0%, 50%, 0.1);">
+  <article class="initial-load" style="min-height: 300vh; line-height: 1.5; font-size: 20px; border-left: 10px solid hsla(0, 0%, 50%, 0.1); border-right: 10px solid hsla(0, 0%, 50%, 0.1);">
     <header style="display: flex; justify-content: center; text-align: center; font-family: 'Computer Modern Serif'; padding-top: 10px;">
       <div style="width: 50%; display: flex; flex-direction: column; align-items: center;">
           <svg style="width: 70%; height: auto; display: block;" viewBox="0 0 1918 568" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><defs><clipPath id="clip0"><rect x="1255" y="133" width="1918" height="568"/></clipPath></defs><g clip-path="url(#clip0)" transform="translate(-1255 -133)"><path d="M1310.6 701 3117.4 701 3117.4 597.727 3173 597.727 3173 529.206 2214 133 1255 529.206 1255 597.727 1310.6 597.727 1310.6 701Z" fill-rule="evenodd"/></g></svg>
@@ -646,6 +649,14 @@ document.getElementById('suggestion-form').addEventListener('submit', function(e
         trigger.style.cursor = 'default'; // Change cursor back to normal
     });
 });
+
+document.addEventListener('animationend', (e) => {
+    if (e.animationName === 'fadeIn') {
+        document.body.classList.remove('initial-load');
+        const article = document.querySelector('article');
+        if (article) {article.classList.remove('initial-load');}
+    }
+}, { once: true });
 
 </script>
 </body>

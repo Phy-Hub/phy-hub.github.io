@@ -1,6 +1,6 @@
 #####
 #####
-
+* create Git branch with only necessary files for website, and use this for github pages instead
 #####
 #####
 

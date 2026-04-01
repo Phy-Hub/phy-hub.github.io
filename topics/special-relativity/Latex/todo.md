@@ -1,3 +1,68 @@
+###
+###
+* fix section *** start
+* update online, or use gemini to search
+* ask Gemini to check which sections I should focus on
+* sort plan from this
+* conclusion needed
+* add some resources for some paradoxes
+###
+###
+
+* change "in frame..." to "within frame..."
+
+* need to define that retarded time is for observer specifically at origin, for consistency, and check that we always do this
+
+* also in \label{subsect: Retarded Light Propagation} we talk about retarded position but this is relative to a observer not at the origin
+
+* an observer not at the origin should be refered to as a reciever
+
+* in conclusion, mention that there isnt actually such a thing as a frame that is completely inertial, due to gravity, as gravity actually effects space and there is nowhere where gravity is exactly constant in any volume, only aproximate
+* then give einsteins description of light in an elevator at rest and in free fall
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # specific todos:
 -  change diagams to simplfied train carraige instead (in javascript diagram, i could add rectangle with grey background and two circles for wheels to represent simplified train cariage, and generalise it, so that i can be used for all the diagrams with minor changes)
 

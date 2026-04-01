@@ -27,7 +27,6 @@
 
     "editor.lineDecorationsWidth": 10,
 
-
     "[latex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.lineHeight": 22,
@@ -56,6 +55,43 @@
         "(equation \\(\\\\ref)": [{}],
         "(?!%)(?:.){3000,}": [{}],
     },
+
+
+    "ltex.completionEnabled": true,
+    "ltex.enabled": [
+        "bibtex",
+        "latex",
+        "context"
+    ],
+    "ltex.language": "en-US",
+
+    "cSpell.enabledFileTypes": {
+    "*": false,
+    "markdown": false,
+    "plaintext": false,
+    "json": false,
+    "jsonc": false,
+    "yaml": false,
+    "latex": true,
+    "tex": true
+    },
+    "cSpell.words": [
+        "Antitelephone",
+        "desynchronization",
+        "desynchronized",
+        "doppler",
+        "Ehrenfest",
+        "emittance",
+        "resetnumbers",
+        "Rømer",
+        "Stilwell",
+        "Tachyonic",
+        "Trouton",
+        "unsynchronized"
+    ],
+
+
+
 
 
 }

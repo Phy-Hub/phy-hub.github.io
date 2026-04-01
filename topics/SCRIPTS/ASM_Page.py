@@ -329,7 +329,7 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
     #     pdfname = include_graphics_match.group('filename')
     #     svgname = os.path.splitext(os.path.basename(pdfname))[0] + '.svg'
 
-    #     if not os.path.isfile(py_to_svgs + f'{svgname}'): print(" # \n # No file: " + py_to_svgs + f"{svgname} \n #")
+    #     if not os.path.isfile(py_to_svgs + f'{svgname}'): print(" # \n # no file: " + py_to_svgs + f"{svgname} \n #")
     #     #svg_file = os.path.join(py_to_svgs, os.path.splitext(pdfname)[0] + '.svg')
     #     #subprocess.run(['pdf2svg', os.path.join(py_to_pdfs, pdfname), svg_file])
 
@@ -337,7 +337,7 @@ def process_figure(figure_env, chapter_num, figure_counter, subfig_letter):
     if include_graphics_match or tikzpicture_env_match:
         filename = include_graphics_match.group('filename') if include_graphics_match else tikzfilename_match.group('filename') if tikzfilename_match else 'missing'
         filename = os.path.splitext(os.path.basename(filename))[0] + '.svg'
-        if not os.path.isfile(py_to_svgs + f'{filename}'): print(" # \n # No file: " + py_to_svgs + f"{filename} \n #")
+        if not os.path.isfile(py_to_svgs + f'{filename}'): print(" # \n # no file: " + py_to_svgs + f"{filename} \n #")
         if label_match:
             if subfig_letter:
                 fig_id = ' id="' + find_label_from_key(fig_dict, f"{chapter_num}_{figure_counter}_{subfig_letter}") + '"'
@@ -389,7 +389,7 @@ def tikz2svg(input_directory, output_directory):
                 with open(svg_path, 'r', encoding='utf-8') as f:
                     content = f.read()
                 if desc_content not in content:
-                    print(f"  -> Adding description to {svg_path}...") # Optional log
+                    print(f"\033[2;37m...  -> Adding description to {svg_path}\033[0m") # Optional log
                     new_content = re.sub(r'(<svg[^>]*>)', r'\1' + desc_content, content, count=1)
                     with open(svg_path, 'w', encoding='utf-8') as f:
                         f.write(new_content)
@@ -431,7 +431,7 @@ def create_toc(toc_dic):
             if tree and tree[-1]['chaps']:
                 tree[-1]['chaps'][-1]['sects'].append({'id': content_levels[2], 'title': item['title']})
 
-    # 3. Generate HTML (No JS here)
+    # 3. Generate HTML (no JS here)
     html = ['<div id="toc_container"><ul style="list-style:none; padding:0;">']
     arrow = '<span class="toc-arrow">&#9654;</span>'
 
@@ -874,11 +874,11 @@ def process_bib_and_cites(bib_path, tex_path):
         title = e.get('title', '')
 
         if e['type'] == 'article':
-            # Articles: Quotes, No Italics
+            # Articles: Quotes, no Italics
             # We remove <cite> here to prevent italics
             s += f'{auth}. “{title}”.'
         else:
-            # Books, Misc, Online: Italics, No Quotes
+            # Books, Misc, Online: Italics, no Quotes
             # We use <em> (or <cite>) to apply italics
             s += f'{auth}. <em>{title}</em>.'
         # -----------------------------------------
@@ -1106,7 +1106,7 @@ def find_key_from_label(data_dict, target_label):
     for key, value in data_dict.items():
         if value['label'] == target_label:
             return key
-    print("label: ", target_label, " does not have a key" )
+    print(f"\033[1;31m\u2718\033[0m label: ", target_label, " does not have a key" )
     return None
 
 ###
@@ -1114,7 +1114,7 @@ def find_label_from_key(data_dict, target_key):
     if target_key in data_dict:
         return data_dict[target_key]['label']
     else:
-        print("Key: ", target_key, " does not have a label" )
+        print(f"\033[1;31m\u2718\033[0m Key: ", target_key, " does not have a label" )
         return None
 
 ###
@@ -1122,7 +1122,7 @@ def find_caption_from_key(data_dict, target_key):
     if target_key in data_dict:
         return data_dict[target_key]['caption']
     else:
-        print("Key: ", target_key, " does not have a caption" )
+        print(f"\033[1;31m\u2718\033[0m Key: ", target_key, " does not have a caption" )
         return None
 
 ###
@@ -1223,7 +1223,7 @@ def make_page(input_file, output_file, toc_file, content_file, Defs_file, Math_T
 #sep#######################################################
 
 def find_leftover_latex(html_file):
-    print(f"... Scanning {html_file}")
+    print(f"\033[2;37m... Scanning {html_file}\033[0m")
     found, bugs = set(), 0
     stop_marker = None
 
@@ -1277,7 +1277,7 @@ def check_ids_for_spaces(html_file_path):
     invalid_ids = []
 
     if not matches:
-        print(f"No matching IDs found in '{html_file_path}'")
+        print(f"no matching IDs found in '{html_file_path}'")
         return []
 
     for id_value in matches:
@@ -1293,7 +1293,7 @@ def check_latex_href_links(filename):
 
     # Filter/deduplicate
     links = set(u for u in urls if u.startswith(('http', 'www')))
-    print(f"... Checking {len(links)} web links")
+    print(f"\033[2;37m... Checking {len(links)} web links\033[0m")
 
     def is_link_working(url):
         try:
@@ -1471,7 +1471,7 @@ def check_for_for_leftover_math_terms(file_path):
         for ln, char in results:
             print(f"{ln:<6} | {char}")
     else:
-        print("\033[1;32m\u2714\033[0m No variables found.")
+        print("\033[1;32m\u2714\033[0m no variables found.")
 
 #SEP###############################################################################
 #SEP###############################################################################
@@ -1576,6 +1576,6 @@ with open(py_to_output_page, 'r', encoding='utf-8') as f:
     parser.feed(f.read())
 
 broken = parser.links - parser.ids  # Set subtraction finds what's in links but NOT in ids
-print(f"\033[1;31m\u2718\033[0m Broken links: {broken}" if broken else "\033[1;32m\u2714\033[0m All internal links valid!")
+print(f"\033[1;31m\u2718\033[0m Broken links: {broken}" if broken else "\033[1;32m\u2714\033[0m all internal links valid!")
 
 os.remove(Latex_File)

@@ -28,3 +28,7 @@
 - Inkscape
     - winget install -e --id Inkscape.Inkscape
     - add to path C:\Program Files\Inkscape\bin
+
+- pip install playwright
+- python -m playwright install
+- playwright install chromium

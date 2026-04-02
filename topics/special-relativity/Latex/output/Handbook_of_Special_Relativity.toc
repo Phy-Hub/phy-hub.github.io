@@ -72,8 +72,8 @@
 \contentsline {section}{\numberline {6.4}Coordinates used}{107}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Volume Density of Light}{107}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Summary}{108}{section.6.6}%
-\contentsline {part}{IV\hspace {1em}Additional Resources and Conclusion}{109}{part.4}%
-\contentsline {chapter}{Outro}{110}{chapter*.52}%
-\contentsline {section}{\numberline {6.7}Gravity}{110}{section.6.7}%
-\contentsline {chapter}{Resources}{111}{chapter*.53}%
-\contentsline {chapter}{Dictionary}{113}{chapter*.54}%
+\contentsline {part}{IV\hspace {1em}Conclusion and Resources}{109}{part.4}%
+\contentsline {chapter}{Conclusion}{110}{chapter*.52}%
+\contentsline {section}{\numberline {6.7}Gravity}{111}{section.6.7}%
+\contentsline {chapter}{Resources}{113}{chapter*.54}%
+\contentsline {chapter}{Dictionary}{115}{chapter*.55}%

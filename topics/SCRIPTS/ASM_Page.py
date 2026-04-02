@@ -852,7 +852,7 @@ def process_bib_and_cites(bib_path, tex_path):
     with open(tex_path, 'w') as f: f.write(re.sub(r'\\cite\{(.+?)\}', sub_cite, tex_raw))
 
     # 4. Generate HTML
-    html = ['<section id="references" aria-labelledby="refs-title">\n<h4 id="refs-title">References</h4>\n<ol class="bibliography-list">\n']
+    html = ['<section id="references" aria-labelledby="refs-title">\n<h3 id="refs-title">References</h3>\n<ol class="bibliography-list">\n']
 
     sorted_entries = sorted([x for x in db.values() if 'cid' in x], key=lambda x: x['cid'])
 

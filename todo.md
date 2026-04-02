@@ -1,6 +1,8 @@
 #####
 #####
 * create Git branch with only necessary files for website, and use this for github pages instead
+
+* Logo_2.png is 850kb and is loaded into SR page, make this smaller or svg and smaller
 #####
 #####
 

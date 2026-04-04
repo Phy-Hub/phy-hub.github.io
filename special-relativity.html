@@ -4347,27 +4347,70 @@ window.addEventListener('DOMContentLoaded', function() {
     .then(data => {
       document.getElementById('banner').innerHTML = data;
       var svgDoc = document.getElementById('banner').getElementsByTagName('svg')[0];
-      svgDoc.style.height = "54px"
-      var myUses = svgDoc.getElementsByTagName('use');
-      var totalItems = myUses.length;
+      svgDoc.style.height = "54px";
+
+      // 1. Find the optimized single path
+      var singlePath = svgDoc.querySelector('path');
+
+      // Extract its attributes so we can copy them
+      var dStr = singlePath.getAttribute('d');
+      var stroke = singlePath.getAttribute('stroke');
+      var strokeWidth = singlePath.getAttribute('stroke-width');
+      var strokeLinecap = singlePath.getAttribute('stroke-linecap');
+
+      // 2. Split the massive path back into individual dots based on the "M" command
+      // e.g., "M1 2h0M3 4h0" becomes ["1 2h0", "3 4h0"]
+      var dotStrings = dStr.split('M').filter(Boolean);
+
+      // Create a DocumentFragment for maximum performance when adding to the DOM
+      var fragment = document.createDocumentFragment();
+      var myDots = [];
+
+      // 3. Build an individual path for each dot in browser memory
+      for (var i = 0; i < dotStrings.length; i++) {
+        var newDot = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        newDot.setAttribute('d', 'M' + dotStrings[i]);
+        newDot.setAttribute('stroke', stroke);
+        newDot.setAttribute('stroke-width', strokeWidth);
+        newDot.setAttribute('stroke-linecap', strokeLinecap);
+
+        // Start hidden
+        newDot.style.opacity = 0;
+
+        fragment.appendChild(newDot);
+        myDots.push(newDot);
+      }
+
+      // 4. Swap out the single path with our newly created separate dots
+      singlePath.parentNode.replaceChild(fragment, singlePath);
+
+      // 5. Run your exact original animation math, targeting 'myDots' instead of 'myUses'
+      var totalItems = myDots.length;
       var totalTime = 4;
       var timePerItemSlow = totalTime / 2000;
       var timePerItemFast = (totalTime - (timePerItemSlow * 200)) / (totalItems - 100);
-      for (var i = 0; i < myUses.length; i++) {
-        myUses[i].style.opacity = 0;
+
+      for (var i = 0; i < myDots.length; i++) {
         if (i < 300) {
-          myUses[i].style.transition = `opacity 0s`;
-          myUses[i].style.transitionDelay = `${i * timePerItemSlow}s`;
+          myDots[i].style.transition = `opacity 0s`;
+          myDots[i].style.transitionDelay = `${i * timePerItemSlow}s`;
         } else {
-          myUses[i].style.transition = `opacity 0s`;
-          myUses[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`;
+          myDots[i].style.transition = `opacity 0s`;
+          myDots[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`;
         }
       }
-      setTimeout(function() {
-        for (var i = 0; i < myUses.length; i++) {
-          myUses[i].style.opacity = 1;
-        }
-      }, 0);
+
+      // 6. Trigger the fade-in
+      // We use requestAnimationFrame to ensure the browser has registered the new DOM nodes
+      // and their starting 0 opacities before we change them to 1.
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          for (var i = 0; i < myDots.length; i++) {
+            myDots[i].style.opacity = 1;
+          }
+        });
+      });
+
     });
 });
 

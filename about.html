@@ -23,6 +23,7 @@
     --navbar-height: 60px;
     /* Change this ONE variable to update both the banner width and main content width */
     --content-width: 800px;
+    --ds-pattern-width: 780px;
   }
 
   /* Body styling from about2.html */
@@ -30,16 +31,14 @@
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     overflow-x: hidden;
-    background-color: hsl(31, 100%, 89%);
 
     /* Layer 1: Horizontal Lines | Layer 2: Your Noise Texture */
     background-image:
       linear-gradient(rgba(0, 0, 0, 0.05) 2px, transparent 2px),
-      url("data:image/svg+xml;utf8,<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><filter id='noise' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='0.025' numOctaves='5' result='noise' /><feDiffuseLighting in='noise' lighting-color='hsl(31, 100%, 89%)' surfaceScale='2'><feDistantLight azimuth='45' elevation='70' /></feDiffuseLighting></filter><rect x='0' y='0' width='100%' height='100%' filter='url(%23noise)' fill='none'/></svg>");
-
-    /* background-size: [Line Height] [Texture Width] */
-    background-size: 100% 30px, cover;
-    background-attachment: fixed, fixed;
+      url("data:image/svg+xml,%3Csvg%20width='8000'%20height='8000'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter%20id='noise'%20x='0'%20y='0'%20width='100%25'%20height='100%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.025'%20numOctaves='5'%20result='noise'%20/%3E%3CfeDiffuseLighting%20in='noise'%20lighting-color='hsl(31,%20100%25,%2089%25)'%20surfaceScale='2'%3E%3CfeDistantLight%20azimuth='45'%20elevation='70'%20/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect%20x='0'%20y='0'%20width='100%25'%20height='100%25'%20filter='url(%23noise)'%20fill='white'/%3E%3C/svg%3E");
+      /* background-size: [Line Height] [Texture Width] */
+    background-size: 100% 100%, cover;
+    background-attachment: local, fixed;
   }
 
   #site-navbar {
@@ -52,7 +51,7 @@
   .navbar {
     display: grid;
     /* The center column uses the variable, the sides use 1fr to keep it perfectly centered */
-    grid-template-columns: 1fr var(--content-width) 1fr;
+    grid-template-columns: 1fr var(--ds-pattern-width) 1fr;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -99,8 +98,7 @@
     overflow-x: hidden;
 
     /* Layer 1: Horizontal Lines | Layer 2: Your Noise Texture */
-    background-image: url("data:image/svg+xml;utf8,<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><filter id='noise' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='0.025' numOctaves='5' result='noise' /><feDiffuseLighting in='noise' lighting-color='rgba(255, 255, 255, 0.5)' surfaceScale='2'><feDistantLight azimuth='45' elevation='70' /></feDiffuseLighting></filter><rect x='0' y='0' width='100%' height='100%' filter='url(%23noise)' fill='none'/></svg>");
-
+    background-image: url("data:image/svg+xml;utf8,<svg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'><filter id='noise' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='0.025' numOctaves='5' result='noise' /><feDiffuseLighting in='noise' lighting-color='rgba(255, 255, 255, 0.5)' surfaceScale='2'><feDistantLight azimuth='45' elevation='70' /></feDiffuseLighting></filter><rect x='0' y='0' width='100%25' height='100%25' filter='url(%23noise)' fill='none'/></svg>");
     /* background-size: [Line Height] [Texture Width] */
     background-size: cover;
     background-attachment: local, fixed;
@@ -159,23 +157,37 @@
       width: 90%;
     }
   }
+
+  .noise-bg {
+  position: fixed;   /* Pins it to the viewport, bypassing normal layout space */
+  top: 0;
+  left: 0;
+  width: 100%;       /* Exactly matches your screen size */
+  height: 100%;
+  z-index: -9999;    /* Forces it behind all other content on your site */
+  pointer-events: none; /* Makes it "ghostly" so you can click links through it */
+}
 </style>
 </head>
 
 <body>
+<svg class="noise-bg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <filter id="noise" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="5" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="hsl(31, 100%, 89%)" surfaceScale="0.5">
+        <feDistantLight azimuth="45" elevation="70" />
+      </feDiffuseLighting>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noise)" fill="white" />
+  </svg>
 
 <header id="site-navbar">
+  <!--Navbar-->
   <div class="navbar">
-    <div style="justify-self: start; width: 70px;">
-      <a href="/" aria-label="Phy-Hub Home">
-        <img src="/media/Logo/Logo_2.png" alt="Phy-Hub Logo" style="height: 50px; padding-top: 6px; padding-left: 10px">
-      </a>
-    </div>
-
-    <div id="banner" style="width: 100%; padding-top: 3px; padding-bottom:3px;"></div>
-
+    <div style="justify-self: start; width: 70px;"><a href="/"> <img src="/media/Logo/Logo_small.png" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px" > </a></div>
+    <div id="banner" style="width: 100%; padding-top: 3px; padding-bottom:3px;"> </div>
     <div class="menu" style="justify-self: end; cursor: pointer; width: 70px;">
-      <div style="font-size: 40px; text-align: right; padding-right: 10px;"> &#x2630; </div>
+      <div style="font-size: 40px; text-align: center;"> &#x2630; </div>
       <nav class="dropdown-menu">
         <a href="/">Home</a>
         <!-- <a href="/topics">Topics</a> -->
@@ -244,41 +256,103 @@
 
 <script>
 // Fetches the SVG and applies the staggered loading animation matching the content width
-window.addEventListener('load', function() {
-  fetch('media/Logo/DS_Pattern.svg')
+window.addEventListener('DOMContentLoaded', function() {
+  fetch('/media/Logo/DS_Pattern_filtered.csv')
     .then(response => response.text())
     .then(data => {
-      document.getElementById('banner').innerHTML = data;
-      var svgDoc = document.getElementById('banner').getElementsByTagName('svg')[0];
+      // 1. Setup the Canvas
+      var banner = document.getElementById('banner');
+      banner.innerHTML = ''; // Clear existing content
 
-      svgDoc.style.height = "54px";
+      var canvas = document.createElement('canvas');
+      canvas.style.width = "100%";
+      canvas.style.height = "54px";
+      banner.appendChild(canvas);
 
-      /* Force the SVG to stretch and fill the synchronized column width */
-      svgDoc.style.width = "100%";
-      svgDoc.setAttribute("preserveAspectRatio", "none");
+      // Handle high-DPI (Retina) displays so the dots aren't blurry
+      var dpr = window.devicePixelRatio || 1;
+      var rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
 
-      var myUses = svgDoc.getElementsByTagName('use');
-      var totalItems = myUses.length;
-      var totalTime = 4;
+      var ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      // 2. Parse the CSV Data
+      var values = data.trim().split(',').filter(Boolean);
+      var myDots = [];
+
+      var totalItems = values.length / 2; // Pairs of x, y
+      var totalTime = 4; // seconds
       var timePerItemSlow = totalTime / 2000;
       var timePerItemFast = (totalTime - (timePerItemSlow * 200)) / (totalItems - 100);
 
-      for (var i = 0; i < myUses.length; i++) {
-        myUses[i].style.opacity = 0;
-        if (i < 300) {
-          myUses[i].style.transition = `opacity 0s`;
-          myUses[i].style.transitionDelay = `${i * timePerItemSlow}s`;
-        } else {
-          myUses[i].style.transition = `opacity 0s`;
-          myUses[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`;
+      // Your original SVG viewBox was: viewBox="-4.0 0.0 8 0.5"
+      // We need to map those abstract SVG coordinates to actual Canvas pixels
+      var svgMinX = -3.92;
+      var svgWidth = 7.84;
+      var svgMinY = 0.0;
+      var svgHeight = 0.5;
+
+      // Calculate pixel radius based on your original 0.017 stroke-width
+      var dotRadius = (0.017 / svgWidth) * rect.width / 2;
+
+      for (var i = 0; i < totalItems; i++) {
+        var rawX = parseFloat(values[i * 2]);
+        var rawY = parseFloat(values[i * 2 + 1]);
+
+        if (isNaN(rawX) || isNaN(rawY)) continue;
+
+        // Map SVG coordinate to Canvas pixel coordinate
+        var pixelX = ((rawX - svgMinX) / svgWidth) * rect.width;
+        var pixelY = ((rawY - svgMinY) / svgHeight) * rect.height;
+
+        // Calculate exact appearance time in milliseconds
+        var delaySeconds = i < 300
+          ? i * timePerItemSlow
+          : (i - 300) * timePerItemFast + 300 * timePerItemSlow;
+
+        myDots.push({
+          x: pixelX,
+          y: pixelY,
+          appearTime: delaySeconds * 1000 // Convert to ms for requestAnimationFrame
+        });
+      }
+
+      // 3. The Animation Loop
+      var startTime = null;
+      var dotsDrawn = 0;
+
+      // Fill style for the dots
+      ctx.fillStyle = 'black';
+
+      function render(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+
+        // Draw any dots whose time has come, but haven't been drawn yet
+        while (dotsDrawn < myDots.length && myDots[dotsDrawn].appearTime <= elapsed) {
+          var dot = myDots[dotsDrawn];
+
+          ctx.beginPath();
+          // arc(x, y, radius, startAngle, endAngle)
+          ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2);
+          ctx.fill();
+
+          dotsDrawn++;
+        }
+
+        // If we haven't drawn all dots, request the next frame
+        if (dotsDrawn < myDots.length) {
+          requestAnimationFrame(render);
         }
       }
-      setTimeout(function() {
-        for (var i = 0; i < myUses.length; i++) {
-          myUses[i].style.opacity = 1;
-        }
-      }, 0);
-    });
+
+      // Kick off the animation
+      requestAnimationFrame(render);
+
+    })
+    .catch(error => console.error("Error loading CSV:", error));
 });
 </script>
 

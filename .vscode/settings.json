@@ -44,7 +44,10 @@
     }
     ]
 }
-}
+},
+
+    "ltex.enabled": ["latex"],
+    "cSpell.enabledFileTypes": {"*": false},
 
 
 

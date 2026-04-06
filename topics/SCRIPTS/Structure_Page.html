@@ -14,8 +14,8 @@
 <link rel="manifest" href="/media/favicons/site.webmanifest" >
 
 <script defer async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-<script defer src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
 <script> MathJax = { loader:  {load:  ['[tex]/tagformat']}, section:  0, tex:  {tags:  'ams', packages:  {'[+]':  ['tagformat', 'sections']}, tagformat:  { number:  (n) => MathJax.config.section + '.' + n }}, startup: {ready() {const Configuration = MathJax._.input.tex.Configuration.Configuration; const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap; new CommandMap('sections', { nextSection:  'NextSection' }, {NextSection(parser, name) {MathJax.config.section++; parser.tags.counter = parser.tags.allCounter = 0;}}); Configuration.create( 'sections', {handler:  {macro:  ['sections']}}); MathJax.startup.defaultReady();},pageReady: () => {return MathJax.startup.defaultPageReady().then(() => {if (window.location.hash) {setTimeout(() => {const id = window.location.hash.substring(1); const target = document.getElementById(id) || document.getElementsByName(id)[0];if (target) {target.scrollIntoView(); } }, 0); } }); }}};</script>
+<script defer src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
 
 <!--- CSS -->
 <style>
@@ -150,12 +150,9 @@
     display: none;
   }
 
-  @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-  }
-
-  .initial-load > *, #tocsidebar { animation: fadeIn 0.3s ease-out 0.2s backwards; }
+  @keyframes fadeIn {to { opacity: 1; }}
+  :is(.initial-load, #tocsidebar, .sidebar) > * {opacity: 0;}
+  body.start-fade :is(.initial-load, #tocsidebar, .sidebar) > * {animation: fadeIn 0.7s ease-out forwards;}
 
 </style>
 </head>
@@ -257,77 +254,104 @@
 
 <!--- scripts -->
 <script>
+
 window.addEventListener('DOMContentLoaded', function() {
-  fetch('/media/Logo/DS_Pattern_optimised.svg')
+  fetch('/media/Logo/DS_Pattern.csv')
     .then(response => response.text())
     .then(data => {
-      document.getElementById('banner').innerHTML = data;
-      var svgDoc = document.getElementById('banner').getElementsByTagName('svg')[0];
-      svgDoc.style.height = "54px";
+      // 1. Setup the Canvas
+      var banner = document.getElementById('banner');
+      banner.innerHTML = ''; // Clear existing content
 
-      // 1. Find the optimized single path
-      var singlePath = svgDoc.querySelector('path');
+      var canvas = document.createElement('canvas');
+      canvas.style.width = "100%";
+      canvas.style.height = "54px";
+      banner.appendChild(canvas);
 
-      // Extract its attributes so we can copy them
-      var dStr = singlePath.getAttribute('d');
-      var stroke = singlePath.getAttribute('stroke');
-      var strokeWidth = singlePath.getAttribute('stroke-width');
-      var strokeLinecap = singlePath.getAttribute('stroke-linecap');
+      // Handle high-DPI (Retina) displays so the dots aren't blurry
+      var dpr = window.devicePixelRatio || 1;
+      var rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
 
-      // 2. Split the massive path back into individual dots based on the "M" command
-      // e.g., "M1 2h0M3 4h0" becomes ["1 2h0", "3 4h0"]
-      var dotStrings = dStr.split('M').filter(Boolean);
+      var ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
 
-      // Create a DocumentFragment for maximum performance when adding to the DOM
-      var fragment = document.createDocumentFragment();
+      // 2. Parse the CSV Data
+      var values = data.trim().split(',').filter(Boolean);
       var myDots = [];
 
-      // 3. Build an individual path for each dot in browser memory
-      for (var i = 0; i < dotStrings.length; i++) {
-        var newDot = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        newDot.setAttribute('d', 'M' + dotStrings[i]);
-        newDot.setAttribute('stroke', stroke);
-        newDot.setAttribute('stroke-width', strokeWidth);
-        newDot.setAttribute('stroke-linecap', strokeLinecap);
-
-        // Start hidden
-        newDot.style.opacity = 0;
-
-        fragment.appendChild(newDot);
-        myDots.push(newDot);
-      }
-
-      // 4. Swap out the single path with our newly created separate dots
-      singlePath.parentNode.replaceChild(fragment, singlePath);
-
-      // 5. Run your exact original animation math, targeting 'myDots' instead of 'myUses'
-      var totalItems = myDots.length;
-      var totalTime = 4;
+      var totalItems = values.length / 2; // Pairs of x, y
+      var totalTime = 4; // seconds
       var timePerItemSlow = totalTime / 2000;
       var timePerItemFast = (totalTime - (timePerItemSlow * 200)) / (totalItems - 100);
 
-      for (var i = 0; i < myDots.length; i++) {
-        if (i < 300) {
-          myDots[i].style.transition = `opacity 0s`;
-          myDots[i].style.transitionDelay = `${i * timePerItemSlow}s`;
-        } else {
-          myDots[i].style.transition = `opacity 0s`;
-          myDots[i].style.transitionDelay = `${(i - 300) * timePerItemFast + 300 * timePerItemSlow}s`;
+      // Your original SVG viewBox was: viewBox="-4.0 0.0 8 0.5"
+      // We need to map those abstract SVG coordinates to actual Canvas pixels
+      var svgMinX = -4.0;
+      var svgWidth = 8.0;
+      var svgMinY = 0.0;
+      var svgHeight = 0.5;
+
+      // Calculate pixel radius based on your original 0.017 stroke-width
+      var dotRadius = (0.017 / svgWidth) * rect.width / 2;
+
+      for (var i = 0; i < totalItems; i++) {
+        var rawX = parseFloat(values[i * 2]);
+        var rawY = parseFloat(values[i * 2 + 1]);
+
+        if (isNaN(rawX) || isNaN(rawY)) continue;
+
+        // Map SVG coordinate to Canvas pixel coordinate
+        var pixelX = ((rawX - svgMinX) / svgWidth) * rect.width;
+        var pixelY = ((rawY - svgMinY) / svgHeight) * rect.height;
+
+        // Calculate exact appearance time in milliseconds
+        var delaySeconds = i < 300
+          ? i * timePerItemSlow
+          : (i - 300) * timePerItemFast + 300 * timePerItemSlow;
+
+        myDots.push({
+          x: pixelX,
+          y: pixelY,
+          appearTime: delaySeconds * 1000 // Convert to ms for requestAnimationFrame
+        });
+      }
+
+      // 3. The Animation Loop
+      var startTime = null;
+      var dotsDrawn = 0;
+
+      // Fill style for the dots
+      ctx.fillStyle = 'black';
+
+      function render(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+
+        // Draw any dots whose time has come, but haven't been drawn yet
+        while (dotsDrawn < myDots.length && myDots[dotsDrawn].appearTime <= elapsed) {
+          var dot = myDots[dotsDrawn];
+
+          ctx.beginPath();
+          // arc(x, y, radius, startAngle, endAngle)
+          ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2);
+          ctx.fill();
+
+          dotsDrawn++;
+        }
+
+        // If we haven't drawn all dots, request the next frame
+        if (dotsDrawn < myDots.length) {
+          requestAnimationFrame(render);
         }
       }
 
-      // 6. Trigger the fade-in
-      // We use requestAnimationFrame to ensure the browser has registered the new DOM nodes
-      // and their starting 0 opacities before we change them to 1.
-      requestAnimationFrame(function() {
-        requestAnimationFrame(function() {
-          for (var i = 0; i < myDots.length; i++) {
-            myDots[i].style.opacity = 1;
-          }
-        });
-      });
+      // Kick off the animation
+      requestAnimationFrame(render);
 
-    });
+    })
+    .catch(error => console.error("Error loading CSV:", error));
 });
 
 
@@ -450,6 +474,10 @@ window.addEventListener('DOMContentLoaded', () => {
         toggleView(viewId);
         setTimeout(() => {
           targetElement.scrollIntoView();
+
+          // Trigger the animation AFTER scrolling to the element
+          document.body.classList.add('start-fade');
+
         }, 10);
         return;
       }
@@ -461,6 +489,9 @@ window.addEventListener('DOMContentLoaded', () => {
       const partId = firstPartLink.getAttribute('onclick').match(/'([^']+)'/)[1];
       toggleView(partId);
   }
+
+  // Trigger the animation normally if there was no hash to scroll to
+  document.body.classList.add('start-fade');
 });
 
 function toggleView(id) {

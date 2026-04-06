@@ -2,6 +2,10 @@
 #####
 * i seem to no longer have page fill over content while pages is loading for first 50 ms to stop top of document flashing
 
+* enable gzip on github pages
+
+* grey navbar flashes when page is reloaded, need it to stay there and maintain grey
+
 * create Git branch with only necessary files for website, and use this for github pages instead
 
 * Logo_2.png is 850kb and is loaded into SR page, make this smaller or svg and smaller

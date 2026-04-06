@@ -48,7 +48,7 @@
   .brown{background-color: #b7a484;}
   .stronger-colour{background-color: #fccb93;}
 
-  .navbar {display: grid; grid-template-columns: auto 680px auto; position: sticky; top: 0; z-index: 1000; height: var(--navbar-height); width: 100%; background-color: grey; border-radius: 0 0 3px 3px;}
+  .navbar {display: grid; grid-template-columns: auto 700px auto; position: sticky; top: 0; z-index: 1000; height: var(--navbar-height); width: 100%; background-color: grey; border-radius: 0 0 3px 3px;}
   #site-navbar {position: sticky; top: 0; z-index: 1000; width: 100%;}
   .arrow-nav {display: grid; grid-template-columns: 50% 50%; width: 100%; padding-top: 50px;}
 
@@ -165,7 +165,7 @@
     <div style="justify-self: start; width: 70px;"><a href="/"> <img src="/media/Logo/Logo_small.png" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px" > </a></div>
     <div id="banner" style="width: 100%; padding-top: 3px; padding-bottom:3px;"> </div>
     <div class="menu" style="justify-self: end; cursor: pointer; width: 70px;">
-      <div style="font-size: 40px; text-align: right; padding-right: 10px; "> &#x2630; </div>
+      <div style="font-size: 40px; text-align: center;"> &#x2630; </div>
       <nav class="dropdown-menu">
         <a href="/">Home</a>
         <!-- <a href="/topics">Topics</a> -->
@@ -256,7 +256,7 @@
 <script>
 
 window.addEventListener('DOMContentLoaded', function() {
-  fetch('/media/Logo/DS_Pattern.csv')
+  fetch('/media/Logo/DS_Pattern_filtered.csv')
     .then(response => response.text())
     .then(data => {
       // 1. Setup the Canvas
@@ -288,8 +288,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
       // Your original SVG viewBox was: viewBox="-4.0 0.0 8 0.5"
       // We need to map those abstract SVG coordinates to actual Canvas pixels
-      var svgMinX = -4.0;
-      var svgWidth = 8.0;
+      var svgMinX = -3.92;
+      var svgWidth = 7.84;
       var svgMinY = 0.0;
       var svgHeight = 0.5;
 

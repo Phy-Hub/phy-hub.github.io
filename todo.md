@@ -1,14 +1,10 @@
 #####
 #####
-* i seem to no longer have page fill over content while pages is loading for first 50 ms to stop top of document flashing
-
-* enable gzip on github pages
-
-* grey navbar flashes when page is reloaded, need it to stay there and maintain grey
-
+* when page is thin, there is overflow to righthand side
+* swap bibtex-js for own coded option, or Citation.js if needed
 * create Git branch with only necessary files for website, and use this for github pages instead
+* check if any more prerend quirks, and if not integrate prerender.py into ASM_Pae.py
 
-* Logo_2.png is 850kb and is loaded into SR page, make this smaller or svg and smaller
 #####
 #####
 

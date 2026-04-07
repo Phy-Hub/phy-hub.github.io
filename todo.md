@@ -4,6 +4,7 @@
 * swap bibtex-js for own coded option, or Citation.js if needed
 * create Git branch with only necessary files for website, and use this for github pages instead
 * check if any more prerender quirks, and if not integrate prerender.py into ASM_Pae.py
+* Use cache lifetimes so images and that are saved on others machines for when they revisit
 
 #####
 #####

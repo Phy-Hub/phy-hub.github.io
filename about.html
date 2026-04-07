@@ -233,7 +233,7 @@
 
     <p>Beyond the content on Phy-Hub, I also plan to point you towards other high-quality resources that I personally believe are worth learning the topics from.</p>
 
-    <p>While physics is my thing, writing is not, so some parts might read a little rough, for now anyhow. If any sections feel confusing or if you spot a mistake, please feel free to let me know by leaving some feedback. The content pages will have a suggestion box link in the bottom right of the page.</p>
+    <p>While physics is my thing, writing is not, so some parts might read a little rough, for now anyhow. If any sections feel confusing or if you spot a mistake, please feel free to let me know by leaving some feedback. The content pages will have a suggestion box link in the bottom right of the page, or if you wish to send me a message now, click the message link below.</p>
 
   </section>
 
@@ -247,11 +247,27 @@
 
   <div class="section-divider"></div>
 
-  <p>Email: phyhub@mail.com</p>
-
   <!-- <footer style="text-align: center; font-size: 0.8em; margin-top: 40px;">
     <p>Createdy by Phyl Hubble.</p>
   </footer> -->
+
+  <div id="suggestion-wrapper" style="text-align: center; flex: 0 0 auto; width: 100%; box-sizing: border-box; max-width: 400px; margin: 0 auto;">
+    <span id="suggestion-toggle" style="cursor: pointer; font-size: 0.9rem;">
+        <span id="suggestion-arrow">▶</span> <span id="suggestion-text" style="text-decoration: underline;">Send me a message</span>
+    </span>
+
+    <form id="suggestion-form" action="https://formspree.io/f/mvzwavap" method="POST" style="display: none; margin-top: 10px; text-align: left;">
+        <input type="hidden" name="_subject" value="suggestion box">
+
+        <input type="email" name="email" placeholder="Your email (optional)" style="width: 100%; box-sizing: border-box; border-radius: 4px; border: 1px solid #999; padding: 6px; margin-bottom: 8px; font-family: inherit; font-size: 0.8rem;">
+
+        <textarea name="message" required style="width: 100%; height: 80px; box-sizing: border-box; border-radius: 4px; border: 1px solid #999; padding: 6px; font-family: inherit; font-size: 0.8rem;" placeholder="Drop your suggestions or messages here..."></textarea>
+
+        <button id="suggestion-submit-btn" type="submit" style="margin-top: 5px; width: 100%; background-color: #555; color: white; border: none; padding: 8px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.85rem;">
+            Send
+        </button>
+    </form>
+  </div>
 </main>
 
 <script>
@@ -354,6 +370,81 @@ window.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error => console.error("Error loading CSV:", error));
 });
+
+
+// 1. Toggle form and arrow direction
+document.getElementById('suggestion-toggle').addEventListener('click', function() {
+    var textSpan = document.getElementById('suggestion-text');
+
+    // Stop it from reopening if they already sent a suggestion successfully
+    if (textSpan.innerText === 'Message sent!') return;
+
+    var form = document.getElementById('suggestion-form');
+    var arrow = document.getElementById('suggestion-arrow');
+
+    // Check if the form is hidden (or if style hasn't been applied yet)
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';
+        arrow.innerText = '▼'; // Point arrow down
+    } else {
+        form.style.display = 'none';
+        arrow.innerText = '▶'; // Point arrow right
+    }
+});
+
+// 2. Submit handling with success and error states
+document.getElementById('suggestion-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Stop the page from redirecting
+
+    var form = this;
+    var submitBtn = document.getElementById('suggestion-submit-btn');
+    var originalBtnText = submitBtn.innerText;
+
+    // Give visual feedback that it's sending so they don't spam click
+    submitBtn.innerText = 'Sending...';
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
+
+    // Send the data in the background
+    fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        if (response.ok) {
+            form.style.display = 'none'; // Hide the form
+
+            // Update the trigger to show a green checkmark and success message
+            var textSpan = document.getElementById('suggestion-text');
+            var arrowSpan = document.getElementById('suggestion-arrow');
+            var toggleContainer = document.getElementById('suggestion-toggle');
+
+            arrowSpan.innerText = '✓';
+            arrowSpan.style.color = 'green';
+            textSpan.innerText = 'Message sent!';
+            textSpan.style.textDecoration = 'none';
+            toggleContainer.style.cursor = 'default';
+        } else {
+            // Force it to jump to the catch block if Formspree throws an error
+            throw new Error('Network response was not ok');
+        }
+    })
+    .catch(error => {
+        // If it fails (e.g., no internet connection), let them try again
+        submitBtn.innerText = 'Error! Try again.';
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.style.backgroundColor = '#cc0000'; // Turn button red to indicate failure
+
+        // Revert the button back to normal styling after 3 seconds
+        setTimeout(() => {
+            submitBtn.innerText = originalBtnText;
+            submitBtn.style.backgroundColor = '#555';
+        }, 3000);
+    });
+});
+
 </script>
 
 </body>

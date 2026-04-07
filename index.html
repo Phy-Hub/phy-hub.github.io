@@ -82,81 +82,83 @@ body {
 
 <body>
 
-<div style="
-    --banner-scale: 0.95;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: calc(7.5vh * var(--banner-scale));
-    white-space: nowrap;"
-    class="banner">
+<header>
+  <div style="
+      --banner-scale: 0.95;
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: calc(7.5vh * var(--banner-scale));
+      white-space: nowrap;"
+      class="banner">
 
-    <div style="text-align: center;">
+      <div style="text-align: center;">
 
-        <svg width="calc(30vh * var(--banner-scale))" viewBox="0 0 1918 568" xmlns="http://www.w3.org/2000/svg" overflow="hidden">
-            <defs><clipPath id="clip0"><rect x="1255" y="133" width="1918" height="568"/></clipPath></defs>
-            <g clip-path="url(#clip0)" transform="translate(-1255 -130)">
-                <path d="M1310.6 701 3117.4 701 3117.4 597.727 3173 597.727 3173 529.206 2214 133 1255 529.206 1255 597.727 1310.6 597.727 1310.6 701Z" fill-rule="evenodd"/>
-            </g>
-        </svg>
+          <svg width="calc(30vh * var(--banner-scale))" viewBox="0 0 1918 568" xmlns="http://www.w3.org/2000/svg" overflow="hidden">
+              <defs><clipPath id="clip0"><rect x="1255" y="133" width="1918" height="568"/></clipPath></defs>
+              <g clip-path="url(#clip0)" transform="translate(-1255 -130)">
+                  <path d="M1310.6 701 3117.4 701 3117.4 597.727 3173 597.727 3173 529.206 2214 133 1255 529.206 1255 597.727 1310.6 597.727 1310.6 701Z" fill-rule="evenodd"/>
+              </g>
+          </svg>
 
-        <div style="width: 100%; overflow: hidden; padding: 0; margin: 0;">
-            <canvas id="myCanvas" width="1200" height="90"
-                style="width: calc(180vh * var(--banner-scale)); height: calc(13.5vh * var(--banner-scale));">
-            </canvas>
-        </div>
+          <div style="width: 100%; overflow: hidden; padding: 0; margin: 0;">
+              <canvas id="myCanvas" width="1200" height="90"
+                  style="width: calc(180vh * var(--banner-scale)); height: calc(13.5vh * var(--banner-scale));">
+              </canvas>
+          </div>
 
-        <div>
-            <svg style="vertical-align: middle; padding: 0; margin: 0;" width="calc(30vh * var(--banner-scale))" viewBox="0 0 2028 149" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-                <defs>
-                    <filter id="fx0" x="-50%" y="-50%" width="200%" height="200%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
-                        <feComponentTransfer color-interpolation-filters="sRGB">
-                            <feFuncR type="discrete" tableValues="0 0"/>
-                            <feFuncG type="discrete" tableValues="0 0"/>
-                            <feFuncB type="discrete" tableValues="0 0"/>
-                            <feFuncA type="linear" slope="0.439216" intercept="0"/>
-                        </feComponentTransfer>
-                        <feGaussianBlur stdDeviation="7.63889 7.63889"/>
-                    </filter>
-                    <clipPath id="clip1"><rect x="1100" y="1400" width="2200" height="400"/></clipPath>
-                </defs>
-                <g clip-path="url(#clip1)" transform="translate(-1200 -1499)">
-                    <g filter="url(#fx0)" transform="matrix(2 0 0 2 1199 1482)">
-                        <path d="M2.29 31.87 1012.72 31.87 1012.72 85.43 2.29 85.43Z" fill-rule="evenodd"/>
-                    </g>
-                    <path d="M1233 1498 3195 1498 3195 1602 1233 1602Z" fill-rule="evenodd"/>
-                </g>
-            </svg>
-        </div>
+          <div>
+              <svg style="vertical-align: middle; padding: 0; margin: 0;" width="calc(30vh * var(--banner-scale))" viewBox="0 0 2028 149" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+                  <defs>
+                      <filter id="fx0" x="-50%" y="-50%" width="200%" height="200%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
+                          <feComponentTransfer color-interpolation-filters="sRGB">
+                              <feFuncR type="discrete" tableValues="0 0"/>
+                              <feFuncG type="discrete" tableValues="0 0"/>
+                              <feFuncB type="discrete" tableValues="0 0"/>
+                              <feFuncA type="linear" slope="0.439216" intercept="0"/>
+                          </feComponentTransfer>
+                          <feGaussianBlur stdDeviation="7.63889 7.63889"/>
+                      </filter>
+                      <clipPath id="clip1"><rect x="1100" y="1400" width="2200" height="400"/></clipPath>
+                  </defs>
+                  <g clip-path="url(#clip1)" transform="translate(-1200 -1499)">
+                      <g filter="url(#fx0)" transform="matrix(2 0 0 2 1199 1482)">
+                          <path d="M2.29 31.87 1012.72 31.87 1012.72 85.43 2.29 85.43Z" fill-rule="evenodd"/>
+                      </g>
+                      <path d="M1233 1498 3195 1498 3195 1602 1233 1602Z" fill-rule="evenodd"/>
+                  </g>
+              </svg>
+          </div>
 
-        <svg style="vertical-align: middle;" width="calc(33.3vh * var(--banner-scale))" viewBox="0 25 2028 169" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-            <defs>
-                <filter id="fx1" x="-50%" y="-50%" width="200%" height="200%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
-                    <feComponentTransfer color-interpolation-filters="sRGB">
-                        <feFuncR type="discrete" tableValues="0 0"/>
-                        <feFuncG type="discrete" tableValues="0 0"/>
-                        <feFuncB type="discrete" tableValues="0 0"/>
-                        <feFuncA type="linear" slope="0.439216" intercept="0"/>
-                    </feComponentTransfer>
-                    <feGaussianBlur stdDeviation="7.63889 7.63889"/>
-                </filter>
-                <clipPath id="clip2"><rect x="1100" y="1400" width="2200" height="400"/></clipPath>
-            </defs>
-            <g clip-path="url(#clip2)" transform="translate(-1200 -1484)">
-                <g filter="url(#fx1)" transform="matrix(2 0 0 2 1199 1482)">
-                    <path d="M2.29 31.87 1012.72 31.87 1012.72 85.43 2.29 85.43Z" fill-rule="evenodd"/>
-                </g>
-                <path d="M1233 1498 3195 1498 3195 1602 1233 1602Z" fill-rule="evenodd"/>
-            </g>
-        </svg>
+          <svg style="vertical-align: middle;" width="calc(33.3vh * var(--banner-scale))" viewBox="0 25 2028 169" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+              <defs>
+                  <filter id="fx1" x="-50%" y="-50%" width="200%" height="200%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
+                      <feComponentTransfer color-interpolation-filters="sRGB">
+                          <feFuncR type="discrete" tableValues="0 0"/>
+                          <feFuncG type="discrete" tableValues="0 0"/>
+                          <feFuncB type="discrete" tableValues="0 0"/>
+                          <feFuncA type="linear" slope="0.439216" intercept="0"/>
+                      </feComponentTransfer>
+                      <feGaussianBlur stdDeviation="7.63889 7.63889"/>
+                  </filter>
+                  <clipPath id="clip2"><rect x="1100" y="1400" width="2200" height="400"/></clipPath>
+              </defs>
+              <g clip-path="url(#clip2)" transform="translate(-1200 -1484)">
+                  <g filter="url(#fx1)" transform="matrix(2 0 0 2 1199 1482)">
+                      <path d="M2.29 31.87 1012.72 31.87 1012.72 85.43 2.29 85.43Z" fill-rule="evenodd"/>
+                  </g>
+                  <path d="M1233 1498 3195 1498 3195 1602 1233 1602Z" fill-rule="evenodd"/>
+              </g>
+          </svg>
 
-        <div style="font-family: 'Roboto Slab', serif; font-size: calc(10.5vh * var(--banner-scale)); display: inline-block; vertical-align: middle;">
-            Phy-Hub
-        </div>
-    </div>
-</div>
+          <div style="font-family: 'Roboto Slab', serif; font-size: calc(10.5vh * var(--banner-scale)); display: inline-block; vertical-align: middle;">
+              Phy-Hub
+          </div>
+      </div>
+  </div>
+</header>
 
-
+<main>
   <div style="display: grid; grid-template-columns: 1fr auto 1fr; position: fixed; top: 50vh; width: 100%;">
     <div style="margin-top: 12px; height: 5px; background-color: black; align-items: center;justify-content: center;"></div>
     <div style="display: inline-block; font-family: 'Roboto Slab', serif; font-size: 20px; padding-left: 10px; padding-right: 10px;"> The Physics Resource Hub </div>
@@ -169,6 +171,7 @@ body {
     <div style="text-align: center; font-size: 4vw;"><a href="/about">About Site</a></div>
     <!-- <div style="text-align: center; font-size: 4vw;"><a href="pages/site-plan">Site Plan</a></div> -->
   </div>
+</main>
 
 <script>
   window.onload = function() {

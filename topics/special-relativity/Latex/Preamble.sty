@@ -181,6 +181,16 @@
 %█████████████████████████████████████████████████████
 % BIBLIOGRAPHY
 %█████████████████████████████████████████████████████
-
 \usepackage[backend=biber, refsegment=chapter, defernumbers=true]{biblatex}
 \addbibresource{refs.bib}
+
+%█████████████████████████████████████████████████████
+% License
+%█████████████████████████████████████████████████████
+\usepackage{csquotes}
+% \makeatletter
+% \@ifundefined{opt@csquotes.sty}{}{\let\@quotelevel\relax}
+% \makeatother
+\usepackage[type={CC}, modifier={by-nc-nd}, version={4.0}]{doclicense}
+\newcommand{\zeropad}[1]{\ifnum#1<10 0\fi\number#1}
+\newcommand{\version}{v0.9-\the\year\zeropad{\month}\zeropad{\day}}

@@ -74,6 +74,33 @@
       \field{pages}{891\bibrangedash 921}
       \range{pages}{31}
     \endentry
+    \entry{epstein1985relativity}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=8b85c2c1a0300e4af1ef1fa9b2d4e6a2}{%
+           family={Epstein},
+           familyi={E\bibinitperiod},
+           given={Lewis\bibnamedelima Carroll},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Insight Press}%
+      }
+      \strng{namehash}{8b85c2c1a0300e4af1ef1fa9b2d4e6a2}
+      \strng{fullhash}{8b85c2c1a0300e4af1ef1fa9b2d4e6a2}
+      \strng{fullhashraw}{8b85c2c1a0300e4af1ef1fa9b2d4e6a2}
+      \strng{bibnamehash}{8b85c2c1a0300e4af1ef1fa9b2d4e6a2}
+      \strng{authorbibnamehash}{8b85c2c1a0300e4af1ef1fa9b2d4e6a2}
+      \strng{authornamehash}{8b85c2c1a0300e4af1ef1fa9b2d4e6a2}
+      \strng{authorfullhash}{8b85c2c1a0300e4af1ef1fa9b2d4e6a2}
+      \strng{authorfullhashraw}{8b85c2c1a0300e4af1ef1fa9b2d4e6a2}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780935218039}
+      \field{title}{Relativity Visualized}
+      \field{year}{1985}
+    \endentry
     \entry{FeynmanMomentum}{inbook}{}{}
       \name{author}{3}{}{%
         {{hash=aac54ccf9c76aa4ba4310ed1334be7d8}{%

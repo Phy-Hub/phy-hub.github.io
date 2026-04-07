@@ -12,6 +12,10 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/media/favicons/apple-touch-icon.png" >
 <meta name="apple-mobile-web-app-title" content="Phy-Hub" >
 <link rel="manifest" href="/media/favicons/site.webmanifest" >
+<link rel="preload" href="/media/fonts/texgyreschola-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/media/Logo/Logo_small.png" as="image">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
 <script defer async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <script> MathJax = { loader:  {load:  ['[tex]/tagformat']}, section:  0, tex:  {tags:  'ams', packages:  {'[+]':  ['tagformat', 'sections']}, tagformat:  { number:  (n) => MathJax.config.section + '.' + n }}, startup: {ready() {const Configuration = MathJax._.input.tex.Configuration.Configuration; const CommandMap = MathJax._.input.tex.SymbolMap.CommandMap; new CommandMap('sections', { nextSection:  'NextSection' }, {NextSection(parser, name) {MathJax.config.section++; parser.tags.counter = parser.tags.allCounter = 0;}}); Configuration.create( 'sections', {handler:  {macro:  ['sections']}}); MathJax.startup.defaultReady();},pageReady: () => {return MathJax.startup.defaultPageReady().then(() => {if (window.location.hash) {setTimeout(() => {const id = window.location.hash.substring(1); const target = document.getElementById(id) || document.getElementsByName(id)[0];if (target) {target.scrollIntoView(); } }, 0); } }); }}};</script>

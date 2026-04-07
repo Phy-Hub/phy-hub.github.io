@@ -3,8 +3,9 @@
 * when page is thin, there is overflow to righthand side
 * swap bibtex-js for own coded option, or Citation.js if needed
 * create Git branch with only necessary files for website, and use this for github pages instead
-* check if any more prerender quirks, and if not integrate prerender.py into ASM_Pae.py
+* integrate prerender.py into ASM_Page.py
 * Use cache lifetimes so images and that are saved on others machines for when they revisit
+* get logo and phy-hub text to be centered on not half of screen and change scaling of class="banner" to scale better for phones, and layout in general to be better for phones, i.e. stack links instead of having them side by side
 
 #####
 #####

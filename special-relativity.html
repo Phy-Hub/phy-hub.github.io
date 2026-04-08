@@ -51,7 +51,7 @@
   .brown{background-color: #b7a484;}
   .stronger-colour{background-color: #fccb93;}
 
-  .navbar {display: grid; grid-template-columns: auto 700px auto; position: sticky; top: 0; z-index: 1000; height: var(--navbar-height); width: 100%; background-color: grey; border-radius: 0 0 3px 3px;}
+  .navbar {display: grid; grid-template-columns: auto 700px auto; position: sticky; top: 0; z-index: 1000; height: var(--navbar-height); width: 100%; align-items: center; background-color: grey; border-radius: 0 0 3px 3px;}
   #site-navbar {position: sticky; top: 0; z-index: 1000; width: 100%;}
   .arrow-nav {display: grid; grid-template-columns: 50% 50%; width: 100%; padding-top: 50px;}
 
@@ -1818,8 +1818,8 @@ mjx-c.mjx-c1D42F.TEX-B::before {
 <header id="site-navbar">
   <!--Navbar-->
   <div class="navbar">
-    <div style="justify-self: start; width: 70px;"><a href="/"> <img src="/media/Logo/Logo_small.png" fetchpriority="high" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px"> </a></div>
-    <div id="banner" style="width: 100%; padding-top: 3px; padding-bottom:3px;"> </div>
+    <div style="justify-self: start; width: 70px;"><a href="/" style="height: var(--navbar-height);"> <img src="/media/Logo/Logo_small.png" fetchpriority="high" alt="Logo" style="height: 50px; padding-top: 6px; padding-left: 10px" > </a></div>
+    <div id="banner" style="width: 100%; height: calc(var(--navbar-height) - 3px - 3px); padding-top: 3px; padding-bottom:3px;"> </div>
     <div class="menu" style="justify-self: end; cursor: pointer; width: 70px;">
       <div style="font-size: 40px; text-align: center;"> ☰ </div>
       <nav class="dropdown-menu">

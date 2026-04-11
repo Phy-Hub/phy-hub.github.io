@@ -1,12 +1,38 @@
 from playwright.sync_api import sync_playwright
 import os
+import re
 
 def build_prerendered_page():
-    # Only one file path needed now
     target_file = "special-relativity.html"
 
-    # Get the absolute path so the browser can find it locally
-    file_url = f"file://{os.path.abspath(target_file)}"
+    if not os.path.exists(target_file):
+        print(f"Error: {target_file} not found.")
+        return
+
+    # 1. Read the original file and separate frontmatter from HTML
+    with open(target_file, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # Regex to find content between the first two sets of ---
+    # It looks for '---', then any text (including newlines), then '---'
+    frontmatter_pattern = re.compile(r'^(---\s*\n.*?\n---\s*\n)', re.DOTALL)
+    match = frontmatter_pattern.match(content)
+
+    frontmatter = ""
+    html_content = content
+
+    if match:
+        frontmatter = match.group(1)
+        html_content = content[len(frontmatter):]
+        print("Frontmatter detected and isolated.")
+
+    # 2. Save a temporary version of the HTML without frontmatter for Playwright
+    # This prevents the browser from moving the metadata into the <body>
+    temp_file = "temp_render.html"
+    with open(temp_file, 'w', encoding='utf-8') as f:
+        f.write(html_content)
+
+    file_url = f"file://{os.path.abspath(temp_file)}"
 
     with sync_playwright() as p:
         print(f"Launching headless browser to process {target_file}...", flush=True)
@@ -30,10 +56,10 @@ def build_prerendered_page():
             try:
                 page.wait_for_selector("mjx-container", state="attached", timeout=15000)
                 page.wait_for_timeout(2000)
-            except Exception as e:
-                print("Warning: Could not find rendered math. Did the page load correctly or are there no equations?", flush=True)
+            except Exception:
+                print("Warning: Could not find rendered math.", flush=True)
 
-            print("Cleaning up DOM, removing unwanted scripts, and restoring animation classes...", flush=True)
+            print("Cleaning up DOM and restoring animation classes...", flush=True)
             page.evaluate("""
                 const scripts = document.querySelectorAll('script');
                 scripts.forEach(script => {
@@ -62,18 +88,16 @@ def build_prerendered_page():
             # Extract the fully rendered HTML
             rendered_html = page.content()
 
-        # The browser is now closed, so it's safe to overwrite the file
+    # 3. Combine frontmatter back with the rendered HTML
+    print(f"Overwriting {target_file} with frontmatter + rendered HTML...", flush=True)
+    with open(target_file, 'w', encoding='utf-8') as f:
+        f.write(frontmatter + rendered_html)
 
-        print(f"Overwriting {target_file} with rendered HTML...", flush=True)
+    # 4. Cleanup temporary file
+    if os.path.exists(temp_file):
+        os.remove(temp_file)
 
-        # Open the original file in 'w' (write) mode to replace its contents
-        with open(target_file, 'w', encoding='utf-8') as f:
-            f.write(rendered_html)
-
-        print(f"Success! {target_file} has been successfully overwritten.", flush=True)
+    print(f"Success! {target_file} has been successfully updated.", flush=True)
 
 if __name__ == "__main__":
-    if os.path.exists("special-relativity.html"):
-        build_prerendered_page()
-    else:
-        print("Error: special-relativity.html not found in the current directory.", flush=True)
+    build_prerendered_page()

@@ -1199,6 +1199,13 @@ def make_page(input_file, output_file, toc_file, content_file, Defs_file, Math_T
         lines = file.readlines()
 
     with open(output_file, 'w', encoding='utf-8') as file:
+        # Write the front matter block first
+        file.write("---\n")
+        file.write("priority: 1.0\n")
+        file.write("changefreq: monthly\n")
+        file.write("index_me: true\n")
+        file.write("---\n")
+
         for line in lines:
             if '[Insert TOC]' in line:
                 file.writelines(toc_file)

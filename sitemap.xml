@@ -6,7 +6,7 @@ layout: null
   {% for page in site.pages %}
     {% if page.index_me == true %}
     <url>
-      <loc>{{ site.url }}{{ page.url | remove: 'index.html' }}</loc>
+      <loc>{{ site.url }}{{ page.url | remove: 'index.html' | replace: '.html', '' }}</loc>
       <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
       <changefreq>{{ page.changefreq | default: 'monthly' }}</changefreq>
       <priority>{{ page.priority | default: '0.5' }}</priority>

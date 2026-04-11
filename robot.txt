@@ -1,7 +1,58 @@
+---
+layout: null
+---
+Sitemap: https://phy-hub.org/sitemap.xml
+
 User-agent: *
-Disallow: /feedback
+Disallow: /
 
-# Allow search engines to crawl all other pages
-Allow: /
+# --- Pages ---
+{% for page in site.pages %}
+  {% if page.index_me == true %}
+Allow: {{ page.url }}$
+Allow: {{ page.url | replace: '.html', '' }}$
+  {% endif %}
+{% endfor %}
 
-Sitemap: /sitemap.xml
+# --- Favicons & Fonts ---
+Allow: /media/favicons/
+Allow: /media/fonts/
+
+# --- Logos & Data ---
+Allow: /media/Logo/Logo_small.png$
+Allow: /media/Logo/DS_Pattern_filtered.csv$
+
+# --- Animated Figures (HTML embeds) ---
+Allow: /media/animated_figs/treadmill.html$
+Allow: /media/animated_figs/light_clock.html$
+Allow: /media/animated_figs/simultaneity.html$
+Allow: /media/animated_figs/length_contraction.html$
+Allow: /media/animated_figs/doppler_effect.html$
+Allow: /media/animated_figs/aberration_truck.html$
+Allow: /media/animated_figs/aberration.html$
+Allow: /media/animated_figs/retarded_light_field.html$
+Allow: /media/animated_figs/apparent_faster_than_light_speeds.html$
+
+# --- Allow svg folder and pdf file ---
+Allow: /topics/special-relativity/Latex/images/svg/
+Allow: /topics/special-relativity/Latex/output/Handbook_of_Special_Relativity.pdf$
+
+
+# --- ==========================================
+# --- BLOCK AI SCRAPERS AND LLM TRAINING BOTS
+# --- ==========================================
+
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Anthropic-ai
+User-agent: Claude-Web
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: CCBot
+User-agent: Omgilibot
+User-agent: FacebookBot
+User-agent: PerplexityBot
+User-agent: cohere-ai
+User-agent: Applebot-Extended
+User-agent: YouBot
+Disallow: /

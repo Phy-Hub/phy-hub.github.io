@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.5)  7 APR 2026 18:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.5)  11 APR 2026 14:05
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1887,25 +1887,25 @@ Package biblatex Info: Setting label 'refsegment:08' on input line 7.
 ] [111]
 ===== Image 'output/tikz/Handbook_of_Special_Relativity-figure0' is up-to-date. ======
 
-Overfull \hbox (5.56084pt too wide) in paragraph at lines 64--75
+Overfull \hbox (5.56084pt too wide) in paragraph at lines 62--73
  [][] 
  []
 
 ===== Image 'output/tikz/Handbook_of_Special_Relativity-figure1' is up-to-date. ======
 
-Overfull \hbox (79.46996pt too wide) in paragraph at lines 81--99
+Overfull \hbox (79.46996pt too wide) in paragraph at lines 79--97
  [][] 
  []
 
 ===== Image 'output/tikz/Handbook_of_Special_Relativity-figure2' is up-to-date. ======
 
-Overfull \hbox (5.56084pt too wide) in paragraph at lines 107--118
+Overfull \hbox (5.56084pt too wide) in paragraph at lines 105--116
  [][] 
  []
 
 ===== Image 'output/tikz/Handbook_of_Special_Relativity-figure3' is up-to-date. ======
 
-Overfull \hbox (28.0619pt too wide) in paragraph at lines 124--150
+Overfull \hbox (28.0619pt too wide) in paragraph at lines 122--148
  [][] 
  []
 
@@ -2001,7 +2001,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  131i,17n,135p,1676b,1410s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\one_p\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsb.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsr.pfb><C:/Users/one_p/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qcsri.pfb>
-Output written on c:\Users\one_p\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.pdf (134 pages, 7477964 bytes).
+Output written on c:\Users\one_p\Desktop\Phy-Hub\Website\topics\special-relativity\Latex\output\Handbook_of_Special_Relativity.pdf (134 pages, 7478410 bytes).
 PDF statistics:
  32415 PDF objects out of 38293 (max. 8388607)
  439 named destinations out of 1000 (max. 500000)

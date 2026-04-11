@@ -74,7 +74,7 @@
 \contentsline {section}{\numberline {6.6}Summary}{108}{section.6.6}%
 \contentsline {part}{IV\hspace {1em}Conclusion and Resources}{109}{part.4}%
 \contentsline {chapter}{Conclusion}{110}{chapter*.52}%
-\contentsline {section}{\numberline {6.7}Things to Remember}{111}{section.6.7}%
+\contentsline {section}{\numberline {6.7}Things to Remember}{110}{section.6.7}%
 \contentsline {section}{\numberline {6.8}A Note on Gravity}{111}{section.6.8}%
 \contentsline {chapter}{Resources}{114}{chapter*.54}%
 \contentsline {chapter}{Dictionary}{116}{chapter*.55}%

@@ -1,11 +1,8 @@
 ###
 ###
-* fix section *** start
-* update online, or use gemini to search
-* ask Gemini to check which sections I should focus on
-* sort plan from this
+** use pandoc .\Handbook_of_Special_Relativity.tex -o HoSR.docx
+* use one of the wrting editors free trials to help (hemmingway, prowritingaid or grammarly)
 * conclusion needed
-* add some resources for some paradoxes
 ###
 ###
 
